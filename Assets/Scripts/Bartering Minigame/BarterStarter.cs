@@ -49,7 +49,9 @@ public class BarterStarter : MonoBehaviour
         // TODO: Replace this with non-debug functionality.
         OnWin += () => Debug.Log("BarterStarter: OnWin called!");
         OnLose += () => Debug.Log("BarterStarter: OnLose called!");
-    }  
+    }
+
+    
     
     // Pre-Barter Methods =========================================================================
 
@@ -82,7 +84,12 @@ public class BarterStarter : MonoBehaviour
     private void CleanupPresentationCanvas(bool backToDefault)
     {
         Destroy(_itemPresentInstance);
-        
+
+        if (GameManager.MasterCanvas != null)
+        {
+            _inGameUi = GameManager.MasterCanvas.GetComponent<InGameUi>();
+        }
+
         if (backToDefault) {
             _inGameUi.MoveToDefault();
         }
@@ -197,6 +204,11 @@ public class BarterStarter : MonoBehaviour
     /// <param name="closeCallback">System.Action - invoked when the Journal is closed.</param>
     private void OpenJournal(System.Action closeCallback, bool won)
     {
+        if (GameManager.MasterCanvas != null)
+        {
+            _inGameUi = GameManager.MasterCanvas.GetComponent<InGameUi>();
+        }
+
         _inGameUi.SetLastNonMenuState(InGameUi.UiStates.Default);
         _inGameUi.MoveToJournal(NpcData);
 
@@ -261,6 +273,11 @@ public class BarterStarter : MonoBehaviour
         else
         {
             ExchangeCards(won);
+
+            if (GameManager.MasterCanvas != null)
+            {
+                _inGameUi = GameManager.MasterCanvas.GetComponent<InGameUi>();
+            }
 
             // TODO: Take us back to the conversation. In the meantime...
             _inGameUi.MoveToDefault();

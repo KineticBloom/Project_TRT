@@ -54,6 +54,7 @@ public class FlagTracker : MonoBehaviour
         
         if (flag.Type == Flag.FlagType.InventoryCard)
         {
+            Debug.Log(flag.ID[3..]);
             if (!flag.Card) flag.Card = _inventory.GetCardByID(flag.ID[3..]).Data;
             if (editInventory)
             {

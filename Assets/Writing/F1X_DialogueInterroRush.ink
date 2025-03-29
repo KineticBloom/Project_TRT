@@ -33,6 +33,7 @@ Hello. #NPC
     -> Start
     
 * That's all. // Exit dialogue
+    ~ late_in_loop = true
     -> END
 
 

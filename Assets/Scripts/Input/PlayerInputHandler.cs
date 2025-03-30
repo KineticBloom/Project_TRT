@@ -28,6 +28,7 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
         {"_secondaryTrigger", false},
         {"_start", false},
         {"_affirm", false},
+        {"_jump", false},
         {"_reject", false},
         {"_menu1", false},
         {"_menu2", false},
@@ -124,6 +125,7 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
     public void OnPrimaryTrigger(InputAction.CallbackContext context) { SetDown(context, "_primaryTrigger"); }
     public void OnSecondaryTrigger(InputAction.CallbackContext context) { SetDown(context, "_secondaryTrigger"); }
     public void OnAffirmButton(InputAction.CallbackContext context) { SetDown(context, "_affirm"); }
+    public void OnJumpButton(InputAction.CallbackContext context) { SetDown(context, "_jump"); }
     public void OnStartButton(InputAction.CallbackContext context) { SetDown(context, "_start"); }
     public void OnRejectButton(InputAction.CallbackContext context) { SetDown(context, "_reject"); }
     public void OnMenuButton1(InputAction.CallbackContext context) { SetDown(context, "_menu1"); }
@@ -156,6 +158,7 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
     public bool GetSecondaryTriggerDown() { return _getDown["_secondaryTrigger"]; }
     public bool GetStartDown() { return _getDown["_start"]; }
     public bool GetAffirmDown() { return _getDown["_affirm"]; }
+    public bool GetJumpDown() { return _getDown["_jump"]; }
     public bool GetRejectDown() { return _getDown["_reject"]; }
     public bool GetMenu1Down() { return _getDown["_menu1"]; }
     public bool GetMenu1() { return _get["_menu1"]; }

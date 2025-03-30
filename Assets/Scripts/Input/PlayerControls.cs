@@ -125,6 +125,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""JumpButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""f44d3e24-4b83-49a1-8be5-0f31724d865b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -490,6 +499,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Scroll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""57cfb8b4-146e-4cb9-8b49-33427498d9f4"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JumpButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""80216beb-97a5-43ca-9e48-20ab441229fc"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JumpButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -737,6 +768,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_MainControls_Click = m_MainControls.FindAction("Click", throwIfNotFound: true);
         m_MainControls_Pointer = m_MainControls.FindAction("Pointer", throwIfNotFound: true);
         m_MainControls_Scroll = m_MainControls.FindAction("Scroll", throwIfNotFound: true);
+        m_MainControls_JumpButton = m_MainControls.FindAction("JumpButton", throwIfNotFound: true);
         // Debug
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_Debug0 = m_Debug.FindAction("Debug0", throwIfNotFound: true);
@@ -820,6 +852,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_MainControls_Click;
     private readonly InputAction m_MainControls_Pointer;
     private readonly InputAction m_MainControls_Scroll;
+    private readonly InputAction m_MainControls_JumpButton;
     public struct MainControlsActions
     {
         private @PlayerControls m_Wrapper;
@@ -835,6 +868,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Click => m_Wrapper.m_MainControls_Click;
         public InputAction @Pointer => m_Wrapper.m_MainControls_Pointer;
         public InputAction @Scroll => m_Wrapper.m_MainControls_Scroll;
+        public InputAction @JumpButton => m_Wrapper.m_MainControls_JumpButton;
         public InputActionMap Get() { return m_Wrapper.m_MainControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -877,6 +911,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Scroll.started += instance.OnScroll;
             @Scroll.performed += instance.OnScroll;
             @Scroll.canceled += instance.OnScroll;
+            @JumpButton.started += instance.OnJumpButton;
+            @JumpButton.performed += instance.OnJumpButton;
+            @JumpButton.canceled += instance.OnJumpButton;
         }
 
         private void UnregisterCallbacks(IMainControlsActions instance)
@@ -914,6 +951,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Scroll.started -= instance.OnScroll;
             @Scroll.performed -= instance.OnScroll;
             @Scroll.canceled -= instance.OnScroll;
+            @JumpButton.started -= instance.OnJumpButton;
+            @JumpButton.performed -= instance.OnJumpButton;
+            @JumpButton.canceled -= instance.OnJumpButton;
         }
 
         public void RemoveCallbacks(IMainControlsActions instance)
@@ -1024,6 +1064,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnClick(InputAction.CallbackContext context);
         void OnPointer(InputAction.CallbackContext context);
         void OnScroll(InputAction.CallbackContext context);
+        void OnJumpButton(InputAction.CallbackContext context);
     }
     public interface IDebugActions
     {

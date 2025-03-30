@@ -20,13 +20,16 @@ public class PlayerMovement : MonoBehaviour
 
 	[Header("Parameters")]
 	[SerializeField] private float speed = 5f;
+    [SerializeField] private float launchPower = 750f;
+    [SerializeField] private float launchDuration = 0.25f;
 
-	#endregion
+    #endregion
 
-	#region ======== [ PRIVATE PROPERTIES ] ========
+    #region ======== [ PRIVATE PROPERTIES ] ========
 
-	private const float _gravity = 9.81f;
+    private const float _gravity = 2 * 9.81f;
 	private float _downwardForce = 0;
+	private float _launchTimeRemaining = 0;
 	[SerializeField, ReadOnly] private bool _canMove = true;
 
     #endregion
@@ -60,6 +63,22 @@ public class PlayerMovement : MonoBehaviour
 	{
 		// Get Input
 		Vector3 input = GameManager.PlayerInput.GetControlInput();
+
+		// Handle Launch Jump
+		if (_launchTimeRemaining > 0)
+		{
+            input.y = launchPower * Time.deltaTime * (_launchTimeRemaining / launchDuration);
+            _launchTimeRemaining -= Time.deltaTime;
+        } else {
+            _launchTimeRemaining = 0;
+            if (_characterController.isGrounded && GameManager.PlayerInput.GetJumpDown())
+            {
+                _launchTimeRemaining = launchDuration;
+                input.y = launchPower * Time.deltaTime * (_launchTimeRemaining / launchDuration);
+                _launchTimeRemaining -= Time.deltaTime;
+            }
+        } 
+
 
 		if (!_canMove) {
 			input = Vector3.zero;

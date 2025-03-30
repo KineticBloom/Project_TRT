@@ -17,21 +17,21 @@ Hello. #NPC
 ->Start
 
 === Start ===
-* Who are you?
+* {!IC_EDEN_NAME_REVEAL} Who are you?
     I am Eden the fruit priestess. #NPC
     ~ IC_EDEN_NAME_REVEAL = true
     -> Start
 
-* {IC_love_letter} I found this love letter. It is from you. Who is it to?
+* {IC_love_letter} [Love letter?] I found this love letter. It is from you. Who is it to?
     I am in love with F1X. If you want, you can give my love letter to the mailbot if you GO THROUGH  THE GATE ON THE RIGHT ([eventually this should be a specific clue on how to find mailbot]).  #NPC
     ~ IC_EDEN_LOVE_LETTER_REVEAL = true
     -> Start
 
-* COMMAND: Update SEEN_EMPTY_COFFERS to TRUE (after seeing mailbot)
+* {!seen_empty_coffers} COMMAND: Update SEEN_EMPTY_COFFERS [] to TRUE (after seeing mailbot)
     ~ seen_empty_coffers = true
     -> Start
     
-* {seen_empty_coffers} The church coffers are empty. Why?
+* {seen_empty_coffers} The church coffers are empty[?]. Why?
     I followed the instructions of the star fruit and sent all of the church’s money to F1X. #NPC
     ~ IC_EDEN_EMPTY_COFFERS_REVEAL = true
     -> Start

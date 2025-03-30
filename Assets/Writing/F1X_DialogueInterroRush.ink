@@ -27,8 +27,8 @@ Hello. #NPC
     ~ IC_F1X_DEBT_REVEAL = true
     -> Start
 
-* {IC_F1X_DEBT_REVEAL and IC_EDEN_EMPTY_COFFERS_REVEAL} You were in debt. EVE sent you money, what did you do for it?
-    I received a large sum of money and a flash drive, and I convinced the mail bot to complete a unique kind of delivery. #NPC
+* {IC_F1X_DEBT_REVEAL and IC_EDEN_EMPTY_COFFERS_REVEAL} You were in debt. Eden sent you all of the church's money. What did you do to earn such payment?
+    I received a large sum of money, a flash drive, and instructions to make a mail order.I convinced the mailbot to complete a... <i>unique kind</i> of delivery. #NPC
     ~ IC_F1X_MAILORDER_REVEAL = true
     -> Start
     

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 /// </summary>
 public class TradeHandler : MonoBehaviour {
     public struct TradeData {
-        public ItemOfValue ItemOnOffer;
+        public InventoryCardData ItemOnOffer;
         public string DialogueForTrade;
         public string DialogueForNoTrade;
     }
@@ -22,7 +22,7 @@ public class TradeHandler : MonoBehaviour {
         CanvasManager.MoveToBartering();
 
         // Setup Trade
-        NPCTradeSlot.sprite = TradeInformation.ItemOnOffer.ItemIcon64x64;
+        NPCTradeSlot.sprite = TradeInformation.ItemOnOffer.Sprite;
 
     }
 

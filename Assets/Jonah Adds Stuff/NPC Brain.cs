@@ -5,7 +5,7 @@ using UnityEngine;
 public class NPCBrain : Interactable {
 
     public NPCData DataOfThisNPC;
-    public ItemOfValue ItemForOffer;
+    public InventoryCardData ItemForOffer;
 
     public override void Interaction() {
         throw new System.NotImplementedException();

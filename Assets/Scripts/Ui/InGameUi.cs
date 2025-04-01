@@ -307,6 +307,7 @@ public class InGameUi : MonoBehaviour
                 GameManager.Player.Movement.SetCanMove(false);
                 GameManager.Player.InteractionHandler.SetCanInteract(false);
                 GameManager.PlayerInput.AllowNavbar = false;
+                Bartering.gameObject.SetActive(true);
                 break;
             case UiStates.Dialogue:
                 // Insert animation!

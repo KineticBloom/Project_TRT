@@ -13,6 +13,7 @@ public class GameManager : Singleton<GameManager>
     public static Canvas MasterCanvas { get { return Instance._masterCanvas; } }
     public static BarterStarter BarterStarter { get { return Instance.barterStarter; } }
     public static FlagTracker FlagTracker { get { return Instance.flagTracker; } }
+    public static NewBarterStarter NewBarterStarter { get { return Instance.newBarterStarter; } }
 
     // Backing fields =============================================================================
 
@@ -26,6 +27,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField, ReadOnly] private Canvas _masterCanvas;
     [SerializeField] private BarterStarter barterStarter;
     [SerializeField] private FlagTracker flagTracker;
+    [SerializeField] private NewBarterStarter newBarterStarter;
 
     // Initializers ===============================================================================
 

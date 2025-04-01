@@ -6,9 +6,19 @@ public class NPCBrain : Interactable {
 
     public NPCData DataOfThisNPC;
     public InventoryCardData ItemForOffer;
+    public string DialogueForTrade;
+    public string DialogueForNoTrade;
 
     public override void Interaction() {
-        throw new System.NotImplementedException();
+
+        BarteringController.TradeData tradeData = new BarteringController.TradeData();
+        tradeData = new BarteringController.TradeData();
+        tradeData.ItemOnOffer = ItemForOffer;
+        tradeData.NPCData = DataOfThisNPC;
+        tradeData.DialogueForTrade = DialogueForTrade;
+        tradeData.DialogueForNoTrade = DialogueForNoTrade;
+
+        GameManager.NewBarterStarter.StartBarter(tradeData);
     }
 
     public override void Highlight() {

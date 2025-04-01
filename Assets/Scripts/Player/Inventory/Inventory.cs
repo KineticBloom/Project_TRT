@@ -103,10 +103,10 @@ public class Inventory : MonoBehaviour
         if (card == null) return;
 
 
-        if (IDtaken(card.ID)) {
+/*        if (IDtaken(card.ID)) {
             Debug.LogError("Card ID: " + card.ID + " already exists in inventory. Failed to add");
             return;
-        }
+        }*/
 
         // Find card in AllCards and add it to the current inventory
         InventoryCard newCard = null;

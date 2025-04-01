@@ -188,8 +188,6 @@ public class InventoryCardObject : MonoBehaviour {
     public void OnSelect(BaseEventData eventData) {
         if (_scroller != null) {
             _scroller.FrameCardInGrid(_index);
-        } else {
-            Debug.Log("Scroller is found to be null!");
         }
     }
 

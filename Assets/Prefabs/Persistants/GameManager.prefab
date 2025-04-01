@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2334186633066417863}
   - component: {fileID: 7739117665189127466}
   - component: {fileID: 7792286873378010446}
+  - component: {fileID: 3542788659922344687}
   - component: {fileID: 639220916484171591}
   - component: {fileID: 8496181008868060448}
   - component: {fileID: 4734971854915153274}
@@ -62,6 +63,7 @@ MonoBehaviour:
   _masterCanvas: {fileID: 0}
   barterStarter: {fileID: 7792286873378010446}
   flagTracker: {fileID: 4734971854915153274}
+  newBarterStarter: {fileID: 3542788659922344687}
 --- !u!114 &7198147195480083390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +123,8 @@ MonoBehaviour:
   StartingCards:
   - {fileID: 11400000, guid: ad8e6a92f388f7b499a3c6f6cb32d9bf, type: 2}
   - {fileID: 11400000, guid: b3f6500aede711c489da950e7409d09b, type: 2}
+  - {fileID: 11400000, guid: 7c965fd18e37c4f43b7fe8a49c38b93f, type: 2}
+  - {fileID: 11400000, guid: 5562485a150e16d449a78897a85cc098, type: 2}
   Cards: []
   ToneCardInventory:
   - {fileID: 11400000, guid: afebfc78652003240bb60362f4680b45, type: 2}
@@ -242,6 +246,20 @@ MonoBehaviour:
       onMarker:
         m_PersistentCalls:
           m_Calls: []
+--- !u!114 &3542788659922344687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056866332689036431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74e4373911d4ae440a3219431c7e861e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameUIController: {fileID: 0}
+  BarterController: {fileID: 0}
 --- !u!114 &639220916484171591
 MonoBehaviour:
   m_ObjectHideFlags: 0

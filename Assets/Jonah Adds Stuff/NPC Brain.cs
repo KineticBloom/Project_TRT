@@ -12,6 +12,7 @@ public class NPCBrain : Interactable {
     public override void Interaction() {
 
         BarteringController.TradeData tradeData = new BarteringController.TradeData();
+
         tradeData = new BarteringController.TradeData();
         tradeData.ItemOnOffer = ItemForOffer;
         tradeData.NPCData = DataOfThisNPC;

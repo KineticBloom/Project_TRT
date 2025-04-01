@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
+using UnityEngine.EventSystems;
 
 public class BarteringController : MonoBehaviour {
 
@@ -20,10 +20,11 @@ public class BarteringController : MonoBehaviour {
     public InventoryCardObject NPCOfferSlotOne;
 
     [Header("End State Dependencies")]
-    public GameObject FAILBARTERICON;
-    public GameObject PASSBARTERICON;
+    public GameObject FailBarterIcon;
+    public GameObject PassBarterIcon;
     public TMP_Text EndMessage;
     public GameObject EndMessageSpeechBubble;
+
     public struct TradeData {
         public InventoryCardData ItemOnOffer;
         public string DialogueForTrade;
@@ -35,36 +36,26 @@ public class BarteringController : MonoBehaviour {
 
     #region ======== [ INTERNAL PROPERTIES ] ========
 
-    private int _limitOfItems = 2;
     private TradeData _currentTradeInformation;
-    private float _currentOfferedValue;
+    private float _currentOfferedValue = 0;
     private bool _wonBarter = false;
+    private InventoryCardObject _currentButtonObject;
 
-
-    List<InventoryCardData> _items = new List<InventoryCardData>();
+    private List<InventoryCardData> _offeredItems;
 
     #endregion
 
     #region ======== [ INIT METHOD ] ========
-
     public void InitializeTrade(TradeData TradeInformation) {
 
-        // Reset information
-
-        PlayerOfferSlotOne.SetCardToEmpty(true);
-        PlayerOfferSlotTwo.SetCardToEmpty(true);
-        NPCOfferSlotOne.SetCardToEmpty(true);
-        PlayerValueText.text = "Value: 0";
-        FAILBARTERICON.SetActive(false);
-        PASSBARTERICON.SetActive(false);
-        EndMessageSpeechBubble.SetActive(false);
-        _items.Clear();
-        _wonBarter = false;
-
-        Debug.Log("Start barter " + TradeInformation.ItemOnOffer.name);
-
+        // Setup trackers
         _currentTradeInformation = TradeInformation;
+        _offeredItems = new List<InventoryCardData>();
 
+        // Init new barter
+        ResetData();
+
+        // Load NPC Data
         NPCOfferSlotOne.SetData(_currentTradeInformation.ItemOnOffer, false);
         NPCValueText.text = "Value: " + _currentTradeInformation.ItemOnOffer.ValueOfItem;
         NPCProfilePicture.sprite = _currentTradeInformation.NPCData.Icon;
@@ -77,34 +68,34 @@ public class BarteringController : MonoBehaviour {
 
         if (itemToAdd == null) return;
 
-        if (_items.Count >= _limitOfItems) {
-            return;
-        }
-        _items.Add(itemToAdd);
+        if (_offeredItems.Count >= 2) return;
+
+        _offeredItems.Add(itemToAdd);
+
         UpdateVisuals();
     }
 
     public void RemoveItem(InventoryCardData itemToRemove) {
-        _items.Remove(itemToRemove);
 
-        PlayerOfferSlotOne.SetCardToEmpty(true);
-        PlayerOfferSlotTwo.SetCardToEmpty(true);
+        // See what button was activated
+        _currentButtonObject = null;
 
-        if (_items.Count == 1) {
-            PlayerOfferSlotTwo.CurrentActiveButton.Select();
+        if (PlayerOfferSlotOne.CurrentActiveButton.gameObject == EventSystem.current.currentSelectedGameObject) {
+            _currentButtonObject = PlayerOfferSlotOne;
         }
-        if (_items.Count == 0) {
-            PlayerOfferSlotOne.CurrentActiveButton.Select();
+        if (PlayerOfferSlotTwo.CurrentActiveButton.gameObject == EventSystem.current.currentSelectedGameObject) {
+            _currentButtonObject = PlayerOfferSlotTwo;
         }
+
+        // Remove item
+        _offeredItems.Remove(itemToRemove);
 
         UpdateVisuals();
-    }
 
-    public void ClearItems() {
-        _items.Clear();
-        PlayerOfferSlotOne.SetCardToEmpty(true);
-        PlayerOfferSlotTwo.SetCardToEmpty(true);
-        UpdateVisuals();
+        // Reset selection of button!
+        if (_currentButtonObject != null) {
+            _currentButtonObject.CurrentActiveButton.Select();
+        }
     }
 
     public void ProcessBarter() {
@@ -116,12 +107,12 @@ public class BarteringController : MonoBehaviour {
         if (_currentOfferedValue >= NPCItemValue) {
             // Complete Trade
             EndMessage.text = _currentTradeInformation.DialogueForTrade;
-            PASSBARTERICON.SetActive(true);
+            PassBarterIcon.SetActive(true);
             _wonBarter = true;
         } else {
             // Say no!
             EndMessage.text = _currentTradeInformation.DialogueForNoTrade;
-            FAILBARTERICON.SetActive(true);
+            FailBarterIcon.SetActive(true);
         }
 
         StartCoroutine("ExitBarter");
@@ -133,29 +124,49 @@ public class BarteringController : MonoBehaviour {
 
     private void UpdateVisuals() {
 
-        float value = 0;
-        int count = 0;
+        ResetPlayerData();
 
-        foreach (InventoryCardData item in _items) {
-            if (item != null) {
-                value += item.ValueOfItem;
-                count += 1;
-            }
-            if (count >= _limitOfItems) {
-                break;
-            }
+        // Get new player offer value
+        foreach (InventoryCardData item in _offeredItems) {
+            _currentOfferedValue += item.ValueOfItem;
         }
 
-        _currentOfferedValue = value;
-        PlayerValueText.text = "Value: " + value;
+        PlayerValueText.text = "Value: " + _currentOfferedValue;
 
-        if (_items.Count >= 1) {
-            PlayerOfferSlotOne.SetData(_items[0]);
+        // Display new slots adjusted
+        if (_offeredItems.Count >= 1) {
+            PlayerOfferSlotOne.SetData(_offeredItems[0]);
         }
-        if (_items.Count >= 2) {
-            PlayerOfferSlotTwo.SetData(_items[1]);
+        if (_offeredItems.Count >= 2) {
+            PlayerOfferSlotTwo.SetData(_offeredItems[1]);
         }
 
+    }
+
+    private void ResetData() {
+
+        ResetPlayerData();
+        ResetNPCData();
+
+        // Hide end objects.
+        FailBarterIcon.SetActive(false);
+        PassBarterIcon.SetActive(false);
+        EndMessageSpeechBubble.SetActive(false);
+
+        // Reset trackers
+        _wonBarter = false;
+    }
+
+    private void ResetPlayerData() {
+        PlayerOfferSlotOne.SetCardToEmpty(true);
+        PlayerOfferSlotTwo.SetCardToEmpty(true);
+        _currentOfferedValue = 0;
+        PlayerValueText.text = "Value: 0";
+    }
+
+    private void ResetNPCData() {
+        NPCOfferSlotOne.SetCardToEmpty(true);
+        NPCValueText.text = "Value: 0";
     }
 
     IEnumerator ExitBarter() {

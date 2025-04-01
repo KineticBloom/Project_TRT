@@ -11,6 +11,7 @@ public class CardUser : MonoBehaviour
     [SerializeField, Tooltip("The number of cards we draw each turn by default.\n\nDefault: 3")]
     private int baseDrawSize = 3;
     public int BaseDrawSize => baseDrawSize;
+    [SerializeField] private bool isPlayer = false;
 
     [Header("Card Piles")]
     [SerializeField, Tooltip("A list of PlayingCard we have in our deck. Populates our DrawPile.")]
@@ -164,6 +165,7 @@ public class CardUser : MonoBehaviour
         if (_drawPile.Count < n) {
             ShuffleDiscardIntoDrawpile();
         }
+        if (isPlayer) _drawPile.Sort((x, y) => x.Id.CompareTo(y.Id));
 
         PopFromPushTo(CardPile.DrawPile, CardPile.Hand, Mathf.Min(n, _drawPile.Count), addToBack:true);
 

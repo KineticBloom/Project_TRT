@@ -42,7 +42,7 @@ public class BarterState_TurnPlayer : BarterBaseState
 
         _machine.Dir.DecayWillingness();
 
-        if (_machine.Dir.GetWillingness() <= 0) {
+        if (_machine.Dir.GetWillingness() < 0) {
             _machine.Dir.StopAllCoroutines();
             _machine.CurrentState = _machine.EndLossState;
         }

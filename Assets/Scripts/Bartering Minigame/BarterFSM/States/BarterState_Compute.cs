@@ -93,7 +93,7 @@ public class BarterState_Compute : BarterBaseState
 
         _machine.Dir.DecayWillingness();
 
-        if (_machine.Dir.GetWillingness() <= 0) {
+        if (_machine.Dir.GetWillingness() < 0) {
             _machine.Dir.StopAllCoroutines();
             _machine.CurrentState = _machine.EndLossState;
         }
@@ -108,7 +108,7 @@ public class BarterState_Compute : BarterBaseState
         CardUser player = _machine.PlayerCardUser;
         CardUser opp = _machine.OppCardUser;
 
-        player.DiscardSubmitted();
+        player.DiscardHand();
         player.ShuffleDiscardIntoDrawpile();
         player.Draw(player.BaseDrawSize-player.HandList.Count);
 

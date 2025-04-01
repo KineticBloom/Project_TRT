@@ -161,8 +161,8 @@ public class BarterDirector : MonoBehaviour
     /// </summary>
     public void DecayWillingness()
     {
-        currentDecay += DecayAcceleration * Time.deltaTime;
-        willingness -= currentDecay * Time.deltaTime;
+        // currentDecay += DecayAcceleration * Time.deltaTime;
+        // willingness -= currentDecay * Time.deltaTime;
     }
 
     /// <summary>
@@ -225,11 +225,18 @@ public class BarterDirector : MonoBehaviour
         }
 
         _playerCards[indexInArray] = playerCard;
+        BarterResponseMatrix responses = _machine.Dir.BarterResponses;
         
         // Check if all slots are non-null.
         foreach (PlayingCard card in _playerCards) {
             // If we encounter any null card, we shouldn't submit.
             if (card == null) return;
+        }
+        
+        for (int i = 0; i < _oppCards.Length; i++) {
+            // Match up the player cards to the NPC's preferences.
+            var matchState = responses.GetMatch(_oppCards[i], _playerCards[i]);
+            if (matchState != BarterResponseMatrix.State.POSITIVE) return;
         }
         // If we exit the loop, all cards were non-null!
         OnPlayerAllCardsSet?.Invoke();

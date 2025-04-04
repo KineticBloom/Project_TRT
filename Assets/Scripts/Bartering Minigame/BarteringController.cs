@@ -46,6 +46,11 @@ public class BarteringController : MonoBehaviour {
     #endregion
 
     #region ======== [ INIT METHOD ] ========
+
+    /// <summary>
+    /// Start a barter for a given item.
+    /// </summary>
+    /// <param name="TradeInformation">Item being offered by a NPC.</param>
     public void InitializeTrade(TradeData TradeInformation) {
 
         // Setup trackers
@@ -64,18 +69,31 @@ public class BarteringController : MonoBehaviour {
     #endregion
 
     #region ======== [ PUBLIC METHODS ] ========
-    public void AddItem(InventoryCardData itemToAdd) {
 
-        if (itemToAdd == null) return;
+    /// <summary>
+    /// Offer a item to the barter pool.
+    /// Called by UI Elements.
+    /// </summary>
+    /// <param name="itemToOffer">Item to offer to the offer pool.</param>
+    public void OfferItem(InventoryCardData itemToOffer) {
+
+        if (itemToOffer == null) return;
 
         if (_offeredItems.Count >= 2) return;
 
-        _offeredItems.Add(itemToAdd);
+        _offeredItems.Add(itemToOffer);
 
         UpdateVisuals();
     }
 
-    public void RemoveItem(InventoryCardData itemToRemove) {
+    /// <summary>
+    /// Remove a item from the current barter pool.
+    /// Called by UI Elements.
+    /// </summary>
+    /// <param name="itemToRemove">Item to retract from the offer pool.</param>
+    public void RetractItem(InventoryCardData itemToRemove) {
+
+        if (itemToRemove == null) return;
 
         // See what button was activated
         _currentButtonObject = null;
@@ -98,7 +116,11 @@ public class BarteringController : MonoBehaviour {
         }
     }
 
-    public void ProcessBarter() {
+    /// <summary>
+    /// End barter and determines if player pool is valuable enough for NPC.
+    /// Called by UI Elements.
+    /// </summary>
+    public void EndBarter() {
 
         float NPCItemValue = _currentTradeInformation.ItemOnOffer.ValueOfItem;
 
@@ -115,7 +137,7 @@ public class BarteringController : MonoBehaviour {
             FailBarterIcon.SetActive(true);
         }
 
-        StartCoroutine("ExitBarter");
+        StartCoroutine("LeaveBarterScene");
     }
 
     #endregion
@@ -169,7 +191,7 @@ public class BarteringController : MonoBehaviour {
         NPCValueText.text = "Value: 0";
     }
 
-    IEnumerator ExitBarter() {
+    IEnumerator LeaveBarterScene() {
         yield return new WaitForSeconds(1f);
 
         InGameUi _inGameUi = GameManager.MasterCanvas.GetComponent<InGameUi>();

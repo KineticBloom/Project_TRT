@@ -18,6 +18,7 @@ public class InGameUi : MonoBehaviour
     public JournalNavCore Journal;
     public Canvas Inventory;
     public Canvas Bartering;
+    public BarteringController BarteringController;
     public Canvas Dialogue;
     public NotificationUI Notification;
 
@@ -158,7 +159,12 @@ public class InGameUi : MonoBehaviour
     public void MoveToDialogue() => MoveTo(UiStates.Dialogue);
     public void MoveToInventory() => MoveTo(UiStates.Inventory);
     public void MoveToPresentItem() => MoveTo(UiStates.PresentItem);
-    public void MoveToBartering() => MoveTo(UiStates.Bartering);
+    public void MoveToBartering(BarteringController.TradeData tradeData) {
+       
+        BarteringController.InitializeTrade(tradeData);
+
+        MoveTo(UiStates.Bartering);
+    }
 
     
 

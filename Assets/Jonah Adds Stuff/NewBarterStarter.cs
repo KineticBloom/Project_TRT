@@ -4,28 +4,25 @@ using UnityEngine;
 
 public class NewBarterStarter : MonoBehaviour
 {
-    public InGameUi GameUIController;
-    public BarteringController BarterController;
+    private InGameUi _inGameUi;
 
-    BarteringController.TradeData tradeData;
+    public void Start() {
+        if (GameManager.MasterCanvas != null) {
+            _inGameUi = GameManager.MasterCanvas.GetComponent<InGameUi>();
+        }
+    }
 
     public void StartBarter(BarteringController.TradeData tradeData) {
 
-        GameUIController.MoveToBartering();
+        if (_inGameUi == null) return;
 
-        this.tradeData = tradeData;
-
-        StartCoroutine("SetupTrade");
+        _inGameUi.MoveToBartering(tradeData);
     }
 
     public BarteringController GetBarteringController() {
-        return BarterController;
-    }
 
-    IEnumerator SetupTrade() {
-        yield return 0;
+        if (_inGameUi == null) return null;
 
-        // Setup Barter Director
-        BarterController.InitializeTrade(tradeData);
+        return _inGameUi.BarteringController;
     }
 }

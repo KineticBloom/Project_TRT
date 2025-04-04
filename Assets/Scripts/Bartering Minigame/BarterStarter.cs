@@ -116,7 +116,7 @@ public class BarterStarter : MonoBehaviour
         }
 
         // Set the InGameUi state to the BarteringState.
-        _inGameUi.MoveToBartering();
+        //_inGameUi.MoveToBartering();
 
         BarterDirector _barterDirector = _barterInstance.GetComponentInChildren<BarterDirector>();
         _barterDirector.OnWin += WinBarter;

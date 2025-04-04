@@ -5,7 +5,6 @@ using UnityEngine;
 public class InventoryActionBarter : InventoryAction
 {
 
-
     public override void ActionOnClick(ActionContext context) {
         BarteringController controller = GameManager.NewBarterStarter.GetBarteringController();
 

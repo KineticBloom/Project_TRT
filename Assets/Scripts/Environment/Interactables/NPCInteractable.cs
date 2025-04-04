@@ -4,23 +4,24 @@ using UnityEngine.Events;
 
 public class NpcInteractable : Interactable
 {
-    [SerializeField] private Vector3 dialogueBubbleOffset;
     [SerializeField] private TextAsset npcConversation;
 
-    [BoxGroup("Trade Settings")] public Trades PossibleTrades;
+    public NPCData NpcData;
+    public InventoryCardData ItemForOffer;
+    public string BarterMessageWin;
+    public string BarterMessageLose;
+    public override void Interaction() {
 
-    [BoxGroup("Barter Settings")] public NPCData NpcData;
-    [BoxGroup("Barter Settings")] public BarterResponseMatrix BarterResponseMatrix;
-    [BoxGroup("Barter Settings")] public BarterNeutralBehavior BarterNeutralBehaviour;
-    [BoxGroup("Barter Settings")] public bool JournalOnWin = true;
-    [BoxGroup("Barter Settings")] public bool JournalOnLose = true;
-    [BoxGroup("Barter Settings"), Range(0, 25)] public float BaseDecay = 1;
-    [BoxGroup("Barter Settings"), Range(0, 1)] public float DecayAcceleration = 0.025f;
-    [BoxGroup("Barter Settings"), Range(0, 50)] public float WillingnessPerMatch = 5;
-    [BoxGroup("Barter Settings"), Range(0, -50)] public float WillingnessPerFail = -5;
-    [BoxGroup("Barter Settings"), Range(0, 100)] public float StartingWillingness = 50;
-    
-    [SerializeField] UnityEvent BarterWinEvent;
+        BarteringController.TradeData tradeData = new BarteringController.TradeData();
+
+        tradeData = new BarteringController.TradeData();
+        tradeData.ItemOnOffer = ItemForOffer;
+        tradeData.NPCData = NpcData;
+        tradeData.DialogueForTrade = BarterMessageWin;
+        tradeData.DialogueForNoTrade = BarterMessageLose;
+
+        GameManager.NewBarterStarter.StartBarter(tradeData);
+    }
 
     public override void Highlight()
     {
@@ -32,61 +33,7 @@ public class NpcInteractable : Interactable
         // TODO: Remove Highlight Shader
     }
 
-    public override void Interaction()
-    {
-        bool convoStarted = GameManager.DialogueManager.StartConversation(npcConversation, NpcData.Name, NpcData.Icon);
-
-        if (!convoStarted) {
-            return;
-        }
-
-        InitBarterStarter();
-    }
-
-    private void InitBarterStarter()
-    {
-        // Set up the settings for the BarterStarter
-        BarterStarter barterStarter = GameManager.BarterStarter;
-
-        if (NpcData != null) { 
-            barterStarter.NpcData = NpcData;
-        } else {
-            Debug.LogError("BarterStarter: Could not find NpcData");
-        }
-
-        if (BarterResponseMatrix != null) {
-            barterStarter.BarterResponseMatrix = BarterResponseMatrix;
-        } else {
-            Debug.LogError("NPCInteractable: BarterResponseMatrix is not set");
-        }
-
-        if (BarterNeutralBehaviour != null) {
-            barterStarter.BarterNeutralBehaviour = BarterNeutralBehaviour;
-        } else {
-            Debug.LogError("NPCInteractable: BarterNeutralBehaviour is not set");
-        }
-
-        if (PossibleTrades != null) {
-            barterStarter.PossibleTrades = PossibleTrades;
-        } else {
-            Debug.LogError("NPCInteractable: PossibleTrades are not set");
-        }
-
-        barterStarter.JournalOnWin = JournalOnWin;
-        barterStarter.JournalOnLose = JournalOnLose;
-        barterStarter.BaseDecay = BaseDecay;
-        barterStarter.DecayAcceleration = DecayAcceleration;
-        barterStarter.WillingnessPerMatch = WillingnessPerMatch;
-        barterStarter.WillingnessPerFail = WillingnessPerFail;
-        barterStarter.StartingWillingness = StartingWillingness;
-        
-        // Messy Code
-        barterStarter.OnWin = () => {GameManager.DialogueManager.StartConversation(npcConversation, NpcData.Name, NpcData.Icon, "BarterWin"); GameManager.DialogueManager.EndCallback = () => {BarterWinEvent?.Invoke();};};
-        barterStarter.OnLose = () => GameManager.DialogueManager.StartConversation(npcConversation, NpcData.Name, NpcData.Icon, "BarterLose");
-    }
-
-    private void OnDrawGizmos() 
-    {
-        Gizmos.DrawWireSphere(transform.position + dialogueBubbleOffset, 0.25f);
+    private void OnDrawGizmos() {
+        Gizmos.DrawWireSphere(transform.position + IconLocalPosition, 0.25f);
     }
 }

@@ -15,10 +15,6 @@ public class JournalNPC : InventoryAction
     [SerializeField] private Image iconDisplay;
     [SerializeField] private TextMeshProUGUI bioDisplay;
 
-    [Header("Preference Table")]
-    [SerializeField] private Transform preferenceTable;
-    [SerializeField] private GameObject journalEntryPrefab;
-
     [Header("Known Trades")]
     [SerializeField] private Image playerItem;
     [SerializeField] private Image oppItem;
@@ -66,8 +62,6 @@ public class JournalNPC : InventoryAction
         nameDisplay.text = npc.Name;
         iconDisplay.sprite = npc.Icon;
         bioDisplay.text = npc.Bio;
-
-        LoadPreferenceTable();
     }
 
 
@@ -96,23 +90,7 @@ public class JournalNPC : InventoryAction
 
     #region ======== [ PRIVATE METHODS ] ========
     
-    private void LoadPreferenceTable()
-    {
-        // Create the Preference
-        foreach (Transform row in preferenceTable)
-        {
-            if (row.TryGetComponent<JournalPreferenceEntry>(out var _))
-            {
-                Destroy(row.gameObject);
-            }
-        }
-
-        foreach (var card in _npcData.Cards)
-        {
-            var journalEntry = Instantiate(journalEntryPrefab, preferenceTable);
-            journalEntry.GetComponent<JournalPreferenceEntry>().Load(_npcData, card);
-        }
-    }
+   
 
     #endregion
 }

@@ -11,7 +11,6 @@ public class GameManager : Singleton<GameManager>
     public static NPCGlobalList NPCGlobalList { get { return Instance.npcGlobalList; } }
     public static Player Player { get { return Instance._player; } }
     public static Canvas MasterCanvas { get { return Instance._masterCanvas; } }
-    public static BarterStarter BarterStarter { get { return Instance.barterStarter; } }
     public static FlagTracker FlagTracker { get { return Instance.flagTracker; } }
     public static NewBarterStarter NewBarterStarter { get { return Instance.newBarterStarter; } }
 
@@ -25,7 +24,6 @@ public class GameManager : Singleton<GameManager>
     [SerializeField, ReadOnly] private Player _player;
     [SerializeField, Tag] private string masterCanvasTag;
     [SerializeField, ReadOnly] private Canvas _masterCanvas;
-    [SerializeField] private BarterStarter barterStarter;
     [SerializeField] private FlagTracker flagTracker;
     [SerializeField] private NewBarterStarter newBarterStarter;
 

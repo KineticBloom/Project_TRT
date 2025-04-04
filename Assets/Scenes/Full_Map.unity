@@ -64459,37 +64459,37 @@ PrefabInstance:
     - target: {fileID: 2255660446262199296, guid: d7b8be9e5f8f8024691d1d3b751d45b5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.47
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2255660446262199296, guid: d7b8be9e5f8f8024691d1d3b751d45b5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.15
+      value: 0.695
       objectReference: {fileID: 0}
     - target: {fileID: 2255660446262199296, guid: d7b8be9e5f8f8024691d1d3b751d45b5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.21000004
+      value: 5.125
       objectReference: {fileID: 0}
     - target: {fileID: 2255660446262199296, guid: d7b8be9e5f8f8024691d1d3b751d45b5,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6787061
+      value: 0.000000018054378
       objectReference: {fileID: 0}
     - target: {fileID: 2255660446262199296, guid: d7b8be9e5f8f8024691d1d3b751d45b5,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.09567772
+      value: -0.0000000035241248
       objectReference: {fileID: 0}
     - target: {fileID: 2255660446262199296, guid: d7b8be9e5f8f8024691d1d3b751d45b5,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.72102195
+      value: 0.98147714
       objectReference: {fileID: 0}
     - target: {fileID: 2255660446262199296, guid: d7b8be9e5f8f8024691d1d3b751d45b5,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.10164301
+      value: 0.19157949
       objectReference: {fileID: 0}
     - target: {fileID: 3870256125407273809, guid: d7b8be9e5f8f8024691d1d3b751d45b5,
         type: 3}
@@ -64549,37 +64549,37 @@ PrefabInstance:
     - target: {fileID: 5083528762976515683, guid: d7b8be9e5f8f8024691d1d3b751d45b5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.71
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5083528762976515683, guid: d7b8be9e5f8f8024691d1d3b751d45b5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.275
+      value: 0.695
       objectReference: {fileID: 0}
     - target: {fileID: 5083528762976515683, guid: d7b8be9e5f8f8024691d1d3b751d45b5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.135
+      value: 5.125
       objectReference: {fileID: 0}
     - target: {fileID: 5083528762976515683, guid: d7b8be9e5f8f8024691d1d3b751d45b5,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.15386078
+      value: -0.000000001850242
       objectReference: {fileID: 0}
     - target: {fileID: 5083528762976515683, guid: d7b8be9e5f8f8024691d1d3b751d45b5,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.04329181
+      value: 2.1459039e-10
       objectReference: {fileID: 0}
     - target: {fileID: 5083528762976515683, guid: d7b8be9e5f8f8024691d1d3b751d45b5,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9502451
+      value: 0.9933415
       objectReference: {fileID: 0}
     - target: {fileID: 5083528762976515683, guid: d7b8be9e5f8f8024691d1d3b751d45b5,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.26737046
+      value: 0.115207374
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -99897,8 +99897,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6120732573010936226}
-  - component: {fileID: 6120732573010936227}
   - component: {fileID: 1736808488089790786}
+  - component: {fileID: 6120732573010936227}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -99947,16 +99947,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 5207507537740584365}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c55805f7e74c7a45a192de03e47ef4b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5084482672b8ec542ba82d879562eeb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UseTransform: 0
-  IconTransformPosition: {fileID: 8596212723937226399}
-  IconLocalPosition: {x: 0, y: 4.67, z: 0}
-  DataOfThisNPC: {fileID: 11400000, guid: b55b06de653d0954492e3852e7595ca2, type: 2}
+  IconTransformPosition: {fileID: 0}
+  IconLocalPosition: {x: 0, y: 1, z: 0}
+  npcConversation: {fileID: 0}
+  NpcData: {fileID: 11400000, guid: b55b06de653d0954492e3852e7595ca2, type: 2}
   ItemForOffer: {fileID: 11400000, guid: 081c2b4ca1f4c724e9f3ae2ecedc03c3, type: 2}
-  DialogueForTrade: Thank you stranger, no one wants fruit.
-  DialogueForNoTrade: Hope your family burns tmr.
+  BarterMessageWin: Nice
+  BarterMessageLose: Damn
 --- !u!1 &6604183046313438851
 GameObject:
   m_ObjectHideFlags: 0

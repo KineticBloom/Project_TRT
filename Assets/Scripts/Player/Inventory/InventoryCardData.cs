@@ -9,12 +9,14 @@ public class InventoryCardData : ScriptableObject
 {
     public string CardName;
 
-    public CardTypes Type;
+    public CardTypes Type; // Not Used Anymore
 
     public string ID;
     public string Description;
     public Sprite Sprite;
-    public string StartingLocation;
+    public int ValueOfItem;
+
+    public string StartingLocation; // Not Used Anymore
 
     public List<ContextOriginPair> ContextData = new List<ContextOriginPair>();
 }

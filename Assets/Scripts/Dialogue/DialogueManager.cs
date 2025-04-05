@@ -226,8 +226,12 @@ public class DialogueManager : MonoBehaviour
         // If choice was Action, skip the line.
         if (foundTags.IsBarterTrigger) {
             EndStory(false);
-            _uiController.MoveToPresentItem();
-            GameManager.BarterStarter.PresentItem();
+
+
+            Debug.LogError("Currently no way to enter barter from Dialogue.");
+            //GameManager.NewBarterStarter.StartBarter();
+
+
             return;
         }
 

@@ -25,12 +25,14 @@ public class InventoryCardObject : MonoBehaviour {
     [SerializeField, BoxGroup("Item Layout")] private TMP_Text itemNameText;
     [SerializeField, BoxGroup("Item Layout")] private Image itemSpriteImage;
     [SerializeField, BoxGroup("Item Layout")] private TMP_Text itemDescriptionText;
+    [SerializeField, BoxGroup("Item Layout")] private TMP_Text itemValueText;
 
     [Header("Item Preview Layout")]
     [SerializeField, BoxGroup("Item Preview Layout")] private GameObject itemPreviewLayoutObject;
     [SerializeField, BoxGroup("Item Preview Layout")] private Button itemPreviewLayoutButton;
     [SerializeField, BoxGroup("Item Preview Layout")] private TMP_Text itemPreviewNameText;
     [SerializeField, BoxGroup("Item Preview Layout")] private Image itemPreviewSpriteImage;
+    [SerializeField, BoxGroup("Item Preview Layout")] private TMP_Text itemPreviewValueText;
 
     [Header("Info Layout")]
     [SerializeField, BoxGroup("Info Layout")] private GameObject infoLayoutObject;
@@ -108,11 +110,13 @@ public class InventoryCardObject : MonoBehaviour {
                 itemNameText.text = Card.CardName;
                 itemSpriteImage.sprite = Card.Sprite;
                 itemDescriptionText.text = Card.Description;
+                itemValueText.text = Card.ValueOfItem.ToString();
             } else {
                 SwapState(CurrentState.ITEMPREVIEW);
 
                 itemPreviewNameText.text = Card.CardName;
                 itemPreviewSpriteImage.sprite = Card.Sprite;
+                itemPreviewValueText.text = Card.ValueOfItem.ToString();
             }
         } else if (Card.Type == GameEnums.CardTypes.INFO) {
             InventoryCard cardWrapper = GameManager.Inventory.GetCardFromData(Card);
@@ -184,8 +188,6 @@ public class InventoryCardObject : MonoBehaviour {
     public void OnSelect(BaseEventData eventData) {
         if (_scroller != null) {
             _scroller.FrameCardInGrid(_index);
-        } else {
-            Debug.Log("Scroller is found to be null!");
         }
     }
 

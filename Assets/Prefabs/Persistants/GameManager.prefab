@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7198147195480083390}
   - component: {fileID: 2334186633066417863}
   - component: {fileID: 7739117665189127466}
-  - component: {fileID: 7792286873378010446}
+  - component: {fileID: 3542788659922344687}
   - component: {fileID: 639220916484171591}
   - component: {fileID: 8496181008868060448}
   - component: {fileID: 4734971854915153274}
@@ -60,8 +60,8 @@ MonoBehaviour:
   _player: {fileID: 0}
   masterCanvasTag: MasterCanvas
   _masterCanvas: {fileID: 0}
-  barterStarter: {fileID: 7792286873378010446}
   flagTracker: {fileID: 4734971854915153274}
+  newBarterStarter: {fileID: 3542788659922344687}
 --- !u!114 &7198147195480083390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,18 +121,11 @@ MonoBehaviour:
   StartingCards:
   - {fileID: 11400000, guid: ad8e6a92f388f7b499a3c6f6cb32d9bf, type: 2}
   - {fileID: 11400000, guid: b3f6500aede711c489da950e7409d09b, type: 2}
+  - {fileID: 11400000, guid: 7c965fd18e37c4f43b7fe8a49c38b93f, type: 2}
+  - {fileID: 11400000, guid: 5562485a150e16d449a78897a85cc098, type: 2}
   Cards: []
-  ToneCardInventory:
-  - {fileID: 11400000, guid: afebfc78652003240bb60362f4680b45, type: 2}
-  - {fileID: 11400000, guid: afebfc78652003240bb60362f4680b45, type: 2}
-  - {fileID: 11400000, guid: f4df71f369cac3344afae12eb1d57cce, type: 2}
-  - {fileID: 11400000, guid: f4df71f369cac3344afae12eb1d57cce, type: 2}
-  - {fileID: 11400000, guid: e9763989c55c4d94b8a44b8e4f914bb4, type: 2}
-  - {fileID: 11400000, guid: e9763989c55c4d94b8a44b8e4f914bb4, type: 2}
-  - {fileID: 11400000, guid: 0002ab67a8afe4d429a414f4676dc3e2, type: 2}
-  - {fileID: 11400000, guid: 0002ab67a8afe4d429a414f4676dc3e2, type: 2}
   inventoryLastUpdateTime: 0
---- !u!114 &7792286873378010446
+--- !u!114 &3542788659922344687
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,107 +134,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2056866332689036431}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fb17fd28f98f39458ad3062a9e575d0, type: 3}
+  m_Script: {fileID: 11500000, guid: 74e4373911d4ae440a3219431c7e861e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barterContainerPrefab: {fileID: 5336207575644925963, guid: b781af24075511b4fae11fcf4864b31d,
-    type: 3}
-  presentItemPrefab: {fileID: 3944621537521464737, guid: a10b593efd80c074098cf84a99729339,
-    type: 3}
-  winScreenPrefab: {fileID: 3944621537521464737, guid: e942feb35cc0fec498b67c5f11daa1ca,
-    type: 3}
-  NpcData: {fileID: 0}
-  BarterResponseMatrix: {fileID: 0}
-  BarterNeutralBehaviour: {fileID: 0}
-  PossibleTrades:
-    trades: []
-  CurrentTrade:
-    AcceptedCard: {fileID: 0}
-    RewardCard: {fileID: 0}
-    TradeIsPossible:
-      id: 
-  JournalOnWin: 1
-  JournalOnLose: 1
-  BaseDecay: 1
-  DecayAcceleration: 0.025
-  WillingnessPerMatch: 5
-  WillingnessPerFail: -5
-  StartingWillingness: 50
-  WinScreenDurationSeconds: 4
-  barterWinSFX:
-    name: 
-    playOnInit: 0
-    _events:
-      startEvent:
-        idInternal: 0
-        valueGuidInternal: 
-        WwiseObjectReference: {fileID: 11400000, guid: a44f2a9d7c4d11d46aca93f4880bd6ed,
-          type: 2}
-      pauseEvent:
-        idInternal: 0
-        valueGuidInternal: 
-        WwiseObjectReference: {fileID: 0}
-      resumeEvent:
-        idInternal: 0
-        valueGuidInternal: 
-        WwiseObjectReference: {fileID: 0}
-      stopEvent:
-        idInternal: 0
-        valueGuidInternal: 
-        WwiseObjectReference: {fileID: 0}
-    _callbacks:
-      onStart:
-        m_PersistentCalls:
-          m_Calls: []
-      onRestart:
-        m_PersistentCalls:
-          m_Calls: []
-      onCompleted:
-        m_PersistentCalls:
-          m_Calls: []
-      onBeat:
-        m_PersistentCalls:
-          m_Calls: []
-      onMarker:
-        m_PersistentCalls:
-          m_Calls: []
-  barterLoseSFX:
-    name: 
-    playOnInit: 0
-    _events:
-      startEvent:
-        idInternal: 0
-        valueGuidInternal: 
-        WwiseObjectReference: {fileID: 11400000, guid: 98f7fa1bd46cff6489111c4b786e7831,
-          type: 2}
-      pauseEvent:
-        idInternal: 0
-        valueGuidInternal: 
-        WwiseObjectReference: {fileID: 0}
-      resumeEvent:
-        idInternal: 0
-        valueGuidInternal: 
-        WwiseObjectReference: {fileID: 0}
-      stopEvent:
-        idInternal: 0
-        valueGuidInternal: 
-        WwiseObjectReference: {fileID: 0}
-    _callbacks:
-      onStart:
-        m_PersistentCalls:
-          m_Calls: []
-      onRestart:
-        m_PersistentCalls:
-          m_Calls: []
-      onCompleted:
-        m_PersistentCalls:
-          m_Calls: []
-      onBeat:
-        m_PersistentCalls:
-          m_Calls: []
-      onMarker:
-        m_PersistentCalls:
-          m_Calls: []
 --- !u!114 &639220916484171591
 MonoBehaviour:
   m_ObjectHideFlags: 0

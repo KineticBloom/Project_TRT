@@ -14,11 +14,6 @@ public class Inventory : MonoBehaviour
     [Header("Inventory")]
     public List<InventoryCardData> StartingCards;
     [SerializeField, ReadOnly] private List<InventoryCard> Cards;
-
-    [Header("Tone Cards")]
-    [Tooltip("The list of tone cards that the player uses in Bartering. Because tone card "
-           + "implementation is not final, neither is the implementation of this list.")]
-    public List<PlayingCard> ToneCardInventory;
     
     public event Action OnInventoryUpdated;
 
@@ -103,10 +98,10 @@ public class Inventory : MonoBehaviour
         if (card == null) return;
 
 
-        if (IDtaken(card.ID)) {
+/*        if (IDtaken(card.ID)) {
             Debug.LogError("Card ID: " + card.ID + " already exists in inventory. Failed to add");
             return;
-        }
+        }*/
 
         // Find card in AllCards and add it to the current inventory
         InventoryCard newCard = null;

@@ -137,7 +137,7 @@ public class BarteringController : MonoBehaviour {
             FailBarterIcon.SetActive(true);
         }
 
-        StartCoroutine("LeaveBarterScene");
+        StartCoroutine(LeaveBarterScene());
     }
 
     #endregion

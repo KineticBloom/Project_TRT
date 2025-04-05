@@ -199,9 +199,16 @@ public class BarteringController : MonoBehaviour {
         _inGameUi.MoveToDefault();
 
         if (_wonBarter) {
+            // remove cards offered
+            foreach (InventoryCard card in _offeredItems)
+            {
+                GameManager.Inventory.RemoveCard(card.Data);
+            }
+
             GameManager.Inventory.AddCard(_currentTradeInformation.ItemOnOffer);
         }
 
+        _offeredItems.Clear();
     }
 
     #endregion

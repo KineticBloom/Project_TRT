@@ -12,7 +12,6 @@ public class InventoryGridController : MonoBehaviour
     #region ======== [ PUBLIC PROPERTIES ] ========
 
     [Header("Settings")]
-    public GameEnums.CardTypes TypeToDisplay;
     public bool UseSmallSize;
     public int InventorySize = 10;
     public bool SetDefaultSelectionOnEnable = false;
@@ -136,8 +135,7 @@ public class InventoryGridController : MonoBehaviour
         int indexTracker = 0;
 
         // Get Data
-        List<InventoryCardData> dataForAllCards = 
-            AllKnownCards ? GameManager.Inventory.GetDatas() : GetAllKnownCardData();
+        List<InventoryCardData> dataForAllCards = GameManager.Inventory.GetDatas();
 
         foreach (InventoryCardData card in dataForAllCards) {
             InventoryCardObject currentInventoryItem = _inventoryInstances[indexTracker];
@@ -150,22 +148,6 @@ public class InventoryGridController : MonoBehaviour
 
         // Mark update time
         _lastUpdateTime = GameManager.Inventory.inventoryLastUpdateTime;
-    }
-
-
-    private List<InventoryCardData> GetAllKnownCardData()
-    {
-        List<InventoryCardData> knownCardData = new List<InventoryCardData>();
-
-        foreach (var card in GameManager.Inventory.AllCards)
-        {
-            if (card.HaveOwned)
-            {
-                knownCardData.Add(card.Data);
-            }
-        }
-
-        return knownCardData;
     }
 
     #endregion

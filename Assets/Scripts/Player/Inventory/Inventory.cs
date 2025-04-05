@@ -96,7 +96,7 @@ public class Inventory : MonoBehaviour
         return returnList;
     }
 
-    public void AddCard(InventoryCardData card)
+    public void AddCard(InventoryCardData card, bool withoutNotification = false)
     {
         if (card == null) return;
 
@@ -115,7 +115,10 @@ public class Inventory : MonoBehaviour
         newCard.CurrentlyOwn = true;
         newCard.HaveOwned = true;
 
-        Cards.Add(newCard);
+        if (!HasCard(newCard.Data))
+        {
+            Cards.Add(newCard);
+        }
         newCard.Count += 1;
 
         OnInventoryUpdated?.Invoke();
@@ -124,12 +127,12 @@ public class Inventory : MonoBehaviour
 
         // Finally, send a ping to our notificationUI.
 
-        if (_notificationUi) {
+        if (_notificationUi && !withoutNotification) {
             _notificationUi.Notify($"Obtained {card.CardName}");
         }
     }
 
-    public void RemoveCard(InventoryCardData card)
+    public void RemoveCard(InventoryCardData card, bool withoutNotification = false)
     {
         if (!HasCard(card)) {
             Debug.LogError("Cannot remove card. Card is not in inventory.");
@@ -148,7 +151,7 @@ public class Inventory : MonoBehaviour
 
         // Finally, send a ping to our notificationUI.
 
-        if (_notificationUi) {
+        if (_notificationUi && !withoutNotification) {
             _notificationUi.Notify($"Lost {card.CardName}");
         }
     }

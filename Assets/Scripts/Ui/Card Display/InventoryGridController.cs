@@ -43,9 +43,7 @@ public class InventoryGridController : MonoBehaviour
     #region ======== [ INIT METHODS ] ========
     private void OnEnable() {
 
-        if (_createdInventory == false) {
-            StartCoroutine("DelayInit");
-        }
+        StartCoroutine("DelayInit");
 
         if (_createdInventory && IsUpdateNeeded()) {
             PopulateGrid();
@@ -72,8 +70,12 @@ public class InventoryGridController : MonoBehaviour
     private IEnumerator DelayInit() {
         yield return new WaitForSeconds(0.01f);
         GameManager.Inventory.OnInventoryUpdated += PopulateGrid;
-        _createdInventory = true;
-        CreateInventory();
+
+        if (!_createdInventory)
+        {
+            _createdInventory = true;
+            CreateInventory();
+        }
 
         // Set default selection
         if (SetDefaultSelectionOnEnable && _inventoryInstances.Count > 0) {
@@ -126,7 +128,6 @@ public class InventoryGridController : MonoBehaviour
     /// Display inventory data in UI grid.
     /// </summary>
     private void PopulateGrid() {
-
         // Clear current data
         foreach (InventoryCardObject x in _inventoryInstances) {
             x.SetCardToEmpty(UseSmallSize);

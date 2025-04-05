@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.ComponentModel;
+using NaughtyAttributes;
 
 public class BarteringController : MonoBehaviour {
 
@@ -40,8 +42,7 @@ public class BarteringController : MonoBehaviour {
     private float _currentOfferedValue = 0;
     private bool _wonBarter = false;
     private InventoryCardObject _currentButtonObject;
-
-    private List<InventoryCard> _offeredItems;
+    private OfferedItems _offeredItems;
 
     #endregion
 
@@ -55,7 +56,7 @@ public class BarteringController : MonoBehaviour {
 
         // Setup trackers
         _currentTradeInformation = TradeInformation;
-        _offeredItems = new List<InventoryCard>();
+        _offeredItems = new OfferedItems();
 
         // Init new barter
         ResetData();
@@ -149,7 +150,7 @@ public class BarteringController : MonoBehaviour {
         ResetPlayerData();
 
         // Get new player offer value
-        foreach (InventoryCard item in _offeredItems) {
+        foreach (InventoryCard item in _offeredItems.Items) {
             _currentOfferedValue += item.CurrentValue;
         }
 
@@ -157,10 +158,10 @@ public class BarteringController : MonoBehaviour {
 
         // Display new slots adjusted
         if (_offeredItems.Count >= 1) {
-            PlayerOfferSlotOne.SetData(_offeredItems[0].Data);
+            PlayerOfferSlotOne.SetData(_offeredItems.Items[0].Data);
         }
         if (_offeredItems.Count >= 2) {
-            PlayerOfferSlotTwo.SetData(_offeredItems[1].Data);
+            PlayerOfferSlotTwo.SetData(_offeredItems.Items[1].Data);
         }
 
     }
@@ -198,18 +199,51 @@ public class BarteringController : MonoBehaviour {
 
         _inGameUi.MoveToDefault();
 
+        _offeredItems.ReturnCardsToInventory();
+
         if (_wonBarter) {
             // remove cards offered
-            foreach (InventoryCard card in _offeredItems)
+            foreach (InventoryCard card in _offeredItems.Items)
             {
                 GameManager.Inventory.RemoveCard(card.Data);
             }
 
             GameManager.Inventory.AddCard(_currentTradeInformation.ItemOnOffer);
         }
-
-        _offeredItems.Clear();
     }
 
     #endregion
+}
+
+[System.Serializable]
+public class OfferedItems
+{
+    public List<InventoryCard> Items;
+    public int Count {  get { return Items.Count; } }
+
+
+    public OfferedItems()
+    {
+        Items = new List<InventoryCard>();
+    }
+
+    public void Add(InventoryCard card)
+    {
+        Items.Add(card);
+        GameManager.Inventory.RemoveCard(card.Data, true);
+    }
+
+    public void Remove(InventoryCard card)
+    {
+        Items.Remove(card);
+        GameManager.Inventory.AddCard(card.Data, true);
+    }
+
+    public void ReturnCardsToInventory()
+    {
+        foreach (InventoryCard card in Items)
+        {
+            GameManager.Inventory.AddCard(card.Data, true);
+        }
+    }
 }

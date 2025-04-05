@@ -152,6 +152,8 @@ public class InventoryCardObject : MonoBehaviour {
                 deactiveObject.SetActive(true);
                 deactivePreviewObject.SetActive(false);
 
+                Card = null;
+
                 CurrentActiveButton = deactiveButton;
                 break;
             case CurrentState.ITEM:
@@ -176,6 +178,8 @@ public class InventoryCardObject : MonoBehaviour {
                 itemPreviewLayoutObject.SetActive(false);
                 deactiveObject.SetActive(false);
                 deactivePreviewObject.SetActive(true);
+
+                Card = null;
 
                 CurrentActiveButton = deactivePreviewButton;
                 break;

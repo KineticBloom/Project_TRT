@@ -7,7 +7,7 @@ using static GameEnums;
 public class Inventory : MonoBehaviour
 {
     [Header("Global Card Info")]
-    public List<InventoryCardData> AllCardDatas;
+    public AllInventoryCardDatas AllCardDatas;
     [SerializeField, ReadOnly] public List<InventoryCard> AllCards;
 
     [Space]
@@ -41,7 +41,10 @@ public class Inventory : MonoBehaviour
 
     private void Awake()
     {
-        if (AllCardDatas == null) AllCardDatas = new List<InventoryCardData>();
+        if (AllCardDatas == null)
+        {
+            Debug.LogError("Inventory: AllCardDatas has not been set.");
+        }
     }
 
     // Start is called before the first frame update
@@ -51,7 +54,7 @@ public class Inventory : MonoBehaviour
         Cards = new List<InventoryCard>();
         
         // Fill the AllCards list using AllCardDatas
-        foreach (InventoryCardData cardData in AllCardDatas)
+        foreach (InventoryCardData cardData in AllCardDatas.datas)
         {
             InventoryCard newCard = new InventoryCard(cardData);
             AllCards.Add(newCard);

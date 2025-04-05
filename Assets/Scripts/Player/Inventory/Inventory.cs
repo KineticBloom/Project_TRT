@@ -100,12 +100,6 @@ public class Inventory : MonoBehaviour
     {
         if (card == null) return;
 
-
-/*        if (IDtaken(card.ID)) {
-            Debug.LogError("Card ID: " + card.ID + " already exists in inventory. Failed to add");
-            return;
-        }*/
-
         // Find card in AllCards and add it to the current inventory
         InventoryCard newCard = null;
         foreach (InventoryCard possibleNewCard in AllCards) {
@@ -122,6 +116,8 @@ public class Inventory : MonoBehaviour
         newCard.HaveOwned = true;
 
         Cards.Add(newCard);
+        newCard.Count += 1;
+
         OnInventoryUpdated?.Invoke();
         inventoryLastUpdateTime = Time.time;
         GameManager.FlagTracker.SetFlag(card, true);
@@ -144,6 +140,7 @@ public class Inventory : MonoBehaviour
 
         Cards.Remove(cardToRemove);
         cardToRemove.CurrentlyOwn = false;
+        cardToRemove.Count -= 1;
 
         OnInventoryUpdated?.Invoke();
         inventoryLastUpdateTime = Time.time;

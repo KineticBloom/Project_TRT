@@ -96,13 +96,13 @@ public class InventoryCardObject : MonoBehaviour {
             itemNameText.text = Card.CardName;
             itemSpriteImage.sprite = Card.Sprite;
             itemDescriptionText.text = Card.Description;
-            itemValueText.text = Card.ValueOfItem.ToString();
+            itemValueText.text = Card.BaseValue.ToString();
         } else {
             SwapState(CurrentState.ITEMPREVIEW);
 
             itemPreviewNameText.text = Card.CardName;
             itemPreviewSpriteImage.sprite = Card.Sprite;
-            itemPreviewValueText.text = Card.ValueOfItem.ToString();
+            itemPreviewValueText.text = Card.BaseValue.ToString();
         }
 
     }

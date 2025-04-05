@@ -41,7 +41,7 @@ public class BarteringController : MonoBehaviour {
     private bool _wonBarter = false;
     private InventoryCardObject _currentButtonObject;
 
-    private List<InventoryCardData> _offeredItems;
+    private List<InventoryCard> _offeredItems;
 
     #endregion
 
@@ -55,14 +55,14 @@ public class BarteringController : MonoBehaviour {
 
         // Setup trackers
         _currentTradeInformation = TradeInformation;
-        _offeredItems = new List<InventoryCardData>();
+        _offeredItems = new List<InventoryCard>();
 
         // Init new barter
         ResetData();
 
         // Load NPC Data
         NPCOfferSlotOne.SetData(_currentTradeInformation.ItemOnOffer, false);
-        NPCValueText.text = "Value: " + _currentTradeInformation.ItemOnOffer.ValueOfItem;
+        NPCValueText.text = "Value: " + _currentTradeInformation.ItemOnOffer.BaseValue;
         NPCProfilePicture.sprite = _currentTradeInformation.NPCData.Icon;
     }
 
@@ -81,7 +81,7 @@ public class BarteringController : MonoBehaviour {
 
         if (_offeredItems.Count >= 2) return;
 
-        _offeredItems.Add(itemToOffer);
+        _offeredItems.Add(GameManager.Inventory.GetCardFromData(itemToOffer));
 
         UpdateVisuals();
     }
@@ -106,7 +106,7 @@ public class BarteringController : MonoBehaviour {
         }
 
         // Remove item
-        _offeredItems.Remove(itemToRemove);
+        _offeredItems.Remove(GameManager.Inventory.GetCardFromData(itemToRemove));
 
         UpdateVisuals();
 
@@ -122,7 +122,7 @@ public class BarteringController : MonoBehaviour {
     /// </summary>
     public void EndBarter() {
 
-        float NPCItemValue = _currentTradeInformation.ItemOnOffer.ValueOfItem;
+        float NPCItemValue = _currentTradeInformation.ItemOnOffer.BaseValue;
 
         EndMessageSpeechBubble.SetActive(true);
 
@@ -149,18 +149,18 @@ public class BarteringController : MonoBehaviour {
         ResetPlayerData();
 
         // Get new player offer value
-        foreach (InventoryCardData item in _offeredItems) {
-            _currentOfferedValue += item.ValueOfItem;
+        foreach (InventoryCard item in _offeredItems) {
+            _currentOfferedValue += item.CurrentValue;
         }
 
         PlayerValueText.text = "Value: " + _currentOfferedValue;
 
         // Display new slots adjusted
         if (_offeredItems.Count >= 1) {
-            PlayerOfferSlotOne.SetData(_offeredItems[0]);
+            PlayerOfferSlotOne.SetData(_offeredItems[0].Data);
         }
         if (_offeredItems.Count >= 2) {
-            PlayerOfferSlotTwo.SetData(_offeredItems[1]);
+            PlayerOfferSlotTwo.SetData(_offeredItems[1].Data);
         }
 
     }
@@ -199,7 +199,6 @@ public class BarteringController : MonoBehaviour {
         _inGameUi.MoveToDefault();
 
         if (_wonBarter) {
-            Debug.Log("Won barter!");
             GameManager.Inventory.AddCard(_currentTradeInformation.ItemOnOffer);
         }
 

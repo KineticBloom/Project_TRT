@@ -12,5 +12,5 @@ public class InventoryCardData : ScriptableObject
     public string ID;
     public string Description;
     public Sprite Sprite;
-    public int ValueOfItem;
+    public int BaseValue;
 }

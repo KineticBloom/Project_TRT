@@ -13,6 +13,7 @@ public class InventoryCard
 
     [ReadOnly] public bool HaveOwned = false;
     [ReadOnly] public bool CurrentlyOwn = false;
+    [ReadOnly] public int CurrentValue = 0;
 
     #region ---------- InventoryCardData Accessors ----------
 
@@ -52,6 +53,15 @@ public class InventoryCard
         }
     }
 
+    public int BaseValue
+    {
+        get
+        {
+            if (Data == null) { Debug.LogError("Card has not been set"); throw new System.Exception("Accessing InventoryCard BaseValue that has not been set"); }
+            return Data.BaseValue;
+        }
+    }
+
     #endregion
 
     #region ========= [ PUBLIC METHODS ] =========
@@ -63,6 +73,15 @@ public class InventoryCard
     public InventoryCard(InventoryCardData data)
     {
         Data = data;
+        CurrentValue = BaseValue;
+    }
+
+    /// <summary>
+    /// Sets the CurrentValue of the InventoryCard to its BaseValue
+    /// </summary>
+    public void ResetCurrentValue()
+    {
+        CurrentValue = BaseValue;
     }
 
     #endregion

@@ -178,37 +178,11 @@ public class Inventory : MonoBehaviour
         GameManager.FlagTracker.ResetFlags();
     }
 
-    public void ClearExceptType(CardTypes type)
-    {
-        List<InventoryCard> cardsToRemove = new List<InventoryCard>();
-
-        foreach (InventoryCard card in Cards)
-        {
-            if (type != card.Type)
-            {
-                cardsToRemove.Add(card);
-            }
-        }
-
-        foreach (InventoryCard card in cardsToRemove)
-        {
-            RemoveCard(card.Data);
-        }
-        
-        if (AllCards.Count <= 0) return;
-        foreach (InventoryCardData card in StartingCards)
-        {
-            if (HasCard(card)) { continue; }
-
-            AddCard(card);
-        }
-    }
-
     public void Print()
     {
         string printString = "[\n";
         foreach (InventoryCard card in Cards) {
-            printString += $"[{card.CardName}, {card.ID}, {card.Type},\"{card.Description}\", {card.StartingLocation}],\n";
+            printString += $"[{card.CardName}, {card.ID},\"{card.Description}\"\n";
         }
 
         printString += "]";
@@ -261,23 +235,6 @@ public class Inventory : MonoBehaviour
     }
 
     /// <summary>
-    /// Returns a List of all cards of a type
-    /// </summary>
-    /// <param name="cardName">The type to search for.</param>
-    /// <returns></returns>
-    public List<InventoryCard> GetCardsByType(CardTypes type)
-    {
-        List<InventoryCard> returnList = new List<InventoryCard>();
-        foreach (InventoryCard card in Cards) {
-            if (card.Type == type) {
-                returnList.Add(card);
-            }
-        }
-
-        return returnList;
-    }
-
-    /// <summary>
     /// Sorts the cards in the inventory by a given parameter and in a given order
     /// </summary>
     /// <returns></returns>
@@ -286,7 +243,6 @@ public class Inventory : MonoBehaviour
         Comparison<InventoryCard> comparison = sortParameter switch {
             SortParameters.NAME => (card1, card2) => string.Compare(card1.CardName, card2.CardName, true),
             SortParameters.ID => (card1, card2) => string.Compare(card1.ID, card2.ID, true),
-            SortParameters.TYPE => (card1, card2) => string.Compare(card1.Type.ToString(), card2.Type.ToString(), true),
             _ => null
         };
 
@@ -337,10 +293,6 @@ public class Inventory : MonoBehaviour
 
     public void Save(ref InventorySaveData data, bool clearInventory)
     {
-        if (clearInventory) {
-            ClearExceptType(CardTypes.INFO);
-        }
-
         data.AllCards = AllCards;
         data.Cards = Cards;
     }

@@ -6,7 +6,7 @@ public class CardInspectAction : InventoryAction {
 
     public InventoryCardObject InspectCard;
 
-    bool inspecting = false;
+    public bool inspecting = false;
     InventoryCardData currentData = null;
 
     private void Start() {

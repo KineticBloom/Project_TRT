@@ -11,7 +11,6 @@ public class InventoryCard
     [SerializeField, ReadOnly]
     public InventoryCardData Data;
 
-    [ReadOnly] public List<ContextOrigins> ContextsLearned;
     [ReadOnly] public bool HaveOwned = false;
     [ReadOnly] public bool CurrentlyOwn = false;
 
@@ -23,15 +22,6 @@ public class InventoryCard
         {
             if (Data == null) { Debug.LogError("Card has not been set"); throw new System.Exception("Accessing InventoryCard CardName that has not been set"); }
             return Data.CardName;
-        }
-    }
-
-    public CardTypes Type
-    {
-        get
-        {
-            if (Data == null) { Debug.LogError("Card has not been set"); throw new System.Exception("Accessing InventoryCard Type that has not been set"); }
-            return Data.Type;
         }
     }
 
@@ -62,87 +52,22 @@ public class InventoryCard
         }
     }
 
-    public string StartingLocation
-    {
-        get
-        {
-            if (Data == null) { Debug.LogError("Card has not been set"); throw new System.Exception("Accessing InventoryCard StartingLocation that has not been set"); }
-            return Data.StartingLocation;
-        }
-    }
-
-    public List<ContextOriginPair> ContextData
-    {
-        get
-        {
-            if (Data == null) { Debug.LogError("Card has not been set"); throw new System.Exception("Accessing InventoryCard ContextData that has not been set"); }
-            return Data.ContextData;
-        }
-    }
-
     #endregion
 
     #region ========= [ PUBLIC METHODS ] =========
 
     public InventoryCard()
     {
-        ContextsLearned = new List<ContextOrigins>();
     }
 
     public InventoryCard(InventoryCardData data)
     {
         Data = data;
-        ContextsLearned = new List<ContextOrigins>();
-        if (!hasValidContextSetup())
-        {
-            Debug.LogError("Invalid Contexts, duplicate origins");
-        }
-    }
-
-    /// <summary>
-    /// Learns a new piece of context, if it is the last relevant context, it will learn all contexts
-    /// </summary>
-    /// <returns></returns>
-    public void LearnContext(ContextOrigins origin)
-    {
-        if (ContextsLearned.Contains(origin)) {
-            Debug.LogError($"Context Already Learned: {origin}");
-            return;
-        }
-        ContextsLearned.Add(origin);
-    }
-
-    /// <summary>
-    /// </summary>
-    /// <returns>Whether or not the player has learned a given context</returns>
-    public bool KnowsContext(ContextOrigins origin)
-    {
-        if (!ContextsLearned.Contains(origin)) return false;
-        return true;
     }
 
     #endregion
 
     #region ========= [ PRIVATE METHODS ] =========
-
-    /// <summary>
-    /// Checks the ContextData and returns if it is valid. Looks for duplicate ContextOrigins and 
-    /// </summary>
-    /// <returns></returns>
-    private bool hasValidContextSetup()
-    {
-        // Items should not have any context
-        if (Type == CardTypes.ITEM) { return true; }
-
-        // Checks for duplicate origins
-        List<ContextOrigins> originsUsed = new List<ContextOrigins>();
-        foreach (ContextOriginPair originPair in ContextData) { 
-            if (originsUsed.Contains(originPair.origin)) { return false; }
-            originsUsed.Add(originPair.origin);
-        }
-
-        return true;
-    }
 
     #endregion
 }

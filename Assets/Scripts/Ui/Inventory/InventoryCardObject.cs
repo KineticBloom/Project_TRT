@@ -34,18 +34,6 @@ public class InventoryCardObject : MonoBehaviour {
     [SerializeField, BoxGroup("Item Preview Layout")] private Image itemPreviewSpriteImage;
     [SerializeField, BoxGroup("Item Preview Layout")] private TMP_Text itemPreviewValueText;
 
-    [Header("Info Layout")]
-    [SerializeField, BoxGroup("Info Layout")] private GameObject infoLayoutObject;
-    [SerializeField, BoxGroup("Info Layout")] private Button infoLayoutButton;
-    [SerializeField, BoxGroup("Info Layout")] private TMP_Text infoNameText;
-    [SerializeField, BoxGroup("Info Layout")] private TMP_Text infoDescriptionText;
-    [SerializeField, BoxGroup("Info Layout")] private Image infoNPC1Sprite;
-    [SerializeField, BoxGroup("Info Layout")] private TMP_Text infoNPC1Context;
-    [SerializeField, BoxGroup("Info Layout")] private Image infoNPC2Sprite;
-    [SerializeField, BoxGroup("Info Layout")] private TMP_Text infoNPC2Context;
-    [SerializeField, BoxGroup("Info Layout")] private Image infoNPC3Sprite;
-    [SerializeField, BoxGroup("Info Layout")] private TMP_Text infoNPC3Context;
-
     #endregion
 
     #region ======== [ INTERNAL PROPERTIES ] ========
@@ -60,7 +48,7 @@ public class InventoryCardObject : MonoBehaviour {
     private InventoryAction _onSelectAction = null;
 
     public enum CurrentState {
-        DEACTIVE, INFO, ITEM, ITEMPREVIEW, DEACTIVEPREVIEW
+        DEACTIVE, ITEM, ITEMPREVIEW, DEACTIVEPREVIEW
     }
 
     #endregion
@@ -101,73 +89,22 @@ public class InventoryCardObject : MonoBehaviour {
         
         Card = newCard;
 
-        if (Card.Type == GameEnums.CardTypes.ITEM) {
-            // Disable the info layout and enable the item
 
-            if (UseLargeItem) {
-                SwapState(CurrentState.ITEM);
+        if (UseLargeItem) {
+            SwapState(CurrentState.ITEM);
 
-                itemNameText.text = Card.CardName;
-                itemSpriteImage.sprite = Card.Sprite;
-                itemDescriptionText.text = Card.Description;
-                itemValueText.text = Card.ValueOfItem.ToString();
-            } else {
-                SwapState(CurrentState.ITEMPREVIEW);
+            itemNameText.text = Card.CardName;
+            itemSpriteImage.sprite = Card.Sprite;
+            itemDescriptionText.text = Card.Description;
+            itemValueText.text = Card.ValueOfItem.ToString();
+        } else {
+            SwapState(CurrentState.ITEMPREVIEW);
 
-                itemPreviewNameText.text = Card.CardName;
-                itemPreviewSpriteImage.sprite = Card.Sprite;
-                itemPreviewValueText.text = Card.ValueOfItem.ToString();
-            }
-        } else if (Card.Type == GameEnums.CardTypes.INFO) {
-            InventoryCard cardWrapper = GameManager.Inventory.GetCardFromData(Card);
-
-            // disable the item layout and enable the info
-            SwapState(CurrentState.INFO);
-
-            infoNameText.text = Card.CardName;
-            infoDescriptionText.text = Card.Description;
-
-            // Ensure all of the contexts are set
-            if (cardWrapper.ContextData.Count != System.Enum.GetValues(typeof(GameEnums.ContextOrigins)).Length) {
-                Debug.LogError($"InventoryCardObject: SetData: Not all contexts are set in card: {Card.CardName}");
-                return;
-            }
-
-            // TODO: Set sprites to relevant npc sprites
-            // Associate with ContextData[?].origin? it is a GameEnums.ContextOrigins
-
-            // infoNPC1Sprite.sprite = null;
-            if (cardWrapper.KnowsContext(cardWrapper.ContextData[0].origin))
-            {
-                infoNPC1Context.text = cardWrapper.ContextData[0].contextInfo.context;
-            } else {
-                infoNPC1Context.text = "";
-            }
-
-            // infoNPC2Sprite.sprite = null;
-            if (cardWrapper.KnowsContext(cardWrapper.ContextData[1].origin))
-            {
-                infoNPC2Context.text = cardWrapper.ContextData[1].contextInfo.context;
-            }
-            else
-            {
-                infoNPC2Context.text = "";
-            }
-
-            //infoNPC2Sprite.sprite = null;
-            if (cardWrapper.KnowsContext(cardWrapper.ContextData[2].origin))
-            {
-                infoNPC3Context.text = cardWrapper.ContextData[2].contextInfo.context;
-            }
-            else
-            {
-                infoNPC3Context.text = "";
-            }
+            itemPreviewNameText.text = Card.CardName;
+            itemPreviewSpriteImage.sprite = Card.Sprite;
+            itemPreviewValueText.text = Card.ValueOfItem.ToString();
         }
 
-        CardName = Card.CardName;
-        CardDescription = Card.Description;
-        CardName = Card.ID;
     }
 
     /// <summary>
@@ -211,26 +148,14 @@ public class InventoryCardObject : MonoBehaviour {
         switch (stateToEnter) {
             case CurrentState.DEACTIVE:
                 itemLayoutObject.SetActive(false);
-                infoLayoutObject.SetActive(false);
                 itemPreviewLayoutObject.SetActive(false);
                 deactiveObject.SetActive(true);
                 deactivePreviewObject.SetActive(false);
 
                 CurrentActiveButton = deactiveButton;
                 break;
-            case CurrentState.INFO:
-                itemLayoutObject.SetActive(false);
-                infoLayoutObject.SetActive(true);
-                itemPreviewLayoutObject.SetActive(false);
-                deactiveObject.SetActive(false);
-                deactivePreviewObject.SetActive(false);
-
-
-                CurrentActiveButton = infoLayoutButton;
-                break;
             case CurrentState.ITEM:
                 itemLayoutObject.SetActive(true);
-                infoLayoutObject.SetActive(false);
                 itemPreviewLayoutObject.SetActive(false);
                 deactiveObject.SetActive(false);
                 deactivePreviewObject.SetActive(false);
@@ -240,7 +165,6 @@ public class InventoryCardObject : MonoBehaviour {
                 break;
             case CurrentState.ITEMPREVIEW:
                 itemLayoutObject.SetActive(false);
-                infoLayoutObject.SetActive(false);
                 itemPreviewLayoutObject.SetActive(true);
                 deactiveObject.SetActive(false);
                 deactivePreviewObject.SetActive(false);
@@ -249,7 +173,6 @@ public class InventoryCardObject : MonoBehaviour {
                 break;
             case CurrentState.DEACTIVEPREVIEW:
                 itemLayoutObject.SetActive(false);
-                infoLayoutObject.SetActive(false);
                 itemPreviewLayoutObject.SetActive(false);
                 deactiveObject.SetActive(false);
                 deactivePreviewObject.SetActive(true);

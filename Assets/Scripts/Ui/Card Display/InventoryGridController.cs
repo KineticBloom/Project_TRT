@@ -140,9 +140,6 @@ public class InventoryGridController : MonoBehaviour
             AllKnownCards ? GameManager.Inventory.GetDatas() : GetAllKnownCardData();
 
         foreach (InventoryCardData card in dataForAllCards) {
-
-            if (card.Type != TypeToDisplay) continue;
-
             InventoryCardObject currentInventoryItem = _inventoryInstances[indexTracker];
 
             currentInventoryItem.SetData(card);

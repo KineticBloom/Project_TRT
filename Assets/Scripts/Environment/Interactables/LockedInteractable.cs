@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class LockedInteractable : Interactable
 {
     public InventoryCardData RequiredCard;
-    [SerializeField] private bool removeIfItem = false;
+    [SerializeField] private bool removeAfterInteraction = false;
     [SerializeField] private bool locked = true;
     [SerializeField] private UnityEvent callbackFunction;
 
@@ -26,7 +26,7 @@ public class LockedInteractable : Interactable
         {
             locked = false;
 
-            if (RequiredCard.Type == GameEnums.CardTypes.ITEM && removeIfItem)
+            if (removeAfterInteraction)
             {
                 GameManager.Inventory.RemoveCard(RequiredCard);
             }

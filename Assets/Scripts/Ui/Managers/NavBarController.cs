@@ -61,9 +61,6 @@ public class NavBarController : MonoBehaviour {
                 InGameUi.MoveToJournal();
                 break;
             case 1:
-                InGameUi.MoveToInventory();
-                break;
-            case 2:
                 InGameUi.MoveToPause();
                 break;
 

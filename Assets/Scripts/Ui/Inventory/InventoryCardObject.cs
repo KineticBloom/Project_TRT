@@ -33,6 +33,7 @@ public class InventoryCardObject : MonoBehaviour {
     [SerializeField, BoxGroup("Item Preview Layout")] private TMP_Text itemPreviewNameText;
     [SerializeField, BoxGroup("Item Preview Layout")] private Image itemPreviewSpriteImage;
     [SerializeField, BoxGroup("Item Preview Layout")] private TMP_Text itemPreviewValueText;
+    [SerializeField, BoxGroup("Item Preview Layout")] private TMP_Text itemPreviewCountText;
 
     #endregion
 
@@ -103,6 +104,7 @@ public class InventoryCardObject : MonoBehaviour {
             itemPreviewNameText.text = Card.CardName;
             itemPreviewSpriteImage.sprite = Card.Sprite;
             itemPreviewValueText.text = Card.BaseValue.ToString();
+            itemPreviewCountText.text = GameManager.Inventory.GetCardFromData(newCard).Count.ToString();
         }
 
     }

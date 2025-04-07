@@ -143,6 +143,18 @@ public class InventoryCardObject : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// Turns all buttons in the InventoryCardObject interactable or not
+    /// </summary>
+    /// <param name="interactable">Whether or not the buttons can be pressed</param>
+    public void SetInteractable(bool interactable)
+    {
+        deactiveButton.interactable = interactable;
+        deactivePreviewButton.interactable = interactable;
+        itemLayoutButton.interactable = interactable;
+        itemPreviewLayoutButton.interactable = interactable;
+    }
+
     public void SwapState(CurrentState stateToEnter) {
 
         switch (stateToEnter) {

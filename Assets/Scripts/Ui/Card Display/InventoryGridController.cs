@@ -15,7 +15,7 @@ public class InventoryGridController : MonoBehaviour
     public bool UseSmallSize;
     public int InventorySize = 10;
     public bool SetDefaultSelectionOnEnable = false;
-    public bool AllKnownCards = false;
+    public bool Interactable = true;
 
     [Header("Click Action")]
     public InventoryAction OnInventoryItemClick = null;
@@ -143,8 +143,9 @@ public class InventoryGridController : MonoBehaviour
 
             currentInventoryItem.SetData(card);
 
-            indexTracker += 1;
+            currentInventoryItem.SetInteractable(Interactable);
 
+            indexTracker += 1;
         }
 
         // Mark update time

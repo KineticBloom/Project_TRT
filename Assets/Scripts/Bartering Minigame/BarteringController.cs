@@ -195,10 +195,6 @@ public class BarteringController : MonoBehaviour {
     IEnumerator LeaveBarterScene() {
         yield return new WaitForSeconds(1f);
 
-        InGameUi _inGameUi = GameManager.MasterCanvas.GetComponent<InGameUi>();
-
-        _inGameUi.MoveToDefault();
-
         _offeredItems.ReturnCardsToInventory();
 
         if (_wonBarter) {
@@ -210,6 +206,10 @@ public class BarteringController : MonoBehaviour {
 
             GameManager.Inventory.AddCard(_currentTradeInformation.ItemOnOffer);
         }
+
+        InGameUi _inGameUi = GameManager.MasterCanvas.GetComponent<InGameUi>();
+
+        _inGameUi.MoveToDefault();
     }
 
     #endregion

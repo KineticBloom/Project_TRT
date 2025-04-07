@@ -207,6 +207,8 @@ public class BarteringController : MonoBehaviour {
             GameManager.Inventory.AddCard(_currentTradeInformation.ItemOnOffer);
         }
 
+        _offeredItems = null;
+
         InGameUi _inGameUi = GameManager.MasterCanvas.GetComponent<InGameUi>();
 
         _inGameUi.MoveToDefault();

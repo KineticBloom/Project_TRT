@@ -11,29 +11,17 @@ public class InventoryCardObject : MonoBehaviour {
     public bool IsPreviewCard = false;
     [SerializeField] public InventoryCardData Card;
 
-    [Header("Deactivated Layout")]
-    [SerializeField, BoxGroup("Deactive Layout")] private GameObject deactiveObject;
-    [SerializeField, BoxGroup("Deactive Layout")] private Button deactiveButton;
+    [Header("Deactivated")]
+    [SerializeField, BoxGroup("Deactivated")] private GameObject deactivePreviewObject;
+    [SerializeField, BoxGroup("Deactivated")] private Button deactivePreviewButton;
 
-    [Header("Deactivated Preview")]
-    [SerializeField, BoxGroup("Deactive Layout")] private GameObject deactivePreviewObject;
-    [SerializeField, BoxGroup("Deactive Layout")] private Button deactivePreviewButton;
-    //test
-    [Header("Item Layout")]
-    [SerializeField, BoxGroup("Item Layout")] private GameObject itemLayoutObject;
-    [SerializeField, BoxGroup("Item Layout")] private Button itemLayoutButton;
-    [SerializeField, BoxGroup("Item Layout")] private TMP_Text itemNameText;
-    [SerializeField, BoxGroup("Item Layout")] private Image itemSpriteImage;
-    [SerializeField, BoxGroup("Item Layout")] private TMP_Text itemDescriptionText;
-    [SerializeField, BoxGroup("Item Layout")] private TMP_Text itemValueText;
-
-    [Header("Item Preview Layout")]
-    [SerializeField, BoxGroup("Item Preview Layout")] private GameObject itemPreviewLayoutObject;
-    [SerializeField, BoxGroup("Item Preview Layout")] private Button itemPreviewLayoutButton;
-    [SerializeField, BoxGroup("Item Preview Layout")] private TMP_Text itemPreviewNameText;
-    [SerializeField, BoxGroup("Item Preview Layout")] private Image itemPreviewSpriteImage;
-    [SerializeField, BoxGroup("Item Preview Layout")] private TMP_Text itemPreviewValueText;
-    [SerializeField, BoxGroup("Item Preview Layout")] private TMP_Text itemPreviewCountText;
+    [Header("Item")]
+    [SerializeField, BoxGroup("Item")] private GameObject itemPreviewLayoutObject;
+    [SerializeField, BoxGroup("Item")] private Button itemPreviewLayoutButton;
+    [SerializeField, BoxGroup("Item")] private TMP_Text itemPreviewNameText;
+    [SerializeField, BoxGroup("Item")] private Image itemPreviewSpriteImage;
+    [SerializeField, BoxGroup("Item")] private TMP_Text itemPreviewValueText;
+    [SerializeField, BoxGroup("Item")] private TMP_Text itemPreviewCountText;
 
     #endregion
 
@@ -49,7 +37,7 @@ public class InventoryCardObject : MonoBehaviour {
     private InventoryAction _onSelectAction = null;
 
     public enum CurrentState {
-        DEACTIVE, ITEM, ITEMPREVIEW, DEACTIVEPREVIEW
+       ITEM, DEACTIVE
     }
 
     #endregion
@@ -91,21 +79,13 @@ public class InventoryCardObject : MonoBehaviour {
         Card = newCard;
 
 
-        if (UseLargeItem) {
-            SwapState(CurrentState.ITEM);
+        SwapState(CurrentState.ITEM);
 
-            itemNameText.text = Card.CardName;
-            itemSpriteImage.sprite = Card.Sprite;
-            itemDescriptionText.text = Card.Description;
-            itemValueText.text = Card.BaseValue.ToString();
-        } else {
-            SwapState(CurrentState.ITEMPREVIEW);
+        itemPreviewNameText.text = Card.CardName;
+        itemPreviewSpriteImage.sprite = Card.Sprite;
+        itemPreviewValueText.text = Card.BaseValue.ToString();
+        itemPreviewCountText.text = GameManager.Inventory.GetCardFromData(newCard).Count.ToString();
 
-            itemPreviewNameText.text = Card.CardName;
-            itemPreviewSpriteImage.sprite = Card.Sprite;
-            itemPreviewValueText.text = Card.BaseValue.ToString();
-            itemPreviewCountText.text = GameManager.Inventory.GetCardFromData(newCard).Count.ToString();
-        }
 
     }
 
@@ -113,12 +93,7 @@ public class InventoryCardObject : MonoBehaviour {
     /// Sets card to empty!
     /// </summary>
     public void SetCardToEmpty(bool usingPreviewSize) {
-
-        if (usingPreviewSize) {
-            SwapState(CurrentState.DEACTIVEPREVIEW);
-        } else {
-            SwapState(CurrentState.DEACTIVE);
-        }
+        SwapState(CurrentState.DEACTIVE);
     }
 
     /// <summary>
@@ -151,46 +126,21 @@ public class InventoryCardObject : MonoBehaviour {
     /// <param name="interactable">Whether or not the buttons can be pressed</param>
     public void SetInteractable(bool interactable)
     {
-        deactiveButton.interactable = interactable;
         deactivePreviewButton.interactable = interactable;
-        itemLayoutButton.interactable = interactable;
         itemPreviewLayoutButton.interactable = interactable;
     }
 
     public void SwapState(CurrentState stateToEnter) {
 
         switch (stateToEnter) {
-            case CurrentState.DEACTIVE:
-                itemLayoutObject.SetActive(false);
-                itemPreviewLayoutObject.SetActive(false);
-                deactiveObject.SetActive(true);
-                deactivePreviewObject.SetActive(false);
-
-                Card = null;
-
-                CurrentActiveButton = deactiveButton;
-                break;
             case CurrentState.ITEM:
-                itemLayoutObject.SetActive(true);
-                itemPreviewLayoutObject.SetActive(false);
-                deactiveObject.SetActive(false);
-                deactivePreviewObject.SetActive(false);
-
-
-                CurrentActiveButton = itemLayoutButton;
-                break;
-            case CurrentState.ITEMPREVIEW:
-                itemLayoutObject.SetActive(false);
                 itemPreviewLayoutObject.SetActive(true);
-                deactiveObject.SetActive(false);
                 deactivePreviewObject.SetActive(false);
 
                 CurrentActiveButton = itemPreviewLayoutButton;
                 break;
-            case CurrentState.DEACTIVEPREVIEW:
-                itemLayoutObject.SetActive(false);
+            case CurrentState.DEACTIVE:
                 itemPreviewLayoutObject.SetActive(false);
-                deactiveObject.SetActive(false);
                 deactivePreviewObject.SetActive(true);
 
                 Card = null;

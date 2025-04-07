@@ -13,7 +13,7 @@ public class SaveSystem
     [System.Serializable]
     public struct SaveData
     {
-        public InventorySaveData inventoryData;
+        //public InventorySaveData inventoryData;
         public NPCSaveData npcSaveData;
     }
 
@@ -96,7 +96,7 @@ public class SaveSystem
             return;
         } else
         {
-            GameManager.Inventory.Save(ref _saveData.inventoryData, clearInventory);
+            // GameManager.Inventory.Save(ref _saveData.inventoryData, clearInventory);
         }
 
         if (GameManager.NPCGlobalList == null)
@@ -124,7 +124,7 @@ public class SaveSystem
             return;
         } else
         {
-            GameManager.Inventory.Load(_saveData.inventoryData);
+            // GameManager.Inventory.Load(_saveData.inventoryData);
         }
 
         if (GameManager.NPCGlobalList == null)

@@ -54,7 +54,7 @@ public class FlagTracker : MonoBehaviour
         
         if (flag.Type == Flag.FlagType.InventoryCard)
         {
-            if (!flag.Card) flag.Card = _inventory.GetCardByID(flag.ID[3..]).Data;
+            if (!flag.Card) flag.Card = _inventory.GetCardByID(flag.ID[3..]);  // POSSIBLE BUG, COULD BE MULTIPLE CARDS WITH THE SAME ID
             if (editInventory)
             {
                 if (value) _inventory.AddCard(flag.Card);
@@ -76,9 +76,9 @@ public class FlagTracker : MonoBehaviour
     /// </summary>
     public void UpdateICFlags()
     {
-        foreach (InventoryCard card in _inventory.Get())
+        foreach (InventoryCardData card in _inventory.Get())
         {
-            SetFlag(card.Data, true);
+            SetFlag(card, true);
         }
     }
 

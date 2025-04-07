@@ -82,7 +82,7 @@ public class InventoryCardObject : MonoBehaviour {
 
         itemNameText.text = Card.CardName;
         itemSpriteImage.sprite = Card.Sprite;
-        itemValueText.text = Card.BaseValue.ToString();
+        itemValueText.text = Card.CurrentValue.ToString();
     }
 
     /// <summary>

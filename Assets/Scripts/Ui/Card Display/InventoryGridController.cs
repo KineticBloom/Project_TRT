@@ -136,7 +136,7 @@ public class InventoryGridController : MonoBehaviour
         int indexTracker = 0;
 
         // Get Data
-        List<InventoryCardData> dataForAllCards = GameManager.Inventory.GetDatas();
+        List<InventoryCardData> dataForAllCards = GameManager.Inventory.Get();
 
         foreach (InventoryCardData card in dataForAllCards) {
             InventoryCardObject currentInventoryItem = _inventoryInstances[indexTracker];

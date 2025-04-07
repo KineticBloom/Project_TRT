@@ -82,7 +82,7 @@ public class BarteringController : MonoBehaviour {
 
         if (_offeredItems.Count >= 2) return;
 
-        _offeredItems.Add(GameManager.Inventory.GetCardFromData(itemToOffer));
+        _offeredItems.Add(itemToOffer);
 
         UpdateVisuals();
     }
@@ -107,7 +107,7 @@ public class BarteringController : MonoBehaviour {
         }
 
         // Remove item
-        _offeredItems.Remove(GameManager.Inventory.GetCardFromData(itemToRemove));
+        _offeredItems.Remove(itemToRemove);
 
         UpdateVisuals();
 
@@ -150,7 +150,7 @@ public class BarteringController : MonoBehaviour {
         ResetPlayerData();
 
         // Get new player offer value
-        foreach (InventoryCard item in _offeredItems.Items) {
+        foreach (InventoryCardData item in _offeredItems.Items) {
             _currentOfferedValue += item.CurrentValue;
         }
 
@@ -158,10 +158,10 @@ public class BarteringController : MonoBehaviour {
 
         // Display new slots adjusted
         if (_offeredItems.Count >= 1) {
-            PlayerOfferSlotOne.SetData(_offeredItems.Items[0].Data);
+            PlayerOfferSlotOne.SetData(_offeredItems.Items[0]);
         }
         if (_offeredItems.Count >= 2) {
-            PlayerOfferSlotTwo.SetData(_offeredItems.Items[1].Data);
+            PlayerOfferSlotTwo.SetData(_offeredItems.Items[1]);
         }
 
     }
@@ -199,15 +199,17 @@ public class BarteringController : MonoBehaviour {
 
         if (_wonBarter) {
             // remove cards offered
-            foreach (InventoryCard card in _offeredItems.Items)
+            foreach (InventoryCardData card in _offeredItems.Items)
             {
-                GameManager.Inventory.RemoveCard(card.Data);
+                GameManager.Inventory.RemoveCard(card);
             }
 
             GameManager.Inventory.AddCard(_currentTradeInformation.ItemOnOffer);
         }
 
         _offeredItems = null;
+
+        GameManager.Inventory.ResetAllCardValues();
 
         InGameUi _inGameUi = GameManager.MasterCanvas.GetComponent<InGameUi>();
 
@@ -220,32 +222,32 @@ public class BarteringController : MonoBehaviour {
 [System.Serializable]
 public class OfferedItems
 {
-    public List<InventoryCard> Items;
+    public List<InventoryCardData> Items;
     public int Count {  get { return Items.Count; } }
 
 
     public OfferedItems()
     {
-        Items = new List<InventoryCard>();
+        Items = new List<InventoryCardData>();
     }
 
-    public void Add(InventoryCard card)
+    public void Add(InventoryCardData card)
     {
         Items.Add(card);
-        GameManager.Inventory.RemoveCard(card.Data, true);
+        GameManager.Inventory.RemoveCard(card, true);
     }
 
-    public void Remove(InventoryCard card)
+    public void Remove(InventoryCardData card)
     {
         Items.Remove(card);
-        GameManager.Inventory.AddCard(card.Data, true);
+        GameManager.Inventory.AddCard(card, true);
     }
 
     public void ReturnCardsToInventory()
     {
-        foreach (InventoryCard card in Items)
+        foreach (InventoryCardData card in Items)
         {
-            GameManager.Inventory.AddCard(card.Data, true);
+            GameManager.Inventory.AddCard(card, true);
         }
     }
 }

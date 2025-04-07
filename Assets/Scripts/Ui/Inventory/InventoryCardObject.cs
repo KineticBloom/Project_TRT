@@ -12,16 +12,15 @@ public class InventoryCardObject : MonoBehaviour {
     [SerializeField] public InventoryCardData Card;
 
     [Header("Deactivated")]
-    [SerializeField, BoxGroup("Deactivated")] private GameObject deactivePreviewObject;
-    [SerializeField, BoxGroup("Deactivated")] private Button deactivePreviewButton;
+    [SerializeField, BoxGroup("Deactivated")] private GameObject deactiveObject;
+    [SerializeField, BoxGroup("Deactivated")] private Button deactiveButton;
 
     [Header("Item")]
-    [SerializeField, BoxGroup("Item")] private GameObject itemPreviewLayoutObject;
-    [SerializeField, BoxGroup("Item")] private Button itemPreviewLayoutButton;
-    [SerializeField, BoxGroup("Item")] private TMP_Text itemPreviewNameText;
-    [SerializeField, BoxGroup("Item")] private Image itemPreviewSpriteImage;
-    [SerializeField, BoxGroup("Item")] private TMP_Text itemPreviewValueText;
-    [SerializeField, BoxGroup("Item")] private TMP_Text itemPreviewCountText;
+    [SerializeField, BoxGroup("Item")] private GameObject itemLayoutObject;
+    [SerializeField, BoxGroup("Item")] private Button itemLayoutButton;
+    [SerializeField, BoxGroup("Item")] private TMP_Text itemNameText;
+    [SerializeField, BoxGroup("Item")] private Image itemSpriteImage;
+    [SerializeField, BoxGroup("Item")] private TMP_Text itemValueText;
 
     #endregion
 
@@ -81,12 +80,9 @@ public class InventoryCardObject : MonoBehaviour {
 
         SwapState(CurrentState.ITEM);
 
-        itemPreviewNameText.text = Card.CardName;
-        itemPreviewSpriteImage.sprite = Card.Sprite;
-        itemPreviewValueText.text = Card.BaseValue.ToString();
-        itemPreviewCountText.text = GameManager.Inventory.GetCardFromData(newCard).Count.ToString();
-
-
+        itemNameText.text = Card.CardName;
+        itemSpriteImage.sprite = Card.Sprite;
+        itemValueText.text = Card.BaseValue.ToString();
     }
 
     /// <summary>
@@ -126,26 +122,26 @@ public class InventoryCardObject : MonoBehaviour {
     /// <param name="interactable">Whether or not the buttons can be pressed</param>
     public void SetInteractable(bool interactable)
     {
-        deactivePreviewButton.interactable = interactable;
-        itemPreviewLayoutButton.interactable = interactable;
+        deactiveButton.interactable = interactable;
+        itemLayoutButton.interactable = interactable;
     }
 
     public void SwapState(CurrentState stateToEnter) {
 
         switch (stateToEnter) {
             case CurrentState.ITEM:
-                itemPreviewLayoutObject.SetActive(true);
-                deactivePreviewObject.SetActive(false);
+                itemLayoutObject.SetActive(true);
+                deactiveObject.SetActive(false);
 
-                CurrentActiveButton = itemPreviewLayoutButton;
+                CurrentActiveButton = itemLayoutButton;
                 break;
             case CurrentState.DEACTIVE:
-                itemPreviewLayoutObject.SetActive(false);
-                deactivePreviewObject.SetActive(true);
+                itemLayoutObject.SetActive(false);
+                deactiveObject.SetActive(true);
 
                 Card = null;
 
-                CurrentActiveButton = deactivePreviewButton;
+                CurrentActiveButton = deactiveButton;
                 break;
 
         }

@@ -61,8 +61,6 @@ public class Inventory : MonoBehaviour
         }
 
         foreach (InventoryCardData card in StartingCards) {
-            if (HasCard(card)) { continue; }
-
             AddCard(card);
         }
 
@@ -115,11 +113,9 @@ public class Inventory : MonoBehaviour
         newCard.CurrentlyOwn = true;
         newCard.HaveOwned = true;
 
-        if (!HasCard(newCard.Data))
-        {
-            Cards.Add(newCard);
-        }
-        newCard.Count += 1;
+
+        Cards.Add(newCard);
+
 
         OnInventoryUpdated?.Invoke();
         inventoryLastUpdateTime = Time.time;
@@ -143,7 +139,6 @@ public class Inventory : MonoBehaviour
 
         Cards.Remove(cardToRemove);
         cardToRemove.CurrentlyOwn = false;
-        cardToRemove.Count -= 1;
 
         OnInventoryUpdated?.Invoke();
         inventoryLastUpdateTime = Time.time;

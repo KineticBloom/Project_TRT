@@ -14,7 +14,6 @@ public class InventoryCard
     [ReadOnly] public bool HaveOwned = false;
     [ReadOnly] public bool CurrentlyOwn = false;
     [ReadOnly] public int CurrentValue = 0;
-    [ReadOnly] public int Count = 0;
 
     #region ---------- InventoryCardData Accessors ----------
 

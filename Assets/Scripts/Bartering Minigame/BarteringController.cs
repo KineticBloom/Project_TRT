@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.ComponentModel;
+using NaughtyAttributes;
 
 public class BarteringController : MonoBehaviour {
 
@@ -40,8 +42,7 @@ public class BarteringController : MonoBehaviour {
     private float _currentOfferedValue = 0;
     private bool _wonBarter = false;
     private InventoryCardObject _currentButtonObject;
-
-    private List<InventoryCardData> _offeredItems;
+    private OfferedItems _offeredItems;
 
     #endregion
 
@@ -55,14 +56,14 @@ public class BarteringController : MonoBehaviour {
 
         // Setup trackers
         _currentTradeInformation = TradeInformation;
-        _offeredItems = new List<InventoryCardData>();
+        _offeredItems = new OfferedItems();
 
         // Init new barter
         ResetData();
 
         // Load NPC Data
         NPCOfferSlotOne.SetData(_currentTradeInformation.ItemOnOffer, false);
-        NPCValueText.text = "Value: " + _currentTradeInformation.ItemOnOffer.ValueOfItem;
+        NPCValueText.text = "Value: " + _currentTradeInformation.ItemOnOffer.BaseValue;
         NPCProfilePicture.sprite = _currentTradeInformation.NPCData.Icon;
     }
 
@@ -122,7 +123,7 @@ public class BarteringController : MonoBehaviour {
     /// </summary>
     public void EndBarter() {
 
-        float NPCItemValue = _currentTradeInformation.ItemOnOffer.ValueOfItem;
+        float NPCItemValue = _currentTradeInformation.ItemOnOffer.BaseValue;
 
         EndMessageSpeechBubble.SetActive(true);
 
@@ -149,18 +150,18 @@ public class BarteringController : MonoBehaviour {
         ResetPlayerData();
 
         // Get new player offer value
-        foreach (InventoryCardData item in _offeredItems) {
-            _currentOfferedValue += item.ValueOfItem;
+        foreach (InventoryCardData item in _offeredItems.Items) {
+            _currentOfferedValue += item.CurrentValue;
         }
 
         PlayerValueText.text = "Value: " + _currentOfferedValue;
 
         // Display new slots adjusted
         if (_offeredItems.Count >= 1) {
-            PlayerOfferSlotOne.SetData(_offeredItems[0]);
+            PlayerOfferSlotOne.SetData(_offeredItems.Items[0]);
         }
         if (_offeredItems.Count >= 2) {
-            PlayerOfferSlotTwo.SetData(_offeredItems[1]);
+            PlayerOfferSlotTwo.SetData(_offeredItems.Items[1]);
         }
 
     }
@@ -194,16 +195,59 @@ public class BarteringController : MonoBehaviour {
     IEnumerator LeaveBarterScene() {
         yield return new WaitForSeconds(1f);
 
-        InGameUi _inGameUi = GameManager.MasterCanvas.GetComponent<InGameUi>();
-
-        _inGameUi.MoveToDefault();
+        _offeredItems.ReturnCardsToInventory();
 
         if (_wonBarter) {
-            Debug.Log("Won barter!");
+            // remove cards offered
+            foreach (InventoryCardData card in _offeredItems.Items)
+            {
+                GameManager.Inventory.RemoveCard(card);
+            }
+
             GameManager.Inventory.AddCard(_currentTradeInformation.ItemOnOffer);
         }
 
+        _offeredItems = null;
+
+        GameManager.Inventory.ResetAllCardValues();
+
+        InGameUi _inGameUi = GameManager.MasterCanvas.GetComponent<InGameUi>();
+
+        _inGameUi.MoveToDefault();
     }
 
     #endregion
+}
+
+[System.Serializable]
+public class OfferedItems
+{
+    public List<InventoryCardData> Items;
+    public int Count {  get { return Items.Count; } }
+
+
+    public OfferedItems()
+    {
+        Items = new List<InventoryCardData>();
+    }
+
+    public void Add(InventoryCardData card)
+    {
+        Items.Add(card);
+        GameManager.Inventory.RemoveCard(card, true);
+    }
+
+    public void Remove(InventoryCardData card)
+    {
+        Items.Remove(card);
+        GameManager.Inventory.AddCard(card, true);
+    }
+
+    public void ReturnCardsToInventory()
+    {
+        foreach (InventoryCardData card in Items)
+        {
+            GameManager.Inventory.AddCard(card, true);
+        }
+    }
 }

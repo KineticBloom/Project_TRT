@@ -86,7 +86,7 @@ public class DevMenu : Singleton<DevMenu> {
     {
         if (GameManager.Inventory != null)
         {
-            foreach (InventoryCardData data in GameManager.Inventory.AllCardDatas)
+            foreach (InventoryCardData data in GameManager.Inventory.AllCardDatas.datas)
             {
                 if (GameManager.Inventory.HasCard(data)) continue;
                 GameManager.Inventory.AddCard(data);

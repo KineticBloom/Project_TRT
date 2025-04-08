@@ -16,7 +16,6 @@ public class InGameUi : MonoBehaviour
     public Canvas Options;
     public Canvas Controls;
     public JournalNavCore Journal;
-    public Canvas Inventory;
     public Canvas Bartering;
     public BarteringController BarteringController;
     public Canvas Dialogue;
@@ -29,7 +28,6 @@ public class InGameUi : MonoBehaviour
         MoveToTitle,
         Controls,
         Journal, 
-        Inventory,
         Bartering,
         Dialogue,
         PresentItem,
@@ -84,10 +82,14 @@ public class InGameUi : MonoBehaviour
         }
 
         if(GameManager.PlayerInput.GetMenu1Down()) {
-            if (CurrentCanvasState == UiStates.Inventory) {
+            // NOTE: REPLACED INVENTORY CODE WITH PAUSE
+            if (CurrentCanvasState == UiStates.Pause)
+            {
                 MoveTo(_lastNonNavbarState);
-            } else {
-                MoveToInventory();
+            }
+            else
+            {
+                MoveToPause();
                 pauseOpen.Post(this.gameObject);
             }
         }
@@ -157,7 +159,6 @@ public class InGameUi : MonoBehaviour
         MoveToJournal();
     }
     public void MoveToDialogue() => MoveTo(UiStates.Dialogue);
-    public void MoveToInventory() => MoveTo(UiStates.Inventory);
     public void MoveToPresentItem() => MoveTo(UiStates.PresentItem);
     public void MoveToBartering(BarteringController.TradeData tradeData) {
        
@@ -172,8 +173,7 @@ public class InGameUi : MonoBehaviour
 
     private static bool UsesNavbar(UiStates currentState)
     {
-        return currentState == UiStates.Pause || currentState == UiStates.Journal 
-            || currentState == UiStates.Inventory;
+        return currentState == UiStates.Pause || currentState == UiStates.Journal;
     }
 
     /// <summary>
@@ -196,9 +196,6 @@ public class InGameUi : MonoBehaviour
                 break;
             case UiStates.Journal:
                 _navBarController.InitNavBar(0);
-                break;
-            case UiStates.Inventory:
-                _navBarController.InitNavBar(1);
                 break;
         }
     }
@@ -234,10 +231,6 @@ public class InGameUi : MonoBehaviour
             case UiStates.Journal:
                 // Insert animation!
                 Journal.gameObject.SetActive(false);
-                break;
-            case UiStates.Inventory:
-                // Insert animation!
-                Inventory.gameObject.SetActive(false);
                 break;
             case UiStates.Bartering:
                 // Insert animation!
@@ -302,12 +295,6 @@ public class InGameUi : MonoBehaviour
                 GameManager.Player.Movement.SetCanMove(false);
                 GameManager.Player.InteractionHandler.SetCanInteract(false);
                 Journal.gameObject.SetActive(true);
-                break;
-            case UiStates.Inventory:
-                // Insert animation!
-                GameManager.Player.Movement.SetCanMove(false);
-                GameManager.Player.InteractionHandler.SetCanInteract(false);
-                Inventory.gameObject.SetActive(true);
                 break;
             case UiStates.Bartering:
                 GameManager.Player.Movement.SetCanMove(false);

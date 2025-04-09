@@ -29,6 +29,10 @@ public class BarteringController : MonoBehaviour {
     public TMP_Text EndMessage;
     public GameObject EndMessageSpeechBubble;
 
+    [Header("Other Dependencies")]
+    public Button OfferTradeButton;
+    public InventoryGridController InventoryGrid;
+
     public struct TradeData {
         public InventoryCardData ItemOnOffer;
         public string DialogueForTrade;
@@ -45,6 +49,7 @@ public class BarteringController : MonoBehaviour {
     private bool _wonBarter = false;
     private InventoryCardObject _currentButtonObject;
     private OfferedItems _offeredItems;
+    private int _allowedAttempts = -1;
 
     #endregion
 
@@ -70,6 +75,8 @@ public class BarteringController : MonoBehaviour {
 
         // Activate Pre-Barter Effect Cards
         ActivateEffectCards(true);
+
+        SetInteractable(true);
     }
 
     #endregion
@@ -136,6 +143,8 @@ public class BarteringController : MonoBehaviour {
     /// </summary>
     public void EndBarter() {
 
+        SetInteractable(false);
+
         ActivateEffectCards(false);
 
         float NPCItemValue = _currentTradeInformation.ItemOnOffer.BaseValue;
@@ -147,13 +156,25 @@ public class BarteringController : MonoBehaviour {
             EndMessage.text = _currentTradeInformation.DialogueForTrade;
             PassBarterIcon.SetActive(true);
             _wonBarter = true;
+
+            StartCoroutine(LeaveBarterScene());
         } else {
             // Say no!
             EndMessage.text = _currentTradeInformation.DialogueForNoTrade;
             FailBarterIcon.SetActive(true);
-        }
 
-        StartCoroutine(LeaveBarterScene());
+
+            // If you run out of attempts, the barter is exited
+            if (_allowedAttempts > 0)
+            {
+                _allowedAttempts--;
+            } else if (_allowedAttempts == 0)
+            {
+                StartCoroutine(LeaveBarterScene());
+            }
+
+            SetInteractable(true);
+        }
     }
 
     #endregion
@@ -248,6 +269,21 @@ public class BarteringController : MonoBehaviour {
         InGameUi _inGameUi = GameManager.MasterCanvas.GetComponent<InGameUi>();
 
         _inGameUi.MoveToDefault();
+    }
+
+    /// <summary>
+    /// Sets whether or not the player can make any inputs
+    /// </summary>
+    /// <param name="isInteractable"></param>
+    private void SetInteractable(bool isInteractable)
+    {
+        PlayerOfferSlotOne.CurrentActiveButton.interactable = isInteractable;
+        PlayerOfferSlotTwo.CurrentActiveButton.interactable= isInteractable;
+        PlayerOfferSlotThree.CurrentActiveButton.interactable = isInteractable;
+        PlayerOfferSlotFour.CurrentActiveButton.interactable = isInteractable;
+
+        OfferTradeButton.interactable = isInteractable;
+        InventoryGrid.SetSlotsInteractable(isInteractable);
     }
 
     #endregion

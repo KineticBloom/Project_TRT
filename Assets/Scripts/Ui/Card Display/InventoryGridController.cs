@@ -143,13 +143,25 @@ public class InventoryGridController : MonoBehaviour
 
             currentInventoryItem.SetData(card);
 
-            currentInventoryItem.SetInteractable(Interactable);
+            SetSlotsInteractable(Interactable);
 
             indexTracker += 1;
         }
 
         // Mark update time
         _lastUpdateTime = GameManager.Inventory.inventoryLastUpdateTime;
+    }
+
+    /// <summary>
+    /// Sets all of the slots in _inventoryInstances interactable or not
+    /// </summary>
+    /// <param name="isInteractable"></param>
+    private void SetSlotsInteractable(bool isInteractable)
+    {
+        foreach (InventoryCardObject x in _inventoryInstances)
+        {
+            x.SetInteractable(isInteractable);
+        }
     }
 
     #endregion

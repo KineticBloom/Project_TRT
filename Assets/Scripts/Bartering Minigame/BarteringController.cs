@@ -15,6 +15,8 @@ public class BarteringController : MonoBehaviour {
     public TMP_Text PlayerValueText;
     public InventoryCardObject PlayerOfferSlotOne;
     public InventoryCardObject PlayerOfferSlotTwo;
+    public InventoryCardObject PlayerOfferSlotThree;
+    public InventoryCardObject PlayerOfferSlotFour;
 
     [Header("NPC Dependencies")]
     public TMP_Text NPCValueText;
@@ -65,6 +67,9 @@ public class BarteringController : MonoBehaviour {
         NPCOfferSlotOne.SetData(_currentTradeInformation.ItemOnOffer, false);
         NPCValueText.text = "Value: " + _currentTradeInformation.ItemOnOffer.BaseValue;
         NPCProfilePicture.sprite = _currentTradeInformation.NPCData.Icon;
+
+        // Activate Pre-Barter Effect Cards
+        ActivateEffectCards(true);
     }
 
     #endregion
@@ -80,7 +85,7 @@ public class BarteringController : MonoBehaviour {
 
         if (itemToOffer == null) return;
 
-        if (_offeredItems.Count >= 2) return;
+        if (_offeredItems.Count >= 4) return;
 
         _offeredItems.Add(itemToOffer);
 
@@ -105,6 +110,14 @@ public class BarteringController : MonoBehaviour {
         if (PlayerOfferSlotTwo.CurrentActiveButton.gameObject == EventSystem.current.currentSelectedGameObject) {
             _currentButtonObject = PlayerOfferSlotTwo;
         }
+        if (PlayerOfferSlotThree.CurrentActiveButton.gameObject == EventSystem.current.currentSelectedGameObject)
+        {
+            _currentButtonObject = PlayerOfferSlotThree;
+        }
+        if (PlayerOfferSlotFour.CurrentActiveButton.gameObject == EventSystem.current.currentSelectedGameObject)
+        {
+            _currentButtonObject = PlayerOfferSlotFour;
+        }
 
         // Remove item
         _offeredItems.Remove(itemToRemove);
@@ -122,6 +135,8 @@ public class BarteringController : MonoBehaviour {
     /// Called by UI Elements.
     /// </summary>
     public void EndBarter() {
+
+        ActivateEffectCards(false);
 
         float NPCItemValue = _currentTradeInformation.ItemOnOffer.BaseValue;
 
@@ -145,6 +160,15 @@ public class BarteringController : MonoBehaviour {
 
     #region ======== [ PRIVATE METHODS ] ========
 
+    /// <summary>
+    /// Activates Effect Cards
+    /// </summary>
+    /// <param name="isPreBarter">which stage of the barter are we in for activating the effect cards?</param>
+    private void ActivateEffectCards(bool isPreBarter)
+    {
+        // TODO: Activate the Effect Cards
+    }
+
     private void UpdateVisuals() {
 
         ResetPlayerData();
@@ -162,6 +186,14 @@ public class BarteringController : MonoBehaviour {
         }
         if (_offeredItems.Count >= 2) {
             PlayerOfferSlotTwo.SetData(_offeredItems.Items[1]);
+        }
+        if (_offeredItems.Count >= 3)
+        {
+            PlayerOfferSlotThree.SetData(_offeredItems.Items[2]);
+        }
+        if (_offeredItems.Count >= 4)
+        {
+            PlayerOfferSlotFour.SetData(_offeredItems.Items[3]);
         }
 
     }
@@ -183,6 +215,8 @@ public class BarteringController : MonoBehaviour {
     private void ResetPlayerData() {
         PlayerOfferSlotOne.SetCardToEmpty(true);
         PlayerOfferSlotTwo.SetCardToEmpty(true);
+        PlayerOfferSlotThree.SetCardToEmpty(true);
+        PlayerOfferSlotFour.SetCardToEmpty(true);
         _currentOfferedValue = 0;
         PlayerValueText.text = "Value: 0";
     }

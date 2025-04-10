@@ -53,6 +53,20 @@ public class BarteringController : MonoBehaviour {
 
     #endregion
 
+    /*
+     * Sequence of events
+     * 
+     * InitializeTrade
+     * Activate Pre-Barter Effect Cards
+     * Player offers items
+     * Submit offer -> EndBarter
+     * Activate Post-Barter Effect cards
+     * Win? -> Trade items and end barter
+     * Lose? -> Restart to beginning of sequence
+     * 
+     */
+
+
     #region ======== [ INIT METHOD ] ========
 
     /// <summary>

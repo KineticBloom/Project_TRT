@@ -49,7 +49,7 @@ public class BarteringController : MonoBehaviour {
     private bool _wonBarter = false;
     private InventoryCardObject _currentButtonObject;
     private OfferedItems _offeredItems;
-    private int _allowedAttempts = -1;
+    private int _allowedAttempts = -1; // TODO Set from NPCData
 
     #endregion
 
@@ -171,9 +171,11 @@ public class BarteringController : MonoBehaviour {
             } else if (_allowedAttempts == 0)
             {
                 StartCoroutine(LeaveBarterScene());
+                return;
             }
 
-            SetInteractable(true);
+            // if you failed the barter, it is interactable so you can try again
+            StartCoroutine(RestartBarter());
         }
     }
 
@@ -245,6 +247,17 @@ public class BarteringController : MonoBehaviour {
     private void ResetNPCData() {
         NPCOfferSlotOne.SetCardToEmpty(true);
         NPCValueText.text = "Value: 0";
+    }
+
+    IEnumerator RestartBarter()
+    {
+        yield return new WaitForSeconds(1f);
+
+        _offeredItems.ReturnCardsToInventory();
+        _offeredItems.Items.Clear();
+        GameManager.Inventory.ResetAllCardValues();
+
+        InitializeTrade(_currentTradeInformation);
     }
 
     IEnumerator LeaveBarterScene() {

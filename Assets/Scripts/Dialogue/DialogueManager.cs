@@ -1,6 +1,8 @@
+using Cinemachine;
 using Ink.Runtime;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +15,7 @@ public class DialogueManager : MonoBehaviour {
 
     public GameObject NPCDialogueBubblePrefab;
     public GameObject PlayerDialogueBubblePrefab;
+    public GameObject TestDot;
 
     public System.Action EndCallback;
 
@@ -48,10 +51,16 @@ public class DialogueManager : MonoBehaviour {
     private LineData CurrentLineData;
     private InGameUi InGameUi;
     private DialogueUiManager DialogueUiManager;
+    private CinemachineBrain CurrentBrain;
 
     private bool LineFinished = true;
     private bool _onDelay = false;
     private bool _noInput = false;
+
+    private Vector3 lastCameraPos;
+    private Quaternion lastCameraRot;
+    private bool CameraMoving;
+    private bool CameraSetup = false;
 
     public delegate void CallBackBarterTrigger();
 
@@ -72,6 +81,7 @@ public class DialogueManager : MonoBehaviour {
 
         if (InDialogue) return;
         if (_onDelay) return;
+
         InDialogue = true;
 
         bool FoundDependencies = SetupDependencies();
@@ -83,6 +93,14 @@ public class DialogueManager : MonoBehaviour {
         InGameUi.MoveToDialogue();
         TimeLoopManager.SetLoopPaused(true);
 
+        StartCoroutine(WaitForCameraIdle(DialogueINKFile, NPCWorldPosition, PlayerWorldPosition, SkipToINKKnot));
+    }
+
+    IEnumerator WaitForCameraIdle(TextAsset DialogueINKFile, Vector3 NPCWorldPosition, Vector3 PlayerWorldPosition, string SkipToINKKnot = "NONE") {
+        
+        while (CameraMoving)
+            yield return null;
+
         // Setup Systems
         SetupUi(NPCWorldPosition, PlayerWorldPosition);
         SetupDialogue(DialogueINKFile, SkipToINKKnot);
@@ -90,6 +108,7 @@ public class DialogueManager : MonoBehaviour {
         // Start next line
         SetupNextLine();
     }
+
 
     /// <summary>
     /// Used by inspector buttons to select a choice.
@@ -108,6 +127,7 @@ public class DialogueManager : MonoBehaviour {
     #region ======== [ UPDATE ] ========
 
     private void Update() {
+        CheckForCameraMovement();
 
         if (InDialogue == false) return;
         if (_onDelay) return;
@@ -144,6 +164,35 @@ public class DialogueManager : MonoBehaviour {
 
         }
     }
+
+    /// <summary>
+    /// See if the current CinemaMachine camera is moving
+    /// </summary>
+    private void CheckForCameraMovement() {
+
+        // Inital setup if first check
+        if (CameraSetup == false) {
+            CurrentBrain = GameManager.Player.Camera;
+            lastCameraPos = CurrentBrain.transform.position;
+            lastCameraRot = CurrentBrain.transform.rotation;
+            CameraSetup = true;
+        }
+
+        bool PositionMovementSmall = (lastCameraPos - CurrentBrain.transform.position).magnitude < 0.002;
+        bool RotationMovementSmall = Quaternion.Dot(lastCameraRot, CurrentBrain.transform.rotation) >= 0.9998;
+
+        // Check if position and rotation has not changed
+        if (PositionMovementSmall && RotationMovementSmall) {
+            CameraMoving = false;
+        } else {
+            CameraMoving = true;
+        }
+
+        // Update info
+        lastCameraPos = CurrentBrain.transform.position;
+        lastCameraRot = CurrentBrain.transform.rotation;
+    }
+
     #endregion
 
     #region ======== [ SETUP METHODS ] ========
@@ -178,11 +227,13 @@ public class DialogueManager : MonoBehaviour {
         Vector2 NPCViewportPosition = WorldPosToViewportPos(NPCWorldPosition, CurrentCanvas, CurrentCamera);
         GameObject NPCBubbleObject = Instantiate(NPCDialogueBubblePrefab, NPCViewportPosition, Quaternion.identity, BubbleParent);
         NPCBubble = NPCBubbleObject.GetComponent<SpeechBubbleCore>();
+        Instantiate(TestDot, NPCViewportPosition, Quaternion.identity, BubbleParent);
 
         // Create Player Dialogue Bubble
         Vector2 PlayerViewportPosition = WorldPosToViewportPos(PlayerWorldPosition, CurrentCanvas, CurrentCamera);
         GameObject PlayerBubbleObject = Instantiate(PlayerDialogueBubblePrefab, PlayerViewportPosition, Quaternion.identity, BubbleParent);
         PlayerBubble = PlayerBubbleObject.GetComponent<SpeechBubbleCore>();
+        Instantiate(TestDot, PlayerViewportPosition, Quaternion.identity, BubbleParent);
     }
 
     /// <summary>
@@ -289,7 +340,7 @@ public class DialogueManager : MonoBehaviour {
 
         // Start delay
         _onDelay = true;
-        StartCoroutine(ConversationDelay());  
+        StartCoroutine(ConversationDelay());
     }
 
     /// <summary>
@@ -360,7 +411,7 @@ public class DialogueManager : MonoBehaviour {
     private void SkipToEndOfLine() {
         StopCoroutine(PrintNextCharacter());
         CurrentBubble.TMPText.text = CurrentLineData.GoalLine;
-        CurrentLineData.CharactersPrinted = CurrentLineData.GoalLine.Length-1;
+        CurrentLineData.CharactersPrinted = CurrentLineData.GoalLine.Length - 1;
         LineFinished = true;
 
         if (CurrentLineData.LineHasChoices) {

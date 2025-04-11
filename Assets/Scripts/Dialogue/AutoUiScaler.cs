@@ -9,7 +9,6 @@ public class AutoUiScaler : MonoBehaviour {
 
     private bool _readyToRescale = false;
     private TMP_TextInfo _info;
-    private float lastHeight = 0;
     private Vector3 StartPos = Vector3.zero;
 
     // Start is called before the first frame update
@@ -21,7 +20,6 @@ public class AutoUiScaler : MonoBehaviour {
 
     private void OnDisable() {
         RectTransform.sizeDelta = new Vector2(Padding, Padding);
-        lastHeight = 0;
 
         if (StartPos != Vector3.zero) {
             RectTransform.transform.localPosition = StartPos;
@@ -46,15 +44,6 @@ public class AutoUiScaler : MonoBehaviour {
         float textWidth = _info.lineInfo[_info.lineCount - 1].width;
         float textActualWidth = TextForScale.renderedWidth;
         float textHeight = TextForScale.renderedHeight;
-
-        if (lastHeight == 0) {
-            lastHeight = textHeight + Padding;
-        }
-
-        if (Mathf.Floor(textHeight + Padding) > Mathf.Floor(lastHeight)) {
-            RectTransform.transform.localPosition += Vector3.up * ((textHeight + Padding) - lastHeight);
-            lastHeight = textHeight + Padding;
-        }
 
         if (textWidth >= 1) {
             RectTransform.sizeDelta = new Vector2(textActualWidth + Padding, textHeight + Padding);

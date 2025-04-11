@@ -11,8 +11,10 @@ public class NpcInteractable : Interactable
     public InventoryCardData ItemForOffer;
     public string BarterMessageWin;
     public string BarterMessageLose;
+
+    public Vector3 DialogueSourceLocalPosition;
     public override void Interaction() {
-        Vector3 NPCWorldPosition = this.transform.position + IconLocalPosition;
+        Vector3 NPCWorldPosition = this.transform.position + DialogueSourceLocalPosition;
         Vector3 PlayerWorldPosition = GameManager.Player.DialogueSource.position;
         GameManager.DialogueManager.StartDialogue(npcConversation, TriggerBarter, NPCWorldPosition, PlayerWorldPosition);
     }
@@ -40,6 +42,10 @@ public class NpcInteractable : Interactable
     }
 
     private void OnDrawGizmos() {
+        Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position + IconLocalPosition, 0.25f);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position + DialogueSourceLocalPosition, Vector3.one * 0.25f );
     }
 }

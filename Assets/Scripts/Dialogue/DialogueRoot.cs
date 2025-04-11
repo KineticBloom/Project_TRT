@@ -29,8 +29,8 @@ public class DialogueRoot : MonoBehaviour
     /// </summary>
     private void OnInteract() {
         var positionOfBubble = transform.position + BubbleSpawnOffset + new Vector3(0,VerticalOffset,0);
-        
-        GameManager.DialogueManager.StartConversation(InkFile, "Test", PlayerAsset);
+
+        Debug.LogError("No longer supported.");
     }
 
     /// <summary>

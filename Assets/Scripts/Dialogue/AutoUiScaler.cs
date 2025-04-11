@@ -16,6 +16,10 @@ public class AutoUiScaler : MonoBehaviour {
         TMPro_EventManager.TEXT_CHANGED_EVENT.Add(ScaleToText);
     }
 
+    private void OnDisable() {
+        RectTransform.sizeDelta = new Vector2(Padding, Padding);
+    }
+
     /// <summary>
     /// Scale a Rect Transform to a text size.
     /// </summary>

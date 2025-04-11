@@ -1,3 +1,4 @@
+using Ink.UnityIntegration;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,7 +12,12 @@ public class NpcInteractable : Interactable
     public string BarterMessageWin;
     public string BarterMessageLose;
     public override void Interaction() {
+        Vector3 NPCWorldPosition = this.transform.position + IconLocalPosition;
+        Vector3 PlayerWorldPosition = GameManager.Player.DialogueSource.position;
+        GameManager.DialogueManager.StartDialogue(npcConversation, TriggerBarter, NPCWorldPosition, PlayerWorldPosition);
+    }
 
+    public void TriggerBarter() {
         BarteringController.TradeData tradeData = new BarteringController.TradeData();
 
         tradeData = new BarteringController.TradeData();

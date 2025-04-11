@@ -2,263 +2,334 @@ using Ink.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Processes Ink file and controls conversation flow.
 /// </summary>
-public class DialogueManager : MonoBehaviour 
-{
-    // Parameters =================================================================================
+public class DialogueManager : MonoBehaviour {
 
-    [Header("Dependencies")]
-    [SerializeField, Tooltip("The prefab for dialogue UI.")]
+    #region ======== [ OBJECT REFERENCES ] ========
+
+    public GameObject NPCDialogueBubblePrefab;
+    public GameObject PlayerDialogueBubblePrefab;
+
+    public System.Action EndCallback;
+
+    public float TypeSpeed;
+
+    #endregion
+
+    #region ======== [ PUBLIC PROPERTIES ] ========
+
+    public struct LineData {
+
+        public string GoalLine;
+        public int CharactersPrinted;
+
+        public bool SaidByNPC;
+        public bool TriggersBarter;
+        public bool LineHasChoices;
+        public List<Choice> Choices;
+
+    }
+
+    #endregion
+
+    #region ======== [ INTERNAL PROPERTIES ] ========
+
+    private SpeechBubbleCore NPCBubble;
+    private SpeechBubbleCore PlayerBubble;
+    private Canvas CurrentCanvas;
+    private Camera CurrentCamera;
+    private Story CurrentStory;
+    private bool InDialogue;
+    private SpeechBubbleCore CurrentBubble;
+    private LineData CurrentLineData;
+    private InGameUi InGameUi;
     private DialogueUiManager DialogueUiManager;
 
-    public struct ProcessedTags {
+    private bool LineFinished = true;
+    private bool _onDelay = false;
+    private bool _noInput = false;
 
-        public bool IsNpcTalking;
-        public bool IsBarterTrigger;
+    public delegate void CallBackBarterTrigger();
 
-        public ProcessedTags(bool isBarterTrigger = false, bool isNpcTalking = false) {
-            IsNpcTalking = isNpcTalking;
-            IsBarterTrigger = isBarterTrigger;
-        }
+    private CallBackBarterTrigger callBackBarterTrigger; // to store the function
+
+    #endregion
+
+    #region ======== [ PUBLIC METHODS ] ========
+
+    /// <summary>
+    /// Start Dialogue from given INK file
+    /// </summary>
+    /// <param name="DialogueINKFile"> Dialogue to display</param>
+    /// <param name="NPCWorldPosition"> Position for NPC Dialogue Bubble</param>
+    /// <param name="PlayerWorldPosition"> Position for Player Dialogue Bubble </param>
+    /// <param name="SkipToINKKnot"> INK Knot to jump too</param>
+    public void StartDialogue(TextAsset DialogueINKFile, CallBackBarterTrigger callBackBarterTrigger, Vector3 NPCWorldPosition, Vector3 PlayerWorldPosition, string SkipToINKKnot = "NONE") {
+
+        if (InDialogue) return;
+        if (_onDelay) return;
+        InDialogue = true;
+
+        bool FoundDependencies = SetupDependencies();
+        if (FoundDependencies == false) return;
+
+        this.callBackBarterTrigger = callBackBarterTrigger;
+
+        // Pause Game
+        InGameUi.MoveToDialogue();
+        TimeLoopManager.SetLoopPaused(true);
+
+        // Setup Systems
+        SetupUi(NPCWorldPosition, PlayerWorldPosition);
+        SetupDialogue(DialogueINKFile, SkipToINKKnot);
+
+        // Start next line
+        SetupNextLine();
     }
-    
-    // Messy code
-    public System.Action EndCallback; 
 
-    // Misc Internal Variables ====================================================================
+    /// <summary>
+    /// Used by inspector buttons to select a choice.
+    /// </summary>
+    /// <param name="ChoiceIndex">Index of the chosen choice.</param>
+    public void InspectorChooseChoice(int ChoiceIndex) {
+        CurrentStory.ChooseChoiceIndex(ChoiceIndex);
 
-    private bool _inConversation;
-    private bool _onDelay;
-    private Story _currentStory;
-    private InGameUi _uiController;
-
-    // Initializers and Update ================================================================
-
-    protected void Awake()
-    {
-        _inConversation = false;
-        _onDelay = false;
+        DialogueUiManager.HideButtons();
+        StartCoroutine(InputDelay());
+        SetupNextLine();
     }
 
-    private void Update()
-    {
+    #endregion
 
-        if (_inConversation == false) return;
+    #region ======== [ UPDATE ] ========
 
-        // Input ================================
+    private void Update() {
 
-        // Expedite dialogue AND Continue dialogue
+        if (InDialogue == false) return;
+        if (_onDelay) return;
+        if (_noInput) return;
+
+        // Check for inputs
         if (GameManager.PlayerInput.GetAffirmDown() || GameManager.PlayerInput.GetClickDown()) {
-            if (!DialogueUiManager.IsLineFinished()) {
-                DialogueUiManager.SkipLineAnimation();
+            if (LineFinished == false) {
+                SkipToEndOfLine();
             } else {
-                ShowNextLine();
+                if (EndStoryIfPossible()) {
+                    return;
+                }
+                SetupNextLine();
             }
             return;
         }
 
         // JUST expedite
         if (GameManager.PlayerInput.GetPrimaryTriggerDown()) {
-            DialogueUiManager.SkipLineAnimation();
+            SkipToEndOfLine();
             return;
         }
 
         // JUST continue
         if (GameManager.PlayerInput.GetSecondaryTriggerDown()) {
-            if (DialogueUiManager.IsLineFinished()) {
-                ShowNextLine();
+            if (LineFinished) {
+                if (EndStoryIfPossible()) {
+                    return;
+                }
+                SetupNextLine();
                 return;
             }
+
         }
     }
+    #endregion
 
-    // Public Utility Methods ====================================================================
+    #region ======== [ SETUP METHODS ] ========
 
     /// <summary>
-    /// Start a conversation using an Ink JSON file. 
+    /// Find InGameUi and DialogueUiManager in current scene.
     /// </summary>
-    /// <returns> True if conversation started successfully. </returns>
-    /// <param name="inkJson"> Ink file conversation will use. </param>
-    /// <param name="npcBubblePos"> Where we want a NPC speech bubble.</param>
-    public bool StartConversation(TextAsset inkJson, string NPCName, Sprite NPCProfilePic, string knot = "NONE")
-    {
-        if (_inConversation) return false;
-        if (_onDelay) return false;
+    /// <returns> True if dependencies found! False if not. </returns>
+    private bool SetupDependencies() {
+        InGameUi = GameManager.MasterCanvas.gameObject.GetComponent<InGameUi>();
+        if (InGameUi == null) return false;
 
-        // Lazy initialization.
-        if (_uiController == null) {
-            _uiController = GameManager.MasterCanvas.gameObject.GetComponent<InGameUi>();
-            // If it's still null, it couldn't be found.
-            if (_uiController == null) {
-                return false;
-            }
-        }
+        DialogueUiManager = InGameUi.DialogueUiManager;
+        if (DialogueUiManager == null) return false;
 
-        _uiController.MoveToDialogue();
-        DialogueUiManager = GameManager.MasterCanvas.gameObject.GetComponentInChildren<DialogueUiManager>();
-
-        _inConversation = true;
-        TimeLoopManager.SetLoopPaused(true);
-
-        // Create UI instance
-        SetupUi(NPCName,NPCProfilePic);
-
-        // Parse Ink File
-        _currentStory = new Story(inkJson.text);
-        
-        System.Action inkyVars = null;
-        
-        foreach (string id in _currentStory.variablesState)
-        {
-            inkyVars += () =>
-            {
-                _currentStory.variablesState[id] = GameManager.FlagTracker.CheckFlag(id);
-                _currentStory.ObserveVariable(id, (string varName, object newValue) => GameManager.FlagTracker.SetFlag(varName, (bool)newValue));
-            };
-        }
-        inkyVars?.Invoke();
-        inkyVars = null;
-        
-        if (knot != "NONE"){
-            _currentStory.ChoosePathString(knot);
-        }
-
-        // Show First Line
-        ShowNextLine();
         return true;
     }
 
     /// <summary>
-    /// Callback to show choices when text finishes displaying.
+    /// Create Dialogue Bubbles for NPC and Player.
     /// </summary>
-    public void ShowChoicesCallBack()
-    {
+    /// <param name="NPCWorldPosition">World position of NPC.</param>
+    /// <param name="PlayerWorldPosition">World position of Player.</param>
+    private void SetupUi(Vector3 NPCWorldPosition, Vector3 PlayerWorldPosition) {
 
-        if (DialogueUiManager == null) {
-            ThrowNullError("ShowChoicesCallBack()", "DialogueUiManager");
-        }
+        CurrentCanvas = GameManager.MasterCanvas;
+        CurrentCamera = Camera.main;
 
-        DialogueUiManager.ShowChoices(_currentStory.currentChoices);
-    }
+        Transform BubbleParent = DialogueUiManager.ParentForDialogueBubbles.transform;
 
-    // Private Helper Methods ====================================================================
+        // Create NPC Dialogue Bubble
+        Vector2 NPCViewportPosition = WorldPosToViewportPos(NPCWorldPosition, CurrentCanvas, CurrentCamera);
+        GameObject NPCBubbleObject = Instantiate(NPCDialogueBubblePrefab, NPCViewportPosition, Quaternion.identity, BubbleParent);
+        NPCBubble = NPCBubbleObject.GetComponent<SpeechBubbleCore>();
 
-    /// <summary>
-    /// Set up the dialogue UI in scene.
-    /// </summary>
-    void SetupUi(string npcName, Sprite image)
-    {
-
-        if (DialogueUiManager == null) {
-            ThrowNullError("SetupUi()", "instancedDialogueUiCanvas");
-        }
-
-        DialogueUiManager.gameObject.SetActive(true);
-        DialogueUiManager.SetupUi(npcName,image);
+        // Create Player Dialogue Bubble
+        Vector2 PlayerViewportPosition = WorldPosToViewportPos(PlayerWorldPosition, CurrentCanvas, CurrentCamera);
+        GameObject PlayerBubbleObject = Instantiate(PlayerDialogueBubblePrefab, PlayerViewportPosition, Quaternion.identity, BubbleParent);
+        PlayerBubble = PlayerBubbleObject.GetComponent<SpeechBubbleCore>();
     }
 
     /// <summary>
-    /// Processes player input and displays the next line.
+    /// Initalize story and parse Ink variables.
     /// </summary>
-    /// <param name="choiceIndex"></param>
-    public void ProcessDialogueChoice(int choiceIndex)
-    {
+    private void SetupDialogue(TextAsset DialogueINKFile, string SkipToINKKnot = "NONE") {
 
-        if (DialogueUiManager == null) {
-            ThrowNullError("ProcessDialogueChoice()", "dialougeUiManager");
+        // Create story
+        CurrentStory = new Story(DialogueINKFile.text);
+
+        // Skip to specific KNOT if wanted
+        if (SkipToINKKnot != "NONE") {
+            CurrentStory.ChoosePathString(SkipToINKKnot);
         }
-        if (_currentStory == null) {
-            ThrowNullError("ProcessDialogueChoice()", "story instance");
+
+        // Parse INK Variables
+        System.Action inkyVars = null;
+
+        foreach (string id in CurrentStory.variablesState) {
+            inkyVars += () => {
+                CurrentStory.variablesState[id] = GameManager.FlagTracker.CheckFlag(id);
+                CurrentStory.ObserveVariable(id, (string varName, object newValue) => GameManager.FlagTracker.SetFlag(varName, (bool)newValue));
+            };
         }
-       
-        _currentStory.ChooseChoiceIndex(choiceIndex);
-        DialogueUiManager.HideChoices();
-        ShowNextLine();
+        inkyVars?.Invoke();
+        inkyVars = null;
     }
 
     /// <summary>
-    /// Check if _currentStory is over.
+    /// Setup to print the next line of dialogue.
     /// </summary>
-    /// <returns> True if story is over. False otherwise. </returns>
-    bool AtEndOfStory()
-    {
-        if (_currentStory == null) {
-            Debug.LogError("Called AtEndOfStory() with no story initialized.");
-        }
+    private void SetupNextLine() {
 
-        bool canContinue = _currentStory.canContinue;
-        bool hasChoices = (_currentStory.currentChoices != null) && (_currentStory.currentChoices.Count != 0);
+        // Gates
+        if (CurrentStory == null) return;
+        if (EndStoryIfPossible()) return;
+        if (!CurrentStory.canContinue) return;
 
-        return (canContinue == false) && (hasChoices == false);
-    }
+        // Get next line
+        string NextLine = CurrentStory.Continue();
 
-    /// <summary>
-    /// Show next line of current conversation.
-    /// </summary>
-    /// <returns> True if a line was available, false otherwise.</returns>
-    void ShowNextLine()
-    {
+        // Get line data
+        CurrentLineData = ProcessTags(CurrentStory.currentTags);
+        CurrentLineData.GoalLine = NextLine;
 
-        // Precondition: Must have a story set
-        if (_currentStory == null) {
-            Debug.LogWarning("Called ShowNextLine() on empty story.");
+        // Trigger barter?
+        if (CurrentLineData.TriggersBarter) {
+            EndStory();
+            if (callBackBarterTrigger != null) {
+                callBackBarterTrigger();
+            }
             return;
         }
 
-        // Precondition: Has not reached end of story
-        if (AtEndOfStory()) {
-            EndStory(true);
-            return;
-        }
+        NPCBubble.gameObject.SetActive(false);
+        PlayerBubble.gameObject.SetActive(false);
 
-        // Precondition: Must be able to contine
-        if (_currentStory.canContinue == false) {
-            return;
-        }
-
-        // Get next line properties
-        string nextLine = _currentStory.Continue();
-        ProcessedTags foundTags = ProcessTags(_currentStory.currentTags);
-
-        // If choice was Action, skip the line.
-        if (foundTags.IsBarterTrigger) {
-            EndStory(false);
-
-
-            Debug.LogError("Currently no way to enter barter from Dialogue.");
-            //GameManager.NewBarterStarter.StartBarter();
-
-
-            return;
-        }
-
-        // Queue next line
-        bool lineHasChoices = _currentStory.currentChoices.Count > 0;
-        if (lineHasChoices) {
-            DialogueUiManager.DisplayLineOfText(nextLine, foundTags, ShowChoicesCallBack);
+        // Choose Bubble
+        if (CurrentLineData.SaidByNPC) {
+            CurrentBubble = NPCBubble;
         } else {
-            DialogueUiManager.DisplayLineOfText(nextLine, foundTags);
+            CurrentBubble = PlayerBubble;
         }
+
+        // Setup Line
+        CurrentBubble.TMPText.text = "";
+        CurrentBubble.gameObject.SetActive(true);
+        LineFinished = false;
+
+        StartCoroutine(PrintNextCharacter());
+    }
+
+    #endregion
+
+    #region ======== [ PRIVATE METHODS ] ========
+
+    /// <summary>
+    /// Take 3D world position and map it to 2D Camera viewport.
+    /// </summary>
+    /// <param name="WorldPos">Position to convert.</param>
+    /// <returns>Relative viewport position.</returns>
+    private Vector2 WorldPosToViewportPos(Vector3 WorldPos, Canvas CanvasToUse, Camera CameraToUse) {
+        Vector3 viewportPos = CameraToUse.WorldToViewportPoint(WorldPos);
+        Vector2 canvasResolution = CanvasToUse.GetComponent<CanvasScaler>().referenceResolution;
+        return new Vector2(viewportPos.x * canvasResolution.x, viewportPos.y * canvasResolution.y);
+    }
+
+    /// <summary>
+    /// End Story.
+    /// </summary>
+    private void EndStory() {
+
+        // Reset trackers
+        InDialogue = false;
+        CurrentStory = null;
+
+        // Destroy Dependencies
+        Destroy(NPCBubble.gameObject);
+        Destroy(PlayerBubble.gameObject);
+
+        // External Setup
+        TimeLoopManager.SetLoopPaused(false);
+        InGameUi.MoveToDefault();
+
+        // Start delay
+        _onDelay = true;
+        StartCoroutine(ConversationDelay());  
+    }
+
+    /// <summary>
+    /// Check if we can end the story.
+    /// </summary>
+    /// <returns>True if story can be ended. False if not.</returns>
+    private bool CanEndStory() {
+
+        bool CanContinue = CurrentStory.canContinue;
+        bool HasChoices = (CurrentStory.currentChoices != null) && (CurrentStory.currentChoices.Count != 0);
+
+        return (CanContinue == false) && (HasChoices == false);
+    }
+
+    /// <summary>
+    /// Tries to end story, if can will.
+    /// </summary>
+    /// <returns>True if story ended, false otherwise.</returns>
+    private bool EndStoryIfPossible() {
+        if (CanEndStory()) {
+            EndStory();
+            return true;
+        }
+        return false;
     }
 
     /// <summary>
     /// Convert ink tags to a ProcessedTag struct.
     /// </summary>
-    /// <param name="lineTags">Ink tags</param>
+    /// <param name="INKLineTags">Ink tags</param>
     /// <returns>Our new ProcessedTag struct.</returns>
-    ProcessedTags ProcessTags(List<string> lineTags)
-    {
+    LineData ProcessTags(List<string> INKLineTags) {
 
-        if (lineTags == null) {
-            ThrowNullError("ProcessTags()", "tag array");
+        LineData foundTags = new LineData();
+
+        if (INKLineTags == null) {
+            return foundTags;
         }
 
-        ProcessedTags foundTags = new ProcessedTags();
-
-        foreach (string tag in lineTags) {
+        foreach (string tag in INKLineTags) {
             // Get current tag key and value
             string[] tagSplit = tag.Split(":");
             string key = tagSplit[0];
@@ -268,49 +339,100 @@ public class DialogueManager : MonoBehaviour
             // Process Tag
             switch (key) {
                 case "npc":
-                    foundTags.IsNpcTalking = true;
+                    foundTags.SaidByNPC = true;
                     break;
                 case "barter":
-                    foundTags.IsBarterTrigger = true;
+                    foundTags.TriggersBarter = true;
                     break;
             }
         }
+
+        foundTags.LineHasChoices = CurrentStory.currentChoices.Count > 0;
+        foundTags.Choices = CurrentStory.currentChoices;
+        foundTags.CharactersPrinted = 0;
 
         return foundTags;
     }
 
     /// <summary>
-    /// Called to kill UI and prep for next dialogue.
+    /// Skip text animation and print full line.
     /// </summary>
-    /// <param name="backToDefault"> True if we want to enable player input after ending story. </param>
-    void EndStory(bool backToDefault)
-    {
-        _inConversation = false;
-        _currentStory = null;
+    private void SkipToEndOfLine() {
+        StopCoroutine(PrintNextCharacter());
+        CurrentBubble.TMPText.text = CurrentLineData.GoalLine;
+        CurrentLineData.CharactersPrinted = CurrentLineData.GoalLine.Length-1;
+        LineFinished = true;
 
-        TimeLoopManager.SetLoopPaused(false);
-
-        DialogueUiManager.Reset();
-        DialogueUiManager.gameObject.SetActive(false);
-
-        if (backToDefault) {
-            _uiController.MoveToDefault();
+        if (CurrentLineData.LineHasChoices) {
+            DialogueUiManager.ShowButtons(CurrentLineData.Choices);
         }
-        
-        _onDelay = true;
-        StartCoroutine(ConversationDelay());
     }
 
-    void ThrowNullError(string functionOrigin, string whatWasNull)
-    {
-        Debug.LogError("Called " + functionOrigin + " with a null " + whatWasNull + ".");
+    /// <summary>
+    /// Print next character in line.
+    /// </summary>
+    IEnumerator PrintNextCharacter() {
+
+        // Find current char
+        int TextLength = CurrentLineData.GoalLine.Length;
+        int CharactersPrinted = CurrentLineData.CharactersPrinted;
+        int NextCharacterIndex = Mathf.Clamp(CharactersPrinted, 0, TextLength - 1);
+
+        char NextCharacter = CurrentLineData.GoalLine[NextCharacterIndex];
+
+        // Wait for correct length
+        float ActualTextSpeed = TypeSpeed;
+
+        if (NextCharacter == '.') {
+            ActualTextSpeed *= 5;
+        }
+
+        yield return new WaitForSeconds(ActualTextSpeed);
+
+        // Play sound every other character or if a punctuation
+        if (NextCharacter == '.' || CharactersPrinted % 2 == 0) {
+            //playTalkSound(currentCharacter);
+        }
+
+        if (CurrentLineData.CharactersPrinted > CharactersPrinted) {
+            yield break;
+        }
+
+        CurrentBubble.TMPText.text += NextCharacter;
+        CurrentLineData.CharactersPrinted += 1;
+
+        if (CurrentLineData.CharactersPrinted >= TextLength) {
+
+            // Stop printing!
+            if (CurrentLineData.LineHasChoices) {
+                DialogueUiManager.ShowButtons(CurrentLineData.Choices);
+            }
+            LineFinished = true;
+
+        } else {
+            StartCoroutine(PrintNextCharacter());
+        }
     }
 
-    // Delay to prevent ghost inputs, convo ends and starts right again.
-    IEnumerator ConversationDelay()
-    {
+    /// <summary>
+    /// Delay Input to prevent Input Ghosting
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator InputDelay() {
+        _noInput = true;
+        yield return 0;
+        _noInput = false;
+    }
+
+    /// <summary>
+    /// Delay Conversation for Input Ghosting
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator ConversationDelay() {
         yield return new WaitForSeconds(0.25f);
         _onDelay = false;
         EndCallback?.Invoke(); // Messy code
     }
+
+    #endregion
 }

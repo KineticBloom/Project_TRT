@@ -91,7 +91,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99d535c4894ae9647a4e59cf79b2364b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DialogueUiManager: {fileID: 0}
+  NPCDialogueBubblePrefab: {fileID: 430830326460437228, guid: b105e740f75216a41b8b285d747c88c0,
+    type: 3}
+  PlayerDialogueBubblePrefab: {fileID: 926627658913187773, guid: aa19b91a58e07f249a5597a7975c7f30,
+    type: 3}
+  TypeSpeed: 0.025
 --- !u!114 &7739117665189127466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,9 +109,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllCardDatas: {fileID: 11400000, guid: 58d27677f93c1024cb2b3939c3a987cf, type: 2}
-  AllCards: []
   StartingCards:
   - {fileID: 11400000, guid: ad8e6a92f388f7b499a3c6f6cb32d9bf, type: 2}
+  - {fileID: 11400000, guid: b3f6500aede711c489da950e7409d09b, type: 2}
+  - {fileID: 11400000, guid: b3f6500aede711c489da950e7409d09b, type: 2}
+  - {fileID: 11400000, guid: b3f6500aede711c489da950e7409d09b, type: 2}
   - {fileID: 11400000, guid: b3f6500aede711c489da950e7409d09b, type: 2}
   Cards: []
   inventoryLastUpdateTime: 0

@@ -9,15 +9,23 @@ public class AutoUiScaler : MonoBehaviour {
 
     private bool _readyToRescale = false;
     private TMP_TextInfo _info;
+    private float lastHeight = 0;
+    private Vector3 StartPos = Vector3.zero;
 
     // Start is called before the first frame update
     void Start() {
         _info = TextForScale.textInfo;
         TMPro_EventManager.TEXT_CHANGED_EVENT.Add(ScaleToText);
+        StartPos = RectTransform.transform.localPosition;
     }
 
     private void OnDisable() {
         RectTransform.sizeDelta = new Vector2(Padding, Padding);
+        lastHeight = 0;
+
+        if (StartPos != Vector3.zero) {
+            RectTransform.transform.localPosition = StartPos;
+        }
     }
 
     /// <summary>
@@ -39,16 +47,17 @@ public class AutoUiScaler : MonoBehaviour {
         float textActualWidth = TextForScale.renderedWidth;
         float textHeight = TextForScale.renderedHeight;
 
-        if (textWidth >= 1) {
-            // Debug.Log(textWidth);
-            if (textWidth > LineLength) {
-                RectTransform.sizeDelta = new Vector2(textActualWidth + Padding, textHeight + Padding);
-            } else {
-                RectTransform.sizeDelta = new Vector2(textActualWidth + Padding, RectTransform.sizeDelta.y);
-            }
+        if (lastHeight == 0) {
+            lastHeight = textHeight + Padding;
         }
-       /* if (textHeight >= 1) {
-            // RectTransform.sizeDelta = new Vector2(RectTransform.sizeDelta.x, textHeight + Padding);
-        }*/
+
+        if (Mathf.Floor(textHeight + Padding) > Mathf.Floor(lastHeight)) {
+            RectTransform.transform.localPosition += Vector3.up * ((textHeight + Padding) - lastHeight);
+            lastHeight = textHeight + Padding;
+        }
+
+        if (textWidth >= 1) {
+            RectTransform.sizeDelta = new Vector2(textActualWidth + Padding, textHeight + Padding);
+        }
     }
 }

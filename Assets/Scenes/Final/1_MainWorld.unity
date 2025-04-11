@@ -23168,6 +23168,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2890816136378274803, guid: 142379524301d744ca9ed258108220b9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 907.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211983832287345378, guid: 142379524301d744ca9ed258108220b9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4066739618634666336, guid: 142379524301d744ca9ed258108220b9,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -23177,6 +23187,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: InGameCanvasMaster
+      objectReference: {fileID: 0}
+    - target: {fileID: 6506440991166276602, guid: 142379524301d744ca9ed258108220b9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9106350191481724383, guid: 142379524301d744ca9ed258108220b9,
         type: 3}
@@ -66853,90 +66868,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1001 &1392792228
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3029290884588017034, guid: a1e8236aa5b37e845b9e4425624f86a0,
-        type: 3}
-      propertyPath: m_Name
-      value: Mail Bot Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 3945093183670190469, guid: a1e8236aa5b37e845b9e4425624f86a0,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.4419317
-      objectReference: {fileID: 0}
-    - target: {fileID: 3945093183670190469, guid: a1e8236aa5b37e845b9e4425624f86a0,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.00000047683716
-      objectReference: {fileID: 0}
-    - target: {fileID: 3945093183670190469, guid: a1e8236aa5b37e845b9e4425624f86a0,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.5381632
-      objectReference: {fileID: 0}
-    - target: {fileID: 3945093183670190469, guid: a1e8236aa5b37e845b9e4425624f86a0,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3945093183670190469, guid: a1e8236aa5b37e845b9e4425624f86a0,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3945093183670190469, guid: a1e8236aa5b37e845b9e4425624f86a0,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3945093183670190469, guid: a1e8236aa5b37e845b9e4425624f86a0,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3945093183670190469, guid: a1e8236aa5b37e845b9e4425624f86a0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3945093183670190469, guid: a1e8236aa5b37e845b9e4425624f86a0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3945093183670190469, guid: a1e8236aa5b37e845b9e4425624f86a0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4965219030335681704, guid: a1e8236aa5b37e845b9e4425624f86a0,
-        type: 3}
-      propertyPath: ItemForOffer
-      value: 
-      objectReference: {fileID: 11400000, guid: ad8e6a92f388f7b499a3c6f6cb32d9bf,
-        type: 2}
-    - target: {fileID: 4965219030335681704, guid: a1e8236aa5b37e845b9e4425624f86a0,
-        type: 3}
-      propertyPath: BarterMessageWin
-      value: Good Mail Day.
-      objectReference: {fileID: 0}
-    - target: {fileID: 4965219030335681704, guid: a1e8236aa5b37e845b9e4425624f86a0,
-        type: 3}
-      propertyPath: BarterMessageLose
-      value: BAD MAIL DAY.
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a1e8236aa5b37e845b9e4425624f86a0, type: 3}
 --- !u!1001 &1401167749
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -99768,11 +99699,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 2334186633066417863, guid: 76f0a3d94b899314aa9ebeb3bfc714a4,
+    - target: {fileID: 7739117665189127466, guid: 76f0a3d94b899314aa9ebeb3bfc714a4,
         type: 3}
-      propertyPath: TypeSpeed
-      value: 0.025
+      propertyPath: StartingCards.Array.size
+      value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7739117665189127466, guid: 76f0a3d94b899314aa9ebeb3bfc714a4,
+        type: 3}
+      propertyPath: StartingCards.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: b3f6500aede711c489da950e7409d09b,
+        type: 2}
+    - target: {fileID: 7739117665189127466, guid: 76f0a3d94b899314aa9ebeb3bfc714a4,
+        type: 3}
+      propertyPath: StartingCards.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: b3f6500aede711c489da950e7409d09b,
+        type: 2}
+    - target: {fileID: 7739117665189127466, guid: 76f0a3d94b899314aa9ebeb3bfc714a4,
+        type: 3}
+      propertyPath: StartingCards.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: b3f6500aede711c489da950e7409d09b,
+        type: 2}
     - target: {fileID: 8480042010274908795, guid: 76f0a3d94b899314aa9ebeb3bfc714a4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -99910,7 +99859,7 @@ MonoBehaviour:
   UseTransform: 0
   IconTransformPosition: {fileID: 0}
   IconLocalPosition: {x: 0, y: 4.5, z: 0}
-  npcConversation: {fileID: 4900000, guid: 3ef11f047d6c3b54aba69c65ae5233d0, type: 3}
+  npcConversation: {fileID: 0}
   NpcData: {fileID: 11400000, guid: b55b06de653d0954492e3852e7595ca2, type: 2}
   ItemForOffer: {fileID: 11400000, guid: 081c2b4ca1f4c724e9f3ae2ecedc03c3, type: 2}
   BarterMessageWin: Nice
@@ -100079,4 +100028,3 @@ SceneRoots:
   - {fileID: 761488746}
   - {fileID: 569091552}
   - {fileID: 6120732573010936226}
-  - {fileID: 1392792228}

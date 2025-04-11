@@ -15,7 +15,6 @@ public class DialogueManager : MonoBehaviour {
 
     public GameObject NPCDialogueBubblePrefab;
     public GameObject PlayerDialogueBubblePrefab;
-    public GameObject TestDot;
 
     public System.Action EndCallback;
 
@@ -227,13 +226,11 @@ public class DialogueManager : MonoBehaviour {
         Vector2 NPCViewportPosition = WorldPosToViewportPos(NPCWorldPosition, CurrentCanvas, CurrentCamera);
         GameObject NPCBubbleObject = Instantiate(NPCDialogueBubblePrefab, NPCViewportPosition, Quaternion.identity, BubbleParent);
         NPCBubble = NPCBubbleObject.GetComponent<SpeechBubbleCore>();
-        Instantiate(TestDot, NPCViewportPosition, Quaternion.identity, BubbleParent);
 
         // Create Player Dialogue Bubble
         Vector2 PlayerViewportPosition = WorldPosToViewportPos(PlayerWorldPosition, CurrentCanvas, CurrentCamera);
         GameObject PlayerBubbleObject = Instantiate(PlayerDialogueBubblePrefab, PlayerViewportPosition, Quaternion.identity, BubbleParent);
         PlayerBubble = PlayerBubbleObject.GetComponent<SpeechBubbleCore>();
-        Instantiate(TestDot, PlayerViewportPosition, Quaternion.identity, BubbleParent);
     }
 
     /// <summary>

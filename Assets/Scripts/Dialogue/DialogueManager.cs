@@ -346,6 +346,8 @@ public class DialogueManager : MonoBehaviour {
     /// <returns>True if story can be ended. False if not.</returns>
     private bool CanEndStory() {
 
+        if(CurrentStory == null) { return false; }
+
         bool CanContinue = CurrentStory.canContinue;
         bool HasChoices = (CurrentStory.currentChoices != null) && (CurrentStory.currentChoices.Count != 0);
 

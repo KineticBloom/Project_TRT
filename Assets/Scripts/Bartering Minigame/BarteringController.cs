@@ -322,12 +322,10 @@ public class BarteringController : MonoBehaviour {
     /// <param name="isInteractable"></param>
     private void SetInteractable(bool isInteractable)
     {
-        Debug.Log($"SetInteractable {isInteractable}");
-
-        PlayerOfferSlotOne.CurrentActiveButton.interactable = isInteractable;
-        PlayerOfferSlotTwo.CurrentActiveButton.interactable= isInteractable;
-        PlayerOfferSlotThree.CurrentActiveButton.interactable = isInteractable;
-        PlayerOfferSlotFour.CurrentActiveButton.interactable = isInteractable;
+        PlayerOfferSlotOne.SetInteractable(isInteractable);
+        PlayerOfferSlotTwo.SetInteractable(isInteractable);
+        PlayerOfferSlotThree.SetInteractable(isInteractable);
+        PlayerOfferSlotFour.SetInteractable(isInteractable);
 
         OfferTradeButton.interactable = isInteractable;
         InventoryGrid.SetSlotsInteractable(isInteractable);

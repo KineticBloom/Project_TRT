@@ -213,7 +213,6 @@ public class SearchForItems : IAction
     {
         foreach (InventoryCardData searchedItem in Items)
         {
-            Debug.Log($"A: {searchedItem.ID}\nB: {item.ID}");
             // Checking for matching Card Names since the same items can have different ScriptableObjects
             if (searchedItem.IsSame(item))
             {

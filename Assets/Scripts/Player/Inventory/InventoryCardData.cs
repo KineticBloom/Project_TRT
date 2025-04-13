@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,12 +10,19 @@ public class InventoryCardData : ScriptableObject
 {
     public string CardName;
 
-    public CardTypes Type;
-
     public string ID;
     public string Description;
     public Sprite Sprite;
-    public string StartingLocation;
+    public int BaseValue;
 
-    public List<ContextOriginPair> ContextData = new List<ContextOriginPair>();
+    [SerializeField, ReadOnly]
+    private int _currentValue = 0;
+
+    public int CurrentValue => _currentValue;
+    public void SetCurrentValue(int value) => _currentValue = value;
+
+    private void OnEnable()
+    {
+        _currentValue = BaseValue;
+    }
 }

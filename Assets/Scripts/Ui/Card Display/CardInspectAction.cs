@@ -6,7 +6,7 @@ public class CardInspectAction : InventoryAction {
 
     public InventoryCardObject InspectCard;
 
-    bool inspecting = false;
+    public bool inspecting = false;
     InventoryCardData currentData = null;
 
     private void Start() {
@@ -31,7 +31,7 @@ public class CardInspectAction : InventoryAction {
             inspecting = true;
             currentData = context.cardData;
             InspectCard.gameObject.SetActive(true);
-            InspectCard.SetData(currentData);
+            InspectCard.SetData(currentData,true);
         }
     }
 

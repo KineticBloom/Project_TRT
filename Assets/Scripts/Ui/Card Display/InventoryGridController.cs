@@ -12,9 +12,10 @@ public class InventoryGridController : MonoBehaviour
     #region ======== [ PUBLIC PROPERTIES ] ========
 
     [Header("Settings")]
-    public GameEnums.CardTypes TypeToDisplay;
+    public bool UseSmallSize;
     public int InventorySize = 10;
     public bool SetDefaultSelectionOnEnable = false;
+    public bool Interactable = true;
 
     [Header("Click Action")]
     public InventoryAction OnInventoryItemClick = null;
@@ -42,9 +43,7 @@ public class InventoryGridController : MonoBehaviour
     #region ======== [ INIT METHODS ] ========
     private void OnEnable() {
 
-        if (_createdInventory == false) {
-            StartCoroutine("DelayInit");
-        }
+        StartCoroutine("DelayInit");
 
         if (_createdInventory && IsUpdateNeeded()) {
             PopulateGrid();
@@ -52,12 +51,28 @@ public class InventoryGridController : MonoBehaviour
 
         // Set default selection
         if(SetDefaultSelectionOnEnable && _inventoryInstances.Count > 0) {
-            _inventoryInstances[0].GetComponent<Button>().Select();
+            _inventoryInstances[0].CurrentActiveButton.Select();
         }
     }
 
     private void OnDisable() {
         GameManager.Inventory.OnInventoryUpdated -= PopulateGrid;
+    }
+
+    #endregion
+
+    #region ======== [ PUBLIC METHODS ] ========
+
+    /// <summary>
+    /// Sets all of the slots in _inventoryInstances interactable or not
+    /// </summary>
+    /// <param name="isInteractable"></param>
+    public void SetSlotsInteractable(bool isInteractable)
+    {
+        foreach (InventoryCardObject x in _inventoryInstances)
+        {
+            x.SetInteractable(isInteractable);
+        }
     }
 
     #endregion
@@ -71,12 +86,16 @@ public class InventoryGridController : MonoBehaviour
     private IEnumerator DelayInit() {
         yield return new WaitForSeconds(0.01f);
         GameManager.Inventory.OnInventoryUpdated += PopulateGrid;
-        _createdInventory = true;
-        CreateInventory();
+
+        if (!_createdInventory)
+        {
+            _createdInventory = true;
+            CreateInventory();
+        }
 
         // Set default selection
         if (SetDefaultSelectionOnEnable && _inventoryInstances.Count > 0) {
-            _inventoryInstances[0].GetComponent<Button>().Select();
+            _inventoryInstances[0].CurrentActiveButton.Select();
         }
     }
 
@@ -102,7 +121,7 @@ public class InventoryGridController : MonoBehaviour
             InventoryCardObject newInventoryItem = NewInventoryItem();
 
             // Init data
-            newInventoryItem.InitalizeToGrid(i, InventoryUiAutoScroller, OnInventoryItemClick);
+            newInventoryItem.InitalizeToGrid(i, InventoryUiAutoScroller, OnInventoryItemClick, UseSmallSize);
 
             // Add to instance list
             _inventoryInstances.Add(newInventoryItem);
@@ -125,27 +144,24 @@ public class InventoryGridController : MonoBehaviour
     /// Display inventory data in UI grid.
     /// </summary>
     private void PopulateGrid() {
-
         // Clear current data
         foreach (InventoryCardObject x in _inventoryInstances) {
-            x.SetCardToEmpty();
+            x.SetCardToEmpty(UseSmallSize);
         }
 
         int indexTracker = 0;
 
         // Get Data
-        List<InventoryCardData> dataForAllCards = GameManager.Inventory.GetDatas();
+        List<InventoryCardData> dataForAllCards = GameManager.Inventory.Get();
 
         foreach (InventoryCardData card in dataForAllCards) {
-
-            if (card.Type != TypeToDisplay) continue;
-
             InventoryCardObject currentInventoryItem = _inventoryInstances[indexTracker];
 
             currentInventoryItem.SetData(card);
 
-            indexTracker += 1;
+            SetSlotsInteractable(Interactable);
 
+            indexTracker += 1;
         }
 
         // Mark update time

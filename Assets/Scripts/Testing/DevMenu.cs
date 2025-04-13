@@ -6,7 +6,6 @@ public class DevMenu : Singleton<DevMenu> {
 
     private float _initalTimescale = 0;
     private bool _devOn = false;
-    private UiInputHandler _input => GameManager.UiInput;
     
     private void Start()
     {
@@ -16,9 +15,9 @@ public class DevMenu : Singleton<DevMenu> {
     // Update is called once per frame
     void Update()
     {
-        if (_input == null) { return; }
-        else if (_input.GetDebugDown() && _input.GetProgressDialogueDown()) {ResetGame();}
-        else if (_input.GetDebugDown()) { ToggleDevMenu(); }
+        if (GameManager.PlayerInput == null) return;
+        else if (GameManager.PlayerInput.GetDebug0Down()) ToggleDevMenu();
+        else if (GameManager.PlayerInput.GetDebug1Down()) ResetGame();
     }
     
     void ToggleDevMenu() 
@@ -81,6 +80,18 @@ public class DevMenu : Singleton<DevMenu> {
             GameManager.Inventory.Clear();
         }
         SceneManager.LoadScene(0);
+    }
+    
+    public void GiveAllItems()
+    {
+        if (GameManager.Inventory != null)
+        {
+            foreach (InventoryCardData data in GameManager.Inventory.AllCardDatas.datas)
+            {
+                if (GameManager.Inventory.HasCard(data)) continue;
+                GameManager.Inventory.AddCard(data);
+            }
+        }
     }
     #endregion
 }

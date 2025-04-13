@@ -33,7 +33,7 @@ public class InventoryCanvas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _inventoryCardScriptableObjects = GameManager.Inventory.GetDatas();
+        _inventoryCardScriptableObjects = GameManager.Inventory.Get();
     }
 
     /// <summary>
@@ -62,7 +62,7 @@ public class InventoryCanvas : MonoBehaviour
 
     private void UpdateUI()
     {
-        _inventoryCardScriptableObjects = GameManager.Inventory.GetDatas();
+        _inventoryCardScriptableObjects = GameManager.Inventory.Get();
         UpdateCardGameObjects();
     }
 
@@ -76,7 +76,7 @@ public class InventoryCanvas : MonoBehaviour
 
         GameManager.Inventory.OnInventoryUpdated -= UpdateUI;
         GameManager.Inventory.OnInventoryUpdated += UpdateUI;
-        _inventoryCardScriptableObjects = GameManager.Inventory.GetDatas();
+        _inventoryCardScriptableObjects = GameManager.Inventory.Get();
 
         UpdateUI();
     }

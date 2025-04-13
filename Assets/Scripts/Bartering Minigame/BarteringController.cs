@@ -49,7 +49,6 @@ public class BarteringController : MonoBehaviour {
     private bool _wonBarter = false;
     private InventoryCardObject _currentButtonObject;
     private OfferedItems _offeredItems;
-    private int _allowedAttempts = -1; // TODO Set from NPCData
 
     #endregion
 
@@ -88,9 +87,11 @@ public class BarteringController : MonoBehaviour {
         NPCProfilePicture.sprite = _currentTradeInformation.NPCData.Icon;
 
         // Activate Pre-Barter Effect Cards
-        ActivateEffectCards(true);
+        ActivateEffectCards(EffectCardData.ActivationTime.BeforeOffer);
 
         SetInteractable(true);
+
+        UpdateVisuals();
     }
 
     #endregion
@@ -159,7 +160,7 @@ public class BarteringController : MonoBehaviour {
 
         SetInteractable(false);
 
-        ActivateEffectCards(false);
+        ActivateEffectCards(EffectCardData.ActivationTime.AfterOffer);
 
         float NPCItemValue = _currentTradeInformation.ItemOnOffer.BaseValue;
 
@@ -179,10 +180,11 @@ public class BarteringController : MonoBehaviour {
 
 
             // If you run out of attempts, the barter is exited
-            if (_allowedAttempts > 0)
+            var barterAttempts = _currentTradeInformation.NPCData.BarterAttempts;
+            if (_currentTradeInformation.NPCData.BarterAttempts > 0)
             {
-                _allowedAttempts--;
-            } else if (_allowedAttempts == 0)
+                barterAttempts--;
+            } else if (barterAttempts == 0)
             {
                 StartCoroutine(LeaveBarterScene());
                 return;
@@ -201,9 +203,25 @@ public class BarteringController : MonoBehaviour {
     /// Activates Effect Cards
     /// </summary>
     /// <param name="isPreBarter">which stage of the barter are we in for activating the effect cards?</param>
-    private void ActivateEffectCards(bool isPreBarter)
+    private void ActivateEffectCards(EffectCardData.ActivationTime activationTime)
     {
-        // TODO: Activate the Effect Cards
+        List<EffectCardData> effectCards = _currentTradeInformation.NPCData.EffectCards;
+        List<EffectCardData> activeEffectCards = new List<EffectCardData>();
+
+        foreach (EffectCardData effectCard in effectCards)
+        {
+            if (effectCard.DoesActivate(_offeredItems, activationTime))
+            {
+                activeEffectCards.Add(effectCard);
+            }
+        }
+
+        foreach (EffectCardData effectCard in activeEffectCards)
+        {
+            effectCard.Activate(_offeredItems);
+        }
+
+        UpdateVisuals();
     }
 
     private void UpdateVisuals() {
@@ -304,6 +322,8 @@ public class BarteringController : MonoBehaviour {
     /// <param name="isInteractable"></param>
     private void SetInteractable(bool isInteractable)
     {
+        Debug.Log($"SetInteractable {isInteractable}");
+
         PlayerOfferSlotOne.CurrentActiveButton.interactable = isInteractable;
         PlayerOfferSlotTwo.CurrentActiveButton.interactable= isInteractable;
         PlayerOfferSlotThree.CurrentActiveButton.interactable = isInteractable;

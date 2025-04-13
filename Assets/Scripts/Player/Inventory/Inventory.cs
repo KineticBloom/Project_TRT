@@ -88,8 +88,9 @@ public class Inventory : MonoBehaviour
         // Find card in AllCards and add it to the current inventory
         InventoryCardData newCard = null;
         foreach (InventoryCardData possibleNewCard in AllCardDatas.datas) {
-            if (possibleNewCard == card) {
-                newCard = possibleNewCard;
+            if (possibleNewCard.IsSame(card)) {
+                // Makes it a copy if the given card is from AllCard
+                newCard = card == possibleNewCard ? Instantiate(possibleNewCard) : card;
                 break;
             }
         }

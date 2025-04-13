@@ -2,18 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using MackySoft.SerializeReferenceExtensions;
 
+[CreateAssetMenu(fileName = "New EffectCardData", menuName = "ScriptableObjects/EffectCardData"), System.Serializable]
 public class EffectCardData : ScriptableObject
 {
-    public string Description;
-    
-    public List<Action> Actions = new List<Action>();
+    public enum ActivationTime { BeforeOffer, AfterOffer }
 
-    public bool DoesActivate(BarteringController barteringController)
+    [Header("Details")]
+    [SerializeField, Tooltip("Icon that displays on the effect card")]
+    public Texture2D Icon;
+    [SerializeField, Tooltip("Description of what the effect card does")]
+    public string Description;
+
+
+    [Header("Bartering Parameters")]
+    [SerializeField, Tooltip("When the Effect Card is activated.")]
+    private ActivationTime activationTime;
+
+    [SerializeReference, SubclassSelector]
+    public List<IAction> Actions = new List<IAction>();
+
+    private bool _revealed = false;
+
+
+    /// <summary>
+    /// Checks whether the card can activate or not
+    /// </summary>
+    /// <param name="barteringController">The bartering controller to get info from</param>
+    /// <param name="activationTime">When the activation is being attempted</param>
+    /// <returns>Whether a boolean of whether </returns>
+    public bool DoesActivate(OfferedItems offeredItems, ActivationTime activationTime)
     {
-        foreach (Action action in Actions)
+        if (this.activationTime != activationTime) return false;
+
+        foreach (IAction action in Actions)
         {
-            if (action.DoesActivate(barteringController))
+            if (action == null) continue;
+
+            if (action.CanActivate(offeredItems))
             {
                 return true;
             }
@@ -22,57 +49,222 @@ public class EffectCardData : ScriptableObject
         return false;
     }
 
-    public void Activate(BarteringController barteringController)
+
+    /// <summary>
+    /// Activates the effect card
+    /// </summary>
+    /// <param name="barteringController">The bartering controller to modify info on</param>
+    public void Activate(OfferedItems offeredItems)
     {
-        foreach (Action action in Actions)
+        foreach (IAction action in Actions)
         {
-            if (action.DoesActivate(barteringController))
+            if (action == null) continue;
+
+            if (action.CanActivate(offeredItems))
             {
-                action.Activate(barteringController);
+                action.Activate(offeredItems);
             }
         }
     }
+
+
+    /// <summary>
+    /// Reveal the card if not revealed already
+    /// </summary>
+    /// <param name="activationTime"></param>
+    public void Reveal()
+    {
+        if (_revealed) return;
+
+        // TODO: Animate the Reveal
+        _revealed = true;
+    }
 }
 
 
-public interface Action
+#region ======== [ IActions ] ========
+
+public interface IAction
 {
-    public bool DoesActivate(BarteringController barteringController);
-    public void Activate(BarteringController barteringController);
+    public bool CanActivate(OfferedItems offeredItems);
+
+    public void Activate(OfferedItems offeredItems);
 }
 
 
-public class MultiplyValueBasedOnTags : Action
+[System.Serializable]
+public class SearchForTags : IAction
 {
-    // public List<Tag> Tags;
+    [Tooltip("List of Tags that the action will search for and affect")]
+    public List<string> Tags;
+
+    [SerializeReference, SubclassSelector]
+    [Tooltip("List of item actions that determine the effect of the found items")]
+    public List<IItemAction> ItemAction;
+
+    private List<InventoryCardData> _matchingItems = new List<InventoryCardData>();
+
+
+    /// <summary>
+    /// Returns whether the an offered items has one of the tags
+    /// </summary>
+    public bool CanActivate(OfferedItems offeredItems)
+    {
+        _matchingItems.Clear();
+
+        foreach (InventoryCardData item in offeredItems.Items)
+        {
+            if (HasAMatchingTag(item.Tags))
+            {
+                _matchingItems.Add(item);
+            }
+        }
+        return _matchingItems.Count > 0;
+    }
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="offeredItems">Set of player's offered items to be modified</param>
+    public void Activate(OfferedItems offeredItems)
+    {
+        foreach (IItemAction action in ItemAction)
+        {
+            foreach (InventoryCardData item in _matchingItems)
+            {
+                action.Activate(item);
+            }
+        }
+    }
+
+
+    /// <summary>
+    /// See if any of the tags matches this class' tags
+    /// </summary>
+    private bool HasAMatchingTag(List<string> itemTags)
+    {
+        foreach (string tag in Tags)
+        {
+            foreach (string itemTag in itemTags)
+            {
+                if (itemTag.ToLower().Equals(tag.ToLower()))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+
+
+[System.Serializable]
+public class SearchForItems : IAction
+{
+    [Tooltip("List of Items that the action will search for and affect")]
+    public List<InventoryCardData> Items;
+
+    [SerializeReference, SubclassSelector]
+    [Tooltip("List of item actions that determine the effect of the found items")]
+    public List<IItemAction> ItemAction;
+
+    private List<InventoryCardData> _matchingItems = new List<InventoryCardData>();
+
+
+    /// <summary>
+    /// Returns whether the an offered items has one of the tags
+    /// </summary>
+    public bool CanActivate(OfferedItems offeredItems)
+    {
+        _matchingItems.Clear();
+
+        foreach (InventoryCardData item in offeredItems.Items)
+        {
+            if (IsMatchingItem(item))
+            {
+                _matchingItems.Add(item);
+            }
+        }
+        return _matchingItems.Count > 0;
+    }
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="offeredItems">Set of player's offered items to be modified</param>
+    public void Activate(OfferedItems offeredItems)
+    {
+        foreach (IItemAction action in ItemAction)
+        {
+            foreach (InventoryCardData item in _matchingItems)
+            {
+                action.Activate(item);
+            }
+        }
+    }
+
+
+    /// <summary>
+    /// See if any of the tags matches this class' tags
+    /// </summary>
+    private bool IsMatchingItem(InventoryCardData item)
+    {
+        foreach (InventoryCardData searchedItem in Items)
+        {
+            Debug.Log($"A: {searchedItem.ID}\nB: {item.ID}");
+            // Checking for matching Card Names since the same items can have different ScriptableObjects
+            if (searchedItem.IsSame(item))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+#endregion
+
+
+#region ======== [ IItemActions ] ========
+public interface IItemAction
+{
+    public void Activate(InventoryCardData item);
+}
+
+
+[System.Serializable]
+public class MultiplyValue : IItemAction
+{
+    [Tooltip("The multiplier being applied to items")]
     public float ValueMultiplier = 1f;
 
-    public bool DoesActivate(BarteringController barteringController)
-    {
-        // for every items in the barter, if it is a 
-        return true;
-    }
 
-    public void Activate(BarteringController barteringController)
+    /// <summary>
+    /// Multiplies the Current Value of an item
+    /// </summary>
+    public void Activate(InventoryCardData item)
     {
-
+        item.SetCurrentValue(Mathf.RoundToInt(item.CurrentValue * ValueMultiplier));
     }
 }
 
 
-public class AddValueBasedOnTags : Action
+[System.Serializable]
+public class AddValue : IItemAction
 {
-    // public List<Tag> Tags;
-    public float ValueAddend = 0f;
+    [Tooltip("The addend being applied to the items")]
+    public int ValueAddend = 0;
 
-    public bool DoesActivate(BarteringController barteringController)
+
+    /// <summary>
+    /// Adds the Current Value of an item
+    /// </summary>
+    public void Activate(InventoryCardData item)
     {
-        // for every items in the barter, if it is a 
-        return true;
-    }
-
-    public void Activate(BarteringController barteringController)
-    {
-
+        item.SetCurrentValue(item.CurrentValue + ValueAddend);
     }
 }
+
+#endregion

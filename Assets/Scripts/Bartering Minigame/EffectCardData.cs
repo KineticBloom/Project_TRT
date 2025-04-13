@@ -7,6 +7,8 @@ using MackySoft.SerializeReferenceExtensions;
 [CreateAssetMenu(fileName = "New EffectCardData", menuName = "ScriptableObjects/EffectCardData"), System.Serializable]
 public class EffectCardData : ScriptableObject
 {
+    #region ======== [ PUBLIC VARIABLES ] ========
+
     public enum ActivationTime { BeforeOffer, AfterOffer }
 
     [Header("Details")]
@@ -23,8 +25,16 @@ public class EffectCardData : ScriptableObject
     [SerializeReference, SubclassSelector]
     public List<IAction> Actions = new List<IAction>();
 
+    #endregion
+
+    #region ======== [ PRIVATE VARIABLE ] ========
+
+    // Would Prefer this to tie with the save system
     private bool _revealed = false;
 
+    #endregion
+
+    #region ======== [ PUBLIC METHODS ] ========
 
     /// <summary>
     /// Checks whether the card can activate or not
@@ -79,6 +89,8 @@ public class EffectCardData : ScriptableObject
         // TODO: Animate the Reveal
         _revealed = true;
     }
+
+    #endregion
 }
 
 

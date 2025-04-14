@@ -20,10 +20,8 @@ public class NPCData : ScriptableObject
     [SerializeReference, SubclassSelector]
     public List<EffectCard> EffectCards = new List<EffectCard>();
     [Tooltip("How many attempts the player can have to barter with the NPC\n\n" +
-        "A negative value is unlimited attempts")] 
+        "A negative value is unlimited attempts")]
     public int BarterAttempts = -1;
-
-
 
     #endregion
 }

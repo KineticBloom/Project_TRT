@@ -36,4 +36,12 @@ public class NpcInteractable : Interactable
     private void OnDrawGizmos() {
         Gizmos.DrawWireSphere(transform.position + IconLocalPosition, 0.25f);
     }
+
+    private void Start()
+    {
+        foreach (EffectCard effectCard in NpcData.EffectCards)
+        {
+            effectCard.Reset();
+        }
+    }
 }

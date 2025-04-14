@@ -13,6 +13,8 @@ public class EffectCardDisplay : MonoBehaviour
     [SerializeField] private TextMeshProUGUI topLeftText;
     [SerializeField] private TextMeshProUGUI bottomRightText;
 
+    public EffectCard EffectCard;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,12 +34,16 @@ public class EffectCardDisplay : MonoBehaviour
     /// <param name="effectCard"></param>
     public void Load(EffectCard effectCard)
     {
+        EffectCard = effectCard;
+
         icon.sprite = effectCard.Icon;
         topLeftText.text = effectCard.Text;
         bottomRightText.text = effectCard.Text;
 
         cardBack.SetActive(!effectCard.IsRevealed);
         cardFront.SetActive(effectCard.IsRevealed);
+
+        effectCard.OnRevealed += Reveal;
     }
 
 
@@ -48,5 +54,11 @@ public class EffectCardDisplay : MonoBehaviour
     {
         cardBack.SetActive(false);
         cardFront.SetActive(true);
+    }
+
+
+    private void OnDisable()
+    {
+        EffectCard.OnRevealed -= Reveal;
     }
 }

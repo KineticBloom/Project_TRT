@@ -64,6 +64,15 @@ public abstract class EffectCard
         _revealed = true;
     }
 
+
+    /// <summary>
+    /// Reset the Reveal
+    /// </summary>
+    public void Reset()
+    {
+        _revealed = false;
+    }
+
     #endregion
 }
 

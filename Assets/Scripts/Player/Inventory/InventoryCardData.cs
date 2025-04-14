@@ -23,7 +23,6 @@ public class InventoryCardData : ScriptableObject
 
     public List<string> Tags = new List<string>();
 
-    [SerializeField, ReadOnly]
     private int _currentValue = 0;
 
     public int CurrentValue => _currentValue;
@@ -60,6 +59,9 @@ public class InventoryCardDataEditor : NaughtyInspector
         // Draw TagField Manually
         // This is to allow it to be editable, but non-serializable
         InventoryCardData icd = (target as InventoryCardData);
+
+        EditorGUILayout.HelpBox("You can quickly modify the tags by filling in the field below with your tags. " +
+            "Seperate with either commas or spaces. Press \"Update Tags\" when you're done and remember to save!", MessageType.Info);
 
         if (!onSelectionChange)
         {

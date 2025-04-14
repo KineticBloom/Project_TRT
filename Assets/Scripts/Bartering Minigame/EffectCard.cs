@@ -2,25 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
-using MackySoft.SerializeReferenceExtensions;
+using MackySoft.SerializeReferenceExtensions;   // Don't Remove, this is actually needed
 
-[CreateAssetMenu(fileName = "New EffectCardData", menuName = "ScriptableObjects/EffectCardData"), System.Serializable]
-public class EffectCardData : ScriptableObject
+[System.Serializable]
+public class EffectCard
 {
     #region ======== [ PUBLIC VARIABLES ] ========
 
-    public enum ActivationTime { BeforeOffer, AfterOffer }
+    public enum ActivationTime { BeforeOffer, AfterOffer, Both }
 
-    [Header("Details")]
+    [Header("Display")]
     [SerializeField, Tooltip("Icon that displays on the effect card")]
     public Texture2D Icon;
     [SerializeField, Tooltip("Description of what the effect card does")]
     public string Description;
 
 
-    [Header("Bartering Parameters")]
+    [Header("Effects")]
     [SerializeField, Tooltip("When the Effect Card is activated.")]
-    private ActivationTime activationTime;
+    private ActivationTime activationTime = ActivationTime.AfterOffer;
 
     [SerializeReference, SubclassSelector]
     public List<IAction> Actions = new List<IAction>();
@@ -44,7 +44,7 @@ public class EffectCardData : ScriptableObject
     /// <returns>Whether a boolean of whether </returns>
     public bool DoesActivate(OfferedItems offeredItems, ActivationTime activationTime)
     {
-        if (this.activationTime != activationTime) return false;
+        if (this.activationTime != activationTime && activationTime != ActivationTime.Both) return false;
 
         foreach (IAction action in Actions)
         {

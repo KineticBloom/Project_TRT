@@ -86,6 +86,8 @@ public class InventoryCardDataEditor : NaughtyInspector
 
             icd.Tags.Add(tag);
         }
+
+        EditorUtility.SetDirty(icd);
     }
 
     private void UpdateTagField(InventoryCardData icd)

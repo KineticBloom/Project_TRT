@@ -17,5 +17,45 @@ MonoBehaviour:
   Bio: Sly, a little full of themselves and stand offish. Hides serious emotions,
     secretly desires someone by their side.
   EffectCards:
-  - {fileID: 11400000, guid: 2773c312da463984aaa0b8654f4e52ea, type: 2}
+  - rid: 6991182329685213194
+  - rid: 6991182329685213197
   BarterAttempts: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 6991182329685213194
+      type: {class: AffectOfferedItems, ns: , asm: Assembly-CSharp}
+      data:
+        Icon: {fileID: 0}
+        Description: 
+        ItemConditions:
+        - rid: 6991182329685213195
+        ItemActions:
+        - rid: 6991182329685213196
+    - rid: 6991182329685213195
+      type: {class: SearchForTags, ns: , asm: Assembly-CSharp}
+      data:
+        Tags:
+        - fruit
+    - rid: 6991182329685213196
+      type: {class: AddValue, ns: , asm: Assembly-CSharp}
+      data:
+        ValueAddend: 2
+    - rid: 6991182329685213197
+      type: {class: AffectOfferedItems, ns: , asm: Assembly-CSharp}
+      data:
+        Icon: {fileID: 0}
+        Description: 
+        ItemConditions:
+        - rid: 6991182329685213198
+        ItemActions:
+        - rid: 6991182329685213199
+    - rid: 6991182329685213198
+      type: {class: SearchForItems, ns: , asm: Assembly-CSharp}
+      data:
+        Items:
+        - {fileID: 11400000, guid: b3f6500aede711c489da950e7409d09b, type: 2}
+    - rid: 6991182329685213199
+      type: {class: MultiplyValue, ns: , asm: Assembly-CSharp}
+      data:
+        ValueMultiplier: 2

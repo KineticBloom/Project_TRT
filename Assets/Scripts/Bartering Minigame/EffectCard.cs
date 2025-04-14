@@ -5,7 +5,7 @@ using NaughtyAttributes;
 using MackySoft.SerializeReferenceExtensions;   // Don't Remove, this is actually needed
 
 [System.Serializable]
-public class EffectCard
+public abstract class EffectCard
 {
     #region ======== [ PUBLIC VARIABLES ] ========
 
@@ -17,13 +17,7 @@ public class EffectCard
     [SerializeField, Tooltip("Description of what the effect card does")]
     public string Description;
 
-
-    [Header("Effects")]
-    [SerializeField, Tooltip("When the Effect Card is activated.")]
-    private ActivationTime activationTime = ActivationTime.AfterOffer;
-
-    [SerializeReference, SubclassSelector]
-    public List<IAction> Actions = new List<IAction>();
+    protected ActivationTime activationTime = ActivationTime.AfterOffer;
 
     #endregion
 
@@ -42,40 +36,14 @@ public class EffectCard
     /// <param name="barteringController">The bartering controller to get info from</param>
     /// <param name="activationTime">When the activation is being attempted</param>
     /// <returns>Whether a boolean of whether </returns>
-    public bool DoesActivate(OfferedItems offeredItems, ActivationTime activationTime)
-    {
-        if (this.activationTime != activationTime && activationTime != ActivationTime.Both) return false;
-
-        foreach (IAction action in Actions)
-        {
-            if (action == null) continue;
-
-            if (action.CanActivate(offeredItems))
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
+    public abstract bool DoesActivate(OfferedItems offeredItems, ActivationTime activationTime);
 
 
     /// <summary>
     /// Activates the effect card
     /// </summary>
     /// <param name="barteringController">The bartering controller to modify info on</param>
-    public void Activate(OfferedItems offeredItems)
-    {
-        foreach (IAction action in Actions)
-        {
-            if (action == null) continue;
-
-            if (action.CanActivate(offeredItems))
-            {
-                action.Activate(offeredItems);
-            }
-        }
-    }
+    public abstract void Activate(OfferedItems offeredItems);
 
 
     /// <summary>
@@ -94,71 +62,92 @@ public class EffectCard
 }
 
 
-#region ======== [ IActions ] ========
-
-public interface IAction
-{
-    public bool CanActivate(OfferedItems offeredItems);
-
-    public void Activate(OfferedItems offeredItems);
-}
-
-
 [System.Serializable]
-public class SearchForTags : IAction
+public class AffectOfferedItems : EffectCard
 {
-    [Tooltip("List of Tags that the action will search for and affect")]
-    public List<string> Tags;
+    [InfoBox("This EffectCard will search for all player offered items that satisfy the Item Conditions and modify them according to Item Actions. " +
+        "\n\nRuns after the player offers items.")]
 
     [SerializeReference, SubclassSelector]
     [Tooltip("List of item actions that determine the effect of the found items")]
-    public List<IItemAction> ItemAction;
+    public List<IItemCondition> ItemConditions;
+
+    [SerializeReference, SubclassSelector]
+    [Tooltip("List of item actions that determine the effect of the found items")]
+    public List<IItemAction> ItemActions;
+
 
     private List<InventoryCardData> _matchingItems = new List<InventoryCardData>();
 
 
-    /// <summary>
-    /// Returns whether the an offered items has one of the tags
-    /// </summary>
-    public bool CanActivate(OfferedItems offeredItems)
+    public override bool DoesActivate(OfferedItems offeredItems, ActivationTime activationTime)
     {
+        if (this.activationTime != activationTime && activationTime != ActivationTime.Both) return false;
+
         _matchingItems.Clear();
 
         foreach (InventoryCardData item in offeredItems.Items)
         {
-            if (HasAMatchingTag(item.Tags))
+            bool addItem = false;
+
+            foreach (IItemCondition condition in ItemConditions)
+            {
+                if (condition.IsSatisfied(item))
+                {
+                    addItem = true;
+                }
+            }
+
+            if (addItem)
             {
                 _matchingItems.Add(item);
             }
         }
+
         return _matchingItems.Count > 0;
     }
 
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="offeredItems">Set of player's offered items to be modified</param>
-    public void Activate(OfferedItems offeredItems)
+    public override void Activate(OfferedItems offeredItems)
     {
-        foreach (IItemAction action in ItemAction)
+        foreach (InventoryCardData item in _matchingItems)
         {
-            foreach (InventoryCardData item in _matchingItems)
+            foreach (IItemAction action in ItemActions)
             {
                 action.Activate(item);
             }
         }
     }
 
+    public AffectOfferedItems()
+    {
+        activationTime = ActivationTime.AfterOffer;
+    }
+}
+
+
+#region ======== [ IActions ] ========
+
+public interface IItemCondition
+{
+    public bool IsSatisfied(InventoryCardData item);
+}
+
+
+[System.Serializable]
+public class SearchForTags : IItemCondition
+{
+    [Tooltip("List of Tags that the action will search for and affect")]
+    public List<string> Tags;
 
     /// <summary>
     /// See if any of the tags matches this class' tags
     /// </summary>
-    private bool HasAMatchingTag(List<string> itemTags)
+    public bool IsSatisfied(InventoryCardData item)
     {
         foreach (string tag in Tags)
         {
-            foreach (string itemTag in itemTags)
+            foreach (string itemTag in item.Tags)
             {
                 if (itemTag.ToLower().Equals(tag.ToLower()))
                 {
@@ -172,56 +161,16 @@ public class SearchForTags : IAction
 
 
 [System.Serializable]
-public class SearchForItems : IAction
+public class SearchForItems : IItemCondition
 {
     [Tooltip("List of Items that the action will search for and affect")]
     public List<InventoryCardData> Items;
-
-    [SerializeReference, SubclassSelector]
-    [Tooltip("List of item actions that determine the effect of the found items")]
-    public List<IItemAction> ItemAction;
-
-    private List<InventoryCardData> _matchingItems = new List<InventoryCardData>();
-
-
-    /// <summary>
-    /// Returns whether the an offered items has one of the tags
-    /// </summary>
-    public bool CanActivate(OfferedItems offeredItems)
-    {
-        _matchingItems.Clear();
-
-        foreach (InventoryCardData item in offeredItems.Items)
-        {
-            if (IsMatchingItem(item))
-            {
-                _matchingItems.Add(item);
-            }
-        }
-        return _matchingItems.Count > 0;
-    }
-
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="offeredItems">Set of player's offered items to be modified</param>
-    public void Activate(OfferedItems offeredItems)
-    {
-        foreach (IItemAction action in ItemAction)
-        {
-            foreach (InventoryCardData item in _matchingItems)
-            {
-                action.Activate(item);
-            }
-        }
-    }
 
 
     /// <summary>
     /// See if any of the tags matches this class' tags
     /// </summary>
-    private bool IsMatchingItem(InventoryCardData item)
+    public bool IsSatisfied(InventoryCardData item)
     {
         foreach (InventoryCardData searchedItem in Items)
         {

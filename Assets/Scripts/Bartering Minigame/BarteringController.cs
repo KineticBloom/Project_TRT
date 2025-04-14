@@ -53,6 +53,7 @@ public class BarteringController : MonoBehaviour {
     private bool _wonBarter = false;
     private InventoryCardObject _currentButtonObject;
     private OfferedItems _offeredItems;
+    private int _currentAttempts = 0;
 
     #endregion
 
@@ -91,9 +92,11 @@ public class BarteringController : MonoBehaviour {
         NPCProfilePicture.sprite = _currentTradeInformation.NPCData.Icon;
 
 
-        // Effect Cards
+        // Only runs the first time
         if (firstTime)
         {
+            _currentAttempts = 0;
+
             // Load Effect Cards
             foreach (EffectCard effectCard in _currentTradeInformation.NPCData.EffectCards)
             {
@@ -197,10 +200,9 @@ public class BarteringController : MonoBehaviour {
 
             // If you run out of attempts, the barter is exited
             var barterAttempts = _currentTradeInformation.NPCData.BarterAttempts;
-            if (_currentTradeInformation.NPCData.BarterAttempts > 0)
-            {
-                barterAttempts--;
-            } else if (barterAttempts == 0)
+            _currentAttempts++;
+
+            if (barterAttempts <= _currentAttempts && barterAttempts > 0)
             {
                 StartCoroutine(LeaveBarterScene());
                 return;
@@ -315,6 +317,11 @@ public class BarteringController : MonoBehaviour {
 
     IEnumerator LeaveBarterScene() {
         yield return new WaitForSeconds(1f);
+
+        foreach (var item in _offeredItems.Items)
+        {
+            item.ResetCurrentValue();
+        }
 
         _offeredItems.ReturnCardsToInventory();
 

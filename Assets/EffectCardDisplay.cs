@@ -44,7 +44,7 @@ public class EffectCardDisplay : MonoBehaviour
 
 
     /// <summary>
-    /// Reveals the Card
+    /// Shows the front of the card and hide the back
     /// </summary>
     public void Reveal()
     {
@@ -53,6 +53,9 @@ public class EffectCardDisplay : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Shows the card's description if revealed
+    /// </summary>
     public void ShowDescription()
     {
         if (descriptionText.text.Length == 0) return;
@@ -62,6 +65,9 @@ public class EffectCardDisplay : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Hides the card's description
+    /// </summary>
     public void HideDescription()
     {
         descriptionContainer.SetActive(false);
@@ -74,6 +80,10 @@ public class EffectCardDisplay : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Used by "EffectCard" to check if the game is playing to be revealed
+    /// </summary>
+    /// <returns></returns>
     private bool InPlayMode()
     {
         return Application.isPlaying;

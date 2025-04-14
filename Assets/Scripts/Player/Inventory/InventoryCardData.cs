@@ -80,13 +80,18 @@ public class InventoryCardDataEditor : NaughtyInspector
     {
         icd.Tags.Clear();
 
+        // Used to avoid duplicates
+        HashSet<string> addedTags = new HashSet<string>();
+
         string[] splitTags = _tagField.ToLower().Trim().Split(' ', ',');
         foreach (var extractedTag in splitTags)
         {
             var tag = extractedTag.ToLower().Trim();
             if (tag.Length < 1) continue;
+            if (addedTags.Contains(tag)) continue;
 
             icd.Tags.Add(tag);
+            addedTags.Add(tag);
         }
 
         EditorUtility.SetDirty(icd);

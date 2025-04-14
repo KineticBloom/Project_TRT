@@ -244,4 +244,21 @@ public class AddValue : IItemAction
     }
 }
 
+
+[System.Serializable]
+public class SetValue : IItemAction
+{
+    [Tooltip("The new value of the items")]
+    public int Value = 0;
+
+
+    /// <summary>
+    /// Adds the Current Value of an item
+    /// </summary>
+    public void Activate(InventoryCardData item)
+    {
+        item.SetCurrentValue(Value);
+    }
+}
+
 #endregion

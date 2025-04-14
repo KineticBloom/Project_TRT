@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using NaughtyAttributes;
 
 public class EffectCardDisplay : MonoBehaviour
 {
@@ -12,20 +13,11 @@ public class EffectCardDisplay : MonoBehaviour
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI topLeftText;
     [SerializeField] private TextMeshProUGUI bottomRightText;
+    [SerializeField] private GameObject descriptionContainer;
+    [SerializeField] private TextMeshProUGUI descriptionText;
 
+    [HideIf("InPlayMode")]
     public EffectCard EffectCard;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 
     /// <summary>
@@ -43,6 +35,10 @@ public class EffectCardDisplay : MonoBehaviour
         cardBack.SetActive(!effectCard.IsRevealed);
         cardFront.SetActive(effectCard.IsRevealed);
 
+        descriptionText.text = effectCard.Description;
+
+        HideDescription();
+
         effectCard.OnRevealed += Reveal;
     }
 
@@ -57,8 +53,29 @@ public class EffectCardDisplay : MonoBehaviour
     }
 
 
+    public void ShowDescription()
+    {
+        if (descriptionText.text.Length == 0) return;
+        if (!EffectCard.IsRevealed) return;
+
+        descriptionContainer.SetActive(true);
+    }
+
+
+    public void HideDescription()
+    {
+        descriptionContainer.SetActive(false);
+    }
+
+
     private void OnDisable()
     {
         EffectCard.OnRevealed -= Reveal;
+    }
+
+
+    private bool InPlayMode()
+    {
+        return Application.isPlaying;
     }
 }

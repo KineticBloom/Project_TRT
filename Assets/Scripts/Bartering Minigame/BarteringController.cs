@@ -76,7 +76,7 @@ public class BarteringController : MonoBehaviour {
     /// Start a barter for a given item.
     /// </summary>
     /// <param name="TradeInformation">Item being offered by a NPC.</param>
-    public void InitializeTrade(TradeData TradeInformation) {
+    public void InitializeTrade(TradeData TradeInformation, bool firstTime = true) {
 
         // Setup trackers
         _currentTradeInformation = TradeInformation;
@@ -90,15 +90,20 @@ public class BarteringController : MonoBehaviour {
         NPCValueText.text = "Value: " + _currentTradeInformation.ItemOnOffer.BaseValue;
         NPCProfilePicture.sprite = _currentTradeInformation.NPCData.Icon;
 
-        // Load Effect Cards
-        foreach (EffectCard effectCard in _currentTradeInformation.NPCData.EffectCards)
-        {
-            GameObject card = Instantiate(EffectCardPrefab, EffectCardsContainer);
-            card.GetComponent<EffectCardDisplay>().Load(effectCard);
-        }
 
-        // Activate Pre-Barter Effect Cards
-        ActivateEffectCards(EffectCard.ActivationTime.BeforeOffer);
+        // Effect Cards
+        if (firstTime)
+        {
+            // Load Effect Cards
+            foreach (EffectCard effectCard in _currentTradeInformation.NPCData.EffectCards)
+            {
+                GameObject card = Instantiate(EffectCardPrefab, EffectCardsContainer);
+                card.GetComponent<EffectCardDisplay>().Load(effectCard);
+            }
+
+            // Activate Pre-Barter Effect Cards
+            ActivateEffectCards(EffectCard.ActivationTime.BeforeOffer);
+        }
 
         SetInteractable(true);
 
@@ -296,11 +301,16 @@ public class BarteringController : MonoBehaviour {
     {
         yield return new WaitForSeconds(1f);
 
+        foreach (var item in _offeredItems.Items)
+        {
+            item.ResetCurrentValue();
+        }
+
         _offeredItems.ReturnCardsToInventory();
         _offeredItems.Items.Clear();
-        GameManager.Inventory.ResetAllCardValues();
+        // GameManager.Inventory.ResetAllCardValues();
 
-        InitializeTrade(_currentTradeInformation);
+        InitializeTrade(_currentTradeInformation, false);
     }
 
     IEnumerator LeaveBarterScene() {

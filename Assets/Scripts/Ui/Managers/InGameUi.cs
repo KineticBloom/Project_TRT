@@ -239,6 +239,9 @@ public class InGameUi : MonoBehaviour
                 break;
             case UiStates.Dialogue:
                 // Insert animation!
+
+                GameManager.DialogueManager.StopMidDialogue();
+                
                 Dialogue.gameObject.SetActive(false);
                 break;
             case UiStates.PresentItem:

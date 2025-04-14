@@ -70,6 +70,31 @@ public class DialogueManager : MonoBehaviour {
     #region ======== [ PUBLIC METHODS ] ========
 
     /// <summary>
+    /// Stop current dialogue mid conversation if needed.
+    /// </summary>
+    public void StopMidDialogue() {
+
+        Debug.Log("Stopped mid dialogue!");
+
+        // Reset trackers
+        StopAllCoroutines();
+        
+        InDialogue = false;
+        _noInput = false;
+        CurrentStory = null;
+
+        // Destroy Dependencies
+        Destroy(NPCBubble.gameObject);
+        Destroy(PlayerBubble.gameObject);
+
+        // External Setup
+        TimeLoopManager.SetLoopPaused(false);
+
+        // Start delay
+        _onDelay = false;
+    }
+
+    /// <summary>
     /// Start Dialogue from given INK file
     /// </summary>
     /// <param name="DialogueINKFile"> Dialogue to display</param>
@@ -126,9 +151,11 @@ public class DialogueManager : MonoBehaviour {
     #region ======== [ UPDATE ] ========
 
     private void Update() {
-        CheckForCameraMovement();
 
         if (InDialogue == false) return;
+
+        CheckForCameraMovement();
+
         if (_onDelay) return;
         if (_noInput) return;
 
@@ -170,14 +197,17 @@ public class DialogueManager : MonoBehaviour {
     private void CheckForCameraMovement() {
 
         // Inital setup if first check
-        if (CameraSetup == false) {
+        if (CameraSetup == false || CurrentBrain == null) {
             CurrentBrain = GameManager.Player.Camera;
             lastCameraPos = CurrentBrain.transform.position;
             lastCameraRot = CurrentBrain.transform.rotation;
             CameraSetup = true;
         }
 
+        if (CurrentBrain == null) return;
+
         bool PositionMovementSmall = (lastCameraPos - CurrentBrain.transform.position).magnitude < 0.002;
+
         bool RotationMovementSmall = Quaternion.Dot(lastCameraRot, CurrentBrain.transform.rotation) >= 0.9998;
 
         // Check if position and rotation has not changed

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using NaughtyAttributes;
 using MackySoft.SerializeReferenceExtensions;   // Don't Remove, this is actually needed
 
@@ -13,11 +14,15 @@ public abstract class EffectCard
 
     [Header("Display")]
     [SerializeField, Tooltip("Icon that displays on the effect card")]
-    public Texture2D Icon;
+    public Sprite Icon;
     [SerializeField, Tooltip("Description of what the effect card does")]
     public string Description;
+    [SerializeField, Tooltip("Short Text for Corners")]
+    public string Text;
 
     protected ActivationTime activationTime = ActivationTime.AfterOffer;
+
+    public UnityAction OnRevealed;
 
     #endregion
 
@@ -25,6 +30,7 @@ public abstract class EffectCard
 
     // Would Prefer this to tie with the save system
     private bool _revealed = false;
+    public bool IsRevealed => _revealed;
 
     #endregion
 
@@ -54,7 +60,7 @@ public abstract class EffectCard
     {
         if (_revealed) return;
 
-        // TODO: Animate the Reveal
+        OnRevealed?.Invoke();
         _revealed = true;
     }
 
@@ -117,6 +123,8 @@ public class AffectOfferedItems : EffectCard
                 action.Activate(item);
             }
         }
+
+        Reveal();
     }
 
     public AffectOfferedItems()

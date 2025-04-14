@@ -29,6 +29,10 @@ public class BarteringController : MonoBehaviour {
     public TMP_Text EndMessage;
     public GameObject EndMessageSpeechBubble;
 
+    [Header("Effect Card Dependencies")]
+    public GameObject EffectCardPrefab;
+    public Transform EffectCardsContainer;
+
     [Header("Other Dependencies")]
     public Button OfferTradeButton;
     public InventoryGridController InventoryGrid;
@@ -85,6 +89,13 @@ public class BarteringController : MonoBehaviour {
         NPCOfferSlotOne.SetData(_currentTradeInformation.ItemOnOffer, false);
         NPCValueText.text = "Value: " + _currentTradeInformation.ItemOnOffer.BaseValue;
         NPCProfilePicture.sprite = _currentTradeInformation.NPCData.Icon;
+
+        // Load Effect Cards
+        foreach (EffectCard effectCard in _currentTradeInformation.NPCData.EffectCards)
+        {
+            GameObject card = Instantiate(EffectCardPrefab, EffectCardsContainer);
+            card.GetComponent<EffectCardDisplay>().Load(effectCard);
+        }
 
         // Activate Pre-Barter Effect Cards
         ActivateEffectCards(EffectCard.ActivationTime.BeforeOffer);
@@ -308,6 +319,12 @@ public class BarteringController : MonoBehaviour {
         }
 
         _offeredItems = null;
+
+        // Remove Effect Cards
+        foreach (Transform card in EffectCardsContainer)
+        {
+            Destroy(card.gameObject);
+        }
 
         GameManager.Inventory.ResetAllCardValues();
 

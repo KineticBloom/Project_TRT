@@ -95,6 +95,10 @@ public class AffectOfferedItems : EffectCard
     private List<InventoryCardData> _matchingItems = new List<InventoryCardData>();
 
 
+    /// <summary>
+    /// Adds any items matching the conditions to _matchingItems
+    /// </summary>
+    /// <returns></returns>
     public override bool DoesActivate(OfferedItems offeredItems, ActivationTime activationTime)
     {
         if (this.activationTime != activationTime && activationTime != ActivationTime.Both) return false;
@@ -123,6 +127,9 @@ public class AffectOfferedItems : EffectCard
     }
 
 
+    /// <summary>
+    /// Apply the ItemActions to items in _matchingItems
+    /// </summary>
     public override void Activate(OfferedItems offeredItems)
     {
         foreach (InventoryCardData item in _matchingItems)
@@ -136,6 +143,10 @@ public class AffectOfferedItems : EffectCard
         Reveal();
     }
 
+
+    /// <summary>
+    /// Sets activationTime to be AfterOffer
+    /// </summary>
     public AffectOfferedItems()
     {
         activationTime = ActivationTime.AfterOffer;
@@ -207,6 +218,10 @@ public class SearchForItems : IItemCondition
 #region ======== [ IItemActions ] ========
 public interface IItemAction
 {
+    /// <summary>
+    /// Applies an effect to an item
+    /// </summary>
+    /// <param name="item">Item to apply the effect to</param>
     public void Activate(InventoryCardData item);
 }
 

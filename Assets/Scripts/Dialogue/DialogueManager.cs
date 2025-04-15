@@ -86,8 +86,17 @@ public class DialogueManager : MonoBehaviour {
         CurrentStory = null;
 
         // Destroy Dependencies
-        Destroy(NPCBubble.gameObject);
-        Destroy(PlayerBubble.gameObject);
+        if (NPCBubble != null) {
+            Destroy(NPCBubble.gameObject);
+        }
+
+        if (PlayerBubble != null) {
+            Destroy(PlayerBubble.gameObject);
+        }
+
+        if (DialogueUiManager != null) {
+            DialogueUiManager.HideButtons();
+        }
 
         // External Setup
         TimeLoopManager.SetLoopPaused(false);

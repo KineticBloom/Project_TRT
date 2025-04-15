@@ -28,10 +28,10 @@ public class InGameUi : MonoBehaviour
         Options, 
         MoveToTitle,
         Controls,
-        Journal, 
+        Journal, // NOT USED
         Bartering,
         Dialogue,
-        PresentItem,
+        PresentItem, // NOT USED
     }
 
     private NavBarController _navBarController;
@@ -82,32 +82,14 @@ public class InGameUi : MonoBehaviour
             return;
         }
 
-        if(GameManager.PlayerInput.GetMenu1Down()) {
+        if(GameManager.PlayerInput.GetMenu1Down() || GameManager.PlayerInput.GetStartDown()) {
             // NOTE: REPLACED INVENTORY CODE WITH PAUSE
-            if (CurrentCanvasState == UiStates.Pause)
+            if (CurrentCanvasState == UiStates.Pause || CurrentCanvasState == UiStates.Controls || CurrentCanvasState == UiStates.Options)
             {
-                MoveTo(_lastNonNavbarState);
+                MoveTo(UiStates.Default);
             }
             else
             {
-                MoveToPause();
-                pauseOpen.Post(this.gameObject);
-            }
-        }
-
-        if (GameManager.PlayerInput.GetMenu2Down()) {
-            if (CurrentCanvasState == UiStates.Journal) {
-                MoveTo(_lastNonNavbarState);
-            } else {
-                MoveToJournal();
-                pauseOpen.Post(this.gameObject);
-            }
-        }
-
-        if (GameManager.PlayerInput.GetStartDown()) {
-            if (CurrentCanvasState == UiStates.Pause) {
-                MoveTo(_lastNonNavbarState);
-            } else {
                 MoveToPause();
                 pauseOpen.Post(this.gameObject);
             }

@@ -15,7 +15,6 @@ public class InGameUi : MonoBehaviour
     public Canvas Pause;
     public Canvas Options;
     public Canvas Controls;
-    public JournalNavCore Journal;
     public Canvas Bartering;
     public BarteringController BarteringController;
     public Canvas Dialogue;
@@ -28,16 +27,11 @@ public class InGameUi : MonoBehaviour
         Options, 
         MoveToTitle,
         Controls,
-        Journal, // NOT USED
         Bartering,
-        Dialogue,
-        PresentItem, // NOT USED
+        Dialogue
     }
 
-    private NavBarController _navBarController;
-
     [SerializeField, ReadOnly] private UiStates _currentCanvasState;
-    [SerializeField, ReadOnly] private UiStates _lastNonNavbarState;
     public System.Action<UiStates, UiStates> CanvasStateChanged;
 
     [Header("Audio")]
@@ -50,10 +44,6 @@ public class InGameUi : MonoBehaviour
         }
         private set { 
             _currentCanvasState = value;
-
-            if (!UsesNavbar(value)) {
-                _lastNonNavbarState = value;
-            }
             CanvasStateChanged?.Invoke(_currentCanvasState, value);
         }
     }
@@ -64,8 +54,6 @@ public class InGameUi : MonoBehaviour
             Debug.LogError("Default Canvas dependency not set.");
         }
 
-        _navBarController = NavBar.gameObject.GetComponent<NavBarController>();
-
         // Swap with Accessibility Check
         MoveToDefault();
     }
@@ -74,13 +62,6 @@ public class InGameUi : MonoBehaviour
     /// Check for player input and update UI.
     /// </summary>
     public void Update() {
-
-        if (!GameManager.PlayerInput.AllowNavbar) {
-            if (UsesNavbar(CurrentCanvasState)) {
-                MoveTo(_lastNonNavbarState);
-            }
-            return;
-        }
 
         if(GameManager.PlayerInput.GetMenu1Down() || GameManager.PlayerInput.GetStartDown()) {
             // NOTE: REPLACED INVENTORY CODE WITH PAUSE
@@ -103,23 +84,8 @@ public class InGameUi : MonoBehaviour
     /// </summary>
     /// <param name="newState"> State to move to. </param>
     public void MoveTo(UiStates newState) {
-
-        // If we are ever told explicitly to go to a menu state, then force menus to be allowed.
-        if (UsesNavbar(newState)) {
-            GameManager.PlayerInput.AllowNavbar = true;
-        }
-
         StopState(CurrentCanvasState);
         StartState(newState);
-    }
-
-    /// <summary>
-    /// Force updates the internal _lastNonMenuState field.
-    /// </summary>
-    /// <param name="state">UiStates - the state to set _lastNonMenuState to.</param>
-    public void SetLastNonMenuState(UiStates state)
-    {
-        _lastNonNavbarState = state;
     }
 
     // Used for button OnClick calls as they don't let enums to be passed through :|
@@ -128,21 +94,7 @@ public class InGameUi : MonoBehaviour
     public void MoveToOptions() => MoveTo(UiStates.Options);
     public void MoveToTitle() => MoveTo(UiStates.MoveToTitle);
     public void MoveToControls() => MoveTo(UiStates.Controls);
-    public void MoveToJournal() => MoveTo(UiStates.Journal);
-    /// <summary>
-    /// Will open the Journal and automatically open the NPC tab to the NPC Data. Will add the NPC if not already known.
-    /// </summary>
-    /// <param name="npc">NPCData to be loaded</param>
-    public void MoveToJournal(NPCData npc)
-    {
-        Journal.AddNPC(npc);
-        Journal.NPC.LoadNPC(npc);
-        Journal.MoveToNPC();
-
-        MoveToJournal();
-    }
     public void MoveToDialogue() => MoveTo(UiStates.Dialogue);
-    public void MoveToPresentItem() => MoveTo(UiStates.PresentItem);
     public void MoveToBartering(BarteringController.TradeData tradeData) {
        
         BarteringController.InitializeTrade(tradeData);
@@ -153,36 +105,6 @@ public class InGameUi : MonoBehaviour
     
 
     // Private Helper Methods ====================================================================
-
-    private static bool UsesNavbar(UiStates currentState)
-    {
-        return currentState == UiStates.Pause || currentState == UiStates.Journal;
-    }
-
-    /// <summary>
-    /// Show or hide the Nav Bar based on the state.
-    /// </summary>
-    /// <param name="currentState"></param>
-    void ToggleNavBar(UiStates currentState)
-    {
-
-        bool usingNavBar = false;
-        usingNavBar = UsesNavbar(currentState);
-
-        // Add Animation here!
-        NavBar.gameObject.SetActive(usingNavBar);
-
-        switch (currentState)
-        {
-            case UiStates.Pause:
-                _navBarController.InitNavBar(2);
-                break;
-            case UiStates.Journal:
-                _navBarController.InitNavBar(0);
-                break;
-        }
-    }
-
 
     /// <summary>
     /// Stop a currently running Ui state.
@@ -211,10 +133,6 @@ public class InGameUi : MonoBehaviour
                 // Insert animation!
                 Controls.gameObject.SetActive(false);
                 break;
-            case UiStates.Journal:
-                // Insert animation!
-                Journal.gameObject.SetActive(false);
-                break;
             case UiStates.Bartering:
                 // Insert animation!
                 Bartering.gameObject.SetActive(false);
@@ -225,9 +143,6 @@ public class InGameUi : MonoBehaviour
                 GameManager.DialogueManager.StopMidDialogue();
                 
                 Dialogue.gameObject.SetActive(false);
-                break;
-            case UiStates.PresentItem:
-                // Insert animation!
                 break;
         }
 
@@ -246,15 +161,11 @@ public class InGameUi : MonoBehaviour
         // Set our new state
         CurrentCanvasState = stateToStart;
 
-        // Setup Nav Bar if needed!
-        ToggleNavBar(CurrentCanvasState);
-
         switch (stateToStart) {
             case UiStates.Default:
                 // Insert animation!
                 GameManager.Player.Movement.SetCanMove(true);
                 GameManager.Player.InteractionHandler.SetCanInteract(true);
-                GameManager.PlayerInput.AllowNavbar = true;
                 if (previousState != UiStates.Default) pauseClose.Post(this.gameObject); // play menu close sound only on unpause
                 Default.gameObject.SetActive(true);
                 break;
@@ -276,29 +187,16 @@ public class InGameUi : MonoBehaviour
                 // Insert animation!
                 Controls.gameObject.SetActive(true);
                 break;
-            case UiStates.Journal:
-                // Insert animation!
-                GameManager.Player.Movement.SetCanMove(false);
-                GameManager.Player.InteractionHandler.SetCanInteract(false);
-                Journal.gameObject.SetActive(true);
-                break;
             case UiStates.Bartering:
                 GameManager.Player.Movement.SetCanMove(false);
                 GameManager.Player.InteractionHandler.SetCanInteract(false);
-                GameManager.PlayerInput.AllowNavbar = false;
                 Bartering.gameObject.SetActive(true);
                 break;
             case UiStates.Dialogue:
                 // Insert animation!
                 GameManager.Player.Movement.SetCanMove(false);
                 GameManager.Player.InteractionHandler.SetCanInteract(false);
-                GameManager.PlayerInput.AllowNavbar = true;
                 Dialogue.gameObject.SetActive(true);
-                break;
-            case UiStates.PresentItem:
-                GameManager.Player.Movement.SetCanMove(false);
-                GameManager.Player.InteractionHandler.SetCanInteract(false);
-                GameManager.PlayerInput.AllowNavbar = false;
                 break;
         }
     }

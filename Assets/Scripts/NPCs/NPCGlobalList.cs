@@ -81,16 +81,6 @@ public class NPCGlobalList : MonoBehaviour
         {
             npc.LoadFromSerialized();
         }
-
-        foreach (NPC npc in data.KnownNPCs)
-        {
-            InGameUi inGameUi = GameManager.MasterCanvas.GetComponent<InGameUi>();
-
-            if (inGameUi != null)
-            {
-                inGameUi.Journal.AddNPC(npc.Data);
-            }
-        }
     }
 
     #endregion

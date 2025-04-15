@@ -23168,30 +23168,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2890816136378274803, guid: 142379524301d744ca9ed258108220b9,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 907.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 3211983832287345378, guid: 142379524301d744ca9ed258108220b9,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4066739618634666336, guid: 142379524301d744ca9ed258108220b9,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5761779680460996703, guid: 142379524301d744ca9ed258108220b9,
         type: 3}
       propertyPath: m_Name
       value: InGameCanvasMaster
-      objectReference: {fileID: 0}
-    - target: {fileID: 6506440991166276602, guid: 142379524301d744ca9ed258108220b9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9106350191481724383, guid: 142379524301d744ca9ed258108220b9,
         type: 3}
@@ -99859,11 +99839,12 @@ MonoBehaviour:
   UseTransform: 0
   IconTransformPosition: {fileID: 0}
   IconLocalPosition: {x: 0, y: 4.5, z: 0}
-  npcConversation: {fileID: 0}
+  npcConversation: {fileID: 4900000, guid: 3ef11f047d6c3b54aba69c65ae5233d0, type: 3}
   NpcData: {fileID: 11400000, guid: b55b06de653d0954492e3852e7595ca2, type: 2}
   ItemForOffer: {fileID: 11400000, guid: 081c2b4ca1f4c724e9f3ae2ecedc03c3, type: 2}
   BarterMessageWin: Nice
   BarterMessageLose: Damn
+  DialogueSourceLocalPosition: {x: 0, y: 3.76, z: 0}
 --- !u!1 &6604183046313438851
 GameObject:
   m_ObjectHideFlags: 0

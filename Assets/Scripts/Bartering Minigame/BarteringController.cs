@@ -172,6 +172,13 @@ public class BarteringController : MonoBehaviour {
     }
 
     /// <summary>
+    /// Leave and fail barter.
+    /// </summary>
+    public void LeaveBarter() {
+        StartCoroutine(LeaveBarterScene());
+    }
+
+    /// <summary>
     /// End barter and determines if player pool is valuable enough for NPC.
     /// Called by UI Elements.
     /// </summary>

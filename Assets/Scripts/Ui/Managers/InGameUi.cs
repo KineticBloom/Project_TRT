@@ -6,9 +6,6 @@ public class InGameUi : MonoBehaviour
 {
     // Parameters =================================================================================
 
-    [Header("Shared Dependency")]
-    public Canvas NavBar;
-
     // Dialogue
     [Header("Dependencies")]
     public Canvas Default;

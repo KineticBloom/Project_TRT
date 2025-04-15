@@ -74,6 +74,8 @@ public class DialogueManager : MonoBehaviour {
     /// </summary>
     public void StopMidDialogue() {
 
+        if (InDialogue == false) return;
+
         Debug.Log("Stopped mid dialogue!");
 
         // Reset trackers
@@ -152,9 +154,10 @@ public class DialogueManager : MonoBehaviour {
 
     private void Update() {
 
-        if (InDialogue == false) return;
-
+        // Needs to be every frame, even if no dialogue!
         CheckForCameraMovement();
+
+        if (InDialogue == false) return;
 
         if (_onDelay) return;
         if (_noInput) return;
@@ -199,6 +202,9 @@ public class DialogueManager : MonoBehaviour {
         // Inital setup if first check
         if (CameraSetup == false || CurrentBrain == null) {
             CurrentBrain = GameManager.Player.Camera;
+
+            if (CurrentBrain == null) return;
+
             lastCameraPos = CurrentBrain.transform.position;
             lastCameraRot = CurrentBrain.transform.rotation;
             CameraSetup = true;

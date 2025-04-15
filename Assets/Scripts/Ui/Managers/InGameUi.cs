@@ -71,6 +71,8 @@ public class InGameUi : MonoBehaviour
             }
             else
             {
+                if (CurrentCanvasState == UiStates.Dialogue || CurrentCanvasState == UiStates.Bartering) return;
+
                 MoveToPause();
                 pauseOpen.Post(this.gameObject);
             }

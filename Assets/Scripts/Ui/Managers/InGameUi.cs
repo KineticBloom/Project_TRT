@@ -72,7 +72,6 @@ public class InGameUi : MonoBehaviour
             else
             {
                 if (CurrentCanvasState == UiStates.Dialogue || CurrentCanvasState == UiStates.Bartering) return;
-
                 MoveToPause();
                 pauseOpen.Post(this.gameObject);
             }
@@ -126,14 +125,17 @@ public class InGameUi : MonoBehaviour
             case UiStates.Pause:
                 // Insert animation!
                 Pause.gameObject.SetActive(false);
+                TimeLoopManager.SetLoopPaused(false);
                 break;
             case UiStates.Options:
                 // Insert animation!
                 Options.gameObject.SetActive(false);
+                TimeLoopManager.SetLoopPaused(false);
                 break;
             case UiStates.Controls:
                 // Insert animation!
                 Controls.gameObject.SetActive(false);
+                TimeLoopManager.SetLoopPaused(false);
                 break;
             case UiStates.Bartering:
                 // Insert animation!
@@ -176,10 +178,12 @@ public class InGameUi : MonoBehaviour
                 GameManager.Player.Movement.SetCanMove(false);
                 GameManager.Player.InteractionHandler.SetCanInteract(false);
                 Pause.gameObject.SetActive(true);
+                TimeLoopManager.SetLoopPaused(true);
                 break;
             case UiStates.Options:
                 // Insert animation!
                 Options.gameObject.SetActive(true);
+                TimeLoopManager.SetLoopPaused(true);
                 break;
             case UiStates.MoveToTitle:
                 // Insert animation!
@@ -188,6 +192,7 @@ public class InGameUi : MonoBehaviour
             case UiStates.Controls:
                 // Insert animation!
                 Controls.gameObject.SetActive(true);
+                TimeLoopManager.SetLoopPaused(true);
                 break;
             case UiStates.Bartering:
                 GameManager.Player.Movement.SetCanMove(false);

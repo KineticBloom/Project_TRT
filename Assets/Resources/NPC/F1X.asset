@@ -16,4 +16,68 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: f0a327a73441b3f44919bd26d7918fdc, type: 3}
   Bio: Sly, a little full of themselves and stand offish. Hides serious emotions,
     secretly desires someone by their side.
-  Matrix: {fileID: 11400000, guid: 4df41baae4ac8884d9b9ab903aa274e5, type: 2}
+  EffectCards:
+  - rid: 6991182339336044559
+  - rid: 6991182339336044560
+  - rid: 6991182339336044565
+  BarterAttempts: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 6991182339336044559
+      type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
+      data:
+        Icon: {fileID: 21300000, guid: 9bd95f8332db3c24887f6107f437e2bc, type: 3}
+        Description: Solar Panel is worth 4
+        Text: =4
+        ItemConditions:
+        - rid: 6991182339336044561
+        ItemActions:
+        - rid: 6991182339336044562
+    - rid: 6991182339336044560
+      type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
+      data:
+        Icon: {fileID: 21300000, guid: 5317868d9e970bb4eb4406dd91348797, type: 3}
+        Description: Key Card is worth double value
+        Text: x2
+        ItemConditions:
+        - rid: 6991182339336044563
+        ItemActions:
+        - rid: 6991182339336044564
+    - rid: 6991182339336044561
+      type: {class: SearchForItems, ns: , asm: Assembly-CSharp}
+      data:
+        Items:
+        - {fileID: 11400000, guid: ad8e6a92f388f7b499a3c6f6cb32d9bf, type: 2}
+    - rid: 6991182339336044562
+      type: {class: SetValue, ns: , asm: Assembly-CSharp}
+      data:
+        Value: 4
+    - rid: 6991182339336044563
+      type: {class: SearchForItems, ns: , asm: Assembly-CSharp}
+      data:
+        Items:
+        - {fileID: 11400000, guid: b3f6500aede711c489da950e7409d09b, type: 2}
+    - rid: 6991182339336044564
+      type: {class: MultiplyValue, ns: , asm: Assembly-CSharp}
+      data:
+        ValueMultiplier: 2
+    - rid: 6991182339336044565
+      type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
+      data:
+        Icon: {fileID: 21300000, guid: 3a667a0517cb55c448c6b5f4a417e864, type: 3}
+        Description: All fruit lose 2 value
+        Text: -2
+        ItemConditions:
+        - rid: 6991182339336044566
+        ItemActions:
+        - rid: 6991182339336044567
+    - rid: 6991182339336044566
+      type: {class: SearchForTags, ns: , asm: Assembly-CSharp}
+      data:
+        Tags:
+        - fruit
+    - rid: 6991182339336044567
+      type: {class: AddValue, ns: , asm: Assembly-CSharp}
+      data:
+        ValueAddend: -2

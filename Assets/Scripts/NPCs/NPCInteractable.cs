@@ -48,4 +48,12 @@ public class NpcInteractable : Interactable
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position + DialogueSourceLocalPosition, Vector3.one * 0.25f );
     }
+
+    private void Start()
+    {
+        foreach (EffectCard effectCard in NpcData.EffectCards)
+        {
+            effectCard.Reset();
+        }
+    }
 }

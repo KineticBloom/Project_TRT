@@ -59,26 +59,20 @@ public class NpcInteractable : Interactable
 
     #region ======== [ SAVE AND LOAD ] ========
 
-    public void Save(NPCSaveData data)
+    public void Save(ref NPCSaveData data)
     {
-        if (data == null)
-        {
-            Debug.LogError("NPCInteractable: Cannot Save null data");
-            return;
-        }
+        data.effectCardData[NpcData.FlagID] = new List<bool>(); 
 
-        // Grab reveal status from all Effect Cards
+        // Save reveal status for all Effect Cards
         for (int effectCardIndex = 0; effectCardIndex < NpcData.EffectCards.Count; effectCardIndex++)
         {
-            List<bool> effectCardsList = data.effectCardData[NpcData.FlagID];
-
-            effectCardsList[effectCardIndex] = NpcData.EffectCards[effectCardIndex].IsRevealed;
+            data.effectCardData[NpcData.FlagID].Add(NpcData.EffectCards[effectCardIndex].IsRevealed);
         }
     }
 
     public void Load(NPCSaveData data)
     {
-        if (data == null)
+        if (data.effectCardData == null)
         {
             Debug.LogError("NPCInteractable: Cannot Load null data");
             return;

@@ -86,10 +86,16 @@ public class SaveSystem
             return;
         }
 
-        GameManager.Instance.Save(_saveData.npcSaveData);
+        _saveData.npcSaveData = new NPCSaveData
+        {
+            effectCardData = new(),
+            serializableData = new()
+        };
+
+        GameManager.Instance.Save(ref _saveData.npcSaveData);
 
         // Set up the serializable data
-        _saveData.npcSaveData.serializableData = _saveData.npcSaveData.Serializable();
+        _saveData.npcSaveData.serializableData = Serialize.FromDict(_saveData.npcSaveData.effectCardData);
     }
 
     private static void HandleLoadData()
@@ -114,17 +120,8 @@ public class SaveSystem
 }
 
 [System.Serializable]
-public class NPCSaveData
+public struct NPCSaveData
 {
     public Dictionary<string, List<bool>> effectCardData;
     public List<Pair<string, List<bool>>> serializableData;
-    public List<Pair<string, List<bool>>> Serializable()
-    {
-        return Serialize.FromDict(effectCardData);
-    }
-
-    public void FromSerialized(List<Pair<string, List<bool>>> serializedData)
-    {
-        effectCardData = Serialize.ToDict(serializedData);
-    }
 }

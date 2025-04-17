@@ -55,7 +55,7 @@ public class GameManager : Singleton<GameManager>
 
     // Save and Load =============================================================================
 
-    public void Save(NPCSaveData npcSaveData)
+    public void Save(ref NPCSaveData npcSaveData)
     {
         if (_player == null)
         {
@@ -65,15 +65,14 @@ public class GameManager : Singleton<GameManager>
 
         foreach (GameObject npcObject in GameObject.FindGameObjectsWithTag("NPC"))
         {
-            NpcInteractable interactable = npcObject.GetComponent<NpcInteractable>();
-
-            if (interactable == null)
+            
+            if (!npcObject.TryGetComponent<NpcInteractable>(out var interactable))
             {
                 Debug.LogError("Save: NPC " + npcObject.name + " does not have NPCInteractable component");
                 continue;
             }
 
-            interactable.Save(npcSaveData);
+            interactable.Save(ref npcSaveData);
         }
     }
 }

@@ -126,7 +126,9 @@ public class Inventory : MonoBehaviour
             return;
         }
 
-        Cards.Remove(card);
+        InventoryCardData cardToRemove = GetCardByID(card.ID);
+
+        Cards.Remove(cardToRemove);
 
         OnInventoryUpdated?.Invoke();
         inventoryLastUpdateTime = Time.time;

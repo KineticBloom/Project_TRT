@@ -37,6 +37,7 @@ public class LockedInteractable : Interactable
             {
                 GameManager.Inventory.RemoveCard(RequiredCard);
             }
+            callbackFunction.Invoke();
         }
 
         UpdateInteractIconLocation();

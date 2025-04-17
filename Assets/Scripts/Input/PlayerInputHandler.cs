@@ -70,6 +70,14 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
     {
         _controls?.MainControls.Disable();
     }
+    
+    public void ToggleControls(bool forceOn = false)
+    {
+        if (_controls != null) {
+            if (forceOn || !_controls.MainControls.enabled) _controls.MainControls.Enable();
+            else _controls.MainControls.Disable();
+        }
+    }
 
     // InputAction Callbacks and Methods ==========================================================
 

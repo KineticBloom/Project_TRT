@@ -122,4 +122,9 @@ public class TimeLoopManager : MonoBehaviour
     public static void ResetLoop(){
         Instance._secondsLeft = 0;
     }
+    
+    public static void AddTime(float time)
+    {
+        Instance._secondsLeft += time;
+    }
 }

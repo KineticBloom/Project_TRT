@@ -7,13 +7,12 @@ using UnityEngine;
 
 public class SaveSystem
 {
-    private static SaveData _saveData = new SaveData();
-    private static InGameUi _gameUi;
+    private static SaveData _saveData = new();
 
     [System.Serializable]
     public struct SaveData
     {
-        //public InventorySaveData inventoryData;
+        public NPCSaveData npcSaveData;
     }
 
     #region ========== [ PUBLIC METHODS ] ===========
@@ -21,19 +20,18 @@ public class SaveSystem
     // SAVE
 
     /// <summary>
-    /// Saves the game. Specifically, the Journal data and Inventory Data
+    /// Saves the game. Specifically, the NPC Effect Cards' "revealed" status
     /// </summary>
-    /// <param name="clearInventory">whether or not to clear everything except INFO in the Inventory</param>
-    public static void Save(bool clearInventory)
+    public static void Save()
     {
-        HandleSaveData(clearInventory);
+        HandleSaveData();
 
         File.WriteAllText(SaveFileName(), JsonUtility.ToJson(_saveData, true));
     }
 
 
     /// <summary>
-    /// Loads the game. Specifically, the Journal data and Inventory Data
+    /// Loads the game. Specifically, the NPC Effect Cards' "revealed" status
     /// </summary>
     public static void Load()
     {
@@ -80,8 +78,7 @@ public class SaveSystem
         return saveFile;
     }
 
-    // SAVE
-    private static void HandleSaveData(bool clearInventory)
+    private static void HandleSaveData()
     {
         if (GameManager.Instance == null)
         {
@@ -89,14 +86,10 @@ public class SaveSystem
             return;
         }
 
-        if (GameManager.Inventory == null)
-        {
-            Debug.LogError("Cannot save Inventory, GameManager.Inventory is null");
-            return;
-        } else
-        {
-            // GameManager.Inventory.Save(ref _saveData.inventoryData, clearInventory);
-        }
+        GameManager.Instance.Save(_saveData.npcSaveData);
+
+        // Set up the serializable data
+        _saveData.npcSaveData.serializableData = _saveData.npcSaveData.Serializable();
     }
 
     private static void HandleLoadData()
@@ -118,4 +111,20 @@ public class SaveSystem
     }
 
     #endregion
+}
+
+[System.Serializable]
+public class NPCSaveData
+{
+    public Dictionary<string, List<bool>> effectCardData;
+    public List<Pair<string, List<bool>>> serializableData;
+    public List<Pair<string, List<bool>>> Serializable()
+    {
+        return Serialize.FromDict(effectCardData);
+    }
+
+    public void FromSerialized(List<Pair<string, List<bool>>> serializedData)
+    {
+        effectCardData = Serialize.ToDict(serializedData);
+    }
 }

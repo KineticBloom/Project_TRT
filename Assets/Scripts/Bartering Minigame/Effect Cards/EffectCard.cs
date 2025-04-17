@@ -29,10 +29,8 @@ public abstract class EffectCard
     #endregion
 
     #region ======== [ PRIVATE VARIABLE ] ========
-
-    // Would Prefer this to tie with the save system
     private bool _revealed = false;
-    public bool IsRevealed => _revealed;
+    public bool IsRevealed {  get { return _revealed; } set { _revealed = value; } }
 
     #endregion
 

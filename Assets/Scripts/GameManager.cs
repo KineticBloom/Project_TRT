@@ -52,4 +52,28 @@ public class GameManager : Singleton<GameManager>
             _masterCanvas = masterCanvasObj.GetComponentInChildren<Canvas>();
         }
     }
+
+    // Save and Load =============================================================================
+
+    public void Save(NPCSaveData npcSaveData)
+    {
+        if (_player == null)
+        {
+            Debug.LogError("Cannot Save outside of game scene: Player not found.");
+            return;
+        }
+
+        foreach (GameObject npcObject in GameObject.FindGameObjectsWithTag("NPC"))
+        {
+            NpcInteractable interactable = npcObject.GetComponent<NpcInteractable>();
+
+            if (interactable == null)
+            {
+                Debug.LogError("Save: NPC " + npcObject.name + " does not have NPCInteractable component");
+                continue;
+            }
+
+            interactable.Save(npcSaveData);
+        }
+    }
 }

@@ -29,6 +29,7 @@ public abstract class EffectCard
     #endregion
 
     #region ======== [ PRIVATE VARIABLE ] ========
+    [SerializeField, ReadOnly]
     private bool _revealed = false;
     public bool IsRevealed {  get { return _revealed; } set { _revealed = value; } }
 

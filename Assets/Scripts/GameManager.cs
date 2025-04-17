@@ -75,4 +75,25 @@ public class GameManager : Singleton<GameManager>
             interactable.Save(ref npcSaveData);
         }
     }
+
+    public void Load(NPCSaveData npcSaveData)
+    {
+        if (_player == null)
+        {
+            Debug.LogError("Cannot Load outside of game scene: Player not found.");
+            return;
+        }
+
+        foreach (GameObject npcObject in GameObject.FindGameObjectsWithTag("NPC"))
+        {
+
+            if (!npcObject.TryGetComponent<NpcInteractable>(out var interactable))
+            {
+                Debug.LogError("Save: NPC " + npcObject.name + " does not have NPCInteractable component");
+                continue;
+            }
+
+            interactable.Load(npcSaveData);
+        }
+    }
 }

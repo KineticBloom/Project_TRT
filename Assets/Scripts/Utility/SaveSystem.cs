@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 
 // YOUTUBE VIDEO REFERENCED: https://www.youtube.com/watch?v=1mf730eb5Wo&ab_channel=SasquatchBStudios
@@ -106,14 +107,9 @@ public class SaveSystem
             return;
         }
 
-        if (GameManager.Inventory == null)
-        {
-            Debug.LogError("Cannot load Inventory, GameManager.Inventory is null");
-            return;
-        } else
-        {
-            // GameManager.Inventory.Load(_saveData.inventoryData);
-        }
+        _saveData.npcSaveData.effectCardData = Serialize.ToDict(_saveData.npcSaveData.serializableData);
+
+        GameManager.Instance.Load(_saveData.npcSaveData);
     }
 
     #endregion

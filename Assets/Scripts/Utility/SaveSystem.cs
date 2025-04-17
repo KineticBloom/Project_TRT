@@ -14,7 +14,6 @@ public class SaveSystem
     public struct SaveData
     {
         //public InventorySaveData inventoryData;
-        public NPCSaveData npcSaveData;
     }
 
     #region ========== [ PUBLIC METHODS ] ===========
@@ -98,16 +97,6 @@ public class SaveSystem
         {
             // GameManager.Inventory.Save(ref _saveData.inventoryData, clearInventory);
         }
-
-        if (GameManager.NPCGlobalList == null)
-        {
-            Debug.LogError("Cannot save Journal. Gamemanager.NPCGlobalList is null");
-            return;
-        }
-        else
-        {
-            GameManager.NPCGlobalList.Save(ref _saveData.npcSaveData);
-        }
     }
 
     private static void HandleLoadData()
@@ -125,15 +114,6 @@ public class SaveSystem
         } else
         {
             // GameManager.Inventory.Load(_saveData.inventoryData);
-        }
-
-        if (GameManager.NPCGlobalList == null)
-        {
-            Debug.LogError("Cannot load Journal. Gamemanager.NPCGlobalList is null");
-            return;
-        } else
-        {
-            GameManager.NPCGlobalList.Load(_saveData.npcSaveData);
         }
     }
 

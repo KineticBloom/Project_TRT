@@ -210,6 +210,8 @@ public class DialogueManager : MonoBehaviour {
 
         // Inital setup if first check
         if (CameraSetup == false || CurrentBrain == null) {
+            if (GameManager.Player == null) { return; }
+
             CurrentBrain = GameManager.Player.Camera;
 
             if (CurrentBrain == null) return;

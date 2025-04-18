@@ -1,19 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 
 // YOUTUBE VIDEO REFERENCED: https://www.youtube.com/watch?v=1mf730eb5Wo&ab_channel=SasquatchBStudios
 
 public class SaveSystem
 {
-    private static SaveData _saveData = new SaveData();
-    private static InGameUi _gameUi;
+    private static SaveData _saveData = new();
 
     [System.Serializable]
     public struct SaveData
     {
-        //public InventorySaveData inventoryData;
         public NPCSaveData npcSaveData;
     }
 
@@ -22,19 +21,18 @@ public class SaveSystem
     // SAVE
 
     /// <summary>
-    /// Saves the game. Specifically, the Journal data and Inventory Data
+    /// Saves the game. Specifically, the NPC Effect Cards' "revealed" status
     /// </summary>
-    /// <param name="clearInventory">whether or not to clear everything except INFO in the Inventory</param>
-    public static void Save(bool clearInventory)
+    public static void Save()
     {
-        HandleSaveData(clearInventory);
+        HandleSaveData();
 
         File.WriteAllText(SaveFileName(), JsonUtility.ToJson(_saveData, true));
     }
 
 
     /// <summary>
-    /// Loads the game. Specifically, the Journal data and Inventory Data
+    /// Loads the game. Specifically, the NPC Effect Cards' "revealed" status
     /// </summary>
     public static void Load()
     {
@@ -81,8 +79,7 @@ public class SaveSystem
         return saveFile;
     }
 
-    // SAVE
-    private static void HandleSaveData(bool clearInventory)
+    private static void HandleSaveData()
     {
         if (GameManager.Instance == null)
         {
@@ -90,24 +87,16 @@ public class SaveSystem
             return;
         }
 
-        if (GameManager.Inventory == null)
+        _saveData.npcSaveData = new NPCSaveData
         {
-            Debug.LogError("Cannot save Inventory, GameManager.Inventory is null");
-            return;
-        } else
-        {
-            // GameManager.Inventory.Save(ref _saveData.inventoryData, clearInventory);
-        }
+            effectCardData = new(),
+            serializableData = new()
+        };
 
-        if (GameManager.NPCGlobalList == null)
-        {
-            Debug.LogError("Cannot save Journal. Gamemanager.NPCGlobalList is null");
-            return;
-        }
-        else
-        {
-            GameManager.NPCGlobalList.Save(ref _saveData.npcSaveData);
-        }
+        GameManager.Instance.Save(ref _saveData.npcSaveData);
+
+        // Set up the serializable data
+        _saveData.npcSaveData.serializableData = Serialize.FromDict(_saveData.npcSaveData.effectCardData);
     }
 
     private static void HandleLoadData()
@@ -118,24 +107,17 @@ public class SaveSystem
             return;
         }
 
-        if (GameManager.Inventory == null)
-        {
-            Debug.LogError("Cannot load Inventory, GameManager.Inventory is null");
-            return;
-        } else
-        {
-            // GameManager.Inventory.Load(_saveData.inventoryData);
-        }
+        _saveData.npcSaveData.effectCardData = Serialize.ToDict(_saveData.npcSaveData.serializableData);
 
-        if (GameManager.NPCGlobalList == null)
-        {
-            Debug.LogError("Cannot load Journal. Gamemanager.NPCGlobalList is null");
-            return;
-        } else
-        {
-            GameManager.NPCGlobalList.Load(_saveData.npcSaveData);
-        }
+        GameManager.Instance.Load(_saveData.npcSaveData);
     }
 
     #endregion
+}
+
+[System.Serializable]
+public struct NPCSaveData
+{
+    public Dictionary<string, List<bool>> effectCardData;
+    public List<Pair<string, List<bool>>> serializableData;
 }

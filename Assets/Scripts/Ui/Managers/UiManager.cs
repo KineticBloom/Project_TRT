@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// Contains each Ui States preferences for game environment.
@@ -59,6 +60,7 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
 
     private UiStateEnum _currentState;
     private StateData _currentStateData;
+    private GameObject _lastSelection;
     private bool _noStateAssigned = true;
 
     /// Serialized and setup in inspector. Allows designer to setup each state data.
@@ -158,12 +160,20 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
         } else {
             Time.timeScale = 1;
         }
+
+        if (_lastSelection != null) {
+            UnityEngine.UI.Button possibleButtion = _lastSelection.GetComponent<UnityEngine.UI.Button>();
+            if (possibleButtion) {
+                possibleButtion.Select();
+            }
+        }
     }
 
     /// <summary>
     /// Moving focus to another Ui Manager.
     /// </summary>
     protected override void DisableFocus() {
+        _lastSelection = EventSystem.current.currentSelectedGameObject;
         SetInteraction(false);
     }
 

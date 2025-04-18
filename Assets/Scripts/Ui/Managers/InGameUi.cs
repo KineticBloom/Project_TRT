@@ -93,9 +93,9 @@ public class InGameUi : MonoBehaviour
     public void MoveToTitle() => MoveTo(UiStates.MoveToTitle);
     public void MoveToControls() => MoveTo(UiStates.Controls);
     public void MoveToDialogue() => MoveTo(UiStates.Dialogue);
-    public void MoveToBartering(BarteringController.TradeData tradeData) {
+    public void MoveToBartering(NPCData npcData) {
        
-        BarteringController.InitializeTrade(tradeData);
+        BarteringController.InitializeTrade(npcData);
 
         MoveTo(UiStates.Bartering);
     }

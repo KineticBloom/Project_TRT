@@ -18,6 +18,9 @@ MonoBehaviour:
   FlagID: roro_5_bartered
   EffectCards:
   - rid: 6991182339336044559
+  ItemOnOffer: {fileID: 11400000, guid: a942cf1638829df488725379b2d4fab7, type: 2}
+  BarterMessageWin: Here you go!
+  BarterMessageLose: That's not enough...
   BarterAttempts: 1
   references:
     version: 2
@@ -28,6 +31,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 9bd95f8332db3c24887f6107f437e2bc, type: 3}
         Description: Tool items worth multiplied by 2
         Text: x2
+        _revealed: 0
         ItemConditions:
         - rid: 8151269401547244313
         ItemActions:

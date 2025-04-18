@@ -18,6 +18,9 @@ MonoBehaviour:
   FlagID: roro_1_bartered
   EffectCards:
   - rid: 6991182339336044559
+  ItemOnOffer: {fileID: 11400000, guid: ad8e6a92f388f7b499a3c6f6cb32d9bf, type: 2}
+  BarterMessageWin: Here you go!
+  BarterMessageLose: That's not enough...
   BarterAttempts: 1
   references:
     version: 2
@@ -28,6 +31,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: a6449f567767b5b4693ae2fe9612e8b8, type: 3}
         Description: Blue Chip is worth 3
         Text: =3
+        _revealed: 0
         ItemConditions:
         - rid: 6991182339336044561
         ItemActions:

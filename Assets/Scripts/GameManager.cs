@@ -14,6 +14,8 @@ public class GameManager : Singleton<GameManager>
     public static FlagTracker FlagTracker { get { return Instance.flagTracker; } }
     public static NewBarterStarter NewBarterStarter { get { return Instance.newBarterStarter; } }
 
+    public static UiManagerBase CurrentUIManager { get { return Instance.UiManagerInFocus; } }
+
     // Backing fields =============================================================================
 
     [SerializeField] private DialogueManager dialogueManager;
@@ -26,8 +28,30 @@ public class GameManager : Singleton<GameManager>
     [SerializeField, ReadOnly] private Canvas _masterCanvas;
     [SerializeField] private FlagTracker flagTracker;
     [SerializeField] private NewBarterStarter newBarterStarter;
+    [SerializeField] private UiManagerBase UiManagerInFocus;
+
+    [SerializeField] private SettingsUi SettingsUi;
+    [SerializeField] private InGameUi InGameUi;
 
     // Initializers ===============================================================================
+
+    public void Start() {
+        if (UiManagerInFocus != null) {
+            UiManagerInFocus.CurrentFocus = true;
+        }
+    }
+
+    public void Update() {
+
+        if (GameManager.PlayerInput.GetMenu1Down() || GameManager.PlayerInput.GetStartDown()) {
+            // NOTE: REPLACED INVENTORY CODE WITH PAUSE
+            if(CurrentUIManager == SettingsUi) {
+                SwapUiManager(InGameUi);
+            } else {
+                SwapUiManager(SettingsUi);
+            }
+        }
+    }
 
     public void FindPlayer()
     {
@@ -54,4 +78,15 @@ public class GameManager : Singleton<GameManager>
             _masterCanvas = masterCanvasObj.GetComponentInChildren<Canvas>();
         }
     }
+
+    public void SwapUiManager(UiManagerBase NewUIManager) {
+        if (NewUIManager == null) return;
+
+        if (UiManagerInFocus != null) {
+            UiManagerInFocus.CurrentFocus = false;
+        }
+        NewUIManager.CurrentFocus = true;
+        UiManagerInFocus = NewUIManager;
+    }
 }
+

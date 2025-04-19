@@ -102,7 +102,7 @@ public class PlayerWobble : MonoBehaviour
     private void AnimateWalking()
     {
         var t = (Mathf.Abs(player.Input.y) - Mathf.Abs(player.Input.x)) / 2f + 0.5f;
-        var walkSpeed = Mathf.Lerp(walkHorizontalSpeed, walkVerticalSpeed, t);
+        var walkSpeed = Mathf.Lerp(walkHorizontalSpeed, walkVerticalSpeed, t) * player.Input.magnitude;
 
         _walkTimer += Time.deltaTime * walkSpeed;
 

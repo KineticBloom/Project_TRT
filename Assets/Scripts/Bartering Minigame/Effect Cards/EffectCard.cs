@@ -63,6 +63,7 @@ public abstract class EffectCard
 
         OnRevealed?.Invoke();
         _revealed = true;
+        SaveSystem.Save();
     }
 
 

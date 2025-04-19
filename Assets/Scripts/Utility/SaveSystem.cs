@@ -36,6 +36,8 @@ public class SaveSystem
     /// </summary>
     public static void Load()
     {
+        if (!HasSaveData()) return;
+
         string saveContent = File.ReadAllText(SaveFileName());
 
         _saveData = JsonUtility.FromJson<SaveData>(saveContent);
@@ -68,12 +70,28 @@ public class SaveSystem
             return false;
         }
     }
+    
+    /// <summary>
+    /// Resets all of the data in save.save
+    /// </summary>
+    public static void ResetSaveData()
+    {
+        File.WriteAllText(SaveFileName(), "Mello");
+
+        foreach (NPCData npc in GameManager.Instance.AllNPCDatas.datas)
+        {
+            foreach (EffectCard card in npc.EffectCards)
+            {
+                card.Reset();
+            }
+        }
+    }
 
     #endregion
 
     #region ========== [ PRIVATE METHODS ] ==========
 
-    private static string SaveFileName()
+    public static string SaveFileName()
     {
         string saveFile = Application.persistentDataPath + "/save" + ".save";
         return saveFile;

@@ -20,9 +20,6 @@ public class NPCData : ScriptableObject
     [Header("Bartering Details")]
     [Tooltip("The Flag ID of the character's barter")]
     public string FlagID;
-    [Tooltip("Defines the Effect Cards that will affect the bartering game")]
-    [SerializeReference, SubclassSelector]
-    public List<EffectCard> EffectCards = new List<EffectCard>();
     [Tooltip("The item that the NPC gives on a successful trade")]
     public InventoryCardData ItemOnOffer;
     [Tooltip("What the NPC says after a successful trade")]
@@ -32,6 +29,9 @@ public class NPCData : ScriptableObject
     [Tooltip("How many attempts the player can have to barter with the NPC\n\n" +
         "A negative value is unlimited attempts")]
     public int BarterAttempts = -1;
+    [Tooltip("Defines the Effect Cards that will affect the bartering game")]
+    [SerializeReference, SubclassSelector]
+    public List<EffectCard> EffectCards = new List<EffectCard>();
 
 
     #endregion

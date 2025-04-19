@@ -49,14 +49,6 @@ public class NpcInteractable : Interactable
         Gizmos.DrawWireCube(transform.position + DialogueSourceLocalPosition, Vector3.one * 0.25f );
     }
 
-    private void Start()
-    {
-        foreach (EffectCard effectCard in NpcData.EffectCards)
-        {
-            effectCard.Reset();
-        }
-    }
-
     #region ======== [ SAVE AND LOAD ] ========
 
     public void Save(ref NPCSaveData data)

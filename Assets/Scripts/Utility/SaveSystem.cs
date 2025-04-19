@@ -36,6 +36,8 @@ public class SaveSystem
     /// </summary>
     public static void Load()
     {
+        if (!HasSaveData()) return;
+
         string saveContent = File.ReadAllText(SaveFileName());
 
         _saveData = JsonUtility.FromJson<SaveData>(saveContent);
@@ -68,12 +70,17 @@ public class SaveSystem
             return false;
         }
     }
+    
+    public static void ResetSaveData()
+    {
+        File.WriteAllText(SaveFileName(), "Mello");
+    }
 
     #endregion
 
     #region ========== [ PRIVATE METHODS ] ==========
 
-    private static string SaveFileName()
+    public static string SaveFileName()
     {
         string saveFile = Application.persistentDataPath + "/save" + ".save";
         return saveFile;

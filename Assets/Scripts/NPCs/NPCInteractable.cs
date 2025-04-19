@@ -51,6 +51,10 @@ public class NpcInteractable : Interactable
 
     #region ======== [ SAVE AND LOAD ] ========
 
+    /// <summary>
+    /// Saves the NPC's Effect Cards
+    /// </summary>
+    /// <param name="data"></param>
     public void Save(ref NPCSaveData data)
     {
         data.effectCardData[NpcData.FlagID] = new List<bool>(); 
@@ -62,6 +66,10 @@ public class NpcInteractable : Interactable
         }
     }
 
+    /// <summary>
+    /// Loads Effect Cards from save data
+    /// </summary>
+    /// <param name="data"></param>
     public void Load(NPCSaveData data)
     {
         if (data.effectCardData == null)

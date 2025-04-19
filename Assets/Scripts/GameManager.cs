@@ -55,6 +55,10 @@ public class GameManager : Singleton<GameManager>
 
     // Save and Load =============================================================================
 
+    /// <summary>
+    /// Saves the NPC Effect Cards
+    /// </summary>
+    /// <param name="npcSaveData">Save Data holding all of the effect cards</param>
     public void Save(ref NPCSaveData npcSaveData)
     {
         if (_player == null)
@@ -76,6 +80,10 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    /// <summary>
+    /// Loads Effect Cards from save data
+    /// </summary>
+    /// <param name="npcSaveData">The save data</param>
     public void Load(NPCSaveData npcSaveData)
     {
         if (_player == null)

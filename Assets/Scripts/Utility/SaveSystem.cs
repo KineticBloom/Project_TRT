@@ -71,6 +71,9 @@ public class SaveSystem
         }
     }
     
+    /// <summary>
+    /// Resets all of the data in save.save
+    /// </summary>
     public static void ResetSaveData()
     {
         File.WriteAllText(SaveFileName(), "Mello");

@@ -22,6 +22,13 @@ public class LockedInteractable : Interactable
 
     public override void Interaction()
     {
+        if (!locked)
+        {
+            callbackFunction.Invoke();
+            UpdateInteractIconLocation();
+            return;
+        }
+
         if (GameManager.Inventory.HasCard(RequiredCard))
         {
             locked = false;
@@ -30,10 +37,6 @@ public class LockedInteractable : Interactable
             {
                 GameManager.Inventory.RemoveCard(RequiredCard);
             }
-        }
-
-        if (!locked)
-        {
             callbackFunction.Invoke();
         }
 

@@ -155,6 +155,8 @@ public class InventoryGridController : MonoBehaviour
         List<InventoryCardData> dataForAllCards = GameManager.Inventory.Get();
 
         foreach (InventoryCardData card in dataForAllCards) {
+            if (indexTracker >= _inventoryInstances.Count) { return; }
+
             InventoryCardObject currentInventoryItem = _inventoryInstances[indexTracker];
 
             currentInventoryItem.SetData(card);

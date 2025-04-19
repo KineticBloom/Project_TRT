@@ -77,6 +77,14 @@ public class SaveSystem
     public static void ResetSaveData()
     {
         File.WriteAllText(SaveFileName(), "Mello");
+
+        foreach (NPCData npc in GameManager.Instance.AllNPCDatas.datas)
+        {
+            foreach (EffectCard card in npc.EffectCards)
+            {
+                card.Reset();
+            }
+        }
     }
 
     #endregion

@@ -26,7 +26,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField, ReadOnly] private Canvas _masterCanvas;
     [SerializeField] private FlagTracker flagTracker;
     [SerializeField] private NewBarterStarter newBarterStarter;
-    [SerializeField] private AllNPCDatas allNPCDatas;
+    [SerializeField] public AllNPCDatas AllNPCDatas;
 
     // Initializers ===============================================================================
 
@@ -70,7 +70,7 @@ public class GameManager : Singleton<GameManager>
             return;
         }
 
-        foreach (NPCData data in allNPCDatas.datas)
+        foreach (NPCData data in AllNPCDatas.datas)
         {
             npcSaveData.effectCardData[data.FlagID] = new List<bool>();
 
@@ -100,7 +100,7 @@ public class GameManager : Singleton<GameManager>
             return;
         }
 
-        foreach (NPCData data in allNPCDatas.datas)
+        foreach (NPCData data in AllNPCDatas.datas)
         {
             // Cannot load data that does not exist
             if (!npcSaveData.effectCardData.ContainsKey(data.FlagID))

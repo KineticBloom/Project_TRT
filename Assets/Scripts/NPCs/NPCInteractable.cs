@@ -49,23 +49,6 @@ public class NpcInteractable : Interactable
         Gizmos.DrawWireCube(transform.position + DialogueSourceLocalPosition, Vector3.one * 0.25f );
     }
 
-    #region ======== [ SAVE AND LOAD ] ========
-
-    /// <summary>
-    /// Saves the NPC's Effect Cards
-    /// </summary>
-    /// <param name="data"></param>
-    public void Save(ref NPCSaveData data)
-    {
-        data.effectCardData[NpcData.FlagID] = new List<bool>(); 
-
-        // Save reveal status for all Effect Cards
-        for (int effectCardIndex = 0; effectCardIndex < NpcData.EffectCards.Count; effectCardIndex++)
-        {
-            data.effectCardData[NpcData.FlagID].Add(NpcData.EffectCards[effectCardIndex].IsRevealed);
-        }
-    }
-
     /// <summary>
     /// Loads Effect Cards from save data
     /// </summary>
@@ -92,6 +75,4 @@ public class NpcInteractable : Interactable
             NpcData.EffectCards[effectCardIndex].IsRevealed = effectCardsList[effectCardIndex];
         }
     }
-
-    #endregion
 }

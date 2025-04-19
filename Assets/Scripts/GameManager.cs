@@ -1,5 +1,7 @@
 using UnityEngine;
 using NaughtyAttributes;
+using System.Collections.Generic;
+using System.Xml.Linq;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -24,6 +26,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField, ReadOnly] private Canvas _masterCanvas;
     [SerializeField] private FlagTracker flagTracker;
     [SerializeField] private NewBarterStarter newBarterStarter;
+    [SerializeField] private AllNPCDatas allNPCDatas;
 
     // Initializers ===============================================================================
 
@@ -67,16 +70,15 @@ public class GameManager : Singleton<GameManager>
             return;
         }
 
-        foreach (GameObject npcObject in GameObject.FindGameObjectsWithTag("NPC"))
+        foreach (NPCData data in allNPCDatas.datas)
         {
-            
-            if (!npcObject.TryGetComponent<NpcInteractable>(out var interactable))
-            {
-                Debug.LogError("Save: NPC " + npcObject.name + " does not have NPCInteractable component");
-                continue;
-            }
+            npcSaveData.effectCardData[data.FlagID] = new List<bool>();
 
-            interactable.Save(ref npcSaveData);
+            // Save reveal status for all Effect Cards
+            for (int effectCardIndex = 0; effectCardIndex < data.EffectCards.Count; effectCardIndex++)
+            {
+                npcSaveData.effectCardData[data.FlagID].Add(data.EffectCards[effectCardIndex].IsRevealed);
+            }
         }
     }
 
@@ -92,16 +94,27 @@ public class GameManager : Singleton<GameManager>
             return;
         }
 
-        foreach (GameObject npcObject in GameObject.FindGameObjectsWithTag("NPC"))
+        if (npcSaveData.effectCardData == null)
         {
+            Debug.LogError("NPCInteractable: Cannot Load null data");
+            return;
+        }
 
-            if (!npcObject.TryGetComponent<NpcInteractable>(out var interactable))
+        foreach (NPCData data in allNPCDatas.datas)
+        {
+            // Cannot load data that does not exist
+            if (!npcSaveData.effectCardData.ContainsKey(data.FlagID))
             {
-                Debug.LogError("Save: NPC " + npcObject.name + " does not have NPCInteractable component");
-                continue;
+                return;
             }
 
-            interactable.Load(npcSaveData);
+            List<bool> effectCardsList = npcSaveData.effectCardData[data.FlagID];
+
+            // Set reveal status for all Effect Cards
+            for (int effectCardIndex = 0; effectCardIndex < data.EffectCards.Count; effectCardIndex++)
+            {
+                data.EffectCards[effectCardIndex].IsRevealed = effectCardsList[effectCardIndex];
+            }
         }
     }
 }

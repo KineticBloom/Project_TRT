@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using NaughtyAttributes;
+#if UNITY_EDITOR
 using MackySoft.SerializeReferenceExtensions;   // Don't Remove, this is actually needed
+#endif
 
 [System.Serializable]
 public abstract class EffectCard

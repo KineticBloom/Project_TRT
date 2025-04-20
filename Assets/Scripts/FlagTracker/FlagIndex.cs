@@ -9,7 +9,7 @@ public class FlagIndex : ScriptableObject
 {
     [SerializeField] List<Flag> flags = new List<Flag>();
     [SerializeField] List<TextAsset> inkFiles = new List<TextAsset>();
-    [SerializeField] List<InventoryCardData> cardIndex = new List<InventoryCardData>();
+    [SerializeField] AllInventoryCardDatas inventory;
 
     public Flag this[string id] 
     {
@@ -31,6 +31,10 @@ public class FlagIndex : ScriptableObject
             {
                 CreateFlag(id);
             }
+        }
+        foreach (InventoryCardData data in inventory.datas)
+        {
+            CreateFlag($"IC_{data.ID}");
         }
     }
 
@@ -71,7 +75,7 @@ public class FlagIndex : ScriptableObject
         
         if (flag.Type == Flag.FlagType.InventoryCard)
         {
-            if (!flag.Card) flag.Card = cardIndex.FirstOrDefault(x => x.ID == id[3..]);
+            if (!flag.Card && inventory) flag.Card = inventory.datas.FirstOrDefault(x => x.ID == id[3..]);
         }
     }
     #endregion

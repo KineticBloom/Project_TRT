@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class FlagTracker : MonoBehaviour
@@ -54,7 +55,7 @@ public class FlagTracker : MonoBehaviour
         
         if (flag.Type == Flag.FlagType.InventoryCard)
         {
-            if (!flag.Card) flag.Card = _inventory.GetCardByID(flag.ID[3..]);  // POSSIBLE BUG, COULD BE MULTIPLE CARDS WITH THE SAME ID
+            if (!flag.Card) flag.Card = _inventory.AllCardDatas.datas.FirstOrDefault(x => x.ID == id[3..]);
             if (editInventory)
             {
                 if (value) _inventory.AddCard(flag.Card);

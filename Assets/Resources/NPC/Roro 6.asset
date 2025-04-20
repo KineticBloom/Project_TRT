@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86243f10543f9a4ebe9c1097513fcf3, type: 3}
+  m_Name: Roro 6
+  m_EditorClassIdentifier: 
+  Name: Roro
+  Icon: {fileID: 21300000, guid: f81434a53d0a2174ca8bc46782bfa24c, type: 3}
+  Bio: It's a Roro
+  FlagID: roro_6_bartered
+  EffectCards:
+  - rid: 6991182339336044559
+  BarterAttempts: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 6991182339336044559
+      type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
+      data:
+        Icon: {fileID: 21300000, guid: bc1e10fa5e86c64439deae7f064d8256, type: 3}
+        Description: Green chip worth multiplied by 5
+        Text: x5
+        ItemConditions:
+        - rid: 6991182339336044561
+        ItemActions:
+        - rid: 8151269401547244315
+    - rid: 6991182339336044561
+      type: {class: SearchForItems, ns: , asm: Assembly-CSharp}
+      data:
+        Items:
+        - {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
+    - rid: 8151269401547244315
+      type: {class: MultiplyValue, ns: , asm: Assembly-CSharp}
+      data:
+        ValueMultiplier: 5

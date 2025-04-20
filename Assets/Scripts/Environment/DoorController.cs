@@ -29,14 +29,18 @@ public class DoorController : MonoBehaviour
         leftDoor.useMotor = true;
         rightDoor.useMotor = true;
 
-        IsOpen = true;
+        if (!IsOpen)
+        {
+            doorOpenSFX.Play(gameObject);
+        }
 
-        doorOpenSFX.Play(gameObject);
+        IsOpen = true;
 
         LockedInteractable lockedInteractable = GetComponent<LockedInteractable>();
         if (lockedInteractable != null)
         {
             lockedInteractable.HideIcon = true;
+            Destroy(lockedInteractable);
         }
     }
 

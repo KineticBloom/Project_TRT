@@ -79,6 +79,7 @@ public class BarteringController : MonoBehaviour {
     /// <param name="TradeInformation">Item being offered by a NPC.</param>
     public void InitializeTrade(TradeData TradeInformation, bool firstTime = true) {
 
+        TimeLoopManager.SetLoopPaused(true);
         // Setup trackers
         _currentTradeInformation = TradeInformation;
         _offeredItems = new OfferedItems();
@@ -196,6 +197,7 @@ public class BarteringController : MonoBehaviour {
             // Complete Trade
             EndMessage.text = _currentTradeInformation.DialogueForTrade;
             PassBarterIcon.SetActive(true);
+            GameManager.FlagTracker.SetFlag(_currentTradeInformation.NPCData.FlagID);
             _wonBarter = true;
 
             StartCoroutine(LeaveBarterScene());
@@ -355,6 +357,7 @@ public class BarteringController : MonoBehaviour {
         InGameUi _inGameUi = GameManager.MasterCanvas.GetComponent<InGameUi>();
 
         _inGameUi.MoveToDefault();
+        TimeLoopManager.SetLoopPaused(false);
     }
 
     /// <summary>

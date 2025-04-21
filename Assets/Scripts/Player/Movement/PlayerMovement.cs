@@ -27,6 +27,10 @@ public class PlayerMovement : MonoBehaviour
 
 	private const float _gravity = 9.81f;
 	private float _downwardForce = 0;
+	private bool _isWalking = false;
+	public bool IsWalking => _isWalking;
+	private Vector3 _input = Vector3.zero;
+	public Vector3 Input => _input;
 	[SerializeField, ReadOnly] private bool _canMove = true;
 
     #endregion
@@ -59,10 +63,10 @@ public class PlayerMovement : MonoBehaviour
 	private void UpdateMovement()
 	{
 		// Get Input
-		Vector3 input = GameManager.PlayerInput.GetControlInput();
+		_input = GameManager.PlayerInput.GetControlInput();
 
 		if (!_canMove) {
-			input = Vector3.zero;
+			_input = Vector3.zero;
 		}
 
 		// Relative to Target
@@ -70,25 +74,38 @@ public class PlayerMovement : MonoBehaviour
 		Quaternion targetRotation = Quaternion.Euler(new Vector3(0, y, 0));
 
 		// Move character
-		Vector3 direction = targetRotation * input;
+		Vector3 direction = targetRotation * _input;
 		_characterController.Move(speed * Time.deltaTime * direction);
 
 		//animator.speed = Mathf.Min(1,(direction * speed).magnitude);
 
+		if (spriteRenderer)
+        {
+			if (_input == Vector3.zero)
+			{
+				spriteRenderer.sprite = spriteIdle;
+			}
+			else
+			{
+				spriteRenderer.sprite = spriteWalk;
 
-		if(input == Vector3.zero) {
-			spriteRenderer.sprite = spriteIdle;
-		} else {
-			spriteRenderer.sprite = spriteWalk;
-
-			if (direction.x > 0) {
-				spriteRenderer.flipX = false;
-			} else {
-				spriteRenderer.flipX = true;
+				if (direction.x > 0)
+				{
+					spriteRenderer.flipX = false;
+				}
+				else
+				{
+					spriteRenderer.flipX = true;
+				}
 			}
 		}
-		animator.SetBool("IsWalking", (direction * speed).magnitude > 0);
-    }
+
+		_isWalking = (direction * speed).magnitude > 0;
+		if (animator)
+        {
+			animator.SetBool("IsWalking", _isWalking);
+		}
+	}
 
 	private void UpdateGravity()
 	{

@@ -1466,6 +1466,7 @@ GameObject:
   - component: {fileID: 7519650928092952732}
   - component: {fileID: 2308090062487654560}
   - component: {fileID: 8033182666425453055}
+  - component: {fileID: 5659902113542662233}
   m_Layer: 5
   m_Name: InGameCanvasMaster
   m_TagString: MasterCanvas
@@ -1623,6 +1624,20 @@ MonoBehaviour:
   unloadTriggerList: 958ca0ea
   bankNameInternal: 
   valueGuidInternal: 
+--- !u!114 &5659902113542662233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5761779680460996703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc83b10a271cdc543acb0f5279655f94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SettingsUi: {fileID: 5420237064451432659}
+  InGameUi: {fileID: 7895029819783036092}
 --- !u!1 &6233247876419121793
 GameObject:
   m_ObjectHideFlags: 0
@@ -5999,6 +6014,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805610962781552108, guid: 1eeccd23714353a46a2d4077cde5bc18,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

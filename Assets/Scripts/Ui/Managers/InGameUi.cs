@@ -8,6 +8,10 @@ public class InGameUi : UiManager<InGameUi.UiStates> {
     public DialogueUiManager DialogueUiManager;
     public NotificationUI Notification;
 
+    private void Start() {
+        GameManager.Instance.SwapUiManager(this);
+    }
+
     public new enum UiStates {
         Default,
         Bartering,

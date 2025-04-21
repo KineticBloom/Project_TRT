@@ -30,26 +30,11 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private NewBarterStarter newBarterStarter;
     [SerializeField] private UiManagerBase UiManagerInFocus;
 
-    [SerializeField] private SettingsUi SettingsUi;
-    [SerializeField] private InGameUi InGameUi;
-
     // Initializers ===============================================================================
 
     public void Start() {
         if (UiManagerInFocus != null) {
             UiManagerInFocus.CurrentFocus = true;
-        }
-    }
-
-    public void Update() {
-
-        if (GameManager.PlayerInput.GetMenu1Down() || GameManager.PlayerInput.GetStartDown()) {
-            // NOTE: REPLACED INVENTORY CODE WITH PAUSE
-            if(CurrentUIManager == SettingsUi) {
-                SwapUiManager(InGameUi);
-            } else {
-                SwapUiManager(SettingsUi);
-            }
         }
     }
 

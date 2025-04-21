@@ -117,9 +117,13 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
         newStateData.StatesCanvasGroup.gameObject.SetActive(true);
 
         // Load new properties
-        GameManager.Player.Movement.SetCanMove(!newStateData.IsPlayerFrozen);
-        GameManager.Player.InteractionHandler.SetCanInteract(!newStateData.IsPlayerFrozen);
-        TimeLoopManager.SetLoopPaused(newStateData.IsTimeFrozen);
+        if (GameManager.Player != null) {
+            GameManager.Player.Movement.SetCanMove(!newStateData.IsPlayerFrozen);
+            GameManager.Player.InteractionHandler.SetCanInteract(!newStateData.IsPlayerFrozen);
+        }
+        if (TimeLoopManager.Instance != null) {
+            TimeLoopManager.SetLoopPaused(newStateData.IsTimeFrozen);
+        }
 
         if (newStateData.PauseAnimations) {
             Time.timeScale = 0;
@@ -151,9 +155,13 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
         }
 
         // Load old data
-        GameManager.Player.Movement.SetCanMove(!_currentStateData.IsPlayerFrozen);
-        GameManager.Player.InteractionHandler.SetCanInteract(!_currentStateData.IsPlayerFrozen);
-        TimeLoopManager.SetLoopPaused(_currentStateData.IsTimeFrozen);
+        if (GameManager.Player != null) {
+            GameManager.Player.Movement.SetCanMove(!_currentStateData.IsPlayerFrozen);
+            GameManager.Player.InteractionHandler.SetCanInteract(!_currentStateData.IsPlayerFrozen);
+        }
+        if (TimeLoopManager.Instance != null) {
+            TimeLoopManager.SetLoopPaused(_currentStateData.IsTimeFrozen);
+        }
 
         if (_currentStateData.PauseAnimations) {
             Time.timeScale = 0;

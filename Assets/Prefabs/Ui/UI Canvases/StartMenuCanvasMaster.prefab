@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1543116013465698463}
   - component: {fileID: 6318308542656878006}
   - component: {fileID: 426270300512651655}
+  - component: {fileID: 6911838826977111114}
   m_Layer: 5
   m_Name: CreditsCanvas
   m_TagString: Untagged
@@ -96,6 +97,18 @@ MonoBehaviour:
   DefaultButton: {fileID: 4909040316852424793}
   TriggerOnClick: 0
   OnlyFirstBoot: 0
+--- !u!225 &6911838826977111114
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172321809940320468}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &352245485931181006
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,6 +121,7 @@ GameObject:
   - component: {fileID: 2522270452157253617}
   - component: {fileID: 8652180599494743066}
   - component: {fileID: 5170314329587278463}
+  - component: {fileID: 2578126606728250543}
   m_Layer: 5
   m_Name: TitleScreenCanvas
   m_TagString: Untagged
@@ -191,6 +205,18 @@ MonoBehaviour:
   DefaultButton: {fileID: 5626726546141814160}
   TriggerOnClick: 0
   OnlyFirstBoot: 0
+--- !u!225 &2578126606728250543
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352245485931181006}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &712280626855215659
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,11 +595,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8cda5d049659c4b9df196502b760f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TitleScreen: {fileID: 2522270452157253617}
-  Credits: {fileID: 1543116013465698463}
-  Options: {fileID: 5789918481853161030}
-  AccessibilityCheck: {fileID: 0}
-  Controls: {fileID: 6281282407535213882}
+  DefaultState: 0
+  states:
+  - First: 0
+    Second:
+      StatesCanvasGroup: {fileID: 2578126606728250543}
+      IsPlayerFrozen: 0
+      IsTimeFrozen: 0
+      PauseAnimations: 0
+  - First: 1
+    Second:
+      StatesCanvasGroup: {fileID: 6911838826977111114}
+      IsPlayerFrozen: 0
+      IsTimeFrozen: 0
+      PauseAnimations: 0
+  - First: 2
+    Second:
+      StatesCanvasGroup: {fileID: 7960375027257350913}
+      IsPlayerFrozen: 0
+      IsTimeFrozen: 0
+      PauseAnimations: 0
+  - First: 4
+    Second:
+      StatesCanvasGroup: {fileID: 133668682570725073}
+      IsPlayerFrozen: 0
+      IsTimeFrozen: 0
+      PauseAnimations: 0
 --- !u!1001 &249947800686975146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1303,15 +1350,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 511ccb998b35c7c468c63561cc83de28, type: 3}
---- !u!223 &5789918481853161030 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 8573046009295133480, guid: 511ccb998b35c7c468c63561cc83de28,
-    type: 3}
-  m_PrefabInstance: {fileID: 2783365044108150126}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7046503307758565971 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5146007635842973501, guid: 511ccb998b35c7c468c63561cc83de28,
+    type: 3}
+  m_PrefabInstance: {fileID: 2783365044108150126}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &7960375027257350913 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 5249104983543963247, guid: 511ccb998b35c7c468c63561cc83de28,
     type: 3}
   m_PrefabInstance: {fileID: 2783365044108150126}
   m_PrefabAsset: {fileID: 0}
@@ -2650,6 +2697,11 @@ PrefabInstance:
       objectReference: {fileID: 6021489658652053754}
     - target: {fileID: 9014444268939275655, guid: 4571f7f1d56d9db438090356ae6879e8,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveToOptions
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014444268939275655, guid: 4571f7f1d56d9db438090356ae6879e8,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: StartUi, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -2658,9 +2710,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4571f7f1d56d9db438090356ae6879e8, type: 3}
---- !u!223 &6281282407535213882 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 2643014557704557186, guid: 4571f7f1d56d9db438090356ae6879e8,
+--- !u!225 &133668682570725073 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 8240642116667677033, guid: 4571f7f1d56d9db438090356ae6879e8,
     type: 3}
   m_PrefabInstance: {fileID: 8324418671210491832}
   m_PrefabAsset: {fileID: 0}

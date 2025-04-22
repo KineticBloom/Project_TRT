@@ -21,6 +21,9 @@ MonoBehaviour:
   - rid: 8151269401547244283
   - rid: 8151269401547244287
   - rid: 8151269401547244284
+  ItemOnOffer: {fileID: 11400000, guid: b3ce713d5e03399499b7f5df33e92dcc, type: 2}
+  BarterMessageWin: I will settle for that
+  BarterMessageLose: I won't settle for that much
   BarterAttempts: 1
   references:
     version: 2
@@ -31,6 +34,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 9fdff5716e799864c9c9eb16cc0ee9db, type: 3}
         Description: Pink Chip Value +5
         Text: +5
+        _revealed: 0
         ItemConditions:
         - rid: 8151269401547244292
         ItemActions:
@@ -41,6 +45,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: e90b20de36ba5354ca1c6b7da020f61d, type: 3}
         Description: Wooden Shark Tooth Value x2. Sharks, huh.
         Text: x2
+        _revealed: 0
         ItemConditions:
         - rid: 8151269401547244285
         ItemActions:
@@ -60,6 +65,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 3a667a0517cb55c448c6b5f4a417e864, type: 3}
         Description: Fruit related items' value x3
         Text: x3
+        _revealed: 0
         ItemConditions:
         - rid: 8151269401547244289
         ItemActions:

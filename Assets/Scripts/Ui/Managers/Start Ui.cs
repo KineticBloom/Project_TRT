@@ -21,11 +21,13 @@ public class StartUi : UiManager<StartUi.UiStates> {
     public void MoveToOptions() => MoveTo(UiStates.Options);
     public void MoveToAccessibilityCheck() => MoveTo(UiStates.AccessibilityCheck);
     public void MoveToNewGame() {
+        SaveSystem.ResetSaveData();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void MoveToContinueGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
     public void MoveToQuit() {
         Application.Quit();
     }

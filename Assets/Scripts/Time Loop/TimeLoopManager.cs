@@ -82,6 +82,7 @@ public class TimeLoopManager : MonoBehaviour
         GameManager.PlayerInput.AllowNavbar = true;
         GameManager.FlagTracker.ResetFlags();
         GameManager.Inventory.Clear();
+        SaveSystem.Load();
 
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }

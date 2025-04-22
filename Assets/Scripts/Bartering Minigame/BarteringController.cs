@@ -37,18 +37,11 @@ public class BarteringController : MonoBehaviour {
     public Button OfferTradeButton;
     public InventoryGridController InventoryGrid;
 
-    public struct TradeData {
-        public InventoryCardData ItemOnOffer;
-        public string DialogueForTrade;
-        public string DialogueForNoTrade;
-        public NPCData NPCData;
-    }
-
     #endregion
 
     #region ======== [ INTERNAL PROPERTIES ] ========
 
-    private TradeData _currentTradeInformation;
+    private NPCData _currentNPCData;
     private float _currentOfferedValue = 0;
     private bool _wonBarter = false;
     private InventoryCardObject _currentButtonObject;
@@ -76,21 +69,21 @@ public class BarteringController : MonoBehaviour {
     /// <summary>
     /// Start a barter for a given item.
     /// </summary>
-    /// <param name="TradeInformation">Item being offered by a NPC.</param>
-    public void InitializeTrade(TradeData TradeInformation, bool firstTime = true) {
+    /// <param name="npcData">Information about the trade with this NPC.</param>
+    public void InitializeTrade(NPCData npcData, bool firstTime = true) {
 
         TimeLoopManager.SetLoopPaused(true);
         // Setup trackers
-        _currentTradeInformation = TradeInformation;
+        _currentNPCData = npcData;
         _offeredItems = new OfferedItems();
 
         // Init new barter
         ResetData();
 
         // Load NPC Data
-        NPCOfferSlotOne.SetData(_currentTradeInformation.ItemOnOffer, false);
-        NPCValueText.text = "Value: " + _currentTradeInformation.ItemOnOffer.BaseValue;
-        NPCProfilePicture.sprite = _currentTradeInformation.NPCData.Icon;
+        NPCOfferSlotOne.SetData(_currentNPCData.ItemOnOffer, false);
+        NPCValueText.text = "Value: " + _currentNPCData.ItemOnOffer.BaseValue;
+        NPCProfilePicture.sprite = _currentNPCData.Icon;
 
 
         // Only runs the first time
@@ -99,7 +92,7 @@ public class BarteringController : MonoBehaviour {
             _currentAttempts = 0;
 
             // Load Effect Cards
-            foreach (EffectCard effectCard in _currentTradeInformation.NPCData.EffectCards)
+            foreach (EffectCard effectCard in _currentNPCData.EffectCards)
             {
                 GameObject card = Instantiate(EffectCardPrefab, EffectCardsContainer);
                 card.GetComponent<EffectCardDisplay>().Load(effectCard);
@@ -189,26 +182,26 @@ public class BarteringController : MonoBehaviour {
 
         ActivateEffectCards(EffectCard.ActivationTime.AfterOffer);
 
-        float NPCItemValue = _currentTradeInformation.ItemOnOffer.BaseValue;
+        float NPCItemValue = _currentNPCData.ItemOnOffer.BaseValue;
 
         EndMessageSpeechBubble.SetActive(true);
 
         if (_currentOfferedValue >= NPCItemValue) {
             // Complete Trade
-            EndMessage.text = _currentTradeInformation.DialogueForTrade;
+            EndMessage.text = _currentNPCData.BarterMessageWin;
             PassBarterIcon.SetActive(true);
-            GameManager.FlagTracker.SetFlag(_currentTradeInformation.NPCData.FlagID);
+            GameManager.FlagTracker.SetFlag(_currentNPCData.FlagID);
             _wonBarter = true;
 
             StartCoroutine(LeaveBarterScene());
         } else {
             // Say no!
-            EndMessage.text = _currentTradeInformation.DialogueForNoTrade;
+            EndMessage.text = _currentNPCData.BarterMessageLose;
             FailBarterIcon.SetActive(true);
 
 
             // If you run out of attempts, the barter is exited
-            var barterAttempts = _currentTradeInformation.NPCData.BarterAttempts;
+            var barterAttempts = _currentNPCData.BarterAttempts;
             _currentAttempts++;
 
             if (barterAttempts <= _currentAttempts && barterAttempts > 0)
@@ -232,7 +225,7 @@ public class BarteringController : MonoBehaviour {
     /// <param name="isPreBarter">which stage of the barter are we in for activating the effect cards?</param>
     private void ActivateEffectCards(EffectCard.ActivationTime activationTime)
     {
-        List<EffectCard> effectCards = _currentTradeInformation.NPCData.EffectCards;
+        List<EffectCard> effectCards = _currentNPCData.EffectCards;
         List<EffectCard> activeEffectCards = new List<EffectCard>();
 
         foreach (EffectCard effectCard in effectCards)
@@ -321,7 +314,7 @@ public class BarteringController : MonoBehaviour {
         _offeredItems.Items.Clear();
         // GameManager.Inventory.ResetAllCardValues();
 
-        InitializeTrade(_currentTradeInformation, false);
+        InitializeTrade(_currentNPCData, false);
     }
 
     IEnumerator LeaveBarterScene() {
@@ -341,7 +334,7 @@ public class BarteringController : MonoBehaviour {
                 GameManager.Inventory.RemoveCard(card);
             }
 
-            GameManager.Inventory.AddCard(_currentTradeInformation.ItemOnOffer);
+            GameManager.Inventory.AddCard(_currentNPCData.ItemOnOffer);
         }
 
         _offeredItems = null;

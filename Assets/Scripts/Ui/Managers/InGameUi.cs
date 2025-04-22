@@ -20,6 +20,7 @@ public class InGameUi : UiManager<InGameUi.UiStates> {
     }
 
     public void MoveToDefault() => MoveTo(UiStates.Default);
+    
     public void MoveToBartering(BarteringController.TradeData tradeData) {
         BarteringController.InitializeTrade(tradeData);
         MoveTo(UiStates.Bartering);

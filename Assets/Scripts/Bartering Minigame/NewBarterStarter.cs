@@ -29,12 +29,12 @@ public class NewBarterStarter : MonoBehaviour {
     /// <summary>
     /// Globally callable event to start a barter.
     /// </summary>
-    /// <param name="tradeData">Data to start the barter with.</param>
-    public void StartBarter(BarteringController.TradeData tradeData) {
+    /// <param name="npcData">Data to start the barter with.</param>
+    public void StartBarter(NPCData npcData) {
 
         if (_inGameUi == null) return;
 
-        _inGameUi.MoveToBartering(tradeData);
+        _inGameUi.MoveToBartering(npcData);
     }
 
     /// <summary>

@@ -6,11 +6,7 @@ using UnityEngine.Events;
 public class NpcInteractable : Interactable
 {
     [SerializeField] private TextAsset npcConversation;
-
     public NPCData NpcData;
-    public InventoryCardData ItemForOffer;
-    public string BarterMessageWin;
-    public string BarterMessageLose;
 
     public Vector3 DialogueSourceLocalPosition;
     public override void Interaction() {
@@ -20,15 +16,8 @@ public class NpcInteractable : Interactable
     }
 
     public void TriggerBarter() {
-        BarteringController.TradeData tradeData = new BarteringController.TradeData();
 
-        tradeData = new BarteringController.TradeData();
-        tradeData.ItemOnOffer = ItemForOffer;
-        tradeData.NPCData = NpcData;
-        tradeData.DialogueForTrade = BarterMessageWin;
-        tradeData.DialogueForNoTrade = BarterMessageLose;
-
-        GameManager.NewBarterStarter.StartBarter(tradeData);
+        GameManager.NewBarterStarter.StartBarter(NpcData);
     }
 
     public override void Highlight()

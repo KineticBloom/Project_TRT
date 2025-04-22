@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 /// <summary>
 /// Tracks Setting UI panels
@@ -26,8 +27,12 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
     }
 
     public void SwapToSettingsUi() {
-        GameManager.Instance.SwapUiManager(this);
         pauseOpen.Post(this.gameObject);
+        StartCoroutine(LoadSettingsUi());
+    }
+    IEnumerator LoadSettingsUi() {
+        yield return new WaitForEndOfFrame();
+        GameManager.Instance.SwapUiManager(this);
     }
 
     protected override void DisableFocus() {

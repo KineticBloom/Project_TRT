@@ -1,4 +1,5 @@
-
+using System.Collections;
+using UnityEngine;
 /// <summary>
 /// Tracks Gameplay UI panels
 /// </summary>
@@ -26,8 +27,12 @@ public class InGameUi : UiManager<InGameUi.UiStates> {
     public void MoveToDialogue() => MoveTo(UiStates.Dialogue);
 
     public void SwapToInGameUi() {
+        StartCoroutine(LoadInGameUI());
+    }
+
+    IEnumerator LoadInGameUI() {
+        yield return new WaitForEndOfFrame();
         GameManager.Instance.SwapUiManager(this);
     }
 }
-
 

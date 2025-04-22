@@ -1,3 +1,4 @@
+using System.IO;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -62,7 +63,22 @@ public class DevMenu : Singleton<DevMenu> {
         SceneManager.sceneLoaded -= CloseDevMenu;
     }
     
-    string helpMessage = "Commands:\n    give <item ID> [<amount>] - Give item with <item ID> with optional <amount> (default: 1)\n    set <flag ID> - Set the flag with <flag ID>\n    addtime <n> - Add <n> seconds to the timer\n    pauseloop - Pause and Unpause the timeloop\n    endloop - End the time loop\n    reset - Reset game\n    quit - Quit game\n    exit - Close menu\n    clear - Clear the console\n    help - Display the command list\n";
+    string helpMessage = 
+    "Commands:\n"+
+    "    give <item ID> [<amount>] - Give item with <item ID> with optional <amount> (default: 1)\n"+
+    "    remove <item ID> - Remove one instance of the item with <item ID>\n"+
+    "    setflag <flag ID> [true|false] - Set the flag with <flag ID> to true or false (default: true)\n"+
+    "    setspeed <n> - Set the player speed to <n> times the default\n"+
+    "    addtime <n> - Add <n> seconds to the timer\n"+
+    "    pauseloop - Pause and Unpause the timeloop\n"+
+    "    endloop - End the time loop\n"+
+    "    printitems - Prints a list of all item IDs\n"+
+    "    printdata - Prints save data file\n"+
+    "    reset - Reset game\n"+
+    "    quit - Quit game\n"+
+    "    exit - Close menu\n"+
+    "    clear - Clear the console\n"+
+    "    help - Display the command list\n";
     
     void ConsoleCommand(string command)
     {
@@ -80,6 +96,17 @@ public class DevMenu : Singleton<DevMenu> {
                 break;
             case "clear":
                 output.text = "Console Cleared.\n";
+                break;
+            case "printdata":
+                output.text += File.ReadAllText(SaveSystem.SaveFileName())+"\n";
+                break;
+            case "printitems":
+                output.text += "-----Items-----\n";
+                foreach (InventoryCardData data in GameManager.Inventory.AllCardDatas.datas)
+                {
+                    output.text += $"{data.ID}\n";
+                }
+                output.text += "---------------\n";
                 break;
             case "pauseloop":
                 if (TimeLoopManager.Instance == null)
@@ -139,8 +166,31 @@ public class DevMenu : Singleton<DevMenu> {
                     output.text += $"<color=\"red\">Error: Couldn't find item with ID {parser[1]}</color>\n";
                 }
                 break;
-            case "set":
-                if (parser.Length != 2)
+            case "remove":
+                if (parser.Length < 2 || parser.Length > 3)
+                {
+                    output.text += "<color=\"red\">Error: Invalid Number of Arguments</color>\n";
+                    return;
+                }
+                Inventory inventory2 = GameManager.Inventory;
+                InventoryCardData card2 = inventory2.AllCardDatas.datas.FirstOrDefault(x => x.ID == parser[1]);
+                if (card2)
+                {
+                    if (inventory2.HasCard(card2))
+                    {
+                        inventory2.RemoveCard(card2);
+                        output.text += "<color=\"green\">Success</color>\n";
+                    }
+                    else {
+                        output.text += "<color=\"red\">Error: Item Not in Inventory</color>\n";
+                    }
+                }
+                else {
+                    output.text += $"<color=\"red\">Error: Couldn't find item with ID {parser[1]}</color>\n";
+                }
+                break;
+            case "setflag":
+                if (parser.Length < 2 || parser.Length > 3)
                 {
                     output.text += "<color=\"red\">Error: Invalid Number of Arguments</color>\n";
                     return;
@@ -148,11 +198,46 @@ public class DevMenu : Singleton<DevMenu> {
                 FlagTracker flagTracker = GameManager.FlagTracker;
                 if (flagTracker.GetFlag(parser[1]) != null)
                 {
-                    flagTracker.SetFlag(parser[1]);
+                    bool value = true;
+                    if (parser.Length > 2)
+                    {
+                        try
+                        {
+                            value = bool.Parse(parser[2]);
+                        }
+                        catch (System.Exception)
+                        {
+                            output.text += "<color=\"red\">Error: Invalid Argument</color>\n";
+                            return;
+                        }
+                    }
+                    flagTracker.SetFlag(parser[1], value);
                     output.text += "<color=\"green\">Success</color>\n";
                 }
                 else {
                     output.text += $"<color=\"red\">Error: Couldn't find flag with ID {parser[1]}</color>\n";
+                }
+                break;
+            case "setspeed":
+                if (parser.Length != 2)
+                {
+                    output.text += "<color=\"red\">Error: Invalid Number of Arguments</color>\n";
+                    return;
+                }
+                if (GameManager.Player == null)
+                {
+                    output.text += "<color=\"red\">Error: Player Doesn't Exist</color>\n";
+                    return;
+                }
+                try
+                {
+                    float sp = float.Parse(parser[1]);
+                    GameManager.Player.Movement.SetSpeed(sp);
+                    output.text += "<color=\"green\">Success</color>\n";
+                }
+                catch (System.Exception)
+                {
+                    output.text += "<color=\"red\">Error: Invalid Number</color>\n";
                 }
                 break;
             case "addtime":
@@ -209,6 +294,7 @@ public class DevMenu : Singleton<DevMenu> {
         if (GameManager.Inventory != null) {
             GameManager.Inventory.Clear();
         }
+        SaveSystem.ResetSaveData();
         SceneManager.LoadScene(0);
     }
     

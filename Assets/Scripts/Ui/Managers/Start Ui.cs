@@ -9,7 +9,9 @@ public class StartUi : UiManager<StartUi.UiStates> {
         Credits,
         Options,
         AccessibilityCheck,
-        Controls
+        Controls,
+        CheckToQuit,
+        CheckToNewGame
     }
 
     private void Start() {
@@ -32,5 +34,13 @@ public class StartUi : UiManager<StartUi.UiStates> {
         Application.Quit();
     }
     public void MoveToControls() => MoveTo(UiStates.Controls);
+
+    public void MoveToCheckToQuit() {
+        MoveTo(UiStates.CheckToQuit);
+    }
+
+    public void MoveToCheckToNewGame() {
+        MoveTo(UiStates.CheckToNewGame);
+    }
 
 }

@@ -16,12 +16,15 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
     public enum UiStates {
         Pause,
         Options,
-        Controls
+        Controls,
+        CheckToTitle
     }
 
     public void MoveToPause() => MoveTo(UiStates.Pause);
     public void MoveToOptions() => MoveTo(UiStates.Options);
     public void MoveToControls() => MoveTo(UiStates.Controls);
+
+    public void MoveToCheckToTitle() => MoveTo(UiStates.CheckToTitle);
 
     public void MoveToTitle() {
         SceneManager.LoadScene(0);

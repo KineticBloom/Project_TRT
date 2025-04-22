@@ -37,17 +37,6 @@ public class JournalNPC : InventoryAction
             Debug.LogError("Cannot AddNPC, GameManager.Instance is null");
             return;
         }
-
-        GameManager.NPCGlobalList.AddKnownNPC(GameManager.NPCGlobalList.GetNPCFromData(npcData));
-
-    }
-
-
-    public bool IsKnown(NPCData npcData)
-    {
-        NPC wrapper = GameManager.NPCGlobalList.GetNPCFromData(npcData);
-
-        return GameManager.NPCGlobalList.KnownNPCs.Contains(wrapper);
     }
 
 
@@ -57,8 +46,6 @@ public class JournalNPC : InventoryAction
     /// <param name="npc"></param>
     public void LoadNPC(NPCData npc)
     {
-        _npcData = GameManager.NPCGlobalList.GetNPCFromData(npc);
-
         nameDisplay.text = npc.Name;
         iconDisplay.sprite = npc.Icon;
         bioDisplay.text = npc.Bio;

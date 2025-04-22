@@ -121,6 +121,7 @@ public class StartUi : MonoBehaviour {
             case UiState.NewGame:
                 // Start new game
                 // -- TEMP --
+                SaveSystem.ResetSaveData();
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 // -- TEMP --
                 break;

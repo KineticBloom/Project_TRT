@@ -106,35 +106,30 @@ public class GameManager : Singleton<GameManager>
     /// Loads Effect Cards from save data
     /// </summary>
     /// <param name="npcSaveData">The save data</param>
-    public void Load(NPCSaveData npcSaveData)
-    {
-        if (_player == null)
-        {
+    public void Load(NPCSaveData npcSaveData) {
+        if (_player == null) {
             Debug.LogError("Cannot Load outside of game scene: Player not found.");
             return;
         }
 
-        if (npcSaveData.effectCardData == null)
-        {
+        if (npcSaveData.effectCardData == null) {
             Debug.LogError("NPCInteractable: Cannot Load null data");
             return;
         }
 
-        foreach (NPCData data in AllNPCDatas.datas)
-        {
+        foreach (NPCData data in AllNPCDatas.datas) {
             // Cannot load data that does not exist
-            if (!npcSaveData.effectCardData.ContainsKey(data.FlagID))
-            {
+            if (!npcSaveData.effectCardData.ContainsKey(data.FlagID)) {
                 return;
             }
 
             List<bool> effectCardsList = npcSaveData.effectCardData[data.FlagID];
 
             // Set reveal status for all Effect Cards
-            for (int effectCardIndex = 0; effectCardIndex < data.EffectCards.Count; effectCardIndex++)
-            {
+            for (int effectCardIndex = 0; effectCardIndex < data.EffectCards.Count; effectCardIndex++) {
                 data.EffectCards[effectCardIndex].IsRevealed = effectCardsList[effectCardIndex];
             }
         }
+    }
 }
 

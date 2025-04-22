@@ -21,8 +21,8 @@ public class InGameUi : UiManager<InGameUi.UiStates> {
 
     public void MoveToDefault() => MoveTo(UiStates.Default);
     
-    public void MoveToBartering(BarteringController.TradeData tradeData) {
-        BarteringController.InitializeTrade(tradeData);
+    public void MoveToBartering(NPCData npcData) {
+        BarteringController.InitializeTrade(npcData);
         MoveTo(UiStates.Bartering);
     }
     public void MoveToDialogue() => MoveTo(UiStates.Dialogue);

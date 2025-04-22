@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
 	#region ======== [ PRIVATE PROPERTIES ] ========
 
+	[SerializeField, ReadOnly] private float _adjustedSpeed = 5f;
 	private const float _gravity = 9.81f;
 	private float _downwardForce = 0;
 	private bool _isWalking = false;
@@ -44,6 +45,23 @@ public class PlayerMovement : MonoBehaviour
 	public void SetCanMove(bool canMove) {
 		_canMove = canMove;
 	}
+	
+	/// <summary>
+	/// Set speed to mult times default speed
+	/// </summary>
+	/// <param name="mult">The value to multiply by</param>
+	public void SetSpeed(float mult)
+	{
+		_adjustedSpeed = speed * mult;
+	}
+	
+	/// <summary>
+	/// Resets speed to default
+	/// </summary>
+	public void ResetSpeed()
+	{
+		_adjustedSpeed = speed;
+	}
 
     #endregion
 
@@ -52,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
 	{
 		_characterController = GetComponent<CharacterController>();
+		_adjustedSpeed = speed;
 	}
 
 	void Update()
@@ -75,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
 
 		// Move character
 		Vector3 direction = targetRotation * _input;
-		_characterController.Move(speed * Time.deltaTime * direction);
+		_characterController.Move(_adjustedSpeed * Time.deltaTime * direction);
 
 		//animator.speed = Mathf.Min(1,(direction * speed).magnitude);
 
@@ -100,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
 			}
 		}
 
-		_isWalking = (direction * speed).magnitude > 0;
+		_isWalking = (direction * _adjustedSpeed).magnitude > 0;
 		if (animator)
         {
 			animator.SetBool("IsWalking", _isWalking);

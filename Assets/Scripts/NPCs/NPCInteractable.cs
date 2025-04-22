@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class NpcInteractable : Interactable
 {
     [SerializeField] private TextAsset npcConversation;
-    public NPCData NpcData;
+    [Expandable] public NPCData NpcData;
 
     public Vector3 DialogueSourceLocalPosition;
     public override void Interaction() {

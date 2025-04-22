@@ -55,6 +55,7 @@ public class DialogueManager : MonoBehaviour {
     private bool LineFinished = true;
     private bool _onDelay = false;
     private bool _noInput = false;
+    private bool _externalNoInput = false;
 
     private Vector3 lastCameraPos;
     private Quaternion lastCameraRot;
@@ -68,6 +69,15 @@ public class DialogueManager : MonoBehaviour {
     #endregion
 
     #region ======== [ PUBLIC METHODS ] ========
+
+    /// <summary>
+    /// Function to pause dialogue interactions from player.
+    /// </summary>
+    /// <param name="FreezeDialogue">True then no input accepted.</param>
+    public void FreezeDialogue(bool FreezeDialogue) {
+        Debug.Log("Set Dialogue Freeze to: " + FreezeDialogue);
+        _externalNoInput = FreezeDialogue;
+    }
 
     /// <summary>
     /// Stop current dialogue mid conversation if needed.
@@ -170,6 +180,7 @@ public class DialogueManager : MonoBehaviour {
 
         if (_onDelay) return;
         if (_noInput) return;
+        if (_externalNoInput) return;
 
         // Check for inputs
         if (GameManager.PlayerInput.GetAffirmDown() || GameManager.PlayerInput.GetClickDown()) {

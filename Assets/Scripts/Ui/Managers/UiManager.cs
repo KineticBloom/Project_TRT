@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.LowLevel;
 
 /// <summary>
 /// Contains each Ui States preferences for game environment.
@@ -12,6 +13,7 @@ public struct StateData {
     public CanvasGroup StatesCanvasGroup;
     public bool IsPlayerFrozen;
     public bool IsTimeFrozen;
+    public bool IsDialogueFrozen;
     public bool PauseAnimations;
 }
 
@@ -58,8 +60,8 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
 
     #region ======== [ PRIVATE PROPERTY ] ========
 
-    private UiStateEnum _currentState;
-    private StateData _currentStateData;
+    protected UiStateEnum _currentState;
+    protected StateData _currentStateData;
     private GameObject _lastSelection;
     private bool _noStateAssigned = true;
 
@@ -121,11 +123,49 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
             GameManager.Player.Movement.SetCanMove(!newStateData.IsPlayerFrozen);
             GameManager.Player.InteractionHandler.SetCanInteract(!newStateData.IsPlayerFrozen);
         }
+
+        GameManager.DialogueManager.FreezeDialogue(newStateData.IsDialogueFrozen);
+
         if (TimeLoopManager.Instance != null) {
             TimeLoopManager.SetLoopPaused(newStateData.IsTimeFrozen);
         }
 
         if (newStateData.PauseAnimations) {
+            Time.timeScale = 0;
+        } else {
+            Time.timeScale = 1;
+        }
+    }
+
+    protected void LoadState(UiStateEnum stateToLoad) {
+
+        StateData stateData = new StateData();
+        bool foundData = false;
+
+        foreach (Pair<UiStateEnum, StateData> x in states) {
+            if (x.First.Equals(stateToLoad)) {
+                stateData = x.Second;
+                foundData = true;
+            }
+        }
+
+        if (foundData == false) return;
+
+        Debug.Log("Load state: " + stateToLoad.ToString()); 
+
+        // Load new properties
+        if (GameManager.Player != null) {
+            GameManager.Player.Movement.SetCanMove(!stateData.IsPlayerFrozen);
+            GameManager.Player.InteractionHandler.SetCanInteract(!stateData.IsPlayerFrozen);
+        }
+
+        GameManager.DialogueManager.FreezeDialogue(stateData.IsDialogueFrozen);
+
+        if (TimeLoopManager.Instance != null) {
+            TimeLoopManager.SetLoopPaused(stateData.IsTimeFrozen);
+        }
+
+        if (stateData.PauseAnimations) {
             Time.timeScale = 0;
         } else {
             Time.timeScale = 1;
@@ -153,6 +193,9 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
             MoveTo(DefaultState);
             _noStateAssigned = false;
         }
+
+        // Show current state Canvas
+        _currentStateData.StatesCanvasGroup.gameObject.SetActive(true);
 
         // Load old data
         if (GameManager.Player != null) {

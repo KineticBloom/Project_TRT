@@ -34,6 +34,7 @@ public class InGameUi : UiManager<InGameUi.UiStates> {
     IEnumerator LoadInGameUI() {
         yield return new WaitForEndOfFrame();
         GameManager.Instance.SwapUiManager(this);
+        LoadState(_currentState);
     }
 }
 

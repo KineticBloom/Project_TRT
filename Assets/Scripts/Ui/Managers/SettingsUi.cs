@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using static InventoryCardObject;
 
 /// <summary>
 /// Tracks Setting UI panels
@@ -33,11 +34,12 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
     IEnumerator LoadSettingsUi() {
         yield return new WaitForEndOfFrame();
         GameManager.Instance.SwapUiManager(this);
+        LoadState(_currentState);
     }
 
     protected override void DisableFocus() {
         base.DisableFocus();
         pauseClose.Post(this.gameObject);
-        this.gameObject.SetActive(false);
+        this._currentStateData.StatesCanvasGroup.gameObject.SetActive(false);
     }
 }

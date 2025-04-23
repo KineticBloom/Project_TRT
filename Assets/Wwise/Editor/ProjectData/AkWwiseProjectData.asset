@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: d2e647656401fa48b0d64a886d907446
     GuidInternal: 
-    m_lastTime: -8584610564298867843
+    m_lastTime: -8584616603804391232
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 587ca0226052be4e9b8540a22c4f2092
     GuidInternal: 
-    m_lastTime: -8584575133428961606
+    m_lastTime: -8584563963490455585
     List:
     - name: Ambience Bus
       guid: b98c6c284c7de7449139c8391e920f9c
@@ -174,7 +174,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Ambience
     guid: 0104f6680c27bf408fd7c64816ee8c87
     GuidInternal: 
-    m_lastTime: -8584575133416692147
+    m_lastTime: -8584563963483353715
     List:
     - name: Ambience
       guid: 86b2f852bdba9b4fa5a800a04824ffe7
@@ -201,7 +201,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 04fe062a3bbc02478aebf9ed87255f35
     GuidInternal: 
-    m_lastTime: -8584610564298937844
+    m_lastTime: -8584616603804511337
     List: []
   - PhysicalPath: SoundBanks\Music.wwu
     PathAndIcons:
@@ -214,7 +214,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Music
     guid: 5f5c2e836df59d41833026f7bc293cab
     GuidInternal: 
-    m_lastTime: -8584575133416692147
+    m_lastTime: -8584595434944980567
     List:
     - name: Music
       guid: 277caf2ce418a740871cc075a9250659
@@ -241,7 +241,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\SFX
     guid: f39c92e98d8cf14f9d79f84c53eb00b3
     GuidInternal: 
-    m_lastTime: -8584575133416692147
+    m_lastTime: -8584563963483348755
     List:
     - name: SFX
       guid: cc965433ea452249b9fac65217b7662e
@@ -269,7 +269,7 @@ MonoBehaviour:
     ParentPath: Events\Ambience
     guid: 78290c8229ac584884ed86c3baba619d
     GuidInternal: 
-    m_lastTime: -8584575133438261508
+    m_lastTime: -8584563963495028893
     List:
     - name: BirdStart
       guid: 932c63abf08ea4489f51f773ba1e5c74
@@ -373,6 +373,71 @@ MonoBehaviour:
       maxAttenuation: 100
       maxDuration: 0
       minDuration: 0
+  - PhysicalPath: Events\B4rn3y.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Environment
+      ObjectType: 12
+      guid: 851bf5aefe549d489c25241343bb6f59
+    - ElementName: NPC
+      ObjectType: 12
+      guid: 09137e3649952b468f529ebe6f164b6b
+    - ElementName: B4rn3y
+      ObjectType: 12
+      guid: ba283f9801c3804bbf336ac089576497
+    ParentPath: Events\Environment\NPC\B4rn3y
+    guid: ba283f9801c3804bbf336ac089576497
+    GuidInternal: 
+    m_lastTime: -8584563113261171621
+    List:
+    - name: ENV_B4rn3y_Hoot
+      guid: e19f9296802a3549972f8fca527c927f
+      id: 3764842872
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Environment
+        ObjectType: 12
+        guid: 851bf5aefe549d489c25241343bb6f59
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 09137e3649952b468f529ebe6f164b6b
+      - ElementName: B4rn3y
+        ObjectType: 12
+        guid: ba283f9801c3804bbf336ac089576497
+      - ElementName: ENV_B4rn3y_Hoot
+        ObjectType: 3
+        guid: e19f9296802a3549972f8fca527c927f
+      Path: Events\Environment\NPC\B4rn3y\ENV_B4rn3y_Hoot
+      maxAttenuation: 0
+      maxDuration: 0.39863947
+      minDuration: 0.39863947
+    - name: ENV_B4rn3y_Identified
+      guid: 61963e3f3e68e5489f2daccaa1944138
+      id: 3283805861
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Environment
+        ObjectType: 12
+        guid: 851bf5aefe549d489c25241343bb6f59
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 09137e3649952b468f529ebe6f164b6b
+      - ElementName: B4rn3y
+        ObjectType: 12
+        guid: ba283f9801c3804bbf336ac089576497
+      - ElementName: ENV_B4rn3y_Identified
+        ObjectType: 3
+        guid: 61963e3f3e68e5489f2daccaa1944138
+      Path: Events\Environment\NPC\B4rn3y\ENV_B4rn3y_Identified
+      maxAttenuation: 0
+      maxDuration: 4.40356
+      minDuration: 4.1059184
   - PhysicalPath: Events\BarteringUI.wwu
     PathAndIcons:
     - ElementName: Events
@@ -387,7 +452,7 @@ MonoBehaviour:
     ParentPath: Events\UI\BarteringUI
     guid: 40c947321f41084491c4b5b163ca6270
     GuidInternal: 
-    m_lastTime: -8584575133438251535
+    m_lastTime: -8584595434961224713
     List:
     - name: BART_Barter_Lose
       guid: 3855ac20de5b634d9ad1e66c511fb4b5
@@ -520,8 +585,73 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 33316d7890aa87408e2af719ccc92cfd
     GuidInternal: 
-    m_lastTime: -8584575133438251535
+    m_lastTime: -8584598829024049829
     List: []
+  - PhysicalPath: Events\Eden.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Environment
+      ObjectType: 12
+      guid: 851bf5aefe549d489c25241343bb6f59
+    - ElementName: NPC
+      ObjectType: 12
+      guid: 09137e3649952b468f529ebe6f164b6b
+    - ElementName: Eden
+      ObjectType: 12
+      guid: a25562c68949034d8d2f00c179802c36
+    ParentPath: Events\Environment\NPC\Eden
+    guid: a25562c68949034d8d2f00c179802c36
+    GuidInternal: 
+    m_lastTime: -8584563364711470232
+    List:
+    - name: ENV_Eden_Expel
+      guid: 1ce39ba1bc0ff74d9e88f004eab07b56
+      id: 4203990704
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Environment
+        ObjectType: 12
+        guid: 851bf5aefe549d489c25241343bb6f59
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 09137e3649952b468f529ebe6f164b6b
+      - ElementName: Eden
+        ObjectType: 12
+        guid: a25562c68949034d8d2f00c179802c36
+      - ElementName: ENV_Eden_Expel
+        ObjectType: 3
+        guid: 1ce39ba1bc0ff74d9e88f004eab07b56
+      Path: Events\Environment\NPC\Eden\ENV_Eden_Expel
+      maxAttenuation: 0
+      maxDuration: 1.7349433
+      minDuration: 1.5285941
+    - name: ENV_Eden_Hello
+      guid: ddb524eb6e3eed4981568998b28f6b1f
+      id: 4139473738
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Environment
+        ObjectType: 12
+        guid: 851bf5aefe549d489c25241343bb6f59
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 09137e3649952b468f529ebe6f164b6b
+      - ElementName: Eden
+        ObjectType: 12
+        guid: a25562c68949034d8d2f00c179802c36
+      - ElementName: ENV_Eden_Hello
+        ObjectType: 3
+        guid: ddb524eb6e3eed4981568998b28f6b1f
+      Path: Events\Environment\NPC\Eden\ENV_Eden_Hello
+      maxAttenuation: 0
+      maxDuration: 1.1872109
+      minDuration: 1.0012245
   - PhysicalPath: Events\Environment.wwu
     PathAndIcons:
     - ElementName: Events
@@ -533,7 +663,7 @@ MonoBehaviour:
     ParentPath: Events\Environment
     guid: 851bf5aefe549d489c25241343bb6f59
     GuidInternal: 
-    m_lastTime: -8584575133438251535
+    m_lastTime: -8584563364711638446
     List: []
   - PhysicalPath: Events\EnvironmentUI.wwu
     PathAndIcons:
@@ -549,7 +679,7 @@ MonoBehaviour:
     ParentPath: Events\UI\EnvironmentUI
     guid: 4be82f8af05f9c4bb20ac0e39bad8dae
     GuidInternal: 
-    m_lastTime: -8584575133438241554
+    m_lastTime: -8584595434961214712
     List:
     - name: ENV_Interaction_Arrow_Hide
       guid: e67f97983d2b8d4198fae5033e8d4006
@@ -591,6 +721,71 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1.2314739
       minDuration: 1.2314739
+  - PhysicalPath: Events\F1x.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Environment
+      ObjectType: 12
+      guid: 851bf5aefe549d489c25241343bb6f59
+    - ElementName: NPC
+      ObjectType: 12
+      guid: 09137e3649952b468f529ebe6f164b6b
+    - ElementName: F1x
+      ObjectType: 12
+      guid: ce3cd6713d17334b966516859d0170a9
+    ParentPath: Events\Environment\NPC\F1x
+    guid: ce3cd6713d17334b966516859d0170a9
+    GuidInternal: 
+    m_lastTime: -8584563117216567906
+    List:
+    - name: ENV_F1x_Dont_Bite
+      guid: 77759b87c7315a40b6658ecb407d9f00
+      id: 2236624421
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Environment
+        ObjectType: 12
+        guid: 851bf5aefe549d489c25241343bb6f59
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 09137e3649952b468f529ebe6f164b6b
+      - ElementName: F1x
+        ObjectType: 12
+        guid: ce3cd6713d17334b966516859d0170a9
+      - ElementName: ENV_F1x_Dont_Bite
+        ObjectType: 3
+        guid: 77759b87c7315a40b6658ecb407d9f00
+      Path: Events\Environment\NPC\F1x\ENV_F1x_Dont_Bite
+      maxAttenuation: 0
+      maxDuration: 1.4646485
+      minDuration: 1.1123129
+    - name: ENV_F1x_Watcha_Got
+      guid: 7099a4e1a503434baf5f53372d4d3554
+      id: 123463240
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Environment
+        ObjectType: 12
+        guid: 851bf5aefe549d489c25241343bb6f59
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 09137e3649952b468f529ebe6f164b6b
+      - ElementName: F1x
+        ObjectType: 12
+        guid: ce3cd6713d17334b966516859d0170a9
+      - ElementName: ENV_F1x_Watcha_Got
+        ObjectType: 3
+        guid: 7099a4e1a503434baf5f53372d4d3554
+      Path: Events\Environment\NPC\F1x\ENV_F1x_Watcha_Got
+      maxAttenuation: 0
+      maxDuration: 1.449229
+      minDuration: 1.2010431
   - PhysicalPath: Events\MenuUI.wwu
     PathAndIcons:
     - ElementName: Events
@@ -605,7 +800,7 @@ MonoBehaviour:
     ParentPath: Events\UI\MenuUI
     guid: 3ced4e25bc1aa447a545adce0ca03f95
     GuidInternal: 
-    m_lastTime: -8584575133438241554
+    m_lastTime: -8584595434961204712
     List:
     - name: UI_Menu_Close
       guid: 438c2832b6aa2845ab36655fe26f9b55
@@ -658,7 +853,7 @@ MonoBehaviour:
     ParentPath: Events\Music
     guid: 1baa49cfe5a4fe438cbe031c55500853
     GuidInternal: 
-    m_lastTime: -8584575133438241554
+    m_lastTime: -8584595434961159335
     List:
     - name: MusicEvents
       guid: bb98cb8f8639c644980fd12d17cb9504
@@ -857,6 +1052,22 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+  - PhysicalPath: Events\NPC.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Environment
+      ObjectType: 12
+      guid: 851bf5aefe549d489c25241343bb6f59
+    - ElementName: NPC
+      ObjectType: 12
+      guid: 09137e3649952b468f529ebe6f164b6b
+    ParentPath: Events\Environment\NPC
+    guid: 09137e3649952b468f529ebe6f164b6b
+    GuidInternal: 
+    m_lastTime: -8584563113844731220
+    List: []
   - PhysicalPath: Events\Objects.wwu
     PathAndIcons:
     - ElementName: Events
@@ -871,7 +1082,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\Objects
     guid: f53d68a94c6e354d9f4eeee3b0dcd364
     GuidInternal: 
-    m_lastTime: -8584575133438241554
+    m_lastTime: -8584595434961156503
     List:
     - name: DoorOpen
       guid: e45a10416290f44da2dd9afd2f2afa3d
@@ -987,7 +1198,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\Player
     guid: d5f674957249a840bcf4382b6f3925ec
     GuidInternal: 
-    m_lastTime: -8584575133438231578
+    m_lastTime: -8584595434961156503
     List:
     - name: PlayerFootsteps
       guid: 84795c876ed0ab43a382ca7872053bb8
@@ -1020,7 +1231,7 @@ MonoBehaviour:
     ParentPath: Events\SettingsUI
     guid: 1fb0d41104b6e84e81ed9ee770f55b1a
     GuidInternal: 
-    m_lastTime: -8584575133438231578
+    m_lastTime: -8584563963495023934
     List:
     - name: Play_Menu_ButtonDown
       guid: 1bffeceb86b8cc499461cd7752dd9198
@@ -1101,7 +1312,7 @@ MonoBehaviour:
     ParentPath: Events\UI
     guid: 75f867dc1a9906498df4975d819bec40
     GuidInternal: 
-    m_lastTime: -8584575133438231578
+    m_lastTime: -8584595434961146592
     List: []
   RtpcWwu:
   - PhysicalPath: Game Parameters\Ambience.wwu
@@ -1115,7 +1326,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Ambience
     guid: 1364dfa97885f64c975561aade985960
     GuidInternal: 
-    m_lastTime: -8584575133438231578
+    m_lastTime: -8584599538167819512
     List:
     - name: AmbienceVolume
       guid: 01dd239d2ba1e14984ac00064dd75e62
@@ -1142,7 +1353,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: be288e71c0cc3c439b7b4bfb6a1a4c72
     GuidInternal: 
-    m_lastTime: -8584575133438221608
+    m_lastTime: -8584599538167814546
     List:
     - name: MasterVolume
       guid: 59d20be76f82c04d9077f7a3d88c2dfc
@@ -1169,7 +1380,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Music
     guid: d5202f5c1fdb7e4592a92fb8427c1e09
     GuidInternal: 
-    m_lastTime: -8584575133438221608
+    m_lastTime: -8584599538167814546
     List:
     - name: MusicVolume
       guid: 4d5e195f502dd74ead8860aef95d5310
@@ -1196,7 +1407,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\SFX
     guid: b76be0652aa2144ca2f1c95ef14073c4
     GuidInternal: 
-    m_lastTime: -8584575133438221608
+    m_lastTime: -8584599538167809592
     List:
     - name: SFXVolume
       guid: 3afe647cb3b54f438d068914ab1c8a1f
@@ -1224,7 +1435,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: e6b79552b8b0634f8a967d61276f57fa
     GuidInternal: 
-    m_lastTime: -8584575133416682175
+    m_lastTime: -8584595434944930555
     List:
     - name: MusicState
       guid: 5df940ae313415468d9b77fe40be0b6c
@@ -1352,7 +1563,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 4106411ba585644787ebc92dd1cdc4ca
     GuidInternal: 
-    m_lastTime: -8584610564298887835
+    m_lastTime: -8584616603804441278
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -1366,7 +1577,7 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: 9df9aa54af8cab4ea76b42f4ee8eaa58
     GuidInternal: 
-    m_lastTime: -8584610564298877839
+    m_lastTime: -8584616603804421256
     List:
     - name: Test
       guid: 23c0f7a154fe4f4dbb4cbb0e19d72476
@@ -1383,7 +1594,7 @@ MonoBehaviour:
         guid: 23c0f7a154fe4f4dbb4cbb0e19d72476
       Path: Triggers\Default Work Unit\Test
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 05000000060000000700000008000000090000000a0000000c0000000d0000000e0000001000000011000000120000001300000014000000160000001700000018000000
+  ExpandedWaapiItemIds: 050000000e0000000f00000038000000390000003c0000003d000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

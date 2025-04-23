@@ -4,6 +4,7 @@ using NaughtyAttributes;
 using UnityEditor;
 using DG.Tweening;
 using System;
+using System.Collections;
 
 [System.Serializable]
 public class Points
@@ -23,9 +24,8 @@ public class NewElevatorController : MonoBehaviour
     [SerializeField] private Transform objectRoot;
 
     [BoxGroup("Setup"), SerializeField] private InventoryCardData requiredCard;
-    [BoxGroup("Setup"), SerializeField] private Transform startingWaypoint; // Contractor note: why not waypoints[0]?
+    [BoxGroup("Setup"), SerializeField] private Transform startingWaypoint;
     [BoxGroup("Setup"), SerializeField, Range(0f, 10f)] private float movementDurationSeconds;
-    // [BoxGroup("Setup"), SerializeField] private GameObject door; // Contractor note: would not need this because of the fence list
 
     [SerializeField] private GameObject leftFence, rightFence, frontFence, backFence; // ----- ADDED ------
 
@@ -48,9 +48,21 @@ public class NewElevatorController : MonoBehaviour
     /// <summary>
     /// Moves the elevator along the Waypoints in order, reverses when it reaches the end.
     /// </summary>
+    bool toEnd = true;
     [Button("Move Elevator")]
     public void MoveElevator()
     {
+
+        /******* HIJACKING script *********/
+        Debug.Log("hijack move elevator function");
+        // testing by setting targetWaypoint to the end
+        if (toEnd)
+            MoveElevator(waypoints[waypoints.Count - 1]);
+        else
+            MoveElevator(waypoints[0]);
+        toEnd = !toEnd;
+        /**********************************/
+
         if (requiredCard != null && !GameManager.Inventory.HasCard(requiredCard)) return;
         if (_moving) { return; }
         // Start playing elevator sfx upon move
@@ -79,6 +91,7 @@ public class NewElevatorController : MonoBehaviour
     /// <summary>
     /// Moves the elevator along the Waypoints in order, to the target waypoint.
     /// </summary>
+    /*
     public void MoveElevator(Transform targetWaypoint)
     {
         if (requiredCard != null && !GameManager.Inventory.HasCard(requiredCard)) return;
@@ -143,11 +156,64 @@ public class NewElevatorController : MonoBehaviour
             return;
         }
     }
+    */
+    /// <summary>
+    /// Move elevator to targetWaypoint using list direction
+    /// If skip is true, it will not stop at each waypoint in between
+    /// </summary>
+    public void MoveElevator(Transform targetWaypoint)
+    {
+        if (requiredCard != null && !GameManager.Inventory.HasCard(requiredCard)) return;
+        if (_moving) return;
+
+        // Start playing elevator sfx upon move
+        elevatorStartSFX.Play(gameObject);
+        elevatorHumSFX.Play(gameObject);
+
+        int targetIndex = GetWaypointIndex(targetWaypoint);
+
+        if (_currentWaypointIndex == targetIndex) return;
+
+        // Find what direction the next waypoint is (earlier or later in list)
+        // Move() to each waypoint in between list (current -> waypoint direction)
+        StartCoroutine(MovePointToPoint(_currentWaypointIndex, targetIndex));
+    }
 
     /// <summary>
-    /// Snaps the position of Object in the elevator to the selected starting waypoint
+    /// IEnumerator that loops through waypoint and moves towards them.
+    /// Waits movementDurationSeconds has passed to start moving to next waypoint.
     /// </summary>
-    [SerializeField, Button("Snap Object to Waypoint")]
+    IEnumerator MovePointToPoint(int startIndex, int endIndex)
+    {
+        SetMoving(true);
+        if (startIndex < endIndex)
+        {
+            for (int i = startIndex + 1; i <= endIndex; i++)
+            {
+                objectRoot.transform.DOMove(waypoints[i].position, movementDurationSeconds)
+                    .SetEase(Ease.Linear);
+                yield return new WaitForSeconds(movementDurationSeconds); // could probably just wait until OnComplete() but not enough time
+                _currentWaypointIndex = i;
+            }
+        }
+        else
+        {
+            for (int i = startIndex - 1; i >= endIndex; i--)
+            {
+                objectRoot.transform.DOMove(waypoints[i].position, movementDurationSeconds)
+                    .SetEase(Ease.Linear);
+                yield return new WaitForSeconds(movementDurationSeconds);
+                _currentWaypointIndex = i;
+            }
+        }
+        SetMoving(false);
+        SetDoors(waypoints[endIndex]);
+    }
+
+        /// <summary>
+        /// Snaps the position of Object in the elevator to the selected starting waypoint
+        /// </summary>
+        [SerializeField, Button("Snap Object to Waypoint")]
     public void SnapObjectToWaypoint()
     {
         if (objectRoot != null)
@@ -251,15 +317,11 @@ public class NewElevatorController : MonoBehaviour
     {
         _moving = value;
         InitializeDoors(); // close all doors when moving
-
-        // if (_moving) { door.SetActive(true); }
-        // else { door.SetActive(false); }
     }
 
     /// <summary>
     /// Opens doors based on waypoint chosen
     /// </summary>
-    /// <param name="chosenWaypoint"></param>
     private void SetDoors(Transform chosenWaypoint)
     {
         for(int i = 0; i < waypoints.Count; i++)
@@ -270,7 +332,14 @@ public class NewElevatorController : MonoBehaviour
                 InitializeDoors(points[0], points[1], points[2], points[3]);
             }
         }
-        
+    }
+    /// <summary>
+    /// Opens doors based on waypoint index chosen
+    /// </summary>
+    private void SetDoors(int waypointIndex)
+    {
+        List<bool> points = openPoints[waypointIndex].list;
+        InitializeDoors(points[0], points[1], points[2], points[3]);
     }
 
     /// <summary>
@@ -292,9 +361,5 @@ public class NewElevatorController : MonoBehaviour
         InitializeDoors(points[0], points[1], points[2], points[3]);
     }
 
-    void Update()
-    {
-
-    }
     #endregion
 }

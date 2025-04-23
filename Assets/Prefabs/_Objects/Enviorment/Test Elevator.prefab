@@ -872,6 +872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
+  cont: {fileID: 1357985334839547013}
 --- !u!1 &3516157350425727924
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,21 +956,16 @@ MonoBehaviour:
   waypoints:
   - {fileID: 3630262091862132011}
   - {fileID: 5032522665522065334}
-  openLeft: 0
-  openRight: 0
-  openFront: 0
-  openBack: 0
+  openPoints1: 00000000
+  openPoints2: 00000000
   objectRoot: {fileID: 6821942880589385831}
-  requiredCard: {fileID: 11400000, guid: c87ae2d15ed9dca4c92614cfeecef8dd, type: 2}
+  requiredCard: {fileID: 0}
   startingWaypoint: {fileID: 3630262091862132011}
   movementDurationSeconds: 3
-  door: {fileID: 0}
   leftFence: {fileID: 4237836969388140728}
   rightFence: {fileID: 4656783207600362596}
   frontFence: {fileID: 7179983208152785185}
   backFence: {fileID: 372068390514332966}
-  openPoints1: 00000000
-  openPoints2: 00000000
   elevatorStartSFX:
     name: 
     playOnInit: 0
@@ -1187,6 +1183,7 @@ MonoBehaviour:
   IconTransformPosition: {fileID: 217126438574978277}
   IconLocalPosition: {x: 0, y: 1, z: 0}
   controller: {fileID: 0}
+  cont: {fileID: 1357985334839547013}
 --- !u!1 &3753360980853730296
 GameObject:
   m_ObjectHideFlags: 0

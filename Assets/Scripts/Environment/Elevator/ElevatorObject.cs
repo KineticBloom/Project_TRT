@@ -7,6 +7,7 @@ using UnityEngine;
 public class ElevatorObject : MonoBehaviour
 {
     public ElevatorController controller;
+    public NewElevatorController cont; // ADDED
 
     // Start is called before the first frame update
     void Start()
@@ -24,5 +25,6 @@ public class ElevatorObject : MonoBehaviour
     private void SnapWaypointToObject()
     {
         controller.SnapWaypointToObject();
+        cont.SnapWaypointToObject();
     }
 }

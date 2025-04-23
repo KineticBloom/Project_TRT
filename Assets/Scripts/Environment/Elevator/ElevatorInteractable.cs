@@ -5,10 +5,14 @@ using UnityEngine;
 public class ElevatorInteractable : ItemInteractable
 {
     [SerializeField] private ElevatorController controller;
+    [SerializeField] private NewElevatorController cont;
 
     public override void Interaction()
     {
         base.Interaction();
-        controller.MoveElevator();
+        if (controller)
+            controller.MoveElevator();
+        else if (cont)
+            cont.MoveElevator();
     }
 }

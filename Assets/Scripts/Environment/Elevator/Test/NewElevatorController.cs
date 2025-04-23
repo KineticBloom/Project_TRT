@@ -4,7 +4,12 @@ using NaughtyAttributes;
 using UnityEditor;
 using DG.Tweening;
 using System;
-using UnityEngine.Rendering;
+
+[System.Serializable]
+public class Points
+{
+    public List<bool> list = new List<bool>(4);
+}
 
 [ExecuteAlways]
 public class NewElevatorController : MonoBehaviour
@@ -12,8 +17,7 @@ public class NewElevatorController : MonoBehaviour
     #region ========== [ PARAMETERS ] ==========
 
     [SerializeField] private List<Transform> waypoints = new List<Transform>();
-
-    [SerializeField] private bool openLeft, openRight, openFront, openBack; // ----- ADDED ------
+    public List<Points> openPoints = new List<Points>();
 
     [Header("References")]
     [SerializeField] private Transform objectRoot;
@@ -24,8 +28,6 @@ public class NewElevatorController : MonoBehaviour
     // [BoxGroup("Setup"), SerializeField] private GameObject door; // Contractor note: would not need this because of the fence list
 
     [SerializeField] private GameObject leftFence, rightFence, frontFence, backFence; // ----- ADDED ------
-    [SerializeField] private bool[] openPoints1 = new bool[4];
-    [SerializeField] private bool[] openPoints2 = new bool[4];
 
     [Header("SFX")]
     [SerializeField] private AudioEvent elevatorStartSFX;
@@ -51,13 +53,11 @@ public class NewElevatorController : MonoBehaviour
     {
         if (requiredCard != null && !GameManager.Inventory.HasCard(requiredCard)) return;
         if (_moving) { return; }
-
         // Start playing elevator sfx upon move
         elevatorStartSFX.Play(gameObject);
         elevatorHumSFX.Play(gameObject);
 
         SetMoving(true);
-
         if ((_startingWaypointIndex == waypoints.Count - 1 && _nextIndexModifier > 0) ||
             (_startingWaypointIndex == 0 && _nextIndexModifier < 0))
         {
@@ -69,8 +69,7 @@ public class NewElevatorController : MonoBehaviour
         objectRoot.transform.DOMove(targetWaypoint.position, movementDurationSeconds) // CHANGED
             .SetEase(Ease.InOutQuad).OnComplete(() => {
                 SetMoving(false);
-
-            
+                SetDoors(targetWaypoint); // open doors
             });
 
         startingWaypoint = targetWaypoint;
@@ -251,56 +250,51 @@ public class NewElevatorController : MonoBehaviour
     private void SetMoving(bool value)
     {
         _moving = value;
-        
-        if(transform.position == waypoints[0].position)
-        {
-            InitializeDoors(openPoints1[0], openPoints1[1], openPoints1[2], openPoints1[3]);
-        }
-        else if (transform.position == waypoints[1].position)
-        {
-            InitializeDoors(openPoints2[0], openPoints2[1], openPoints2[2], openPoints2[3]);
-        }
+        InitializeDoors(); // close all doors when moving
+
         // if (_moving) { door.SetActive(true); }
         // else { door.SetActive(false); }
     }
 
-    /*
-     * 
-     *       ------- NEW FUNCTIONS -----------
-     * 
-     */
-
-    private void InitializeDoors()
+    /// <summary>
+    /// Opens doors based on waypoint chosen
+    /// </summary>
+    /// <param name="chosenWaypoint"></param>
+    private void SetDoors(Transform chosenWaypoint)
     {
-        leftFence.SetActive(!openLeft);
-        rightFence.SetActive(!openRight);
-        frontFence.SetActive(!openFront);
-        backFence.SetActive(!openBack);
+        for(int i = 0; i < waypoints.Count; i++)
+        {
+            if(chosenWaypoint.position == waypoints[i].position)
+            {
+                List<bool> points = openPoints[i].list;
+                InitializeDoors(points[0], points[1], points[2], points[3]);
+            }
+        }
+        
     }
 
-    private void InitializeDoors(bool left, bool right, bool front, bool back)
+    /// <summary>
+    /// Decides which doors to open or close
+    /// By default all are closed
+    /// </summary>
+    private void InitializeDoors(bool left = false, bool right = false, bool front = false, bool back = false)
     {
-        leftFence.SetActive(left);
-        rightFence.SetActive(right);
-        frontFence.SetActive(front);
-        backFence.SetActive(back);
+        leftFence.SetActive(!left);
+        rightFence.SetActive(!right);
+        frontFence.SetActive(!front);
+        backFence.SetActive(!back);
     }
-
-    /*
-     * 
-     *          ---- END NEW FUNCTIONS --------
-     * 
-     */
 
     void Start()
     {
         SetStartingWaypointIndex();
-        InitializeDoors();
+        List<bool> points = openPoints[0].list;
+        InitializeDoors(points[0], points[1], points[2], points[3]);
     }
 
     void Update()
     {
-        InitializeDoors();
+
     }
     #endregion
 }

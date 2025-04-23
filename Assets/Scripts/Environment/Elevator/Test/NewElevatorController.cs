@@ -4,21 +4,28 @@ using NaughtyAttributes;
 using UnityEditor;
 using DG.Tweening;
 using System;
+using UnityEngine.Rendering;
 
 [ExecuteAlways]
-public class ElevatorController : MonoBehaviour
+public class NewElevatorController : MonoBehaviour
 {
     #region ========== [ PARAMETERS ] ==========
 
     [SerializeField] private List<Transform> waypoints = new List<Transform>();
 
+    [SerializeField] private bool openLeft, openRight, openFront, openBack; // ----- ADDED ------
+
     [Header("References")]
     [SerializeField] private Transform objectRoot;
 
     [BoxGroup("Setup"), SerializeField] private InventoryCardData requiredCard;
-    [BoxGroup("Setup"), SerializeField] private Transform startingWaypoint;
+    [BoxGroup("Setup"), SerializeField] private Transform startingWaypoint; // Contractor note: why not waypoints[0]?
     [BoxGroup("Setup"), SerializeField, Range(0f, 10f)] private float movementDurationSeconds;
-    [BoxGroup("Setup"), SerializeField] private GameObject door;
+    // [BoxGroup("Setup"), SerializeField] private GameObject door; // Contractor note: would not need this because of the fence list
+
+    [SerializeField] private GameObject leftFence, rightFence, frontFence, backFence; // ----- ADDED ------
+    [SerializeField] private bool[] openPoints1 = new bool[4];
+    [SerializeField] private bool[] openPoints2 = new bool[4];
 
     [Header("SFX")]
     [SerializeField] private AudioEvent elevatorStartSFX;
@@ -59,8 +66,12 @@ public class ElevatorController : MonoBehaviour
         int targetWaypointIndex = _startingWaypointIndex + _nextIndexModifier;
         Transform targetWaypoint = waypoints[targetWaypointIndex];
 
-        objectRoot.transform.DOMove(targetWaypoint.position, movementDurationSeconds)
-            .SetEase(Ease.InOutQuad).OnComplete(() => { SetMoving(false); });
+        objectRoot.transform.DOMove(targetWaypoint.position, movementDurationSeconds) // CHANGED
+            .SetEase(Ease.InOutQuad).OnComplete(() => {
+                SetMoving(false);
+
+            
+            });
 
         startingWaypoint = targetWaypoint;
         SetStartingWaypointIndex();
@@ -92,7 +103,8 @@ public class ElevatorController : MonoBehaviour
         }
 
         // Moving from start to end: InOutQuad, duration is movementDurationSeconds
-        if (_startingWaypointIndex == _currentWaypointIndex && NextWaypointIs(targetWaypoint)) {
+        if (_startingWaypointIndex == _currentWaypointIndex && NextWaypointIs(targetWaypoint))
+        {
             objectRoot.transform.DOMove(targetWaypoint.position, movementDurationSeconds)
                 .SetEase(Ease.InOutQuad).OnComplete(() => { SetMoving(false); });
             startingWaypoint = targetWaypoint;
@@ -141,15 +153,15 @@ public class ElevatorController : MonoBehaviour
     {
         if (objectRoot != null)
         {
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             Undo.RecordObject(objectRoot, "Move Elevator Object");
-            #endif
+#endif
 
             objectRoot.position = startingWaypoint.position;
 
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             EditorUtility.SetDirty(objectRoot);
-            #endif
+#endif
 
         }
     }
@@ -161,15 +173,15 @@ public class ElevatorController : MonoBehaviour
     {
         if (objectRoot != null)
         {
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             Undo.RecordObject(objectRoot, "Move waypoint");
-            #endif
+#endif
 
             startingWaypoint.position = objectRoot.position;
 
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             EditorUtility.SetDirty(objectRoot);
-            #endif
+#endif
 
         }
     }
@@ -227,7 +239,7 @@ public class ElevatorController : MonoBehaviour
         _startingWaypointIndex = GetWaypointIndex(startingWaypoint);
         _currentWaypointIndex = _startingWaypointIndex;
     }
-    
+
     void OnValidate()
     {
         if (waypoints.Count > 0 && startingWaypoint != null)
@@ -239,18 +251,56 @@ public class ElevatorController : MonoBehaviour
     private void SetMoving(bool value)
     {
         _moving = value;
-        if (_moving) { door.SetActive(true); }
-        else { door.SetActive(false); }
+        
+        if(transform.position == waypoints[0].position)
+        {
+            InitializeDoors(openPoints1[0], openPoints1[1], openPoints1[2], openPoints1[3]);
+        }
+        else if (transform.position == waypoints[1].position)
+        {
+            InitializeDoors(openPoints2[0], openPoints2[1], openPoints2[2], openPoints2[3]);
+        }
+        // if (_moving) { door.SetActive(true); }
+        // else { door.SetActive(false); }
     }
+
+    /*
+     * 
+     *       ------- NEW FUNCTIONS -----------
+     * 
+     */
+
+    private void InitializeDoors()
+    {
+        leftFence.SetActive(!openLeft);
+        rightFence.SetActive(!openRight);
+        frontFence.SetActive(!openFront);
+        backFence.SetActive(!openBack);
+    }
+
+    private void InitializeDoors(bool left, bool right, bool front, bool back)
+    {
+        leftFence.SetActive(left);
+        rightFence.SetActive(right);
+        frontFence.SetActive(front);
+        backFence.SetActive(back);
+    }
+
+    /*
+     * 
+     *          ---- END NEW FUNCTIONS --------
+     * 
+     */
 
     void Start()
     {
         SetStartingWaypointIndex();
+        InitializeDoors();
     }
 
     void Update()
     {
-        
+        InitializeDoors();
     }
     #endregion
 }

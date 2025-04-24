@@ -41,6 +41,7 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
     }
 
     protected override void DisableFocus() {
+        MoveToPause();
         base.DisableFocus();
         pauseClose.Post(this.gameObject);
         this._currentStateData.StatesCanvasGroup.gameObject.SetActive(false);

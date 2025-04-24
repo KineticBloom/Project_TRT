@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.UI;
 
 /// <summary>
 /// Contains each Ui States preferences for game environment.
@@ -64,6 +64,9 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
     protected StateData _currentStateData;
     private GameObject _lastSelection;
     private bool _noStateAssigned = true;
+    private Stack<UiStateEnum> _lastStates = new();
+    private Stack<GameObject> _lastButtons = new();
+    private bool _back = true;
 
     /// Serialized and setup in inspector. Allows designer to setup each state data.
     [SerializeField]
@@ -97,10 +100,29 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
         Debug.LogError("Tried to swap to " + newState.ToString() + " but no StateData setup for that state on this Manager");
     }
 
+    /// <summary>
+    /// Returns to the last UI State if any
+    /// </summary>
+    public virtual void GoBack()
+    {
+        if (!_lastStates.TryPop(out UiStateEnum lastState)) return;
+        _back = true;
+        MoveTo(lastState);
+        if (_lastButtons.TryPop(out GameObject button) && button.TryGetComponent(out Button button1))
+        {
+            button1.Select();
+        }
+    }
+
+    void Update()
+    {
+        if (!CurrentFocus) return;
+        if (GameManager.PlayerInput.GetRejectDown()) GoBack();
+    }
+
     #endregion
 
     #region ======== [ PRIVATE METHOD ] ========
-   
     /// <summary>
     /// Internal logic for switching states.
     /// </summary>
@@ -114,6 +136,13 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
         if (oldStateData.StatesCanvasGroup != null) {
             oldStateData.StatesCanvasGroup.gameObject.SetActive(false);
         }
+        
+        if (!_back)
+        {
+            _lastStates.Push(oldState);
+            _lastButtons.Push(EventSystem.current.currentSelectedGameObject);
+        }
+        _back = false;
 
         // Show new state
         newStateData.StatesCanvasGroup.gameObject.SetActive(true);
@@ -190,6 +219,7 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
         SetInteraction(true);
 
         if (_noStateAssigned) {
+            _back = true;
             MoveTo(DefaultState);
             _noStateAssigned = false;
         }
@@ -213,7 +243,7 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
         }
 
         if (_lastSelection != null) {
-            UnityEngine.UI.Button possibleButtion = _lastSelection.GetComponent<UnityEngine.UI.Button>();
+            Button possibleButtion = _lastSelection.GetComponent<Button>();
             if (possibleButtion) {
                 possibleButtion.Select();
             }
@@ -226,6 +256,8 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
     protected override void DisableFocus() {
         _lastSelection = EventSystem.current.currentSelectedGameObject;
         SetInteraction(false);
+        _lastButtons.Clear();
+        _lastStates.Clear();
     }
 
     #endregion

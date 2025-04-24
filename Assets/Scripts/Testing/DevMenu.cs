@@ -2,6 +2,7 @@ using System.IO;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class DevMenu : Singleton<DevMenu> {
@@ -11,6 +12,7 @@ public class DevMenu : Singleton<DevMenu> {
 
     private float _initalTimescale = 0;
     private bool _devOn = false;
+    private GameObject _lastSelected;
     
     private void Start()
     {
@@ -34,7 +36,14 @@ public class DevMenu : Singleton<DevMenu> {
         GameManager.PlayerInput.ToggleControls(!_devOn);
         devMenu.SetActive(_devOn);
         textInput.text = "";
-        if(_devOn) textInput.ActivateInputField();
+        if (_devOn) {
+            _lastSelected = EventSystem.current.currentSelectedGameObject;
+            textInput.ActivateInputField();
+        }
+        else if (_lastSelected != null) {
+            if (_lastSelected.activeSelf && _lastSelected.TryGetComponent(out UnityEngine.UI.Selectable selectable)) selectable.Select();
+            _lastSelected = null;
+        }
         _initalTimescale = _devOn ? Time.timeScale : _initalTimescale;
         Time.timeScale = _devOn ? 0 : _initalTimescale;
     }

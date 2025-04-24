@@ -36,5 +36,7 @@ public class InGameUi : UiManager<InGameUi.UiStates> {
         GameManager.Instance.SwapUiManager(this);
         LoadState(_currentState);
     }
+
+    public override void GoBack() {return;}
 }
 

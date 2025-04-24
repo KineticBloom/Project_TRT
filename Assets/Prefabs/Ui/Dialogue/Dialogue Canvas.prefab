@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7958935988807627559}
   - component: {fileID: 9075235023361960991}
   - component: {fileID: 6135563027072194421}
+  - component: {fileID: 3998424965373135384}
   m_Layer: 5
   m_Name: Conversation Log
   m_TagString: Untagged
@@ -92,6 +93,19 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
+--- !u!114 &3998424965373135384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3315453390394385320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 0
 --- !u!1 &4257423658231429948
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,6 +117,7 @@ GameObject:
   - component: {fileID: 1609077693015831326}
   - component: {fileID: 2994734008696783711}
   - component: {fileID: 3518802990073300585}
+  - component: {fileID: 6372769100292511248}
   m_Layer: 5
   m_Name: Choices
   m_TagString: Untagged
@@ -174,6 +189,21 @@ MonoBehaviour:
   DefaultButton: {fileID: 5135339430289289176}
   TriggerOnClick: 0
   OnlyFirstBoot: 0
+--- !u!114 &6372769100292511248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4257423658231429948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d40a2c92ebc3ae498bac4ca29443d34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultButton: {fileID: 5135339430289289176}
+  TriggerOnClick: 0
+  OnlyFirstBoot: 0
 --- !u!1 &5356780479954775257
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,6 +216,7 @@ GameObject:
   - component: {fileID: 2627461886618663718}
   - component: {fileID: 7838184929813231271}
   - component: {fileID: 619500404312086990}
+  - component: {fileID: 7729529618488191205}
   m_Layer: 5
   m_Name: Dialogue Canvas
   m_TagString: Untagged
@@ -272,6 +303,18 @@ MonoBehaviour:
   - {fileID: 1902352834633082281}
   - {fileID: 5189278550080487895}
   ParentForDialogueBubbles: {fileID: 3315453390394385320}
+--- !u!225 &7729529618488191205
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5356780479954775257}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1681199176962191009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -408,7 +451,7 @@ PrefabInstance:
     - target: {fileID: 7695084616204515284, guid: 7717a94dd5a742446b537dd7bc0d3613,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -26
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7695084616204515284, guid: 7717a94dd5a742446b537dd7bc0d3613,
         type: 3}
@@ -825,7 +868,7 @@ PrefabInstance:
     - target: {fileID: 7695084616204515284, guid: 7717a94dd5a742446b537dd7bc0d3613,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7695084616204515284, guid: 7717a94dd5a742446b537dd7bc0d3613,
         type: 3}
@@ -1036,7 +1079,7 @@ PrefabInstance:
     - target: {fileID: 7695084616204515284, guid: 7717a94dd5a742446b537dd7bc0d3613,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -26
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7695084616204515284, guid: 7717a94dd5a742446b537dd7bc0d3613,
         type: 3}

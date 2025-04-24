@@ -11,12 +11,13 @@ public class InventoryCardObject : MonoBehaviour {
     public bool IsPreviewCard = false;
     [SerializeField] public InventoryCardData Card;
 
-    [Header("Deactivated")]
-    [SerializeField, BoxGroup("Deactivated")] private GameObject deactiveObject;
-    [SerializeField, BoxGroup("Deactivated")] private Button deactiveButton;
+    [Header("De/Activated")]
+    [SerializeField, BoxGroup("De/Activated")] private Sprite activeImage;
+    [SerializeField, BoxGroup("De/Activated")] private Sprite deactiveImage;
 
     [Header("Item")]
     [SerializeField, BoxGroup("Item")] private GameObject itemLayoutObject;
+    [SerializeField, BoxGroup("Item")] private Image itemOutlineImage;
     [SerializeField, BoxGroup("Item")] private Button itemLayoutButton;
     [SerializeField, BoxGroup("Item")] private TMP_Text itemNameText;
     [SerializeField, BoxGroup("Item")] private Image itemSpriteImage;
@@ -29,7 +30,7 @@ public class InventoryCardObject : MonoBehaviour {
     [HideInInspector] public string CardName;
     [HideInInspector] public string CardDescription;
     [HideInInspector] public string CardID;
-    [HideInInspector] public Button CurrentActiveButton;
+    [HideInInspector] public Button CurrentActiveButton => itemLayoutButton;
 
     private int _index;
     private AutoScrollGrid _scroller;
@@ -122,7 +123,6 @@ public class InventoryCardObject : MonoBehaviour {
     /// <param name="interactable">Whether or not the buttons can be pressed</param>
     public void SetInteractable(bool interactable)
     {
-        deactiveButton.interactable = interactable;
         itemLayoutButton.interactable = interactable;
     }
 
@@ -131,17 +131,13 @@ public class InventoryCardObject : MonoBehaviour {
         switch (stateToEnter) {
             case CurrentState.ITEM:
                 itemLayoutObject.SetActive(true);
-                deactiveObject.SetActive(false);
-
-                CurrentActiveButton = itemLayoutButton;
+                itemOutlineImage.sprite = activeImage;
                 break;
             case CurrentState.DEACTIVE:
                 itemLayoutObject.SetActive(false);
-                deactiveObject.SetActive(true);
+                itemOutlineImage.sprite = deactiveImage;
 
                 Card = null;
-
-                CurrentActiveButton = deactiveButton;
                 break;
 
         }

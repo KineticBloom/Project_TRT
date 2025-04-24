@@ -29,10 +29,9 @@ public abstract class EffectCard
     #endregion
 
     #region ======== [ PRIVATE VARIABLE ] ========
-
-    // Would Prefer this to tie with the save system
+    [SerializeField, ReadOnly]
     private bool _revealed = false;
-    public bool IsRevealed => _revealed;
+    public bool IsRevealed {  get { return _revealed; } set { _revealed = value; } }
 
     #endregion
 
@@ -64,6 +63,7 @@ public abstract class EffectCard
 
         OnRevealed?.Invoke();
         _revealed = true;
+        SaveSystem.Save();
     }
 
 

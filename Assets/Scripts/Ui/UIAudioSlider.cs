@@ -8,6 +8,7 @@ public class UIAudioSlider : MonoBehaviour
 {
     public AK.Wwise.RTPC bus;
     private string busName;
+    private string busDisplayName;
 
     [SerializeField] private string displayNameOverride = "";
     [SerializeField] private GameObject nameObj;
@@ -15,8 +16,9 @@ public class UIAudioSlider : MonoBehaviour
 
     public void Start()
     {
-        busName = ParseDisplayName();
-        nameObj.GetComponent<TMP_Text>().text = busName;
+        busName = bus.ToString();
+        busDisplayName = ParseDisplayName();
+        nameObj.GetComponent<TMP_Text>().text = busDisplayName;
         InitVolume();
     }
 
@@ -35,7 +37,7 @@ public class UIAudioSlider : MonoBehaviour
     }
 
     // Load saved volume, or default to bus volume if none is saved.
-    private void InitVolume()
+    public void InitVolume()
     {
         float volume;
 

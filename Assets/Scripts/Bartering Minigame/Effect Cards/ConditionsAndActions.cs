@@ -6,7 +6,7 @@ using UnityEngine;
 
 public interface IItemCondition
 {
-    public bool IsSatisfied(InventoryCardData item);
+    public bool IsSatisfied(InventoryCardData item, TradeInfo tradeInfo);
 }
 
 
@@ -19,7 +19,7 @@ public class SearchForTags : IItemCondition
     /// <summary>
     /// See if any of the tags matches this class' tags
     /// </summary>
-    public bool IsSatisfied(InventoryCardData item)
+    public bool IsSatisfied(InventoryCardData item, TradeInfo tradeInfo)
     {
         foreach (string tag in Tags)
         {
@@ -35,19 +35,35 @@ public class SearchForTags : IItemCondition
     }
 }
 
-
+/// <summary>
+/// Offer Specific Item and Offer # Specific items
+/// eg. [a] or [a, b] (any) or [a, b] (all) or [a, a]
+/// </summary>
 [System.Serializable]
 public class SearchForItems : IItemCondition
 {
     [Tooltip("List of Items that the action will search for and affect")]
     public List<InventoryCardData> Items;
-
+    public bool NeedAllItems;
 
     /// <summary>
     /// See if any of the tags matches this class' tags
     /// </summary>
-    public bool IsSatisfied(InventoryCardData item)
+    public bool IsSatisfied(InventoryCardData item, TradeInfo tradeInfo)
     {
+        if (Items.Count == 0) return true;
+
+        // [a]
+        if (Items.Count == 1)
+        {
+            return Items[0].IsSame(item);
+        }
+
+        // [a, b] (any)
+        if (!NeedAllItems)
+        {
+
+        }
         foreach (InventoryCardData searchedItem in Items)
         {
             // Checking for matching Card Names since the same items can have different ScriptableObjects

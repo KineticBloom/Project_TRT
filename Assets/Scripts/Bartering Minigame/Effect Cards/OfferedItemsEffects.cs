@@ -46,7 +46,7 @@ public class OfferedItemsEffects : EffectCard
 
             foreach (IItemCondition condition in ItemConditions)
             {
-                if (condition.IsSatisfied(item))
+                if (condition.IsSatisfied(item, tradeInfo))
                 {
                     addItem = true;
                 }

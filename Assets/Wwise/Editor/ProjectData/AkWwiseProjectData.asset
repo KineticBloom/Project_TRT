@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 587ca0226052be4e9b8540a22c4f2092
     GuidInternal: 
-    m_lastTime: -8584561666679602370
+    m_lastTime: -8584575133428961606
     List:
     - name: Ambience Bus
       guid: b98c6c284c7de7449139c8391e920f9c
@@ -174,7 +174,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Ambience
     guid: 0104f6680c27bf408fd7c64816ee8c87
     GuidInternal: 
-    m_lastTime: -8584561666664506049
+    m_lastTime: -8584575133416692147
     List:
     - name: Ambience
       guid: 86b2f852bdba9b4fa5a800a04824ffe7
@@ -214,7 +214,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Music
     guid: 5f5c2e836df59d41833026f7bc293cab
     GuidInternal: 
-    m_lastTime: -8584561666664506049
+    m_lastTime: -8584561490000543626
     List:
     - name: Music
       guid: 277caf2ce418a740871cc075a9250659
@@ -241,7 +241,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\SFX
     guid: f39c92e98d8cf14f9d79f84c53eb00b3
     GuidInternal: 
-    m_lastTime: -8584561666664506049
+    m_lastTime: -8584561490000533617
     List:
     - name: SFX
       guid: cc965433ea452249b9fac65217b7662e
@@ -269,7 +269,7 @@ MonoBehaviour:
     ParentPath: Events\Ambience
     guid: 78290c8229ac584884ed86c3baba619d
     GuidInternal: 
-    m_lastTime: -8584561666695600804
+    m_lastTime: -8584575133438261508
     List:
     - name: BirdStart
       guid: 932c63abf08ea4489f51f773ba1e5c74
@@ -285,9 +285,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: 932c63abf08ea4489f51f773ba1e5c74
       Path: Events\Ambience\BirdStart
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxAttenuation: 100
+      maxDuration: 0
+      minDuration: 0
     - name: Play_MachineHum1_LoopContainer
       guid: fe2c9246192f764b85f3f11b509cb105
       id: 30480848
@@ -302,9 +302,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: fe2c9246192f764b85f3f11b509cb105
       Path: Events\Ambience\Play_MachineHum1_LoopContainer
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxAttenuation: 50
+      maxDuration: 0
+      minDuration: 0
     - name: Play_MachineHum2_LoopContainer
       guid: de8554713bb1e2439b4dc1c5781fe1ac
       id: 1929638735
@@ -319,9 +319,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: de8554713bb1e2439b4dc1c5781fe1ac
       Path: Events\Ambience\Play_MachineHum2_LoopContainer
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxAttenuation: 50
+      maxDuration: 0
+      minDuration: 0
     - name: Play_Waterfall_Base_LoopContainer
       guid: 60bf2e435b3be640b68858830c63e8b1
       id: 2874767734
@@ -336,9 +336,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: 60bf2e435b3be640b68858830c63e8b1
       Path: Events\Ambience\Play_Waterfall_Base_LoopContainer
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxAttenuation: 100
+      maxDuration: 0
+      minDuration: 0
     - name: Play_Waterfall_CloseSparkle_LoopContainer
       guid: 6e91af3f21c6d945868cce150c154978
       id: 3296751295
@@ -353,9 +353,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: 6e91af3f21c6d945868cce150c154978
       Path: Events\Ambience\Play_Waterfall_CloseSparkle_LoopContainer
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxAttenuation: 50
+      maxDuration: 0
+      minDuration: 0
     - name: TestAmbienceStart
       guid: 7d6e07e4f047404b97f8e4afb7cf1d45
       id: 664772623
@@ -370,9 +370,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: 7d6e07e4f047404b97f8e4afb7cf1d45
       Path: Events\Ambience\TestAmbienceStart
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxAttenuation: 100
+      maxDuration: 0
+      minDuration: 0
   - PhysicalPath: Events\BarteringUI.wwu
     PathAndIcons:
     - ElementName: Events
@@ -387,7 +387,7 @@ MonoBehaviour:
     ParentPath: Events\UI\BarteringUI
     guid: 40c947321f41084491c4b5b163ca6270
     GuidInternal: 
-    m_lastTime: -8584561666695600804
+    m_lastTime: -8584561490011842765
     List:
     - name: BART_Barter_Lose
       guid: 3855ac20de5b634d9ad1e66c511fb4b5
@@ -533,7 +533,7 @@ MonoBehaviour:
     ParentPath: Events\Environment
     guid: 851bf5aefe549d489c25241343bb6f59
     GuidInternal: 
-    m_lastTime: -8584561666695600804
+    m_lastTime: -8584561490011832752
     List: []
   - PhysicalPath: Events\EnvironmentUI.wwu
     PathAndIcons:
@@ -549,7 +549,7 @@ MonoBehaviour:
     ParentPath: Events\UI\EnvironmentUI
     guid: 4be82f8af05f9c4bb20ac0e39bad8dae
     GuidInternal: 
-    m_lastTime: -8584561666695600804
+    m_lastTime: -8584561490011812740
     List:
     - name: ENV_Interaction_Arrow_Hide
       guid: e67f97983d2b8d4198fae5033e8d4006
@@ -605,7 +605,7 @@ MonoBehaviour:
     ParentPath: Events\UI\MenuUI
     guid: 3ced4e25bc1aa447a545adce0ca03f95
     GuidInternal: 
-    m_lastTime: -8584561666695600804
+    m_lastTime: -8584561490011802726
     List:
     - name: UI_Menu_Close
       guid: 438c2832b6aa2845ab36655fe26f9b55
@@ -658,7 +658,7 @@ MonoBehaviour:
     ParentPath: Events\Music
     guid: 1baa49cfe5a4fe438cbe031c55500853
     GuidInternal: 
-    m_lastTime: -8584561666695600804
+    m_lastTime: -8584561490011802726
     List:
     - name: MusicEvents
       guid: bb98cb8f8639c644980fd12d17cb9504
@@ -871,7 +871,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\Objects
     guid: f53d68a94c6e354d9f4eeee3b0dcd364
     GuidInternal: 
-    m_lastTime: -8584561666695600804
+    m_lastTime: -8584561490011792717
     List:
     - name: DoorOpen
       guid: e45a10416290f44da2dd9afd2f2afa3d
@@ -987,7 +987,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\Player
     guid: d5f674957249a840bcf4382b6f3925ec
     GuidInternal: 
-    m_lastTime: -8584561666695538597
+    m_lastTime: -8584561490011782709
     List:
     - name: PlayerFootsteps
       guid: 84795c876ed0ab43a382ca7872053bb8
@@ -1020,7 +1020,7 @@ MonoBehaviour:
     ParentPath: Events\SettingsUI
     guid: 1fb0d41104b6e84e81ed9ee770f55b1a
     GuidInternal: 
-    m_lastTime: -8584561666695536396
+    m_lastTime: -8584561490011777579
     List:
     - name: Play_Menu_ButtonDown
       guid: 1bffeceb86b8cc499461cd7752dd9198
@@ -1101,7 +1101,7 @@ MonoBehaviour:
     ParentPath: Events\UI
     guid: 75f867dc1a9906498df4975d819bec40
     GuidInternal: 
-    m_lastTime: -8584561666695536396
+    m_lastTime: -8584561490011769181
     List: []
   RtpcWwu:
   - PhysicalPath: Game Parameters\Ambience.wwu
@@ -1224,7 +1224,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: e6b79552b8b0634f8a967d61276f57fa
     GuidInternal: 
-    m_lastTime: -8584561666664454870
+    m_lastTime: -8584561490000523612
     List:
     - name: MusicState
       guid: 5df940ae313415468d9b77fe40be0b6c

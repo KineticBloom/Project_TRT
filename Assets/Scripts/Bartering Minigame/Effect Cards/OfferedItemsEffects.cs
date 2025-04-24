@@ -34,13 +34,13 @@ public class OfferedItemsEffects : EffectCard
     /// Adds any items matching the conditions to _matchingItems
     /// </summary>
     /// <returns></returns>
-    public override bool DoesActivate(OfferedItems offeredItems, ActivationTime activationTime)
+    public override bool DoesActivate(TradeInfo tradeInfo, ActivationTime activationTime)
     {
         if (this.activationTime != activationTime && activationTime != ActivationTime.Both) return false;
 
         _matchingItems.Clear();
 
-        foreach (InventoryCardData item in offeredItems.Items)
+        foreach (InventoryCardData item in tradeInfo.OfferedItems.Items)
         {
             bool addItem = false;
 
@@ -65,7 +65,7 @@ public class OfferedItemsEffects : EffectCard
     /// <summary>
     /// Apply the ItemActions to items in _matchingItems
     /// </summary>
-    public override void Activate(OfferedItems offeredItems)
+    public override void Activate(TradeInfo tradeInfo)
     {
         foreach (InventoryCardData item in _matchingItems)
         {

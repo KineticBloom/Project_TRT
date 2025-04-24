@@ -238,7 +238,7 @@ public class BarteringController : MonoBehaviour {
 
         foreach (EffectCard effectCard in effectCards)
         {
-            if (effectCard.DoesActivate(_offeredItems, activationTime))
+            if (effectCard.DoesActivate(_tradeInfo, activationTime))
             {
                 activeEffectCards.Add(effectCard);
             }
@@ -246,7 +246,7 @@ public class BarteringController : MonoBehaviour {
 
         foreach (EffectCard effectCard in activeEffectCards)
         {
-            effectCard.Activate(_offeredItems);
+            effectCard.Activate(_tradeInfo);
         }
 
         UpdateVisuals();

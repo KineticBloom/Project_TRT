@@ -43,14 +43,14 @@ public abstract class EffectCard
     /// <param name="barteringController">The bartering controller to get info from</param>
     /// <param name="activationTime">When the activation is being attempted</param>
     /// <returns>Whether a boolean of whether </returns>
-    public abstract bool DoesActivate(OfferedItems offeredItems, ActivationTime activationTime);
+    public abstract bool DoesActivate(TradeInfo tradeInfo, ActivationTime activationTime);
 
 
     /// <summary>
     /// Activates the effect card
     /// </summary>
     /// <param name="barteringController">The bartering controller to modify info on</param>
-    public abstract void Activate(OfferedItems offeredItems);
+    public abstract void Activate(TradeInfo tradeInfo);
 
 
     /// <summary>

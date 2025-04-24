@@ -62,16 +62,21 @@ public class SearchForItems : IItemCondition
         // [a, b] (any)
         if (!NeedAllItems)
         {
-
-        }
-        foreach (InventoryCardData searchedItem in Items)
-        {
-            // Checking for matching Card Names since the same items can have different ScriptableObjects
-            if (searchedItem.IsSame(item))
+            foreach (InventoryCardData searchedItem in Items)
             {
-                return true;
+                // Checking for matching Card Names since the same items can have different ScriptableObjects
+                if (searchedItem.IsSame(item))
+                {
+                    return true;
+                }
             }
+            return false;
         }
+
+        // [a, b] (all) and [a, a]
+        // NeedAllItems == true
+        
+
         return false;
     }
 }

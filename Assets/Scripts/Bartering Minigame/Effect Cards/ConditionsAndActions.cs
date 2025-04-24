@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 #region ======== [ IItemCondition ] ========
@@ -75,7 +76,42 @@ public class SearchForItems : IItemCondition
 
         // [a, b] (all) and [a, a]
         // NeedAllItems == true
-        
+        Dictionary<string, int> RequiredItemCounts = new Dictionary<string, int>();
+        Dictionary<string, int> OfferedItemCounts = new Dictionary<string, int>();
+
+        // Set up RequiredItemCounts
+        foreach (InventoryCardData requiredItem in Items)
+        {
+            if (!RequiredItemCounts.ContainsKey(requiredItem.ID))
+            {
+                RequiredItemCounts.Add(requiredItem.ID, 0);
+            }
+            RequiredItemCounts[requiredItem.ID]++;
+        }
+
+        // Set up OfferedItemCounts
+        foreach (InventoryCardData offeredItem in tradeInfo.OfferedItems.Items)
+        {
+            if (!OfferedItemCounts.ContainsKey(offeredItem.ID))
+            {
+                OfferedItemCounts.Add(offeredItem.ID, 0);
+            }
+            OfferedItemCounts[offeredItem.ID]++;
+        }
+
+        // Reject if there are less OfferedItems
+        foreach (string itemID in RequiredItemCounts.Keys)
+        {
+            if (!OfferedItemCounts.ContainsKey(itemID)) return false;
+
+            if (OfferedItemCounts[itemID] < RequiredItemCounts[itemID]) return false;
+        }
+
+        // If the current item is one of the Required Items, return true
+        foreach (string requiredItemID in RequiredItemCounts.Keys)
+        {
+            if (item.ID == requiredItemID) return true;
+        }
 
         return false;
     }

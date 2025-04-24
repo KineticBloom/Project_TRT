@@ -47,6 +47,7 @@ public class BarteringController : MonoBehaviour {
     private InventoryCardObject _currentButtonObject;
     private OfferedItems _offeredItems;
     private int _currentAttempts = 0;
+    private TradeInfo _tradeInfo;
 
     #endregion
 
@@ -101,6 +102,13 @@ public class BarteringController : MonoBehaviour {
             // Activate Pre-Barter Effect Cards
             ActivateEffectCards(EffectCard.ActivationTime.BeforeOffer);
         }
+
+        _tradeInfo = new()
+        {
+            OfferedItems = _offeredItems,
+            ReceivedItem = _currentNPCData.ItemOnOffer,
+            // TODO: Set RelevantFlags
+        };
 
         SetInteractable(true);
 
@@ -402,4 +410,11 @@ public class OfferedItems
             GameManager.Inventory.AddCard(card, true);
         }
     }
+}
+
+public struct TradeInfo
+{
+    public OfferedItems OfferedItems;
+    public InventoryCardData ReceivedItem;
+    public List<Flag> RelevantFlags;
 }

@@ -83,6 +83,7 @@
 											<ChildrenList>
 												<MusicPlaylistItem Name="" ID="{4842670A-7A1F-4491-B4FA-9B30489C5E4F}" ShortID="449236237">
 													<PropertyList>
+														<Property Name="LoopCount" Type="int16" Value="0"/>
 														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 													</PropertyList>
 													<ReferenceList>
@@ -879,7 +880,7 @@
 									<MultiSwitchEntry Name="" ID="{433598C7-C4BB-4ED3-BAF1-8852C2173C40}">
 										<ReferenceList>
 											<Reference Name="AudioNode">
-												<ObjectRef Name="MUSC_Player_Spawn" ID="{DBA8740D-48C0-443C-AFD1-675A87D75CF1}" WorkUnitID="{3CA207E9-88B7-4086-A56F-225EA88A4DFE}"/>
+												<ObjectRef Name="PlayerSpawn" ID="{3FC073F9-6EBD-4285-9702-06E6A2A90930}" WorkUnitID="{3CA207E9-88B7-4086-A56F-225EA88A4DFE}"/>
 											</Reference>
 										</ReferenceList>
 										<ObjectLists>
@@ -897,7 +898,7 @@
 									<MultiSwitchEntry Name="" ID="{5FE54CB8-DB44-45E0-AFCE-30D443948D6E}">
 										<ReferenceList>
 											<Reference Name="AudioNode">
-												<ObjectRef Name="MUSC_Mailbot" ID="{B5A84CC4-6FA1-44DA-A293-FE3BA60A830C}" WorkUnitID="{3CA207E9-88B7-4086-A56F-225EA88A4DFE}"/>
+												<ObjectRef Name="Bartering" ID="{555D5945-C743-4C6B-8592-027C4A5F7DDF}" WorkUnitID="{3CA207E9-88B7-4086-A56F-225EA88A4DFE}"/>
 											</Reference>
 										</ReferenceList>
 										<ObjectLists>

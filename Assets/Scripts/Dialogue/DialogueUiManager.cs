@@ -34,6 +34,8 @@ public class DialogueUiManager : MonoBehaviour {
             TMP_Text TextContainer = Button.GetComponentInChildren<TMP_Text>();
             TextContainer.text = choices[i].text;
         }
+
+        UiButtons[0].Select();
     }
 
     /// <summary>

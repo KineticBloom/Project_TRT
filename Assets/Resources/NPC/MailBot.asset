@@ -33,9 +33,21 @@ MonoBehaviour:
       type: {class: CountItemsWithTags, ns: , asm: Assembly-CSharp}
       data:
         Tags:
-        - Tool
+        - tool
         MinAmount: 1
         ExactAmount: 0
+    - rid: 6077773197129285649
+      type: {class: CountSpecificItems, ns: , asm: Assembly-CSharp}
+      data:
+        Items:
+        - {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
+        NeedAllItems: 0
+    - rid: 6077773197129285650
+      type: {class: CountSpecificItems, ns: , asm: Assembly-CSharp}
+      data:
+        Items:
+        - {fileID: 11400000, guid: af210dedcdbaf56429bf9d6f8b6ac2c0, type: 2}
+        NeedAllItems: 0
     - rid: 8151269401547244294
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
@@ -45,7 +57,7 @@ MonoBehaviour:
         _revealed: 0
         RequiresAllConditions: 1
         ItemConditions:
-        - rid: 8151269401547244296
+        - rid: 6077773197129285650
         AffectedItems:
         - {fileID: 11400000, guid: af210dedcdbaf56429bf9d6f8b6ac2c0, type: 2}
         AffectedTags: []
@@ -55,12 +67,6 @@ MonoBehaviour:
       type: {class: SetValue, ns: , asm: Assembly-CSharp}
       data:
         Value: 20
-    - rid: 8151269401547244296
-      type: {class: SearchForItems, ns: , asm: Assembly-CSharp}
-      data:
-        Items:
-        - {fileID: 11400000, guid: af210dedcdbaf56429bf9d6f8b6ac2c0, type: 2}
-        NeedAllItems: 0
     - rid: 8151269401547244297
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
@@ -72,7 +78,8 @@ MonoBehaviour:
         ItemConditions:
         - rid: 6077773190711214275
         AffectedItems: []
-        AffectedTags: []
+        AffectedTags:
+        - tool
         ItemActions:
         - rid: 8151269401547244300
     - rid: 8151269401547244300
@@ -88,17 +95,12 @@ MonoBehaviour:
         _revealed: 0
         RequiresAllConditions: 1
         ItemConditions:
-        - rid: 8151269401547244302
-        AffectedItems: []
+        - rid: 6077773197129285649
+        AffectedItems:
+        - {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
         AffectedTags: []
         ItemActions:
         - rid: 8151269401547244303
-    - rid: 8151269401547244302
-      type: {class: SearchForItems, ns: , asm: Assembly-CSharp}
-      data:
-        Items:
-        - {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
-        NeedAllItems: 0
     - rid: 8151269401547244303
       type: {class: AddValue, ns: , asm: Assembly-CSharp}
       data:

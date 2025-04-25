@@ -28,32 +28,68 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 6077773197129285632
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
-        Icon: {fileID: 0}
-        Description: 
-        Text: 
+        Icon: {fileID: 21300000, guid: cb6d44ea8b17be943ab54198ed15ca62, type: 3}
+        Description: religion
+        Text: =100
         _revealed: 0
         RequiresAllConditions: 1
-        ItemConditions: []
+        ItemConditions:
+        - rid: 6077773197129285645
         AffectedItems: []
-        AffectedTags: []
-        ItemActions: []
+        AffectedTags:
+        - religious
+        ItemActions:
+        - rid: 6077773197129285646
     - rid: 6077773197129285633
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
-        Icon: {fileID: 0}
-        Description: 
-        Text: 
+        Icon: {fileID: 21300000, guid: 64a4aabb5bd8f3e4e918e385720cf9b7, type: 3}
+        Description: He doesn't seem to like anything!
+        Text: =0
         _revealed: 0
         RequiresAllConditions: 1
-        ItemConditions: []
+        ItemConditions:
+        - rid: 6077773197129285643
         AffectedItems: []
-        AffectedTags: []
-        ItemActions: []
+        AffectedTags:
+        - all
+        ItemActions:
+        - rid: 6077773197129285644
+    - rid: 6077773197129285643
+      type: {class: CountItemsWithTags, ns: , asm: Assembly-CSharp}
+      data:
+        Tags:
+        - all
+        MinAmount: 1
+        ExactAmount: 0
+    - rid: 6077773197129285644
+      type: {class: SetValue, ns: , asm: Assembly-CSharp}
+      data:
+        Value: 0
+    - rid: 6077773197129285645
+      type: {class: CountItemsWithTags, ns: , asm: Assembly-CSharp}
+      data:
+        Tags:
+        - religious
+        MinAmount: 1
+        ExactAmount: 0
+    - rid: 6077773197129285646
+      type: {class: SetValue, ns: , asm: Assembly-CSharp}
+      data:
+        Value: 100
+    - rid: 6077773197129285647
+      type: {class: CountSpecificItems, ns: , asm: Assembly-CSharp}
+      data:
+        Items:
+        - {fileID: 11400000, guid: b3ce713d5e03399499b7f5df33e92dcc, type: 2}
+        NeedAllItems: 0
+    - rid: 6077773197129285648
+      type: {class: SetValue, ns: , asm: Assembly-CSharp}
+      data:
+        Value: 300
     - rid: 6991182339336044559
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
@@ -63,7 +99,8 @@ MonoBehaviour:
         _revealed: 0
         RequiresAllConditions: 1
         ItemConditions:
-        - rid: -2
+        - rid: 6077773197129285647
         AffectedItems: []
         AffectedTags: []
-        ItemActions: []
+        ItemActions:
+        - rid: 6077773197129285648

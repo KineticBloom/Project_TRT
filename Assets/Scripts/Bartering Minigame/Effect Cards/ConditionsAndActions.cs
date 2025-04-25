@@ -108,12 +108,7 @@ public class SearchForItems : IItemCondition
         }
 
         // If the current item is one of the Required Items, return true
-        foreach (string requiredItemID in RequiredItemCounts.Keys)
-        {
-            if (item.ID == requiredItemID) return true;
-        }
-
-        return false;
+        return RequiredItemCounts.ContainsKey(item.ID);
     }
 }
 

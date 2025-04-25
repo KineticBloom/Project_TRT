@@ -21,6 +21,8 @@ public abstract class EffectCard
     public string Description;
     [SerializeField, Tooltip("Short Text for Corners")]
     public string Text;
+    [SerializeField, Tooltip("Image associated with the Condition required")]
+    public Sprite ConditionImage;
 
     protected ActivationTime activationTime = ActivationTime.AfterOffer;
 

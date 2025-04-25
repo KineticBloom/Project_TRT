@@ -9,10 +9,16 @@ public class EffectCardDisplay : MonoBehaviour
 {
     [Header("Object References")]
     [SerializeField] private GameObject cardBack;
+
+    [Header("Card Front")]
     [SerializeField] private GameObject cardFront;
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI topLeftText;
     [SerializeField] private TextMeshProUGUI bottomRightText;
+    [SerializeField] private Image conditionImageTop;
+    [SerializeField] private Image conditionImageBottom;
+
+    [Header("Description")]
     [SerializeField] private GameObject descriptionContainer;
     [SerializeField] private TextMeshProUGUI descriptionText;
 
@@ -31,6 +37,8 @@ public class EffectCardDisplay : MonoBehaviour
         icon.sprite = effectCard.Icon;
         topLeftText.text = effectCard.Text;
         bottomRightText.text = effectCard.Text;
+        conditionImageTop.sprite = effectCard.ConditionImage;
+        conditionImageBottom.sprite = effectCard.ConditionImage;
 
         cardBack.SetActive(!effectCard.IsRevealed);
         cardFront.SetActive(effectCard.IsRevealed);

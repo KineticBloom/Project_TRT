@@ -139,7 +139,7 @@ public class CountSpecificItems : IItemCondition
         if (Items.Count == 0) return true;
 
         // [a], [a, b] (any)
-        if (!NeedAllItems)
+        if (!NeedAllItems || (NeedAllItems && Items.Count == 1))
         {
             foreach (InventoryCardData searchedItem in Items)
             {

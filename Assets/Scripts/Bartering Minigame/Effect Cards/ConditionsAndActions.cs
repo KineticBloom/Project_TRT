@@ -45,6 +45,7 @@ public class SearchForItems : IItemCondition
 {
     [Tooltip("List of Items that the action will search for and affect")]
     public List<InventoryCardData> Items;
+    [Tooltip("Are all of the items in the Items list necessary for the Effect Card?")]
     public bool NeedAllItems;
 
     /// <summary>

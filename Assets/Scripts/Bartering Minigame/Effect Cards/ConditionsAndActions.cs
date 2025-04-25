@@ -10,28 +10,55 @@ public interface IItemCondition
     public bool IsSatisfied(InventoryCardData item, TradeInfo tradeInfo);
 }
 
-
+/// <summary>
+/// Offer Item with tag and Offer # Items with tag
+/// </summary>
 [System.Serializable]
-public class SearchForTags : IItemCondition
+public class ItemsWithTag : IItemCondition
 {
-    [Tooltip("List of Tags that the action will search for and affect")]
-    public List<string> Tags;
+    [Header("Conditions")]
+    [Tooltip("Tag that the action will search for and affect")]
+    public string Tag;
+    [Tooltip("How many items with the tag are required to satisfy this condition?")]
+    [Range(1.0f, 4.0f)]
+    public int Amount = 1;
+    [Tooltip("Do the amount of items offered have to be exactly the same as Amount?")]
+    public bool ExactAmount;
 
     /// <summary>
     /// See if any of the tags matches this class' tags
     /// </summary>
     public bool IsSatisfied(InventoryCardData item, TradeInfo tradeInfo)
     {
-        foreach (string tag in Tags)
+        List<InventoryCardData> itemsWithTag = new List<InventoryCardData>();
+
+        // fill itemsWithTag with items that have Tag
+        foreach (InventoryCardData possibleItem in tradeInfo.OfferedItems.Items)
         {
-            foreach (string itemTag in item.Tags)
+            foreach (string itemTag in possibleItem.Tags)
             {
-                if (itemTag.ToLower().Equals(tag.ToLower()))
-                {
-                    return true;
-                }
+                if (itemTag.ToLower().Equals(Tag.ToLower())) itemsWithTag.Add(possibleItem);
             }
         }
+
+        // If we have less than the amount needed, return false
+        if (itemsWithTag.Count < Amount)
+        {
+            return false;
+        }
+
+        // If we need the exact amount and we don't have it, return false
+        if (ExactAmount && itemsWithTag.Count != Amount)
+        {
+            return false;
+        }
+
+        // Return true if our item is one of the items with the Tag
+        foreach (InventoryCardData possibleItem in itemsWithTag)
+        {
+            if (possibleItem.IsSame(item)) return true;
+        }
+
         return false;
     }
 }

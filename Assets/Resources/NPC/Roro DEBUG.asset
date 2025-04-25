@@ -25,6 +25,8 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 6077773190711214239
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
@@ -33,16 +35,9 @@ MonoBehaviour:
         Text: text
         _revealed: 1
         ItemConditions:
-        - rid: 6077773190711214240
+        - rid: -2
         ItemActions:
         - rid: 6077773190711214241
-    - rid: 6077773190711214240
-      type: {class: SearchForItems, ns: , asm: Assembly-CSharp}
-      data:
-        Items:
-        - {fileID: 11400000, guid: 78a41c953ce01b648b8baa76eb804c39, type: 2}
-        - {fileID: 11400000, guid: 33c1b2ec0e89bd64489cbdd9b5794f6d, type: 2}
-        NeedAllItems: 1
     - rid: 6077773190711214241
       type: {class: SetValue, ns: , asm: Assembly-CSharp}
       data:

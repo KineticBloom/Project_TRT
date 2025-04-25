@@ -88,7 +88,7 @@ public class TagsExclusive : IItemCondition
         var requiredTagsLower = RequiredTags.Select(tag => tag.ToLower());
         var excludedTagsLower = ExcludedTags.Select(tag => tag.ToLower());
 
-        // fill itemsWithTag with items that have Tag
+        // fill itemsWithTag with items that have required tags and dont have excluded tags
         foreach (InventoryCardData possibleItem in tradeInfo.OfferedItems.Items)
         {
             var offeredTagsLower = possibleItem.Tags.Select(tag => tag.ToLower());

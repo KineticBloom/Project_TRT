@@ -28,40 +28,42 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 6077773190711214247
       type: {class: ItemsWithTag, ns: , asm: Assembly-CSharp}
       data:
         Tag: all
-        Amount: 1
+        MinAmount: 1
         ExactAmount: 0
     - rid: 6077773190711214248
       type: {class: ItemsWithTag, ns: , asm: Assembly-CSharp}
       data:
         Tag: Religious
-        Amount: 1
+        MinAmount: 1
         ExactAmount: 0
     - rid: 6991182339336044559
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
-      data:
-        Icon: {fileID: 21300000, guid: 49f6452ec2af8bc4bb92fa172aea724a, type: 3}
-        Description: The Date Note is worth a lot!
-        Text: 300!
-        _revealed: 0
-        ItemConditions:
+      data: {Icon: {fileID: 21300000, guid: 49f6452ec2af8bc4bb92fa172aea724a, type: 3},
+        Description: The Date Note is worth a lot!, Text: 300!, activationTime: 1,
+        _revealed: 0, _canActivate: 0, RequiresAllConditions: 1, ItemConditions:
         - rid: 6991182339336044561
-        ItemActions:
+, AffectedItems: []
+, AffectedTags: []
+, ItemActions:
         - rid: 6991182339336044562
+}
     - rid: 6991182339336044560
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
-      data:
-        Icon: {fileID: 21300000, guid: 664b9aa8529383841a676c514429f1d2, type: 3}
-        Description: Items relating to someone seem to be favorable
-        Text: =100
-        _revealed: 0
-        ItemConditions:
+      data: {Icon: {fileID: 21300000, guid: 664b9aa8529383841a676c514429f1d2, type: 3},
+        Description: Items relating to someone seem to be favorable, Text: =100, activationTime: 1,
+        _revealed: 0, _canActivate: 0, RequiresAllConditions: 1, ItemConditions:
         - rid: 6077773190711214248
-        ItemActions:
+, AffectedItems: []
+, AffectedTags: []
+, ItemActions:
         - rid: 8151269401547244281
+}
     - rid: 6991182339336044561
       type: {class: SearchForItems, ns: , asm: Assembly-CSharp}
       data:
@@ -74,15 +76,15 @@ MonoBehaviour:
         Value: 300
     - rid: 6991182339336044565
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
-      data:
-        Icon: {fileID: 21300000, guid: 64a4aabb5bd8f3e4e918e385720cf9b7, type: 3}
-        Description: They don't seem to want anything
-        Text: 0
-        _revealed: 1
-        ItemConditions:
+      data: {Icon: {fileID: 21300000, guid: 64a4aabb5bd8f3e4e918e385720cf9b7, type: 3},
+        Description: They don't seem to want anything, Text: 0, activationTime: 1,
+        _revealed: 1, _canActivate: 0, RequiresAllConditions: 1, ItemConditions:
         - rid: 6077773190711214247
-        ItemActions:
+, AffectedItems: []
+, AffectedTags: []
+, ItemActions:
         - rid: 8151269401547244277
+}
     - rid: 8151269401547244277
       type: {class: MultiplyValue, ns: , asm: Assembly-CSharp}
       data:

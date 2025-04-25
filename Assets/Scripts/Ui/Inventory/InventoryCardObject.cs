@@ -57,10 +57,13 @@ public class InventoryCardObject : MonoBehaviour {
     /// <summary>
     /// Creates an empty inventory card for a InventoryGridController
     /// </summary>
-    public void InitalizeToGrid(int indexInGrid, AutoScrollGrid gridAutoScroller, InventoryAction onSelectAction, bool usingPreviewSize) {
+    public void InitalizeToGrid(int indexInGrid, AutoScrollGrid gridAutoScroller, InventoryAction onSelectAction, bool usingPreviewSize, Vector2 sizeOfIcon) {
         _index = indexInGrid;
         _scroller = gridAutoScroller;
         _onSelectAction = onSelectAction;
+
+        itemLayoutObject.GetComponent<RectTransform>().sizeDelta = sizeOfIcon;
+        itemUnactiveObject.GetComponent<RectTransform>().sizeDelta = sizeOfIcon;
 
         SetCardToEmpty(usingPreviewSize);
     }

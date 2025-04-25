@@ -16,6 +16,8 @@ public class InventoryGridController : MonoBehaviour
     public int InventorySize = 10;
     public bool SetDefaultSelectionOnEnable = false;
     public bool Interactable = true;
+    public RectOffset padding;
+    public float spacing = 40f;
 
     [Header("Click Action")]
     public InventoryAction OnInventoryItemClick = null;
@@ -49,8 +51,11 @@ public class InventoryGridController : MonoBehaviour
             PopulateGrid();
         }
 
+        Grid.padding = this.padding;
+        Grid.spacing = Vector2.one * this.spacing;
+
         // Set default selection
-        if(SetDefaultSelectionOnEnable && _inventoryInstances.Count > 0) {
+        if (SetDefaultSelectionOnEnable && _inventoryInstances.Count > 0) {
             _inventoryInstances[0].CurrentActiveButton.Select();
         }
     }
@@ -115,13 +120,19 @@ public class InventoryGridController : MonoBehaviour
     /// </summary>
     private void CreateInventory() {
 
+        float width = this.GetComponent<RectTransform>().rect.width;
+        float trueWidth = width - padding.left - padding.right - InventorySize * spacing;
+        float widthOfElement = trueWidth / InventorySize;
+
+        Grid.cellSize = Vector2.one * widthOfElement;
+
         // Fill inventory will blank cards
         for (int i = 0; i < InventorySize; i++) {
 
             InventoryCardObject newInventoryItem = NewInventoryItem();
 
             // Init data
-            newInventoryItem.InitalizeToGrid(i, InventoryUiAutoScroller, OnInventoryItemClick, UseSmallSize);
+            newInventoryItem.InitalizeToGrid(i, InventoryUiAutoScroller, OnInventoryItemClick, UseSmallSize, Grid.cellSize);
 
             // Add to instance list
             _inventoryInstances.Add(newInventoryItem);

@@ -21,7 +21,7 @@ public class ItemsWithTag : IItemCondition
     public string Tag;
     [Tooltip("How many items with the tag are required to satisfy this condition?")]
     [Range(1.0f, 4.0f)]
-    public int Amount = 1;
+    public int MinAmount = 1;
     [Tooltip("Do the amount of items offered have to be exactly the same as Amount?")]
     public bool ExactAmount;
 
@@ -42,13 +42,13 @@ public class ItemsWithTag : IItemCondition
         }
 
         // If we have less than the amount needed, return false
-        if (itemsWithTag.Count < Amount)
+        if (itemsWithTag.Count < MinAmount)
         {
             return false;
         }
 
         // If we need the exact amount and we don't have it, return false
-        if (ExactAmount && itemsWithTag.Count != Amount)
+        if (ExactAmount && itemsWithTag.Count != MinAmount)
         {
             return false;
         }

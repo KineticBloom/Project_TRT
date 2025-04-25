@@ -107,7 +107,6 @@ public class BarteringController : MonoBehaviour {
         {
             OfferedItems = _offeredItems,
             ReceivedItem = _currentNPCData.ItemOnOffer,
-            // TODO: Set RelevantFlags
         };
 
         SetInteractable(true);
@@ -416,5 +415,4 @@ public struct TradeInfo
 {
     public OfferedItems OfferedItems;
     public InventoryCardData ReceivedItem;
-    public List<Flag> RelevantFlags;
 }

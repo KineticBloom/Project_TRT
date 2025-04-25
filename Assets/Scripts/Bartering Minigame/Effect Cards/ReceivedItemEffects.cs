@@ -33,7 +33,7 @@ public class ReceivedItemEffects : EffectCard
     #region ======== [ FUNCTIONS ] ========
 
     /// <summary>
-    /// Adds any items matching the conditions to _matchingItems
+    /// returns whether or not the Effect Card can Activate
     /// </summary>
     /// <returns></returns>
     public override bool DoesActivate(TradeInfo tradeInfo, ActivationTime activationTime)
@@ -69,6 +69,7 @@ public class ReceivedItemEffects : EffectCard
         foreach (IItemAction action in ItemActions)
         {
             action.Activate(tradeInfo.ReceivedItem);
+            Debug.LogError(tradeInfo.ReceivedItem.CurrentValue);
         }
 
         Reveal();

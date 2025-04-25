@@ -52,6 +52,12 @@ public class ReceivedItemEffects : EffectCard
                 }
             }
 
+            // If a card has the infinite tag, its value is immutable
+            if (item.Tags.Contains("infinte"))
+            {
+                addItem = false;
+            }
+
             if (addItem)
             {
                 _matchingItems.Add(item);

@@ -83,7 +83,7 @@ public class BarteringController : MonoBehaviour {
 
         // Load NPC Data
         NPCOfferSlotOne.SetData(_currentNPCData.ItemOnOffer, false);
-        NPCValueText.text = "Value: " + _currentNPCData.ItemOnOffer.BaseValue;
+        NPCValueText.text = "Value: " + _currentNPCData.ItemOnOffer.CurrentValue;
         NPCProfilePicture.sprite = _currentNPCData.Icon;
 
 
@@ -189,7 +189,7 @@ public class BarteringController : MonoBehaviour {
 
         ActivateEffectCards(EffectCard.ActivationTime.AfterOffer);
 
-        float NPCItemValue = _currentNPCData.ItemOnOffer.BaseValue;
+        float NPCItemValue = _currentNPCData.ItemOnOffer.CurrentValue;
 
         EndMessageSpeechBubble.SetActive(true);
 
@@ -278,6 +278,7 @@ public class BarteringController : MonoBehaviour {
             PlayerOfferSlotFour.SetData(_offeredItems.Items[3]);
         }
 
+        NPCValueText.text = "Value: " + _currentNPCData.ItemOnOffer.CurrentValue;
     }
 
     private void ResetData() {
@@ -316,6 +317,7 @@ public class BarteringController : MonoBehaviour {
         {
             item.ResetCurrentValue();
         }
+        _currentNPCData.ItemOnOffer.ResetCurrentValue();
 
         _offeredItems.ReturnCardsToInventory();
         _offeredItems.Items.Clear();

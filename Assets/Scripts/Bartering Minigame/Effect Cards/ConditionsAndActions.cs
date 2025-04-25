@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,14 +12,14 @@ public interface IItemCondition
 }
 
 /// <summary>
-/// Offer Item with tag and Offer # Items with tag
+/// Offer Items with tag A and tag B
 /// </summary>
 [System.Serializable]
-public class ItemsWithTag : IItemCondition
+public class CountItemsWithTags : IItemCondition
 {
     [Header("Conditions")]
     [Tooltip("Tag that the action will search for and affect")]
-    public string Tag;
+    public List<string> Tags;
     [Tooltip("How many items with the tag are required to satisfy this condition?")]
     [Range(1.0f, 4.0f)]
     public int MinAmount = 1;
@@ -26,29 +27,84 @@ public class ItemsWithTag : IItemCondition
     public bool ExactAmount;
 
     /// <summary>
-    /// See if any of the tags matches this class' tags
+    /// Do enough items have these tags?
     /// </summary>
     public bool IsSatisfied(TradeInfo tradeInfo)
     {
-        List<InventoryCardData> itemsWithTag = new List<InventoryCardData>();
+        List<InventoryCardData> itemsWithTags = new List<InventoryCardData>();
 
         // fill itemsWithTag with items that have Tag
         foreach (InventoryCardData possibleItem in tradeInfo.OfferedItems.Items)
         {
-            foreach (string itemTag in possibleItem.Tags)
+            var offeredTagsLower = possibleItem.Tags.Select(tag => tag.ToLower());
+            var requiredTagsLower = Tags.Select(tag => tag.ToLower());
+
+            if (requiredTagsLower.All(tagLower => offeredTagsLower.Contains(tagLower)))
             {
-                if (itemTag.ToLower().Equals(Tag.ToLower())) itemsWithTag.Add(possibleItem);
+                itemsWithTags.Add(possibleItem);
             }
         }
 
         // If we have less than the amount needed, return false
-        if (itemsWithTag.Count < MinAmount)
+        if (itemsWithTags.Count < MinAmount)
         {
             return false;
         }
 
         // If we need the exact amount and we don't have it, return false
-        if (ExactAmount && itemsWithTag.Count != MinAmount)
+        if (ExactAmount && itemsWithTags.Count != MinAmount)
+        {
+            return false;
+        }
+
+        return true;
+    }
+}
+
+/// <summary>
+/// Offer an Item with tag A but not tag B
+/// </summary>
+[System.Serializable]
+public class TwoTagsExclusive : IItemCondition
+{
+    [Header("Conditions")]
+    [Tooltip("Tag that the action will search for and affect")]
+    public List<string> RequiredTag;
+    [Tooltip("Tag that the action will exclude")]
+    public List<string> ExcludedTag;
+    [Tooltip("How many items with these conditions are required to satisfy this condition?")]
+    [Range(1.0f, 4.0f)]
+    public int MinAmount = 1;
+    [Tooltip("Do the amount of items offered have to be exactly the same as Min Amount?")]
+    public bool ExactAmount = false;
+
+    /// <summary>
+    /// Compares 2 Tags and checks if you have items that match it
+    /// </summary>
+    public bool IsSatisfied(TradeInfo tradeInfo)
+    {
+        List<InventoryCardData> itemsWithTags = new List<InventoryCardData>();
+
+        // fill itemsWithTag with items that have Tag
+        foreach (InventoryCardData possibleItem in tradeInfo.OfferedItems.Items)
+        {
+            var offeredTagsLower = possibleItem.Tags.Select(tag => tag.ToLower());
+
+            // If it has the required tag and doesn't have the excluded tag
+            if (offeredTagsLower.Any(tag => tag.Equals(RequiredTag)) && !offeredTagsLower.Any(tag => tag.Equals(ExcludedTag)))
+            {
+                itemsWithTags.Add(possibleItem);
+            }
+        }
+
+        // If we have less than the amount needed, return false
+        if (itemsWithTags.Count < MinAmount)
+        {
+            return false;
+        }
+
+        // If we need the exact amount and we don't have it, return false
+        if (ExactAmount && itemsWithTags.Count != MinAmount)
         {
             return false;
         }

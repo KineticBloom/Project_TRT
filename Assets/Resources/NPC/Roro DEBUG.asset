@@ -34,7 +34,7 @@ MonoBehaviour:
         _revealed: 1
         RequiresAllConditions: 1
         ItemConditions:
-        - rid: 6077773190711214263
+        - rid: 6077773190711214277
         AffectedItems: []
         AffectedTags:
         - all
@@ -43,8 +43,11 @@ MonoBehaviour:
     - rid: 6077773190711214262
       type: {class: SetValue, ns: , asm: Assembly-CSharp}
       data:
-        Value: 10000
-    - rid: 6077773190711214263
-      type: {class: ItemCount, ns: , asm: Assembly-CSharp}
+        Value: 0
+    - rid: 6077773190711214277
+      type: {class: CountItemsWithTags, ns: , asm: Assembly-CSharp}
       data:
+        Tags:
+        - all
         MinAmount: 2
+        ExactAmount: 0

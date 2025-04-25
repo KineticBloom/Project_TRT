@@ -29,11 +29,12 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 6077773190711214249
-      type: {class: ItemsWithTag, ns: , asm: Assembly-CSharp}
+    - rid: 6077773190711214275
+      type: {class: CountItemsWithTags, ns: , asm: Assembly-CSharp}
       data:
-        Tag: Tool
-        Amount: 1
+        Tags:
+        - Tool
+        MinAmount: 1
         ExactAmount: 0
     - rid: 8151269401547244294
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
@@ -42,8 +43,12 @@ MonoBehaviour:
         Description: Letter of Complaint Value = 20
         Text: =20
         _revealed: 0
+        RequiresAllConditions: 1
         ItemConditions:
         - rid: 8151269401547244296
+        AffectedItems:
+        - {fileID: 11400000, guid: af210dedcdbaf56429bf9d6f8b6ac2c0, type: 2}
+        AffectedTags: []
         ItemActions:
         - rid: 8151269401547244295
     - rid: 8151269401547244295
@@ -63,8 +68,11 @@ MonoBehaviour:
         Description: Tool items' value x2
         Text: x2
         _revealed: 0
+        RequiresAllConditions: 1
         ItemConditions:
-        - rid: 6077773190711214249
+        - rid: 6077773190711214275
+        AffectedItems: []
+        AffectedTags: []
         ItemActions:
         - rid: 8151269401547244300
     - rid: 8151269401547244300
@@ -78,8 +86,11 @@ MonoBehaviour:
         Description: Green Chip Value +5
         Text: +5
         _revealed: 0
+        RequiresAllConditions: 1
         ItemConditions:
         - rid: 8151269401547244302
+        AffectedItems: []
+        AffectedTags: []
         ItemActions:
         - rid: 8151269401547244303
     - rid: 8151269401547244302

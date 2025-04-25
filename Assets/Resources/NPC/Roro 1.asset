@@ -16,15 +16,21 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: f81434a53d0a2174ca8bc46782bfa24c, type: 3}
   Bio: It's a Roro
   FlagID: roro_1_bartered
-  EffectCards:
-  - rid: 6991182339336044559
   ItemOnOffer: {fileID: 11400000, guid: ad8e6a92f388f7b499a3c6f6cb32d9bf, type: 2}
   BarterMessageWin: Here you go!
   BarterMessageLose: That's not enough...
   BarterAttempts: 1
+  EffectCards:
+  - rid: 6991182339336044559
   references:
     version: 2
     RefIds:
+    - rid: 6077773197129285651
+      type: {class: CountSpecificItems, ns: , asm: Assembly-CSharp}
+      data:
+        Items:
+        - {fileID: 11400000, guid: 33c1b2ec0e89bd64489cbdd9b5794f6d, type: 2}
+        NeedAllItems: 0
     - rid: 6991182339336044559
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
@@ -32,15 +38,14 @@ MonoBehaviour:
         Description: Blue Chip is worth 3
         Text: =3
         _revealed: 0
+        RequiresAllConditions: 1
         ItemConditions:
-        - rid: 6991182339336044561
+        - rid: 6077773197129285651
+        AffectedItems:
+        - {fileID: 11400000, guid: 33c1b2ec0e89bd64489cbdd9b5794f6d, type: 2}
+        AffectedTags: []
         ItemActions:
         - rid: 6991182339336044562
-    - rid: 6991182339336044561
-      type: {class: SearchForItems, ns: , asm: Assembly-CSharp}
-      data:
-        Items:
-        - {fileID: 11400000, guid: 33c1b2ec0e89bd64489cbdd9b5794f6d, type: 2}
     - rid: 6991182339336044562
       type: {class: SetValue, ns: , asm: Assembly-CSharp}
       data:

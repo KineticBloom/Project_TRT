@@ -12,7 +12,7 @@ public interface IItemCondition
 }
 
 /// <summary>
-/// Offer Items with tag A and tag B
+/// Offer # items with tag and Offer Item(s) with tag A and tag B
 /// </summary>
 [System.Serializable]
 public class CountItemsWithTags : IItemCondition
@@ -65,13 +65,13 @@ public class CountItemsWithTags : IItemCondition
 /// Offer an Item with tag A but not tag B
 /// </summary>
 [System.Serializable]
-public class TwoTagsExclusive : IItemCondition
+public class TagsExclusive : IItemCondition
 {
     [Header("Conditions")]
     [Tooltip("Tag that the action will search for and affect")]
-    public List<string> RequiredTag;
+    public List<string> RequiredTags;
     [Tooltip("Tag that the action will exclude")]
-    public List<string> ExcludedTag;
+    public List<string> ExcludedTags;
     [Tooltip("How many items with these conditions are required to satisfy this condition?")]
     [Range(1.0f, 4.0f)]
     public int MinAmount = 1;
@@ -85,16 +85,22 @@ public class TwoTagsExclusive : IItemCondition
     {
         List<InventoryCardData> itemsWithTags = new List<InventoryCardData>();
 
+        var requiredTagsLower = RequiredTags.Select(tag => tag.ToLower());
+        var excludedTagsLower = ExcludedTags.Select(tag => tag.ToLower());
+
         // fill itemsWithTag with items that have Tag
         foreach (InventoryCardData possibleItem in tradeInfo.OfferedItems.Items)
         {
             var offeredTagsLower = possibleItem.Tags.Select(tag => tag.ToLower());
 
-            // If it has the required tag and doesn't have the excluded tag
-            if (offeredTagsLower.Any(tag => tag.Equals(RequiredTag)) && !offeredTagsLower.Any(tag => tag.Equals(ExcludedTag)))
-            {
-                itemsWithTags.Add(possibleItem);
-            }
+            // Skip if it doesn't have required tags
+            if (!requiredTagsLower.All(tag => offeredTagsLower.Contains(tag))) continue;
+
+            // Skip if it has the Excluded tags
+            if (excludedTagsLower.Any(tag => offeredTagsLower.Contains(tag))) continue;
+            
+            itemsWithTags.Add(possibleItem);
+            
         }
 
         // If we have less than the amount needed, return false
@@ -118,7 +124,7 @@ public class TwoTagsExclusive : IItemCondition
 /// eg. [a] or [a, b] (any) or [a, b] (all) or [a, a]
 /// </summary>
 [System.Serializable]
-public class SearchForItems : IItemCondition
+public class CountSpecificItems : IItemCondition
 {
     [Tooltip("List of Items that the action will search for and affect")]
     public List<InventoryCardData> Items;

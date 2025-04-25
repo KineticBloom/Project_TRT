@@ -69,7 +69,6 @@ public class ReceivedItemEffects : EffectCard
         foreach (IItemAction action in ItemActions)
         {
             action.Activate(tradeInfo.ReceivedItem);
-            Debug.LogError(tradeInfo.ReceivedItem.CurrentValue);
         }
 
         Reveal();

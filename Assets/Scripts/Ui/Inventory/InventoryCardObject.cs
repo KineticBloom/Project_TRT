@@ -17,11 +17,13 @@ public class InventoryCardObject : MonoBehaviour {
 
     [Header("Item")]
     [SerializeField, BoxGroup("Item")] private GameObject itemLayoutObject;
-    [SerializeField, BoxGroup("Item")] private Image itemOutlineImage;
     [SerializeField, BoxGroup("Item")] private Button itemLayoutButton;
-    [SerializeField, BoxGroup("Item")] private TMP_Text itemNameText;
     [SerializeField, BoxGroup("Item")] private Image itemSpriteImage;
     [SerializeField, BoxGroup("Item")] private TMP_Text itemValueText;
+
+    [Header("Item Unactive")]
+    [SerializeField, BoxGroup("Item Unactive")] private GameObject itemUnactiveObject;
+
 
     #endregion
 
@@ -81,7 +83,6 @@ public class InventoryCardObject : MonoBehaviour {
 
         SwapState(CurrentState.ITEM);
 
-        itemNameText.text = Card.CardName;
         itemSpriteImage.sprite = Card.Sprite;
         itemValueText.text = Card.CurrentValue.ToString();
     }
@@ -131,11 +132,11 @@ public class InventoryCardObject : MonoBehaviour {
         switch (stateToEnter) {
             case CurrentState.ITEM:
                 itemLayoutObject.SetActive(true);
-                itemOutlineImage.sprite = activeImage;
+                itemUnactiveObject.SetActive(false);
                 break;
             case CurrentState.DEACTIVE:
                 itemLayoutObject.SetActive(false);
-                itemOutlineImage.sprite = deactiveImage;
+                itemUnactiveObject.SetActive(true);
 
                 Card = null;
                 break;

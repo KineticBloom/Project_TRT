@@ -17,17 +17,23 @@ MonoBehaviour:
   Bio: Politely avoidant to 'personal' territory. Offers a kind, yet tense smile.
     Willingness to help comes from obligation, not desire.
   FlagID: fp_bartered
-  EffectCards:
-  - rid: 8151269401547244283
-  - rid: 8151269401547244287
-  - rid: 8151269401547244284
   ItemOnOffer: {fileID: 11400000, guid: b3ce713d5e03399499b7f5df33e92dcc, type: 2}
   BarterMessageWin: I will settle for that
   BarterMessageLose: I won't settle for that much
   BarterAttempts: 1
+  EffectCards:
+  - rid: 8151269401547244283
+  - rid: 8151269401547244287
+  - rid: 8151269401547244284
   references:
     version: 2
     RefIds:
+    - rid: 6077773190711214250
+      type: {class: ItemsWithTag, ns: , asm: Assembly-CSharp}
+      data:
+        Tag: Fruit
+        Amount: 1
+        ExactAmount: 0
     - rid: 8151269401547244283
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
@@ -55,6 +61,7 @@ MonoBehaviour:
       data:
         Items:
         - {fileID: 11400000, guid: af5c89a7096cba04297f11e8dcb9d576, type: 2}
+        NeedAllItems: 0
     - rid: 8151269401547244286
       type: {class: MultiplyValue, ns: , asm: Assembly-CSharp}
       data:
@@ -67,14 +74,9 @@ MonoBehaviour:
         Text: x3
         _revealed: 0
         ItemConditions:
-        - rid: 8151269401547244289
+        - rid: 6077773190711214250
         ItemActions:
         - rid: 8151269401547244290
-    - rid: 8151269401547244289
-      type: {class: SearchForTags, ns: , asm: Assembly-CSharp}
-      data:
-        Tags:
-        - Fruit
     - rid: 8151269401547244290
       type: {class: MultiplyValue, ns: , asm: Assembly-CSharp}
       data:
@@ -84,6 +86,7 @@ MonoBehaviour:
       data:
         Items:
         - {fileID: 11400000, guid: 84e57b2c426aad147ab48ebedf5a7792, type: 2}
+        NeedAllItems: 0
     - rid: 8151269401547244293
       type: {class: AddValue, ns: , asm: Assembly-CSharp}
       data:

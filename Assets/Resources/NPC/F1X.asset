@@ -17,17 +17,29 @@ MonoBehaviour:
   Bio: Sly, a little full of themselves and stand offish. Hides serious emotions,
     secretly desires someone by their side.
   FlagID: shady_bartered
-  EffectCards:
-  - rid: 6991182339336044565
-  - rid: 6991182339336044560
-  - rid: 6991182339336044559
   ItemOnOffer: {fileID: 11400000, guid: 5b5349cb0746d7c46b8b4b37dafc297e, type: 2}
   BarterMessageWin: Here ya go.
   BarterMessageLose: That's not enough at all.
   BarterAttempts: 1
+  EffectCards:
+  - rid: 6991182339336044565
+  - rid: 6991182339336044560
+  - rid: 6991182339336044559
   references:
     version: 2
     RefIds:
+    - rid: 6077773190711214247
+      type: {class: ItemsWithTag, ns: , asm: Assembly-CSharp}
+      data:
+        Tag: all
+        Amount: 1
+        ExactAmount: 0
+    - rid: 6077773190711214248
+      type: {class: ItemsWithTag, ns: , asm: Assembly-CSharp}
+      data:
+        Tag: Religious
+        Amount: 1
+        ExactAmount: 0
     - rid: 6991182339336044559
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
@@ -47,7 +59,7 @@ MonoBehaviour:
         Text: =100
         _revealed: 0
         ItemConditions:
-        - rid: 8151269401547244280
+        - rid: 6077773190711214248
         ItemActions:
         - rid: 8151269401547244281
     - rid: 6991182339336044561
@@ -55,6 +67,7 @@ MonoBehaviour:
       data:
         Items:
         - {fileID: 11400000, guid: b3ce713d5e03399499b7f5df33e92dcc, type: 2}
+        NeedAllItems: 0
     - rid: 6991182339336044562
       type: {class: SetValue, ns: , asm: Assembly-CSharp}
       data:
@@ -65,25 +78,15 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 64a4aabb5bd8f3e4e918e385720cf9b7, type: 3}
         Description: They don't seem to want anything
         Text: 0
-        _revealed: 0
+        _revealed: 1
         ItemConditions:
-        - rid: 8151269401547244279
+        - rid: 6077773190711214247
         ItemActions:
         - rid: 8151269401547244277
     - rid: 8151269401547244277
       type: {class: MultiplyValue, ns: , asm: Assembly-CSharp}
       data:
         ValueMultiplier: 0
-    - rid: 8151269401547244279
-      type: {class: SearchForTags, ns: , asm: Assembly-CSharp}
-      data:
-        Tags:
-        - All
-    - rid: 8151269401547244280
-      type: {class: SearchForTags, ns: , asm: Assembly-CSharp}
-      data:
-        Tags:
-        - Religious
     - rid: 8151269401547244281
       type: {class: SetValue, ns: , asm: Assembly-CSharp}
       data:

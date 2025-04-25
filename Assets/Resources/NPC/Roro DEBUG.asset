@@ -25,8 +25,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 6077773190711214239
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
@@ -35,10 +33,16 @@ MonoBehaviour:
         Text: text
         _revealed: 1
         ItemConditions:
-        - rid: -2
+        - rid: 6077773190711214246
         ItemActions:
         - rid: 6077773190711214241
     - rid: 6077773190711214241
       type: {class: SetValue, ns: , asm: Assembly-CSharp}
       data:
         Value: 0
+    - rid: 6077773190711214246
+      type: {class: ItemsWithTag, ns: , asm: Assembly-CSharp}
+      data:
+        Tag: all
+        Amount: 2
+        ExactAmount: 0

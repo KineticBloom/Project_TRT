@@ -16,15 +16,21 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: f81434a53d0a2174ca8bc46782bfa24c, type: 3}
   Bio: It's a Roro
   FlagID: roro_5_bartered
-  EffectCards:
-  - rid: 6991182339336044559
   ItemOnOffer: {fileID: 11400000, guid: a942cf1638829df488725379b2d4fab7, type: 2}
   BarterMessageWin: Here you go!
   BarterMessageLose: That's not enough...
   BarterAttempts: 1
+  EffectCards:
+  - rid: 6991182339336044559
   references:
     version: 2
     RefIds:
+    - rid: 6077773190711214252
+      type: {class: ItemsWithTag, ns: , asm: Assembly-CSharp}
+      data:
+        Tag: Tool
+        Amount: 1
+        ExactAmount: 0
     - rid: 6991182339336044559
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
@@ -33,14 +39,9 @@ MonoBehaviour:
         Text: x2
         _revealed: 0
         ItemConditions:
-        - rid: 8151269401547244313
+        - rid: 6077773190711214252
         ItemActions:
         - rid: 8151269401547244314
-    - rid: 8151269401547244313
-      type: {class: SearchForTags, ns: , asm: Assembly-CSharp}
-      data:
-        Tags:
-        - Tool
     - rid: 8151269401547244314
       type: {class: MultiplyValue, ns: , asm: Assembly-CSharp}
       data:

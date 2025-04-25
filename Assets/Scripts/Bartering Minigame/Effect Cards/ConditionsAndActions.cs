@@ -146,6 +146,24 @@ public class ItemCount : IItemCondition
     }
 }
 
+/// <summary>
+/// Checks for Dialogue or World Interaction
+/// </summary>
+[System.Serializable]
+public class CheckForFlag : IItemCondition
+{
+    [Tooltip("Which FlagID do we check for?")]
+    public string FlagID = "";
+
+    /// <summary>
+    /// See if any of the tags matches this class' tags
+    /// </summary>
+    public bool IsSatisfied(TradeInfo tradeInfo)
+    {
+        return GameManager.FlagTracker.GetFlag(FlagID);
+    }
+}
+
 #endregion
 
 

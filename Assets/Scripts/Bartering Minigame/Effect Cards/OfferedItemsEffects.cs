@@ -88,7 +88,8 @@ public class OfferedItemsEffects : EffectCard
 
             foreach (string affectedTag in AffectedTags)
             {
-                if (offeredItem.Tags.Contains(affectedTag.ToLower())) { affected = true; break; }
+                // lowercase everything in offeredItem.Tags to avoid false negatives
+                if (offeredItem.Tags.Any(tag => tag.ToLower().Equals(affectedTag))) { affected = true; break; }
             }
 
             if (!affected) break;

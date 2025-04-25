@@ -42,13 +42,13 @@ public class OfferedItemsEffects : EffectCard
 
         foreach (InventoryCardData item in tradeInfo.OfferedItems.Items)
         {
-            bool addItem = false;
+            bool addItem = true;
 
             foreach (IItemCondition condition in ItemConditions)
             {
-                if (condition.IsSatisfied(item, tradeInfo))
+                if (!condition.IsSatisfied(item, tradeInfo))
                 {
-                    addItem = true;
+                    addItem = false;
                 }
             }
 

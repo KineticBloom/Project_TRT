@@ -140,6 +140,25 @@ public class SearchForItems : IItemCondition
     }
 }
 
+/// <summary>
+/// Offer # of items
+/// </summary>
+[System.Serializable]
+public class ItemCount : IItemCondition
+{
+    [Tooltip("How many items are required to activate this condition?")]
+    [Range(1.0f, 4.0f)]
+    public int MinAmount = 1;
+
+    /// <summary>
+    /// See if any of the tags matches this class' tags
+    /// </summary>
+    public bool IsSatisfied(InventoryCardData item, TradeInfo tradeInfo)
+    {
+        return tradeInfo.OfferedItems.Items.Count >= MinAmount;
+    }
+}
+
 #endregion
 
 
@@ -205,3 +224,10 @@ public class SetValue : IItemAction
 }
 
 #endregion
+
+
+/*
+ * Conditions are no longer per-item
+ * 
+ * 
+ */

@@ -7,7 +7,7 @@ using UnityEngine;
 
 public interface IItemCondition
 {
-    public bool IsSatisfied(InventoryCardData item, TradeInfo tradeInfo);
+    public bool IsSatisfied(TradeInfo tradeInfo);
 }
 
 /// <summary>
@@ -22,13 +22,13 @@ public class ItemsWithTag : IItemCondition
     [Tooltip("How many items with the tag are required to satisfy this condition?")]
     [Range(1.0f, 4.0f)]
     public int MinAmount = 1;
-    [Tooltip("Do the amount of items offered have to be exactly the same as Amount?")]
+    [Tooltip("Do the amount of items offered have to be exactly the same as Min Amount?")]
     public bool ExactAmount;
 
     /// <summary>
     /// See if any of the tags matches this class' tags
     /// </summary>
-    public bool IsSatisfied(InventoryCardData item, TradeInfo tradeInfo)
+    public bool IsSatisfied(TradeInfo tradeInfo)
     {
         List<InventoryCardData> itemsWithTag = new List<InventoryCardData>();
 
@@ -53,13 +53,7 @@ public class ItemsWithTag : IItemCondition
             return false;
         }
 
-        // Return true if our item is one of the items with the Tag
-        foreach (InventoryCardData possibleItem in itemsWithTag)
-        {
-            if (possibleItem.IsSame(item)) return true;
-        }
-
-        return false;
+        return true;
     }
 }
 
@@ -78,25 +72,18 @@ public class SearchForItems : IItemCondition
     /// <summary>
     /// See if any of the tags matches this class' tags
     /// </summary>
-    public bool IsSatisfied(InventoryCardData item, TradeInfo tradeInfo)
+    public bool IsSatisfied(TradeInfo tradeInfo)
     {
         if (Items.Count == 0) return true;
 
-        // [a]
-        if (Items.Count == 1)
-        {
-            return Items[0].IsSame(item);
-        }
-
-        // [a, b] (any)
+        // [a], [a, b] (any)
         if (!NeedAllItems)
         {
             foreach (InventoryCardData searchedItem in Items)
             {
-                // Checking for matching Card Names since the same items can have different ScriptableObjects
-                if (searchedItem.IsSame(item))
+                foreach (InventoryCardData offeredItem in tradeInfo.OfferedItems.Items)
                 {
-                    return true;
+                    if (offeredItem.IsSame(searchedItem)) return true;
                 }
             }
             return false;
@@ -104,8 +91,8 @@ public class SearchForItems : IItemCondition
 
         // [a, b] (all) and [a, a]
         // NeedAllItems == true
-        Dictionary<string, int> RequiredItemCounts = new Dictionary<string, int>();
-        Dictionary<string, int> OfferedItemCounts = new Dictionary<string, int>();
+        Dictionary<string, int> RequiredItemCounts = new();
+        Dictionary<string, int> OfferedItemCounts = new();
 
         // Set up RequiredItemCounts
         foreach (InventoryCardData requiredItem in Items)
@@ -136,7 +123,7 @@ public class SearchForItems : IItemCondition
         }
 
         // If the current item is one of the Required Items, return true
-        return RequiredItemCounts.ContainsKey(item.ID);
+        return true;
     }
 }
 
@@ -153,7 +140,7 @@ public class ItemCount : IItemCondition
     /// <summary>
     /// See if any of the tags matches this class' tags
     /// </summary>
-    public bool IsSatisfied(InventoryCardData item, TradeInfo tradeInfo)
+    public bool IsSatisfied(TradeInfo tradeInfo)
     {
         return tradeInfo.OfferedItems.Items.Count >= MinAmount;
     }
@@ -224,10 +211,3 @@ public class SetValue : IItemAction
 }
 
 #endregion
-
-
-/*
- * Conditions are no longer per-item
- * 
- * 
- */

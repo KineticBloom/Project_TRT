@@ -32,8 +32,12 @@ MonoBehaviour:
         Description: whoag
         Text: text
         _revealed: 1
+        RequiresAllConditions: 1
         ItemConditions:
         - rid: 6077773190711214246
+        AffectedItems:
+        - {fileID: 11400000, guid: 78a41c953ce01b648b8baa76eb804c39, type: 2}
+        AffectedTags: []
         ItemActions:
         - rid: 6077773190711214241
     - rid: 6077773190711214241

@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using NaughtyAttributes;
+using System.Linq;
+using static UnityEditor.Progress;
+
+
 #if UNITY_EDITOR
 using MackySoft.SerializeReferenceExtensions;   // Don't Remove, this is actually needed
 #endif
@@ -15,16 +19,25 @@ public class OfferedItemsEffects : EffectCard
     [InfoBox("This EffectCard will search for all player offered items that satisfy the Item Conditions and modify them according to Item Actions. " +
         "\n\nRuns after the player offers items.")]
 
+    [Header("Conditions")]
+    [SerializeField, Tooltip("Does it require all Conditions to be met (AND) or any (OR)?")]
+    public bool RequiresAllConditions = true;
     [SerializeReference, SubclassSelector]
     [Tooltip("List of item actions that determine the effect of the found items")]
     public List<IItemCondition> ItemConditions;
 
+    [Space, Space]
+    [Header("Effect Settings")]
+    [SerializeField, Tooltip("If card can activate, and these items are being offered, they will be affected")]
+    public List<InventoryCardData> AffectedItems = new();
+    [SerializeField, Tooltip("If card can activate, and items with these tags are being offered, they will be affected")]
+    public List<string> AffectedTags = new();
+
+    [Space, Space]
+    [Header("Actions")]
     [SerializeReference, SubclassSelector]
     [Tooltip("List of item actions that determine the effect of the found items")]
     public List<IItemAction> ItemActions;
-
-
-    private List<InventoryCardData> _matchingItems = new List<InventoryCardData>();
 
     #endregion
 
@@ -38,50 +51,59 @@ public class OfferedItemsEffects : EffectCard
     {
         if (this.activationTime != activationTime && activationTime != ActivationTime.Both) return false;
 
-        _matchingItems.Clear();
-
-        foreach (InventoryCardData item in tradeInfo.OfferedItems.Items)
+        // Store the results of all conditions
+        List<bool> conditionResults = new();
+        foreach (IItemCondition condition in ItemConditions)
         {
-            bool addItem = true;
-
-            foreach (IItemCondition condition in ItemConditions)
-            {
-                if (!condition.IsSatisfied(item, tradeInfo))
-                {
-                    addItem = false;
-                }
-            }
-
-            // If a card has the infinite tag, its value is immutable
-            if (item.Tags.Contains("infinte"))
-            {
-                addItem = false;
-            }
-
-            if (addItem)
-            {
-                _matchingItems.Add(item);
-            }
+            conditionResults.Add(condition.IsSatisfied(tradeInfo));
         }
 
-        return _matchingItems.Count > 0;
+        if (RequiresAllConditions)
+        {
+            _canActivate = conditionResults.All((bool condition) => condition);
+        } else
+        {
+            _canActivate = conditionResults.Any((bool condition) => condition);
+        }
+
+        return _canActivate;
     }
 
 
     /// <summary>
-    /// Apply the ItemActions to items in _matchingItems
+    /// Apply the ItemActions to all items that are relevant to AffectedItems and AffectedTags
     /// </summary>
-    public override void Activate(TradeInfo tradeInfo)
+    public override int Activate(TradeInfo tradeInfo)
     {
-        foreach (InventoryCardData item in _matchingItems)
+        int itemsAffected = 0;
+
+        foreach (InventoryCardData offeredItem in tradeInfo.OfferedItems.Items)
         {
+            bool affected = false;
+            
+            foreach (InventoryCardData affectedItem in AffectedItems)
+            {
+                if (offeredItem.IsSame(affectedItem)) { affected = true; break; }
+            }
+
+            foreach (string affectedTag in AffectedTags)
+            {
+                if (offeredItem.Tags.Contains(affectedTag.ToLower())) { affected = true; break; }
+            }
+
+            if (!affected) break;
+
             foreach (IItemAction action in ItemActions)
             {
-                action.Activate(item);
+                action.Activate(offeredItem);
             }
+
+            itemsAffected++;
         }
 
         Reveal();
+
+        return itemsAffected;
     }
 
 

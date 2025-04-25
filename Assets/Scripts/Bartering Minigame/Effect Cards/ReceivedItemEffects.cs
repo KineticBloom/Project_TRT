@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using NaughtyAttributes;
+using System.Linq;
+
 #if UNITY_EDITOR
 using MackySoft.SerializeReferenceExtensions;   // Don't Remove, this is actually needed
 #endif
@@ -23,8 +25,8 @@ public class ReceivedItemEffects : EffectCard
     [Tooltip("List of item actions that determine the effect of the found items")]
     public List<IItemAction> ItemActions;
 
-
-    private List<InventoryCardData> _matchingItems = new List<InventoryCardData>();
+    [SerializeField, Tooltip("Does it require all Conditions to be met (AND) or any (OR)?")]
+    public bool RequiresAllConditions = true;
 
     #endregion
 
@@ -38,50 +40,40 @@ public class ReceivedItemEffects : EffectCard
     {
         if (this.activationTime != activationTime && activationTime != ActivationTime.Both) return false;
 
-        _matchingItems.Clear();
 
-        foreach (InventoryCardData item in tradeInfo.OfferedItems.Items)
+        // Store the results of all conditions
+        List<bool> conditionResults = new();
+        foreach (IItemCondition condition in ItemConditions)
         {
-            bool addItem = false;
-
-            foreach (IItemCondition condition in ItemConditions)
-            {
-                if (condition.IsSatisfied(item, tradeInfo))
-                {
-                    addItem = true;
-                }
-            }
-
-            // If a card has the infinite tag, its value is immutable
-            if (item.Tags.Contains("infinte"))
-            {
-                addItem = false;
-            }
-
-            if (addItem)
-            {
-                _matchingItems.Add(item);
-            }
+            conditionResults.Add(condition.IsSatisfied(tradeInfo));
         }
 
-        return _matchingItems.Count > 0;
+        if (RequiresAllConditions)
+        {
+            _canActivate = conditionResults.All((bool condition) => condition);
+        }
+        else
+        {
+            _canActivate = conditionResults.Any((bool condition) => condition);
+        }
+
+        return _canActivate;
     }
 
 
     /// <summary>
     /// Apply the ItemActions to items in _matchingItems
     /// </summary>
-    public override void Activate(TradeInfo tradeInfo)
+    public override int Activate(TradeInfo tradeInfo)
     {
-        foreach (InventoryCardData item in _matchingItems)
+        foreach (IItemAction action in ItemActions)
         {
-            foreach (IItemAction action in ItemActions)
-            {
-                action.Activate(item);
-            }
+            action.Activate(tradeInfo.ReceivedItem);
         }
 
         Reveal();
+
+        return 1;
     }
 
 

@@ -32,6 +32,7 @@ public abstract class EffectCard
     [SerializeField, ReadOnly]
     private bool _revealed = false;
     public bool IsRevealed {  get { return _revealed; } set { _revealed = value; } }
+    protected bool _canActivate = false;
 
     #endregion
 
@@ -50,13 +51,12 @@ public abstract class EffectCard
     /// Activates the effect card
     /// </summary>
     /// <param name="barteringController">The bartering controller to modify info on</param>
-    public abstract void Activate(TradeInfo tradeInfo);
+    public abstract int Activate(TradeInfo tradeInfo);
 
 
     /// <summary>
     /// Reveal the card if not revealed already
     /// </summary>
-    /// <param name="activationTime"></param>
     public void Reveal()
     {
         if (_revealed) return;

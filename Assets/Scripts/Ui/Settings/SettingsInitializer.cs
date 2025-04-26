@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class SettingsInitializer : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
         ResolutionFullscreenHandler.InitFromPrefs();
         AccessibilitySettingsHandler.InitFromPrefs();
+        GetComponent<AudioSettingsHandler>().InitFromPrefs();
     }
 
     // Update is called once per frame

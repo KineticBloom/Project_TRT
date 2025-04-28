@@ -12,14 +12,20 @@ public class InventoryCardObject : MonoBehaviour {
     public bool IsPreviewCard = false;
     [SerializeField] public InventoryCardData Card;
 
-    [Header("Item")]
-    [SerializeField, BoxGroup("Item")] private GameObject itemLayoutObject;
-    [SerializeField, BoxGroup("Item")] private Button itemLayoutButton;
+    [SerializeField, BoxGroup("Item")] private GameObject itemSmallObject;
+    [SerializeField, BoxGroup("Item")] private Button itemSmallButton;
     [SerializeField, BoxGroup("Item")] private Image itemSpriteImage;
     [SerializeField, BoxGroup("Item")] private TMP_Text itemValueText;
 
-    [Header("Item Unactive")]
     [SerializeField, BoxGroup("Item Unactive")] private GameObject itemUnactiveObject;
+
+    [SerializeField, BoxGroup("Item Full")] private GameObject itemFullObject;
+    [SerializeField, BoxGroup("Item Full")] private Button itemFullButton;
+    [SerializeField, BoxGroup("Item Full")] private Image itemFullSprite;
+    [SerializeField, BoxGroup("Item Full")] private TMP_Text itemFullValueTextA;
+    [SerializeField, BoxGroup("Item Full")] private TMP_Text itemFullValueTextB;
+
+    [SerializeField, BoxGroup("Item Full Unactive")] private GameObject itemFullUnactiveObject;
 
 
     #endregion
@@ -29,17 +35,17 @@ public class InventoryCardObject : MonoBehaviour {
     [HideInInspector] public string CardName;
     [HideInInspector] public string CardDescription;
     [HideInInspector] public string CardID;
-    [HideInInspector] public Button CurrentActiveButton => itemLayoutButton;
+    [HideInInspector] public Button CurrentActiveButton => GetCurrentButton();
 
     private int _index;
     private AutoScrollGrid _scroller;
     private InventoryAction _onSelectAction = null;
-
     public enum CurrentState {
-       ITEM, DEACTIVE
+       ITEMSMALL, SMALLDEACTIVE, ITEMFULL, FULLDEACTIVE
     }
 
     CurrentState _currentState;
+    GameObject _currentObject;
 
     #endregion
 
@@ -72,9 +78,14 @@ public class InventoryCardObject : MonoBehaviour {
     /// Set scale of InventoryCardObject
     /// </summary>
     /// <param name="sizeOfIcon"></param>
-    public void SetScale(Vector2 sizeOfIcon) {
-        itemLayoutObject.GetComponent<RectTransform>().sizeDelta = sizeOfIcon;
-        itemUnactiveObject.GetComponent<RectTransform>().sizeDelta = sizeOfIcon;
+    public void SetScale(float ratio) {
+
+        Vector3 newScale = Vector3.one * ratio;
+
+        itemSmallObject.GetComponent<RectTransform>().localScale = newScale;
+        itemUnactiveObject.GetComponent<RectTransform>().localScale = newScale;
+        itemFullObject.GetComponent<RectTransform>().localScale = newScale;
+        itemFullUnactiveObject.GetComponent<RectTransform>().localScale = newScale;
     }
 
     /// <summary>
@@ -86,11 +97,17 @@ public class InventoryCardObject : MonoBehaviour {
         RectTransform CurrentTransform = null;
 
         switch (_currentState) {
-            case CurrentState.ITEM:
-                CurrentTransform = itemLayoutObject.GetComponent<RectTransform>();
+            case CurrentState.ITEMSMALL:
+                CurrentTransform = itemSmallObject.GetComponent<RectTransform>();
                 break;
-            case CurrentState.DEACTIVE:
+            case CurrentState.SMALLDEACTIVE:
                 CurrentTransform = itemUnactiveObject.GetComponent<RectTransform>();
+                break;
+            case CurrentState.ITEMFULL:
+                CurrentTransform = itemFullObject.GetComponent<RectTransform>();
+                break;
+            case CurrentState.FULLDEACTIVE:
+                CurrentTransform = itemFullUnactiveObject.GetComponent<RectTransform>();
                 break;
         }
 
@@ -103,29 +120,48 @@ public class InventoryCardObject : MonoBehaviour {
         return Scale;
     }
 
+    public Button GetCurrentButton() {
+        if(_currentState == CurrentState.ITEMFULL) {
+            return itemFullButton;
+        }
+        return itemSmallButton;
+    }
+
     /// <summary>
     /// Sets the data of this UI object to the card given
     /// </summary>
     /// <param name="newCard">The cardData to fill</param>
     /// <returns></returns>
-    public void SetData(InventoryCardData newCard, bool UseLargeItem = false)
+    public void SetData(InventoryCardData newCard, bool UseSmallSize = true)
     {
         if (newCard == null) return;
         
         Card = newCard;
 
-
-        SwapState(CurrentState.ITEM);
+        if (UseSmallSize) {
+            SwapState(CurrentState.ITEMSMALL);
+        } else {
+            SwapState(CurrentState.ITEMFULL);
+        }
+        
 
         itemSpriteImage.sprite = Card.Sprite;
+        itemFullSprite.sprite = Card.Sprite;
+
         itemValueText.text = Card.CurrentValue.ToString();
+        itemFullValueTextA.text = "¥" + Card.CurrentValue.ToString();
+        itemFullValueTextB.text = "¥" + Card.CurrentValue.ToString();
     }
 
     /// <summary>
     /// Sets card to empty!
     /// </summary>
     public void SetCardToEmpty(bool usingPreviewSize) {
-        SwapState(CurrentState.DEACTIVE);
+        if (usingPreviewSize) {
+            SwapState(CurrentState.SMALLDEACTIVE);
+        } else {
+            SwapState(CurrentState.FULLDEACTIVE);
+        }
     }
 
     /// <summary>
@@ -158,25 +194,34 @@ public class InventoryCardObject : MonoBehaviour {
     /// <param name="interactable">Whether or not the buttons can be pressed</param>
     public void SetInteractable(bool interactable)
     {
-        itemLayoutButton.interactable = interactable;
+        itemSmallButton.interactable = interactable;
     }
 
     public void SwapState(CurrentState stateToEnter) {
 
         _currentState = stateToEnter;
 
+        if (_currentObject != null) {
+            _currentObject.SetActive(false);
+        }
+
         switch (stateToEnter) {
-            case CurrentState.ITEM:
-                itemLayoutObject.SetActive(true);
-                itemUnactiveObject.SetActive(false);
+            case CurrentState.ITEMSMALL:
+                _currentObject = itemSmallObject;
                 break;
-            case CurrentState.DEACTIVE:
-                itemLayoutObject.SetActive(false);
-                itemUnactiveObject.SetActive(true);
+            case CurrentState.SMALLDEACTIVE:
+                _currentObject = itemUnactiveObject;
                 Card = null;
                 break;
-
+            case CurrentState.ITEMFULL:
+                _currentObject = itemFullObject;
+                break;
+            case CurrentState.FULLDEACTIVE:
+                _currentObject = itemFullUnactiveObject;
+                break;
         }
+
+        _currentObject.SetActive(true);
 
     }
     #endregion

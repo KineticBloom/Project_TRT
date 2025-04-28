@@ -12,7 +12,7 @@ public class InventoryGridController : MonoBehaviour
     #region ======== [ PUBLIC PROPERTIES ] ========
 
     [Header("Settings")]
-    public bool UseSmallSize;
+    public bool UseSmallSize = false;
     public int InventorySize = 10;
     public bool SetDefaultSelectionOnEnable = false;
     public bool Interactable = true;
@@ -146,7 +146,7 @@ public class InventoryGridController : MonoBehaviour
         Grid.cellSize = newScale;
 
         foreach (InventoryCardObject x in _inventoryInstances) {
-            x.SetScale(newScale);
+            x.SetScale(ratio);
         }
 
         PopulateGrid();
@@ -181,7 +181,7 @@ public class InventoryGridController : MonoBehaviour
 
             InventoryCardObject currentInventoryItem = _inventoryInstances[indexTracker];
 
-            currentInventoryItem.SetData(card);
+            currentInventoryItem.SetData(card, UseSmallSize);
 
             SetSlotsInteractable(Interactable);
 

@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static InventoryCardObject;
 
 public class InventoryCardObject : MonoBehaviour {
     #region ======== [ OBJECT REFERENCES ] ========
@@ -42,6 +43,8 @@ public class InventoryCardObject : MonoBehaviour {
        ITEM, DEACTIVE
     }
 
+    CurrentState _currentState;
+
     #endregion
 
     #region ======== [ INIT METHODS ] ========
@@ -57,13 +60,10 @@ public class InventoryCardObject : MonoBehaviour {
     /// <summary>
     /// Creates an empty inventory card for a InventoryGridController
     /// </summary>
-    public void InitalizeToGrid(int indexInGrid, AutoScrollGrid gridAutoScroller, InventoryAction onSelectAction, bool usingPreviewSize, Vector2 sizeOfIcon) {
+    public void InitalizeToGrid(int indexInGrid, AutoScrollGrid gridAutoScroller, InventoryAction onSelectAction, bool usingPreviewSize) {
         _index = indexInGrid;
         _scroller = gridAutoScroller;
         _onSelectAction = onSelectAction;
-
-        itemLayoutObject.GetComponent<RectTransform>().sizeDelta = sizeOfIcon;
-        itemUnactiveObject.GetComponent<RectTransform>().sizeDelta = sizeOfIcon;
 
         SetCardToEmpty(usingPreviewSize);
     }
@@ -71,6 +71,27 @@ public class InventoryCardObject : MonoBehaviour {
     #endregion
 
     #region ======== [ PUBLIC METHODS ] ========
+
+    public void SetScale(Vector2 sizeOfIcon) {
+        itemLayoutObject.GetComponent<RectTransform>().sizeDelta = sizeOfIcon;
+        itemUnactiveObject.GetComponent<RectTransform>().sizeDelta = sizeOfIcon;
+    }
+
+    public Vector2 GetScale() {
+
+        Vector2 Scale = Vector2.zero;
+
+        switch (_currentState) {
+            case CurrentState.ITEM:
+                Scale = new Vector2(itemLayoutObject.GetComponent<RectTransform>().rect.width, itemLayoutObject.GetComponent<RectTransform>().rect.height);
+                break;
+            case CurrentState.DEACTIVE:
+                Scale = new Vector2(itemUnactiveObject.GetComponent<RectTransform>().rect.width, itemUnactiveObject.GetComponent<RectTransform>().rect.height);
+                break;
+        }
+
+        return Scale;
+    }
 
     /// <summary>
     /// Sets the data of this UI object to the card given
@@ -136,11 +157,12 @@ public class InventoryCardObject : MonoBehaviour {
             case CurrentState.ITEM:
                 itemLayoutObject.SetActive(true);
                 itemUnactiveObject.SetActive(false);
+                _currentState = CurrentState.ITEM;
                 break;
             case CurrentState.DEACTIVE:
                 itemLayoutObject.SetActive(false);
                 itemUnactiveObject.SetActive(true);
-
+                _currentState = CurrentState.DEACTIVE;
                 Card = null;
                 break;
 

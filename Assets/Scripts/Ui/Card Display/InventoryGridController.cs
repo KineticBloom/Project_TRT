@@ -120,22 +120,33 @@ public class InventoryGridController : MonoBehaviour
     /// </summary>
     private void CreateInventory() {
 
-        float width = this.GetComponent<RectTransform>().rect.width;
-        float trueWidth = width - padding.left - padding.right - InventorySize * spacing;
-        float widthOfElement = trueWidth / InventorySize;
-
-        Grid.cellSize = Vector2.one * widthOfElement;
-
         // Fill inventory will blank cards
         for (int i = 0; i < InventorySize; i++) {
 
             InventoryCardObject newInventoryItem = NewInventoryItem();
 
             // Init data
-            newInventoryItem.InitalizeToGrid(i, InventoryUiAutoScroller, OnInventoryItemClick, UseSmallSize, Grid.cellSize);
+            newInventoryItem.InitalizeToGrid(i, InventoryUiAutoScroller, OnInventoryItemClick, UseSmallSize); // Critical that cellSize is passed in!
 
             // Add to instance list
             _inventoryInstances.Add(newInventoryItem);
+        }
+
+        // Find element width
+        float width = this.GetComponent<RectTransform>().rect.width;
+        float trueWidth = width - padding.left - padding.right - InventorySize * spacing;
+        float widthOfElement = trueWidth / InventorySize;
+
+        // Find scaling ratio
+        Vector2 currentScale = _inventoryInstances[0].GetScale();
+        float ratio = widthOfElement / currentScale.x;
+
+        // Scale all cards
+        Vector2 newScale = currentScale * ratio;
+        Grid.cellSize = newScale;
+
+        foreach (InventoryCardObject x in _inventoryInstances) {
+            x.SetScale(newScale);
         }
 
         PopulateGrid();

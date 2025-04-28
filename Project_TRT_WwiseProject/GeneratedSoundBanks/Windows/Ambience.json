@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{52F8B286-BABD-4F9B-A5A8-00A04824FFE7}",
     "Language": "SFX",
-    "Hash": "{611B6BAB-4DFF-0FD7-7823-7CE74B940CA2}",
+    "Hash": "{FCDCABAD-D201-1FAE-1957-2A6A40E11E30}",
     "ObjectPath": "\\SoundBanks\\Ambience\\Ambience",
     "ShortName": "Ambience",
     "Path": "Ambience.bnk",
@@ -161,9 +161,37 @@
        }
       ]
      }
+    ],
+    "Busses": [
+     {
+      "Id": "2611281843",
+      "Name": "AmbienceMaster",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\AmbienceMaster",
+      "GUID": "{286C8CB9-7D4C-44E7-9139-C8391E920F9C}"
+     },
+     {
+      "Id": "3803692087",
+      "Name": "Master Audio Bus",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus",
+      "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "1204480359",
+      "Name": "AmbienceVolume",
+      "ObjectPath": "\\Game Parameters\\Ambience\\AmbienceVolume",
+      "GUID": "{9D23DD01-A12B-49E1-84AC-00064DD75E62}"
+     },
+     {
+      "Id": "2918011349",
+      "Name": "MasterVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\MasterVolume",
+      "GUID": "{E70BD259-826F-4DC0-9077-F7A3D88C2DFC}"
+     }
     ]
    }
   ],
-  "FileHash": "{CC9B0B71-2F45-D0FA-DA12-B992BA560957}"
+  "FileHash": "{38BDF9C1-8918-4E66-689C-7162EB90B2C7}"
  }
 }

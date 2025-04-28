@@ -10,18 +10,18 @@
     "Type": "User",
     "GUID": "{335496CC-45EA-4922-B9FA-C65217B7662E}",
     "Language": "SFX",
-    "Hash": "{06F58D62-26F3-3604-041C-E5CD461E67CA}",
+    "Hash": "{0F5070C6-DC7C-4FBD-6DC4-1F35B4094126}",
     "ObjectPath": "\\SoundBanks\\SFX\\SFX",
     "ShortName": "SFX",
     "Path": "SFX.bnk",
     "Media": [
      {
-      "Id": "29287396",
+      "Id": "30006150",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "ENV_Player_Footstep_Wood\\Footstep03.wav",
-      "CachePath": "64/{64C146F5-0B63-71D1-0930-2297B3BCEE21}.wem"
+      "ShortName": "ENV_Temp_Concrete_Footstep_4.wav",
+      "CachePath": "95/{95152FA5-3B88-1220-87A3-42A87812B507}.wem"
      },
      {
       "Id": "31251656",
@@ -54,14 +54,6 @@
       "Location": "Memory",
       "ShortName": "ENV_Eden_Hello\\ENV_Eden_Hello_4.wav",
       "CachePath": "CE/{CEAD5F9A-730C-F501-3CF9-FC2898B2C3BB}.wem"
-     },
-     {
-      "Id": "84044283",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "ENV_Player_Footstep_Wood\\Footstep01.wav",
-      "CachePath": "EC/{EC361BEC-2EFC-1AC4-DEF5-987537C652DE}.wem"
      },
      {
       "Id": "109801595",
@@ -134,6 +126,14 @@
       "Location": "Memory",
       "ShortName": "UI_Menu_Open.wav",
       "CachePath": "66/{66F23618-91D4-F23F-72B6-2708D13AFF49}.wem"
+     },
+     {
+      "Id": "216238282",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENV_Temp_Concrete_Footstep_1.wav",
+      "CachePath": "08/{08F61763-ED7F-AB13-2FF7-3E3E88F0ED04}.wem"
      },
      {
       "Id": "230722640",
@@ -248,6 +248,14 @@
       "CachePath": "D5/{D5A15918-10D8-F38E-C22E-30C4C9AC0AEE}.wem"
      },
      {
+      "Id": "499250577",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENV_Temp_Concrete_Footstep_3.wav",
+      "CachePath": "6F/{6F32DA82-5448-1F49-2C15-CF11DD997400}.wem"
+     },
+     {
       "Id": "540618060",
       "Language": "SFX",
       "Streaming": "false",
@@ -294,6 +302,14 @@
       "Location": "Memory",
       "ShortName": "F1x_Dont_Bite\\F1x_Dont_Bite_4.wav",
       "CachePath": "18/{18943A07-9AF6-1FA1-6948-8CC9934A56C8}.wem"
+     },
+     {
+      "Id": "692532191",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENV_Temp_Concrete_Footstep_2.wav",
+      "CachePath": "18/{1844D32F-3C6E-25A7-0041-59C84ED67A8B}.wem"
      },
      {
       "Id": "734873575",
@@ -400,6 +416,14 @@
       "CachePath": "53/{538CBB89-EBF9-C255-6BB8-76D7E3A2FA59}.wem"
      },
      {
+      "Id": "946192858",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ENV_Temp_Concrete_Footstep_5.wav",
+      "CachePath": "95/{95463969-9863-D015-9BFF-84DB6D9AA928}.wem"
+     },
+     {
       "Id": "948200494",
       "Language": "SFX",
       "Streaming": "false",
@@ -430,14 +454,6 @@
       "Location": "Memory",
       "ShortName": "ENV_Dummy_Fluorescent_Light.wav",
       "CachePath": "B8/{B83A8757-33A4-6DE5-BFBF-AF067EDFFFB4}.wem"
-     },
-     {
-      "Id": "1019905703",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "ENV_Player_Footstep_Wood\\Footstep02.wav",
-      "CachePath": "B1/{B1D7AEB3-93D0-4CB1-F2CA-C9BA78908F56}.wem"
      }
     ],
     "Events": [
@@ -856,17 +872,23 @@
       "ObjectPath": "\\Events\\Environment\\Player\\PlayerFootsteps",
       "GUID": "{875C7984-D06E-43AB-A382-CA7872053BB8}",
       "DurationType": "OneShot",
-      "DurationMin": "0.2416875",
-      "DurationMax": "0.34805208",
+      "DurationMin": "1.1143538",
+      "DurationMax": "1.1143538",
       "MediaRefs": [
        {
-        "Id": "29287396"
+        "Id": "30006150"
        },
        {
-        "Id": "84044283"
+        "Id": "216238282"
        },
        {
-        "Id": "1019905703"
+        "Id": "499250577"
+       },
+       {
+        "Id": "692532191"
+       },
+       {
+        "Id": "946192858"
        }
       ]
      },
@@ -901,6 +923,6 @@
     ]
    }
   ],
-  "FileHash": "{46526050-F104-D005-2AA8-20C4D5529479}"
+  "FileHash": "{BFBD5017-CCC8-D85B-4B0D-86B82F6CF480}"
  }
 }

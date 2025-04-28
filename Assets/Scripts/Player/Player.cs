@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [Required] public PlayerMovement Movement;
     [Required] public PlayerInteractionHandler InteractionHandler;
     [Required] public GameObject Object;
+    [Required] public Transform DialogueSource;
     [Required] public Transform Transform;
 
     [Header("Camera References")]

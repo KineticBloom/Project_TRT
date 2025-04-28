@@ -23,6 +23,12 @@ namespace AK
         static const AkUniqueID DOOROPEN = 1404805401U;
         static const AkUniqueID ELEVATORHUM = 1344299683U;
         static const AkUniqueID ELEVATORSTARTUP = 1220165926U;
+        static const AkUniqueID ENV_B4RN3Y_HOOT = 3764842872U;
+        static const AkUniqueID ENV_B4RN3Y_IDENTIFIED = 3283805861U;
+        static const AkUniqueID ENV_EDEN_EXPEL = 4203990704U;
+        static const AkUniqueID ENV_EDEN_HELLO = 4139473738U;
+        static const AkUniqueID ENV_F1X_DONT_BITE = 2236624421U;
+        static const AkUniqueID ENV_F1X_WATCHA_GOT = 123463240U;
         static const AkUniqueID ENV_INTERACTION_ARROW_HIDE = 3804709036U;
         static const AkUniqueID ENV_INTERACTION_ARROW_SHOW = 1995159183U;
         static const AkUniqueID ITEMPICKUP = 1851462748U;

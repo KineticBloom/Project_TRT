@@ -17,4 +17,75 @@ MonoBehaviour:
   Bio: "Values efficiency in action and speech, calm and collected and polite.\r
     Really melts into their job, gets a little caught off guard when asked personal
     questions."
-  Matrix: {fileID: 11400000, guid: 4df41baae4ac8884d9b9ab903aa274e5, type: 2}
+  FlagID: mailbot_bartered
+  EffectCards:
+  - rid: 8151269401547244301
+  - rid: 8151269401547244297
+  - rid: 8151269401547244294
+  ItemOnOffer: {fileID: 11400000, guid: af5c89a7096cba04297f11e8dcb9d576, type: 2}
+  BarterMessageWin: Pleasure doing business with you!
+  BarterMessageLose: Hey now, don't try to scam me!
+  BarterAttempts: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 8151269401547244294
+      type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
+      data:
+        Icon: {fileID: 21300000, guid: 6196d2e2e5bca3a45bc3d6453751531a, type: 3}
+        Description: Letter of Complaint Value = 20
+        Text: =20
+        _revealed: 0
+        ItemConditions:
+        - rid: 8151269401547244296
+        ItemActions:
+        - rid: 8151269401547244295
+    - rid: 8151269401547244295
+      type: {class: SetValue, ns: , asm: Assembly-CSharp}
+      data:
+        Value: 20
+    - rid: 8151269401547244296
+      type: {class: SearchForItems, ns: , asm: Assembly-CSharp}
+      data:
+        Items:
+        - {fileID: 11400000, guid: af210dedcdbaf56429bf9d6f8b6ac2c0, type: 2}
+    - rid: 8151269401547244297
+      type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
+      data:
+        Icon: {fileID: 21300000, guid: 9bd95f8332db3c24887f6107f437e2bc, type: 3}
+        Description: Tool items' value x2
+        Text: x2
+        _revealed: 0
+        ItemConditions:
+        - rid: 8151269401547244299
+        ItemActions:
+        - rid: 8151269401547244300
+    - rid: 8151269401547244299
+      type: {class: SearchForTags, ns: , asm: Assembly-CSharp}
+      data:
+        Tags:
+        - tool
+    - rid: 8151269401547244300
+      type: {class: MultiplyValue, ns: , asm: Assembly-CSharp}
+      data:
+        ValueMultiplier: 2
+    - rid: 8151269401547244301
+      type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
+      data:
+        Icon: {fileID: 21300000, guid: bc1e10fa5e86c64439deae7f064d8256, type: 3}
+        Description: Green Chip Value +5
+        Text: +5
+        _revealed: 0
+        ItemConditions:
+        - rid: 8151269401547244302
+        ItemActions:
+        - rid: 8151269401547244303
+    - rid: 8151269401547244302
+      type: {class: SearchForItems, ns: , asm: Assembly-CSharp}
+      data:
+        Items:
+        - {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
+    - rid: 8151269401547244303
+      type: {class: AddValue, ns: , asm: Assembly-CSharp}
+      data:
+        ValueAddend: 5

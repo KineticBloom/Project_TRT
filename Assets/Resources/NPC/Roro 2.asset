@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86243f10543f9a4ebe9c1097513fcf3, type: 3}
+  m_Name: Roro 2
+  m_EditorClassIdentifier: 
+  Name: Roro
+  Icon: {fileID: 21300000, guid: f81434a53d0a2174ca8bc46782bfa24c, type: 3}
+  Bio: It's a Roro
+  FlagID: roro_2_bartered
+  EffectCards:
+  - rid: 6991182339336044559
+  ItemOnOffer: {fileID: 11400000, guid: 3d30e89bb6785644ba3c442728f20753, type: 2}
+  BarterMessageWin: Here you go!
+  BarterMessageLose: That's not enough...
+  BarterAttempts: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 6991182339336044559
+      type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
+      data:
+        Icon: {fileID: 21300000, guid: bc1e10fa5e86c64439deae7f064d8256, type: 3}
+        Description: Chip value plus 3
+        Text: +3
+        _revealed: 0
+        ItemConditions:
+        - rid: 8151269401547244304
+        ItemActions:
+        - rid: 8151269401547244305
+    - rid: 8151269401547244304
+      type: {class: SearchForTags, ns: , asm: Assembly-CSharp}
+      data:
+        Tags:
+        - Chip
+    - rid: 8151269401547244305
+      type: {class: AddValue, ns: , asm: Assembly-CSharp}
+      data:
+        ValueAddend: 3

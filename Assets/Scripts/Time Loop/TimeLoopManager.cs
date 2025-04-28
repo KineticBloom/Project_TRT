@@ -82,6 +82,7 @@ public class TimeLoopManager : MonoBehaviour
         GameManager.PlayerInput.AllowNavbar = true;
         GameManager.FlagTracker.ResetFlags();
         GameManager.Inventory.Clear();
+        SaveSystem.Load();
 
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
@@ -121,5 +122,10 @@ public class TimeLoopManager : MonoBehaviour
     
     public static void ResetLoop(){
         Instance._secondsLeft = 0;
+    }
+    
+    public static void AddTime(float time)
+    {
+        Instance._secondsLeft += time;
     }
 }

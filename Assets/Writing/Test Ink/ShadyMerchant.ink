@@ -1,6 +1,8 @@
+VAR shady_bartered = false
+
 Welcome to the best choice you’ll make all day. #NPC
 * I would like to Barter. 
-    -> Barter
+    {shady_bartered: ->NoBarter | ->Barter}
 * Nevermind.
     -> END
 
@@ -9,10 +11,6 @@ Didn’t get this cheaply, ain’t gonna sell it cheaply. #NPC
 NULL_LINE #Barter
 -> END
 
-=== BarterWin ===
-Well done. You got some nice parts on ya, let me know if any are for sale next time. #NPC
--> END
-
-=== BarterLose ===
-Didn’t scare ya off did I? Hehehe #NPC
+=== NoBarter ===
+Sorry, all out. #NPC
 -> END

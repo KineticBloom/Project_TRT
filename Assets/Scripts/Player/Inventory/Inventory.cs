@@ -2,6 +2,7 @@ using NaughtyAttributes;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static GameEnums;
 
 public class Inventory : MonoBehaviour
@@ -64,6 +65,7 @@ public class Inventory : MonoBehaviour
         GameManager.FlagTracker.UpdateICFlags();
     }
 
+
     #region ---------- Public Methods ----------
     public List<InventoryCardData> Get()
     {
@@ -88,8 +90,9 @@ public class Inventory : MonoBehaviour
         // Find card in AllCards and add it to the current inventory
         InventoryCardData newCard = null;
         foreach (InventoryCardData possibleNewCard in AllCardDatas.datas) {
-            if (possibleNewCard == card) {
-                newCard = possibleNewCard;
+            if (possibleNewCard.IsSame(card)) {
+                // Makes it a copy if the given card is from AllCard
+                newCard = card == possibleNewCard ? Instantiate(possibleNewCard) : card;
                 break;
             }
         }
@@ -108,6 +111,11 @@ public class Inventory : MonoBehaviour
 
         // Finally, send a ping to our notificationUI.
 
+        if (_notificationUi == null)
+        {
+            UpdateNotificationReference();
+        }
+
         if (_notificationUi && !withoutNotification) {
             _notificationUi.Notify($"Obtained {card.CardName}");
         }
@@ -125,13 +133,20 @@ public class Inventory : MonoBehaviour
             return;
         }
 
-        Cards.Remove(card);
+        InventoryCardData cardToRemove = GetCardByID(card.ID);
+
+        Cards.Remove(cardToRemove);
 
         OnInventoryUpdated?.Invoke();
         inventoryLastUpdateTime = Time.time;
         GameManager.FlagTracker.SetFlag(card, false);
 
         // Finally, send a ping to our notificationUI.
+
+        if (_notificationUi == null)
+        {
+            UpdateNotificationReference();
+        }
 
         if (_notificationUi && !withoutNotification) {
             _notificationUi.Notify($"Lost {card.CardName}");
@@ -257,6 +272,14 @@ public class Inventory : MonoBehaviour
     #endregion
 
     #region ---------- Private Methods ----------
+
+    void UpdateNotificationReference()
+    {
+        if (GameManager.Instance != null && GameManager.MasterCanvas != null)
+        {
+            _notificationUi = GameManager.MasterCanvas.GetComponent<InGameUi>().Notification;
+        }
+    }
 
     #endregion
 

@@ -29,27 +29,24 @@ public class BarteringController : MonoBehaviour {
     public TMP_Text EndMessage;
     public GameObject EndMessageSpeechBubble;
 
+    [Header("Effect Card Dependencies")]
+    public GameObject EffectCardPrefab;
+    public Transform EffectCardsContainer;
+
     [Header("Other Dependencies")]
     public Button OfferTradeButton;
     public InventoryGridController InventoryGrid;
-
-    public struct TradeData {
-        public InventoryCardData ItemOnOffer;
-        public string DialogueForTrade;
-        public string DialogueForNoTrade;
-        public NPCData NPCData;
-    }
 
     #endregion
 
     #region ======== [ INTERNAL PROPERTIES ] ========
 
-    private TradeData _currentTradeInformation;
+    private NPCData _currentNPCData;
     private float _currentOfferedValue = 0;
     private bool _wonBarter = false;
     private InventoryCardObject _currentButtonObject;
     private OfferedItems _offeredItems;
-    private int _allowedAttempts = -1; // TODO Set from NPCData
+    private int _currentAttempts = 0;
 
     #endregion
 
@@ -72,25 +69,42 @@ public class BarteringController : MonoBehaviour {
     /// <summary>
     /// Start a barter for a given item.
     /// </summary>
-    /// <param name="TradeInformation">Item being offered by a NPC.</param>
-    public void InitializeTrade(TradeData TradeInformation) {
+    /// <param name="npcData">Information about the trade with this NPC.</param>
+    public void InitializeTrade(NPCData npcData, bool firstTime = true) {
 
+        TimeLoopManager.SetLoopPaused(true);
         // Setup trackers
-        _currentTradeInformation = TradeInformation;
+        _currentNPCData = npcData;
         _offeredItems = new OfferedItems();
 
         // Init new barter
         ResetData();
 
         // Load NPC Data
-        NPCOfferSlotOne.SetData(_currentTradeInformation.ItemOnOffer, false);
-        NPCValueText.text = "Value: " + _currentTradeInformation.ItemOnOffer.BaseValue;
-        NPCProfilePicture.sprite = _currentTradeInformation.NPCData.Icon;
+        NPCOfferSlotOne.SetData(_currentNPCData.ItemOnOffer, false);
+        NPCValueText.text = "Value: " + _currentNPCData.ItemOnOffer.BaseValue;
+        NPCProfilePicture.sprite = _currentNPCData.Icon;
 
-        // Activate Pre-Barter Effect Cards
-        ActivateEffectCards(true);
+
+        // Only runs the first time
+        if (firstTime)
+        {
+            _currentAttempts = 0;
+
+            // Load Effect Cards
+            foreach (EffectCard effectCard in _currentNPCData.EffectCards)
+            {
+                GameObject card = Instantiate(EffectCardPrefab, EffectCardsContainer);
+                card.GetComponent<EffectCardDisplay>().Load(effectCard);
+            }
+
+            // Activate Pre-Barter Effect Cards
+            ActivateEffectCards(EffectCard.ActivationTime.BeforeOffer);
+        }
 
         SetInteractable(true);
+
+        UpdateVisuals();
     }
 
     #endregion
@@ -152,6 +166,13 @@ public class BarteringController : MonoBehaviour {
     }
 
     /// <summary>
+    /// Leave and fail barter.
+    /// </summary>
+    public void LeaveBarter() {
+        StartCoroutine(LeaveBarterScene());
+    }
+
+    /// <summary>
     /// End barter and determines if player pool is valuable enough for NPC.
     /// Called by UI Elements.
     /// </summary>
@@ -159,30 +180,31 @@ public class BarteringController : MonoBehaviour {
 
         SetInteractable(false);
 
-        ActivateEffectCards(false);
+        ActivateEffectCards(EffectCard.ActivationTime.AfterOffer);
 
-        float NPCItemValue = _currentTradeInformation.ItemOnOffer.BaseValue;
+        float NPCItemValue = _currentNPCData.ItemOnOffer.BaseValue;
 
         EndMessageSpeechBubble.SetActive(true);
 
         if (_currentOfferedValue >= NPCItemValue) {
             // Complete Trade
-            EndMessage.text = _currentTradeInformation.DialogueForTrade;
+            EndMessage.text = _currentNPCData.BarterMessageWin;
             PassBarterIcon.SetActive(true);
+            GameManager.FlagTracker.SetFlag(_currentNPCData.FlagID);
             _wonBarter = true;
 
             StartCoroutine(LeaveBarterScene());
         } else {
             // Say no!
-            EndMessage.text = _currentTradeInformation.DialogueForNoTrade;
+            EndMessage.text = _currentNPCData.BarterMessageLose;
             FailBarterIcon.SetActive(true);
 
 
             // If you run out of attempts, the barter is exited
-            if (_allowedAttempts > 0)
-            {
-                _allowedAttempts--;
-            } else if (_allowedAttempts == 0)
+            var barterAttempts = _currentNPCData.BarterAttempts;
+            _currentAttempts++;
+
+            if (barterAttempts <= _currentAttempts && barterAttempts > 0)
             {
                 StartCoroutine(LeaveBarterScene());
                 return;
@@ -201,9 +223,25 @@ public class BarteringController : MonoBehaviour {
     /// Activates Effect Cards
     /// </summary>
     /// <param name="isPreBarter">which stage of the barter are we in for activating the effect cards?</param>
-    private void ActivateEffectCards(bool isPreBarter)
+    private void ActivateEffectCards(EffectCard.ActivationTime activationTime)
     {
-        // TODO: Activate the Effect Cards
+        List<EffectCard> effectCards = _currentNPCData.EffectCards;
+        List<EffectCard> activeEffectCards = new List<EffectCard>();
+
+        foreach (EffectCard effectCard in effectCards)
+        {
+            if (effectCard.DoesActivate(_offeredItems, activationTime))
+            {
+                activeEffectCards.Add(effectCard);
+            }
+        }
+
+        foreach (EffectCard effectCard in activeEffectCards)
+        {
+            effectCard.Activate(_offeredItems);
+        }
+
+        UpdateVisuals();
     }
 
     private void UpdateVisuals() {
@@ -267,15 +305,25 @@ public class BarteringController : MonoBehaviour {
     {
         yield return new WaitForSeconds(1f);
 
+        foreach (var item in _offeredItems.Items)
+        {
+            item.ResetCurrentValue();
+        }
+
         _offeredItems.ReturnCardsToInventory();
         _offeredItems.Items.Clear();
-        GameManager.Inventory.ResetAllCardValues();
+        // GameManager.Inventory.ResetAllCardValues();
 
-        InitializeTrade(_currentTradeInformation);
+        InitializeTrade(_currentNPCData, false);
     }
 
     IEnumerator LeaveBarterScene() {
         yield return new WaitForSeconds(1f);
+
+        foreach (var item in _offeredItems.Items)
+        {
+            item.ResetCurrentValue();
+        }
 
         _offeredItems.ReturnCardsToInventory();
 
@@ -286,16 +334,23 @@ public class BarteringController : MonoBehaviour {
                 GameManager.Inventory.RemoveCard(card);
             }
 
-            GameManager.Inventory.AddCard(_currentTradeInformation.ItemOnOffer);
+            GameManager.Inventory.AddCard(_currentNPCData.ItemOnOffer);
         }
 
         _offeredItems = null;
+
+        // Remove Effect Cards
+        foreach (Transform card in EffectCardsContainer)
+        {
+            Destroy(card.gameObject);
+        }
 
         GameManager.Inventory.ResetAllCardValues();
 
         InGameUi _inGameUi = GameManager.MasterCanvas.GetComponent<InGameUi>();
 
         _inGameUi.MoveToDefault();
+        TimeLoopManager.SetLoopPaused(false);
     }
 
     /// <summary>
@@ -304,10 +359,10 @@ public class BarteringController : MonoBehaviour {
     /// <param name="isInteractable"></param>
     private void SetInteractable(bool isInteractable)
     {
-        PlayerOfferSlotOne.CurrentActiveButton.interactable = isInteractable;
-        PlayerOfferSlotTwo.CurrentActiveButton.interactable= isInteractable;
-        PlayerOfferSlotThree.CurrentActiveButton.interactable = isInteractable;
-        PlayerOfferSlotFour.CurrentActiveButton.interactable = isInteractable;
+        PlayerOfferSlotOne.SetInteractable(isInteractable);
+        PlayerOfferSlotTwo.SetInteractable(isInteractable);
+        PlayerOfferSlotThree.SetInteractable(isInteractable);
+        PlayerOfferSlotFour.SetInteractable(isInteractable);
 
         OfferTradeButton.interactable = isInteractable;
         InventoryGrid.SetSlotsInteractable(isInteractable);

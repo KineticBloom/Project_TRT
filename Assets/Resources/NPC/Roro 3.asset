@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86243f10543f9a4ebe9c1097513fcf3, type: 3}
+  m_Name: Roro 3
+  m_EditorClassIdentifier: 
+  Name: Roro
+  Icon: {fileID: 21300000, guid: f81434a53d0a2174ca8bc46782bfa24c, type: 3}
+  Bio: It's a Roro
+  FlagID: roro_3_bartered
+  EffectCards:
+  - rid: 6991182339336044559
+  ItemOnOffer: {fileID: 11400000, guid: af210dedcdbaf56429bf9d6f8b6ac2c0, type: 2}
+  BarterMessageWin: Here you go!
+  BarterMessageLose: That's not enough...
+  BarterAttempts: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 6991182339336044559
+      type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
+      data:
+        Icon: {fileID: 21300000, guid: 9fdff5716e799864c9c9eb16cc0ee9db, type: 3}
+        Description: Pink chip worth multiplied by 2
+        Text: x2
+        _revealed: 0
+        ItemConditions:
+        - rid: 6991182339336044561
+        ItemActions:
+        - rid: 8151269401547244306
+    - rid: 6991182339336044561
+      type: {class: SearchForItems, ns: , asm: Assembly-CSharp}
+      data:
+        Items:
+        - {fileID: 11400000, guid: 84e57b2c426aad147ab48ebedf5a7792, type: 2}
+    - rid: 8151269401547244306
+      type: {class: MultiplyValue, ns: , asm: Assembly-CSharp}
+      data:
+        ValueMultiplier: 2

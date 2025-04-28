@@ -22,6 +22,9 @@ MonoBehaviour:
   - rid: 8151269401547244301
   - rid: 8151269401547244297
   - rid: 8151269401547244294
+  ItemOnOffer: {fileID: 11400000, guid: af5c89a7096cba04297f11e8dcb9d576, type: 2}
+  BarterMessageWin: Pleasure doing business with you!
+  BarterMessageLose: Hey now, don't try to scam me!
   BarterAttempts: 1
   references:
     version: 2
@@ -32,6 +35,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 6196d2e2e5bca3a45bc3d6453751531a, type: 3}
         Description: Letter of Complaint Value = 20
         Text: =20
+        _revealed: 0
         ItemConditions:
         - rid: 8151269401547244296
         ItemActions:
@@ -51,6 +55,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 9bd95f8332db3c24887f6107f437e2bc, type: 3}
         Description: Tool items' value x2
         Text: x2
+        _revealed: 0
         ItemConditions:
         - rid: 8151269401547244299
         ItemActions:
@@ -70,6 +75,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: bc1e10fa5e86c64439deae7f064d8256, type: 3}
         Description: Green Chip Value +5
         Text: +5
+        _revealed: 0
         ItemConditions:
         - rid: 8151269401547244302
         ItemActions:

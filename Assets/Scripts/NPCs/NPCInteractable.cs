@@ -1,15 +1,12 @@
 using NaughtyAttributes;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class NpcInteractable : Interactable
 {
     [SerializeField] private TextAsset npcConversation;
-
-    public NPCData NpcData;
-    public InventoryCardData ItemForOffer;
-    public string BarterMessageWin;
-    public string BarterMessageLose;
+    [Expandable] public NPCData NpcData;
 
     public AudioEvent dialogueStartSFX;
     public AudioEvent interactionBarkSFX;
@@ -26,16 +23,9 @@ public class NpcInteractable : Interactable
     }
 
     public void TriggerBarter() {
-        BarteringController.TradeData tradeData = new BarteringController.TradeData();
-
-        tradeData = new BarteringController.TradeData();
-        tradeData.ItemOnOffer = ItemForOffer;
-        tradeData.NPCData = NpcData;
-        tradeData.DialogueForTrade = BarterMessageWin;
-        tradeData.DialogueForNoTrade = BarterMessageLose;
 
         barterBarkSFX.Play(gameObject);
-        GameManager.NewBarterStarter.StartBarter(tradeData);
+        GameManager.NewBarterStarter.StartBarter(NpcData);
     }
 
     public override void Highlight()
@@ -56,11 +46,30 @@ public class NpcInteractable : Interactable
         Gizmos.DrawWireCube(transform.position + DialogueSourceLocalPosition, Vector3.one * 0.25f );
     }
 
-    private void Start()
+    /// <summary>
+    /// Loads Effect Cards from save data
+    /// </summary>
+    /// <param name="data"></param>
+    public void Load(NPCSaveData data)
     {
-        foreach (EffectCard effectCard in NpcData.EffectCards)
+        if (data.effectCardData == null)
         {
-            effectCard.Reset();
+            Debug.LogError("NPCInteractable: Cannot Load null data");
+            return;
+        }
+
+        // Cannot load data that does not exist
+        if (!data.effectCardData.ContainsKey(NpcData.FlagID))
+        {
+            return;
+        }
+
+        List<bool> effectCardsList = data.effectCardData[NpcData.FlagID];
+
+        // Set reveal status for all Effect Cards
+        for (int effectCardIndex = 0; effectCardIndex < NpcData.EffectCards.Count; effectCardIndex++)
+        {
+            NpcData.EffectCards[effectCardIndex].IsRevealed = effectCardsList[effectCardIndex];
         }
     }
 }

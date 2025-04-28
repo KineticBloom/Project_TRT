@@ -18,6 +18,9 @@ MonoBehaviour:
   FlagID: roro_4_bartered
   EffectCards:
   - rid: 8151269401547244307
+  ItemOnOffer: {fileID: 11400000, guid: b3f6500aede711c489da950e7409d09b, type: 2}
+  BarterMessageWin: Here you go!
+  BarterMessageLose: That's not enough...
   BarterAttempts: 1
   references:
     version: 2
@@ -28,6 +31,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: a6449f567767b5b4693ae2fe9612e8b8, type: 3}
         Description: Blue Chip and Green Chip worth plus 4
         Text: +4
+        _revealed: 0
         ItemConditions:
         - rid: 8151269406318789040
         ItemActions:

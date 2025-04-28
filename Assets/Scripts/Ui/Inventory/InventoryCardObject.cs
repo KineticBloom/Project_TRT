@@ -55,7 +55,7 @@ public class InventoryCardObject : MonoBehaviour {
     void Start() {
 
         if (Card != null && IsPreviewCard == false) {
-            SetData(Card);
+            SetData(Card, false);
         }
     }
 
@@ -132,7 +132,7 @@ public class InventoryCardObject : MonoBehaviour {
     /// </summary>
     /// <param name="newCard">The cardData to fill</param>
     /// <returns></returns>
-    public void SetData(InventoryCardData newCard, bool UseSmallSize = true)
+    public void SetData(InventoryCardData newCard, bool UseSmallSize)
     {
         if (newCard == null) return;
         

@@ -257,18 +257,18 @@ public class BarteringController : MonoBehaviour {
 
         // Display new slots adjusted
         if (_offeredItems.Count >= 1) {
-            PlayerOfferSlotOne.SetData(_offeredItems.Items[0]);
+            PlayerOfferSlotOne.SetData(_offeredItems.Items[0], PlayerOfferSlotOne.IsPreviewCard);
         }
         if (_offeredItems.Count >= 2) {
-            PlayerOfferSlotTwo.SetData(_offeredItems.Items[1]);
+            PlayerOfferSlotTwo.SetData(_offeredItems.Items[1], PlayerOfferSlotTwo.IsPreviewCard);
         }
         if (_offeredItems.Count >= 3)
         {
-            PlayerOfferSlotThree.SetData(_offeredItems.Items[2]);
+            PlayerOfferSlotThree.SetData(_offeredItems.Items[2], PlayerOfferSlotThree.IsPreviewCard);
         }
         if (_offeredItems.Count >= 4)
         {
-            PlayerOfferSlotFour.SetData(_offeredItems.Items[3]);
+            PlayerOfferSlotFour.SetData(_offeredItems.Items[3], PlayerOfferSlotFour.IsPreviewCard);
         }
 
     }

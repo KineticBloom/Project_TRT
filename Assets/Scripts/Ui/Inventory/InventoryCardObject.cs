@@ -12,10 +12,6 @@ public class InventoryCardObject : MonoBehaviour {
     public bool IsPreviewCard = false;
     [SerializeField] public InventoryCardData Card;
 
-    [Header("De/Activated")]
-    [SerializeField, BoxGroup("De/Activated")] private Sprite activeImage;
-    [SerializeField, BoxGroup("De/Activated")] private Sprite deactiveImage;
-
     [Header("Item")]
     [SerializeField, BoxGroup("Item")] private GameObject itemLayoutObject;
     [SerializeField, BoxGroup("Item")] private Button itemLayoutButton;
@@ -72,23 +68,37 @@ public class InventoryCardObject : MonoBehaviour {
 
     #region ======== [ PUBLIC METHODS ] ========
 
+    /// <summary>
+    /// Set scale of InventoryCardObject
+    /// </summary>
+    /// <param name="sizeOfIcon"></param>
     public void SetScale(Vector2 sizeOfIcon) {
         itemLayoutObject.GetComponent<RectTransform>().sizeDelta = sizeOfIcon;
         itemUnactiveObject.GetComponent<RectTransform>().sizeDelta = sizeOfIcon;
     }
 
+    /// <summary>
+    /// Get Current Scale of the InventoryCardObject
+    /// </summary>
+    /// <returns></returns>
     public Vector2 GetScale() {
 
-        Vector2 Scale = Vector2.zero;
+        RectTransform CurrentTransform = null;
 
         switch (_currentState) {
             case CurrentState.ITEM:
-                Scale = new Vector2(itemLayoutObject.GetComponent<RectTransform>().rect.width, itemLayoutObject.GetComponent<RectTransform>().rect.height);
+                CurrentTransform = itemLayoutObject.GetComponent<RectTransform>();
                 break;
             case CurrentState.DEACTIVE:
-                Scale = new Vector2(itemUnactiveObject.GetComponent<RectTransform>().rect.width, itemUnactiveObject.GetComponent<RectTransform>().rect.height);
+                CurrentTransform = itemUnactiveObject.GetComponent<RectTransform>();
                 break;
         }
+
+        if(CurrentTransform == null) {
+            return Vector2.zero;
+        }
+
+        Vector2 Scale = new Vector2(CurrentTransform.rect.width, CurrentTransform.rect.height);
 
         return Scale;
     }
@@ -153,22 +163,21 @@ public class InventoryCardObject : MonoBehaviour {
 
     public void SwapState(CurrentState stateToEnter) {
 
+        _currentState = stateToEnter;
+
         switch (stateToEnter) {
             case CurrentState.ITEM:
                 itemLayoutObject.SetActive(true);
                 itemUnactiveObject.SetActive(false);
-                _currentState = CurrentState.ITEM;
                 break;
             case CurrentState.DEACTIVE:
                 itemLayoutObject.SetActive(false);
                 itemUnactiveObject.SetActive(true);
-                _currentState = CurrentState.DEACTIVE;
                 Card = null;
                 break;
 
         }
 
     }
-
     #endregion
 }

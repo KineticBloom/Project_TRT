@@ -159,7 +159,7 @@ public class InventoryCardObject : MonoBehaviour {
         itemSpriteImage.sprite = Card.Sprite;
         itemFullSprite.sprite = Card.Sprite;
 
-        itemValueText.text = Card.CurrentValue.ToString();
+        itemValueText.text = "¥" + Card.CurrentValue.ToString();
         itemFullValueTextA.text = "¥" + Card.CurrentValue.ToString();
         itemFullValueTextB.text = "¥" + Card.CurrentValue.ToString();
     }

@@ -325,6 +325,7 @@ MonoBehaviour:
   spriteWalk: {fileID: 230149827, guid: bddd3236508aef24db217281ab60b091, type: 3}
   playerSFX: {fileID: 0}
   speed: 8
+  _adjustedSpeed: 5
   _canMove: 1
 --- !u!143 &6074142200603486058
 CharacterController:
@@ -609,8 +610,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8208938610237536702}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0000000035241248, y: 0.98147714, z: 0.19157949, w: 0.000000018054378}
-  m_LocalPosition: {x: 0, y: 0.695, z: 5.125}
+  m_LocalRotation: {x: 0.17300391, y: -0.000000014676471, z: 0.0000000025779596, w: 0.98492116}
+  m_LocalPosition: {x: 0, y: 3.845, z: -5.925}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -681,11 +682,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 65
+  near clip plane: 0.01
+  far clip plane: 5000
+  field of view: 40
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

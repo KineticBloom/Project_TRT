@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86243f10543f9a4ebe9c1097513fcf3, type: 3}
+  m_Name: Roro DEBUG
+  m_EditorClassIdentifier: 
+  Name: FRIEND
+  Icon: {fileID: 21300000, guid: 3dabe22b03781bb408181f408839f091, type: 3}
+  Bio: friend
+  FlagID: roro_debug
+  ItemOnOffer: {fileID: 11400000, guid: 5b5349cb0746d7c46b8b4b37dafc297e, type: 2}
+  BarterMessageWin: bonkers!
+  BarterMessageLose: losers!
+  BarterAttempts: -1
+  EffectCards:
+  - rid: 6077773190711214260
+  references:
+    version: 2
+    RefIds:
+    - rid: 6077773190711214260
+      type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
+      data:
+        Icon: {fileID: 21300000, guid: 3dabe22b03781bb408181f408839f091, type: 3}
+        Description: whoag
+        Text: text
+        ConditionImage: {fileID: 21300000, guid: 698a6ef157b96e644a7ee6a82c125718,
+          type: 3}
+        _revealed: 1
+        RequiresAllConditions: 1
+        ItemConditions:
+        - rid: 6077773190711214278
+        AffectedItems:
+        - {fileID: 11400000, guid: 78a41c953ce01b648b8baa76eb804c39, type: 2}
+        AffectedTags: []
+        ItemActions:
+        - rid: 6077773190711214262
+    - rid: 6077773190711214262
+      type: {class: SetValue, ns: , asm: Assembly-CSharp}
+      data:
+        Value: 0
+    - rid: 6077773190711214278
+      type: {class: TagsExclusive, ns: , asm: Assembly-CSharp}
+      data:
+        RequiredTags:
+        - all
+        ExcludedTags:
+        - chip
+        MinAmount: 1
+        ExactAmount: 0

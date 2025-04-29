@@ -47,6 +47,7 @@ public class BarteringController : MonoBehaviour {
     private InventoryCardObject _currentButtonObject;
     private OfferedItems _offeredItems;
     private int _currentAttempts = 0;
+    private TradeInfo _tradeInfo;
 
     #endregion
 
@@ -82,7 +83,7 @@ public class BarteringController : MonoBehaviour {
 
         // Load NPC Data
         NPCOfferSlotOne.SetData(_currentNPCData.ItemOnOffer, false);
-        NPCValueText.text = "Value: " + _currentNPCData.ItemOnOffer.BaseValue;
+        NPCValueText.text = "Value: " + _currentNPCData.ItemOnOffer.CurrentValue;
         NPCProfilePicture.sprite = _currentNPCData.Icon;
 
 
@@ -101,6 +102,12 @@ public class BarteringController : MonoBehaviour {
             // Activate Pre-Barter Effect Cards
             ActivateEffectCards(EffectCard.ActivationTime.BeforeOffer);
         }
+
+        _tradeInfo = new()
+        {
+            OfferedItems = _offeredItems,
+            ReceivedItem = _currentNPCData.ItemOnOffer,
+        };
 
         SetInteractable(true);
 
@@ -182,7 +189,7 @@ public class BarteringController : MonoBehaviour {
 
         ActivateEffectCards(EffectCard.ActivationTime.AfterOffer);
 
-        float NPCItemValue = _currentNPCData.ItemOnOffer.BaseValue;
+        float NPCItemValue = _currentNPCData.ItemOnOffer.CurrentValue;
 
         EndMessageSpeechBubble.SetActive(true);
 
@@ -230,7 +237,7 @@ public class BarteringController : MonoBehaviour {
 
         foreach (EffectCard effectCard in effectCards)
         {
-            if (effectCard.DoesActivate(_offeredItems, activationTime))
+            if (effectCard.DoesActivate(_tradeInfo, activationTime))
             {
                 activeEffectCards.Add(effectCard);
             }
@@ -238,7 +245,7 @@ public class BarteringController : MonoBehaviour {
 
         foreach (EffectCard effectCard in activeEffectCards)
         {
-            effectCard.Activate(_offeredItems);
+            effectCard.Activate(_tradeInfo);
         }
 
         UpdateVisuals();
@@ -271,6 +278,7 @@ public class BarteringController : MonoBehaviour {
             PlayerOfferSlotFour.SetData(_offeredItems.Items[3], PlayerOfferSlotFour.IsPreviewCard);
         }
 
+        NPCValueText.text = "Value: " + _currentNPCData.ItemOnOffer.CurrentValue;
     }
 
     private void ResetData() {
@@ -309,6 +317,7 @@ public class BarteringController : MonoBehaviour {
         {
             item.ResetCurrentValue();
         }
+        _currentNPCData.ItemOnOffer.ResetCurrentValue();
 
         _offeredItems.ReturnCardsToInventory();
         _offeredItems.Items.Clear();
@@ -402,4 +411,10 @@ public class OfferedItems
             GameManager.Inventory.AddCard(card, true);
         }
     }
+}
+
+public struct TradeInfo
+{
+    public OfferedItems OfferedItems;
+    public InventoryCardData ReceivedItem;
 }

@@ -129,9 +129,20 @@ public class BarteringController : MonoBehaviour {
 
         if (_offeredItems.Count >= 4) return;
 
+        // See what button was activated
+        _currentButtonObject = null;
+
+        // Get Current object of selected InventoryGridController
+        _currentButtonObject = InventoryGrid.FindCurrentSelection();
+
         _offeredItems.Add(itemToOffer);
 
         UpdateVisuals();
+
+        // Reset selection of button!
+        if (_currentButtonObject != null) {
+            _currentButtonObject.CurrentActiveButton.Select();
+        }
     }
 
     /// <summary>
@@ -264,18 +275,18 @@ public class BarteringController : MonoBehaviour {
 
         // Display new slots adjusted
         if (_offeredItems.Count >= 1) {
-            PlayerOfferSlotOne.SetData(_offeredItems.Items[0]);
+            PlayerOfferSlotOne.SetData(_offeredItems.Items[0], PlayerOfferSlotOne.IsPreviewCard);
         }
         if (_offeredItems.Count >= 2) {
-            PlayerOfferSlotTwo.SetData(_offeredItems.Items[1]);
+            PlayerOfferSlotTwo.SetData(_offeredItems.Items[1], PlayerOfferSlotTwo.IsPreviewCard);
         }
         if (_offeredItems.Count >= 3)
         {
-            PlayerOfferSlotThree.SetData(_offeredItems.Items[2]);
+            PlayerOfferSlotThree.SetData(_offeredItems.Items[2], PlayerOfferSlotThree.IsPreviewCard);
         }
         if (_offeredItems.Count >= 4)
         {
-            PlayerOfferSlotFour.SetData(_offeredItems.Items[3]);
+            PlayerOfferSlotFour.SetData(_offeredItems.Items[3], PlayerOfferSlotFour.IsPreviewCard);
         }
 
         NPCValueText.text = "Value: " + _currentNPCData.ItemOnOffer.CurrentValue;
@@ -296,16 +307,16 @@ public class BarteringController : MonoBehaviour {
     }
 
     private void ResetPlayerData() {
-        PlayerOfferSlotOne.SetCardToEmpty(true);
-        PlayerOfferSlotTwo.SetCardToEmpty(true);
-        PlayerOfferSlotThree.SetCardToEmpty(true);
-        PlayerOfferSlotFour.SetCardToEmpty(true);
+        PlayerOfferSlotOne.SetCardToEmpty(false);
+        PlayerOfferSlotTwo.SetCardToEmpty(false);
+        PlayerOfferSlotThree.SetCardToEmpty(false);
+        PlayerOfferSlotFour.SetCardToEmpty(false);
         _currentOfferedValue = 0;
         PlayerValueText.text = "Value: 0";
     }
 
     private void ResetNPCData() {
-        NPCOfferSlotOne.SetCardToEmpty(true);
+        NPCOfferSlotOne.SetCardToEmpty(false);
         NPCValueText.text = "Value: 0";
     }
 

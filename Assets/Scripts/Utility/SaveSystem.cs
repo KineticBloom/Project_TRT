@@ -14,6 +14,7 @@ public class SaveSystem
     public struct SaveData
     {
         public NPCSaveData npcSaveData;
+        public List<Flag> flagSaveData;
     }
 
     #region ========== [ PUBLIC METHODS ] ===========
@@ -21,7 +22,7 @@ public class SaveSystem
     // SAVE
 
     /// <summary>
-    /// Saves the game. Specifically, the NPC Effect Cards' "revealed" status
+    /// Saves the game. Specifically, the NPC Effect Cards' "revealed" status and Saved Flags
     /// </summary>
     public static void Save()
     {
@@ -32,7 +33,7 @@ public class SaveSystem
 
 
     /// <summary>
-    /// Loads the game. Specifically, the NPC Effect Cards' "revealed" status
+    /// Loads the game. Specifically, the NPC Effect Cards' "revealed" status and Saved Flags
     /// </summary>
     public static void Load()
     {
@@ -85,6 +86,8 @@ public class SaveSystem
                 card.Reset();
             }
         }
+        
+        GameManager.FlagTracker.ResetSavedFlags();
     }
 
     #endregion
@@ -111,7 +114,9 @@ public class SaveSystem
             serializableData = new()
         };
 
-        GameManager.Instance.Save(ref _saveData.npcSaveData);
+        _saveData.flagSaveData = new();
+
+        GameManager.Instance.Save(ref _saveData);
 
         // Set up the serializable data
         _saveData.npcSaveData.serializableData = Serialize.FromDict(_saveData.npcSaveData.effectCardData);
@@ -127,7 +132,7 @@ public class SaveSystem
 
         _saveData.npcSaveData.effectCardData = Serialize.ToDict(_saveData.npcSaveData.serializableData);
 
-        GameManager.Instance.Load(_saveData.npcSaveData);
+        GameManager.Instance.Load(_saveData);
     }
 
     #endregion

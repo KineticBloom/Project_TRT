@@ -91,7 +91,7 @@ public class OfferedItemsEffects : EffectCard
 }
 
 
-#region ======== [ IActions ] ========
+#region ======== [ IItemCondition ] ========
 
 public interface IItemCondition
 {

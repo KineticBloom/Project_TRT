@@ -288,16 +288,16 @@ public class BarteringController : MonoBehaviour {
     }
 
     private void ResetPlayerData() {
-        PlayerOfferSlotOne.SetCardToEmpty(true);
-        PlayerOfferSlotTwo.SetCardToEmpty(true);
-        PlayerOfferSlotThree.SetCardToEmpty(true);
-        PlayerOfferSlotFour.SetCardToEmpty(true);
+        PlayerOfferSlotOne.SetCardToEmpty(false);
+        PlayerOfferSlotTwo.SetCardToEmpty(false);
+        PlayerOfferSlotThree.SetCardToEmpty(false);
+        PlayerOfferSlotFour.SetCardToEmpty(false);
         _currentOfferedValue = 0;
         PlayerValueText.text = "Value: 0";
     }
 
     private void ResetNPCData() {
-        NPCOfferSlotOne.SetCardToEmpty(true);
+        NPCOfferSlotOne.SetCardToEmpty(false);
         NPCValueText.text = "Value: 0";
     }
 

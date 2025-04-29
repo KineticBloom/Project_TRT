@@ -54,17 +54,10 @@ public class AudioEvent
     GCHandle callbackHandle;
 
     #region Constructors/Destructors
-    //public AudioEvent()
-    //{
-        //InitCallbackHandler();
-        //PinCallbackData();
-        //_action = new Action(Test);
-    //}
 
     public AudioEvent(GameObject attenuationPoint)
     {
         this.attenuationPoint = attenuationPoint;
-        //InitCallbackHandler();
     }
 
     void OnDestroy()
@@ -81,41 +74,28 @@ public class AudioEvent
     }
 
     #region Play/Pause/Stop
-    public void Play()
+    public void Play(GameObject _attenuationPoint=null)
     {
-        if (_events.startEvent == null)
-            return;
+        if (_events.startEvent == null) return;
 
-        if (attenuationPoint == null)
+        // If the attenuation variable is not defined in this object, default to the provided argument
+        if (attenuationPoint)
+        {
+            //_eventInstance.setCallback(_eventCallback);
+            _events.startEvent.Post(attenuationPoint);
+            isPlaying = true;
+        }
+        else if (_attenuationPoint)
+        {
+            //_eventInstance.setCallback(_eventCallback);
+            _events.startEvent.Post(_attenuationPoint);
+            isPlaying = true;
+        }
+        else
         {
             Debug.LogError("No Attenuation Point set for event " + name);
             return;
         }
-
-        //_eventInstance.setCallback(_eventCallback);
-        _events.startEvent.Post(attenuationPoint);
-        isPlaying = true;
-    }
-
-    public void Play(GameObject attenuationPoint)
-    {
-        if (_events.startEvent == null)
-            return;
-
-        //_eventInstance.setCallback(_eventCallback);
-        //_eventInstance.setUserData(GCHandle.ToIntPtr(callbackHandle));
-        _events.startEvent.Post(attenuationPoint);
-        isPlaying = true;
-    }
-
-    public void PlayOneShot()
-    {
-        Play();
-    }
-
-    public void PlayOneShot(GameObject attenuationPoint)
-    {
-        Play(attenuationPoint);
     }
 
     /*
@@ -130,8 +110,7 @@ public class AudioEvent
 
     public void Pause()
     {
-        if (_events.pauseEvent == null)
-            return;
+        if (_events.pauseEvent == null) return;
 
         _events.pauseEvent.Post(attenuationPoint);
         isPlaying = false;
@@ -235,23 +214,5 @@ public class AudioEvent
 
         _callbackHandler[type].AddListener(callback);
     }
-
-    /*
-    private FMOD.RESULT Callback(AkCallbackType type, IntPtr _event, IntPtr parameters)
-    {
-        Debug.Log("Callback Type: " + type);
-        //_callbackHandler.TryGetValue(type, out UnityEvent callbackEvent);
-        //if (callbackEvent == null)
-        //{
-        //    return FMOD.RESULT.OK;
-        //}
-
-        Debug.Log("Invoking callbacks...");
-        //_callbackHandler[type].Invoke();
-        //_action?.Invoke();
-        Debug.Log("Success!");
-        return FMOD.RESULT.OK;
-    }
-    */
     #endregion
 }

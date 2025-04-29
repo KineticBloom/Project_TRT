@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{C66255A2-4989-4D03-8D2F-00C179802C36}" SchemaVersion="123" RootDocumentID="{AEF51B85-54FE-489D-9C25-241343BB6F59}" ParentDocumentID="{367E1309-9549-462B-8F52-9EBE6F164B6B}">
+	<Events>
+		<WorkUnit Name="Eden" ID="{C66255A2-4989-4D03-8D2F-00C179802C36}" OwnerID="{367E1309-9549-462B-8F52-9EBE6F164B6B}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="ENV_Eden_Hello" ID="{EB24B5DD-3E6E-49ED-8156-8998B28F6B1F}">
+					<ChildrenList>
+						<Action Name="" ID="{24085316-070B-4E67-8D2B-9EF57FBD8BCA}" ShortID="310281012">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ENV_Eden_Hello" ID="{22BC944B-ECF0-4BE2-939B-4AAA0C4C1317}" WorkUnitID="{3DE2D19C-2B2B-42AF-AB76-9E62CF8ADD73}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="ENV_Eden_Expel" ID="{A19BE31C-0FBC-4DF7-9E88-F004EAB07B56}">
+					<ChildrenList>
+						<Action Name="" ID="{376FC606-6605-4C72-AE9C-F5B227021819}" ShortID="842430937">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ENV_Eden_Expel" ID="{8A7AB0FC-5063-4CF8-9681-52D08A75D53D}" WorkUnitID="{3DE2D19C-2B2B-42AF-AB76-9E62CF8ADD73}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

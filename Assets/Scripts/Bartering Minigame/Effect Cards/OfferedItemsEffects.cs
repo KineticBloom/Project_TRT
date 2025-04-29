@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using NaughtyAttributes;
+using System.Linq;
+using static UnityEditor.Progress;
+
+
 #if UNITY_EDITOR
 using MackySoft.SerializeReferenceExtensions;   // Don't Remove, this is actually needed
 #endif
@@ -15,16 +19,25 @@ public class OfferedItemsEffects : EffectCard
     [InfoBox("This EffectCard will search for all player offered items that satisfy the Item Conditions and modify them according to Item Actions. " +
         "\n\nRuns after the player offers items.")]
 
+    [Header("Conditions")]
+    [SerializeField, Tooltip("Does it require all Conditions to be met (AND) or any (OR)?")]
+    public bool RequiresAllConditions = true;
     [SerializeReference, SubclassSelector]
     [Tooltip("List of item actions that determine the effect of the found items")]
     public List<IItemCondition> ItemConditions;
 
+    [Space, Space]
+    [Header("Effect Settings")]
+    [SerializeField, Tooltip("If card can activate, and these items are being offered, they will be affected")]
+    public List<InventoryCardData> AffectedItems = new();
+    [SerializeField, Tooltip("If card can activate, and items with these tags are being offered, they will be affected")]
+    public List<string> AffectedTags = new();
+
+    [Space, Space]
+    [Header("Actions")]
     [SerializeReference, SubclassSelector]
     [Tooltip("List of item actions that determine the effect of the found items")]
     public List<IItemAction> ItemActions;
-
-
-    private List<InventoryCardData> _matchingItems = new List<InventoryCardData>();
 
     #endregion
 
@@ -34,48 +47,64 @@ public class OfferedItemsEffects : EffectCard
     /// Adds any items matching the conditions to _matchingItems
     /// </summary>
     /// <returns></returns>
-    public override bool DoesActivate(OfferedItems offeredItems, ActivationTime activationTime)
+    public override bool DoesActivate(TradeInfo tradeInfo, ActivationTime activationTime)
     {
         if (this.activationTime != activationTime && activationTime != ActivationTime.Both) return false;
 
-        _matchingItems.Clear();
-
-        foreach (InventoryCardData item in offeredItems.Items)
+        // Store the results of all conditions
+        List<bool> conditionResults = new();
+        foreach (IItemCondition condition in ItemConditions)
         {
-            bool addItem = false;
-
-            foreach (IItemCondition condition in ItemConditions)
-            {
-                if (condition.IsSatisfied(item))
-                {
-                    addItem = true;
-                }
-            }
-
-            if (addItem)
-            {
-                _matchingItems.Add(item);
-            }
+            conditionResults.Add(condition.IsSatisfied(tradeInfo));
         }
 
-        return _matchingItems.Count > 0;
+        if (RequiresAllConditions)
+        {
+            _canActivate = conditionResults.All((bool condition) => condition);
+        } else
+        {
+            _canActivate = conditionResults.Any((bool condition) => condition);
+        }
+
+        return _canActivate;
     }
 
 
     /// <summary>
-    /// Apply the ItemActions to items in _matchingItems
+    /// Apply the ItemActions to all items that are relevant to AffectedItems and AffectedTags
     /// </summary>
-    public override void Activate(OfferedItems offeredItems)
+    public override int Activate(TradeInfo tradeInfo)
     {
-        foreach (InventoryCardData item in _matchingItems)
+        int itemsAffected = 0;
+
+        foreach (InventoryCardData offeredItem in tradeInfo.OfferedItems.Items)
         {
+            bool affected = false;
+            
+            foreach (InventoryCardData affectedItem in AffectedItems)
+            {
+                if (offeredItem.IsSame(affectedItem)) { affected = true; break; }
+            }
+
+            foreach (string affectedTag in AffectedTags)
+            {
+                // lowercase everything in offeredItem.Tags to avoid false negatives
+                if (offeredItem.Tags.Any(tag => tag.ToLower().Equals(affectedTag))) { affected = true; break; }
+            }
+
+            if (!affected) break;
+
             foreach (IItemAction action in ItemActions)
             {
-                action.Activate(item);
+                action.Activate(offeredItem);
             }
+
+            itemsAffected++;
         }
 
         Reveal();
+
+        return itemsAffected;
     }
 
 
@@ -89,128 +118,3 @@ public class OfferedItemsEffects : EffectCard
 
     #endregion
 }
-
-
-#region ======== [ IItemCondition ] ========
-
-public interface IItemCondition
-{
-    public bool IsSatisfied(InventoryCardData item);
-}
-
-
-[System.Serializable]
-public class SearchForTags : IItemCondition
-{
-    [Tooltip("List of Tags that the action will search for and affect")]
-    public List<string> Tags;
-
-    /// <summary>
-    /// See if any of the tags matches this class' tags
-    /// </summary>
-    public bool IsSatisfied(InventoryCardData item)
-    {
-        foreach (string tag in Tags)
-        {
-            foreach (string itemTag in item.Tags)
-            {
-                if (itemTag.ToLower().Equals(tag.ToLower()))
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-}
-
-
-[System.Serializable]
-public class SearchForItems : IItemCondition
-{
-    [Tooltip("List of Items that the action will search for and affect")]
-    public List<InventoryCardData> Items;
-
-
-    /// <summary>
-    /// See if any of the tags matches this class' tags
-    /// </summary>
-    public bool IsSatisfied(InventoryCardData item)
-    {
-        foreach (InventoryCardData searchedItem in Items)
-        {
-            // Checking for matching Card Names since the same items can have different ScriptableObjects
-            if (searchedItem.IsSame(item))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-}
-
-#endregion
-
-
-#region ======== [ IItemActions ] ========
-public interface IItemAction
-{
-    /// <summary>
-    /// Applies an effect to an item
-    /// </summary>
-    /// <param name="item">Item to apply the effect to</param>
-    public void Activate(InventoryCardData item);
-}
-
-
-[System.Serializable]
-public class MultiplyValue : IItemAction
-{
-    [Tooltip("The multiplier being applied to items")]
-    public float ValueMultiplier = 1f;
-
-
-    /// <summary>
-    /// Multiplies the Current Value of an item
-    /// </summary>
-    public void Activate(InventoryCardData item)
-    {
-        item.SetCurrentValue(Mathf.RoundToInt(item.CurrentValue * ValueMultiplier));
-    }
-}
-
-
-[System.Serializable]
-public class AddValue : IItemAction
-{
-    [Tooltip("The addend being applied to the items")]
-    public int ValueAddend = 0;
-
-
-    /// <summary>
-    /// Adds the Current Value of an item
-    /// </summary>
-    public void Activate(InventoryCardData item)
-    {
-        item.SetCurrentValue(item.CurrentValue + ValueAddend);
-    }
-}
-
-
-[System.Serializable]
-public class SetValue : IItemAction
-{
-    [Tooltip("The new value of the items")]
-    public int Value = 0;
-
-
-    /// <summary>
-    /// Adds the Current Value of an item
-    /// </summary>
-    public void Activate(InventoryCardData item)
-    {
-        item.SetCurrentValue(Value);
-    }
-}
-
-#endregion

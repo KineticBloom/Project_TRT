@@ -132,6 +132,20 @@ public class ElevatorController : MonoBehaviour
         }
     }
 
+    public void MoveToOtherEnd()
+    {
+        Transform targetWaypoint = null;
+        if (_currentWaypointIndex == 0)
+        {
+            targetWaypoint = waypoints[^1];
+        } else
+        {
+            targetWaypoint = waypoints[0];
+        }
+
+        MoveElevator(targetWaypoint);
+    }
+
     /// <summary>
     /// Snaps the position of Object in the elevator to the selected starting waypoint
     /// </summary>

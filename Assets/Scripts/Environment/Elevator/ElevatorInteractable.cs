@@ -9,6 +9,6 @@ public class ElevatorInteractable : ItemInteractable
     public override void Interaction()
     {
         base.Interaction();
-        controller.MoveElevator();
+        controller.MoveToOtherEnd();
     }
 }

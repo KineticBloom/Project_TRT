@@ -18,6 +18,7 @@ public class InventoryCardObject : MonoBehaviour {
     [SerializeField, BoxGroup("Item")] private TMP_Text itemValueText;
 
     [SerializeField, BoxGroup("Item Unactive")] private GameObject itemUnactiveObject;
+    [SerializeField, BoxGroup("Item Unactive")] private Button itemUnactiveButton;
 
     [SerializeField, BoxGroup("Item Full")] private GameObject itemFullObject;
     [SerializeField, BoxGroup("Item Full")] private Button itemFullButton;
@@ -26,6 +27,8 @@ public class InventoryCardObject : MonoBehaviour {
     [SerializeField, BoxGroup("Item Full")] private TMP_Text itemFullValueTextB;
 
     [SerializeField, BoxGroup("Item Full Unactive")] private GameObject itemFullUnactiveObject;
+    [SerializeField, BoxGroup("Item Full Unactive")] private Button itemFullUnactiveButton;
+
 
 
     #endregion
@@ -121,8 +124,16 @@ public class InventoryCardObject : MonoBehaviour {
     }
 
     public Button GetCurrentButton() {
-        if(_currentState == CurrentState.ITEMFULL) {
-            return itemFullButton;
+
+        switch (_currentState) {
+            case CurrentState.ITEMSMALL:
+                return itemSmallButton;
+            case CurrentState.SMALLDEACTIVE:
+                return itemUnactiveButton;
+            case CurrentState.ITEMFULL:
+                return itemFullButton;
+            case CurrentState.FULLDEACTIVE:
+                return itemFullUnactiveButton;
         }
         return itemSmallButton;
     }

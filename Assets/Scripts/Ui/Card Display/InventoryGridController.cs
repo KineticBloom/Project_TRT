@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /// <summary>
@@ -78,6 +79,19 @@ public class InventoryGridController : MonoBehaviour
         {
             x.SetInteractable(isInteractable);
         }
+    }
+
+    /// <summary>
+    /// Find Current Selection in Inventory Grid Controller
+    /// </summary>
+    /// <returns></returns>
+    public InventoryCardObject FindCurrentSelection() {
+        foreach (InventoryCardObject x in _inventoryInstances) {
+            if(x.CurrentActiveButton.gameObject == EventSystem.current.currentSelectedGameObject) {
+                return x;
+            }
+        }
+        return null;
     }
 
     #endregion

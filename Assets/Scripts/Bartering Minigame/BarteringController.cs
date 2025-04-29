@@ -129,9 +129,20 @@ public class BarteringController : MonoBehaviour {
 
         if (_offeredItems.Count >= 4) return;
 
+        // See what button was activated
+        _currentButtonObject = null;
+
+        // Get Current object of selected InventoryGridController
+        _currentButtonObject = InventoryGrid.FindCurrentSelection();
+
         _offeredItems.Add(itemToOffer);
 
         UpdateVisuals();
+
+        // Reset selection of button!
+        if (_currentButtonObject != null) {
+            _currentButtonObject.CurrentActiveButton.Select();
+        }
     }
 
     /// <summary>

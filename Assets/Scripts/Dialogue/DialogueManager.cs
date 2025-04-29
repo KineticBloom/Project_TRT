@@ -309,8 +309,8 @@ public class DialogueManager : MonoBehaviour {
 
         foreach (string id in CurrentStory.variablesState) {
             inkyVars += () => {
-                CurrentStory.variablesState[id] = GameManager.FlagTracker.CheckFlag(id);
-                CurrentStory.ObserveVariable(id, (string varName, object newValue) => GameManager.FlagTracker.SetFlag(varName, (bool)newValue));
+                CurrentStory.variablesState[id] = GameManager.FlagTracker.ExtractFlag(id);
+                CurrentStory.ObserveVariable(id, (string varName, object newValue) => GameManager.FlagTracker.SetFlag(varName, newValue));
             };
         }
         inkyVars?.Invoke();

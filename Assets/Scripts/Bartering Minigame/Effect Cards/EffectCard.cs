@@ -21,6 +21,8 @@ public abstract class EffectCard
     public string Description;
     [SerializeField, Tooltip("Short Text for Corners")]
     public string Text;
+    [SerializeField, Tooltip("Image associated with the Condition required")]
+    public Sprite ConditionImage;
 
     protected ActivationTime activationTime = ActivationTime.AfterOffer;
 
@@ -32,6 +34,7 @@ public abstract class EffectCard
     [SerializeField, ReadOnly]
     private bool _revealed = false;
     public bool IsRevealed {  get { return _revealed; } set { _revealed = value; } }
+    protected bool _canActivate = false;
 
     #endregion
 
@@ -43,20 +46,19 @@ public abstract class EffectCard
     /// <param name="barteringController">The bartering controller to get info from</param>
     /// <param name="activationTime">When the activation is being attempted</param>
     /// <returns>Whether a boolean of whether </returns>
-    public abstract bool DoesActivate(OfferedItems offeredItems, ActivationTime activationTime);
+    public abstract bool DoesActivate(TradeInfo tradeInfo, ActivationTime activationTime);
 
 
     /// <summary>
     /// Activates the effect card
     /// </summary>
     /// <param name="barteringController">The bartering controller to modify info on</param>
-    public abstract void Activate(OfferedItems offeredItems);
+    public abstract int Activate(TradeInfo tradeInfo);
 
 
     /// <summary>
     /// Reveal the card if not revealed already
     /// </summary>
-    /// <param name="activationTime"></param>
     public void Reveal()
     {
         if (_revealed) return;

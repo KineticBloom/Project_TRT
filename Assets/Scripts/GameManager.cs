@@ -1,7 +1,6 @@
 using UnityEngine;
 using NaughtyAttributes;
 using System.Collections.Generic;
-using System.Xml.Linq;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -79,16 +78,18 @@ public class GameManager : Singleton<GameManager>
     // Save and Load =============================================================================
 
     /// <summary>
-    /// Saves the NPC Effect Cards
+    /// Saves the NPC Effect Cards and Saved Flags
     /// </summary>
-    /// <param name="npcSaveData">Save Data holding all of the effect cards</param>
-    public void Save(ref NPCSaveData npcSaveData)
+    /// <param name="saveData">Save Data holding all of the effect cards and saved flags</param>
+    public void Save(ref SaveSystem.SaveData saveData)
     {
         if (_player == null)
         {
             Debug.LogError("Cannot Save outside of game scene: Player not found.");
             return;
         }
+        
+        NPCSaveData npcSaveData = saveData.npcSaveData;
 
         foreach (NPCData data in AllNPCDatas.datas)
         {
@@ -100,18 +101,22 @@ public class GameManager : Singleton<GameManager>
                 npcSaveData.effectCardData[data.FlagID].Add(data.EffectCards[effectCardIndex].IsRevealed);
             }
         }
+        
+        saveData.flagSaveData = flagTracker.SavedFlags();
     }
 
     /// <summary>
-    /// Loads Effect Cards from save data
+    /// Loads Effect Cards and Saved Flags from save data
     /// </summary>
-    /// <param name="npcSaveData">The save data</param>
-    public void Load(NPCSaveData npcSaveData) {
+    /// <param name="saveData">The save data</param>
+    public void Load(SaveSystem.SaveData saveData) {
         if (_player == null) {
             Debug.LogError("Cannot Load outside of game scene: Player not found.");
             return;
         }
-
+        
+        NPCSaveData npcSaveData = saveData.npcSaveData;
+        
         if (npcSaveData.effectCardData == null) {
             Debug.LogError("NPCInteractable: Cannot Load null data");
             return;
@@ -130,6 +135,13 @@ public class GameManager : Singleton<GameManager>
                 data.EffectCards[effectCardIndex].IsRevealed = effectCardsList[effectCardIndex];
             }
         }
+        
+        if (saveData.flagSaveData == null) {
+            Debug.LogError("FlagSaveData: Cannot Load null data");
+            return;
+        }
+        
+        flagTracker.LoadFlags(saveData.flagSaveData);
     }
 }
 

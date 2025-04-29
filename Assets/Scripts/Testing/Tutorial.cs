@@ -7,6 +7,13 @@ public class Tutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(StartTutorial());
+    }
+    
+    IEnumerator StartTutorial()
+    {
+        yield return null;
+        
         if (TimeLoopManager.Instance != null) {
             TimeLoopManager.SetLoopPaused(true);
         }

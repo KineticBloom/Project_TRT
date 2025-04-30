@@ -16,15 +16,21 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: f81434a53d0a2174ca8bc46782bfa24c, type: 3}
   Bio: It's a Roro
   FlagID: roro_6_bartered
-  EffectCards:
-  - rid: 6991182339336044559
   ItemOnOffer: {fileID: 11400000, guid: 081c2b4ca1f4c724e9f3ae2ecedc03c3, type: 2}
   BarterMessageWin: Here you go!
   BarterMessageLose: That's not enough...
   BarterAttempts: 1
+  EffectCards:
+  - rid: 6991182339336044559
   references:
     version: 2
     RefIds:
+    - rid: 6077773197129285656
+      type: {class: CountSpecificItems, ns: , asm: Assembly-CSharp}
+      data:
+        Items:
+        - {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
+        NeedAllItems: 0
     - rid: 6991182339336044559
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
@@ -32,15 +38,14 @@ MonoBehaviour:
         Description: Green chip worth multiplied by 5
         Text: x5
         _revealed: 0
+        RequiresAllConditions: 1
         ItemConditions:
-        - rid: 6991182339336044561
+        - rid: 6077773197129285656
+        AffectedItems:
+        - {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
+        AffectedTags: []
         ItemActions:
         - rid: 8151269401547244315
-    - rid: 6991182339336044561
-      type: {class: SearchForItems, ns: , asm: Assembly-CSharp}
-      data:
-        Items:
-        - {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
     - rid: 8151269401547244315
       type: {class: MultiplyValue, ns: , asm: Assembly-CSharp}
       data:

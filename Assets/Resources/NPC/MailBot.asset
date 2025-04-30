@@ -18,17 +18,36 @@ MonoBehaviour:
     Really melts into their job, gets a little caught off guard when asked personal
     questions."
   FlagID: mailbot_bartered
-  EffectCards:
-  - rid: 8151269401547244301
-  - rid: 8151269401547244297
-  - rid: 8151269401547244294
   ItemOnOffer: {fileID: 11400000, guid: af5c89a7096cba04297f11e8dcb9d576, type: 2}
   BarterMessageWin: Pleasure doing business with you!
   BarterMessageLose: Hey now, don't try to scam me!
   BarterAttempts: 1
+  EffectCards:
+  - rid: 8151269401547244301
+  - rid: 8151269401547244297
+  - rid: 8151269401547244294
   references:
     version: 2
     RefIds:
+    - rid: 6077773190711214275
+      type: {class: CountItemsWithTags, ns: , asm: Assembly-CSharp}
+      data:
+        Tags:
+        - tool
+        MinAmount: 1
+        ExactAmount: 0
+    - rid: 6077773197129285649
+      type: {class: CountSpecificItems, ns: , asm: Assembly-CSharp}
+      data:
+        Items:
+        - {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
+        NeedAllItems: 0
+    - rid: 6077773197129285650
+      type: {class: CountSpecificItems, ns: , asm: Assembly-CSharp}
+      data:
+        Items:
+        - {fileID: 11400000, guid: af210dedcdbaf56429bf9d6f8b6ac2c0, type: 2}
+        NeedAllItems: 0
     - rid: 8151269401547244294
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
@@ -36,19 +55,18 @@ MonoBehaviour:
         Description: Letter of Complaint Value = 20
         Text: =20
         _revealed: 0
+        RequiresAllConditions: 1
         ItemConditions:
-        - rid: 8151269401547244296
+        - rid: 6077773197129285650
+        AffectedItems:
+        - {fileID: 11400000, guid: af210dedcdbaf56429bf9d6f8b6ac2c0, type: 2}
+        AffectedTags: []
         ItemActions:
         - rid: 8151269401547244295
     - rid: 8151269401547244295
       type: {class: SetValue, ns: , asm: Assembly-CSharp}
       data:
         Value: 20
-    - rid: 8151269401547244296
-      type: {class: SearchForItems, ns: , asm: Assembly-CSharp}
-      data:
-        Items:
-        - {fileID: 11400000, guid: af210dedcdbaf56429bf9d6f8b6ac2c0, type: 2}
     - rid: 8151269401547244297
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
@@ -56,15 +74,14 @@ MonoBehaviour:
         Description: Tool items' value x2
         Text: x2
         _revealed: 0
+        RequiresAllConditions: 1
         ItemConditions:
-        - rid: 8151269401547244299
+        - rid: 6077773190711214275
+        AffectedItems: []
+        AffectedTags:
+        - tool
         ItemActions:
         - rid: 8151269401547244300
-    - rid: 8151269401547244299
-      type: {class: SearchForTags, ns: , asm: Assembly-CSharp}
-      data:
-        Tags:
-        - tool
     - rid: 8151269401547244300
       type: {class: MultiplyValue, ns: , asm: Assembly-CSharp}
       data:
@@ -76,15 +93,14 @@ MonoBehaviour:
         Description: Green Chip Value +5
         Text: +5
         _revealed: 0
+        RequiresAllConditions: 1
         ItemConditions:
-        - rid: 8151269401547244302
+        - rid: 6077773197129285649
+        AffectedItems:
+        - {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
+        AffectedTags: []
         ItemActions:
         - rid: 8151269401547244303
-    - rid: 8151269401547244302
-      type: {class: SearchForItems, ns: , asm: Assembly-CSharp}
-      data:
-        Items:
-        - {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
     - rid: 8151269401547244303
       type: {class: AddValue, ns: , asm: Assembly-CSharp}
       data:

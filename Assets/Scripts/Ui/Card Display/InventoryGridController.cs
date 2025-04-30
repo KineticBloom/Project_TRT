@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /// <summary>
@@ -12,10 +13,12 @@ public class InventoryGridController : MonoBehaviour
     #region ======== [ PUBLIC PROPERTIES ] ========
 
     [Header("Settings")]
-    public bool UseSmallSize;
+    public bool UseSmallSize = false;
     public int InventorySize = 10;
     public bool SetDefaultSelectionOnEnable = false;
     public bool Interactable = true;
+    public RectOffset padding;
+    public float spacing = 40f;
 
     [Header("Click Action")]
     public InventoryAction OnInventoryItemClick = null;
@@ -49,8 +52,11 @@ public class InventoryGridController : MonoBehaviour
             PopulateGrid();
         }
 
+        Grid.padding = this.padding;
+        Grid.spacing = Vector2.one * this.spacing;
+
         // Set default selection
-        if(SetDefaultSelectionOnEnable && _inventoryInstances.Count > 0) {
+        if (SetDefaultSelectionOnEnable && _inventoryInstances.Count > 0) {
             _inventoryInstances[0].CurrentActiveButton.Select();
         }
     }
@@ -73,6 +79,19 @@ public class InventoryGridController : MonoBehaviour
         {
             x.SetInteractable(isInteractable);
         }
+    }
+
+    /// <summary>
+    /// Find Current Selection in Inventory Grid Controller
+    /// </summary>
+    /// <returns></returns>
+    public InventoryCardObject FindCurrentSelection() {
+        foreach (InventoryCardObject x in _inventoryInstances) {
+            if(x.CurrentActiveButton.gameObject == EventSystem.current.currentSelectedGameObject) {
+                return x;
+            }
+        }
+        return null;
     }
 
     #endregion
@@ -121,10 +140,27 @@ public class InventoryGridController : MonoBehaviour
             InventoryCardObject newInventoryItem = NewInventoryItem();
 
             // Init data
-            newInventoryItem.InitalizeToGrid(i, InventoryUiAutoScroller, OnInventoryItemClick, UseSmallSize);
+            newInventoryItem.InitalizeToGrid(i, InventoryUiAutoScroller, OnInventoryItemClick, UseSmallSize); // Critical that cellSize is passed in!
 
             // Add to instance list
             _inventoryInstances.Add(newInventoryItem);
+        }
+
+        // Find element width
+        float width = this.GetComponent<RectTransform>().rect.width;
+        float trueWidth = width - padding.left - padding.right - InventorySize * spacing;
+        float widthOfElement = trueWidth / InventorySize;
+
+        // Find scaling ratio
+        Vector2 currentScale = _inventoryInstances[0].GetScale();
+        float ratio = widthOfElement / currentScale.x;
+
+        // Scale all cards
+        Vector2 newScale = currentScale * ratio;
+        Grid.cellSize = newScale;
+
+        foreach (InventoryCardObject x in _inventoryInstances) {
+            x.SetScale(ratio);
         }
 
         PopulateGrid();
@@ -159,7 +195,7 @@ public class InventoryGridController : MonoBehaviour
 
             InventoryCardObject currentInventoryItem = _inventoryInstances[indexTracker];
 
-            currentInventoryItem.SetData(card);
+            currentInventoryItem.SetData(card, UseSmallSize);
 
             SetSlotsInteractable(Interactable);
 

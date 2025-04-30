@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using NaughtyAttributes;
 using System.Linq;
-using static UnityEditor.Progress;
 
 
 #if UNITY_EDITOR

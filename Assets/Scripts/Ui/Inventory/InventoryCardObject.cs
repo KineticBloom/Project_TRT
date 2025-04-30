@@ -23,8 +23,8 @@ public class InventoryCardObject : MonoBehaviour {
     [SerializeField, BoxGroup("Item Full")] private GameObject itemFullObject;
     [SerializeField, BoxGroup("Item Full")] private Button itemFullButton;
     [SerializeField, BoxGroup("Item Full")] private Image itemFullSprite;
+    [SerializeField, BoxGroup("Item Full")] private TMP_Text itemFullName;
     [SerializeField, BoxGroup("Item Full")] private TMP_Text itemFullValueTextA;
-    [SerializeField, BoxGroup("Item Full")] private TMP_Text itemFullValueTextB;
 
     [SerializeField, BoxGroup("Item Full Unactive")] private GameObject itemFullUnactiveObject;
     [SerializeField, BoxGroup("Item Full Unactive")] private Button itemFullUnactiveButton;
@@ -158,10 +158,9 @@ public class InventoryCardObject : MonoBehaviour {
 
         itemSpriteImage.sprite = Card.Sprite;
         itemFullSprite.sprite = Card.Sprite;
-
+        itemFullName.text = Card.CardName;
         itemValueText.text = "¥" + Card.CurrentValue.ToString();
         itemFullValueTextA.text = "¥" + Card.CurrentValue.ToString();
-        itemFullValueTextB.text = "¥" + Card.CurrentValue.ToString();
     }
 
     /// <summary>

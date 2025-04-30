@@ -3,6 +3,7 @@ using UnityEngine;
 using NaughtyAttributes;
 using UnityEditor;
 using DG.Tweening;
+using UnityEngine.Events;
 
 [ExecuteAlways]
 public class ElevatorController : MonoBehaviour
@@ -22,6 +23,8 @@ public class ElevatorController : MonoBehaviour
     [Header("SFX")]
     [SerializeField] private AudioEvent elevatorStartSFX;
     [SerializeField] private AudioEvent elevatorHumSFX;
+
+    public UnityAction finishedMoving;
     #endregion
 
     #region ========== [ PRIVATE PROPERTIES ] ==========
@@ -59,7 +62,7 @@ public class ElevatorController : MonoBehaviour
         Transform targetWaypoint = waypoints[targetWaypointIndex];
 
         objectRoot.transform.DOMove(targetWaypoint.position, movementDurationSeconds)
-            .SetEase(Ease.InOutQuad).OnComplete(() => { SetMoving(false); });
+            .SetEase(Ease.InOutQuad).OnComplete(() => { SetMoving(false); finishedMoving.Invoke(); });
 
         startingWaypoint = targetWaypoint;
         SetStartingWaypointIndex();
@@ -93,7 +96,7 @@ public class ElevatorController : MonoBehaviour
         // Moving from start to end: InOutQuad, duration is movementDurationSeconds
         if (_startingWaypointIndex == _currentWaypointIndex && NextWaypointIs(targetWaypoint)) {
             objectRoot.transform.DOMove(targetWaypoint.position, movementDurationSeconds)
-                .SetEase(Ease.InOutQuad).OnComplete(() => { SetMoving(false); });
+                .SetEase(Ease.InOutQuad).OnComplete(() => { SetMoving(false); finishedMoving.Invoke(); });
             startingWaypoint = targetWaypoint;
             SetStartingWaypointIndex();
             return;
@@ -125,7 +128,7 @@ public class ElevatorController : MonoBehaviour
         if (_startingWaypointIndex != _currentWaypointIndex && NextWaypointIs(targetWaypoint))
         {
             objectRoot.transform.DOMove(targetWaypoint.position, movementDurationSeconds)
-                .SetEase(Ease.OutQuad).OnComplete(() => { SetMoving(false); });
+                .SetEase(Ease.OutQuad).OnComplete(() => { SetMoving(false); finishedMoving.Invoke(); });
             startingWaypoint = targetWaypoint;
             SetStartingWaypointIndex();
             return;
@@ -134,7 +137,7 @@ public class ElevatorController : MonoBehaviour
 
     public void MoveToOtherEnd()
     {
-        Transform targetWaypoint = null;
+        Transform targetWaypoint;
         if (_currentWaypointIndex == 0)
         {
             targetWaypoint = waypoints[^1];

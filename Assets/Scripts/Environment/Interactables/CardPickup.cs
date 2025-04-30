@@ -13,9 +13,11 @@ public class CardPickup : Interactable
     }
 
     public override void Interaction() {
-        GameManager.Inventory.AddCard(CardToGive);
-        itemPickupSFX.Play(this.gameObject);
-        Destroy(gameObject);
+        bool ableToPickup = GameManager.Inventory.AddCard(CardToGive);
+        if (ableToPickup) {
+            itemPickupSFX.Play(this.gameObject);
+            Destroy(gameObject);
+        }
     }
 
     public override void UnHighlight() {

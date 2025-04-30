@@ -5,6 +5,7 @@ public class AutoUiScaler : MonoBehaviour {
     public TMP_Text TextForScale;
     public RectTransform RectTransform;
     public float Padding = 50;
+    public bool PaddingApplyVertically = true; 
     public float LineLength = 700;
 
     private bool _readyToRescale = false;
@@ -46,7 +47,11 @@ public class AutoUiScaler : MonoBehaviour {
         float textHeight = TextForScale.renderedHeight;
 
         if (textWidth >= 1) {
-            RectTransform.sizeDelta = new Vector2(textActualWidth + Padding, textHeight + Padding);
+            if (PaddingApplyVertically) {
+                RectTransform.sizeDelta = new Vector2(textActualWidth + Padding, textHeight + Padding);
+            } else {
+                RectTransform.sizeDelta = new Vector2(textActualWidth + Padding, textHeight);
+            }
         }
     }
 }

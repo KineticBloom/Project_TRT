@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Sprite spriteIdle;
     [SerializeField] private Sprite spriteWalk;
 	[SerializeField] private PlayerSFX playerSFX;
+	[SerializeField] private ParticleSystem dustTrail;
     private CharacterController _characterController;
 
 	#endregion
@@ -30,7 +31,8 @@ public class PlayerMovement : MonoBehaviour
 	private float _downwardForce = 0;
 	private bool _isWalking = false;
 	public bool IsWalking => _isWalking;
-	private Vector3 _input = Vector3.zero;
+	private bool _wasWalking = false;
+    private Vector3 _input = Vector3.zero;
 	public Vector3 Input => _input;
 	[SerializeField, ReadOnly] private bool _canMove = true;
 
@@ -120,7 +122,10 @@ public class PlayerMovement : MonoBehaviour
 		}
 
 		_isWalking = (direction * _adjustedSpeed).magnitude > 0;
-		if (animator)
+
+		HandleDustTrail();
+
+        if (animator)
         {
 			animator.SetBool("IsWalking", _isWalking);
 		}
@@ -135,5 +140,23 @@ public class PlayerMovement : MonoBehaviour
 			_downwardForce = 0;
 		}
 	}
+
+	private void HandleDustTrail()
+	{
+        if (_isWalking != _wasWalking)
+        {
+            if (_isWalking)
+            {
+                // Started walking
+                dustTrail.Play();
+            }
+            else
+            {
+                // Stopped walking
+                dustTrail.Stop();
+            }
+        }
+        _wasWalking = _isWalking;
+    }
 	#endregion
 }

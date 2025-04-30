@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SquashStretchHelper : MonoBehaviour
+public class SquashStretch : MonoBehaviour
 {
-    // ==============================================================
-    // Parameters
-    // ==============================================================
+    // Parameters =================================================================================
 
+    [Header("Squash-Stretch Parameters")]
     [Tooltip("A float (-1 to 1) which is used to lerp the base scale towards squash, if squashStretch is "
            + "negative, or towards stretch, if squashStretch is positive.")]
     [Range(-1.0f, 1.0f)]
@@ -18,9 +15,7 @@ public class SquashStretchHelper : MonoBehaviour
     [SerializeField]
     private float magnitude = 2;
 
-    // ==============================================================
-    // Internal variables
-    // ==============================================================
+    // Internal variables =========================================================================
 
     // Updated whenever squashStretch changes to store the previous value of squashStretch. We compare
     // this to the current value of squashStretch to detect if it has changed.
@@ -28,11 +23,9 @@ public class SquashStretchHelper : MonoBehaviour
     // The transform's base scale, obtained on init.
     private Vector3 _baseLocalScale;
 
-    // ==============================================================
-    // Default methods
-    // ==============================================================
+    // Initializers ===============================================================================
 
-    void Start()
+    private void Start()
     {
         // Start is called before the first frame update. Used to initialize all our variables 
         // and define all our references.
@@ -43,7 +36,9 @@ public class SquashStretchHelper : MonoBehaviour
         _baseLocalScale = transform.localScale;
     }
 
-    void Update()
+    // Update methods =============================================================================
+
+    private void Update()
     {
         // Update is called once per frame. We use it to detect when squashStretch changes and to
         // call the update function on it when it does.
@@ -56,7 +51,7 @@ public class SquashStretchHelper : MonoBehaviour
         }
     }
 
-    void UpdateSquashStretch()
+    private void UpdateSquashStretch()
     {
         // Called when squashStretch changes. If squashStretch is 0, resets scale to baseScale. If it
         // is above 0, lerps towards full stretch. If it is below 0, lerps towards full squash.

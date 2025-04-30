@@ -31,7 +31,7 @@ public class ElevatorController : MonoBehaviour
 
     private int _startingWaypointIndex = -1;
     private int _nextIndexModifier = 1;
-    private int _currentWaypointIndex = 0;
+    [HideInInspector] public int _currentWaypointIndex = 0;
     private bool _moving = false;
 
     #endregion

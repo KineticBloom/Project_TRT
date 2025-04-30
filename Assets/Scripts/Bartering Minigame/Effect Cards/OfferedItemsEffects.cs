@@ -92,7 +92,7 @@ public class OfferedItemsEffects : EffectCard
                 if (offeredItem.Tags.Any(tag => tag.ToLower().Equals(affectedTag))) { affected = true; break; }
             }
 
-            if (!affected) break;
+            if (!affected) continue;
 
             foreach (IItemAction action in ItemActions)
             {

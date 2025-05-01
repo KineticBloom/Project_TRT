@@ -7,14 +7,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "FlagIndex", menuName = "ScriptableObjects/FlagIndex")]
 public class FlagIndex : ScriptableObject
 {
+    public List<Flag> SavedFlags = new List<Flag>();
     [SerializeField] List<Flag> flags = new List<Flag>();
     [SerializeField] List<TextAsset> inkFiles = new List<TextAsset>();
     [SerializeField] AllInventoryCardDatas inventory;
 
     public Flag this[string id] 
     {
-        get => flags.SingleOrDefault(f => f.ID == id); 
-        set => flags.Add(value);
+        get => IsSaved(id) ? SavedFlags.SingleOrDefault(f => f.ID == id) : flags.SingleOrDefault(f => f.ID == id);
+        set
+        {
+            if (value.Saved) SavedFlags.Add(value);
+            else flags.Add(value);
+        }
     }
     
     #region Public Methods
@@ -44,7 +49,18 @@ public class FlagIndex : ScriptableObject
     public void ResetFlags()
     {
         foreach (Flag flag in flags){
-            flag.Value = flag.DefaultValue;
+            flag.Reset();
+        }
+    }
+    
+    /// <summary>
+    /// Resets all flags and saved flags to their default value.
+    /// </summary>
+    public void HardResetFlags()
+    {
+        ResetFlags();
+        foreach (Flag flag in SavedFlags){
+            flag.Reset();
         }
     }
     
@@ -53,8 +69,11 @@ public class FlagIndex : ScriptableObject
     /// </summary>
     public void ClearFlags()
     {
+        SavedFlags.Clear();
         flags.Clear();
     }
+    
+    public bool IsSaved(string id) => id.Length > 5 && id[..5] == "SAVE_";
     #endregion
     
     #region Private Methods
@@ -69,9 +88,10 @@ public class FlagIndex : ScriptableObject
         if (flag == null)
         {
             flag = new Flag(id);
-            flags.Add(flag);
+            if (flag.Saved) SavedFlags.Add(flag);
+            else flags.Add(flag);
         }
-        flag.Value = flag.DefaultValue;
+        flag.Reset();
         
         if (flag.Type == Flag.FlagType.InventoryCard)
         {
@@ -104,6 +124,11 @@ public class FlagIndexEditor : Editor
         if (GUILayout.Button("Reset Flags")) 
         {
             ((FlagIndex)target).ResetFlags();
+        }
+        
+        if (GUILayout.Button("Hard Reset Flags")) 
+        {
+            ((FlagIndex)target).HardResetFlags();
         }
         
         if (GUILayout.Button("Clear Flags")) 

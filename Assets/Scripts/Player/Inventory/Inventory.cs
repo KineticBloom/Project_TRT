@@ -83,9 +83,9 @@ public class Inventory : MonoBehaviour
     /// </summary>
     /// <param name="card"></param>
     /// <param name="withoutNotification">Will the Notification System not inform the player that a card has been added?</param>
-    public void AddCard(InventoryCardData card, bool withoutNotification = false)
+    public bool AddCard(InventoryCardData card, bool withoutNotification = false)
     {
-        if (card == null) return;
+        if (card == null) return false;
 
         // Find card in AllCards and add it to the current inventory
         InventoryCardData newCard = null;
@@ -98,9 +98,16 @@ public class Inventory : MonoBehaviour
         }
         if (newCard == null) {
             Debug.LogError($"Could not find {card.ID}, card does not exist in AllCards");
-            return;
+            return false;
         }
 
+        if(Cards.Count >= 10) {
+            if (_notificationUi) {
+                _notificationUi.Notify($"Reached 10 Card limit!");
+                return false;
+            }
+
+        }
 
         Cards.Add(newCard);
 
@@ -119,6 +126,8 @@ public class Inventory : MonoBehaviour
         if (_notificationUi && !withoutNotification) {
             _notificationUi.Notify($"Obtained {card.CardName}");
         }
+
+        return true;
     }
 
     /// <summary>

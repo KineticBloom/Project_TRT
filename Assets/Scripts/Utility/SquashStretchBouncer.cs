@@ -3,6 +3,21 @@ using UnityEngine;
 using NaughtyAttributes;
 using DG.Tweening;
 
+// ================================================================
+//
+// IMPORTANT NOTE:
+// This script scales transforms from their PIVOT.
+//
+// If an objects's pivot is at its BOTTOM, like for the player and
+// NPC prefabs, it will appear to squash and stretch from the 
+// bottom of the object.
+//
+// If an object's pivot is at its CENTER, like by default, it will
+// appear to squash and stretch from its center. 
+// THIS MAY LOOK WRONG.
+//
+// ================================================================
+
 public class SquashStretchBouncer : SquashStretchBrain
 {
     // Parameters =================================================================================

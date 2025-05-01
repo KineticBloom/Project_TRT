@@ -3,6 +3,7 @@ using Ink.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -55,6 +56,8 @@ public class LimboDialogue : MonoBehaviour {
     private bool _onDelay = false;
     private bool _noInput = false;
     private bool _externalNoInput = false;
+
+    private AsyncOperation _loadSceneOperation;
 
     public delegate void CallBackBarterTrigger();
 
@@ -288,6 +291,8 @@ public class LimboDialogue : MonoBehaviour {
 
     private void Start()
     {
+        LoadMainScene();
+
         if (InkFiles.Count != 7) { Debug.LogError("Need 7 ink files"); return; }
 
         // TODO: Load currentInkFile
@@ -312,8 +317,6 @@ public class LimboDialogue : MonoBehaviour {
         // Start delay
         _onDelay = true;
         StartCoroutine(ConversationDelay());
-
-        // TODO: Send to main scene (and preload it at the start)
     }
 
     /// <summary>
@@ -458,6 +461,24 @@ public class LimboDialogue : MonoBehaviour {
         yield return new WaitForSeconds(0.25f);
         _onDelay = false;
         EndCallback?.Invoke(); // Messy code
+
+        StartCoroutine(GoToMainScene());
+    }
+
+    private void LoadMainScene()
+    {
+        _loadSceneOperation = SceneManager.LoadSceneAsync("1_MainWorld", LoadSceneMode.Single);
+        _loadSceneOperation.allowSceneActivation = false;
+    }
+
+    IEnumerator GoToMainScene()
+    {
+        while (_loadSceneOperation.progress < 0.9f)
+        {
+            yield return new WaitForSeconds(.1f);
+        }
+
+        _loadSceneOperation.allowSceneActivation = true;
     }
 
     #endregion

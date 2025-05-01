@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86243f10543f9a4ebe9c1097513fcf3, type: 3}
+  m_Name: Tutorial Roro
+  m_EditorClassIdentifier: 
+  Name: Roro
+  Icon: {fileID: 21300000, guid: f81434a53d0a2174ca8bc46782bfa24c, type: 3}
+  Bio: It's a Roro
+  FlagID: tutorial_bartered
+  ItemOnOffer: {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
+  BarterMessageWin: Thanks for the autograph!
+  BarterMessageLose: C'mon! I just want an autograph :[
+  BarterAttempts: -1
+  EffectCards:
+  - rid: 6991182339336044559
+  references:
+    version: 2
+    RefIds:
+    - rid: 6077773197129285651
+      type: {class: CountSpecificItems, ns: , asm: Assembly-CSharp}
+      data:
+        Items:
+        - {fileID: 11400000, guid: a240b0f5bbae2d74b88213c43e530006, type: 2}
+        NeedAllItems: 0
+    - rid: 6991182339336044559
+      type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
+      data:
+        Icon: {fileID: 21300000, guid: 1fe4f06883d062044b8a516d5518abfc, type: 3}
+        Description: They really value your autograph
+        Text: x100
+        ConditionImage: {fileID: 21300000, guid: 1fe4f06883d062044b8a516d5518abfc,
+          type: 3}
+        _revealed: 1
+        RequiresAllConditions: 1
+        ItemConditions:
+        - rid: 6077773197129285651
+        AffectedItems:
+        - {fileID: 11400000, guid: a240b0f5bbae2d74b88213c43e530006, type: 2}
+        AffectedTags: []
+        ItemActions:
+        - rid: 8151269723140784132
+    - rid: 8151269723140784132
+      type: {class: MultiplyValue, ns: , asm: Assembly-CSharp}
+      data:
+        ValueMultiplier: 100

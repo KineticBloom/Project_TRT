@@ -41,25 +41,16 @@ public class LimboDialogue : MonoBehaviour {
 
     private SpeechBubbleCore NPCBubble;
     private SpeechBubbleCore PlayerBubble;
-    private Canvas CurrentCanvas;
-    private Camera CurrentCamera;
     private Story CurrentStory;
     private bool InDialogue;
     private SpeechBubbleCore CurrentBubble;
     private LineData CurrentLineData;
-    private InGameUi InGameUi;
     private DialogueUiManager DialogueUiManager;
-    private CinemachineBrain CurrentBrain;
 
     private bool LineFinished = true;
     private bool _onDelay = false;
     private bool _noInput = false;
     private bool _externalNoInput = false;
-
-    private Vector3 lastCameraPos;
-    private Quaternion lastCameraRot;
-    private bool CameraMoving;
-    private bool CameraSetup = false;
 
     public delegate void CallBackBarterTrigger();
 
@@ -118,40 +109,22 @@ public class LimboDialogue : MonoBehaviour {
     /// Start Dialogue from given INK file
     /// </summary>
     /// <param name="DialogueINKFile"> Dialogue to display</param>
-    /// <param name="NPCWorldPosition"> Position for NPC Dialogue Bubble</param>
-    /// <param name="PlayerWorldPosition"> Position for Player Dialogue Bubble </param>
     /// <param name="SkipToINKKnot"> INK Knot to jump too</param>
-    public void StartDialogue(TextAsset DialogueINKFile, CallBackBarterTrigger callBackBarterTrigger, Vector3 NPCWorldPosition, Vector3 PlayerWorldPosition, string SkipToINKKnot = "NONE") {
+    public void StartDialogue(TextAsset DialogueINKFile, string SkipToINKKnot = "NONE") {
 
         if (InDialogue) return;
         if (_onDelay) return;
 
         InDialogue = true;
 
-        bool FoundDependencies = SetupDependencies();
-        if (FoundDependencies == false) return;
-
-        this.callBackBarterTrigger = callBackBarterTrigger;
-
-        // Pause Game
-        InGameUi.MoveToDialogue();
-        if (TimeLoopManager.Instance != null) TimeLoopManager.SetLoopPaused(true);
-
-        StartCoroutine(WaitForCameraIdle(DialogueINKFile, NPCWorldPosition, PlayerWorldPosition, SkipToINKKnot));
-    }
-
-    IEnumerator WaitForCameraIdle(TextAsset DialogueINKFile, Vector3 NPCWorldPosition, Vector3 PlayerWorldPosition, string SkipToINKKnot = "NONE") {
-        
-        while (CameraMoving)
-            yield return null;
-
         // Setup Systems
-        SetupUi(NPCWorldPosition, PlayerWorldPosition);
+        SetupUi();
         SetupDialogue(DialogueINKFile, SkipToINKKnot);
 
         // Start next line
         SetupNextLine();
     }
+
 
 
     /// <summary>
@@ -171,9 +144,6 @@ public class LimboDialogue : MonoBehaviour {
     #region ======== [ UPDATE ] ========
 
     private void Update() {
-
-        // Needs to be every frame, even if no dialogue!
-        CheckForCameraMovement();
 
         if (InDialogue == false) return;
 
@@ -213,80 +183,24 @@ public class LimboDialogue : MonoBehaviour {
         }
     }
 
-    /// <summary>
-    /// See if the current CinemaMachine camera is moving
-    /// </summary>
-    private void CheckForCameraMovement() {
-
-        // Inital setup if first check
-        if (CameraSetup == false || CurrentBrain == null) {
-            if (GameManager.Player == null) { return; }
-
-            CurrentBrain = GameManager.Player.Camera;
-
-            if (CurrentBrain == null) return;
-
-            lastCameraPos = CurrentBrain.transform.position;
-            lastCameraRot = CurrentBrain.transform.rotation;
-            CameraSetup = true;
-        }
-
-        if (CurrentBrain == null) return;
-
-        bool PositionMovementSmall = (lastCameraPos - CurrentBrain.transform.position).magnitude < 0.002;
-
-        bool RotationMovementSmall = Quaternion.Dot(lastCameraRot, CurrentBrain.transform.rotation) >= 0.9998;
-
-        // Check if position and rotation has not changed
-        if (PositionMovementSmall && RotationMovementSmall) {
-            CameraMoving = false;
-        } else {
-            CameraMoving = true;
-        }
-
-        // Update info
-        lastCameraPos = CurrentBrain.transform.position;
-        lastCameraRot = CurrentBrain.transform.rotation;
-    }
-
     #endregion
 
     #region ======== [ SETUP METHODS ] ========
-
-    /// <summary>
-    /// Find InGameUi and DialogueUiManager in current scene.
-    /// </summary>
-    /// <returns> True if dependencies found! False if not. </returns>
-    private bool SetupDependencies() {
-        InGameUi = GameManager.MasterCanvas.gameObject.GetComponent<InGameUi>();
-        if (InGameUi == null) return false;
-
-        DialogueUiManager = InGameUi.DialogueUiManager;
-        if (DialogueUiManager == null) return false;
-
-        return true;
-    }
 
     /// <summary>
     /// Create Dialogue Bubbles for NPC and Player.
     /// </summary>
     /// <param name="NPCWorldPosition">World position of NPC.</param>
     /// <param name="PlayerWorldPosition">World position of Player.</param>
-    private void SetupUi(Vector3 NPCWorldPosition, Vector3 PlayerWorldPosition) {
-
-        CurrentCanvas = GameManager.MasterCanvas;
-        CurrentCamera = Camera.main;
-
+    private void SetupUi() {
         Transform BubbleParent = DialogueUiManager.ParentForDialogueBubbles.transform;
 
         // Create NPC Dialogue Bubble
-        Vector2 NPCViewportPosition = WorldPosToViewportPos(NPCWorldPosition, CurrentCanvas, CurrentCamera);
-        GameObject NPCBubbleObject = Instantiate(NPCDialogueBubblePrefab, NPCViewportPosition, Quaternion.identity, BubbleParent);
+        GameObject NPCBubbleObject = Instantiate(NPCDialogueBubblePrefab, new Vector3(0,0), Quaternion.identity, BubbleParent);
         NPCBubble = NPCBubbleObject.GetComponent<SpeechBubbleCore>();
 
         // Create Player Dialogue Bubble
-        Vector2 PlayerViewportPosition = WorldPosToViewportPos(PlayerWorldPosition, CurrentCanvas, CurrentCamera);
-        GameObject PlayerBubbleObject = Instantiate(PlayerDialogueBubblePrefab, PlayerViewportPosition, Quaternion.identity, BubbleParent);
+        GameObject PlayerBubbleObject = Instantiate(PlayerDialogueBubblePrefab, new Vector3(0, 0), Quaternion.identity, BubbleParent);
         PlayerBubble = PlayerBubbleObject.GetComponent<SpeechBubbleCore>();
     }
 
@@ -365,17 +279,6 @@ public class LimboDialogue : MonoBehaviour {
     #region ======== [ PRIVATE METHODS ] ========
 
     /// <summary>
-    /// Take 3D world position and map it to 2D Camera viewport.
-    /// </summary>
-    /// <param name="WorldPos">Position to convert.</param>
-    /// <returns>Relative viewport position.</returns>
-    private Vector2 WorldPosToViewportPos(Vector3 WorldPos, Canvas CanvasToUse, Camera CameraToUse) {
-        Vector3 viewportPos = CameraToUse.WorldToViewportPoint(WorldPos);
-        Vector2 canvasResolution = CanvasToUse.GetComponent<CanvasScaler>().referenceResolution;
-        return new Vector2(viewportPos.x * canvasResolution.x, viewportPos.y * canvasResolution.y);
-    }
-
-    /// <summary>
     /// End Story.
     /// </summary>
     private void EndStory() {
@@ -388,13 +291,11 @@ public class LimboDialogue : MonoBehaviour {
         Destroy(NPCBubble.gameObject);
         Destroy(PlayerBubble.gameObject);
 
-        // External Setup
-        if (TimeLoopManager.Instance != null) TimeLoopManager.SetLoopPaused(false);
-        InGameUi.MoveToDefault();
-
         // Start delay
         _onDelay = true;
         StartCoroutine(ConversationDelay());
+
+        // TODO: Send to main scene (and preload it at the start)
     }
 
     /// <summary>

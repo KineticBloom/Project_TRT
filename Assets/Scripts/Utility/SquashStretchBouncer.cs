@@ -12,7 +12,7 @@ public class SquashStretchBouncer : SquashStretchBrain
                            + "The duration of the curve is determined by loopPeriod.\n\n"
                            + "Recall negative is squash and positive is stretch.")]
     private AnimationCurve bounceCurve = new(new Keyframe[]{
-        // These points plot a curve for a sine curve.
+        // These points plot a sine curve.
         new(0, 0, 2*Mathf.PI, 2*Mathf.PI),
         new(0.25f, 1, 0, 0),
         new(0.5f, 0, -2*Mathf.PI, -2*Mathf.PI),
@@ -29,14 +29,24 @@ public class SquashStretchBouncer : SquashStretchBrain
 
     // Anim methods ===============================================================================
 
+#if UNITY_EDITOR
     [Button]
+#endif
+    /// <summary>
+    /// Starts the bounce animation.
+    /// </summary>
     public void StartAnim()
     {
         StopAllCoroutines();
         StartCoroutine(EvaluateCurve(bounceCurve, loopPeriod));
     }
 
+#if UNITY_EDITOR
     [Button]
+#endif
+    /// <summary>
+    /// Stops the current bounce animation. Tweens our SquashStretch value back to 0.
+    /// </summary>
     public void StopAnim()
     {
         StopAllCoroutines();
@@ -58,7 +68,7 @@ public class SquashStretchBouncer : SquashStretchBrain
 
             while (elapsed < duration) {
                 float evalAmount = elapsed/duration;
-                SquashStretch = curve.Evaluate(evalAmount * animationLength);
+                SquashStretch = curve.Evaluate(evalAmount*animationLength);
 
                 elapsed += Time.deltaTime;
                 yield return null;

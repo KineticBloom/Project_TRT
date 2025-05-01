@@ -11,6 +11,7 @@ public class NpcInteractable : Interactable
     public AudioEvent dialogueStartSFX;
     public AudioEvent interactionBarkSFX;
     public AudioEvent barterBarkSFX;
+    public AudioEvent barterOpenSFX;
 
     public Vector3 DialogueSourceLocalPosition;
     public override void Interaction() {
@@ -25,6 +26,7 @@ public class NpcInteractable : Interactable
     public void TriggerBarter() {
 
         barterBarkSFX.Play(gameObject);
+        barterOpenSFX.Play(gameObject);
         GameManager.NewBarterStarter.StartBarter(NpcData);
     }
 

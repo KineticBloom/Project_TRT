@@ -2,7 +2,6 @@ using Cinemachine;
 using Ink.Runtime;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -109,7 +108,7 @@ public class DialogueManager : MonoBehaviour {
         }
 
         // External Setup
-        TimeLoopManager.SetLoopPaused(false);
+        if (TimeLoopManager.Instance != null) TimeLoopManager.SetLoopPaused(false);
 
         // Start delay
         _onDelay = false;
@@ -136,7 +135,7 @@ public class DialogueManager : MonoBehaviour {
 
         // Pause Game
         InGameUi.MoveToDialogue();
-        TimeLoopManager.SetLoopPaused(true);
+        if (TimeLoopManager.Instance != null) TimeLoopManager.SetLoopPaused(true);
 
         StartCoroutine(WaitForCameraIdle(DialogueINKFile, NPCWorldPosition, PlayerWorldPosition, SkipToINKKnot));
     }
@@ -390,7 +389,7 @@ public class DialogueManager : MonoBehaviour {
         Destroy(PlayerBubble.gameObject);
 
         // External Setup
-        TimeLoopManager.SetLoopPaused(false);
+        if (TimeLoopManager.Instance != null) TimeLoopManager.SetLoopPaused(false);
         InGameUi.MoveToDefault();
 
         // Start delay

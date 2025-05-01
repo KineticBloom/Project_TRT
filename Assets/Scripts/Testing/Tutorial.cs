@@ -20,6 +20,15 @@ public class Tutorial : MonoBehaviour
     
     private bool _popUpClosed = false;
     
+    private void Awake()
+    {
+        if (TimeLoopManager.Instance == null) {
+            GameManager.Instance.FindPlayer();
+            GameManager.Instance.FindMasterCanvas();
+            GameManager.Inventory.Clear();
+        }
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +43,7 @@ public class Tutorial : MonoBehaviour
         }
         else GameManager.Player.Movement.SetCanMove(false);
         Time.timeScale = 0;
+        inputHints?.SetActive(true);
     }
 
     // Update is called once per frame
@@ -63,7 +73,7 @@ public class Tutorial : MonoBehaviour
         if (TimeLoopManager.Instance != null) {
             TimeLoopManager.SetLoopPaused(false);
         }
-        else GameManager.Player.Movement.SetCanMove(false);
+        else GameManager.Player.Movement.SetCanMove(true);
         
         Time.timeScale = 1;
         _popUpClosed = true;

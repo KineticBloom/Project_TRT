@@ -15,11 +15,10 @@ public class SaveSystem
     {
         public NPCSaveData npcSaveData;
         public List<Flag> flagSaveData;
+        public int currentLimboFile;
     }
 
     #region ========== [ PUBLIC METHODS ] ===========
-
-    // SAVE
 
     /// <summary>
     /// Saves the game. Specifically, the NPC Effect Cards' "revealed" status and Saved Flags
@@ -43,6 +42,30 @@ public class SaveSystem
 
         _saveData = JsonUtility.FromJson<SaveData>(saveContent);
         HandleLoadData();
+    }
+
+    public static void SaveLimbo()
+    {
+        if (HasSaveData())
+        {
+            string saveContent = File.ReadAllText(SaveFileName());
+
+            _saveData = JsonUtility.FromJson<SaveData>(saveContent);
+        }
+
+        GameManager.Instance.SaveLimbo(ref _saveData);
+
+        File.WriteAllText(SaveFileName(), JsonUtility.ToJson(_saveData, true));
+    }
+
+    public static void LoadLimbo()
+    {
+        if (!HasSaveData()) return;
+
+        string saveContent = File.ReadAllText(SaveFileName());
+        _saveData = JsonUtility.FromJson<SaveData>(saveContent);
+
+        GameManager.Instance.LoadLimbo(_saveData);
     }
 
 

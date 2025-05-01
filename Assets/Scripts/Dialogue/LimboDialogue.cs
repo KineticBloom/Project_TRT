@@ -295,10 +295,15 @@ public class LimboDialogue : MonoBehaviour {
 
         if (InkFiles.Count != 7) { Debug.LogError("Need 7 ink files"); return; }
 
-        // TODO: Load currentInkFile
+        StartCoroutine(LoadSaveDataAndStart());
 
+    }
+
+    IEnumerator LoadSaveDataAndStart()
+    {
+        yield return new WaitForSeconds(.25f);
+        SaveSystem.LoadLimbo();
         StartDialogue(InkFiles[currentInkFile]);
-
     }
 
     /// <summary>
@@ -313,6 +318,12 @@ public class LimboDialogue : MonoBehaviour {
         // Destroy Dependencies
         Destroy(NPCBubble.gameObject);
         Destroy(PlayerBubble.gameObject);
+
+        if (currentInkFile < 6)
+        {
+            currentInkFile++;
+        }
+        SaveSystem.SaveLimbo();
 
         // Start delay
         _onDelay = true;

@@ -19,6 +19,11 @@ public class LimboDialogue : MonoBehaviour {
 
     public float TypeSpeed;
 
+    public List<TextAsset> InkFiles = new();
+    [Range(0, 6)]
+    public int currentInkFile = 0;
+    [SerializeField] private DialogueUiManager DialogueUiManager;
+
     #endregion
 
     #region ======== [ PUBLIC PROPERTIES ] ========
@@ -45,7 +50,6 @@ public class LimboDialogue : MonoBehaviour {
     private bool InDialogue;
     private SpeechBubbleCore CurrentBubble;
     private LineData CurrentLineData;
-    private DialogueUiManager DialogueUiManager;
 
     private bool LineFinished = true;
     private bool _onDelay = false;
@@ -196,12 +200,16 @@ public class LimboDialogue : MonoBehaviour {
         Transform BubbleParent = DialogueUiManager.ParentForDialogueBubbles.transform;
 
         // Create NPC Dialogue Bubble
-        GameObject NPCBubbleObject = Instantiate(NPCDialogueBubblePrefab, new Vector3(0,0), Quaternion.identity, BubbleParent);
+        GameObject NPCBubbleObject = Instantiate(NPCDialogueBubblePrefab, BubbleParent);
         NPCBubble = NPCBubbleObject.GetComponent<SpeechBubbleCore>();
+        RectTransform npcRect = NPCBubbleObject.GetComponent<RectTransform>();
+        npcRect.anchoredPosition = Vector2.zero;
 
         // Create Player Dialogue Bubble
-        GameObject PlayerBubbleObject = Instantiate(PlayerDialogueBubblePrefab, new Vector3(0, 0), Quaternion.identity, BubbleParent);
+        GameObject PlayerBubbleObject = Instantiate(PlayerDialogueBubblePrefab, BubbleParent);
         PlayerBubble = PlayerBubbleObject.GetComponent<SpeechBubbleCore>();
+        RectTransform playerRect = PlayerBubbleObject.GetComponent<RectTransform>();
+        playerRect.anchoredPosition = Vector2.zero;
     }
 
     /// <summary>
@@ -277,6 +285,16 @@ public class LimboDialogue : MonoBehaviour {
     #endregion
 
     #region ======== [ PRIVATE METHODS ] ========
+
+    private void Start()
+    {
+        if (InkFiles.Count != 7) { Debug.LogError("Need 7 ink files"); return; }
+
+        // TODO: Load currentInkFile
+
+        StartDialogue(InkFiles[currentInkFile]);
+
+    }
 
     /// <summary>
     /// End Story.

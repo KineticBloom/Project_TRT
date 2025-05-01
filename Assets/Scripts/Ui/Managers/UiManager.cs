@@ -153,7 +153,10 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
             GameManager.Player.InteractionHandler.SetCanInteract(!newStateData.IsPlayerFrozen);
         }
 
-        GameManager.DialogueManager.FreezeDialogue(newStateData.IsDialogueFrozen);
+        if (GameManager.DialogueManager != null)
+        {
+            GameManager.DialogueManager.FreezeDialogue(newStateData.IsDialogueFrozen);
+        }
 
         if (TimeLoopManager.Instance != null) {
             TimeLoopManager.SetLoopPaused(newStateData.IsTimeFrozen);

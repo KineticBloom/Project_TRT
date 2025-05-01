@@ -271,7 +271,7 @@ public class BarteringController : MonoBehaviour {
             _currentOfferedValue += item.CurrentValue;
         }
 
-        PlayerValueText.text = "Value: " + _currentOfferedValue;
+        PlayerValueText.text = "Value: " + _currentOfferedValue + "?";
 
         // Display new slots adjusted
         if (_offeredItems.Count >= 1) {

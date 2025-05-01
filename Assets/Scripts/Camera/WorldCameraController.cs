@@ -90,6 +90,8 @@ public class WorldCameraController : MonoBehaviour
     [Label("Auto-Update Cameras")] [Tooltip("Automatically updates the child virtual cameras when changing the script's parameters." +
         "Disable if you want to manually change the virtual cameras.")]
     [SerializeField] private bool autoUpdate = true;
+    [BoxGroup("Controls"), Tooltip("Enable if you wish to manually set the camera's targets")]
+    [SerializeField] private bool manualTargets = false;
 #endif
     [BoxGroup("Controls"), Tooltip("Enable if you wish to manually set the camera's targets")]
     [SerializeField] private bool manualTargets = false;
@@ -197,7 +199,7 @@ public class WorldCameraController : MonoBehaviour
         // so we manually search if it is.
         _player = FindObjectOfType<Player>();
 
-        if (_player == null) return;
+        if (_player == null || manualTargets) return;
 
         VirtualCamera.Follow = _player.Transform;
         VirtualMovement.Follow = _player.Transform;

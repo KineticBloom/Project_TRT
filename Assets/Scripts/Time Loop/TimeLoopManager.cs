@@ -23,6 +23,8 @@ public class TimeLoopManager : MonoBehaviour
     // Called when the loop time is fully elapsed. Awaits a callback.
     public static System.Action<System.Action> LoopElapsed;
 
+    [SerializeField] private FadeToBlack fadeToBlack;
+
     // Misc Internal Variables ====================================================================
 
     private float _secondsLeft;
@@ -50,6 +52,11 @@ public class TimeLoopManager : MonoBehaviour
     {
         if (isActiveAndEnabled) {    
             InitializeTimer();
+        }
+
+        if (fadeToBlack != null)
+        {
+            fadeToBlack.StartFadeOut();
         }
     }
 

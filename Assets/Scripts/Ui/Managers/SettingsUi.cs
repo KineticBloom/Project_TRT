@@ -10,28 +10,22 @@ using DG.Tweening;
 public class SettingsUi : UiManager<SettingsUi.UiStates> {
 
     [Header("Animation")]
-    [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private RectTransform settingsPanel;
     [SerializeField] private float tweenDuration = 0.5f;
-    [SerializeField] private Ease ease = Ease.OutCubic;
+    [SerializeField] private float smallScale = 0.75f;
+    [SerializeField] private Ease enterEase = Ease.OutCubic;
+    [SerializeField] private Ease exitEase = Ease.InCubic;
+    [SerializeField] private Ease sizeEase = Ease.InOutCubic;
 
     [Header("Audio")]
     [SerializeField] private AK.Wwise.Event pauseOpen;
     [SerializeField] private AK.Wwise.Event pauseClose;
-
-    private Vector2 offscreenPos;
-    private float centerPos;
 
     public enum UiStates {
         Pause,
         Options,
         Controls,
         CheckToTitle
-    }
-
-    private void Awake()
-    {
-        centerPos = 1000;
-        offscreenPos = new Vector2(GetComponentInParent<RectTransform>().rect.width*1.5f, GetComponentInParent<RectTransform>().rect.height/2);
     }
 
     public void MoveToPause() => MoveTo(UiStates.Pause);
@@ -44,31 +38,42 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
         SceneManager.LoadScene(0);
     }
 
-    public void SwapToSettingsUi() {
+    public void SwapToSettingsUi() 
+    {
         pauseOpen.Post(this.gameObject);
-        StartCoroutine(LoadSettingsUi());
+        LoadSettingsUi();
     }
-    IEnumerator LoadSettingsUi() {
-        yield return new WaitForEndOfFrame();
+
+
+    private void LoadSettingsUi() 
+    {
+        Debug.Log("LoadSettingsUi");
         GameManager.Instance.SwapUiManager(this);
         LoadState(_currentState);
 
         // Animation in
-        settingsPanel.transform.position = new Vector3(offscreenPos.x, offscreenPos.y);
-        settingsPanel
-            .transform
-            .DOMoveX(centerPos, tweenDuration)
-            .SetEase(ease);
+        settingsPanel.localPosition = Vector3.right * settingsPanel.rect.width;
+        settingsPanel.localScale = Vector3.one * smallScale;
+
+        settingsPanel.DOKill();
+        settingsPanel.transform.DOLocalMoveX(0, tweenDuration, true)
+            .SetEase(enterEase).SetUpdate(true);
+        settingsPanel.transform.DOScale(1f, tweenDuration)
+            .SetEase(sizeEase).SetUpdate(true);
     }
 
-    protected override void DisableFocus() {
+
+    protected override void DisableFocus() 
+    {
         // Animation out
-        settingsPanel
-            .transform
-            .DOMoveX(offscreenPos.x, tweenDuration)
-            .SetEase(ease)
+        settingsPanel.DOKill();
+        settingsPanel.transform.DOLocalMoveX(settingsPanel.rect.width, tweenDuration)
+            .SetEase(exitEase).SetUpdate(true)
             .OnComplete(() => AfterLeave());
+        settingsPanel.transform.DOScale(smallScale, tweenDuration)
+            .SetEase(sizeEase).SetUpdate(true);
     }
+
 
     private void AfterLeave()
     {

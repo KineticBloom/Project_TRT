@@ -248,7 +248,7 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!223 &1592114298821702300
 Canvas:
   m_ObjectHideFlags: 0
@@ -685,9 +685,10 @@ MonoBehaviour:
       IsTimeFrozen: 1
       IsDialogueFrozen: 1
       PauseAnimations: 1
-  settingsPanel: {fileID: 4375539130109108087}
+  settingsPanel: {fileID: 5638977104314392213}
   tweenDuration: 0.5
-  ease: 9
+  enterEase: 9
+  exitEase: 8
   pauseOpen:
     idInternal: 0
     valueGuidInternal: 

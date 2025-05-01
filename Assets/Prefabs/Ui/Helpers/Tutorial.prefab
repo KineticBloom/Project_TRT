@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5628018067918599447
 RectTransform:
   m_ObjectHideFlags: 0
@@ -95,7 +95,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9130058926223450363
 RectTransform:
   m_ObjectHideFlags: 0
@@ -322,8 +322,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 266.93307}
-  m_SizeDelta: {x: 684.8, y: 123.1044}
+  m_AnchoredPosition: {x: 0, y: 178.36823}
+  m_SizeDelta: {x: 684.8, y: 62.3679}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7655188569297386040
 CanvasRenderer:
@@ -353,8 +353,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Each NPC has items they highly value that are revealed by attempting to
-    trade them. '
+  m_text: Shutdown Imminent
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38a4173e5d84703438959bb5cca50377, type: 2}
   m_sharedMaterial: {fileID: 484691237190804879, guid: 38a4173e5d84703438959bb5cca50377,
@@ -594,7 +593,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1698.8353, y: 889.4663}
+  m_SizeDelta: {x: 758.2164, y: 889.4663}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9174137310980471622
 CanvasRenderer:
@@ -668,8 +667,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 574, y: 298}
-  m_SizeDelta: {x: 433.0638, y: 76.8972}
+  m_AnchoredPosition: {x: 3, y: 103}
+  m_SizeDelta: {x: 532.5521, y: 76.8972}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6542895328081781685
 CanvasRenderer:
@@ -699,7 +698,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Goal: Obtain the Facility USB'
+  m_text: Find the Facility USB
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38a4173e5d84703438959bb5cca50377, type: 2}
   m_sharedMaterial: {fileID: 484691237190804879, guid: 38a4173e5d84703438959bb5cca50377,
@@ -786,7 +785,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2573017794817000408
 RectTransform:
   m_ObjectHideFlags: 0
@@ -861,7 +860,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2194352106815970173
 RectTransform:
   m_ObjectHideFlags: 0
@@ -931,7 +930,7 @@ GameObject:
   - component: {fileID: 8642797640274287056}
   - component: {fileID: 6338638568012258478}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -954,7 +953,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 389}
-  m_SizeDelta: {x: 631.5293, y: 110.5654}
+  m_SizeDelta: {x: 716.37, y: 110.5654}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8642797640274287056
 CanvasRenderer:
@@ -984,7 +983,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tutorial
+  m_text: 'ERROR
+
+    System Failure'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38a4173e5d84703438959bb5cca50377, type: 2}
   m_sharedMaterial: {fileID: 484691237190804879, guid: 38a4173e5d84703438959bb5cca50377,
@@ -994,8 +995,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1024,7 +1025,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -20
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -1206,7 +1207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &525084812968103691
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1341,7 +1342,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1483685948849193295
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1493,7 +1494,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 574.0031, y: -21.696}
+  m_AnchoredPosition: {x: 3.0031128, y: -216.696}
   m_SizeDelta: {x: 385.2941, y: 562.4951}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6494113245644755715
@@ -1551,7 +1552,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7520251128180306432
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1646,9 +1647,9 @@ RectTransform:
   - {fileID: 2519607808248846959}
   - {fileID: 3890433620262573543}
   - {fileID: 4360828675674853502}
+  - {fileID: 7514670145484658647}
   - {fileID: 1483685948849193295}
   - {fileID: 2194352106815970173}
-  - {fileID: 7514670145484658647}
   - {fileID: 525084812968103691}
   - {fileID: 2573017794817000408}
   - {fileID: 9130058926223450363}
@@ -1710,6 +1711,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e39d162a3f3c3847a8bed7d1b135aa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  popUp: 1
+  tutorialFlag: tutorial_bartered
+  fadeToBlack: {fileID: 0}
+  inputHints: {fileID: 0}
+  tutorialText: {fileID: 0}
+  tutorialNPC: {fileID: 0}
+  startCamera: {fileID: 0}
+  stopCamera: {fileID: 0}
+  playerSpeed: 8
+  moveBackTime: 1
+  moveForwardTime: 1
 --- !u!1 &9201143351227526373
 GameObject:
   m_ObjectHideFlags: 0

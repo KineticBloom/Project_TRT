@@ -409,6 +409,10 @@ public class LimboDialogue : MonoBehaviour {
         if (CurrentLineData.LineHasChoices) {
             DialogueUiManager.ShowButtons(CurrentLineData.Choices);
         }
+
+        // ensure that its at full opacity
+        Color currentColor = CurrentBubble.TMPText.color;
+        CurrentBubble.TMPText.color = new Color(currentColor.r, currentColor.g, currentColor.b, 1);
     }
 
     /// <summary>

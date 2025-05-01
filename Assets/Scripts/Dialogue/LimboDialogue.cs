@@ -23,6 +23,9 @@ public class LimboDialogue : MonoBehaviour {
     public List<TextAsset> InkFiles = new();
     [Range(0, 6)]
     public int currentInkFile = 0;
+    [Tooltip("Number of characters it takes to fully fade in the text")]
+    public int FadeInCharacters = 5;
+
     [SerializeField] private DialogueUiManager DialogueUiManager;
 
     #endregion
@@ -440,6 +443,11 @@ public class LimboDialogue : MonoBehaviour {
 
         CurrentBubble.TMPText.text += NextCharacter;
         CurrentLineData.CharactersPrinted += 1;
+
+        // Fade in
+        float alpha = Mathf.Clamp01((float)CurrentLineData.CharactersPrinted / FadeInCharacters);
+        Color currentColor = CurrentBubble.TMPText.color;
+        CurrentBubble.TMPText.color = new Color(currentColor.r, currentColor.g, currentColor.b, alpha);
 
         if (CurrentLineData.CharactersPrinted >= TextLength) {
 

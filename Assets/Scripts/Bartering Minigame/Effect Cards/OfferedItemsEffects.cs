@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using NaughtyAttributes;
 using System.Linq;
-using static UnityEditor.Progress;
 
 
 #if UNITY_EDITOR
@@ -92,7 +91,7 @@ public class OfferedItemsEffects : EffectCard
                 if (offeredItem.Tags.Any(tag => tag.ToLower().Equals(affectedTag))) { affected = true; break; }
             }
 
-            if (!affected) break;
+            if (!affected) continue;
 
             foreach (IItemAction action in ItemActions)
             {

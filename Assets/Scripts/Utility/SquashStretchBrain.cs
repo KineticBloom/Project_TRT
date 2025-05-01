@@ -1,24 +1,24 @@
 using UnityEngine;
 
-public class SquashStretch : MonoBehaviour
+public class SquashStretchBrain : MonoBehaviour
 {
     // Parameters =================================================================================
 
     [Header("Squash-Stretch Parameters")]
-    [Tooltip("A float (-1 to 1) which is used to lerp the base scale towards squash, if squashStretch is "
-           + "negative, or towards stretch, if squashStretch is positive.")]
+    [Tooltip("A float (-1 to 1) which is used to lerp the base scale towards squash, if SquashStretch is "
+           + "negative, or towards stretch, if SquashStretch is positive.")]
     [Range(-1.0f, 1.0f)]
-    public float squashStretch = 0;
+    public float SquashStretch = 0;
     [Tooltip("The magnitude of squash / stretch. When magnitude is 2, max stretch is 2x as tall "
            + "and 0.5x as wide as the rest state. When magnitude is 5, max stretch is 5x as tall "
            + "and 0.2x as wide as the rest state. Etc.\n\nDefault: 2")]
     [SerializeField]
-    private float magnitude = 2;
+    private float magnitude = 1.05f;
 
-    // Internal variables =========================================================================
+    // Misc internal variables ====================================================================
 
-    // Updated whenever squashStretch changes to store the previous value of squashStretch. We compare
-    // this to the current value of squashStretch to detect if it has changed.
+    // Updated whenever SquashStretch changes to store the previous value of SquashStretch. We 
+    // compare this to the current value of SquashStretch to detect if it has changed.
     private float _lastSquashStretch;
     // The transform's base scale, obtained on init.
     private Vector3 _baseLocalScale;
@@ -31,8 +31,7 @@ public class SquashStretch : MonoBehaviour
         // and define all our references.
         // ================
 
-        squashStretch = _lastSquashStretch = 0;
-        
+        SquashStretch = _lastSquashStretch = 0;
         _baseLocalScale = transform.localScale;
     }
 
@@ -40,25 +39,25 @@ public class SquashStretch : MonoBehaviour
 
     private void Update()
     {
-        // Update is called once per frame. We use it to detect when squashStretch changes and to
+        // Update is called once per frame. We use it to detect when SquashStretch changes and to
         // call the update function on it when it does.
         // ================
 
-        // If squashStretch has changed, update squashStretch.
-        if ( squashStretch != _lastSquashStretch ) {
+        // If SquashStretch has changed, update SquashStretch.
+        if ( SquashStretch != _lastSquashStretch ) {
             UpdateSquashStretch();
-            _lastSquashStretch = squashStretch;
+            _lastSquashStretch = SquashStretch;
         }
     }
 
     private void UpdateSquashStretch()
     {
-        // Called when squashStretch changes. If squashStretch is 0, resets scale to baseScale. If it
+        // Called when SquashStretch changes. If SquashStretch is 0, resets scale to baseScale. If it
         // is above 0, lerps towards full stretch. If it is below 0, lerps towards full squash.
         // ================
 
-        float width = Mathf.Pow(magnitude, -squashStretch);
-        float height = Mathf.Pow(magnitude, squashStretch);
+        float width = Mathf.Pow(magnitude, -SquashStretch);
+        float height = Mathf.Pow(magnitude, SquashStretch);
         transform.localScale = Vector3.Scale(new(width, height, 1f), _baseLocalScale);
     }
 }

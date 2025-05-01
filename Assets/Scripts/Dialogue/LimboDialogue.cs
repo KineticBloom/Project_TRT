@@ -444,7 +444,7 @@ public class LimboDialogue : MonoBehaviour {
         CurrentBubble.TMPText.text += NextCharacter;
         CurrentLineData.CharactersPrinted += 1;
 
-        // Fade in
+        // Fade in the text
         float alpha = Mathf.Clamp01((float)CurrentLineData.CharactersPrinted / FadeInCharacters);
         Color currentColor = CurrentBubble.TMPText.color;
         CurrentBubble.TMPText.color = new Color(currentColor.r, currentColor.g, currentColor.b, alpha);

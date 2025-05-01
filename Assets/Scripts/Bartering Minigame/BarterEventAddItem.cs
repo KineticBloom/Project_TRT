@@ -11,6 +11,8 @@ public class BarterEventAddItem : InventoryAction
     public override void ActionOnClick(ActionContext context) {
         BarteringController controller = GameManager.NewBarterStarter.GetBarteringController();
 
+        if (!controller || !controller.IsActive) return;
+
         controller.OfferItem(context.cardData);
     }
 

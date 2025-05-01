@@ -11,6 +11,7 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
 
     [Header("Animation")]
     [SerializeField] private RectTransform settingsPanel;
+    [SerializeField] private InventoryBar inventoryBar;
     [SerializeField] private float tweenDuration = 0.5f;
     [SerializeField] private float smallScale = 0.75f;
     [SerializeField] private Ease enterEase = Ease.OutCubic;
@@ -40,6 +41,7 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
 
     public void SwapToSettingsUi() 
     {
+        MoveToPause();
         pauseOpen.Post(this.gameObject);
         LoadSettingsUi();
     }
@@ -47,7 +49,6 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
 
     private void LoadSettingsUi() 
     {
-        Debug.Log("LoadSettingsUi");
         GameManager.Instance.SwapUiManager(this);
         LoadState(_currentState);
 
@@ -59,12 +60,20 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
         settingsPanel.transform.DOLocalMoveX(0, tweenDuration, true)
             .SetEase(enterEase).SetUpdate(true);
         settingsPanel.transform.DOScale(1f, tweenDuration)
-            .SetEase(sizeEase).SetUpdate(true);
+            .SetEase(sizeEase).SetUpdate(true); 
+        
+        inventoryBar.SetActiveSource(gameObject, true);
     }
 
 
     protected override void DisableFocus() 
     {
+        if (!settingsPanel.gameObject.activeSelf)
+        {
+            AfterLeave();
+            return;
+        }
+
         // Animation out
         settingsPanel.DOKill();
         settingsPanel.transform.DOLocalMoveX(settingsPanel.rect.width, tweenDuration)
@@ -72,6 +81,8 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
             .OnComplete(() => AfterLeave());
         settingsPanel.transform.DOScale(smallScale, tweenDuration)
             .SetEase(sizeEase).SetUpdate(true);
+
+        inventoryBar.SetActiveSource(gameObject, false);
     }
 
 

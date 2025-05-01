@@ -16,7 +16,10 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
     [SerializeField] private float smallScale = 0.75f;
     [SerializeField] private Ease enterEase = Ease.OutCubic;
     [SerializeField] private Ease exitEase = Ease.InCubic;
-    [SerializeField] private Ease sizeEase = Ease.InOutCubic;
+    [SerializeField] private float growDelay = 0.2f;
+    [SerializeField] private float shrinkDelay = 0.1f;
+    [SerializeField] private Ease growEase = Ease.InOutExpo;
+    [SerializeField] private Ease shrinkEase = Ease.InOutExpo;
 
     [Header("Audio")]
     [SerializeField] private AK.Wwise.Event pauseOpen;
@@ -60,7 +63,7 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
         settingsPanel.transform.DOLocalMoveX(0, tweenDuration, true)
             .SetEase(enterEase).SetUpdate(true);
         settingsPanel.transform.DOScale(1f, tweenDuration)
-            .SetEase(sizeEase).SetUpdate(true); 
+            .SetEase(growEase).SetUpdate(true).SetDelay(growDelay); 
         
         inventoryBar.SetActiveSource(gameObject, true);
     }
@@ -80,7 +83,7 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
             .SetEase(exitEase).SetUpdate(true)
             .OnComplete(() => AfterLeave());
         settingsPanel.transform.DOScale(smallScale, tweenDuration)
-            .SetEase(sizeEase).SetUpdate(true);
+            .SetEase(shrinkEase).SetUpdate(true).SetDelay(shrinkDelay);
 
         inventoryBar.SetActiveSource(gameObject, false);
     }

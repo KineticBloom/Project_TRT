@@ -103,7 +103,7 @@ public class InventoryGridController : MonoBehaviour
     /// </summary>
     /// <returns></returns>
     private IEnumerator DelayInit() {
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSecondsRealtime(0.01f);
         GameManager.Inventory.OnInventoryUpdated += PopulateGrid;
 
         if (!_createdInventory)

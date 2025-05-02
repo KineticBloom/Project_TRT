@@ -35,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _input = Vector3.zero;
 	public Vector3 Input => _input;
 	[SerializeField, ReadOnly] private bool _canMove = true;
+	private bool _forcedToMove = false;
+	private Vector3 _forcedInput = Vector3.zero;
 
     #endregion
 
@@ -64,6 +66,15 @@ public class PlayerMovement : MonoBehaviour
 	{
 		_adjustedSpeed = speed;
 	}
+	
+	/// <summary>
+	/// Force the player character to move
+	/// </summary>
+	public void ForceMove(bool isMoving, Vector3 dir)
+	{
+		_forcedToMove = isMoving;
+		_forcedInput = dir;
+	}
 
     #endregion
 
@@ -88,6 +99,10 @@ public class PlayerMovement : MonoBehaviour
 
 		if (!_canMove) {
 			_input = Vector3.zero;
+		}
+		if (_forcedToMove)
+		{
+			_input = _forcedInput;
 		}
 
 		// Relative to Target

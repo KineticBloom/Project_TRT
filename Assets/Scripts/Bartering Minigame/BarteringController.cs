@@ -73,7 +73,7 @@ public class BarteringController : MonoBehaviour {
     /// <param name="npcData">Information about the trade with this NPC.</param>
     public void InitializeTrade(NPCData npcData, bool firstTime = true) {
 
-        TimeLoopManager.SetLoopPaused(true);
+        if (TimeLoopManager.Instance!= null) TimeLoopManager.SetLoopPaused(true);
         // Setup trackers
         _currentNPCData = npcData;
         _offeredItems = new OfferedItems();
@@ -271,7 +271,7 @@ public class BarteringController : MonoBehaviour {
             _currentOfferedValue += item.CurrentValue;
         }
 
-        PlayerValueText.text = "Value: " + _currentOfferedValue;
+        PlayerValueText.text = "Value: " + _currentOfferedValue + "?";
 
         // Display new slots adjusted
         if (_offeredItems.Count >= 1) {
@@ -370,7 +370,7 @@ public class BarteringController : MonoBehaviour {
         InGameUi _inGameUi = GameManager.MasterCanvas.GetComponent<InGameUi>();
 
         _inGameUi.MoveToDefault();
-        TimeLoopManager.SetLoopPaused(false);
+        if (TimeLoopManager.Instance != null) TimeLoopManager.SetLoopPaused(false);
     }
 
     /// <summary>

@@ -33,8 +33,10 @@ public class GameManager : Singleton<GameManager>
 
     // Initializers ===============================================================================
 
-    public void Start() {
-        if (UiManagerInFocus != null) {
+    public void Start()
+    {
+        if (UiManagerInFocus != null)
+        {
             UiManagerInFocus.CurrentFocus = true;
         }
     }
@@ -45,10 +47,12 @@ public class GameManager : Singleton<GameManager>
 
         GameObject playerObj = GameObject.FindWithTag(playerTag);
 
-        if (playerObj != null) {
+        if (playerObj != null)
+        {
             GameObject playerParent = playerObj.transform.root.gameObject;
 
-            if (playerParent != null) {
+            if (playerParent != null)
+            {
                 _player = playerParent.GetComponentInChildren<Player>();
             }
         }
@@ -60,15 +64,18 @@ public class GameManager : Singleton<GameManager>
 
         GameObject masterCanvasObj = GameObject.FindWithTag(masterCanvasTag);
 
-        if (masterCanvasObj != null) {
+        if (masterCanvasObj != null)
+        {
             _masterCanvas = masterCanvasObj.GetComponentInChildren<Canvas>();
         }
     }
 
-    public void SwapUiManager(UiManagerBase NewUIManager) {
+    public void SwapUiManager(UiManagerBase NewUIManager)
+    {
         if (NewUIManager == null) return;
 
-        if (UiManagerInFocus != null) {
+        if (UiManagerInFocus != null)
+        {
             UiManagerInFocus.CurrentFocus = false;
         }
         NewUIManager.CurrentFocus = true;
@@ -88,7 +95,7 @@ public class GameManager : Singleton<GameManager>
             Debug.LogError("Cannot Save outside of game scene: Player not found.");
             return;
         }
-        
+
         NPCSaveData npcSaveData = saveData.npcSaveData;
 
         foreach (NPCData data in AllNPCDatas.datas)
@@ -101,7 +108,7 @@ public class GameManager : Singleton<GameManager>
                 npcSaveData.effectCardData[data.FlagID].Add(data.EffectCards[effectCardIndex].IsRevealed);
             }
         }
-        
+
         saveData.flagSaveData = flagTracker.SavedFlags();
     }
 
@@ -109,39 +116,62 @@ public class GameManager : Singleton<GameManager>
     /// Loads Effect Cards and Saved Flags from save data
     /// </summary>
     /// <param name="saveData">The save data</param>
-    public void Load(SaveSystem.SaveData saveData) {
-        if (_player == null) {
+    public void Load(SaveSystem.SaveData saveData)
+    {
+        if (_player == null)
+        {
             Debug.LogError("Cannot Load outside of game scene: Player not found.");
             return;
         }
-        
+
         NPCSaveData npcSaveData = saveData.npcSaveData;
-        
-        if (npcSaveData.effectCardData == null) {
+
+        if (npcSaveData.effectCardData == null)
+        {
             Debug.LogError("NPCInteractable: Cannot Load null data");
             return;
         }
 
-        foreach (NPCData data in AllNPCDatas.datas) {
+        foreach (NPCData data in AllNPCDatas.datas)
+        {
             // Cannot load data that does not exist
-            if (!npcSaveData.effectCardData.ContainsKey(data.FlagID)) {
+            if (!npcSaveData.effectCardData.ContainsKey(data.FlagID))
+            {
                 return;
             }
 
             List<bool> effectCardsList = npcSaveData.effectCardData[data.FlagID];
 
             // Set reveal status for all Effect Cards
-            for (int effectCardIndex = 0; effectCardIndex < data.EffectCards.Count; effectCardIndex++) {
+            for (int effectCardIndex = 0; effectCardIndex < data.EffectCards.Count; effectCardIndex++)
+            {
                 data.EffectCards[effectCardIndex].IsRevealed = effectCardsList[effectCardIndex];
             }
         }
-        
-        if (saveData.flagSaveData == null) {
+
+        if (saveData.flagSaveData == null)
+        {
             Debug.LogError("FlagSaveData: Cannot Load null data");
             return;
         }
-        
+
         flagTracker.LoadFlags(saveData.flagSaveData);
+    }
+
+    public void SaveLimbo(ref SaveSystem.SaveData saveData)
+    {
+        LimboDialogue limboDialogue = GameObject.FindGameObjectWithTag("Limbo").GetComponent<LimboDialogue>();
+        if (!limboDialogue) return;
+
+        saveData.currentLimboFile = limboDialogue.currentInkFile;
+    }
+
+    public void LoadLimbo(SaveSystem.SaveData saveData)
+    {
+        LimboDialogue limboDialogue = GameObject.FindGameObjectWithTag("Limbo").GetComponent<LimboDialogue>();
+        if (!limboDialogue) return;
+
+        limboDialogue.currentInkFile = saveData.currentLimboFile;
     }
 }
 

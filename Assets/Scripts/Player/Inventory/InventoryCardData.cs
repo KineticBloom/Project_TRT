@@ -2,7 +2,6 @@ using NaughtyAttributes;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static GameEnums;
 
 #if UNITY_EDITOR
 using UnityEditor;

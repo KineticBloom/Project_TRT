@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 470701037437567926}
   - component: {fileID: 8421605022798657179}
   - component: {fileID: 5360149830936865622}
+  - component: {fileID: -342176231029660579}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -51,9 +52,78 @@ MonoBehaviour:
   IconLocalPosition: {x: 0, y: 3, z: 0}
   npcConversation: {fileID: 4900000, guid: 78fae791d8e25a445ac2b2e5cfc5205f, type: 3}
   NpcData: {fileID: 11400000, guid: b55b06de653d0954492e3852e7595ca2, type: 2}
-  ItemForOffer: {fileID: 0}
-  BarterMessageWin: 
-  BarterMessageLose: 
+  interactionBarkSFX:
+    name: 
+    playOnInit: 0
+    _events:
+      startEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      pauseEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      resumeEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      stopEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+    _callbacks:
+      onStart:
+        m_PersistentCalls:
+          m_Calls: []
+      onRestart:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleted:
+        m_PersistentCalls:
+          m_Calls: []
+      onBeat:
+        m_PersistentCalls:
+          m_Calls: []
+      onMarker:
+        m_PersistentCalls:
+          m_Calls: []
+  barterBarkSFX:
+    name: 
+    playOnInit: 0
+    _events:
+      startEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      pauseEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      resumeEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      stopEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+    _callbacks:
+      onStart:
+        m_PersistentCalls:
+          m_Calls: []
+      onRestart:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleted:
+        m_PersistentCalls:
+          m_Calls: []
+      onBeat:
+        m_PersistentCalls:
+          m_Calls: []
+      onMarker:
+        m_PersistentCalls:
+          m_Calls: []
   DialogueSourceLocalPosition: {x: 0, y: 0, z: 0}
 --- !u!136 &5360149830936865622
 CapsuleCollider:
@@ -78,6 +148,73 @@ CapsuleCollider:
   m_Height: 5.075967
   m_Direction: 1
   m_Center: {x: 0, y: 2.0379834, z: 0}
+--- !u!114 &-342176231029660579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890871114915600313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810ae8ad4c9a2e742aad21db57b5a3af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SquashStretch: 0
+  magnitude: 1.05
+  bounceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 6.2831855
+      outSlope: 6.2831855
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.25
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 0
+      inSlope: -6.2831855
+      outSlope: -6.2831855
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.75
+      value: -1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 6.2831855
+      outSlope: 6.2831855
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  loopPeriod: 2
+  animKillTime: 0.025
 --- !u!1 &4603424523351385279
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,6 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1873897247525430675}
   - component: {fileID: 7074074990732911327}
+  - component: {fileID: 8943050102328506123}
   m_Layer: 0
   m_Name: Renderer
   m_TagString: Untagged
@@ -127,6 +265,73 @@ MonoBehaviour:
   Mode: 1
   FlipOrientation: 1
   lerpSpeed: 3
+--- !u!114 &8943050102328506123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4603424523351385279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810ae8ad4c9a2e742aad21db57b5a3af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SquashStretch: 0
+  magnitude: 1.05
+  bounceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 6.2831855
+      outSlope: 6.2831855
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.25
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 0
+      inSlope: -6.2831855
+      outSlope: -6.2831855
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.75
+      value: -1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 6.2831855
+      outSlope: 6.2831855
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  loopPeriod: 2
+  animKillTime: 0.025
 --- !u!1001 &8827653085433530615
 PrefabInstance:
   m_ObjectHideFlags: 0

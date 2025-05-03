@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using static GameEnums;
 using System.Linq;
 using System.Xml.Linq;
 

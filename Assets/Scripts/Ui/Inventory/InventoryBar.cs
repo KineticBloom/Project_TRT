@@ -67,7 +67,8 @@ public class InventoryBar : MonoBehaviour
         // Fade In
         largeInventory.gameObject.SetActive(true);
         largeInventory.GetComponent<CanvasGroup>()
-            .DOFade(1, duration).SetEase(showEase).SetUpdate(true);
+            .DOFade(1, duration).SetEase(showEase).SetUpdate(true)
+            .OnComplete(() => smallInventory.gameObject.SetActive(false));
     }
 
 
@@ -88,6 +89,7 @@ public class InventoryBar : MonoBehaviour
             .SetEase(hideEase).SetUpdate(true);
 
         // Fade Out
+        smallInventory.gameObject.SetActive(true);
         largeInventory.GetComponent<CanvasGroup>()
             .DOFade(0, duration).SetEase(hideEase).SetUpdate(true)
             .OnComplete(() => largeInventory.gameObject.SetActive(false));

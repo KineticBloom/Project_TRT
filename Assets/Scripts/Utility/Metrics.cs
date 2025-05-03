@@ -9,7 +9,7 @@ public static class Metrics
     {
         public float totalPlayTime;
         public int sessionCount;
-        public float averageFramerate;
+
         public bool tutorialCompleted;
         public bool gameCompleted;
     }
@@ -20,10 +20,36 @@ public static class Metrics
 
     #region ========== [ PUBLIC METHODS ] ===========
 
+    public static void StartSession()
+    {
+        Load();
+        _sessionStartTime = Time.time;
+        _data.sessionCount++;
+    }
+
+    public static void EndSession()
+    {
+        float sessionDuration = Time.time - _sessionStartTime;
+        _data.totalPlayTime += sessionDuration;
+        Save();
+    }
+
+    public static void MarkTutorialCompleted()
+    {
+        _data.tutorialCompleted = true;
+        Save();
+    }
+
+    public static void MarkGameCompleted()
+    {
+        _data.gameCompleted = true;
+        Save();
+    }
+
     #endregion
 
     #region ========== [ PRIVATE METHODS ] ===========
-    
+
     /// <summary>
     /// Loads saved metrics data into _data
     /// </summary>
@@ -49,6 +75,9 @@ public static class Metrics
         File.WriteAllText(SavePath, json);
     }
 
+    /// <summary>
+    /// Reset saved metrics data
+    /// </summary>
     public static void Reset()
     {
         _data = new MetricsData();

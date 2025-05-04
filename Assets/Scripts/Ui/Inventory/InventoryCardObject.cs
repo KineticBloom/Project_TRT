@@ -32,6 +32,7 @@ public class InventoryCardObject : MonoBehaviour {
 
     [SerializeField, BoxGroup("Item Description")] private GameObject itemDescriptionBox;
     [SerializeField, BoxGroup("Item Description")] private TMP_Text itemDescriptionText;
+    [SerializeField, BoxGroup("Item Description")] private TMP_Text itemTagsText;
 
 
 
@@ -177,6 +178,7 @@ public class InventoryCardObject : MonoBehaviour {
         itemValueText.text = "¥" + Card.CurrentValue.ToString();
         itemFullValueTextA.text = "¥" + Card.CurrentValue.ToString();
         itemDescriptionText.text = Card.Description;
+        itemTagsText.text = $"Tags: {string.Join<string>(",", Card.Tags)}";
     }
 
     /// <summary>

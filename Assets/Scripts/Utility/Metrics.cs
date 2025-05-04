@@ -12,6 +12,10 @@ public static class Metrics
 
         public bool tutorialCompleted;
         public bool gameCompleted;
+
+        public float averageFramerate;
+        public float totalFrameTime;
+        public int totalFrames;
     }
 
     private static MetricsData _data;
@@ -20,6 +24,9 @@ public static class Metrics
 
     #region ========== [ PUBLIC METHODS ] ===========
 
+    /// <summary>
+    /// Signal to the Metrics that the player has started playing the game. Put in Start()
+    /// </summary>
     public static void StartSession()
     {
         Load();
@@ -27,6 +34,9 @@ public static class Metrics
         _data.sessionCount++;
     }
 
+    /// <summary>
+    /// Signal to the Metrics that the player has stopped playing the game.
+    /// </summary>
     public static void EndSession()
     {
         float sessionDuration = Time.time - _sessionStartTime;
@@ -34,12 +44,31 @@ public static class Metrics
         Save();
     }
 
+    /// <summary>
+    /// Record frame duration to calculate average framerate
+    /// </summary>
+    public static void RecordFrame()
+    {
+        float deltaTime = Time.deltaTime;
+        _data.totalFrameTime += deltaTime;
+        _data.totalFrames++;
+
+        _data.averageFramerate = _data.totalFrames / _data.totalFrameTime;
+    }
+
+
+    /// <summary>
+    /// Record that the Tutorial has been completed at least once
+    /// </summary>
     public static void MarkTutorialCompleted()
     {
         _data.tutorialCompleted = true;
         Save();
     }
 
+    /// <summary>
+    /// Record that the Game has been beaten at least once
+    /// </summary>
     public static void MarkGameCompleted()
     {
         _data.gameCompleted = true;

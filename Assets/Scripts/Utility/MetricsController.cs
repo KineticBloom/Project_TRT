@@ -13,7 +13,7 @@ public class MetricsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Metrics.RecordFrame();
     }
 
     private void OnApplicationQuit()

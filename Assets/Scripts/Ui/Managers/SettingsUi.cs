@@ -50,8 +50,10 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
     }
 
 
-    private void LoadSettingsUi() 
+    private void LoadSettingsUi()
     {
+        inventoryBar.SetActiveSource(gameObject, true);
+
         GameManager.Instance.SwapUiManager(this);
         LoadState(_currentState);
 
@@ -64,13 +66,13 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
             .SetEase(enterEase).SetUpdate(true);
         settingsPanel.transform.DOScale(1f, tweenDuration)
             .SetEase(growEase).SetUpdate(true).SetDelay(growDelay); 
-        
-        inventoryBar.SetActiveSource(gameObject, true);
     }
 
 
     protected override void DisableFocus() 
     {
+        inventoryBar.SetActiveSource(gameObject, false);
+
         if (!settingsPanel.gameObject.activeSelf)
         {
             AfterLeave();
@@ -84,8 +86,6 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
             .OnComplete(() => AfterLeave());
         settingsPanel.transform.DOScale(smallScale, tweenDuration)
             .SetEase(shrinkEase).SetUpdate(true).SetDelay(shrinkDelay);
-
-        inventoryBar.SetActiveSource(gameObject, false);
     }
 
 

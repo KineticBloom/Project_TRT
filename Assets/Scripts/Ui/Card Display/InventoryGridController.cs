@@ -16,6 +16,7 @@ public class InventoryGridController : MonoBehaviour
     public bool UseSmallSize = false;
     public int InventorySize = 10;
     public bool SetDefaultSelectionOnEnable = false;
+    public bool SelfSelectIfNothingSelected = false;
     public bool Interactable = true;
     public RectOffset padding;
     public float spacing = 40f;
@@ -204,6 +205,20 @@ public class InventoryGridController : MonoBehaviour
 
         // Mark update time
         _lastUpdateTime = GameManager.Inventory.inventoryLastUpdateTime;
+    }
+
+
+    void Update()
+    {
+        if (SelfSelectIfNothingSelected)
+        {
+            if (EventSystem.current.currentSelectedGameObject == null || !EventSystem.current.currentSelectedGameObject.activeInHierarchy)
+            {
+                if (_inventoryInstances == null || _inventoryInstances.Count == 0) return;
+
+                _inventoryInstances[0].CurrentActiveButton.Select();
+            }
+        }
     }
 
     #endregion

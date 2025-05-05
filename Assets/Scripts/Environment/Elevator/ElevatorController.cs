@@ -244,6 +244,7 @@ public class ElevatorController : MonoBehaviour
         _currentWaypointIndex = _startingWaypointIndex;
     }
     
+    /*
     void OnValidate()
     {
         if (waypoints.Count > 0 && startingWaypoint != null)
@@ -251,6 +252,7 @@ public class ElevatorController : MonoBehaviour
             SnapObjectToWaypoint();
         }
     }
+    */
 
     private void SetMoving(bool value)
     {

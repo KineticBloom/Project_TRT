@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using DG.Tweening;
 using static InventoryCardObject;
 
 public class InventoryCardObject : MonoBehaviour {
@@ -29,7 +30,20 @@ public class InventoryCardObject : MonoBehaviour {
     [SerializeField, BoxGroup("Item Full Unactive")] private GameObject itemFullUnactiveObject;
     [SerializeField, BoxGroup("Item Full Unactive")] private Button itemFullUnactiveButton;
 
+    [SerializeField, BoxGroup("Item Description")] private GameObject itemDescriptionBox;
+    [SerializeField, BoxGroup("Item Description")] private TMP_Text itemDescriptionText;
+    [SerializeField, BoxGroup("Item Description")] private TMP_Text itemTagsText;
 
+
+
+    #endregion
+
+    #region ======== [ PUBLIC PROPERTIES ] ========
+
+    [SerializeField, BoxGroup("Tweening")] private float showDuration = 0.25f;
+    [SerializeField, BoxGroup("Tweening")] private float hideDuration = 0.25f;
+    [SerializeField, BoxGroup("Tweening")] private Ease showEase = Ease.OutBack;
+    [SerializeField, BoxGroup("Tweening")] private Ease hideEase = Ease.InOutQuad;
 
     #endregion
 
@@ -60,6 +74,8 @@ public class InventoryCardObject : MonoBehaviour {
         if (Card != null && IsPreviewCard == false) {
             SetData(Card, false);
         }
+
+        itemDescriptionBox.transform.localScale = Vector3.right;
     }
 
     /// <summary>
@@ -161,6 +177,8 @@ public class InventoryCardObject : MonoBehaviour {
         itemFullName.text = Card.CardName;
         itemValueText.text = "¥" + Card.CurrentValue.ToString();
         itemFullValueTextA.text = "¥" + Card.CurrentValue.ToString();
+        itemDescriptionText.text = Card.Description;
+        itemTagsText.text = $"Tags: {string.Join<string>(",", Card.Tags)}";
     }
 
     /// <summary>
@@ -234,5 +252,30 @@ public class InventoryCardObject : MonoBehaviour {
         _currentObject.SetActive(true);
 
     }
+
+
+    /// <summary>
+    /// Shows the description of the card
+    /// </summary>
+    public void ShowDescription()
+    {
+        itemDescriptionBox.transform.DOKill();
+        itemDescriptionBox.SetActive(true);
+        itemDescriptionBox.transform.
+            DOScaleY(1, showDuration).SetEase(showEase);
+    }
+
+
+    /// <summary>
+    /// Hides the description of the card
+    /// </summary>
+    public void HideDescription()
+    {
+        itemDescriptionBox.transform.DOKill();
+        itemDescriptionBox.transform.
+            DOScaleY(0, hideDuration).SetEase(hideEase)
+            .OnComplete(() => itemDescriptionBox.SetActive(false));
+    }
+
     #endregion
 }

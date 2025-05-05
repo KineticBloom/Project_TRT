@@ -36,6 +36,7 @@ public class BarteringController : MonoBehaviour {
     [Header("Other Dependencies")]
     public Button OfferTradeButton;
     public InventoryGridController InventoryGrid;
+    public InventoryBar inventoryBar;
 
     #endregion
 
@@ -117,6 +118,12 @@ public class BarteringController : MonoBehaviour {
     #endregion
 
     #region ======== [ PUBLIC METHODS ] ========
+
+
+    /// <summary>
+    /// Returns whether the bartering interface is showing or not
+    /// </summary>
+    public bool IsActive => gameObject.activeSelf;
 
     /// <summary>
     /// Offer a item to the barter pool.
@@ -290,6 +297,8 @@ public class BarteringController : MonoBehaviour {
         }
 
         NPCValueText.text = "Value: " + _currentNPCData.ItemOnOffer.CurrentValue;
+
+        inventoryBar.SetActiveSource(gameObject, true);
     }
 
     private void ResetData() {
@@ -370,6 +379,8 @@ public class BarteringController : MonoBehaviour {
         InGameUi _inGameUi = GameManager.MasterCanvas.GetComponent<InGameUi>();
 
         _inGameUi.MoveToDefault();
+
+        inventoryBar.SetActiveSource(gameObject, false);
         if (TimeLoopManager.Instance != null) TimeLoopManager.SetLoopPaused(false);
     }
 

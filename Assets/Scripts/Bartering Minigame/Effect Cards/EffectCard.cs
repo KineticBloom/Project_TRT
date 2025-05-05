@@ -19,6 +19,8 @@ public abstract class EffectCard
     public Sprite Icon;
     [SerializeField, Tooltip("Description of what the effect card does")]
     public string Description;
+    [SerializeField, Tooltip("Hint for the what the card might do?")]
+    public string Hint = "What could this do?";
     [SerializeField, Tooltip("Short Text for Corners")]
     public string Text;
     [SerializeField, Tooltip("Image associated with the Condition required")]

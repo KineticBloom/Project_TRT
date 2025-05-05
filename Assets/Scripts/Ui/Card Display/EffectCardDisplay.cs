@@ -55,7 +55,8 @@ public class EffectCardDisplay : MonoBehaviour
         conditionImageTop.sprite = effectCard.ConditionImage;
         conditionImageBottom.sprite = effectCard.ConditionImage;
 
-        descriptionText.text = effectCard.Description;
+        descriptionText.text = (revealScreen || effectCard.IsRevealed)
+            ? effectCard.Description : effectCard.Hint;
 
         cardBack.SetActive(revealScreen || !effectCard.IsRevealed);
         cardFront.SetActive(!revealScreen && effectCard.IsRevealed);
@@ -140,7 +141,6 @@ public class EffectCardDisplay : MonoBehaviour
     public void ShowDescription()
     {
         if (descriptionText.text.Length == 0) return;
-        if (!EffectCard.IsRevealed) return;
 
         descriptionContainer.SetActive(true);
     }

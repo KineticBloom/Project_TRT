@@ -19,7 +19,7 @@ public class GiveCardsOnStart : MonoBehaviour
 
     IEnumerator AddSoon()
     {
-        yield return new WaitForSecondsRealtime(0.05f);
+        yield return new WaitForSecondsRealtime(0.1f);
         if (GameManager.Instance != null)
         {
             foreach (InventoryCardData card in cards)

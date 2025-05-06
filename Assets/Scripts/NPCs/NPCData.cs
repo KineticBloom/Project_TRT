@@ -20,9 +20,13 @@ public class NPCData : ScriptableObject
     [Header("Bartering Details")]
     [Tooltip("The Flag ID of the character's barter")]
     public string FlagID;
-    [Tooltip("The item that the NPC gives on a successful trade")]
-    public InventoryCardData ItemOnOffer;
-    [Tooltip("What the NPC says after a successful trade")]
+
+        [Tooltip("Archival")]
+        [SerializeField] private InventoryCardData ItemOnOffer;
+        [Tooltip("The item that the NPC gives on a successful trade")]
+        public InventoryCardData[] ItemsOnOffer;
+
+   [Tooltip("What the NPC says after a successful trade")]
     public string BarterMessageWin;
     [Tooltip("What the NPC says after an unsuccessful trade")]
     public string BarterMessageLose;

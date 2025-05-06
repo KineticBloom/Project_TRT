@@ -75,6 +75,15 @@ public static class Metrics
         Save();
     }
 
+    /// <summary>
+    /// Reset saved metrics data
+    /// </summary>
+    public static void Reset()
+    {
+        _data = new MetricsData();
+        Save();
+    }
+
     #endregion
 
     #region ========== [ PRIVATE METHODS ] ===========
@@ -102,15 +111,6 @@ public static class Metrics
     {
         string json = JsonUtility.ToJson(_data, true);
         File.WriteAllText(SavePath, json);
-    }
-
-    /// <summary>
-    /// Reset saved metrics data
-    /// </summary>
-    public static void Reset()
-    {
-        _data = new MetricsData();
-        Save();
     }
 
     #endregion

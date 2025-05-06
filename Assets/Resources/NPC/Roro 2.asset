@@ -17,6 +17,8 @@ MonoBehaviour:
   Bio: It's a Roro
   FlagID: roro_2_bartered
   ItemOnOffer: {fileID: 11400000, guid: 3d30e89bb6785644ba3c442728f20753, type: 2}
+  ItemsOnOffer:
+  - {fileID: 11400000, guid: 3d30e89bb6785644ba3c442728f20753, type: 2}
   BarterMessageWin: Here you go!
   BarterMessageLose: That's not enough...
   BarterAttempts: 1
@@ -38,6 +40,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: bc1e10fa5e86c64439deae7f064d8256, type: 3}
         Description: Chip value plus 3
         Text: +3
+        ConditionImage: {fileID: 0}
         _revealed: 0
         RequiresAllConditions: 1
         ItemConditions:

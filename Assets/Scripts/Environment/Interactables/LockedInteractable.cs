@@ -7,6 +7,7 @@ public class LockedInteractable : Interactable
     [SerializeField] private bool removeAfterInteraction = false;
     [SerializeField] private bool locked = true;
     [SerializeField] private UnityEvent callbackFunction;
+    [SerializeField] private TextAsset inkScript;
 
     private Vector3 _iconPositionStorage;
     private bool _useTransformStorage;
@@ -37,7 +38,18 @@ public class LockedInteractable : Interactable
             {
                 GameManager.Inventory.RemoveCard(RequiredCard);
             }
+
+            if (inkScript != null)
+            {
+                GameManager.DialogueManager.StartDialogue(inkScript, null, _iconPositionStorage, GameManager.Player.transform.position, "Unlock");
+            }
+
             callbackFunction.Invoke();
+        }
+
+        if (locked && inkScript != null)
+        {
+            GameManager.DialogueManager.StartDialogue(inkScript, null, _iconPositionStorage, GameManager.Player.transform.position, "Locked");
         }
 
         UpdateInteractIconLocation();

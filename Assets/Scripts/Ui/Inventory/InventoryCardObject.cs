@@ -7,6 +7,21 @@ using DG.Tweening;
 using static InventoryCardObject;
 
 public class InventoryCardObject : MonoBehaviour {
+
+    #region ======== [ PUBLIC PROPERTIES ] ========
+
+    [SerializeField, BoxGroup("Change Effects")] private Color unchangedValue;
+    [SerializeField, BoxGroup("Change Effects")] private Vector3 unchangedScale;
+    [SerializeField, BoxGroup("Change Effects")] private Color changedValue;
+    [SerializeField, BoxGroup("Change Effects")] private Vector3 changedScale;
+
+    [SerializeField, BoxGroup("Tweening")] private float showDuration = 0.25f;
+    [SerializeField, BoxGroup("Tweening")] private float hideDuration = 0.25f;
+    [SerializeField, BoxGroup("Tweening")] private Ease showEase = Ease.OutBack;
+    [SerializeField, BoxGroup("Tweening")] private Ease hideEase = Ease.InOutQuad;
+
+    #endregion
+
     #region ======== [ OBJECT REFERENCES ] ========
 
     [Header("Data")]
@@ -17,6 +32,7 @@ public class InventoryCardObject : MonoBehaviour {
     [SerializeField, BoxGroup("Item")] private Button itemSmallButton;
     [SerializeField, BoxGroup("Item")] private Image itemSpriteImage;
     [SerializeField, BoxGroup("Item")] private TMP_Text itemValueText;
+    [SerializeField, BoxGroup("Item")] private Image smallCardValueSprite;
 
     [SerializeField, BoxGroup("Item Unactive")] private GameObject itemUnactiveObject;
     [SerializeField, BoxGroup("Item Unactive")] private Button itemUnactiveButton;
@@ -26,6 +42,7 @@ public class InventoryCardObject : MonoBehaviour {
     [SerializeField, BoxGroup("Item Full")] private Image itemFullSprite;
     [SerializeField, BoxGroup("Item Full")] private TMP_Text itemFullName;
     [SerializeField, BoxGroup("Item Full")] private TMP_Text itemFullValueTextA;
+    [SerializeField, BoxGroup("Item Full")] private Image itemFullCardValueSprite; 
 
     [SerializeField, BoxGroup("Item Full Unactive")] private GameObject itemFullUnactiveObject;
     [SerializeField, BoxGroup("Item Full Unactive")] private Button itemFullUnactiveButton;
@@ -35,15 +52,6 @@ public class InventoryCardObject : MonoBehaviour {
     [SerializeField, BoxGroup("Item Description")] private TMP_Text itemTagsText;
 
 
-
-    #endregion
-
-    #region ======== [ PUBLIC PROPERTIES ] ========
-
-    [SerializeField, BoxGroup("Tweening")] private float showDuration = 0.25f;
-    [SerializeField, BoxGroup("Tweening")] private float hideDuration = 0.25f;
-    [SerializeField, BoxGroup("Tweening")] private Ease showEase = Ease.OutBack;
-    [SerializeField, BoxGroup("Tweening")] private Ease hideEase = Ease.InOutQuad;
 
     #endregion
 
@@ -170,7 +178,12 @@ public class InventoryCardObject : MonoBehaviour {
         } else {
             SwapState(CurrentState.ITEMFULL);
         }
-        
+
+        if(Card.CurrentValue != Card.BaseValue) {
+            UpdateValueChangeVisuals(changedValue,changedScale);
+        } else {
+            UpdateValueChangeVisuals(unchangedValue,unchangedScale);
+        }
 
         itemSpriteImage.sprite = Card.Sprite;
         itemFullSprite.sprite = Card.Sprite;
@@ -275,6 +288,17 @@ public class InventoryCardObject : MonoBehaviour {
         itemDescriptionBox.transform.
             DOScaleY(0, hideDuration).SetEase(hideEase)
             .OnComplete(() => itemDescriptionBox.SetActive(false));
+    }
+
+    /// <summary>
+    /// Update the current value background color and backing scale.
+    /// </summary>
+    /// <param name="color"></param>
+    public void UpdateValueChangeVisuals(Color color, Vector3 scale) {
+        smallCardValueSprite.color = color;
+        itemFullCardValueSprite.color = color;
+        itemFullCardValueSprite.transform.localScale = scale;
+        smallCardValueSprite.transform.localScale = scale;
     }
 
     #endregion

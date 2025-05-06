@@ -79,9 +79,19 @@ public static class Metrics
     }
 
     /// <summary>
-    /// Reset saved metrics data
+    /// Reset saved metrics data and logs it to a CSV file.
     /// </summary>
     public static void Reset()
+    {
+        WriteDataToCSV(_data);
+        _data = new MetricsData();
+        Save();
+    }
+
+    /// <summary>
+    /// Reset saved metrics data without logging to CSV.
+    /// </summary>
+    public static void HardReset()
     {
         _data = new MetricsData();
         Save();

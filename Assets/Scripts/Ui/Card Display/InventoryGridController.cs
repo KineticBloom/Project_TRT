@@ -196,6 +196,7 @@ public class InventoryGridController : MonoBehaviour
 
             InventoryCardObject currentInventoryItem = _inventoryInstances[indexTracker];
 
+            currentInventoryItem.IsPreviewCard = UseSmallSize;
             currentInventoryItem.SetData(card, UseSmallSize);
 
             SetSlotsInteractable(Interactable);

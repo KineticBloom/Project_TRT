@@ -8,24 +8,15 @@ public class GiveCardsOnStart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(AddSoon());
+        foreach (InventoryCardData card in cards)
+        {
+            GameManager.Inventory.AddCard(card, true);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         
-    }
-
-    IEnumerator AddSoon()
-    {
-        yield return new WaitForSecondsRealtime(0.1f);
-        if (GameManager.Instance != null)
-        {
-            foreach (InventoryCardData card in cards)
-            {
-                GameManager.Inventory.AddCard(card, true);
-            }
-        }
     }
 }

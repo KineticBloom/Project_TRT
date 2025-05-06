@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text;
 using UnityEngine;
 
 public static class Metrics
@@ -21,6 +22,8 @@ public static class Metrics
     private static MetricsData _data;
     private static float _sessionStartTime;
     private static readonly string SavePath = Application.persistentDataPath + "/metrics.json";
+    private static readonly string MetricsFolder = Path.Combine(Application.persistentDataPath, "MetricsLogs");
+
 
     #region ========== [ PUBLIC METHODS ] ===========
 
@@ -113,5 +116,35 @@ public static class Metrics
         File.WriteAllText(SavePath, json);
     }
 
+    private static void WriteDataToCSV(MetricsData data)
+    {
+        if (!Directory.Exists(MetricsFolder))
+            Directory.CreateDirectory(MetricsFolder);
+
+        int index = 1;
+        string filePath;
+
+        // Give it a sequential filename
+        do
+        {
+            filePath = Path.Combine(MetricsFolder, $"metrics{index}.csv");
+            index++;
+        } while (File.Exists(filePath));
+
+        var sb = new StringBuilder();
+
+        sb.AppendLine("Field,Value");
+
+        sb.AppendLine($"PlayTime,{data.totalPlayTime}");
+        sb.AppendLine($"SessionCount,{data.sessionCount}");
+        sb.AppendLine($"TutorialCompleted,{data.tutorialCompleted}");
+        sb.AppendLine($"GameCompleted,{data.gameCompleted}");
+        sb.AppendLine($"AverageFramerate,{data.averageFramerate}");
+        sb.AppendLine($"TotalFrameTime,{data.totalFrameTime}");
+        sb.AppendLine($"TotalFrames,{data.totalFrames}");
+
+
+        File.WriteAllText(filePath, sb.ToString());
+    }
     #endregion
 }

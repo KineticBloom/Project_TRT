@@ -33,6 +33,11 @@ public class BarteringController : MonoBehaviour {
     public GameObject EffectCardPrefab;
     public Transform EffectCardsContainer;
 
+    [Header("Card Reveal Dependencies")]
+    public GameObject CardRevealScreen;
+    public Transform CardRevealContainer;
+    public GameObject RevealEffectCardPrefab;
+
     [Header("Other Dependencies")]
     public Button OfferTradeButton;
     public InventoryGridController InventoryGrid;
@@ -50,6 +55,7 @@ public class BarteringController : MonoBehaviour {
     private OfferedItems _offeredItems;
     private int _currentAttempts = 0;
     private TradeInfo _tradeInfo;
+    private List<EffectCard> _revealedEffectCards;
     private NpcInteractable _npcInstance;
 
     #endregion
@@ -81,6 +87,7 @@ public class BarteringController : MonoBehaviour {
         _currentNPCData = npcData;
         _npcInstance = npcInstance;
         _offeredItems = new OfferedItems();
+        _revealedEffectCards = new List<EffectCard>();
 
         // Init new barter
         ResetData();
@@ -102,7 +109,7 @@ public class BarteringController : MonoBehaviour {
             foreach (EffectCard effectCard in _currentNPCData.EffectCards)
             {
                 GameObject card = Instantiate(EffectCardPrefab, EffectCardsContainer);
-                card.GetComponent<EffectCardDisplay>().Load(effectCard);
+                card.GetComponent<EffectCardDisplay>().Load(effectCard, this);
             }
 
             // Activate Pre-Barter Effect Cards
@@ -198,15 +205,18 @@ public class BarteringController : MonoBehaviour {
     /// <summary>
     /// Leave and fail barter.
     /// </summary>
-    public void LeaveBarter() {
+    public void LeaveBarter() 
+    {
+        Debug.Log("LEAVE BARTER");
         StartCoroutine(LeaveBarterScene());
     }
 
+
     /// <summary>
-    /// End barter and determines if player pool is valuable enough for NPC.
+    /// Submits the offer and determines if player pool is valuable enough for NPC.
     /// Called by UI Elements.
     /// </summary>
-    public void EndBarter() {
+    public void SubmitBarter() {
 
         SetInteractable(false);
 
@@ -227,7 +237,7 @@ public class BarteringController : MonoBehaviour {
             }
             _wonBarter = true;
 
-            StartCoroutine(LeaveBarterScene());
+            LeaveBarter();
         } else {
             // Say no!
             EndMessage.text = _currentNPCData.BarterMessageLose;
@@ -240,7 +250,7 @@ public class BarteringController : MonoBehaviour {
 
             if (barterAttempts <= _currentAttempts && barterAttempts > 0)
             {
-                StartCoroutine(LeaveBarterScene());
+                LeaveBarter();
                 return;
             }
 
@@ -248,6 +258,52 @@ public class BarteringController : MonoBehaviour {
             StartCoroutine(RestartBarter());
         }
     }
+
+
+    /// <summary>
+    /// Display revealed Effect Cards
+    /// </summary>
+    private WaitForCloseRevealScreen ShowRevealedCards()
+    {
+        CardRevealScreen.SetActive(true);
+
+        foreach (EffectCard effectCard in _revealedEffectCards)
+        {
+            GameObject effectCardDisplay = Instantiate(RevealEffectCardPrefab, CardRevealContainer);
+
+            effectCardDisplay.GetComponent<EffectCardDisplay>().Load(effectCard, null);
+        }
+
+        _revealedEffectCards.Clear();
+
+        return new WaitForCloseRevealScreen(CardRevealScreen);
+    }
+
+
+    /// <summary>
+    /// Resets the card Reveal Screen and Close it
+    /// </summary>
+    public void CloseCardScreen()
+    {
+        CardRevealScreen.SetActive(false);
+
+        foreach (Transform card in CardRevealContainer)
+        {
+            Destroy(card.gameObject);
+        }
+    }
+
+
+
+    public void AddNewReveal(EffectCard effectCard)
+    {
+        Debug.Log("ATTEMPT ADD");
+        if (_revealedEffectCards == null) return;
+
+        _revealedEffectCards.Add(effectCard);
+        Debug.Log("After Add" + _revealedEffectCards.Count);
+    }
+
 
     #endregion
 
@@ -342,6 +398,11 @@ public class BarteringController : MonoBehaviour {
     {
         yield return new WaitForSeconds(1f);
 
+        if (_revealedEffectCards.Count > 0)
+        {
+            yield return ShowRevealedCards();
+        }
+
         foreach (var item in _offeredItems.Items)
         {
             item.ResetCurrentValue();
@@ -355,8 +416,16 @@ public class BarteringController : MonoBehaviour {
         InitializeTrade(_currentNPCData, _currentCardOnOffer, _npcInstance, false);
     }
 
-    IEnumerator LeaveBarterScene() {
+    IEnumerator LeaveBarterScene() 
+    {
         yield return new WaitForSeconds(1f);
+
+        Debug.Log(_revealedEffectCards.Count);
+
+        if (_revealedEffectCards.Count > 0)
+        {
+            yield return ShowRevealedCards();
+        }
 
         foreach (var item in _offeredItems.Items)
         {
@@ -448,4 +517,23 @@ public struct TradeInfo
 {
     public OfferedItems OfferedItems;
     public InventoryCardData ReceivedItem;
+}
+
+
+public class WaitForCloseRevealScreen : CustomYieldInstruction
+{
+    private GameObject _revealScreen;
+
+    public override bool keepWaiting
+    {
+        get
+        {
+            return _revealScreen.activeInHierarchy;
+        }
+    }
+
+    public WaitForCloseRevealScreen(GameObject revealScreen)
+    {
+        _revealScreen = revealScreen;
+    }
 }

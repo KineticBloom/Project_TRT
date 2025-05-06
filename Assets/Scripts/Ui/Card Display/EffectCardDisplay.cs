@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using NaughtyAttributes;
+using DG.Tweening;
 
 public class EffectCardDisplay : MonoBehaviour
 {
@@ -22,15 +23,29 @@ public class EffectCardDisplay : MonoBehaviour
     [SerializeField] private GameObject descriptionContainer;
     [SerializeField] private TextMeshProUGUI descriptionText;
 
+    [Header("Parameters")]
+    [SerializeField] private bool revealScreen = false;
+    [SerializeField] private float flipBackDuration = 0.15f;
+    [SerializeField] private Ease flipBackEase = Ease.InQuad;
+    [SerializeField] private float flipFrontDuration = 0.15f;
+    [SerializeField] private Ease flipFrontEase = Ease.OutExpo;
+    [SerializeField] private float flipMoveHeight = 25f;
+    [SerializeField] private Ease flipFrontMoveEase = Ease.InExpo;
+    [SerializeField] private Ease flipBackMoveEase = Ease.OutExpo;
+
     [HideIf("InPlayMode")]
     public EffectCard EffectCard;
 
+
+    private BarteringController _barteringController;
+    private float _baseScale = 1f;
+    private float _baseHeight;
 
     /// <summary>
     /// Loads the Effect Card to be displayed
     /// </summary>
     /// <param name="effectCard"></param>
-    public void Load(EffectCard effectCard)
+    public void Load(EffectCard effectCard, BarteringController barteringController)
     {
         EffectCard = effectCard;
 
@@ -40,24 +55,83 @@ public class EffectCardDisplay : MonoBehaviour
         conditionImageTop.sprite = effectCard.ConditionImage;
         conditionImageBottom.sprite = effectCard.ConditionImage;
 
-        cardBack.SetActive(!effectCard.IsRevealed);
-        cardFront.SetActive(effectCard.IsRevealed);
+        descriptionText.text = (revealScreen || effectCard.IsRevealed)
+            ? effectCard.Description : effectCard.Hint;
 
-        descriptionText.text = effectCard.Description;
+        cardBack.SetActive(revealScreen || !effectCard.IsRevealed);
+        cardFront.SetActive(!revealScreen && effectCard.IsRevealed);
 
-        HideDescription();
+        if (revealScreen)
+        {
+            Reveal();
+        }
+        else
+        {
+            HideDescription();
+            _barteringController = barteringController;
+            effectCard.OnRevealed += Reveal;
+        }
 
-        effectCard.OnRevealed += Reveal;
+        _baseScale = cardFront.transform.localScale.x;
     }
 
 
     /// <summary>
-    /// Shows the front of the card and hide the back
-    /// </summary>
+    /// Shows the front of the card and hides the back
+    /// </summary> 
+    [Button]
     public void Reveal()
     {
+        _barteringController?.AddNewReveal(EffectCard);
+
+        FlipBack();
+    }
+
+
+    /// <summary>
+    /// First part of the flipping animation
+    /// </summary>
+    private void FlipBack()
+    {
+        _baseScale = cardFront.transform.localScale.x;
+        _baseHeight = cardFront.transform.localPosition.y;
+
+        cardBack.transform.localScale = Vector3.one * _baseScale;
+        cardBack.transform.localPosition = new Vector3(
+            cardFront.transform.localPosition.x,
+            _baseHeight,
+            cardFront.transform.localPosition.z);
+
+        cardBack.SetActive(true);
+        cardFront.SetActive(false);
+
+        
+        cardBack.transform.DOLocalMoveY(_baseHeight + flipMoveHeight, flipBackDuration)
+            .SetEase(flipBackMoveEase);
+        cardBack.transform.DOScaleX(0, flipBackDuration)
+            .SetEase(flipBackEase)
+            .OnComplete(() => FlipFront());
+    }
+
+
+    /// <summary>
+    /// Second part of the flipping animation
+    /// </summary>
+    private void FlipFront()
+    {
+        cardFront.transform.localScale = Vector3.up * _baseScale;
+        cardFront.transform.localPosition = new Vector3(
+            cardFront.transform.localPosition.x,
+            _baseHeight + flipMoveHeight,
+            cardFront.transform.localPosition.z);
+
         cardBack.SetActive(false);
         cardFront.SetActive(true);
+
+        cardFront.transform.DOLocalMoveY(_baseHeight, flipFrontDuration)
+            .SetEase(flipFrontMoveEase);
+        cardFront.transform.DOScaleX(_baseScale, flipFrontDuration)
+            .SetEase(flipFrontEase);
     }
 
 
@@ -67,7 +141,6 @@ public class EffectCardDisplay : MonoBehaviour
     public void ShowDescription()
     {
         if (descriptionText.text.Length == 0) return;
-        if (!EffectCard.IsRevealed) return;
 
         descriptionContainer.SetActive(true);
     }
@@ -84,7 +157,10 @@ public class EffectCardDisplay : MonoBehaviour
 
     private void OnDisable()
     {
-        EffectCard.OnRevealed -= Reveal;
+        if (!revealScreen)
+        {
+            EffectCard.OnRevealed -= Reveal;
+        }
     }
 
 

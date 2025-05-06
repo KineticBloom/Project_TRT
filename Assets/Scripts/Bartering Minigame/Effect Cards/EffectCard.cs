@@ -19,6 +19,8 @@ public abstract class EffectCard
     public Sprite Icon;
     [SerializeField, Tooltip("Description of what the effect card does")]
     public string Description;
+    [SerializeField, Tooltip("Hint for the what the card might do?")]
+    public string Hint = "What could this do?";
     [SerializeField, Tooltip("Short Text for Corners")]
     public string Text;
     [SerializeField, Tooltip("Image associated with the Condition required")]
@@ -43,7 +45,7 @@ public abstract class EffectCard
     /// <summary>
     /// Checks whether the card can activate or not
     /// </summary>
-    /// <param name="barteringController">The bartering controller to get info from</param>
+    /// <param name="tradeInfo">Information for the trade</param>
     /// <param name="activationTime">When the activation is being attempted</param>
     /// <returns>Whether a boolean of whether </returns>
     public abstract bool DoesActivate(TradeInfo tradeInfo, ActivationTime activationTime);
@@ -52,7 +54,7 @@ public abstract class EffectCard
     /// <summary>
     /// Activates the effect card
     /// </summary>
-    /// <param name="barteringController">The bartering controller to modify info on</param>
+    /// <param name="tradeInfo">Information for the card to modify</param>
     public abstract int Activate(TradeInfo tradeInfo);
 
 

@@ -17,6 +17,8 @@ MonoBehaviour:
   Bio: It's a Roro
   FlagID: roro_5_bartered
   ItemOnOffer: {fileID: 11400000, guid: a942cf1638829df488725379b2d4fab7, type: 2}
+  ItemsOnOffer:
+  - {fileID: 11400000, guid: a942cf1638829df488725379b2d4fab7, type: 2}
   BarterMessageWin: Here you go!
   BarterMessageLose: That's not enough...
   BarterAttempts: 1
@@ -38,6 +40,7 @@ MonoBehaviour:
         Icon: {fileID: 21300000, guid: 9bd95f8332db3c24887f6107f437e2bc, type: 3}
         Description: Tool items worth multiplied by 2
         Text: x2
+        ConditionImage: {fileID: 0}
         _revealed: 0
         RequiresAllConditions: 1
         ItemConditions:

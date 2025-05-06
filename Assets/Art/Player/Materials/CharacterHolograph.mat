@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerHolograph
+  m_Name: CharacterHolograph
   m_Shader: {fileID: -6465566751694194690, guid: 4b2b0efdb2a18734da165bbfe5086040,
     type: 3}
   m_Parent: {fileID: 0}
@@ -66,11 +66,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.082
+    - _Alpha: 0.524
     - _DisortStrenght: 3
     - _DisortStrength: 0.01
     - _DistortionOnTexture: 0
     - _HologramTiling: 1
+    - _MergeIntensity: 0.177
     - _Metalic: 0.246
     - _Metallic: 0.08
     - _NormalStrenght: 0.01
@@ -84,6 +85,8 @@ Material:
     - _Strenght: 0.12
     - _Tiling: 400
     m_Colors:
+    - _MergeColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MixColor: {r: 0, g: 0, b: 0, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Tiling: {r: 0.1, g: 0.1, b: 0, a: 0}
     - _TintColor: {r: 1, g: 1, b: 1, a: 1}

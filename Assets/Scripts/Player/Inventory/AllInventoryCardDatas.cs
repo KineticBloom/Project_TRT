@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static GameEnums;
 
 
 [CreateAssetMenu(fileName = "AllInventoryCardDatas", menuName = "ScriptableObjects/AllICDatas", order = 1)]

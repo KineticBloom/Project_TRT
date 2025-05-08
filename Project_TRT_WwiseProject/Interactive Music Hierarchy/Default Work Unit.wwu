@@ -40,8 +40,6 @@
 												<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
 												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
 												<Property Name="ExitSourceAt" Type="int16" Value="3"/>
-												<Property Name="PlayDestinationPreEntry" Type="bool" Value="False"/>
-												<Property Name="PlaySourcePostExit" Type="bool" Value="False"/>
 											</PropertyList>
 											<TransitionInfo>
 												<SourceFadeOut>
@@ -58,6 +56,35 @@
 													<MusicFade Name="Destination Fade-in" ID="{7D54A231-D248-47EA-B431-DB1AB19E3F4A}">
 														<PropertyList>
 															<Property Name="FadeCurve" Type="int16" Value="3"/>
+															<Property Name="FadeOffset" Type="Real64" Value="-0.6"/>
+															<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+														</PropertyList>
+													</MusicFade>
+												</DestinationFadeIn>
+											</TransitionInfo>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{BA64A088-EF5D-48F2-9B06-CD7874D7517F}">
+											<PropertyList>
+												<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="3"/>
+											</PropertyList>
+											<TransitionInfo>
+												<SourceFadeOut>
+													<MusicFade Name="Source Fade-out" ID="{B6901AFC-CFE7-4EFE-95C2-7B736D6D1BA9}">
+														<PropertyList>
+															<Property Name="FadeCurve" Type="int16" Value="7"/>
+															<Property Name="FadeOffset" Type="Real64" Value="1.7"/>
+															<Property Name="FadeTime" Type="Real64" Value="2"/>
+															<Property Name="FadeType" Type="int16" Value="1"/>
+														</PropertyList>
+													</MusicFade>
+												</SourceFadeOut>
+												<DestinationFadeIn>
+													<MusicFade Name="Destination Fade-in" ID="{025C3E7E-30C5-4F8C-AD2A-118A88D19107}">
+														<PropertyList>
+															<Property Name="FadeCurve" Type="int16" Value="3"/>
+															<Property Name="FadeOffset" Type="Real64" Value="-0.6"/>
 															<Property Name="FadeTime" Type="Real64" Value="1.5"/>
 														</PropertyList>
 													</MusicFade>
@@ -479,6 +506,10 @@
 							</ChildrenList>
 						</MusicPlaylistContainer>
 						<MusicPlaylistContainer Name="PlayerSpawn" ID="{3FC073F9-6EBD-4285-9702-06E6A2A90930}" ShortID="162490987">
+							<PropertyList>
+								<Property Name="OverrideClockSettings" Type="bool" Value="True"/>
+								<Property Name="Tempo" Type="Real64" Value="125"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
@@ -528,7 +559,6 @@
 								<MusicSegment Name="MUSC_Player_Spawn" ID="{DBA8740D-48C0-443C-AFD1-675A87D75CF1}" ShortID="141129864">
 									<PropertyList>
 										<Property Name="EndPosition" Type="Real64" Value="68920.3828697361"/>
-										<Property Name="OverrideClockSettings" Type="bool" Value="True"/>
 										<Property Name="Tempo" Type="Real64" Value="125"/>
 									</PropertyList>
 									<ReferenceList>
@@ -838,6 +868,170 @@
 								</MusicSegment>
 							</ChildrenList>
 						</MusicPlaylistContainer>
+						<MusicPlaylistContainer Name="MailbotRoom" ID="{34D4FF45-0222-41E7-99EA-7C3213475D30}" ShortID="377029392">
+							<PropertyList>
+								<Property Name="OverrideClockSettings" Type="bool" Value="True"/>
+								<Property Name="Tempo" Type="Real64" Value="115"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+								</Reference>
+								<Reference Name="PlaylistRoot">
+									<Custom>
+										<MusicPlaylistItem Name="" ID="{4382E1E4-FEFE-4916-9971-D0BF9E9BAD3B}" ShortID="131373941">
+											<PropertyList>
+												<Property Name="LoopCount" Type="int16" Value="0"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicPlaylistItem Name="" ID="{BCA61EF4-D3C3-46D3-B124-B4D2C30E6398}" ShortID="729864615">
+													<PropertyList>
+														<Property Name="LoopCount" Type="int16" Value="0"/>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Segment">
+															<ObjectRef Name="MUSC_Mailbot_Room" ID="{766335B6-9C04-46CE-9B0D-2BF2F9AC5553}" WorkUnitID="{3CA207E9-88B7-4086-A56F-225EA88A4DFE}"/>
+														</Reference>
+													</ReferenceList>
+												</MusicPlaylistItem>
+											</ChildrenList>
+										</MusicPlaylistItem>
+									</Custom>
+								</Reference>
+								<Reference Name="TransitionRoot">
+									<Custom>
+										<MusicTransition Name="Root" ID="{B296E524-B77A-4246-934C-4286A4D5A2DC}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicTransition Name="Transition" ID="{176AEE22-2690-42B0-808A-F2EEC3E9AF4D}">
+													<TransitionInfo/>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicSegment Name="MUSC_Mailbot_Room" ID="{766335B6-9C04-46CE-9B0D-2BF2F9AC5553}" ShortID="810933513">
+									<PropertyList>
+										<Property Name="EndPosition" Type="Real64" Value="96714.4828452535"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicTrack Name="MUSC_Mailbot_Room" ID="{4BC16816-3840-4250-93F1-437F1D02517A}" ShortID="994503605">
+											<ReferenceList>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{677CD88C-DD02-45F4-B091-3529CBEAEE89}">
+															<PropertyList>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="MUSC_Mailbot_Room" ID="{B893BF63-A3B6-4F32-A28A-2FF1153E3EC8}">
+													<Language>SFX</Language>
+													<AudioFile>MUSC_Mailbot_Room.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="475666812"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Sequences">
+													<Reference>
+														<Local>
+															<MusicTrackSequence Name="" ID="{5F10BB93-E5E2-4172-9DDE-771D0392963E}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="MUSC_Mailbot_Room" ID="{2B3745BC-98B3-4A45-92DB-192522D07BE1}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="64000"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="MUSC_Mailbot_Room" ID="{B893BF63-A3B6-4F32-A28A-2FF1153E3EC8}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																		<Reference>
+																			<Local>
+																				<MusicEventCue Name="" ID="{E0826454-9181-40E8-B2B3-C3CB15002102}" ShortID="505528898">
+																					<PropertyList>
+																						<Property Name="PlayAt" Type="Real64" Value="32075.5615751166"/>
+																					</PropertyList>
+																					<ReferenceList>
+																						<Reference Name="PostEventTarget">
+																							<ObjectRef Name="Key_F" ID="{B3947EDD-F193-4924-97B2-0A3857A62B40}" WorkUnitID="{CF49AA1B-A4E5-43FE-8CBE-031C55500853}"/>
+																						</Reference>
+																					</ReferenceList>
+																				</MusicEventCue>
+																			</Local>
+																		</Reference>
+																		<Reference>
+																			<Local>
+																				<MusicEventCue Name="" ID="{C60E1772-E83E-489B-B72E-21DD28DE9727}" ShortID="894124253">
+																					<ReferenceList>
+																						<Reference Name="PostEventTarget">
+																							<ObjectRef Name="Key_C" ID="{1B6DBE59-7006-4771-BB00-FDFBAFC1EBA1}" WorkUnitID="{CF49AA1B-A4E5-43FE-8CBE-031C55500853}"/>
+																						</Reference>
+																					</ReferenceList>
+																				</MusicEventCue>
+																			</Local>
+																		</Reference>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicTrack>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Cues">
+											<Reference>
+												<Local>
+													<MusicCue Name="Entry Cue" ID="{EADF6808-6705-4BA1-9841-CEACA5177D49}"/>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<MusicCue Name="Exit Cue" ID="{6779C857-20A4-491C-9898-BCAE91294A8B}">
+														<PropertyList>
+															<Property Name="CueType" Type="int16" Value="1"/>
+															<Property Name="TimeMs" Type="Real64" Value="64000"/>
+														</PropertyList>
+													</MusicCue>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicSegment>
+							</ChildrenList>
+						</MusicPlaylistContainer>
 					</ChildrenList>
 					<StateInfo>
 						<StateGroupList>
@@ -865,6 +1059,10 @@
 							<CustomState>
 								<StateRef Name="Active" ID="{A4AE8BB5-B12D-49FE-8894-16968C8D3D71}"/>
 								<CustomState Name="" ID="{DD648CE9-3BF1-463E-9F8A-8928D6E13EB3}" ShortID="975353185"/>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="MailbotRoom" ID="{1EC052D8-37C9-4D0A-8148-CC10C0A2835E}"/>
+								<CustomState Name="" ID="{9A5BCA71-11C8-44B3-A20F-5DFA34C49053}" ShortID="603075527"/>
 							</CustomState>
 						</CustomStateList>
 					</StateInfo>
@@ -959,6 +1157,24 @@
 											<ObjectList Name="EntryPath">
 												<Reference>
 													<ObjectRef Name="Barter" ID="{4BF7E3F5-3CAA-4531-B914-D1278D66757C}" WorkUnitID="{5295B7E6-B0B8-4F63-8A96-7D61276F57FA}"/>
+												</Reference>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MultiSwitchEntry Name="" ID="{ABA29BC1-6556-4DDE-8229-EB399575921B}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="MailbotRoom" ID="{34D4FF45-0222-41E7-99EA-7C3213475D30}" WorkUnitID="{3CA207E9-88B7-4086-A56F-225EA88A4DFE}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<Reference>
+													<ObjectRef Name="MailbotRoom" ID="{1EC052D8-37C9-4D0A-8148-CC10C0A2835E}" WorkUnitID="{5295B7E6-B0B8-4F63-8A96-7D61276F57FA}"/>
 												</Reference>
 											</ObjectList>
 										</ObjectLists>

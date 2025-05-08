@@ -39,6 +39,7 @@ namespace AK
         static const AkUniqueID MUSICSTATEBARTER = 4269622689U;
         static const AkUniqueID MUSICSTATEBARTERING = 237747687U;
         static const AkUniqueID MUSICSTATECALM = 821441420U;
+        static const AkUniqueID MUSICSTATEMAILBOTROOM = 1881520806U;
         static const AkUniqueID MUSICSTATEPLAYERSPAWN = 1031159975U;
         static const AkUniqueID PAUSEMUSIC = 1127073398U;
         static const AkUniqueID PLAY_MACHINEHUM1_LOOPCONTAINER = 30480848U;
@@ -93,6 +94,7 @@ namespace AK
                 static const AkUniqueID BARTER = 644073513U;
                 static const AkUniqueID CALM = 3753286132U;
                 static const AkUniqueID MAILBOTBARTER = 1029337087U;
+                static const AkUniqueID MAILBOTROOM = 1643460142U;
                 static const AkUniqueID NONE = 748895195U;
                 static const AkUniqueID PLAYERSPAWN = 2064283983U;
             } // namespace STATE

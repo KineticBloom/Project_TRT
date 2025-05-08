@@ -177,6 +177,8 @@ public class MusicManager : MonoBehaviour
     {
         if (musicStateEventsDict.ContainsKey(stateName))
         {
+            // if (stateName == currentMusicState) return; // REDUNDANT???? :0
+
             // Update music state attributes
             previousMusicState = currentMusicState;
             currentMusicState = stateName;

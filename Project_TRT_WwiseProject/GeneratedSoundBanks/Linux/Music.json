@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{2CAF7C27-18E4-40A7-871C-C075A9250659}",
     "Language": "SFX",
-    "Hash": "{E1BB8121-99BB-64AA-F922-6D1B37FF27D0}",
+    "Hash": "{72AAD423-3E0F-534A-B539-14EFC839CF3F}",
     "ObjectPath": "\\SoundBanks\\Music\\Music",
     "ShortName": "Music",
     "Path": "Music.bnk",
@@ -38,6 +38,14 @@
       "Location": "Memory",
       "ShortName": "MUSC_Startup_Music.wav",
       "CachePath": "74/{742A7B3A-1EE6-AD96-F3B2-09CE7C060A4D}.wem"
+     },
+     {
+      "Id": "475666812",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MUSC_Mailbot_Room.wav",
+      "CachePath": "C7/{C71A73C8-5AD7-590B-000D-7FCB151278FC}.wem"
      },
      {
       "Id": "655550078",
@@ -85,6 +93,25 @@
       ]
      },
      {
+      "Id": "3865414040",
+      "Name": "Key_C",
+      "ObjectPath": "\\Events\\Music\\MusicKeyStateEvents\\Key_C",
+      "GUID": "{1B6DBE59-7006-4771-BB00-FDFBAFC1EBA1}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "3124027310",
+        "Id": "84696444",
+        "Name": "C",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\C",
+        "GUID": "{CA968F0E-DC6F-495F-BDF7-E49DA74E43D3}"
+       }
+      ]
+     },
+     {
       "Id": "3108336397",
       "Name": "Key_C_Sharp",
       "ObjectPath": "\\Events\\Music\\MusicKeyStateEvents\\Key_C_Sharp",
@@ -119,6 +146,25 @@
         "Name": "D",
         "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\D",
         "GUID": "{59A9C4E2-4474-466D-89E2-3F527F929EE3}"
+       }
+      ]
+     },
+     {
+      "Id": "3865414045",
+      "Name": "Key_F",
+      "ObjectPath": "\\Events\\Music\\MusicKeyStateEvents\\Key_F",
+      "GUID": "{B3947EDD-F193-4924-97B2-0A3857A62B40}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "3124027310",
+        "Id": "84696441",
+        "Name": "F",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\F",
+        "GUID": "{D9891193-7A4F-444A-95EB-E6A7D85987F9}"
        }
       ]
      },
@@ -195,6 +241,25 @@
         "Name": "Calm",
         "ObjectPath": "\\States\\Default Work Unit\\MusicState\\Calm",
         "GUID": "{4A916F2C-FEA7-4172-9C63-FC5255A5BA9D}"
+       }
+      ]
+     },
+     {
+      "Id": "1881520806",
+      "Name": "MusicStateMailbotRoom",
+      "ObjectPath": "\\Events\\Music\\MusicEvents\\MusicStateMailbotRoom",
+      "GUID": "{A24D9549-7B6F-4965-AAB9-617B3BC2696B}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "1021618141",
+        "Id": "1643460142",
+        "Name": "MailbotRoom",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\MailbotRoom",
+        "GUID": "{1EC052D8-37C9-4D0A-8148-CC10C0A2835E}"
        }
       ]
      },
@@ -291,6 +356,19 @@
           "Id": "655550078"
          }
         ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "1643460142",
+         "GUID": "{1EC052D8-37C9-4D0A-8148-CC10C0A2835E}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "475666812"
+         }
+        ]
        }
       ]
      },
@@ -382,6 +460,19 @@
           "Id": "655550078"
          }
         ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "1643460142",
+         "GUID": "{1EC052D8-37C9-4D0A-8148-CC10C0A2835E}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "475666812"
+         }
+        ]
        }
       ]
      },
@@ -454,6 +545,19 @@
         "MediaRefs": [
          {
           "Id": "655550078"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "1643460142",
+         "GUID": "{1EC052D8-37C9-4D0A-8148-CC10C0A2835E}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "475666812"
          }
         ]
        }
@@ -533,6 +637,19 @@
           "Id": "655550078"
          }
         ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "1643460142",
+         "GUID": "{1EC052D8-37C9-4D0A-8148-CC10C0A2835E}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "475666812"
+         }
+        ]
        }
       ]
      }
@@ -567,6 +684,12 @@
         "Name": "MailbotBarter",
         "ObjectPath": "\\States\\Default Work Unit\\MusicState\\MailbotBarter",
         "GUID": "{220970BA-3873-4295-B08E-35E3D335D7F9}"
+       },
+       {
+        "Id": "1643460142",
+        "Name": "MailbotRoom",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\MailbotRoom",
+        "GUID": "{1EC052D8-37C9-4D0A-8148-CC10C0A2835E}"
        },
        {
         "Id": "2064283983",
@@ -671,6 +794,6 @@
     ]
    }
   ],
-  "FileHash": "{F17CB407-DAFC-20FD-712C-B42E3D66CD11}"
+  "FileHash": "{198049B9-65C7-B8B6-DF0E-B8294DB19D9A}"
  }
 }

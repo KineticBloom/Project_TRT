@@ -1117,7 +1117,7 @@ MonoBehaviour:
     ParentPath: Events\Music
     guid: 1baa49cfe5a4fe438cbe031c55500853
     GuidInternal: 
-    m_lastTime: -8584549241352151309
+    m_lastTime: -8584549229151558317
     List:
     - name: Key_A
       guid: a348740626e76b4592a95b259a257e46
@@ -1157,8 +1157,8 @@ MonoBehaviour:
         guid: 7d960a504840274aa41091b37bec9e4e
       Path: Events\Music\MusicKeyStateEvents\Key_A_Sharp
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Key_B
       guid: 7ef4067cb2d0b24a83060d089acfde21
       id: 3865414041
@@ -1197,8 +1197,8 @@ MonoBehaviour:
         guid: 59be6d1b06707147bb00fdfbafc1eba1
       Path: Events\Music\MusicKeyStateEvents\Key_C
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Key_C_Sharp
       guid: fbf25cce742d1d49827dd3b7d6a68d00
       id: 3108336397
@@ -1297,8 +1297,8 @@ MonoBehaviour:
         guid: dd7e94b393f1244997b20a3857a62b40
       Path: Events\Music\MusicKeyStateEvents\Key_F
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Key_F_Sharp
       guid: 9aa972dbf7b52d499367ee91195e302b
       id: 2159057780
@@ -1470,6 +1470,26 @@ MonoBehaviour:
         ObjectType: 3
         guid: d4d011b7ab20394ab4e982305ba67d38
       Path: Events\Music\MusicEvents\MusicStateCalm
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: MusicStateMailbotRoom
+      guid: 49954da26f7b6549aab9617b3bc2696b
+      id: 1881520806
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicEvents
+        ObjectType: 4
+        guid: bb98cb8f8639c644980fd12d17cb9504
+      - ElementName: MusicStateMailbotRoom
+        ObjectType: 3
+        guid: 49954da26f7b6549aab9617b3bc2696b
+      Path: Events\Music\MusicEvents\MusicStateMailbotRoom
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -1993,7 +2013,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: e6b79552b8b0634f8a967d61276f57fa
     GuidInternal: 
-    m_lastTime: -8584549240242775494
+    m_lastTime: -8584549229425319014
     List:
     - name: CurrentMusicKey
       guid: 6fc02a74e5f10d408a3c979fa3ccb73b
@@ -2300,6 +2320,22 @@ MonoBehaviour:
         - ElementName: MailbotBarter
           ObjectType: 8
           guid: ba70092273389542b08e35e3d335d7f9
+      - name: MailbotRoom
+        guid: d852c01ec9370a4d8148cc10c0a2835e
+        id: 1643460142
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: MusicState
+          ObjectType: 9
+          guid: 5df940ae313415468d9b77fe40be0b6c
+        - ElementName: MailbotRoom
+          ObjectType: 8
+          guid: d852c01ec9370a4d8148cc10c0a2835e
       - name: None
         guid: 1162ecb9dd81564cbc1ee4da0611b591
         id: 748895195
@@ -2378,7 +2414,7 @@ MonoBehaviour:
         guid: 23c0f7a154fe4f4dbb4cbb0e19d72476
       Path: Triggers\Default Work Unit\Test
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 050000000e000000100000001100000012000000140000001b0000001c0000001d0000001f000000
+  ExpandedWaapiItemIds: 050000000e00000010000000110000001200000013000000140000001b0000001c0000001d0000001f000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

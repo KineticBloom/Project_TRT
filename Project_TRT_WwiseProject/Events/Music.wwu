@@ -130,6 +130,20 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="MusicStateMailbotRoom" ID="{A24D9549-7B6F-4965-AAB9-617B3BC2696B}">
+							<ChildrenList>
+								<Action Name="" ID="{6F94FCC2-0530-42EE-B33F-D5A50AC612FF}" ShortID="681531197">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="22"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="MailbotRoom" ID="{1EC052D8-37C9-4D0A-8148-CC10C0A2835E}" WorkUnitID="{5295B7E6-B0B8-4F63-8A96-7D61276F57FA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="StartupMusicEvents" ID="{AAFBCDB9-FFC2-4BB7-B66B-BF742D558524}" ShortID="927031611">

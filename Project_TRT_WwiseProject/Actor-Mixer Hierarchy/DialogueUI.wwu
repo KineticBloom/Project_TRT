@@ -4,6 +4,18 @@
 		<WorkUnit Name="DialogueUI" ID="{7239A718-9F04-4BD1-B1E7-E08BFD1C55E1}" OwnerID="{FA3D3862-1B73-4691-AADA-BC295B658906}" PersistMode="Nested">
 			<ChildrenList>
 				<Sound Name="UI_Conversation_Start" ID="{2E611165-C1A7-47FB-B645-6ACF8979C756}" ShortID="1046894013">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
@@ -39,7 +51,7 @@
 						</Property>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>4</Value>
+								<Value>6</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -163,6 +175,149 @@
 					</StateInfo>
 					<ActiveSourceList>
 						<ActiveSource Name="Barter_Menu_Start" ID="{58BF04E5-F213-48EF-BC6B-7FEBADF7D6C8}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Barter_Menu_Close" ID="{5CB96F92-4008-47F1-ABA5-A95101E73E7E}" ShortID="82751483">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Barter_Menu_Close" ID="{66BF9A09-C317-483E-B106-11A81A60D7E4}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Barter_Menu_Close.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="900375320"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<StateInfo>
+						<StateGroupList>
+							<StateGroupInfo>
+								<StateGroupRef Name="CurrentMusicKey" ID="{742AC06F-F1E5-400D-8A3C-979FA3CCB73B}"/>
+							</StateGroupInfo>
+						</StateGroupList>
+						<CustomStateList>
+							<CustomState>
+								<StateRef Name="G_Sharp" ID="{DCBD14B6-29E8-4079-8029-256B6B05327F}"/>
+								<CustomState Name="" ID="{C542EDEE-4A62-41C7-A53B-95B0BD715337}" ShortID="190127084">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32" Value="-400"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="F_Sharp" ID="{5EC7AD78-CFC9-40B1-A019-7696DF8E2BE0}"/>
+								<CustomState Name="" ID="{7B857B0E-F955-43C8-A520-053526F31FA7}" ShortID="527035111">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32" Value="600"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="A_Sharp" ID="{4F74E2F2-25D2-4145-AAF0-82F2B629DB48}"/>
+								<CustomState Name="" ID="{C412825C-0418-4836-93E8-F5EB0E88B2A9}" ShortID="910724956">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32" Value="-200"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="B" ID="{CED6A7A2-0B2E-414A-9676-972AE83331D4}"/>
+								<CustomState Name="" ID="{8F9DED9A-0C2A-4A97-B67E-287C51F3507A}" ShortID="967905188">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32" Value="-100"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="E" ID="{6A304187-E393-43CE-AC84-241B7F8022FD}"/>
+								<CustomState Name="" ID="{F5816F20-5AB5-4B3C-B95D-7CE37BF4D4FF}" ShortID="187044820">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32" Value="400"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="G" ID="{4677B5F0-FEE1-4412-B3D7-A9FD92DCF3F0}"/>
+								<CustomState Name="" ID="{A8884A48-D92D-4D45-B72C-11DF5006E185}" ShortID="1016134586">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32" Value="-500"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="C_Sharp" ID="{67979DBC-F8C4-4417-93DF-25E986BE60C8}"/>
+								<CustomState Name="" ID="{EF5C8F3F-BDAF-47E5-8945-294756F94BA4}" ShortID="619553540">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32" Value="100"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="D_Sharp" ID="{C4A616FB-E710-45D9-AFC0-92E83758D47D}"/>
+								<CustomState Name="" ID="{58684AA9-3667-4687-8E9B-F84BDE28E7D8}" ShortID="740634000">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32" Value="300"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="A" ID="{D7DC47F7-8101-46B0-9C1D-0EE1FF6B2AE5}"/>
+								<CustomState Name="" ID="{702A6559-A3D3-4FA9-897E-630E8FF12C70}" ShortID="125901981">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32" Value="-300"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="C" ID="{91A1F541-CC44-4B71-B3DC-76891B293ED9}"/>
+								<CustomState Name="" ID="{663EAF49-96CC-4E5A-A7BA-E28C54D5513B}" ShortID="203834666"/>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="F" ID="{2E897E8B-6DA5-4BB6-B7F2-F2DC68F64A56}"/>
+								<CustomState Name="" ID="{B1E47E2C-14E8-42B5-A7E1-266CC829DEEC}" ShortID="1058128122">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32" Value="500"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="D" ID="{06F05A75-886D-4DCC-81F2-0B3351E82BFE}"/>
+								<CustomState Name="" ID="{B9C4668D-8682-412F-AD31-8F486F2FAEBF}" ShortID="934857501">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32" Value="200"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+						</CustomStateList>
+					</StateInfo>
+					<ActiveSourceList>
+						<ActiveSource Name="Barter_Menu_Close" ID="{66BF9A09-C317-483E-B106-11A81A60D7E4}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>

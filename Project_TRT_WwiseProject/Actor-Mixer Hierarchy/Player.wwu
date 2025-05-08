@@ -101,6 +101,16 @@
 				</RandomSequenceContainer>
 				<BlendContainer Name="ENV_Player_Footstep_Concrete" ID="{D3BDCB13-F546-4757-BA58-27B2622AD3CB}" ShortID="583873391">
 					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>5</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
 								<Value>-4</Value>

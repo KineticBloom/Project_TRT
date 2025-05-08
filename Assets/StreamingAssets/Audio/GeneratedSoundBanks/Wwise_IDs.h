@@ -19,7 +19,6 @@ namespace AK
         static const AkUniqueID BART_CARD_PLACE = 3630843069U;
         static const AkUniqueID BART_CARD_SELECT = 349408092U;
         static const AkUniqueID BART_CARD_SHUFFLE = 362751767U;
-        static const AkUniqueID BARTEREVENTOPEN = 884323815U;
         static const AkUniqueID BIRDSTART = 3943065624U;
         static const AkUniqueID CONVERSATIONSTART = 1163963844U;
         static const AkUniqueID DOOROPEN = 1404805401U;
@@ -67,18 +66,6 @@ namespace AK
 
             namespace STATE
             {
-                static const AkUniqueID A = 84696446U;
-                static const AkUniqueID A_SHARP = 164139463U;
-                static const AkUniqueID B = 84696445U;
-                static const AkUniqueID C = 84696444U;
-                static const AkUniqueID C_SHARP = 2816864521U;
-                static const AkUniqueID D = 84696443U;
-                static const AkUniqueID D_SHARP = 844677726U;
-                static const AkUniqueID E = 84696442U;
-                static const AkUniqueID F = 84696441U;
-                static const AkUniqueID F_SHARP = 951594152U;
-                static const AkUniqueID G = 84696440U;
-                static const AkUniqueID G_SHARP = 3736223277U;
                 static const AkUniqueID NONE = 748895195U;
             } // namespace STATE
         } // namespace CURRENTMUSICKEY

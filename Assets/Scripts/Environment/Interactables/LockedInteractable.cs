@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class LockedInteractable : Interactable
 {
     public InventoryCardData RequiredCard;
+    [SerializeField] private TextAsset inkScript;
     [SerializeField] private bool removeAfterInteraction = false;
     [SerializeField] private bool locked = true;
     [SerializeField] private UnityEvent callbackFunction;
@@ -37,7 +38,18 @@ public class LockedInteractable : Interactable
             {
                 GameManager.Inventory.RemoveCard(RequiredCard);
             }
+
+            if (inkScript != null)
+            {
+                GameManager.DialogueManager.StartDialogue(inkScript, null, transform.position, GameManager.Player.transform.position, "Unlock");
+            }
+
             callbackFunction.Invoke();
+        }
+
+        if (locked && inkScript != null)
+        {
+            GameManager.DialogueManager.StartDialogue(inkScript, null, transform.position, GameManager.Player.transform.position, "Locked");
         }
 
         UpdateInteractIconLocation();

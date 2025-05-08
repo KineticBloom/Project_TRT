@@ -8,6 +8,7 @@ public class NpcInteractable : Interactable
     [SerializeField] private TextAsset npcConversation;
     [Expandable] public NPCData NpcData;
 
+    public AudioEvent dialogueStartSFX;
     public AudioEvent interactionBarkSFX;
     public AudioEvent barterBarkSFX;
 
@@ -24,6 +25,7 @@ public class NpcInteractable : Interactable
         Vector3 PlayerWorldPosition = GameManager.Player.DialogueSource.position;
         GameManager.DialogueManager.StartDialogue(npcConversation, TriggerBarter, NPCWorldPosition, PlayerWorldPosition);
 
+        dialogueStartSFX.Play(gameObject);
         interactionBarkSFX.Play(gameObject);
     }
 

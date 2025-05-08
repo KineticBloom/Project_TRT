@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{2CAF7C27-18E4-40A7-871C-C075A9250659}",
     "Language": "SFX",
-    "Hash": "{717107F0-A47E-ED4D-7012-5CC585BFB311}",
+    "Hash": "{A4B15511-5319-4DE2-886E-20C142E5C585}",
     "ObjectPath": "\\SoundBanks\\Music\\Music",
     "ShortName": "Music",
     "Path": "Music.bnk",
@@ -30,6 +30,14 @@
       "Location": "Memory",
       "ShortName": "EnvAttempt4.2.wav",
       "CachePath": "85/{8568FB55-E3E0-AF9D-E18B-7D6E2C4A9A5B}.wem"
+     },
+     {
+      "Id": "394168652",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MUSC_Startup_Music.wav",
+      "CachePath": "74/{742A7B3A-1EE6-AD96-F3B2-09CE7C060A4D}.wem"
      },
      {
       "Id": "655550078",
@@ -226,6 +234,20 @@
           "Id": "655550078"
          }
         ]
+       }
+      ]
+     },
+     {
+      "Id": "4206258635",
+      "Name": "PlayStartupMusic",
+      "ObjectPath": "\\Events\\Music\\StartupMusicEvents\\PlayStartupMusic",
+      "GUID": "{35F96E62-9763-482B-997C-4AC88ABCE921}",
+      "DurationType": "OneShot",
+      "DurationMin": "7.7868977",
+      "DurationMax": "7.7868977",
+      "MediaRefs": [
+       {
+        "Id": "394168652"
        }
       ]
      },
@@ -506,6 +528,6 @@
     ]
    }
   ],
-  "FileHash": "{5D80D105-64FC-35C1-723C-9ADD75C2A507}"
+  "FileHash": "{E76638D9-5B73-22AB-5942-B8E8D11A9A16}"
  }
 }

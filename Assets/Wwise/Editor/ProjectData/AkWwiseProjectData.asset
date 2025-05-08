@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 587ca0226052be4e9b8540a22c4f2092
     GuidInternal: 
-    m_lastTime: -8584549261249125051
+    m_lastTime: -8584549232454879126
     List:
     - name: AmbienceMaster
       guid: b98c6c284c7de7449139c8391e920f9c
@@ -422,7 +422,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Music
     guid: 5f5c2e836df59d41833026f7bc293cab
     GuidInternal: 
-    m_lastTime: -8584549261247865903
+    m_lastTime: -8584549256223219745
     List:
     - name: Music
       guid: 277caf2ce418a740871cc075a9250659
@@ -809,8 +809,28 @@ MonoBehaviour:
     ParentPath: Events\UI\DialogueUI
     guid: 5f47fcfbe9a3aa4593ef3112c673b6da
     GuidInternal: 
-    m_lastTime: -8584549261277486686
+    m_lastTime: -8584549246675396174
     List:
+    - name: BarterEventOpen
+      guid: b6b22459d266e04e83571e8c6fd0eb5c
+      id: 884323815
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: 75f867dc1a9906498df4975d819bec40
+      - ElementName: DialogueUI
+        ObjectType: 12
+        guid: 5f47fcfbe9a3aa4593ef3112c673b6da
+      - ElementName: BarterEventOpen
+        ObjectType: 3
+        guid: b6b22459d266e04e83571e8c6fd0eb5c
+      Path: Events\UI\DialogueUI\BarterEventOpen
+      maxAttenuation: 0
+      maxDuration: 2.4855783
+      minDuration: 2.4855783
     - name: ConversationStart
       guid: 158ea13dea5eae41a8005d9966f3d771
       id: 1163963844
@@ -1097,8 +1117,248 @@ MonoBehaviour:
     ParentPath: Events\Music
     guid: 1baa49cfe5a4fe438cbe031c55500853
     GuidInternal: 
-    m_lastTime: -8584549261277466667
+    m_lastTime: -8584549241352151309
     List:
+    - name: Key_A
+      guid: a348740626e76b4592a95b259a257e46
+      id: 3865414042
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_A
+        ObjectType: 3
+        guid: a348740626e76b4592a95b259a257e46
+      Path: Events\Music\MusicKeyStateEvents\Key_A
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Key_A_Sharp
+      guid: 7d960a504840274aa41091b37bec9e4e
+      id: 3472466315
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_A_Sharp
+        ObjectType: 3
+        guid: 7d960a504840274aa41091b37bec9e4e
+      Path: Events\Music\MusicKeyStateEvents\Key_A_Sharp
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Key_B
+      guid: 7ef4067cb2d0b24a83060d089acfde21
+      id: 3865414041
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_B
+        ObjectType: 3
+        guid: 7ef4067cb2d0b24a83060d089acfde21
+      Path: Events\Music\MusicKeyStateEvents\Key_B
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Key_C
+      guid: 59be6d1b06707147bb00fdfbafc1eba1
+      id: 3865414040
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_C
+        ObjectType: 3
+        guid: 59be6d1b06707147bb00fdfbafc1eba1
+      Path: Events\Music\MusicKeyStateEvents\Key_C
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Key_C_Sharp
+      guid: fbf25cce742d1d49827dd3b7d6a68d00
+      id: 3108336397
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_C_Sharp
+        ObjectType: 3
+        guid: fbf25cce742d1d49827dd3b7d6a68d00
+      Path: Events\Music\MusicKeyStateEvents\Key_C_Sharp
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Key_D
+      guid: 8e921287c669bc49a72aeb30570864fb
+      id: 3865414047
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_D
+        ObjectType: 3
+        guid: 8e921287c669bc49a72aeb30570864fb
+      Path: Events\Music\MusicKeyStateEvents\Key_D
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Key_D_Sharp
+      guid: 01d40168c8b7734a985c840b5a855b28
+      id: 3053480186
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_D_Sharp
+        ObjectType: 3
+        guid: 01d40168c8b7734a985c840b5a855b28
+      Path: Events\Music\MusicKeyStateEvents\Key_D_Sharp
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Key_E
+      guid: 538661cb1d010d408230faedd397768d
+      id: 3865414046
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_E
+        ObjectType: 3
+        guid: 538661cb1d010d408230faedd397768d
+      Path: Events\Music\MusicKeyStateEvents\Key_E
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Key_F
+      guid: dd7e94b393f1244997b20a3857a62b40
+      id: 3865414045
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_F
+        ObjectType: 3
+        guid: dd7e94b393f1244997b20a3857a62b40
+      Path: Events\Music\MusicKeyStateEvents\Key_F
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Key_F_Sharp
+      guid: 9aa972dbf7b52d499367ee91195e302b
+      id: 2159057780
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_F_Sharp
+        ObjectType: 3
+        guid: 9aa972dbf7b52d499367ee91195e302b
+      Path: Events\Music\MusicKeyStateEvents\Key_F_Sharp
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Key_G
+      guid: b498217bd4251548a0192b6459622cea
+      id: 3865414044
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_G
+        ObjectType: 3
+        guid: b498217bd4251548a0192b6459622cea
+      Path: Events\Music\MusicKeyStateEvents\Key_G
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Key_G_Sharp
+      guid: 94658a6d5b76b1479941ac4dfa1c780a
+      id: 2931308521
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_G_Sharp
+        ObjectType: 3
+        guid: 94658a6d5b76b1479941ac4dfa1c780a
+      Path: Events\Music\MusicKeyStateEvents\Key_G_Sharp
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: MusicEvents
       guid: bb98cb8f8639c644980fd12d17cb9504
       id: 2858168685
@@ -1113,6 +1373,23 @@ MonoBehaviour:
         ObjectType: 4
         guid: bb98cb8f8639c644980fd12d17cb9504
       Path: Events\Music\MusicEvents
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: MusicKeyStateEvents
+      guid: a0463b3459bc9e4dbf14605313d8c419
+      id: 3885955093
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      Path: Events\Music\MusicKeyStateEvents
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -1716,7 +1993,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: e6b79552b8b0634f8a967d61276f57fa
     GuidInternal: 
-    m_lastTime: -8584549261247845887
+    m_lastTime: -8584549240242775494
     List:
     - name: CurrentMusicKey
       guid: 6fc02a74e5f10d408a3c979fa3ccb73b
@@ -1733,6 +2010,198 @@ MonoBehaviour:
         guid: 6fc02a74e5f10d408a3c979fa3ccb73b
       Path: States\Default Work Unit\CurrentMusicKey
       values:
+      - name: A
+        guid: de00fc3d1fda8d4b8ae678752a00128a
+        id: 84696446
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: A
+          ObjectType: 8
+          guid: de00fc3d1fda8d4b8ae678752a00128a
+      - name: A_Sharp
+        guid: 19368f597cf3e54e9035c3808413c50b
+        id: 164139463
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: A_Sharp
+          ObjectType: 8
+          guid: 19368f597cf3e54e9035c3808413c50b
+      - name: B
+        guid: fd1a91388f17d44298d6e3c43467bc1a
+        id: 84696445
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: B
+          ObjectType: 8
+          guid: fd1a91388f17d44298d6e3c43467bc1a
+      - name: C
+        guid: 0e8f96ca6fdc5f49bdf7e49da74e43d3
+        id: 84696444
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: C
+          ObjectType: 8
+          guid: 0e8f96ca6fdc5f49bdf7e49da74e43d3
+      - name: C_Sharp
+        guid: 6815b6b20d5b4f4498737891b147ca16
+        id: 2816864521
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: C_Sharp
+          ObjectType: 8
+          guid: 6815b6b20d5b4f4498737891b147ca16
+      - name: D
+        guid: e2c4a95974446d4689e23f527f929ee3
+        id: 84696443
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: D
+          ObjectType: 8
+          guid: e2c4a95974446d4689e23f527f929ee3
+      - name: D_Sharp
+        guid: 314cb270c53dbc4284693194c8209e3d
+        id: 844677726
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: D_Sharp
+          ObjectType: 8
+          guid: 314cb270c53dbc4284693194c8209e3d
+      - name: E
+        guid: 7f5696a17e4cad40ad07aee4a1444f3d
+        id: 84696442
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: E
+          ObjectType: 8
+          guid: 7f5696a17e4cad40ad07aee4a1444f3d
+      - name: F
+        guid: 931189d94f7a4a4495ebe6a7d85987f9
+        id: 84696441
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: F
+          ObjectType: 8
+          guid: 931189d94f7a4a4495ebe6a7d85987f9
+      - name: F_Sharp
+        guid: 18f786a7f6860d4d93eedf36398f7d7e
+        id: 951594152
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: F_Sharp
+          ObjectType: 8
+          guid: 18f786a7f6860d4d93eedf36398f7d7e
+      - name: G
+        guid: 90f595e52074ed4fb8c0360d1098d4a8
+        id: 84696440
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: G
+          ObjectType: 8
+          guid: 90f595e52074ed4fb8c0360d1098d4a8
+      - name: G_Sharp
+        guid: 3415b102d6917c499355b48818793c71
+        id: 3736223277
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: G_Sharp
+          ObjectType: 8
+          guid: 3415b102d6917c499355b48818793c71
       - name: None
         guid: 6b5ac6650b0ec04cb1073381a2d372f4
         id: 748895195
@@ -1909,7 +2378,7 @@ MonoBehaviour:
         guid: 23c0f7a154fe4f4dbb4cbb0e19d72476
       Path: Triggers\Default Work Unit\Test
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 050000001b0000001c0000001d0000001f000000
+  ExpandedWaapiItemIds: 050000000e000000100000001100000012000000140000001b0000001c0000001d0000001f000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

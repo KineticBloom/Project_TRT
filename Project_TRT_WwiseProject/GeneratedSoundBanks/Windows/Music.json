@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{2CAF7C27-18E4-40A7-871C-C075A9250659}",
     "Language": "SFX",
-    "Hash": "{AD8CDC39-AB5E-CE2E-7FEF-55801E3E9875}",
+    "Hash": "{E1BB8121-99BB-64AA-F922-6D1B37FF27D0}",
     "ObjectPath": "\\SoundBanks\\Music\\Music",
     "ShortName": "Music",
     "Path": "Music.bnk",
@@ -66,10 +66,10 @@
     ],
     "Events": [
      {
-      "Id": "3057511430",
-      "Name": "ChangeKey_A",
-      "ObjectPath": "\\Events\\Music\\KeyChangeEvents\\ChangeKey_A",
-      "GUID": "{1E31430B-B44A-4E57-A76F-613C0E88CB8B}",
+      "Id": "3865414042",
+      "Name": "Key_A",
+      "ObjectPath": "\\Events\\Music\\MusicKeyStateEvents\\Key_A",
+      "GUID": "{067448A3-E726-456B-92A9-5B259A257E46}",
       "MaxAttenuation": "0",
       "DurationType": "OneShot",
       "DurationMin": "0",
@@ -80,15 +80,34 @@
         "Id": "84696446",
         "Name": "A",
         "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\A",
-        "GUID": "{D7DC47F7-8101-46B0-9C1D-0EE1FF6B2AE5}"
+        "GUID": "{3DFC00DE-DA1F-4B8D-8AE6-78752A00128A}"
        }
       ]
      },
      {
-      "Id": "3057511427",
-      "Name": "ChangeKey_D",
-      "ObjectPath": "\\Events\\Music\\KeyChangeEvents\\ChangeKey_D",
-      "GUID": "{645E827E-59FC-413E-952B-655B4CBD67BC}",
+      "Id": "3108336397",
+      "Name": "Key_C_Sharp",
+      "ObjectPath": "\\Events\\Music\\MusicKeyStateEvents\\Key_C_Sharp",
+      "GUID": "{CE5CF2FB-2D74-491D-827D-D3B7D6A68D00}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "3124027310",
+        "Id": "2816864521",
+        "Name": "C_Sharp",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\C_Sharp",
+        "GUID": "{B2B61568-5B0D-444F-9873-7891B147CA16}"
+       }
+      ]
+     },
+     {
+      "Id": "3865414047",
+      "Name": "Key_D",
+      "ObjectPath": "\\Events\\Music\\MusicKeyStateEvents\\Key_D",
+      "GUID": "{8712928E-69C6-49BC-A72A-EB30570864FB}",
       "MaxAttenuation": "0",
       "DurationType": "OneShot",
       "DurationMin": "0",
@@ -99,7 +118,7 @@
         "Id": "84696443",
         "Name": "D",
         "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\D",
-        "GUID": "{06F05A75-886D-4DCC-81F2-0B3351E82BFE}"
+        "GUID": "{59A9C4E2-4474-466D-89E2-3F527F929EE3}"
        }
       ]
      },
@@ -573,49 +592,49 @@
         "Id": "84696440",
         "Name": "G",
         "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\G",
-        "GUID": "{4677B5F0-FEE1-4412-B3D7-A9FD92DCF3F0}"
+        "GUID": "{E595F590-7420-4FED-B8C0-360D1098D4A8}"
        },
        {
         "Id": "84696441",
         "Name": "F",
         "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\F",
-        "GUID": "{2E897E8B-6DA5-4BB6-B7F2-F2DC68F64A56}"
+        "GUID": "{D9891193-7A4F-444A-95EB-E6A7D85987F9}"
        },
        {
         "Id": "84696442",
         "Name": "E",
         "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\E",
-        "GUID": "{6A304187-E393-43CE-AC84-241B7F8022FD}"
+        "GUID": "{A196567F-4C7E-40AD-AD07-AEE4A1444F3D}"
        },
        {
         "Id": "84696443",
         "Name": "D",
         "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\D",
-        "GUID": "{06F05A75-886D-4DCC-81F2-0B3351E82BFE}"
+        "GUID": "{59A9C4E2-4474-466D-89E2-3F527F929EE3}"
        },
        {
         "Id": "84696444",
         "Name": "C",
         "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\C",
-        "GUID": "{91A1F541-CC44-4B71-B3DC-76891B293ED9}"
+        "GUID": "{CA968F0E-DC6F-495F-BDF7-E49DA74E43D3}"
        },
        {
         "Id": "84696445",
         "Name": "B",
         "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\B",
-        "GUID": "{CED6A7A2-0B2E-414A-9676-972AE83331D4}"
+        "GUID": "{38911AFD-178F-42D4-98D6-E3C43467BC1A}"
        },
        {
         "Id": "84696446",
         "Name": "A",
         "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\A",
-        "GUID": "{D7DC47F7-8101-46B0-9C1D-0EE1FF6B2AE5}"
+        "GUID": "{3DFC00DE-DA1F-4B8D-8AE6-78752A00128A}"
        },
        {
         "Id": "164139463",
         "Name": "A_Sharp",
         "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\A_Sharp",
-        "GUID": "{4F74E2F2-25D2-4145-AAF0-82F2B629DB48}"
+        "GUID": "{598F3619-F37C-4EE5-9035-C3808413C50B}"
        },
        {
         "Id": "748895195",
@@ -627,31 +646,31 @@
         "Id": "844677726",
         "Name": "D_Sharp",
         "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\D_Sharp",
-        "GUID": "{C4A616FB-E710-45D9-AFC0-92E83758D47D}"
+        "GUID": "{70B24C31-3DC5-42BC-8469-3194C8209E3D}"
        },
        {
         "Id": "951594152",
         "Name": "F_Sharp",
         "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\F_Sharp",
-        "GUID": "{5EC7AD78-CFC9-40B1-A019-7696DF8E2BE0}"
+        "GUID": "{A786F718-86F6-4D0D-93EE-DF36398F7D7E}"
        },
        {
         "Id": "2816864521",
         "Name": "C_Sharp",
         "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\C_Sharp",
-        "GUID": "{67979DBC-F8C4-4417-93DF-25E986BE60C8}"
+        "GUID": "{B2B61568-5B0D-444F-9873-7891B147CA16}"
        },
        {
         "Id": "3736223277",
         "Name": "G_Sharp",
         "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\G_Sharp",
-        "GUID": "{DCBD14B6-29E8-4079-8029-256B6B05327F}"
+        "GUID": "{02B11534-91D6-497C-9355-B48818793C71}"
        }
       ]
      }
     ]
    }
   ],
-  "FileHash": "{B8903054-6A8F-D821-312D-F6E1DF127B40}"
+  "FileHash": "{7DECB3DD-6D66-C6AF-6312-A5FFC58AE486}"
  }
 }

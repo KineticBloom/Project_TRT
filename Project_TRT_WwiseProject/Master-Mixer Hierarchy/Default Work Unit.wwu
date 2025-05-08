@@ -234,9 +234,10 @@
 						</Bus>
 						<Bus Name="NPCMaster" ID="{16C8FF43-3382-422F-B0D6-47325D444EDF}">
 							<PropertyList>
+								<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
-										<Value>2</Value>
+										<Value>1</Value>
 									</ValueList>
 								</Property>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">

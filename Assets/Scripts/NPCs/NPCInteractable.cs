@@ -11,15 +11,9 @@ public class NpcInteractable : Interactable
     public AudioEvent dialogueStartSFX;
     public AudioEvent interactionBarkSFX;
     public AudioEvent barterBarkSFX;
+    public AudioEvent barterOpenSFX;
 
     public Vector3 DialogueSourceLocalPosition;
-
-    public List<InventoryCardData> ItemsAvailable;
-
-    private void Start() {
-        ItemsAvailable = new List<InventoryCardData>(NpcData.ItemsOnOffer);
-    }
-
     public override void Interaction() {
         Vector3 NPCWorldPosition = this.transform.position + DialogueSourceLocalPosition;
         Vector3 PlayerWorldPosition = GameManager.Player.DialogueSource.position;
@@ -32,7 +26,8 @@ public class NpcInteractable : Interactable
     public void TriggerBarter() {
 
         barterBarkSFX.Play(gameObject);
-        GameManager.NewBarterStarter.StartBarter(NpcData, this);
+        barterOpenSFX.Play(gameObject);
+        GameManager.NewBarterStarter.StartBarter(NpcData);
     }
 
     public override void Highlight()

@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{335496CC-45EA-4922-B9FA-C65217B7662E}",
     "Language": "SFX",
-    "Hash": "{0F5070C6-DC7C-4FBD-6DC4-1F35B4094126}",
+    "Hash": "{ABA2E0FD-2228-1828-7C29-091C41DAB9E3}",
     "ObjectPath": "\\SoundBanks\\SFX\\SFX",
     "ShortName": "SFX",
     "Path": "SFX.bnk",
@@ -376,6 +376,14 @@
       "CachePath": "FB/{FBB2E798-B786-FB0C-9C86-00C9DB6B3592}.wem"
      },
      {
+      "Id": "858240399",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Barter_Menu_Start.wav",
+      "CachePath": "9B/{9B73703C-5FA6-D52E-EC57-D9124EA09862}.wem"
+     },
+     {
       "Id": "867121991",
       "Language": "SFX",
       "Streaming": "false",
@@ -550,6 +558,20 @@
        },
        {
         "Id": "879942249"
+       }
+      ]
+     },
+     {
+      "Id": "884323815",
+      "Name": "BarterEventOpen",
+      "ObjectPath": "\\Events\\UI\\DialogueUI\\BarterEventOpen",
+      "GUID": "{A962E239-C48A-41EB-B732-DAA42BFBA675}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.4855783",
+      "DurationMax": "2.4855783",
+      "MediaRefs": [
+       {
+        "Id": "858240399"
        }
       ]
      },
@@ -923,6 +945,6 @@
     ]
    }
   ],
-  "FileHash": "{BFBD5017-CCC8-D85B-4B0D-86B82F6CF480}"
+  "FileHash": "{9D9F2757-4180-C1B5-4300-A1A95AABE01F}"
  }
 }

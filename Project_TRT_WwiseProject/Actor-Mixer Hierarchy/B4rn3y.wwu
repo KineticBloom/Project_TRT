@@ -5,7 +5,17 @@
 			<ChildrenList>
 				<RandomSequenceContainer Name="B4rn3y_Hoot" ID="{C89BDCBD-99D1-4B7A-8019-44FC129AB92D}" ShortID="655482390">
 					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
 						<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -86,7 +96,17 @@
 				</RandomSequenceContainer>
 				<RandomSequenceContainer Name="B4rn3y_Identified" ID="{81AA0576-8CE6-4B5D-A32F-9E52E0960FC3}" ShortID="1008885276">
 					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
 						<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">

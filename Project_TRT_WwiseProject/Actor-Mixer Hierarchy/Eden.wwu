@@ -5,7 +5,17 @@
 			<ChildrenList>
 				<RandomSequenceContainer Name="ENV_Eden_Expel" ID="{8A7AB0FC-5063-4CF8-9681-52D08A75D53D}" ShortID="724437102">
 					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
 						<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -86,7 +96,17 @@
 				</RandomSequenceContainer>
 				<RandomSequenceContainer Name="ENV_Eden_Hello" ID="{22BC944B-ECF0-4BE2-939B-4AAA0C4C1317}" ShortID="838873054">
 					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
 						<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">

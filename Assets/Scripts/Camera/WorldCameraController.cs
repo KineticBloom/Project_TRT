@@ -54,6 +54,10 @@ public class WorldCameraController : MonoBehaviour
 #endif
     [Tooltip("List of camera controllers that won't be transitioned to if the current camera is active.")] [SerializeField] 
     private List<WorldCameraController> blacklistedControllers = new List<WorldCameraController>();
+    [Tooltip("Determines whether or not to use the whitelist in determining camera transitions.")] [SerializeField] 
+    private bool useWhitelist = false;
+    [Tooltip("List of camera controllers that can be transitioned to if the current camera is active. if useWhitelist is false, this list will be ignored")] [SerializeField] 
+    private List<WorldCameraController> whitelistedControllers = new List<WorldCameraController>();
 #if UNITY_EDITOR
 
     [BoxGroup("Body")] [Tooltip("The Cinemachine body type for the camera. (Influences position.)")] [SerializeField] [OnValueChanged("AutoUpdateBody")]
@@ -125,6 +129,7 @@ public class WorldCameraController : MonoBehaviour
         if (IsActive()) return;
 
         if (_currentCamera && _currentCamera.blacklistedControllers.Contains(this)) return;
+        if (_currentCamera.useWhitelist && !_currentCamera.whitelistedControllers.Contains(this)) return;
 
         GameManager.Player.Camera.m_DefaultBlend.m_Time = cameraTransitionTime;
         GameManager.Player.MoveCamera.m_DefaultBlend.m_Time = movementTransitionTime;

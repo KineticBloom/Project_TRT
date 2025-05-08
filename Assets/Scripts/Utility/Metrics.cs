@@ -21,7 +21,7 @@ public static class Metrics
 
     private static MetricsData _data;
     private static float _sessionStartTime;
-    private static readonly string SavePath = Application.persistentDataPath + "/metrics.json";
+    private static readonly string SavePath = Application.persistentDataPath + "/MetricsLogs/metrics.json";
     private static readonly string MetricsFolder = Path.Combine(Application.persistentDataPath, "MetricsLogs");
 
 
@@ -122,6 +122,9 @@ public static class Metrics
     /// </summary>
     private static void Save()
     {
+        if (!Directory.Exists(MetricsFolder))
+            Directory.CreateDirectory(MetricsFolder);
+
         string json = JsonUtility.ToJson(_data, true);
         File.WriteAllText(SavePath, json);
     }

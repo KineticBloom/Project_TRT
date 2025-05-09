@@ -1,6 +1,10 @@
 using System;
 using System.IO;
+using Unity.Services.Analytics;
+using Unity.Services.Core;
 using UnityEngine;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 public static class Metrics
 {
@@ -22,16 +26,19 @@ public static class Metrics
     private static float _sessionStartTime;
     private static readonly string SavePath = Application.persistentDataPath + "/metrics.json";
 
+
     #region ========== [ PUBLIC METHODS ] ===========
 
     /// <summary>
     /// Signal to the Metrics that the player has started playing the game. Put in Start()
     /// </summary>
-    public static void StartSession()
+    public static async void StartSession()
     {
         Load();
         _sessionStartTime = Time.time;
         _data.sessionCount++;
+
+        await InitializeServicesAsync();
     }
 
     /// <summary>
@@ -42,6 +49,7 @@ public static class Metrics
         float sessionDuration = Time.time - _sessionStartTime;
         _data.totalPlayTime += sessionDuration;
         Save();
+        SendAnalytics();
     }
 
     /// <summary>
@@ -113,5 +121,47 @@ public static class Metrics
         Save();
     }
 
+    /// <summary>
+    /// Wait for the AnalyticsService to be initialized before starting data collection
+    /// </summary>
+    /// <returns></returns>
+    private static async Task InitializeServicesAsync()
+    {
+        try
+        {
+            await UnityServices.InitializeAsync();
+
+            AnalyticsService.Instance?.StartDataCollection();
+            SendAnalytics();
+        }
+        catch (ServicesInitializationException e)
+        {
+            Debug.LogError($"Failed to initialize Unity Services: {e}");
+        }
+    }
+
+    private static void SendAnalytics()
+    {
+        SavedAnalyticsEvent eventData = new SavedAnalyticsEvent();
+
+        eventData.TutorialCompleted = _data.tutorialCompleted;
+        eventData.GameCompleted = _data.gameCompleted;
+        eventData.AverageFramerate = _data.averageFramerate;
+
+        AnalyticsService.Instance.RecordEvent(eventData);
+    }
+
     #endregion
+}
+
+public class SavedAnalyticsEvent : Unity.Services.Analytics.Event
+{
+    public SavedAnalyticsEvent() : base("savedAnalyticsEvent")
+    {
+    }
+
+    public bool TutorialCompleted { set { SetParameter("tutorialCompleted", value); } }
+    public bool GameCompleted { set { SetParameter("gameCompleted", value); } }
+    public float AverageFramerate { set { SetParameter("averageFramerate", value); } }
+
 }

@@ -310,6 +310,7 @@ MonoBehaviour:
   IconTransformPosition: {fileID: 1258631522914809402}
   IconLocalPosition: {x: 0, y: 1, z: 0}
   RequiredCard: {fileID: 0}
+  inkScript: {fileID: 0}
   removeAfterInteraction: 0
   locked: 0
   callbackFunction:
@@ -1004,6 +1005,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8130318769274667414}
     m_Modifications:
+    - target: {fileID: 2710463135279531178, guid: bc60a82d631c6a842a636cda46f232ca,
+        type: 3}
+      propertyPath: inkScript
+      value: 
+      objectReference: {fileID: 4900000, guid: 8cbf338a1f30cc34385715db74d71157, type: 3}
     - target: {fileID: 2710463135279531178, guid: bc60a82d631c6a842a636cda46f232ca,
         type: 3}
       propertyPath: RequiredCard

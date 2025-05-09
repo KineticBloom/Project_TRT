@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{2CAF7C27-18E4-40A7-871C-C075A9250659}",
     "Language": "SFX",
-    "Hash": "{72AAD423-3E0F-534A-B539-14EFC839CF3F}",
+    "Hash": "{E961F546-DE9A-2F8D-FC64-686A19F8AE21}",
     "ObjectPath": "\\SoundBanks\\Music\\Music",
     "ShortName": "Music",
     "Path": "Music.bnk",
@@ -291,6 +291,14 @@
       "DurationType": "OneShot",
       "DurationMin": "0",
       "DurationMax": "0",
+      "AuxBusRefs": [
+       {
+        "Id": "3364212889",
+        "Name": "Alleyway",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\Reverbs\\Alleyway",
+        "GUID": "{B530D511-FF4C-4F56-8923-79F07C08B072}"
+       }
+      ],
       "SwitchContainers": [
        {
         "SwitchValue": {
@@ -395,6 +403,14 @@
       "DurationType": "OneShot",
       "DurationMin": "0",
       "DurationMax": "0",
+      "AuxBusRefs": [
+       {
+        "Id": "3364212889",
+        "Name": "Alleyway",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\Reverbs\\Alleyway",
+        "GUID": "{B530D511-FF4C-4F56-8923-79F07C08B072}"
+       }
+      ],
       "SwitchContainers": [
        {
         "SwitchValue": {
@@ -482,6 +498,14 @@
       "ObjectPath": "\\Events\\Music\\MusicEvents\\StartMusic",
       "GUID": "{95DED10A-BAFA-4517-9EB7-3E06DDBA7B76}",
       "DurationType": "Infinite",
+      "AuxBusRefs": [
+       {
+        "Id": "3364212889",
+        "Name": "Alleyway",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\Reverbs\\Alleyway",
+        "GUID": "{B530D511-FF4C-4F56-8923-79F07C08B072}"
+       }
+      ],
       "SwitchContainers": [
        {
         "SwitchValue": {
@@ -572,6 +596,14 @@
       "DurationType": "OneShot",
       "DurationMin": "0",
       "DurationMax": "0",
+      "AuxBusRefs": [
+       {
+        "Id": "3364212889",
+        "Name": "Alleyway",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\Reverbs\\Alleyway",
+        "GUID": "{B530D511-FF4C-4F56-8923-79F07C08B072}"
+       }
+      ],
       "SwitchContainers": [
        {
         "SwitchValue": {
@@ -652,6 +684,14 @@
         ]
        }
       ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "3207605084",
+      "Name": "InAlleyway",
+      "ObjectPath": "\\Game Parameters\\Music\\InAlleyway",
+      "GUID": "{5EA6774B-ADCB-41E5-B66B-577C9E25F9BA}"
      }
     ],
     "StateGroups": [
@@ -794,6 +834,6 @@
     ]
    }
   ],
-  "FileHash": "{7694AEFD-F661-3F65-F67F-FAD0A3E5F0A5}"
+  "FileHash": "{75544E1F-7878-0FE6-D0A5-8E4357FA6469}"
  }
 }

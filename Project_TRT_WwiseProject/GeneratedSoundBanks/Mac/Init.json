@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{6AEF7898-5D8A-3C5D-D8E0-C093C89D3357}",
+    "Hash": "{C82BE505-3737-E54D-98A6-2A6D396EE41D}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -191,6 +191,19 @@
         }
        ]
       }
+     },
+     {
+      "Id": "3364212889",
+      "Name": "Alleyway",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\Reverbs\\Alleyway",
+      "GUID": "{B530D511-FF4C-4F56-8923-79F07C08B072}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "48620415"
+        }
+       ]
+      }
      }
     ],
     "GameParameters": [
@@ -217,6 +230,12 @@
       "Name": "MasterVolume",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\MasterVolume",
       "GUID": "{E70BD259-826F-4DC0-9077-F7A3D88C2DFC}"
+     },
+     {
+      "Id": "3207605084",
+      "Name": "InAlleyway",
+      "ObjectPath": "\\Game Parameters\\Music\\InAlleyway",
+      "GUID": "{5EA6774B-ADCB-41E5-B66B-577C9E25F9BA}"
      }
     ],
     "StateGroups": [
@@ -359,6 +378,6 @@
     ]
    }
   ],
-  "FileHash": "{5ABAF0DC-E941-4F8E-EB12-6087E707DB26}"
+  "FileHash": "{45FDFD55-DAB8-6360-F797-3E18919BAB6A}"
  }
 }

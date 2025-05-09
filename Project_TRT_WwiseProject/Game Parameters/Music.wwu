@@ -4,6 +4,15 @@
 		<WorkUnit Name="Music" ID="{5C2F20D5-DB1F-457E-92A9-2FB8427C1E09}" PersistMode="Standalone">
 			<ChildrenList>
 				<GameParameter Name="MusicVolume" ID="{5F195E4D-2D50-4ED7-AD88-60AEF95D5310}"/>
+				<GameParameter Name="InAlleyway" ID="{5EA6774B-ADCB-41E5-B66B-577C9E25F9BA}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+						<Property Name="Max" Type="Real64" Value="1"/>
+						<Property Name="RTPCRamping" Type="int16" Value="1"/>
+						<Property Name="SlewRateDown" Type="Real64" Value="0.7"/>
+						<Property Name="SlewRateUp" Type="Real64" Value="0.7"/>
+					</PropertyList>
+				</GameParameter>
 			</ChildrenList>
 		</WorkUnit>
 	</GameParameters>

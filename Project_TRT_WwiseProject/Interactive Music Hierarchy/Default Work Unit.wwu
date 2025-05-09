@@ -7,7 +7,12 @@
 					<PropertyList>
 						<Property Name="MaxSoundPerInstance" Type="int16">
 							<ValueList>
-								<Value>1</Value>
+								<Value>2</Value>
+							</ValueList>
+						</Property>
+						<Property Name="OutputBusLowpass" Type="int16">
+							<ValueList>
+								<Value>60</Value>
 							</ValueList>
 						</Property>
 						<Property Name="UseMaxSoundPerInstance" Type="bool">
@@ -46,8 +51,8 @@
 													<MusicFade Name="Source Fade-out" ID="{6848DB91-15CB-4E56-A632-384194B0F783}">
 														<PropertyList>
 															<Property Name="FadeCurve" Type="int16" Value="7"/>
-															<Property Name="FadeOffset" Type="Real64" Value="1.7"/>
-															<Property Name="FadeTime" Type="Real64" Value="2"/>
+															<Property Name="FadeOffset" Type="Real64" Value="0.5"/>
+															<Property Name="FadeTime" Type="Real64" Value="1.5"/>
 															<Property Name="FadeType" Type="int16" Value="1"/>
 														</PropertyList>
 													</MusicFade>
@@ -55,36 +60,8 @@
 												<DestinationFadeIn>
 													<MusicFade Name="Destination Fade-in" ID="{7D54A231-D248-47EA-B431-DB1AB19E3F4A}">
 														<PropertyList>
-															<Property Name="FadeCurve" Type="int16" Value="3"/>
-															<Property Name="FadeOffset" Type="Real64" Value="-0.6"/>
-															<Property Name="FadeTime" Type="Real64" Value="1.5"/>
-														</PropertyList>
-													</MusicFade>
-												</DestinationFadeIn>
-											</TransitionInfo>
-										</MusicTransition>
-										<MusicTransition Name="Transition" ID="{BA64A088-EF5D-48F2-9B06-CD7874D7517F}">
-											<PropertyList>
-												<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
-												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
-												<Property Name="ExitSourceAt" Type="int16" Value="3"/>
-											</PropertyList>
-											<TransitionInfo>
-												<SourceFadeOut>
-													<MusicFade Name="Source Fade-out" ID="{B6901AFC-CFE7-4EFE-95C2-7B736D6D1BA9}">
-														<PropertyList>
-															<Property Name="FadeCurve" Type="int16" Value="7"/>
-															<Property Name="FadeOffset" Type="Real64" Value="1.7"/>
-															<Property Name="FadeTime" Type="Real64" Value="2"/>
-															<Property Name="FadeType" Type="int16" Value="1"/>
-														</PropertyList>
-													</MusicFade>
-												</SourceFadeOut>
-												<DestinationFadeIn>
-													<MusicFade Name="Destination Fade-in" ID="{025C3E7E-30C5-4F8C-AD2A-118A88D19107}">
-														<PropertyList>
-															<Property Name="FadeCurve" Type="int16" Value="3"/>
-															<Property Name="FadeOffset" Type="Real64" Value="-0.6"/>
+															<Property Name="FadeCurve" Type="int16" Value="2"/>
+															<Property Name="FadeOffset" Type="Real64" Value="-0.3"/>
 															<Property Name="FadeTime" Type="Real64" Value="1.5"/>
 														</PropertyList>
 													</MusicFade>
@@ -95,6 +72,9 @@
 									<TransitionInfo/>
 								</MusicTransition>
 							</Custom>
+						</Reference>
+						<Reference Name="UserAuxSend0">
+							<ObjectRef Name="Alleyway" ID="{B530D511-FF4C-4F56-8923-79F07C08B072}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -136,7 +116,19 @@
 											</PropertyList>
 											<ChildrenList>
 												<MusicTransition Name="Transition" ID="{9499CA0C-E802-4E99-BDBA-B35D3031BD2E}">
-													<TransitionInfo/>
+													<PropertyList>
+														<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+														<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo>
+														<SourceFadeOut>
+															<MusicFade Name="Source Fade-out" ID="{BD2EA2FC-57C9-4536-8A76-4AEEB7BD1F59}">
+																<PropertyList>
+																	<Property Name="FadeType" Type="int16" Value="1"/>
+																</PropertyList>
+															</MusicFade>
+														</SourceFadeOut>
+													</TransitionInfo>
 												</MusicTransition>
 											</ChildrenList>
 											<TransitionInfo/>
@@ -771,7 +763,20 @@
 											</PropertyList>
 											<ChildrenList>
 												<MusicTransition Name="Transition" ID="{9BB0453F-D17B-4FB5-BA20-7CEE9DF907B9}">
-													<TransitionInfo/>
+													<PropertyList>
+														<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+														<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo>
+														<DestinationFadeIn>
+															<MusicFade Name="Destination Fade-in" ID="{109BE647-2512-4253-BA59-2201AB88F914}">
+																<PropertyList>
+																	<Property Name="FadeOffset" Type="Real64" Value="-0.6"/>
+																	<Property Name="FadeTime" Type="Real64" Value="1"/>
+																</PropertyList>
+															</MusicFade>
+														</DestinationFadeIn>
+													</TransitionInfo>
 												</MusicTransition>
 											</ChildrenList>
 											<TransitionInfo/>
@@ -1179,6 +1184,80 @@
 											</ObjectList>
 										</ObjectLists>
 									</MultiSwitchEntry>
+								</Local>
+							</Reference>
+						</ObjectList>
+						<ObjectList Name="RTPC">
+							<Reference>
+								<Local>
+									<RTPC Name="" ID="{C03EBD77-F056-4340-821E-956953A7A3FC}" ShortID="563545240">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="OutputBusLowpass"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="InAlleyway" ID="{5EA6774B-ADCB-41E5-B66B-577C9E25F9BA}" WorkUnitID="{5C2F20D5-DB1F-457E-92A9-2FB8427C1E09}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{B9093203-9E1A-4E36-9665-1FC239D8D63E}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="65537"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-100</YPos>
+																<Flags>5</Flags>
+																<SegmentShape>Log1</SegmentShape>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>0</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<RTPC Name="" ID="{C67723E5-3B78-48DB-99D8-76A2F20D9FA9}" ShortID="932173280">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="UserAuxSendVolume0"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="InAlleyway" ID="{5EA6774B-ADCB-41E5-B66B-577C9E25F9BA}" WorkUnitID="{5C2F20D5-DB1F-457E-92A9-2FB8427C1E09}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{A0F1AFE6-401E-4133-8AA0-9868619DC9AF}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-200</YPos>
+																<Flags>5</Flags>
+																<SegmentShape>Exp1</SegmentShape>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>-4.53464</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
 								</Local>
 							</Reference>
 						</ObjectList>

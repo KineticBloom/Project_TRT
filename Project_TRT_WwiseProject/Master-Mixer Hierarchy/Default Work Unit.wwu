@@ -220,6 +220,23 @@
 										</ObjectList>
 									</ObjectLists>
 								</AuxBus>
+								<AuxBus Name="Alleyway" ID="{B530D511-FF4C-4F56-8923-79F07C08B072}">
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<Reference>
+												<Local>
+													<EffectSlot Name="" ID="{2C5AC80C-0068-4CF4-B0BE-58B16A7EA8F9}" ShortID="740389481">
+														<ReferenceList>
+															<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																<ObjectRef Name="Have_U_Ever_Been_Outside" ID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+															</Reference>
+														</ReferenceList>
+													</EffectSlot>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</AuxBus>
 							</ChildrenList>
 						</Bus>
 						<Bus Name="EnvironmentMaster" ID="{C894ED6E-D19C-4CC9-BEBE-D81E80AC8A9A}"/>

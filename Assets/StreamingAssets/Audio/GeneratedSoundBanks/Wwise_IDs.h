@@ -105,6 +105,7 @@ namespace AK
     namespace GAME_PARAMETERS
     {
         static const AkUniqueID AMBIENCEVOLUME = 1204480359U;
+        static const AkUniqueID INALLEYWAY = 3207605084U;
         static const AkUniqueID MASTERVOLUME = 2918011349U;
         static const AkUniqueID MUSICVOLUME = 2346531308U;
         static const AkUniqueID SFXVOLUME = 988953028U;
@@ -144,6 +145,7 @@ namespace AK
 
     namespace AUX_BUSSES
     {
+        static const AkUniqueID ALLEYWAY = 3364212889U;
         static const AkUniqueID CHURCH = 2568407992U;
         static const AkUniqueID OUTDOORS = 2730119150U;
         static const AkUniqueID SMALLROOM = 2933838247U;

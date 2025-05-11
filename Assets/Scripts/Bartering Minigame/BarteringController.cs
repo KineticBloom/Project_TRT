@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.ComponentModel;
 using NaughtyAttributes;
+using static EffectCard;
 
 public class BarteringController : MonoBehaviour {
 

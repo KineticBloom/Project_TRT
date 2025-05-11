@@ -21,7 +21,10 @@ public class StartUi : UiManager<StartUi.UiStates> {
     }
 
     public void MoveToTitle() => MoveTo(UiStates.Title);
-    public void MoveToCredits() => MoveTo(UiStates.Credits);
+    public void MoveToCredits()
+    {
+        SceneManager.LoadScene("0.25_Credits");
+    }
     public void MoveToOptions() => MoveTo(UiStates.Options);
     public void MoveToAccessibilityCheck() => MoveTo(UiStates.AccessibilityCheck);
     public void MoveToNewGame() {

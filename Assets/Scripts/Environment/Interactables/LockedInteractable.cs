@@ -41,7 +41,7 @@ public class LockedInteractable : Interactable
 
             if (inkScript != null)
             {
-                GameManager.DialogueManager.StartDialogue(inkScript, null, transform.position, GameManager.Player.transform.position, "Unlock");
+                GameManager.DialogueManager.StartDialogue(inkScript, null, transform.position, GameManager.Player.DialogueSource.position, "Unlock");
             }
 
             callbackFunction.Invoke();
@@ -49,7 +49,7 @@ public class LockedInteractable : Interactable
 
         if (locked && inkScript != null)
         {
-            GameManager.DialogueManager.StartDialogue(inkScript, null, transform.position, GameManager.Player.transform.position, "Locked");
+            GameManager.DialogueManager.StartDialogue(inkScript, null, transform.position, GameManager.Player.DialogueSource.position, "Locked");
         }
 
         UpdateInteractIconLocation();
@@ -76,7 +76,7 @@ public class LockedInteractable : Interactable
             IconLocalPosition = _iconPositionStorage;
         }
         // Hide the Icon
-        else if (locked || !GameManager.Inventory.HasCard(RequiredCard) || HideIcon)
+        else if (HideIcon)
         {
             // Manually hiding it out of bounds
             UseTransform = false;

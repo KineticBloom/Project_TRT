@@ -157,6 +157,7 @@ public class BarteringController : MonoBehaviour {
         _offeredItems.Add(itemToOffer);
 
         UpdateVisuals();
+        PreActivateEffectCards();
 
         // Reset selection of button!
         if (_currentButtonObject != null) {
@@ -190,6 +191,8 @@ public class BarteringController : MonoBehaviour {
         {
             _currentButtonObject = PlayerOfferSlotFour;
         }
+
+        itemToRemove.ResetCurrentValue();
 
         // Remove item
         _offeredItems.Remove(itemToRemove);
@@ -309,6 +312,23 @@ public class BarteringController : MonoBehaviour {
 
     #region ======== [ PRIVATE METHODS ] ========
 
+    private void PreActivateEffectCards() {
+        List<EffectCard> effectCards = _currentNPCData.EffectCards;
+        List<EffectCard> activeEffectCards = new List<EffectCard>();
+
+        foreach (EffectCard effectCard in effectCards) {
+            if (effectCard.IsRevealed && effectCard.DoesActivate(_tradeInfo, ActivationTime.AfterOffer)) {
+                activeEffectCards.Add(effectCard);
+            }
+        }
+
+        foreach (EffectCard effectCard in activeEffectCards) {
+            effectCard.Activate(_tradeInfo);
+        }
+
+        UpdateVisuals();
+    }
+
     /// <summary>
     /// Activates Effect Cards
     /// </summary>
@@ -403,10 +423,7 @@ public class BarteringController : MonoBehaviour {
             yield return ShowRevealedCards();
         }
 
-        foreach (var item in _offeredItems.Items)
-        {
-            item.ResetCurrentValue();
-        }
+        _offeredItems.ResetItemValues();
         _currentCardOnOffer.ResetCurrentValue();
 
         _offeredItems.ReturnCardsToInventory();
@@ -427,10 +444,7 @@ public class BarteringController : MonoBehaviour {
             yield return ShowRevealedCards();
         }
 
-        foreach (var item in _offeredItems.Items)
-        {
-            item.ResetCurrentValue();
-        }
+        _offeredItems.ResetItemValues();
 
         _offeredItems.ReturnCardsToInventory();
 
@@ -492,8 +506,13 @@ public class OfferedItems
         Items = new List<InventoryCardData>();
     }
 
-    public void Add(InventoryCardData card)
-    {
+    public void ResetItemValues() {
+        foreach(InventoryCardData x in Items) {
+            x.ResetCurrentValue();
+        }
+    }
+
+    public void Add(InventoryCardData card) {
         Items.Add(card);
         GameManager.Inventory.RemoveCard(card, true);
     }
@@ -532,8 +551,7 @@ public class WaitForCloseRevealScreen : CustomYieldInstruction
         }
     }
 
-    public WaitForCloseRevealScreen(GameObject revealScreen)
-    {
+    public WaitForCloseRevealScreen(GameObject revealScreen) {
         _revealScreen = revealScreen;
     }
 }

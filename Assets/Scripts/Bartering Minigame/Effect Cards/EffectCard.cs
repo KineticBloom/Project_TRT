@@ -29,6 +29,7 @@ public abstract class EffectCard
     protected ActivationTime activationTime = ActivationTime.AfterOffer;
 
     public UnityAction OnRevealed;
+    public UnityAction OnActivate;
 
     #endregion
 
@@ -55,7 +56,10 @@ public abstract class EffectCard
     /// Activates the effect card
     /// </summary>
     /// <param name="tradeInfo">Information for the card to modify</param>
-    public abstract int Activate(TradeInfo tradeInfo);
+    public virtual int Activate(TradeInfo tradeInfo) {
+        OnActivate.Invoke();
+        return 0;
+    }
 
 
     /// <summary>

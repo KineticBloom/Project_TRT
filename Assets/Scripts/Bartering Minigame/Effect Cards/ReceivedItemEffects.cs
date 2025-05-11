@@ -66,6 +66,8 @@ public class ReceivedItemEffects : EffectCard
     /// </summary>
     public override int Activate(TradeInfo tradeInfo)
     {
+        base.Activate(tradeInfo);
+
         foreach (IItemAction action in ItemActions)
         {
             action.Activate(tradeInfo.ReceivedItem);

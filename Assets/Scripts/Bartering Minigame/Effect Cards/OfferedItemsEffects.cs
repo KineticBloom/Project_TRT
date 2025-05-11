@@ -74,6 +74,8 @@ public class OfferedItemsEffects : EffectCard
     /// </summary>
     public override int Activate(TradeInfo tradeInfo)
     {
+        base.Activate(tradeInfo);
+
         int itemsAffected = 0;
 
         foreach (InventoryCardData offeredItem in tradeInfo.OfferedItems.Items)

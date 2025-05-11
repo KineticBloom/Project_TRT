@@ -36,7 +36,7 @@ public class EffectCardDisplay : MonoBehaviour
     [HideIf("InPlayMode")]
     public EffectCard EffectCard;
 
-
+    private Tweener _shakeTween;
     private BarteringController _barteringController;
     private float _baseScale = 1f;
     private float _baseHeight;
@@ -70,6 +70,7 @@ public class EffectCardDisplay : MonoBehaviour
             HideDescription();
             _barteringController = barteringController;
             effectCard.OnRevealed += Reveal;
+            effectCard.OnActivate += Activate;
         }
 
         _baseScale = cardFront.transform.localScale.x;
@@ -85,6 +86,17 @@ public class EffectCardDisplay : MonoBehaviour
         _barteringController?.AddNewReveal(EffectCard);
 
         FlipBack();
+    }
+
+    public void Activate() 
+    {
+        //transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).SetEase(Ease.InOutSine).SetLoops(2, LoopType.Yoyo);
+        if (_shakeTween == null) {
+            _shakeTween = transform.DOShakeRotation(0.5f, new Vector3(0, 0, 45f), 15, 90, true, ShakeRandomnessMode.Harmonic);
+            _shakeTween.SetAutoKill(false);
+        } else {
+            _shakeTween.Restart();
+        }
     }
 
 

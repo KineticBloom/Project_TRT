@@ -1,6 +1,8 @@
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
+using static UnityEngine.ProBuilder.AutoUnwrapSettings;
 
 public class StartUi : UiManager<StartUi.UiStates> {
 
@@ -25,10 +27,10 @@ public class StartUi : UiManager<StartUi.UiStates> {
     public void MoveToNewGame() {
         SaveSystem.ResetSaveData();
         Metrics.Reset();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("0.5_Tutorial");
     }
     public void MoveToContinueGame() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        SceneManager.LoadScene("0.75_Limbo");
     }
 
     public void MoveToQuit() {

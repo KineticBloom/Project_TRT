@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: d2e647656401fa48b0d64a886d907446
     GuidInternal: 
-    m_lastTime: -8584616603804391232
+    m_lastTime: -8584615092820441520
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 587ca0226052be4e9b8540a22c4f2092
     GuidInternal: 
-    m_lastTime: -8584563963490455585
+    m_lastTime: -8584561666679602370
     List:
     - name: Ambience Bus
       guid: b98c6c284c7de7449139c8391e920f9c
@@ -174,7 +174,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Ambience
     guid: 0104f6680c27bf408fd7c64816ee8c87
     GuidInternal: 
-    m_lastTime: -8584563963483353715
+    m_lastTime: -8584561666664506049
     List:
     - name: Ambience
       guid: 86b2f852bdba9b4fa5a800a04824ffe7
@@ -201,7 +201,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 04fe062a3bbc02478aebf9ed87255f35
     GuidInternal: 
-    m_lastTime: -8584616603804511337
+    m_lastTime: -8584615092820441520
     List: []
   - PhysicalPath: SoundBanks\Music.wwu
     PathAndIcons:
@@ -269,7 +269,7 @@ MonoBehaviour:
     ParentPath: Events\Ambience
     guid: 78290c8229ac584884ed86c3baba619d
     GuidInternal: 
-    m_lastTime: -8584563963495028893
+    m_lastTime: -8584561666695600804
     List:
     - name: BirdStart
       guid: 932c63abf08ea4489f51f773ba1e5c74
@@ -285,9 +285,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: 932c63abf08ea4489f51f773ba1e5c74
       Path: Events\Ambience\BirdStart
-      maxAttenuation: 100
-      maxDuration: 0
-      minDuration: 0
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Play_MachineHum1_LoopContainer
       guid: fe2c9246192f764b85f3f11b509cb105
       id: 30480848
@@ -302,9 +302,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: fe2c9246192f764b85f3f11b509cb105
       Path: Events\Ambience\Play_MachineHum1_LoopContainer
-      maxAttenuation: 50
-      maxDuration: 0
-      minDuration: 0
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Play_MachineHum2_LoopContainer
       guid: de8554713bb1e2439b4dc1c5781fe1ac
       id: 1929638735
@@ -319,9 +319,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: de8554713bb1e2439b4dc1c5781fe1ac
       Path: Events\Ambience\Play_MachineHum2_LoopContainer
-      maxAttenuation: 50
-      maxDuration: 0
-      minDuration: 0
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Play_Waterfall_Base_LoopContainer
       guid: 60bf2e435b3be640b68858830c63e8b1
       id: 2874767734
@@ -336,9 +336,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: 60bf2e435b3be640b68858830c63e8b1
       Path: Events\Ambience\Play_Waterfall_Base_LoopContainer
-      maxAttenuation: 100
-      maxDuration: 0
-      minDuration: 0
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Play_Waterfall_CloseSparkle_LoopContainer
       guid: 6e91af3f21c6d945868cce150c154978
       id: 3296751295
@@ -353,9 +353,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: 6e91af3f21c6d945868cce150c154978
       Path: Events\Ambience\Play_Waterfall_CloseSparkle_LoopContainer
-      maxAttenuation: 50
-      maxDuration: 0
-      minDuration: 0
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: TestAmbienceStart
       guid: 7d6e07e4f047404b97f8e4afb7cf1d45
       id: 664772623
@@ -370,9 +370,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: 7d6e07e4f047404b97f8e4afb7cf1d45
       Path: Events\Ambience\TestAmbienceStart
-      maxAttenuation: 100
-      maxDuration: 0
-      minDuration: 0
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
   - PhysicalPath: Events\B4rn3y.wwu
     PathAndIcons:
     - ElementName: Events
@@ -390,7 +390,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC\B4rn3y
     guid: ba283f9801c3804bbf336ac089576497
     GuidInternal: 
-    m_lastTime: -8584556521106870138
+    m_lastTime: -8584546947630784435
     List:
     - name: ENV_B4rn3y_Hoot
       guid: e19f9296802a3549972f8fca527c927f
@@ -413,8 +413,8 @@ MonoBehaviour:
         guid: e19f9296802a3549972f8fca527c927f
       Path: Events\Environment\NPC\B4rn3y\ENV_B4rn3y_Hoot
       maxAttenuation: 0
-      maxDuration: 0.39863947
-      minDuration: 0.39863947
+      maxDuration: -1
+      minDuration: -1
     - name: ENV_B4rn3y_Identified
       guid: 61963e3f3e68e5489f2daccaa1944138
       id: 3283805861
@@ -436,8 +436,8 @@ MonoBehaviour:
         guid: 61963e3f3e68e5489f2daccaa1944138
       Path: Events\Environment\NPC\B4rn3y\ENV_B4rn3y_Identified
       maxAttenuation: 0
-      maxDuration: 4.40356
-      minDuration: 4.1059184
+      maxDuration: -1
+      minDuration: -1
   - PhysicalPath: Events\BarteringUI.wwu
     PathAndIcons:
     - ElementName: Events
@@ -604,7 +604,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC\Eden
     guid: a25562c68949034d8d2f00c179802c36
     GuidInternal: 
-    m_lastTime: -8584556521106870138
+    m_lastTime: -8584546947630784435
     List:
     - name: ENV_Eden_Expel
       guid: 1ce39ba1bc0ff74d9e88f004eab07b56
@@ -627,8 +627,8 @@ MonoBehaviour:
         guid: 1ce39ba1bc0ff74d9e88f004eab07b56
       Path: Events\Environment\NPC\Eden\ENV_Eden_Expel
       maxAttenuation: 0
-      maxDuration: 1.7349433
-      minDuration: 1.5285941
+      maxDuration: -1
+      minDuration: -1
     - name: ENV_Eden_Hello
       guid: ddb524eb6e3eed4981568998b28f6b1f
       id: 4139473738
@@ -650,8 +650,8 @@ MonoBehaviour:
         guid: ddb524eb6e3eed4981568998b28f6b1f
       Path: Events\Environment\NPC\Eden\ENV_Eden_Hello
       maxAttenuation: 0
-      maxDuration: 1.1872109
-      minDuration: 1.0012245
+      maxDuration: -1
+      minDuration: -1
   - PhysicalPath: Events\Environment.wwu
     PathAndIcons:
     - ElementName: Events
@@ -663,7 +663,7 @@ MonoBehaviour:
     ParentPath: Events\Environment
     guid: 851bf5aefe549d489c25241343bb6f59
     GuidInternal: 
-    m_lastTime: -8584556521106870138
+    m_lastTime: -8584546947630784435
     List: []
   - PhysicalPath: Events\EnvironmentUI.wwu
     PathAndIcons:
@@ -738,7 +738,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC\F1x
     guid: ce3cd6713d17334b966516859d0170a9
     GuidInternal: 
-    m_lastTime: -8584556521106860132
+    m_lastTime: -8584546947630784435
     List:
     - name: ENV_F1x_Dont_Bite
       guid: 77759b87c7315a40b6658ecb407d9f00
@@ -761,8 +761,8 @@ MonoBehaviour:
         guid: 77759b87c7315a40b6658ecb407d9f00
       Path: Events\Environment\NPC\F1x\ENV_F1x_Dont_Bite
       maxAttenuation: 0
-      maxDuration: 1.4646485
-      minDuration: 1.1123129
+      maxDuration: -1
+      minDuration: -1
     - name: ENV_F1x_Watcha_Got
       guid: 7099a4e1a503434baf5f53372d4d3554
       id: 123463240
@@ -784,8 +784,8 @@ MonoBehaviour:
         guid: 7099a4e1a503434baf5f53372d4d3554
       Path: Events\Environment\NPC\F1x\ENV_F1x_Watcha_Got
       maxAttenuation: 0
-      maxDuration: 1.449229
-      minDuration: 1.2010431
+      maxDuration: -1
+      minDuration: -1
   - PhysicalPath: Events\MenuUI.wwu
     PathAndIcons:
     - ElementName: Events
@@ -1066,7 +1066,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC
     guid: 09137e3649952b468f529ebe6f164b6b
     GuidInternal: 
-    m_lastTime: -8584556521106860132
+    m_lastTime: -8584546947630749304
     List: []
   - PhysicalPath: Events\Objects.wwu
     PathAndIcons:
@@ -1563,7 +1563,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 4106411ba585644787ebc92dd1cdc4ca
     GuidInternal: 
-    m_lastTime: -8584616603804441278
+    m_lastTime: -8584615092820441520
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -1577,7 +1577,7 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: 9df9aa54af8cab4ea76b42f4ee8eaa58
     GuidInternal: 
-    m_lastTime: -8584616603804421256
+    m_lastTime: -8584615092820441520
     List:
     - name: Test
       guid: 23c0f7a154fe4f4dbb4cbb0e19d72476

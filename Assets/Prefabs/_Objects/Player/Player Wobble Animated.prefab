@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1409599481511966280}
   - component: {fileID: -7279131567184190210}
   - component: {fileID: 2933849082744453684}
+  - component: {fileID: 845460296504494993}
   m_Layer: 0
   m_Name: Player Wobble Animated
   m_TagString: Untagged
@@ -115,6 +116,73 @@ MonoBehaviour:
       onMarker:
         m_PersistentCalls:
           m_Calls: []
+--- !u!114 &845460296504494993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2616370967543034599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810ae8ad4c9a2e742aad21db57b5a3af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SquashStretch: 0
+  magnitude: 1.05
+  bounceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 6.2831855
+      outSlope: 6.2831855
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.25
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 0
+      inSlope: -6.2831855
+      outSlope: -6.2831855
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.75
+      value: -1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 6.2831855
+      outSlope: 6.2831855
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  loopPeriod: 2
+  animKillTime: 0.025
 --- !u!1 &5508447908906982180
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,7 +293,7 @@ PrefabInstance:
     - target: {fileID: 1650801302639205335, guid: fa5b06afe07dbc64aa501643076ef03c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.0104
       objectReference: {fileID: 0}
     - target: {fileID: 1650801302639205335, guid: fa5b06afe07dbc64aa501643076ef03c,
         type: 3}

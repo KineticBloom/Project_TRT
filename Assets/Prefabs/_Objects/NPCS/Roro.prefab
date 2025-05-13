@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 575657326090727347}
   - component: {fileID: 2725106787007822062}
-  - component: {fileID: 1430244302899162575}
   m_Layer: 0
   m_Name: Renderer
   m_TagString: Untagged
@@ -50,73 +49,6 @@ MonoBehaviour:
   Mode: 1
   FlipOrientation: 1
   lerpSpeed: 3
---- !u!114 &1430244302899162575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2931228811623380983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 810ae8ad4c9a2e742aad21db57b5a3af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SquashStretch: 0
-  magnitude: 1.05
-  bounceCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 6.2831855
-      outSlope: 6.2831855
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.25
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.5
-      value: 0
-      inSlope: -6.2831855
-      outSlope: -6.2831855
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.75
-      value: -1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 6.2831855
-      outSlope: 6.2831855
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  loopPeriod: 2
-  animKillTime: 0.025
 --- !u!1 &5671934865115847379
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,8 +60,6 @@ GameObject:
   - component: {fileID: 4187739087268184517}
   - component: {fileID: 9130935537719892346}
   - component: {fileID: 2232209670206658798}
-  - component: {fileID: -3971668807357352833}
-  - component: {fileID: -2123746538406814454}
   m_Layer: 0
   m_Name: Roro
   m_TagString: NPC
@@ -193,6 +123,43 @@ MonoBehaviour:
   IconLocalPosition: {x: 0, y: 4, z: 0}
   npcConversation: {fileID: 4900000, guid: a90d7980cc0d2874fa465c55a51c65e1, type: 3}
   NpcData: {fileID: 11400000, guid: d42c2237ba7dadd4e9e729a774c40201, type: 2}
+  dialogueStartSFX:
+    name: 
+    playOnInit: 0
+    _events:
+      startEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 11400000, guid: e963f6926cb261947ad9be8cba63a0c3,
+          type: 2}
+      pauseEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      resumeEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      stopEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+    _callbacks:
+      onStart:
+        m_PersistentCalls:
+          m_Calls: []
+      onRestart:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleted:
+        m_PersistentCalls:
+          m_Calls: []
+      onBeat:
+        m_PersistentCalls:
+          m_Calls: []
+      onMarker:
+        m_PersistentCalls:
+          m_Calls: []
   interactionBarkSFX:
     name: 
     playOnInit: 0
@@ -265,88 +232,44 @@ MonoBehaviour:
       onMarker:
         m_PersistentCalls:
           m_Calls: []
+  barterOpenSFX:
+    name: 
+    playOnInit: 0
+    _events:
+      startEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 11400000, guid: 94471ec9b9660c34a8fa661e27d4ea15,
+          type: 2}
+      pauseEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      resumeEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      stopEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+    _callbacks:
+      onStart:
+        m_PersistentCalls:
+          m_Calls: []
+      onRestart:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleted:
+        m_PersistentCalls:
+          m_Calls: []
+      onBeat:
+        m_PersistentCalls:
+          m_Calls: []
+      onMarker:
+        m_PersistentCalls:
+          m_Calls: []
   DialogueSourceLocalPosition: {x: 0, y: 2.72, z: 0}
---- !u!114 &-3971668807357352833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5671934865115847379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 810ae8ad4c9a2e742aad21db57b5a3af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SquashStretch: 0
-  magnitude: 1.05
-  bounceCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 6.2831855
-      outSlope: 6.2831855
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.25
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.5
-      value: 0
-      inSlope: -6.2831855
-      outSlope: -6.2831855
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.75
-      value: -1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 6.2831855
-      outSlope: 6.2831855
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  loopPeriod: 2
-  animKillTime: 0.025
---- !u!114 &-2123746538406814454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5671934865115847379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9e71c3a5bb16a14a98e10f39f7b569e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SquashStretch: 0
-  magnitude: 1.05
 --- !u!1 &8245265088726319139
 GameObject:
   m_ObjectHideFlags: 0

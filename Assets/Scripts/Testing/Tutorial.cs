@@ -108,6 +108,7 @@ public class Tutorial : MonoBehaviour
     
     IEnumerator MovePlayerForward()
     {
+        Metrics.MarkTutorialCompleted();
         fadeToBlack.StartFadeIn(moveForwardTime);
         GameManager.PlayerInput.ToggleControls();
         GameManager.Player.Movement.ForceMove(true, Vector3.forward);

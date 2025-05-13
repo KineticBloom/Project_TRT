@@ -16,6 +16,7 @@ public class WinCondition : MonoBehaviour
         else if (GameManager.FlagTracker.CheckFlag(flagID)) 
         {
             _wonGame = true;
+            Metrics.MarkGameCompleted();
             SaveSystem.ResetSaveData();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         }

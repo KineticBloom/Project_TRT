@@ -132,6 +132,21 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Folder Name="StartupMusicEvents" ID="{AAFBCDB9-FFC2-4BB7-B66B-BF742D558524}" ShortID="927031611">
+					<ChildrenList>
+						<Event Name="PlayStartupMusic" ID="{35F96E62-9763-482B-997C-4AC88ABCE921}">
+							<ChildrenList>
+								<Action Name="" ID="{AEE310D9-9E7F-481B-B61C-7B5D0E0B5820}" ShortID="417814438">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="MUSC_Startup_Music" ID="{2B8BB087-ED53-4080-AF14-03D76A7F2E5D}" WorkUnitID="{DC7A2A47-5E1E-4C74-938C-E42927B64622}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

@@ -32,7 +32,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+							<ObjectRef Name="ObjectsMaster" ID="{EEE2086A-7A1F-4A6C-B183-06753A292FEA}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -52,6 +52,11 @@
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="1"/>
 						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
 						<Property Name="UseMaxSoundPerInstance" Type="bool">
 							<ValueList>
 								<Value>True</Value>
@@ -161,7 +166,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+							<ObjectRef Name="ObjectsMaster" ID="{EEE2086A-7A1F-4A6C-B183-06753A292FEA}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -199,7 +204,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+							<ObjectRef Name="ObjectsMaster" ID="{EEE2086A-7A1F-4A6C-B183-06753A292FEA}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -325,7 +330,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+							<ObjectRef Name="ObjectsMaster" ID="{EEE2086A-7A1F-4A6C-B183-06753A292FEA}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -343,6 +348,16 @@
 				</Sound>
 				<Sound Name="ENV_Door_Open" ID="{59C63FE8-3887-4685-B33D-BF70E1A80914}" ShortID="143610123">
 					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
 								<Value>5</Value>
@@ -446,7 +461,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+							<ObjectRef Name="ObjectsMaster" ID="{EEE2086A-7A1F-4A6C-B183-06753A292FEA}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -462,6 +477,157 @@
 						<ActiveSource Name="ChestOpenEmpty" ID="{63CF957B-EC76-4AE9-9587-EEEDA04FD15D}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<BlendContainer Name="ENV_Card_Pickup" ID="{DAA85C1D-CBA0-4A38-A122-2E1A484C851C}" ShortID="1000408482">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>3</Value>
+							</ValueList>
+						</Property>
+						<Property Name="OutputBusVolume" Type="Real64">
+							<ValueList>
+								<Value>-2</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="ObjectsMaster" ID="{EEE2086A-7A1F-4A6C-B183-06753A292FEA}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<RandomSequenceContainer Name="ENV_Card_Pickup_Shatter" ID="{FDBCB786-5DAB-4E0E-8C0F-CFE86DB25D1A}" ShortID="1050225716">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="ENV_Card_Pickup_Shatter_1" ID="{99EDC4C8-D8D0-4CB8-847E-968C2917D0EA}" ShortID="504240963">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ENV_Card_Pickup_Shatter_1" ID="{49A95983-676E-4BFD-BF51-D0E91A7C37F5}">
+											<Language>SFX</Language>
+											<AudioFile>ENV_Card_Pickup_Shatter_1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="350602102"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="ENV_Card_Pickup_Shatter_1" ID="{49A95983-676E-4BFD-BF51-D0E91A7C37F5}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="ENV_Card_Pickup_Shatter_2" ID="{714EC1E1-9E42-4980-AFD2-9F9E873B918D}" ShortID="297948772">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ENV_Card_Pickup_Shatter_2" ID="{34A416C3-3C57-442F-B84D-0A5C50E3A798}">
+											<Language>SFX</Language>
+											<AudioFile>ENV_Card_Pickup_Shatter_2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="453375890"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="ENV_Card_Pickup_Shatter_2" ID="{34A416C3-3C57-442F-B84D-0A5C50E3A798}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="ENV_Card_Pickup_Shatter_3" ID="{BE7DAAB2-97E2-4F63-BCB0-CF487510A1B3}" ShortID="289970135">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ENV_Card_Pickup_Shatter_3" ID="{B6E054A3-7459-4308-B8CA-D4AFD07EEC1C}">
+											<Language>SFX</Language>
+											<AudioFile>ENV_Card_Pickup_Shatter_3.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="397048178"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="ENV_Card_Pickup_Shatter_3" ID="{B6E054A3-7459-4308-B8CA-D4AFD07EEC1C}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="ENV_Card_Pickup_Shatter_4" ID="{6D40925A-3782-4B67-AA2D-4FD6F233EA9B}" ShortID="906328430">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ENV_Card_Pickup_Shatter_4" ID="{E7FA0507-76CA-4AD6-AAC8-F25E6BBC3B06}">
+											<Language>SFX</Language>
+											<AudioFile>ENV_Card_Pickup_Shatter_4.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="881369990"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="ENV_Card_Pickup_Shatter_4" ID="{E7FA0507-76CA-4AD6-AAC8-F25E6BBC3B06}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<Sound Name="ENV_Card_Pickup_Synth" ID="{B14773B0-27D6-42B9-B5B6-6B9D48BDA4C2}" ShortID="991349455">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="ENV_Card_Pickup_Synth" ID="{17EDC9D9-F892-47A9-A422-E544DFC79EB1}">
+									<Language>SFX</Language>
+									<AudioFile>ENV_Card_Pickup_Synth.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="183794766"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="ENV_Card_Pickup_Synth" ID="{17EDC9D9-F892-47A9-A422-E544DFC79EB1}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</BlendContainer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

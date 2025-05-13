@@ -36,7 +36,7 @@ public class EffectCardDisplay : MonoBehaviour
     [HideIf("InPlayMode")]
     public EffectCard EffectCard;
 
-    private Tweener _shakeTween;
+    private Tweener _shakeTween = null;
     private BarteringController _barteringController;
     private float _baseScale = 1f;
     private float _baseHeight;
@@ -98,7 +98,6 @@ public class EffectCardDisplay : MonoBehaviour
             _shakeTween.Restart();
         }
     }
-
 
     /// <summary>
     /// First part of the flipping animation
@@ -169,9 +168,16 @@ public class EffectCardDisplay : MonoBehaviour
 
     private void OnDisable()
     {
+        transform.DOKill();
+
+        if (_shakeTween != null) {
+            _shakeTween.Kill();
+            _shakeTween = null;
+        }
         if (!revealScreen)
         {
             EffectCard.OnRevealed -= Reveal;
+            EffectCard.OnActivate -= Activate;
         }
     }
 

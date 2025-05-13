@@ -129,7 +129,6 @@ GameObject:
   - component: {fileID: 9130935537719892346}
   - component: {fileID: 2232209670206658798}
   - component: {fileID: -3971668807357352833}
-  - component: {fileID: -2123746538406814454}
   m_Layer: 0
   m_Name: Roro
   m_TagString: NPC
@@ -266,6 +265,7 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
   DialogueSourceLocalPosition: {x: 0, y: 2.72, z: 0}
+  ItemsAvailable: []
 --- !u!114 &-3971668807357352833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,20 +333,6 @@ MonoBehaviour:
     m_RotationOrder: 4
   loopPeriod: 2
   animKillTime: 0.025
---- !u!114 &-2123746538406814454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5671934865115847379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9e71c3a5bb16a14a98e10f39f7b569e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SquashStretch: 0
-  magnitude: 1.05
 --- !u!1 &8245265088726319139
 GameObject:
   m_ObjectHideFlags: 0

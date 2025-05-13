@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 470701037437567926}
   - component: {fileID: 8421605022798657179}
   - component: {fileID: 5360149830936865622}
+  - component: {fileID: -7162807451576127350}
   - component: {fileID: -342176231029660579}
   m_Layer: 0
   m_Name: NPC
@@ -125,6 +126,7 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
   DialogueSourceLocalPosition: {x: 0, y: 0, z: 0}
+  ItemsAvailable: []
 --- !u!136 &5360149830936865622
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -148,6 +150,124 @@ CapsuleCollider:
   m_Height: 5.075967
   m_Direction: 1
   m_Center: {x: 0, y: 2.0379834, z: 0}
+--- !u!114 &-7162807451576127350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890871114915600313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1b65a55b4cf824eb144ea49ca2f945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fastBounceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 6.2831855
+      outSlope: 6.2831855
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.25
+      value: 1.5207227
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 0
+      inSlope: -6.2831855
+      outSlope: -6.2831855
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.7385864
+      value: -1.4911957
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 6.2831855
+      outSlope: 6.2831855
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  fastLoopPeriod: 0.25
+  fastAnimKillTime: 0.025
+  slowBounceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 6.2831855
+      outSlope: 6.2831855
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.25
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 0
+      inSlope: -6.2831855
+      outSlope: -6.2831855
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.75
+      value: -1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 6.2831855
+      outSlope: 6.2831855
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  slowLoopPeriod: 3
+  slowAnimKillTime: 0.025
 --- !u!114 &-342176231029660579
 MonoBehaviour:
   m_ObjectHideFlags: 0

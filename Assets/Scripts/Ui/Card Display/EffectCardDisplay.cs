@@ -83,7 +83,7 @@ public class EffectCardDisplay : MonoBehaviour
     [Button]
     public void Reveal()
     {
-        _barteringController?.AddNewReveal(EffectCard);
+        _barteringController?.EFFECT_AddNewReveal(EffectCard);
 
         FlipBack();
     }

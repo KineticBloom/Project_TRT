@@ -8,16 +8,16 @@ using System.ComponentModel;
 using NaughtyAttributes;
 using static EffectCard;
 
-public class BarteringController : MonoBehaviour {
+public class BarteringController : MonoBehaviour
+{
+    public bool IsActive => gameObject.activeSelf;
 
     #region ======== [ OBJECT REFERENCES ] ========
 
     [Header("Player Dependencies")]
     public TMP_Text PlayerValueText;
-    public InventoryCardObject PlayerOfferSlotOne;
-    public InventoryCardObject PlayerOfferSlotTwo;
-    public InventoryCardObject PlayerOfferSlotThree;
-    public InventoryCardObject PlayerOfferSlotFour;
+    [SerializeReference]
+    public List<InventoryCardObject> PlayerOfferSlots;
 
     [Header("NPC Dependencies")]
     public TMP_Text NPCValueText;
@@ -47,227 +47,394 @@ public class BarteringController : MonoBehaviour {
     #endregion
 
     #region ======== [ INTERNAL PROPERTIES ] ========
-
-    private NPCData _currentNPCData;
-    private InventoryCardData _currentCardOnOffer;
-    private float _currentOfferedValue = 0;
-    private bool _wonBarter = false;
-    private InventoryCardObject _currentButtonObject;
     private OfferedItems _offeredItems;
-    private int _currentAttempts = 0;
     private TradeInfo _tradeInfo;
     private List<EffectCard> _revealedEffectCards;
-    private NpcInteractable _npcInstance;
+    private bool BarterEnding = false;
+
+    private class TempTradeData
+    {
+
+        // Unique Dependencies
+        public NPCData NPCData;
+        public NpcInteractable NPCInstance;
+        public InventoryCardData TargetCard;
+
+        // Trade Data
+        public float PlayerSumValue = 0;
+        public int TradeAttemptsLeft = 0;
+        public bool WonBarterFlag = false;
+    }
+
+    TempTradeData tempTradeData;
 
     #endregion
 
-    /*
-     * Sequence of events
-     * 
-     * InitializeTrade
-     * Activate Pre-Barter Effect Cards
-     * Player offers items
-     * Submit offer -> EndBarter
-     * Activate Post-Barter Effect cards
-     * Win? -> Trade items and end barter
-     * Lose? -> Restart to beginning of sequence
-     * 
-     */
+    #region ======== [ INIT CALL ] ========
 
-
-    #region ======== [ INIT METHOD ] ========
-
-    /// <summary>
-    /// Start a barter for a given item.
-    /// </summary>
-    /// <param name="npcData">Information about the trade with this NPC.</param>
-    public void InitializeTrade(NPCData npcData,InventoryCardData cardOnOffer, NpcInteractable npcInstance, bool firstTime = true) {
-
-        if (TimeLoopManager.Instance!= null) TimeLoopManager.SetLoopPaused(true);
-        // Setup trackers
-        _currentNPCData = npcData;
-        _npcInstance = npcInstance;
-        _offeredItems = new OfferedItems();
-        _revealedEffectCards = new List<EffectCard>();
-
-        // Init new barter
-        ResetData();
-
-        _currentCardOnOffer = cardOnOffer;
-
-        // Load NPC Data
-        NPCOfferSlotOne.SetData(_currentCardOnOffer, false);
-        NPCValueText.text = "Value: " + _currentCardOnOffer.CurrentValue;
-        NPCProfilePicture.sprite = _currentNPCData.Icon;
-
-
-        // Only runs the first time
-        if (firstTime)
+    public void InitializeTrade(NPCData NPCData, NpcInteractable NPCInstance, InventoryCardData TargetCard)
+    {
+        // Pause TimeLoop
+        if (TimeLoopManager.Instance != null)
         {
-            _currentAttempts = 0;
-
-            // Load Effect Cards
-            foreach (EffectCard effectCard in _currentNPCData.EffectCards)
-            {
-                GameObject card = Instantiate(EffectCardPrefab, EffectCardsContainer);
-                card.GetComponent<EffectCardDisplay>().Load(effectCard, this);
-            }
-
-            // Activate Pre-Barter Effect Cards
-            ActivateEffectCards(EffectCard.ActivationTime.BeforeOffer);
+            TimeLoopManager.SetLoopPaused(true);
         }
 
+        // Load temp data
+        tempTradeData = new TempTradeData();
+        tempTradeData.NPCData = NPCData;
+        tempTradeData.NPCInstance = NPCInstance;
+        tempTradeData.TargetCard = TargetCard;
+
+        tempTradeData.TradeAttemptsLeft = NPCData.BarterAttempts;
+
+        // Setup
+        ResetGlobalState();
+        VISUAL_LoadDefault();
+        EFFECT_CreateEffectCards();
+
+        // Activate Pre-Barter Effect Cards
+        EFFECT_ActivateEffectCards(ActivationTime.BeforeOffer);
+
+        // Extra things I don't know how to refactor
         _tradeInfo = new()
         {
             OfferedItems = _offeredItems,
-            ReceivedItem = _currentCardOnOffer,
+            ReceivedItem = tempTradeData.TargetCard
         };
 
+        // Allow player to interact with barter!
         SetInteractable(true);
-
-        UpdateVisuals();
+        inventoryBar.SetActiveSource(gameObject, true);
     }
 
     #endregion
 
-    #region ======== [ PUBLIC METHODS ] ========
+    #region ======== [ INPUT METHODS ] ========
 
+    public void OfferItem(InventoryCardData itemToOffer)
+    {
+        // Check if we can offer an item
+        if (BarterEnding || itemToOffer == null || _offeredItems.Count >= 4) return;
 
-    /// <summary>
-    /// Returns whether the bartering interface is showing or not
-    /// </summary>
-    public bool IsActive => gameObject.activeSelf;
-
-    /// <summary>
-    /// Offer a item to the barter pool.
-    /// Called by UI Elements.
-    /// </summary>
-    /// <param name="itemToOffer">Item to offer to the offer pool.</param>
-    public void OfferItem(InventoryCardData itemToOffer) {
-
-        if (itemToOffer == null) return;
-
-        if (_offeredItems.Count >= 4) return;
-
-        // See what button was activated
-        _currentButtonObject = null;
-
-        // Get Current object of selected InventoryGridController
-        _currentButtonObject = InventoryGrid.FindCurrentSelection();
-
+        // Offer card
         _offeredItems.Add(itemToOffer);
 
-        UpdateVisuals();
-        PreActivateEffectCards();
+        VISUAL_DisplayNewOffer();
+        VISUAL_FindAndDisplayNewSum();
 
-        // Reset selection of button!
-        if (_currentButtonObject != null) {
-            _currentButtonObject.CurrentActiveButton.Select();
-        }
+        // Pre-Activate any needed Effect Cards
+        StartCoroutine(EFFECT_ActivateEffectCards(ActivationTime.AfterOffer,true,true));
     }
 
-    /// <summary>
-    /// Remove a item from the current barter pool.
-    /// Called by UI Elements.
-    /// </summary>
-    /// <param name="itemToRemove">Item to retract from the offer pool.</param>
-    public void RetractItem(InventoryCardData itemToRemove) {
-
-        if (itemToRemove == null) return;
-
-        // See what button was activated
-        _currentButtonObject = null;
-
-        if (PlayerOfferSlotOne.CurrentActiveButton.gameObject == EventSystem.current.currentSelectedGameObject) {
-            _currentButtonObject = PlayerOfferSlotOne;
-        }
-        if (PlayerOfferSlotTwo.CurrentActiveButton.gameObject == EventSystem.current.currentSelectedGameObject) {
-            _currentButtonObject = PlayerOfferSlotTwo;
-        }
-        if (PlayerOfferSlotThree.CurrentActiveButton.gameObject == EventSystem.current.currentSelectedGameObject)
-        {
-            _currentButtonObject = PlayerOfferSlotThree;
-        }
-        if (PlayerOfferSlotFour.CurrentActiveButton.gameObject == EventSystem.current.currentSelectedGameObject)
-        {
-            _currentButtonObject = PlayerOfferSlotFour;
-        }
-
-        itemToRemove.ResetCurrentValue();
-
-        // Remove item
-        _offeredItems.Remove(itemToRemove);
-
-        UpdateVisuals();
-
-        // Reset selection of button!
-        if (_currentButtonObject != null) {
-            _currentButtonObject.CurrentActiveButton.Select();
-        }
-    }
-
-    /// <summary>
-    /// Leave and fail barter.
-    /// </summary>
-    public void LeaveBarter() 
+    public void RetractItem(InventoryCardData itemToRetract)
     {
-        Debug.Log("LEAVE BARTER");
-        StartCoroutine(LeaveBarterScene());
+        // Check if we can retract item
+        if (BarterEnding || itemToRetract == null || _offeredItems.Count <= 0) return;
+
+        Debug.Log("Retract item");
+
+        // Remove effect card changes from item
+        itemToRetract.ResetCurrentValue();
+
+        // Retract item
+        _offeredItems.Remove(itemToRetract);
+
+        VISUAL_DisplayNewOffer();
+        VISUAL_FindAndDisplayNewSum();
     }
 
+    public void LeaveBarter()
+    {
+        LeaveScene();
+    }
 
-    /// <summary>
-    /// Submits the offer and determines if player pool is valuable enough for NPC.
-    /// Called by UI Elements.
-    /// </summary>
-    public void SubmitBarter() {
-
+    public void SubmitOffer()
+    {
         SetInteractable(false);
+        BarterEnding = true;
 
-        ActivateEffectCards(EffectCard.ActivationTime.AfterOffer);
+        // Start process
+        StartCoroutine(FinishBarter());
+    }
 
-        float NPCItemValue = _currentCardOnOffer.CurrentValue;
+    #endregion
 
-        EndMessageSpeechBubble.SetActive(true);
+    #region ======== [ PRIVATE METHODS ] ========
+    private void ResetGlobalState()
+    {
+        _offeredItems = new OfferedItems();
+        _revealedEffectCards = new List<EffectCard>();
+        BarterEnding = false;
+    }
+    IEnumerator FinishBarter()
+    {
+        // Activate Effect Cards, wait till done!
+        yield return StartCoroutine(EFFECT_ActivateEffectCards(ActivationTime.AfterOffer));
 
-        if (_currentOfferedValue >= NPCItemValue) {
-            // Complete Trade
-            EndMessage.text = _currentNPCData.BarterMessageWin;
-            PassBarterIcon.SetActive(true);
+        // Check for win
+        tempTradeData.WonBarterFlag = tempTradeData.PlayerSumValue >= tempTradeData.TargetCard.CurrentValue;
 
-            _npcInstance.ItemsAvailable.Remove(_currentCardOnOffer);
-            if (_npcInstance.ItemsAvailable.Count == 0) {
-                GameManager.FlagTracker.SetFlag(_currentNPCData.FlagID);
-            }
-            _wonBarter = true;
+        if (tempTradeData.WonBarterFlag)
+        {
+            BarterWin();
+        }
+        else
+        {
+            BarterLose();
+        }
 
-            LeaveBarter();
-        } else {
-            // Say no!
-            EndMessage.text = _currentNPCData.BarterMessageLose;
-            FailBarterIcon.SetActive(true);
+        yield return new WaitForSeconds(1f);
 
+        if(tempTradeData.WonBarterFlag == false)
+        {
+            // Update attempts
+            tempTradeData.TradeAttemptsLeft -= 1;
 
-            // If you run out of attempts, the barter is exited
-            var barterAttempts = _currentNPCData.BarterAttempts;
-            _currentAttempts++;
-
-            if (barterAttempts <= _currentAttempts && barterAttempts > 0)
+            // Try to continue
+            if (tempTradeData.TradeAttemptsLeft > 0)
             {
-                LeaveBarter();
-                return;
+                // Show effect cards revealed -> then restart
+                StartCoroutine(EFFECT_ShowEffectCards(RestartBarter));
+                yield break;
             }
+        }
 
-            // if you failed the barter, it is interactable so you can try again
-            StartCoroutine(RestartBarter());
+        // Show effect cards revealed -> then exit
+        StartCoroutine(EFFECT_ShowEffectCards(LeaveScene));
+    }
+    private void BarterWin()
+    {
+        // Show end message
+        EndMessageSpeechBubble.SetActive(true);
+        EndMessage.text = tempTradeData.NPCData.BarterMessageWin;
+
+        // Update visuals
+        PassBarterIcon.SetActive(true);
+
+        // Remove Item from NPC
+        tempTradeData.NPCInstance.ItemsAvailable.Remove(tempTradeData.TargetCard);
+        if (tempTradeData.NPCInstance.ItemsAvailable.Count == 0)
+        {
+            GameManager.FlagTracker.SetFlag(tempTradeData.NPCData.FlagID);
         }
     }
+    private void BarterLose()
+    {
+        // Show end message
+        EndMessageSpeechBubble.SetActive(true);
+        EndMessage.text = tempTradeData.NPCData.BarterMessageLose;
 
+        // Update visuals
+        FailBarterIcon.SetActive(true);
+    }
+    private void RestartBarter()
+    {
+        // Remove effect card modifiers
+        _offeredItems.ResetItemValues();
+        tempTradeData.TargetCard.ResetCurrentValue();
+
+        // Give cards back to player
+        _offeredItems.ReturnCardsToInventory();
+        _offeredItems.Items.Clear();
+
+        // Load Default values
+        ResetGlobalState();
+        VISUAL_LoadDefault();
+        VISUAL_FindAndDisplayNewSum();
+
+        // Activate Pre-Barter Effect Cards
+        EFFECT_ActivateEffectCards(ActivationTime.BeforeOffer);
+
+        // Extra things I don't know how to refactor
+        _tradeInfo = new()
+        {
+            OfferedItems = _offeredItems,
+            ReceivedItem = tempTradeData.TargetCard
+        };
+
+        // Allow player to interact with barter!
+        SetInteractable(true);
+    }
+    private void LeaveScene()
+    {
+        // Destroy effect cards
+        foreach (Transform card in EffectCardsContainer)
+        {
+            Destroy(card.gameObject);
+        }
+
+        // Clear effect card modifications
+        GameManager.Inventory.ResetAllCardValues();
+
+        // Remove effect card modifiers
+        tempTradeData.TargetCard.ResetCurrentValue();
+
+        // Give cards back to player
+        _offeredItems.ReturnCardsToInventory();
+
+        // Complete trade if won!
+        if (tempTradeData.WonBarterFlag)
+        {
+            // Complete trade swap
+            foreach (InventoryCardData card in _offeredItems.Items)
+            {
+                GameManager.Inventory.RemoveCard(card);
+            }
+
+            GameManager.Inventory.AddCard(tempTradeData.TargetCard);
+        }
+
+        _offeredItems.Items.Clear();
+
+        // Leave Scene
+        InGameUi _inGameUi = GameManager.MasterCanvas.GetComponent<InGameUi>();
+        _inGameUi.MoveToDefault();
+
+        // Change focus
+        inventoryBar.SetActiveSource(gameObject, false);
+
+        // Unpause time
+        if (TimeLoopManager.Instance != null) TimeLoopManager.SetLoopPaused(false);
+    }
+    private void SetInteractable(bool isInteractable)
+    {
+        foreach (InventoryCardObject x in PlayerOfferSlots)
+        {
+            x.SetInteractable(isInteractable);
+        }
+
+        OfferTradeButton.interactable = isInteractable;
+        InventoryGrid.SetSlotsInteractable(isInteractable);
+    }
+    
+    #endregion
+
+    #region ======== [ VISUAL PRIVATE METHODS ] ========
+
+    private void VISUAL_FindAndDisplayNewSum()
+    {
+        tempTradeData.PlayerSumValue = 0;
+
+        foreach (InventoryCardData item in _offeredItems.Items)
+        {
+            tempTradeData.PlayerSumValue += item.CurrentValue;
+        }
+
+        PlayerValueText.text = "Value: " + tempTradeData.PlayerSumValue + "?";
+    }
+    private void VISUAL_DisplayNewOffer()
+    {
+        List<InventoryCardData> CardsLeftToDisplay = _offeredItems.Items;
+        int index = 0;
+
+        /*
+         * If we have a card to display, show it!
+         * Otherwise, set to empty.
+         */
+        foreach (InventoryCardObject x in PlayerOfferSlots)
+        {
+            if (index < CardsLeftToDisplay.Count)
+            {
+                x.SetData(CardsLeftToDisplay[index], x.IsPreviewCard);
+                index += 1;
+            }
+            else
+            {
+                x.SetCardToEmpty(x.IsPreviewCard);
+            }
+        }
+    }
+    private void VISUAL_LoadDefault()
+    {
+        // Reset slot contents
+        NPCOfferSlotOne.SetData(tempTradeData.TargetCard, false);
+
+        foreach (InventoryCardObject x in PlayerOfferSlots)
+        {
+            x.SetCardToEmpty(false);
+        }
+
+        //  Hide end popups
+        FailBarterIcon.SetActive(false);
+        PassBarterIcon.SetActive(false);
+        EndMessageSpeechBubble.SetActive(false);
+
+        // Reset value texts
+        PlayerValueText.text = "Value: 0";
+        NPCValueText.text = "Value: " + tempTradeData.TargetCard.CurrentValue;
+
+        // Load Picture of NPC
+        NPCProfilePicture.sprite = tempTradeData.NPCData.Icon;
+    }
+
+    #endregion
+
+    #region ======== [ EFFECT CARD METHODS ] ========
+
+    public delegate void EFFECT_CallBack();
 
     /// <summary>
-    /// Display revealed Effect Cards
+    /// Resets the card Reveal Screen and Close it
     /// </summary>
-    private WaitForCloseRevealScreen ShowRevealedCards()
+    public void EFFECT_CloseCardScreen()
+    {
+        CardRevealScreen.SetActive(false);
+
+        foreach (Transform card in CardRevealContainer)
+        {
+            Destroy(card.gameObject);
+        }
+    }
+    public void EFFECT_AddNewReveal(EffectCard effectCard)
+    {
+        Debug.Log("ATTEMPT ADD");
+        if (_revealedEffectCards == null) return;
+
+        _revealedEffectCards.Add(effectCard);
+        Debug.Log("After Add" + _revealedEffectCards.Count);
+    }
+    private void EFFECT_CreateEffectCards()
+    {
+        // Init each effect card inside a EffectCardDisplay instance
+        foreach (EffectCard effectCard in tempTradeData.NPCData.EffectCards)
+        {
+            GameObject card = Instantiate(EffectCardPrefab, EffectCardsContainer);
+            card.GetComponent<EffectCardDisplay>().Load(effectCard, this);
+        }
+    }
+    IEnumerator EFFECT_ActivateEffectCards(ActivationTime activationTime, bool SkipFlipDelay = false, bool PreActivation = false)
+    {
+        List<EffectCard> effectCards = tempTradeData.NPCData.EffectCards;
+        List<EffectCard> activeEffectCards = new List<EffectCard>();
+
+        // Get list of cards to activate
+        foreach (EffectCard effectCard in effectCards)
+        {
+            if (PreActivation == false || (PreActivation && effectCard.IsRevealed))
+            {
+                if (effectCard.DoesActivate(_tradeInfo, activationTime))
+                {
+                    activeEffectCards.Add(effectCard);
+                }
+            }
+        }
+
+        float flipDelay = 1f;
+        if (SkipFlipDelay) flipDelay = 0f;
+
+        // Flip each card that we can activate
+        foreach (EffectCard effectCard in activeEffectCards)
+        {
+            effectCard.Activate(_tradeInfo);
+
+            VISUAL_DisplayNewOffer();
+            VISUAL_FindAndDisplayNewSum();
+            
+            yield return new WaitForSeconds(flipDelay);
+        }
+    }
+    private WaitForCloseRevealScreen EFFECT_ShowRevealedCards()
     {
         CardRevealScreen.SetActive(true);
 
@@ -282,224 +449,26 @@ public class BarteringController : MonoBehaviour {
 
         return new WaitForCloseRevealScreen(CardRevealScreen);
     }
-
-
-    /// <summary>
-    /// Resets the card Reveal Screen and Close it
-    /// </summary>
-    public void CloseCardScreen()
+    private IEnumerator EFFECT_ShowEffectCards(EFFECT_CallBack x)
     {
-        CardRevealScreen.SetActive(false);
-
-        foreach (Transform card in CardRevealContainer)
-        {
-            Destroy(card.gameObject);
-        }
-    }
-
-
-
-    public void AddNewReveal(EffectCard effectCard)
-    {
-        Debug.Log("ATTEMPT ADD");
-        if (_revealedEffectCards == null) return;
-
-        _revealedEffectCards.Add(effectCard);
-        Debug.Log("After Add" + _revealedEffectCards.Count);
-    }
-
-
-    #endregion
-
-    #region ======== [ PRIVATE METHODS ] ========
-
-    private void PreActivateEffectCards() {
-        List<EffectCard> effectCards = _currentNPCData.EffectCards;
-        List<EffectCard> activeEffectCards = new List<EffectCard>();
-
-        foreach (EffectCard effectCard in effectCards) {
-            if (effectCard.IsRevealed && effectCard.DoesActivate(_tradeInfo, ActivationTime.AfterOffer)) {
-                activeEffectCards.Add(effectCard);
-            }
-        }
-
-        foreach (EffectCard effectCard in activeEffectCards) {
-            effectCard.Activate(_tradeInfo);
-        }
-
-        UpdateVisuals();
-    }
-
-    /// <summary>
-    /// Activates Effect Cards
-    /// </summary>
-    /// <param name="isPreBarter">which stage of the barter are we in for activating the effect cards?</param>
-    private void ActivateEffectCards(EffectCard.ActivationTime activationTime)
-    {
-        List<EffectCard> effectCards = _currentNPCData.EffectCards;
-        List<EffectCard> activeEffectCards = new List<EffectCard>();
-
-        foreach (EffectCard effectCard in effectCards)
-        {
-            if (effectCard.DoesActivate(_tradeInfo, activationTime))
-            {
-                activeEffectCards.Add(effectCard);
-            }
-        }
-
-        foreach (EffectCard effectCard in activeEffectCards)
-        {
-            effectCard.Activate(_tradeInfo);
-        }
-
-        UpdateVisuals();
-    }
-
-    private void UpdateVisuals() {
-
-        ResetPlayerData();
-
-        // Get new player offer value
-        foreach (InventoryCardData item in _offeredItems.Items) {
-            _currentOfferedValue += item.CurrentValue;
-        }
-
-        PlayerValueText.text = "Value: " + _currentOfferedValue + "?";
-
-        // Display new slots adjusted
-        if (_offeredItems.Count >= 1) {
-            PlayerOfferSlotOne.SetData(_offeredItems.Items[0], PlayerOfferSlotOne.IsPreviewCard);
-        }
-        if (_offeredItems.Count >= 2) {
-            PlayerOfferSlotTwo.SetData(_offeredItems.Items[1], PlayerOfferSlotTwo.IsPreviewCard);
-        }
-        if (_offeredItems.Count >= 3)
-        {
-            PlayerOfferSlotThree.SetData(_offeredItems.Items[2], PlayerOfferSlotThree.IsPreviewCard);
-        }
-        if (_offeredItems.Count >= 4)
-        {
-            PlayerOfferSlotFour.SetData(_offeredItems.Items[3], PlayerOfferSlotFour.IsPreviewCard);
-        }
-
-        NPCValueText.text = "Value: " + _currentCardOnOffer.CurrentValue;
-
-        inventoryBar.SetActiveSource(gameObject, true);
-    }
-
-    private void ResetData() {
-
-        ResetPlayerData();
-        ResetNPCData();
-
-        // Hide end objects.
-        FailBarterIcon.SetActive(false);
-        PassBarterIcon.SetActive(false);
-        EndMessageSpeechBubble.SetActive(false);
-
-        // Reset trackers
-        _wonBarter = false;
-    }
-
-    private void ResetPlayerData() {
-        PlayerOfferSlotOne.SetCardToEmpty(false);
-        PlayerOfferSlotTwo.SetCardToEmpty(false);
-        PlayerOfferSlotThree.SetCardToEmpty(false);
-        PlayerOfferSlotFour.SetCardToEmpty(false);
-        _currentOfferedValue = 0;
-        PlayerValueText.text = "Value: 0";
-    }
-
-    private void ResetNPCData() {
-        NPCOfferSlotOne.SetCardToEmpty(false);
-        NPCValueText.text = "Value: 0";
-    }
-
-    IEnumerator RestartBarter()
-    {
-        yield return new WaitForSeconds(1f);
-
         if (_revealedEffectCards.Count > 0)
         {
-            yield return ShowRevealedCards();
+            yield return EFFECT_ShowRevealedCards();
         }
 
-        _offeredItems.ResetItemValues();
-        _currentCardOnOffer.ResetCurrentValue();
-
-        _offeredItems.ReturnCardsToInventory();
-        _offeredItems.Items.Clear();
-        // GameManager.Inventory.ResetAllCardValues();
-
-        InitializeTrade(_currentNPCData, _currentCardOnOffer, _npcInstance, false);
-    }
-
-    IEnumerator LeaveBarterScene() 
-    {
-        yield return new WaitForSeconds(1f);
-
-        Debug.Log(_revealedEffectCards.Count);
-
-        if (_revealedEffectCards.Count > 0)
-        {
-            yield return ShowRevealedCards();
-        }
-
-        _offeredItems.ResetItemValues();
-
-        _offeredItems.ReturnCardsToInventory();
-
-        if (_wonBarter) {
-            // remove cards offered
-            foreach (InventoryCardData card in _offeredItems.Items)
-            {
-                GameManager.Inventory.RemoveCard(card);
-            }
-
-            GameManager.Inventory.AddCard(_currentCardOnOffer);
-        }
-
-        _offeredItems = null;
-
-        // Remove Effect Cards
-        foreach (Transform card in EffectCardsContainer)
-        {
-            Destroy(card.gameObject);
-        }
-
-        GameManager.Inventory.ResetAllCardValues();
-
-        InGameUi _inGameUi = GameManager.MasterCanvas.GetComponent<InGameUi>();
-
-        _inGameUi.MoveToDefault();
-
-        inventoryBar.SetActiveSource(gameObject, false);
-        if (TimeLoopManager.Instance != null) TimeLoopManager.SetLoopPaused(false);
-    }
-
-    /// <summary>
-    /// Sets whether or not the player can make any inputs
-    /// </summary>
-    /// <param name="isInteractable"></param>
-    private void SetInteractable(bool isInteractable)
-    {
-        PlayerOfferSlotOne.SetInteractable(isInteractable);
-        PlayerOfferSlotTwo.SetInteractable(isInteractable);
-        PlayerOfferSlotThree.SetInteractable(isInteractable);
-        PlayerOfferSlotFour.SetInteractable(isInteractable);
-
-        OfferTradeButton.interactable = isInteractable;
-        InventoryGrid.SetSlotsInteractable(isInteractable);
+        x();
     }
 
     #endregion
 }
 
+//// SCARY STUFF BELOW THIS! (Jonah doesn't know what it does)
+
 [System.Serializable]
 public class OfferedItems
 {
     public List<InventoryCardData> Items;
-    public int Count {  get { return Items.Count; } }
+    public int Count { get { return Items.Count; } }
 
 
     public OfferedItems()
@@ -507,14 +476,18 @@ public class OfferedItems
         Items = new List<InventoryCardData>();
     }
 
-    public void ResetItemValues() {
-        foreach(InventoryCardData x in Items) {
+    public void ResetItemValues()
+    {
+        foreach (InventoryCardData x in Items)
+        {
             x.ResetCurrentValue();
         }
     }
 
-    public void Add(InventoryCardData card) {
+    public void Add(InventoryCardData card)
+    {
         Items.Add(card);
+
         GameManager.Inventory.RemoveCard(card, true);
     }
 
@@ -539,7 +512,6 @@ public struct TradeInfo
     public InventoryCardData ReceivedItem;
 }
 
-
 public class WaitForCloseRevealScreen : CustomYieldInstruction
 {
     private GameObject _revealScreen;
@@ -552,7 +524,8 @@ public class WaitForCloseRevealScreen : CustomYieldInstruction
         }
     }
 
-    public WaitForCloseRevealScreen(GameObject revealScreen) {
+    public WaitForCloseRevealScreen(GameObject revealScreen)
+    {
         _revealScreen = revealScreen;
     }
 }

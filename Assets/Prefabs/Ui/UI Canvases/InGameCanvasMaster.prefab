@@ -3101,10 +3101,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerValueText: {fileID: 8180051629183541607}
-  PlayerOfferSlotOne: {fileID: 8214749112782221448}
-  PlayerOfferSlotTwo: {fileID: 3594125176556575581}
-  PlayerOfferSlotThree: {fileID: 1188034131775656876}
-  PlayerOfferSlotFour: {fileID: 8575214843414368689}
+  PlayerOfferSlots:
+  - {fileID: 8214749112782221448}
+  - {fileID: 3594125176556575581}
+  - {fileID: 1188034131775656876}
+  - {fileID: 8575214843414368689}
   NPCValueText: {fileID: 711518938058281775}
   NPCProfilePicture: {fileID: 4003527294292791018}
   NPCOfferSlotOne: {fileID: 1793275893413945353}
@@ -4333,7 +4334,7 @@ PrefabInstance:
     - target: {fileID: 5584680545271125517, guid: 06897a07a881b3a44babcfcb01ed3bad,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5584680545271125517, guid: 06897a07a881b3a44babcfcb01ed3bad,
         type: 3}
@@ -4343,7 +4344,7 @@ PrefabInstance:
     - target: {fileID: 5584680545271125517, guid: 06897a07a881b3a44babcfcb01ed3bad,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5584680545271125517, guid: 06897a07a881b3a44babcfcb01ed3bad,
         type: 3}
@@ -4393,12 +4394,12 @@ PrefabInstance:
     - target: {fileID: 5584680545271125517, guid: 06897a07a881b3a44babcfcb01ed3bad,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5584680545271125517, guid: 06897a07a881b3a44babcfcb01ed3bad,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -159.4
       objectReference: {fileID: 0}
     - target: {fileID: 5584680545271125517, guid: 06897a07a881b3a44babcfcb01ed3bad,
         type: 3}
@@ -4650,7 +4651,7 @@ PrefabInstance:
     - target: {fileID: 5584680545271125517, guid: 06897a07a881b3a44babcfcb01ed3bad,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5584680545271125517, guid: 06897a07a881b3a44babcfcb01ed3bad,
         type: 3}
@@ -4660,7 +4661,7 @@ PrefabInstance:
     - target: {fileID: 5584680545271125517, guid: 06897a07a881b3a44babcfcb01ed3bad,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5584680545271125517, guid: 06897a07a881b3a44babcfcb01ed3bad,
         type: 3}
@@ -4710,12 +4711,12 @@ PrefabInstance:
     - target: {fileID: 5584680545271125517, guid: 06897a07a881b3a44babcfcb01ed3bad,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5584680545271125517, guid: 06897a07a881b3a44babcfcb01ed3bad,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -75
       objectReference: {fileID: 0}
     - target: {fileID: 5584680545271125517, guid: 06897a07a881b3a44babcfcb01ed3bad,
         type: 3}
@@ -4745,7 +4746,7 @@ PrefabInstance:
     - target: {fileID: 8547772570695791966, guid: 06897a07a881b3a44babcfcb01ed3bad,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SubmitBarter
+      value: SubmitOffer
       objectReference: {fileID: 0}
     - target: {fileID: 8547772570695791966, guid: 06897a07a881b3a44babcfcb01ed3bad,
         type: 3}
@@ -5074,7 +5075,7 @@ PrefabInstance:
     - target: {fileID: 8547772570695791966, guid: 06897a07a881b3a44babcfcb01ed3bad,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CloseCardScreen
+      value: EFFECT_CloseCardScreen
       objectReference: {fileID: 0}
     - target: {fileID: 8547772570695791966, guid: 06897a07a881b3a44babcfcb01ed3bad,
         type: 3}

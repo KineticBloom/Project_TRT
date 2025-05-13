@@ -8,28 +8,28 @@ public class NpcInteractable : Interactable
     [SerializeField] private TextAsset npcConversation;
     [Expandable] public NPCData NpcData;
 
+    public AudioEvent dialogueStartSFX;
     public AudioEvent interactionBarkSFX;
     public AudioEvent barterBarkSFX;
+    public AudioEvent barterOpenSFX;
 
     public Vector3 DialogueSourceLocalPosition;
 
     public List<InventoryCardData> ItemsAvailable;
-
-    private void Start() {
-        ItemsAvailable = new List<InventoryCardData>(NpcData.ItemsOnOffer);
-    }
 
     public override void Interaction() {
         Vector3 NPCWorldPosition = this.transform.position + DialogueSourceLocalPosition;
         Vector3 PlayerWorldPosition = GameManager.Player.DialogueSource.position;
         GameManager.DialogueManager.StartDialogue(npcConversation, TriggerBarter, NPCWorldPosition, PlayerWorldPosition);
 
+        dialogueStartSFX.Play(gameObject);
         interactionBarkSFX.Play(gameObject);
     }
 
     public void TriggerBarter() {
 
         barterBarkSFX.Play(gameObject);
+        barterOpenSFX.Play(gameObject);
         GameManager.NewBarterStarter.StartBarter(NpcData, this);
     }
 

@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{A1F38CCF-E6A4-BC33-90C4-197EDDE73C56}",
+    "Hash": "{A1CF1D47-2A2A-1626-8F1E-58F2687C69A6}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -25,10 +25,18 @@
        "LibId": "7733251"
       },
       {
-       "Id": "484890516",
-       "Name": "Church_Small_Wood",
-       "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Cathedrals\\Church_Small_Wood",
-       "GUID": "{940CCB47-F031-4C6A-B0E6-726CAC418C02}",
+       "Id": "2171127646",
+       "Name": "Hall_Conversation",
+       "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Halls\\Hall_Conversation",
+       "GUID": "{E2C3BD70-E5E4-46A5-BDA6-99A92FAAC1AC}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
+       "Id": "2891462749",
+       "Name": "Room_Medium_High_Absorbtion",
+       "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Rooms\\Room_Medium_High_Absorbtion",
+       "GUID": "{E22DBBB6-7656-4B93-A28D-C003FD416889}",
        "LibName": "Wwise RoomVerb",
        "LibId": "7733251"
       }
@@ -54,16 +62,70 @@
     },
     "Busses": [
      {
-      "Id": "1502772432",
-      "Name": "SFX Bus",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\SFX Bus",
+      "Id": "225952121",
+      "Name": "EdenDialogue",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\NPCMaster\\EdenDialogue",
+      "GUID": "{57A18A29-F91A-4F48-880E-BB1175B59B8A}"
+     },
+     {
+      "Id": "1350496757",
+      "Name": "PlayerMovement",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\PlayerMaster\\PlayerMovement",
+      "GUID": "{7ECD3BCE-139B-4B0F-AF15-E9FA80142059}"
+     },
+     {
+      "Id": "1681012287",
+      "Name": "PlayerFootsteps",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\PlayerMaster\\PlayerMovement\\PlayerFootsteps",
+      "GUID": "{DE8C0002-B4AF-40C2-BE0F-6FA2ACA4630A}"
+     },
+     {
+      "Id": "1681633080",
+      "Name": "SFXMaster",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\SFXMaster",
       "GUID": "{3B4B816F-92FF-4D54-BEA1-C89250720378}"
      },
      {
-      "Id": "3127962312",
-      "Name": "Music Bus",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\Music Bus",
+      "Id": "1992125169",
+      "Name": "UIMaster",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\UIMaster",
+      "GUID": "{FDBE6303-FCC7-427E-96F8-ED5F452DA1B6}"
+     },
+     {
+      "Id": "2033911932",
+      "Name": "NPCMaster",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\NPCMaster",
+      "GUID": "{16C8FF43-3382-422F-B0D6-47325D444EDF}"
+     },
+     {
+      "Id": "2611281843",
+      "Name": "AmbienceMaster",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\AmbienceMaster",
+      "GUID": "{286C8CB9-7D4C-44E7-9139-C8391E920F9C}"
+     },
+     {
+      "Id": "2763508416",
+      "Name": "F1xDialogue",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\NPCMaster\\F1xDialogue",
+      "GUID": "{3D1C1905-C2A3-4135-A174-65A5B6BD9CE0}"
+     },
+     {
+      "Id": "3123271961",
+      "Name": "ObjectsMaster",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\ObjectsMaster",
+      "GUID": "{EEE2086A-7A1F-4A6C-B183-06753A292FEA}"
+     },
+     {
+      "Id": "3199789248",
+      "Name": "MusicMaster",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\MusicMaster",
       "GUID": "{AD563688-23B7-45A9-B273-CD51079AE47A}"
+     },
+     {
+      "Id": "3538689948",
+      "Name": "PlayerMaster",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\PlayerMaster",
+      "GUID": "{0990BDE6-CC8E-4218-9FA0-4A2DFE95990B}"
      },
      {
       "Id": "3545700988",
@@ -72,16 +134,22 @@
       "GUID": "{60D09061-AD4A-43D1-9B49-6042A98C2796}"
      },
      {
+      "Id": "3802034858",
+      "Name": "EnvironmentMaster",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\EnvironmentMaster",
+      "GUID": "{C894ED6E-D19C-4CC9-BEBE-D81E80AC8A9A}"
+     },
+     {
       "Id": "3803692087",
       "Name": "Master Audio Bus",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus",
       "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"
      },
      {
-      "Id": "4202237879",
-      "Name": "Ambience Bus",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\Ambience Bus",
-      "GUID": "{286C8CB9-7D4C-44E7-9139-C8391E920F9C}"
+      "Id": "3922283485",
+      "Name": "B4rn3yDialogue",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\NPCMaster\\B4rn3yDialogue",
+      "GUID": "{F50FAF7D-1E2D-492A-8522-8B5E824C1B89}"
      }
     ],
     "AuxBusses": [
@@ -93,7 +161,7 @@
       "PluginRefs": {
        "ShareSets": [
         {
-         "Id": "484890516"
+         "Id": "2171127646"
         }
        ]
       }
@@ -107,6 +175,19 @@
        "ShareSets": [
         {
          "Id": "48620415"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "2933838247",
+      "Name": "SmallRoom",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\Reverbs\\SmallRoom",
+      "GUID": "{3DE47DA9-0CA2-463F-B778-D7A3F583CB6A}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "2891462749"
         }
        ]
       }
@@ -182,10 +263,24 @@
         "GUID": "{4A916F2C-FEA7-4172-9C63-FC5255A5BA9D}"
        }
       ]
+     },
+     {
+      "Id": "3124027310",
+      "Name": "CurrentMusicKey",
+      "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey",
+      "GUID": "{742AC06F-F1E5-400D-8A3C-979FA3CCB73B}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\None",
+        "GUID": "{65C65A6B-0E0B-4CC0-B107-3381A2D372F4}"
+       }
+      ]
      }
     ]
    }
   ],
-  "FileHash": "{C5686C9B-DD0D-2BCB-8EAD-987B3277DA24}"
+  "FileHash": "{F46E7558-B12D-CBBC-6B65-3E27B6B8B240}"
  }
 }

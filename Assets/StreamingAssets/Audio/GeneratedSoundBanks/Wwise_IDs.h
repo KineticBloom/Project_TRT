@@ -20,6 +20,7 @@ namespace AK
         static const AkUniqueID BART_CARD_SELECT = 349408092U;
         static const AkUniqueID BART_CARD_SHUFFLE = 362751767U;
         static const AkUniqueID BIRDSTART = 3943065624U;
+        static const AkUniqueID CONVERSATIONSTART = 1163963844U;
         static const AkUniqueID DOOROPEN = 1404805401U;
         static const AkUniqueID ELEVATORHUM = 1344299683U;
         static const AkUniqueID ELEVATORSTARTUP = 1220165926U;
@@ -48,6 +49,7 @@ namespace AK
         static const AkUniqueID PLAY_WATERFALL_BASE_LOOPCONTAINER = 2874767734U;
         static const AkUniqueID PLAY_WATERFALL_CLOSESPARKLE_LOOPCONTAINER = 3296751295U;
         static const AkUniqueID PLAYERFOOTSTEPS = 1681012287U;
+        static const AkUniqueID PLAYSTARTUPMUSIC = 4206258635U;
         static const AkUniqueID RESUMEMUSIC = 2170724709U;
         static const AkUniqueID STARTMUSIC = 3827058668U;
         static const AkUniqueID STOPMUSIC = 1917263390U;
@@ -58,6 +60,16 @@ namespace AK
 
     namespace STATES
     {
+        namespace CURRENTMUSICKEY
+        {
+            static const AkUniqueID GROUP = 3124027310U;
+
+            namespace STATE
+            {
+                static const AkUniqueID NONE = 748895195U;
+            } // namespace STATE
+        } // namespace CURRENTMUSICKEY
+
         namespace MUSICSTATE
         {
             static const AkUniqueID GROUP = 1021618141U;
@@ -98,17 +110,28 @@ namespace AK
 
     namespace BUSSES
     {
-        static const AkUniqueID AMBIENCE_BUS = 4202237879U;
+        static const AkUniqueID AMBIENCEMASTER = 2611281843U;
+        static const AkUniqueID B4RN3YDIALOGUE = 3922283485U;
+        static const AkUniqueID EDENDIALOGUE = 225952121U;
+        static const AkUniqueID ENVIRONMENTMASTER = 3802034858U;
+        static const AkUniqueID F1XDIALOGUE = 2763508416U;
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
-        static const AkUniqueID MUSIC_BUS = 3127962312U;
+        static const AkUniqueID MUSICMASTER = 3199789248U;
+        static const AkUniqueID NPCMASTER = 2033911932U;
+        static const AkUniqueID OBJECTSMASTER = 3123271961U;
+        static const AkUniqueID PLAYERFOOTSTEPS = 1681012287U;
+        static const AkUniqueID PLAYERMASTER = 3538689948U;
+        static const AkUniqueID PLAYERMOVEMENT = 1350496757U;
         static const AkUniqueID REVERBS = 3545700988U;
-        static const AkUniqueID SFX_BUS = 1502772432U;
+        static const AkUniqueID SFXMASTER = 1681633080U;
+        static const AkUniqueID UIMASTER = 1992125169U;
     } // namespace BUSSES
 
     namespace AUX_BUSSES
     {
         static const AkUniqueID CHURCH = 2568407992U;
         static const AkUniqueID OUTDOORS = 2730119150U;
+        static const AkUniqueID SMALLROOM = 2933838247U;
     } // namespace AUX_BUSSES
 
     namespace AUDIO_DEVICES

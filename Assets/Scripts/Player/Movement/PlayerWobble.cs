@@ -19,6 +19,7 @@ public class PlayerWobble : MonoBehaviour
     [SerializeField] private Transform model;
     [SerializeField] private Transform leftPivot;
     [SerializeField] private Transform rightPivot;
+    [SerializeField] private PlayerSFX playerSFX;
 
     [Header("Parameters")]
     [SerializeField] private float walkAmplitude = 5f;
@@ -162,6 +163,8 @@ public class PlayerWobble : MonoBehaviour
         _targetPos = pivot == leftPivot ? _leftPivotPos : _rightPivotPos;
         _targetRot = Quaternion.Euler(model.transform.localRotation.x, model.transform.localRotation.y, 0);
         _pivot = pivot;
+
+        playerSFX.PlayPlayerFootstepSFX();
     }
 
     /// <summary>

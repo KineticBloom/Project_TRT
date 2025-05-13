@@ -85,7 +85,7 @@ public class MusicManager : MonoBehaviour
         previousMusicState = startingMusicState;
 
         SetMusicState(startingMusicState);
-        PlayMusic(gameObject);
+        //PlayMusic(gameObject);
     }
 
     private void OnEnable()
@@ -108,19 +108,14 @@ public class MusicManager : MonoBehaviour
     }
 
     #region Music Management
-    public void PlayMusic(GameObject attenuationPoint)
+    //public void PlayMusic(GameObject attenuationPoint=null) // Ideally the music shouldn't need to be spatialized, and it was giving errors for the Wwise callback events
+    public void PlayMusic()
     {
         if (_events.startEvent == null)
             return;
 
-        if (attenuationPoint == null)
-        {
-            Debug.LogError("No Attenuation Point set for event " + name);
-            return;
-        }
-
         //_eventInstance.setCallback(_eventCallback);
-        _events.startEvent.Post(attenuationPoint);
+        _events.startEvent.Post(gameObject);
         //isPlaying = true;
     }
 
@@ -164,6 +159,11 @@ public class MusicManager : MonoBehaviour
         //_eventInstance.setCallback(_eventCallback);
         _events.stopEvent.Post(gameObject); // I don't wanna use an
         //isPlaying = true;
+    }
+
+    public void TEST()
+    {
+        Debug.Log("Hi :)");
     }
 
     #endregion

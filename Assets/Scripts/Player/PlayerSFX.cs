@@ -7,21 +7,9 @@ public class PlayerSFX : MonoBehaviour
     [SerializeField]
     public AudioEvent playerFootstepSFX;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void PlayPlayerFootstepSFX()
+    public void PlayPlayerFootstepSFX()
     {
         // Play
-        playerFootstepSFX.Play(this.gameObject);
+        playerFootstepSFX.Play(gameObject);
     }
 }

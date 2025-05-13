@@ -71,6 +71,9 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
 
     protected override void DisableFocus() 
     {
+        MoveToPause();
+        base.DisableFocus();
+        pauseClose.Post(this.gameObject);
         inventoryBar.SetActiveSource(gameObject, false);
 
         if (!settingsPanel.gameObject.activeSelf)

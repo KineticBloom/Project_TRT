@@ -4190,6 +4190,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8897664214166401254, guid: 96c7dc348f3ad664f82f7adecaf13f06,
         type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897664214166401254, guid: 96c7dc348f3ad664f82f7adecaf13f06,
+        type: 3}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
@@ -9519,6 +9524,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1422001035}
+    - targetCorrespondingSourceObject: {fileID: 3870256125407273809, guid: d7b8be9e5f8f8024691d1d3b751d45b5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1422001036}
   m_SourcePrefab: {fileID: 100100000, guid: d7b8be9e5f8f8024691d1d3b751d45b5, type: 3}
 --- !u!1 &1422001034 stripped
 GameObject:
@@ -9539,6 +9548,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flagID: IC_facility_usb
+--- !u!114 &1422001036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422001034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c8995bcf5c57bc42b55f0cdc5a10154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cards:
+  - {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
 --- !u!43 &1434874156
 Mesh:
   m_ObjectHideFlags: 0

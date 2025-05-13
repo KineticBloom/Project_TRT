@@ -16,6 +16,9 @@ public class NpcInteractable : Interactable
     public Vector3 DialogueSourceLocalPosition;
 
     public List<InventoryCardData> ItemsAvailable;
+    private void Start() {
+        ItemsAvailable = new List<InventoryCardData>(NpcData.ItemsOnOffer);
+    }
 
     public override void Interaction() {
         Vector3 NPCWorldPosition = this.transform.position + DialogueSourceLocalPosition;

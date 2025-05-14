@@ -54,13 +54,17 @@ public class SquetchStarter : MonoBehaviour
         {
             Debug.LogError(gameObject.name + ": SquetchStarter: cannot find Squash Stretch Bouncer");
         }
-
-
+    }
+    
+    /// <summary>
+    /// Subscribes the squetch functions to play during dialogue.
+    /// </summary>
+    public void Subscribe()
+    {
         GameManager.DialogueManager.StartFastBounce += StartFast;
         GameManager.DialogueManager.StartSlowBounce += StartSlow;
         GameManager.DialogueManager.StopBounce += StopSquetch;
     }
-
 
     private void StartFast()
     {

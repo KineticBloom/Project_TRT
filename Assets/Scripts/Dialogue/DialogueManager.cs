@@ -355,6 +355,7 @@ public class DialogueManager : MonoBehaviour {
         // Choose Bubble
         if (CurrentLineData.SaidByNPC) {
             CurrentBubble = NPCBubble;
+            StartFastBounce.Invoke();
         } else {
             CurrentBubble = PlayerBubble;
         }
@@ -366,7 +367,6 @@ public class DialogueManager : MonoBehaviour {
 
         StartCoroutine(PrintNextCharacter());
 
-        StartFastBounce();
     }
 
     #endregion
@@ -406,6 +406,9 @@ public class DialogueManager : MonoBehaviour {
         StartCoroutine(ConversationDelay());
 
         StopBounce.Invoke();
+        StartFastBounce = null;
+        StartSlowBounce = null;
+        StopBounce = null;
     }
 
     /// <summary>

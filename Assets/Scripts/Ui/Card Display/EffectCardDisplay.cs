@@ -71,6 +71,7 @@ public class EffectCardDisplay : MonoBehaviour
             _barteringController = barteringController;
             effectCard.OnRevealed += Reveal;
             effectCard.OnActivate += Activate;
+            effectCard.OnAttackActivate += AttackActivate;
         }
 
         _baseScale = cardFront.transform.localScale.x;
@@ -97,6 +98,11 @@ public class EffectCardDisplay : MonoBehaviour
         } else {
             _shakeTween.Restart();
         }
+    }
+
+    public void AttackActivate()
+    {
+        Debug.Log("Attack Activate!");
     }
 
     /// <summary>
@@ -178,6 +184,7 @@ public class EffectCardDisplay : MonoBehaviour
         {
             EffectCard.OnRevealed -= Reveal;
             EffectCard.OnActivate -= Activate;
+            EffectCard.OnAttackActivate -= AttackActivate;
         }
     }
 

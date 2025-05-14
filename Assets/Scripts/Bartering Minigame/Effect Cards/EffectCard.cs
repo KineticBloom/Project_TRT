@@ -30,6 +30,7 @@ public abstract class EffectCard
 
     public UnityAction OnRevealed;
     public UnityAction OnActivate;
+    public UnityAction OnAttackActivate;
 
     #endregion
 
@@ -56,8 +57,15 @@ public abstract class EffectCard
     /// Activates the effect card
     /// </summary>
     /// <param name="tradeInfo">Information for the card to modify</param>
-    public virtual int Activate(TradeInfo tradeInfo) {
-        OnActivate.Invoke();
+    public virtual int Activate(TradeInfo tradeInfo, bool playAttackAnimation) {
+        if (playAttackAnimation)
+        {
+            OnAttackActivate.Invoke();
+        }
+        else
+        {
+            OnActivate.Invoke();
+        }
         return 0;
     }
 

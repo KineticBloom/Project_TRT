@@ -64,9 +64,9 @@ public class ReceivedItemEffects : EffectCard
     /// <summary>
     /// Apply the ItemActions to items in _matchingItems
     /// </summary>
-    public override int Activate(TradeInfo tradeInfo)
+    public override int Activate(TradeInfo tradeInfo, bool playAttackAnimation)
     {
-        base.Activate(tradeInfo);
+        base.Activate(tradeInfo,playAttackAnimation);
 
         foreach (IItemAction action in ItemActions)
         {

@@ -72,9 +72,9 @@ public class OfferedItemsEffects : EffectCard
     /// <summary>
     /// Apply the ItemActions to all items that are relevant to AffectedItems and AffectedTags
     /// </summary>
-    public override int Activate(TradeInfo tradeInfo)
+    public override int Activate(TradeInfo tradeInfo, bool playAttackAnimation)
     {
-        base.Activate(tradeInfo);
+        base.Activate(tradeInfo, playAttackAnimation);
 
         int itemsAffected = 0;
 

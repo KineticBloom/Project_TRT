@@ -192,7 +192,7 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
 
         if (foundData == false) return;
 
-        Debug.Log("Load state: " + stateToLoad.ToString()); 
+        // Debug.Log("Load state: " + stateToLoad.ToString()); 
 
         // Load new properties
         if (GameManager.Player != null) {

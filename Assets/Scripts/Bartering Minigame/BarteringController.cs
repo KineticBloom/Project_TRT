@@ -169,6 +169,15 @@ public class BarteringController : MonoBehaviour
     }
     IEnumerator FinishBarter()
     {
+        // Reset all item values
+        foreach(InventoryCardData x in _offeredItems.Items)
+        {
+            x.ResetCurrentValue();
+        }
+
+        VISUAL_DisplayNewOffer();
+        VISUAL_FindAndDisplayNewSum();
+
         // Activate Effect Cards, wait till done!
         yield return StartCoroutine(EFFECT_ActivateEffectCards(ActivationTime.AfterOffer));
 
@@ -264,14 +273,14 @@ public class BarteringController : MonoBehaviour
             Destroy(card.gameObject);
         }
 
-        // Clear effect card modifications
-        GameManager.Inventory.ResetAllCardValues();
-
         // Remove effect card modifiers
         tempTradeData.TargetCard.ResetCurrentValue();
 
         // Give cards back to player
         _offeredItems.ReturnCardsToInventory();
+
+        // Clear effect card modifications
+        GameManager.Inventory.ResetAllCardValues();
 
         // Complete trade if won!
         if (tempTradeData.WonBarterFlag)
@@ -422,6 +431,8 @@ public class BarteringController : MonoBehaviour
 
         float flipDelay = 1f;
         if (SkipFlipDelay) flipDelay = 0f;
+
+        yield return new WaitForSeconds(flipDelay);
 
         // Flip each card that we can activate
         foreach (EffectCard effectCard in activeEffectCards)

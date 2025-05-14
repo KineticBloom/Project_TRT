@@ -8,6 +8,8 @@ public class InventoryBar : MonoBehaviour
     [Header("Object References")]
     [SerializeField] private RectTransform smallInventory;
     [SerializeField] private RectTransform largeInventory;
+    [SerializeField] private InventoryGridController smallInventoryController;
+    [SerializeField] private InventoryGridController largeInventoryController;
 
     [Header("Animation Parameters")]
     [SerializeField] private float duration;
@@ -47,6 +49,11 @@ public class InventoryBar : MonoBehaviour
         }
     }
 
+    public void SetInteractable(bool interactable)
+    {
+        smallInventoryController.SetSlotsInteractable(interactable);
+        largeInventoryController.SetSlotsInteractable(interactable);
+    }
 
     private void SwitchToSmall()
     {

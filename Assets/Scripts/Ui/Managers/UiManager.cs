@@ -15,6 +15,8 @@ public struct StateData {
     public bool IsTimeFrozen;
     public bool IsDialogueFrozen;
     public bool PauseAnimations;
+    public bool DisableInventoryInteractions;
+    public bool DisableInventory;
 }
 
 /// <summary>
@@ -167,6 +169,14 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
         } else {
             Time.timeScale = 1;
         }
+
+        if (newStateData.DisableInventoryInteractions)
+        {
+            GameManager.Instance.SetInventoryBarInteractable(false, !newStateData.DisableInventory);
+        } else
+        {
+            GameManager.Instance.SetInventoryBarInteractable(true, !newStateData.DisableInventory);
+        }
     }
 
     protected void LoadState(UiStateEnum stateToLoad) {
@@ -183,7 +193,7 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
 
         if (foundData == false) return;
 
-        Debug.Log("Load state: " + stateToLoad.ToString()); 
+        // Debug.Log("Load state: " + stateToLoad.ToString()); 
 
         // Load new properties
         if (GameManager.Player != null) {
@@ -204,6 +214,15 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
             Time.timeScale = 0;
         } else {
             Time.timeScale = 1;
+        }
+
+        if (stateData.DisableInventoryInteractions)
+        {
+            GameManager.Instance.SetInventoryBarInteractable(false, !stateData.DisableInventory);
+        }
+        else
+        {
+            GameManager.Instance.SetInventoryBarInteractable(true, !stateData.DisableInventory);
         }
     }
 

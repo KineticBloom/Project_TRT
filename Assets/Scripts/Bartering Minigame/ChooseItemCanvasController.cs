@@ -9,8 +9,11 @@ using DG.Tweening.Core.Easing;
 
 public class ChooseItemCanvasController : MonoBehaviour
 {
+
+    [Header("Object References")]
     public GameObject InventoryCardObjectPrefab;
     public GameObject CardsHorizontalLayoutGroup;
+    public Image NPCSprite;
     public InventoryBar InventoryBar;
 
     private List<GameObject> _cards = new List<GameObject>();
@@ -18,12 +21,14 @@ public class ChooseItemCanvasController : MonoBehaviour
     private NpcInteractable _npcInstance;
 
     public void InitOffer(NPCData npcData, NpcInteractable npcInstance) {
-
         InventoryBar.SetActiveSource(gameObject, true);
+
+        _cards.Clear();
 
         _passedInData = npcData;
         _npcInstance = npcInstance;
 
+        NPCSprite.sprite = _passedInData.Icon;
 
         int index = 0;
 
@@ -37,10 +42,15 @@ public class ChooseItemCanvasController : MonoBehaviour
             newCard.transform.localScale = Vector3.one * 0.85f;
             index += 1;
         }
+
+        // Select the first item
+        if (index > 0)
+        {
+            _cards[0].GetComponent<InventoryCardObject>().CurrentActiveButton.Select();
+        }
     }
 
-    public void OnSelect(int index) {
-        Debug.Log("Selected index: " + index);        
+    public void OnSelect(int index) {       
         GameManager.MasterCanvas.GetComponent<InGameUi>().MoveToBartering(_passedInData, _npcInstance.ItemsAvailable[index], _npcInstance);
         InventoryBar.SetActiveSource(gameObject, false);
     }

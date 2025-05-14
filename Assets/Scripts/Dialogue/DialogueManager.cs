@@ -3,6 +3,7 @@ using Ink.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 /// <summary>
@@ -34,6 +35,10 @@ public class DialogueManager : MonoBehaviour {
         public List<Choice> Choices;
 
     }
+
+    public UnityAction StartFastBounce;
+    public UnityAction StartSlowBounce;
+    public UnityAction StopBounce;
 
     #endregion
 
@@ -74,7 +79,6 @@ public class DialogueManager : MonoBehaviour {
     /// </summary>
     /// <param name="FreezeDialogue">True then no input accepted.</param>
     public void FreezeDialogue(bool FreezeDialogue) {
-        Debug.Log("Set Dialogue Freeze to: " + FreezeDialogue);
         _externalNoInput = FreezeDialogue;
     }
 
@@ -109,6 +113,8 @@ public class DialogueManager : MonoBehaviour {
 
         // External Setup
         if (TimeLoopManager.Instance != null) TimeLoopManager.SetLoopPaused(false);
+
+        StopBounce.Invoke();
 
         // Start delay
         _onDelay = false;
@@ -348,6 +354,7 @@ public class DialogueManager : MonoBehaviour {
         // Choose Bubble
         if (CurrentLineData.SaidByNPC) {
             CurrentBubble = NPCBubble;
+            StartFastBounce.Invoke();
         } else {
             CurrentBubble = PlayerBubble;
         }
@@ -358,6 +365,7 @@ public class DialogueManager : MonoBehaviour {
         LineFinished = false;
 
         StartCoroutine(PrintNextCharacter());
+
     }
 
     #endregion
@@ -395,6 +403,11 @@ public class DialogueManager : MonoBehaviour {
         // Start delay
         _onDelay = true;
         StartCoroutine(ConversationDelay());
+
+        StopBounce.Invoke();
+        StartFastBounce = null;
+        StartSlowBounce = null;
+        StopBounce = null;
     }
 
     /// <summary>
@@ -473,6 +486,8 @@ public class DialogueManager : MonoBehaviour {
         if (CurrentLineData.LineHasChoices) {
             DialogueUiManager.ShowButtons(CurrentLineData.Choices);
         }
+
+        StartSlowBounce.Invoke();
     }
 
     /// <summary>
@@ -515,6 +530,8 @@ public class DialogueManager : MonoBehaviour {
                 DialogueUiManager.ShowButtons(CurrentLineData.Choices);
             }
             LineFinished = true;
+
+            StartSlowBounce.Invoke();
 
         } else {
             StartCoroutine(PrintNextCharacter());

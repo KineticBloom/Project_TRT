@@ -50,6 +50,7 @@ public class InventoryCardObject : MonoBehaviour {
     [SerializeField, BoxGroup("Item Description")] private GameObject itemDescriptionBox;
     [SerializeField, BoxGroup("Item Description")] private TMP_Text itemDescriptionText;
     [SerializeField, BoxGroup("Item Description")] private TMP_Text itemTagsText;
+    [SerializeField, BoxGroup("Item Description")] private bool dontShowDescription;
 
 
 
@@ -236,6 +237,9 @@ public class InventoryCardObject : MonoBehaviour {
     public void SetInteractable(bool interactable)
     {
         itemSmallButton.interactable = interactable;
+        itemUnactiveButton.interactable = interactable;
+        itemFullButton.interactable = interactable;
+        itemFullUnactiveButton.interactable = interactable;
     }
 
     public void SwapState(CurrentState stateToEnter) {
@@ -272,6 +276,8 @@ public class InventoryCardObject : MonoBehaviour {
     /// </summary>
     public void ShowDescription()
     {
+        if (dontShowDescription) return;
+
         itemDescriptionBox.transform.DOKill();
         itemDescriptionBox.SetActive(true);
         itemDescriptionBox.transform.

@@ -9,6 +9,7 @@ public class InGameUi : UiManager<InGameUi.UiStates> {
     public ChooseItemCanvasController ChooseItemCanvasController;
     public DialogueUiManager DialogueUiManager;
     public NotificationUI Notification;
+    public InventoryBar InventoryBar;
 
     private void Start() {
         GameManager.Instance.SwapUiManager(this);
@@ -19,6 +20,12 @@ public class InGameUi : UiManager<InGameUi.UiStates> {
         Bartering,
         Dialogue,
         BarteringChooseItem
+    }
+
+    public void SetInventoryBarInteractable(bool interactable, bool isEnabled)
+    {
+        InventoryBar.gameObject.SetActive(isEnabled);
+        InventoryBar.SetInteractable(interactable);
     }
 
     public void MoveToDefault() => MoveTo(UiStates.Default);
@@ -42,6 +49,12 @@ public class InGameUi : UiManager<InGameUi.UiStates> {
         yield return new WaitForEndOfFrame();
         GameManager.Instance.SwapUiManager(this);
         LoadState(_currentState);
+
+        // patch fix, makes Dialogue be selected after pause is closed
+        if (_currentState == UiStates.Dialogue)
+        {
+            DialogueUiManager.SelectFirstChoice();
+        }
     }
 
     public override void GoBack() {return;}

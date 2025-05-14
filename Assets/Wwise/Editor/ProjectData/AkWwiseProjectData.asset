@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: d2e647656401fa48b0d64a886d907446
     GuidInternal: 
-    m_lastTime: -8584616603804391232
+    m_lastTime: -8584549282084931518
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,11 +38,11 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 587ca0226052be4e9b8540a22c4f2092
     GuidInternal: 
-    m_lastTime: -8584563963490455585
+    m_lastTime: -8584544386804434811
     List:
-    - name: Ambience Bus
+    - name: AmbienceMaster
       guid: b98c6c284c7de7449139c8391e920f9c
-      id: 4202237879
+      id: 2611281843
       PathAndIcons:
       - ElementName: Master-Mixer Hierarchy
         ObjectType: 5
@@ -53,10 +53,30 @@ MonoBehaviour:
       - ElementName: Master Audio Bus
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
-      - ElementName: Ambience Bus
+      - ElementName: AmbienceMaster
         ObjectType: 2
         guid: b98c6c284c7de7449139c8391e920f9c
-      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Ambience Bus
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\AmbienceMaster
+    - name: B4rn3yDialogue
+      guid: 7daf0ff52d1e2a4985228b5e824c1b89
+      id: 3922283485
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 587ca0226052be4e9b8540a22c4f2092
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: NPCMaster
+        ObjectType: 2
+        guid: 43ffc81682332f42b0d647325d444edf
+      - ElementName: B4rn3yDialogue
+        ObjectType: 2
+        guid: 7daf0ff52d1e2a4985228b5e824c1b89
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\NPCMaster\B4rn3yDialogue
     - name: Church
       guid: c1301a558c6b664b97abf2b3572a46c0
       id: 2568407992
@@ -77,6 +97,63 @@ MonoBehaviour:
         ObjectType: 1
         guid: c1301a558c6b664b97abf2b3572a46c0
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Church
+    - name: EdenDialogue
+      guid: 298aa1571af9484f880ebb1175b59b8a
+      id: 225952121
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 587ca0226052be4e9b8540a22c4f2092
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: NPCMaster
+        ObjectType: 2
+        guid: 43ffc81682332f42b0d647325d444edf
+      - ElementName: EdenDialogue
+        ObjectType: 2
+        guid: 298aa1571af9484f880ebb1175b59b8a
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\NPCMaster\EdenDialogue
+    - name: EnvironmentMaster
+      guid: 6eed94c89cd1c94cbebed81e80ac8a9a
+      id: 3802034858
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 587ca0226052be4e9b8540a22c4f2092
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: EnvironmentMaster
+        ObjectType: 2
+        guid: 6eed94c89cd1c94cbebed81e80ac8a9a
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\EnvironmentMaster
+    - name: F1xDialogue
+      guid: 05191c3da3c23541a17465a5b6bd9ce0
+      id: 2763508416
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 587ca0226052be4e9b8540a22c4f2092
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: NPCMaster
+        ObjectType: 2
+        guid: 43ffc81682332f42b0d647325d444edf
+      - ElementName: F1xDialogue
+        ObjectType: 2
+        guid: 05191c3da3c23541a17465a5b6bd9ce0
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\NPCMaster\F1xDialogue
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
       id: 3803692087
@@ -91,9 +168,9 @@ MonoBehaviour:
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus
-    - name: Music Bus
+    - name: MusicMaster
       guid: 883656adb723a945b273cd51079ae47a
-      id: 3127962312
+      id: 3199789248
       PathAndIcons:
       - ElementName: Master-Mixer Hierarchy
         ObjectType: 5
@@ -104,10 +181,44 @@ MonoBehaviour:
       - ElementName: Master Audio Bus
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
-      - ElementName: Music Bus
+      - ElementName: MusicMaster
         ObjectType: 2
         guid: 883656adb723a945b273cd51079ae47a
-      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Music Bus
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\MusicMaster
+    - name: NPCMaster
+      guid: 43ffc81682332f42b0d647325d444edf
+      id: 2033911932
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 587ca0226052be4e9b8540a22c4f2092
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: NPCMaster
+        ObjectType: 2
+        guid: 43ffc81682332f42b0d647325d444edf
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\NPCMaster
+    - name: ObjectsMaster
+      guid: 6a08e2ee1f7a6c4ab18306753a292fea
+      id: 3123271961
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 587ca0226052be4e9b8540a22c4f2092
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: ObjectsMaster
+        ObjectType: 2
+        guid: 6a08e2ee1f7a6c4ab18306753a292fea
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\ObjectsMaster
     - name: Outdoors
       guid: 9f6bbd6747fc7945a4b59fbb558c8815
       id: 2730119150
@@ -128,6 +239,66 @@ MonoBehaviour:
         ObjectType: 1
         guid: 9f6bbd6747fc7945a4b59fbb558c8815
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Outdoors
+    - name: PlayerFootsteps
+      guid: 02008cdeafb4c240be0f6fa2aca4630a
+      id: 1681012287
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 587ca0226052be4e9b8540a22c4f2092
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: PlayerMaster
+        ObjectType: 2
+        guid: e6bd90098ecc18429fa04a2dfe95990b
+      - ElementName: PlayerMovement
+        ObjectType: 2
+        guid: ce3bcd7e9b130f4baf15e9fa80142059
+      - ElementName: PlayerFootsteps
+        ObjectType: 2
+        guid: 02008cdeafb4c240be0f6fa2aca4630a
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\PlayerMaster\PlayerMovement\PlayerFootsteps
+    - name: PlayerMaster
+      guid: e6bd90098ecc18429fa04a2dfe95990b
+      id: 3538689948
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 587ca0226052be4e9b8540a22c4f2092
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: PlayerMaster
+        ObjectType: 2
+        guid: e6bd90098ecc18429fa04a2dfe95990b
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\PlayerMaster
+    - name: PlayerMovement
+      guid: ce3bcd7e9b130f4baf15e9fa80142059
+      id: 1350496757
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 587ca0226052be4e9b8540a22c4f2092
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: PlayerMaster
+        ObjectType: 2
+        guid: e6bd90098ecc18429fa04a2dfe95990b
+      - ElementName: PlayerMovement
+        ObjectType: 2
+        guid: ce3bcd7e9b130f4baf15e9fa80142059
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\PlayerMaster\PlayerMovement
     - name: Reverbs
       guid: 6190d0604aadd1439b496042a98c2796
       id: 3545700988
@@ -145,9 +316,9 @@ MonoBehaviour:
         ObjectType: 2
         guid: 6190d0604aadd1439b496042a98c2796
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs
-    - name: SFX Bus
+    - name: SFXMaster
       guid: 6f814b3bff92544dbea1c89250720378
-      id: 1502772432
+      id: 1681633080
       PathAndIcons:
       - ElementName: Master-Mixer Hierarchy
         ObjectType: 5
@@ -158,10 +329,47 @@ MonoBehaviour:
       - ElementName: Master Audio Bus
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
-      - ElementName: SFX Bus
+      - ElementName: SFXMaster
         ObjectType: 2
         guid: 6f814b3bff92544dbea1c89250720378
-      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX Bus
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFXMaster
+    - name: SmallRoom
+      guid: a97de43da20c3f46b778d7a3f583cb6a
+      id: 2933838247
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 587ca0226052be4e9b8540a22c4f2092
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Reverbs
+        ObjectType: 2
+        guid: 6190d0604aadd1439b496042a98c2796
+      - ElementName: SmallRoom
+        ObjectType: 1
+        guid: a97de43da20c3f46b778d7a3f583cb6a
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\SmallRoom
+    - name: UIMaster
+      guid: 0363befdc7fc7e4296f8ed5f452da1b6
+      id: 1992125169
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 587ca0226052be4e9b8540a22c4f2092
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: UIMaster
+        ObjectType: 2
+        guid: 0363befdc7fc7e4296f8ed5f452da1b6
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\UIMaster
   BankWwu:
   - PhysicalPath: SoundBanks\Ambience.wwu
     PathAndIcons:
@@ -174,7 +382,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Ambience
     guid: 0104f6680c27bf408fd7c64816ee8c87
     GuidInternal: 
-    m_lastTime: -8584563963483353715
+    m_lastTime: -8584544386804090300
     List:
     - name: Ambience
       guid: 86b2f852bdba9b4fa5a800a04824ffe7
@@ -201,7 +409,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 04fe062a3bbc02478aebf9ed87255f35
     GuidInternal: 
-    m_lastTime: -8584616603804511337
+    m_lastTime: -8584549282087113501
     List: []
   - PhysicalPath: SoundBanks\Music.wwu
     PathAndIcons:
@@ -214,7 +422,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Music
     guid: 5f5c2e836df59d41833026f7bc293cab
     GuidInternal: 
-    m_lastTime: -8584561490000543626
+    m_lastTime: -8584544386804080298
     List:
     - name: Music
       guid: 277caf2ce418a740871cc075a9250659
@@ -241,7 +449,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\SFX
     guid: f39c92e98d8cf14f9d79f84c53eb00b3
     GuidInternal: 
-    m_lastTime: -8584561490000533617
+    m_lastTime: -8584549282085982476
     List:
     - name: SFX
       guid: cc965433ea452249b9fac65217b7662e
@@ -269,7 +477,7 @@ MonoBehaviour:
     ParentPath: Events\Ambience
     guid: 78290c8229ac584884ed86c3baba619d
     GuidInternal: 
-    m_lastTime: -8584563963495028893
+    m_lastTime: -8584549282083500215
     List:
     - name: BirdStart
       guid: 932c63abf08ea4489f51f773ba1e5c74
@@ -285,7 +493,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 932c63abf08ea4489f51f773ba1e5c74
       Path: Events\Ambience\BirdStart
-      maxAttenuation: 100
+      maxAttenuation: 25
       maxDuration: 0
       minDuration: 0
     - name: Play_MachineHum1_LoopContainer
@@ -336,7 +544,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 60bf2e435b3be640b68858830c63e8b1
       Path: Events\Ambience\Play_Waterfall_Base_LoopContainer
-      maxAttenuation: 100
+      maxAttenuation: 50
       maxDuration: 0
       minDuration: 0
     - name: Play_Waterfall_CloseSparkle_LoopContainer
@@ -353,7 +561,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 6e91af3f21c6d945868cce150c154978
       Path: Events\Ambience\Play_Waterfall_CloseSparkle_LoopContainer
-      maxAttenuation: 50
+      maxAttenuation: 35
       maxDuration: 0
       minDuration: 0
     - name: TestAmbienceStart
@@ -370,7 +578,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 7d6e07e4f047404b97f8e4afb7cf1d45
       Path: Events\Ambience\TestAmbienceStart
-      maxAttenuation: 100
+      maxAttenuation: 50
       maxDuration: 0
       minDuration: 0
   - PhysicalPath: Events\B4rn3y.wwu
@@ -390,7 +598,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC\B4rn3y
     guid: ba283f9801c3804bbf336ac089576497
     GuidInternal: 
-    m_lastTime: -8584556521106870138
+    m_lastTime: -8584549282082469274
     List:
     - name: ENV_B4rn3y_Hoot
       guid: e19f9296802a3549972f8fca527c927f
@@ -452,7 +660,7 @@ MonoBehaviour:
     ParentPath: Events\UI\BarteringUI
     guid: 40c947321f41084491c4b5b163ca6270
     GuidInternal: 
-    m_lastTime: -8584561490011842765
+    m_lastTime: -8584549282082909673
     List:
     - name: BART_Barter_Lose
       guid: 3855ac20de5b634d9ad1e66c511fb4b5
@@ -585,8 +793,44 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 33316d7890aa87408e2af719ccc92cfd
     GuidInternal: 
-    m_lastTime: -8584598829024049829
+    m_lastTime: -8584549282084611231
     List: []
+  - PhysicalPath: Events\DialogueUI.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: UI
+      ObjectType: 12
+      guid: 75f867dc1a9906498df4975d819bec40
+    - ElementName: DialogueUI
+      ObjectType: 12
+      guid: 5f47fcfbe9a3aa4593ef3112c673b6da
+    ParentPath: Events\UI\DialogueUI
+    guid: 5f47fcfbe9a3aa4593ef3112c673b6da
+    GuidInternal: 
+    m_lastTime: -8584544386812230929
+    List:
+    - name: ConversationStart
+      guid: 158ea13dea5eae41a8005d9966f3d771
+      id: 1163963844
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: 75f867dc1a9906498df4975d819bec40
+      - ElementName: DialogueUI
+        ObjectType: 12
+        guid: 5f47fcfbe9a3aa4593ef3112c673b6da
+      - ElementName: ConversationStart
+        ObjectType: 3
+        guid: 158ea13dea5eae41a8005d9966f3d771
+      Path: Events\UI\DialogueUI\ConversationStart
+      maxAttenuation: 0
+      maxDuration: 1.7236054
+      minDuration: 1.7236054
   - PhysicalPath: Events\Eden.wwu
     PathAndIcons:
     - ElementName: Events
@@ -604,7 +848,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC\Eden
     guid: a25562c68949034d8d2f00c179802c36
     GuidInternal: 
-    m_lastTime: -8584556521106870138
+    m_lastTime: -8584549282084541147
     List:
     - name: ENV_Eden_Expel
       guid: 1ce39ba1bc0ff74d9e88f004eab07b56
@@ -663,7 +907,7 @@ MonoBehaviour:
     ParentPath: Events\Environment
     guid: 851bf5aefe549d489c25241343bb6f59
     GuidInternal: 
-    m_lastTime: -8584556521106870138
+    m_lastTime: -8584549282084120775
     List: []
   - PhysicalPath: Events\EnvironmentUI.wwu
     PathAndIcons:
@@ -679,7 +923,7 @@ MonoBehaviour:
     ParentPath: Events\UI\EnvironmentUI
     guid: 4be82f8af05f9c4bb20ac0e39bad8dae
     GuidInternal: 
-    m_lastTime: -8584561490011812740
+    m_lastTime: -8584549282082809576
     List:
     - name: ENV_Interaction_Arrow_Hide
       guid: e67f97983d2b8d4198fae5033e8d4006
@@ -738,7 +982,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC\F1x
     guid: ce3cd6713d17334b966516859d0170a9
     GuidInternal: 
-    m_lastTime: -8584556521106860132
+    m_lastTime: -8584549282084501104
     List:
     - name: ENV_F1x_Dont_Bite
       guid: 77759b87c7315a40b6658ecb407d9f00
@@ -800,7 +1044,7 @@ MonoBehaviour:
     ParentPath: Events\UI\MenuUI
     guid: 3ced4e25bc1aa447a545adce0ca03f95
     GuidInternal: 
-    m_lastTime: -8584561490011802726
+    m_lastTime: -8584549282082859618
     List:
     - name: UI_Menu_Close
       guid: 438c2832b6aa2845ab36655fe26f9b55
@@ -853,7 +1097,7 @@ MonoBehaviour:
     ParentPath: Events\Music
     guid: 1baa49cfe5a4fe438cbe031c55500853
     GuidInternal: 
-    m_lastTime: -8584561490011802726
+    m_lastTime: -8584544386812220928
     List:
     - name: MusicEvents
       guid: bb98cb8f8639c644980fd12d17cb9504
@@ -992,6 +1236,26 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: PlayStartupMusic
+      guid: 626ef93563972b48997c4ac88abce921
+      id: 4206258635
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: StartupMusicEvents
+        ObjectType: 4
+        guid: b9cdfbaac2ffb74bb66bbf742d558524
+      - ElementName: PlayStartupMusic
+        ObjectType: 3
+        guid: 626ef93563972b48997c4ac88abce921
+      Path: Events\Music\StartupMusicEvents\PlayStartupMusic
+      maxAttenuation: 0
+      maxDuration: 7.7868977
+      minDuration: 7.7868977
     - name: ResumeMusic
       guid: 89d77c41053f404a836023e0159080af
       id: 2170724709
@@ -1032,6 +1296,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: StartupMusicEvents
+      guid: b9cdfbaac2ffb74bb66bbf742d558524
+      id: 951539346
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: StartupMusicEvents
+        ObjectType: 4
+        guid: b9cdfbaac2ffb74bb66bbf742d558524
+      Path: Events\Music\StartupMusicEvents
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: StopMusic
       guid: ec06eeef3d4ab24198832e17938f0ef1
       id: 1917263390
@@ -1066,7 +1347,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC
     guid: 09137e3649952b468f529ebe6f164b6b
     GuidInternal: 
-    m_lastTime: -8584556521106860132
+    m_lastTime: -8584549282083249990
     List: []
   - PhysicalPath: Events\Objects.wwu
     PathAndIcons:
@@ -1082,7 +1363,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\Objects
     guid: f53d68a94c6e354d9f4eeee3b0dcd364
     GuidInternal: 
-    m_lastTime: -8584561490011792717
+    m_lastTime: -8584544386812220928
     List:
     - name: DoorOpen
       guid: e45a10416290f44da2dd9afd2f2afa3d
@@ -1162,8 +1443,8 @@ MonoBehaviour:
         guid: a49014c5961d434a9e487d2d5ea73295
       Path: Events\Environment\Objects\ItemPickup
       maxAttenuation: 0
-      maxDuration: 3.0508883
-      minDuration: 3.0508883
+      maxDuration: 0.8705669
+      minDuration: 0.7946939
     - name: LightAmbience
       guid: e06736cc10dfac4cbb2a090285b6de58
       id: 2186217851
@@ -1198,7 +1479,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\Player
     guid: d5f674957249a840bcf4382b6f3925ec
     GuidInternal: 
-    m_lastTime: -8584561490011782709
+    m_lastTime: -8584544386812220928
     List:
     - name: PlayerFootsteps
       guid: 84795c876ed0ab43a382ca7872053bb8
@@ -1218,8 +1499,8 @@ MonoBehaviour:
         guid: 84795c876ed0ab43a382ca7872053bb8
       Path: Events\Environment\Player\PlayerFootsteps
       maxAttenuation: 0
-      maxDuration: 0.34805208
-      minDuration: 0.2416875
+      maxDuration: 1.1143538
+      minDuration: 1.1143538
   - PhysicalPath: Events\SettingsUI.wwu
     PathAndIcons:
     - ElementName: Events
@@ -1231,7 +1512,7 @@ MonoBehaviour:
     ParentPath: Events\SettingsUI
     guid: 1fb0d41104b6e84e81ed9ee770f55b1a
     GuidInternal: 
-    m_lastTime: -8584561490011777579
+    m_lastTime: -8584549282084320966
     List:
     - name: Play_Menu_ButtonDown
       guid: 1bffeceb86b8cc499461cd7752dd9198
@@ -1312,7 +1593,7 @@ MonoBehaviour:
     ParentPath: Events\UI
     guid: 75f867dc1a9906498df4975d819bec40
     GuidInternal: 
-    m_lastTime: -8584561490011769181
+    m_lastTime: -8584544386812210926
     List: []
   RtpcWwu:
   - PhysicalPath: Game Parameters\Ambience.wwu
@@ -1326,7 +1607,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Ambience
     guid: 1364dfa97885f64c975561aade985960
     GuidInternal: 
-    m_lastTime: -8584599538167819512
+    m_lastTime: -8584549282087193573
     List:
     - name: AmbienceVolume
       guid: 01dd239d2ba1e14984ac00064dd75e62
@@ -1353,7 +1634,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: be288e71c0cc3c439b7b4bfb6a1a4c72
     GuidInternal: 
-    m_lastTime: -8584599538167814546
+    m_lastTime: -8584549282085021601
     List:
     - name: MasterVolume
       guid: 59d20be76f82c04d9077f7a3d88c2dfc
@@ -1380,7 +1661,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Music
     guid: d5202f5c1fdb7e4592a92fb8427c1e09
     GuidInternal: 
-    m_lastTime: -8584599538167814546
+    m_lastTime: -8584549282084771354
     List:
     - name: MusicVolume
       guid: 4d5e195f502dd74ead8860aef95d5310
@@ -1407,7 +1688,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\SFX
     guid: b76be0652aa2144ca2f1c95ef14073c4
     GuidInternal: 
-    m_lastTime: -8584599538167809592
+    m_lastTime: -8584549282085331877
     List:
     - name: SFXVolume
       guid: 3afe647cb3b54f438d068914ab1c8a1f
@@ -1435,8 +1716,42 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: e6b79552b8b0634f8a967d61276f57fa
     GuidInternal: 
-    m_lastTime: -8584561490000523612
+    m_lastTime: -8584544386804080298
     List:
+    - name: CurrentMusicKey
+      guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+      id: 3124027310
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e6b79552b8b0634f8a967d61276f57fa
+      - ElementName: CurrentMusicKey
+        ObjectType: 9
+        guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+      Path: States\Default Work Unit\CurrentMusicKey
+      values:
+      - name: None
+        guid: 6b5ac6650b0ec04cb1073381a2d372f4
+        id: 748895195
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: None
+          ObjectType: 8
+          guid: 6b5ac6650b0ec04cb1073381a2d372f4
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
     - name: MusicState
       guid: 5df940ae313415468d9b77fe40be0b6c
       id: 1021618141
@@ -1563,7 +1878,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 4106411ba585644787ebc92dd1cdc4ca
     GuidInternal: 
-    m_lastTime: -8584616603804441278
+    m_lastTime: -8584549282083570267
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -1577,7 +1892,7 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: 9df9aa54af8cab4ea76b42f4ee8eaa58
     GuidInternal: 
-    m_lastTime: -8584616603804421256
+    m_lastTime: -8584549282085191758
     List:
     - name: Test
       guid: 23c0f7a154fe4f4dbb4cbb0e19d72476
@@ -1594,7 +1909,7 @@ MonoBehaviour:
         guid: 23c0f7a154fe4f4dbb4cbb0e19d72476
       Path: Triggers\Default Work Unit\Test
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 050000000e0000000f00000038000000390000003c0000003d000000
+  ExpandedWaapiItemIds: 050000001b0000001c0000001d0000001f000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

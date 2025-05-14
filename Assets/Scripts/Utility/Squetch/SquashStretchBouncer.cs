@@ -26,7 +26,7 @@ public class SquashStretchBouncer : SquashStretchBrain
     [SerializeField, Tooltip("The curve we evaluate when animating the bounce. "
                            + "The duration of the curve is determined by loopPeriod.\n\n"
                            + "Recall negative is squash and positive is stretch.")]
-    private AnimationCurve bounceCurve = new(new Keyframe[]{
+    public AnimationCurve bounceCurve = new(new Keyframe[]{
         // These points plot a sine curve.
         new(0, 0, 2*Mathf.PI, 2*Mathf.PI),
         new(0.25f, 1, 0, 0),
@@ -37,10 +37,10 @@ public class SquashStretchBouncer : SquashStretchBrain
 
     [SerializeField, Tooltip("The duration, in seconds, of our looping bounce animation.\n\n"
                            + "Default: 2")]
-    private float loopPeriod = 2;
+    public float loopPeriod = 2;
     [SerializeField, Tooltip("The duration, in seconds, it takes to return to the base state when "
                            + "the animation stops.\n\nDefault: 0.025")]
-    private float animKillTime = 0.025f;
+    public float animKillTime = 0.025f;
 
     // Anim methods ===============================================================================
 

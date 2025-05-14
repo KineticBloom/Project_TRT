@@ -29,7 +29,7 @@ public class FadeToBlack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetOpacity(startingOpacity);
+        
     }
 
     // Update is called once per frame
@@ -47,6 +47,8 @@ public class FadeToBlack : MonoBehaviour
 
     private IEnumerator FadeIn(float duration)
     {
+        SetOpacity(startingOpacity);
+
         float startAlpha = image.color.a;
         float time = 0f;
 
@@ -62,6 +64,8 @@ public class FadeToBlack : MonoBehaviour
 
     private IEnumerator FadeOut(float duration)
     {
+        SetOpacity(startingOpacity);
+
         float startAlpha = image.color.a;
         float time = 0f;
 

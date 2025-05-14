@@ -28,6 +28,12 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
     [SerializeField] TMP_SpriteAsset xboxAsset;
     [SerializeField] TMP_SpriteAsset dualshockAsset;
     
+    [Header("Input Device Sprites")]
+    [SerializeField] Sprite keyboardSprite;
+    [SerializeField] Sprite switchSprite;
+    [SerializeField] Sprite xboxSprite;
+    [SerializeField] Sprite dualshockSprite;
+    
     public TMP_SpriteAsset CurrentAsset(){
         if (LastUsedScheme == KeyboardScheme) return keyboardAsset;
         else if (LastUsedScheme == SwitchScheme) return switchAsset;
@@ -35,6 +41,15 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
         else if (LastUsedScheme == DualShockScheme) return dualshockAsset;
         else if (LastUsedScheme == GamepadScheme) return xboxAsset;
         else return keyboardAsset;
+    }
+    
+    public Sprite CurrentSprite(){
+        if (LastUsedScheme == KeyboardScheme) return keyboardSprite;
+        else if (LastUsedScheme == SwitchScheme) return switchSprite;
+        else if (LastUsedScheme == XInputScheme) return xboxSprite;
+        else if (LastUsedScheme == DualShockScheme) return dualshockSprite;
+        else if (LastUsedScheme == GamepadScheme) return xboxSprite;
+        else return keyboardSprite;
     }
     
     public bool MouseLastUsed => _mouseLastUsed;

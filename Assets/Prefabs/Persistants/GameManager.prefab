@@ -80,14 +80,17 @@ MonoBehaviour:
     m_Name: 
     m_BindingGroup: 
     m_DeviceRequirements: []
-  OnInputSchemeChanged:
-    m_PersistentCalls:
-      m_Calls: []
   keyboardAsset: {fileID: 11400000, guid: c30dc1a77ce6aee4eb5df7c6bcb85cb5, type: 2}
   switchAsset: {fileID: 11400000, guid: 6493d8892a4ae714d8066927e774a694, type: 2}
   xboxAsset: {fileID: 11400000, guid: fea7388198cc573418b876fddb601dd4, type: 2}
   dualshockAsset: {fileID: 11400000, guid: d8aee133b3ca69846b9b911e1ed58d4d, type: 2}
-  AllowNavbar: 0
+  keyboardSprite: {fileID: 21300000, guid: ea9021565b9ac384eaaa4882e6165cb3, type: 3}
+  switchSprite: {fileID: 21300000, guid: e14c113e05b51414b92cf9b4e8267707, type: 3}
+  xboxSprite: {fileID: 21300000, guid: e14c113e05b51414b92cf9b4e8267707, type: 3}
+  dualshockSprite: {fileID: 21300000, guid: e14c113e05b51414b92cf9b4e8267707, type: 3}
+  OnInputSchemeChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2334186633066417863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,7 +121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllCardDatas: {fileID: 11400000, guid: 58d27677f93c1024cb2b3939c3a987cf, type: 2}
-  StartingCards: []
   Cards: []
   inventoryLastUpdateTime: 0
 --- !u!114 &3542788659922344687

@@ -214,6 +214,15 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
         } else {
             Time.timeScale = 1;
         }
+
+        if (stateData.DisableInventoryInteractions)
+        {
+            GameManager.Instance.SetInventoryBarInteractable(false);
+        }
+        else
+        {
+            GameManager.Instance.SetInventoryBarInteractable(true);
+        }
     }
 
     /// <summary>

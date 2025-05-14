@@ -237,6 +237,8 @@ public class InventoryCardObject : MonoBehaviour {
     {
         itemSmallButton.interactable = interactable;
         itemUnactiveButton.interactable = interactable;
+        itemFullButton.interactable = interactable;
+        itemFullUnactiveButton.interactable = interactable;
     }
 
     public void SwapState(CurrentState stateToEnter) {

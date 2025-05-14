@@ -6,9 +6,12 @@ using UnityEngine.UI;
 using Unity.VisualScripting;
 using System.Xml.Linq;
 using DG.Tweening.Core.Easing;
+using System;
 
 public class ChooseItemCanvasController : MonoBehaviour
 {
+
+    [Header("Object References")]
     public GameObject InventoryCardObjectPrefab;
     public GameObject CardsHorizontalLayoutGroup;
     public Image NPCSprite;
@@ -19,8 +22,10 @@ public class ChooseItemCanvasController : MonoBehaviour
     private NpcInteractable _npcInstance;
 
     public void InitOffer(NPCData npcData, NpcInteractable npcInstance) {
-
         InventoryBar.SetActiveSource(gameObject, true);
+        InventoryBar.SetInteractable(false);
+
+        _cards.Clear();
 
         _passedInData = npcData;
         _npcInstance = npcInstance;
@@ -41,13 +46,22 @@ public class ChooseItemCanvasController : MonoBehaviour
         }
     }
 
-    public void OnSelect(int index) {
-        Debug.Log("Selected index: " + index);        
+    public void SelectFirstItem()
+    {
+        // Select the first item
+        if (_cards.Count > 0)
+        {
+            _cards[0].GetComponent<InventoryCardObject>().CurrentActiveButton.Select();
+        }
+    }
+
+    public void OnSelect(int index) {      
         GameManager.MasterCanvas.GetComponent<InGameUi>().MoveToBartering(_passedInData, _npcInstance.ItemsAvailable[index], _npcInstance);
         InventoryBar.SetActiveSource(gameObject, false);
     }
 
     public void LeaveChooseItemScene() {
+        InventoryBar.SetInteractable(true);
         InventoryBar.SetActiveSource(gameObject, false);
         Cleanup();
         GameManager.MasterCanvas.GetComponent<InGameUi>().MoveToDefault();

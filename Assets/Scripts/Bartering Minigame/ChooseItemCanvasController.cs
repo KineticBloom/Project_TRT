@@ -11,6 +11,7 @@ public class ChooseItemCanvasController : MonoBehaviour
 {
     public GameObject InventoryCardObjectPrefab;
     public GameObject CardsHorizontalLayoutGroup;
+    public Image NPCSprite;
     public InventoryBar InventoryBar;
 
     private List<GameObject> _cards = new List<GameObject>();
@@ -24,6 +25,7 @@ public class ChooseItemCanvasController : MonoBehaviour
         _passedInData = npcData;
         _npcInstance = npcInstance;
 
+        NPCSprite.sprite = _passedInData.Icon;
 
         int index = 0;
 

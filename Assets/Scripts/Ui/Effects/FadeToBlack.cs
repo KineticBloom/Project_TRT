@@ -49,8 +49,6 @@ public class FadeToBlack : MonoBehaviour
 
     private IEnumerator FadeIn(float duration)
     {
-        SetOpacity(startingOpacity);
-
         float startAlpha = image.color.a;
         float time = 0f;
 
@@ -66,8 +64,6 @@ public class FadeToBlack : MonoBehaviour
 
     private IEnumerator FadeOut(float duration)
     {
-        SetOpacity(startingOpacity);
-
         float startAlpha = image.color.a;
         float time = 0f;
 

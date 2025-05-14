@@ -41,6 +41,8 @@ public class BarteringController : MonoBehaviour
 
     [Header("Other Dependencies")]
     public Button OfferTradeButton;
+    public Button ExitEarlyButton;
+    public Button ExitFinalTradeButton;
     public InventoryGridController InventoryGrid;
     public InventoryBar inventoryBar;
 
@@ -64,6 +66,7 @@ public class BarteringController : MonoBehaviour
         public float PlayerSumValue = 0;
         public int TradeAttemptsLeft = 0;
         public bool WonBarterFlag = false;
+        public bool ConfirmExit = false;
     }
 
     TempTradeData tempTradeData;
@@ -124,7 +127,7 @@ public class BarteringController : MonoBehaviour
         VISUAL_FindAndDisplayNewSum();
 
         // Pre-Activate any needed Effect Cards
-        StartCoroutine(EFFECT_ActivateEffectCards(ActivationTime.AfterOffer,true,true));
+        StartCoroutine(EFFECT_ActivateEffectCards(ActivationTime.AfterOffer, true, true));
     }
 
     public void RetractItem(InventoryCardData itemToRetract)
@@ -158,6 +161,11 @@ public class BarteringController : MonoBehaviour
         StartCoroutine(FinishBarter());
     }
 
+    public void ExitBarterConfirm()
+    {
+        tempTradeData.ConfirmExit = true;
+    }
+
     #endregion
 
     #region ======== [ PRIVATE METHODS ] ========
@@ -170,7 +178,7 @@ public class BarteringController : MonoBehaviour
     IEnumerator FinishBarter()
     {
         // Reset all item values
-        foreach(InventoryCardData x in _offeredItems.Items)
+        foreach (InventoryCardData x in _offeredItems.Items)
         {
             x.ResetCurrentValue();
         }
@@ -193,9 +201,14 @@ public class BarteringController : MonoBehaviour
             BarterLose();
         }
 
-        yield return new WaitForSeconds(1f);
+        // Switch buttons
+        OfferTradeButton.gameObject.SetActive(false);
+        ExitEarlyButton.gameObject.SetActive(false);
+        ExitFinalTradeButton.gameObject.SetActive(true);
 
-        if(tempTradeData.WonBarterFlag == false)
+        yield return new WaitUntil(HasConfirmedExit);
+
+        if (tempTradeData.WonBarterFlag == false)
         {
             // Update attempts
             tempTradeData.TradeAttemptsLeft -= 1;
@@ -212,6 +225,11 @@ public class BarteringController : MonoBehaviour
         // Show effect cards revealed -> then exit
         StartCoroutine(EFFECT_ShowEffectCards(LeaveScene));
     }
+    bool HasConfirmedExit()
+    {
+        return tempTradeData.ConfirmExit;
+    }
+
     private void BarterWin()
     {
         // Show end message
@@ -316,7 +334,7 @@ public class BarteringController : MonoBehaviour
         OfferTradeButton.interactable = isInteractable;
         InventoryGrid.SetSlotsInteractable(isInteractable);
     }
-    
+
     #endregion
 
     #region ======== [ VISUAL PRIVATE METHODS ] ========
@@ -368,6 +386,11 @@ public class BarteringController : MonoBehaviour
         FailBarterIcon.SetActive(false);
         PassBarterIcon.SetActive(false);
         EndMessageSpeechBubble.SetActive(false);
+
+        // Init buttons
+        OfferTradeButton.gameObject.SetActive(true);
+        ExitEarlyButton.gameObject.SetActive(true);
+        ExitFinalTradeButton.gameObject.SetActive(false);
 
         // Reset value texts
         PlayerValueText.text = "Value: 0";
@@ -441,7 +464,7 @@ public class BarteringController : MonoBehaviour
 
             VISUAL_DisplayNewOffer();
             VISUAL_FindAndDisplayNewSum();
-            
+
             yield return new WaitForSeconds(flipDelay);
         }
     }

@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86243f10543f9a4ebe9c1097513fcf3, type: 3}
+  m_Name: Community Roro
+  m_EditorClassIdentifier: 
+  Name: Community Roro
+  Icon: {fileID: 21300000, guid: f81434a53d0a2174ca8bc46782bfa24c, type: 3}
+  Bio: It's a Roro
+  FlagID: roro_c_bartered
+  ItemOnOffer: {fileID: 11400000, guid: 081c2b4ca1f4c724e9f3ae2ecedc03c3, type: 2}
+  ItemsOnOffer:
+  - {fileID: 11400000, guid: 73ac151373da724478c9da133693e8c8, type: 2}
+  BarterMessageWin: Thanks for your service!
+  BarterMessageLose: Don't cheap out on community service!
+  BarterAttempts: -1
+  EffectCards:
+  - rid: 8243886729994174559
+  - rid: 6991182339336044559
+  references:
+    version: 2
+    RefIds:
+    - rid: 6991182339336044559
+      type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
+      data:
+        Icon: {fileID: 21300000, guid: 698a6ef157b96e644a7ee6a82c125718, type: 3}
+        Description: Offer 4 items to take part in community service
+        Hint: What could this do?
+        Text: =10
+        ConditionImage: {fileID: 21300000, guid: 698a6ef157b96e644a7ee6a82c125718,
+          type: 3}
+        _revealed: 0
+        RequiresAllConditions: 1
+        ItemConditions:
+        - rid: 8243886729994174555
+        AffectedItems: []
+        AffectedTags:
+        - all
+        ItemActions:
+        - rid: 8243886729994174556
+    - rid: 8243886729994174555
+      type: {class: ItemCount, ns: , asm: Assembly-CSharp}
+      data:
+        MinAmount: 4
+    - rid: 8243886729994174556
+      type: {class: SetValue, ns: , asm: Assembly-CSharp}
+      data:
+        Value: 10
+    - rid: 8243886729994174559
+      type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
+      data:
+        Icon: {fileID: 21300000, guid: 64a4aabb5bd8f3e4e918e385720cf9b7, type: 3}
+        Description: Don't cheap out on community service!
+        Hint: What could this do?
+        Text: X
+        ConditionImage: {fileID: 21300000, guid: 64a4aabb5bd8f3e4e918e385720cf9b7,
+          type: 3}
+        _revealed: 0
+        RequiresAllConditions: 1
+        ItemConditions:
+        - rid: 8243886729994174560
+        AffectedItems: []
+        AffectedTags:
+        - all
+        ItemActions:
+        - rid: 8243886729994174561
+    - rid: 8243886729994174560
+      type: {class: CountItemsWithTags, ns: , asm: Assembly-CSharp}
+      data:
+        Tags:
+        - all
+        MinAmount: 1
+        ExactAmount: 0
+    - rid: 8243886729994174561
+      type: {class: SetValue, ns: , asm: Assembly-CSharp}
+      data:
+        Value: 0

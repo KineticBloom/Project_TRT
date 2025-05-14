@@ -27,6 +27,7 @@ public class BarteringController : MonoBehaviour
     [Header("End State Dependencies")]
     public GameObject FailBarterIcon;
     public GameObject PassBarterIcon;
+    public GameObject ArrowIcon;
     public TMP_Text EndMessage;
     public GameObject EndMessageSpeechBubble;
 
@@ -238,6 +239,7 @@ public class BarteringController : MonoBehaviour
 
         // Update visuals
         PassBarterIcon.SetActive(true);
+        ArrowIcon.SetActive(false);
 
         // Remove Item from NPC
         tempTradeData.NPCInstance.ItemsAvailable.Remove(tempTradeData.TargetCard);
@@ -254,6 +256,7 @@ public class BarteringController : MonoBehaviour
 
         // Update visuals
         FailBarterIcon.SetActive(true);
+        ArrowIcon.SetActive(false);
     }
     private void RestartBarter()
     {
@@ -391,6 +394,8 @@ public class BarteringController : MonoBehaviour
         OfferTradeButton.gameObject.SetActive(true);
         ExitEarlyButton.gameObject.SetActive(true);
         ExitFinalTradeButton.gameObject.SetActive(false);
+
+        ArrowIcon.SetActive(true);
 
         // Reset value texts
         PlayerValueText.text = "Value: 0";

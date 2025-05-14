@@ -17,7 +17,9 @@ public class NpcInteractable : Interactable
     public List<InventoryCardData> ItemsAvailable;
     private SquetchStarter _squetchStarter;
 
-    private void Start() {
+
+    private void Start() 
+    {
         _squetchStarter = GetComponent<SquetchStarter>();
         ItemsAvailable = new List<InventoryCardData>(NpcData.ItemsOnOffer);
     }

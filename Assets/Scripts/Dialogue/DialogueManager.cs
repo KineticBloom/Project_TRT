@@ -79,7 +79,6 @@ public class DialogueManager : MonoBehaviour {
     /// </summary>
     /// <param name="FreezeDialogue">True then no input accepted.</param>
     public void FreezeDialogue(bool FreezeDialogue) {
-        Debug.Log("Set Dialogue Freeze to: " + FreezeDialogue);
         _externalNoInput = FreezeDialogue;
     }
 

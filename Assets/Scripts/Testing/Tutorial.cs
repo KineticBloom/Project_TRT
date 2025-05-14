@@ -43,7 +43,7 @@ public class Tutorial : MonoBehaviour
         }
         else GameManager.Player.Movement.SetCanMove(false);
         Time.timeScale = 0;
-        inputHints?.SetActive(true);
+        if (inputHints != null) inputHints.SetActive(true);
     }
 
     // Update is called once per frame

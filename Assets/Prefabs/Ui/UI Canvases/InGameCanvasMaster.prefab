@@ -1505,6 +1505,7 @@ MonoBehaviour:
       IsTimeFrozen: 1
       IsDialogueFrozen: 1
       PauseAnimations: 1
+      DisableInventoryInteractions: 0
   - First: 1
     Second:
       StatesCanvasGroup: {fileID: 3351460263255463054}
@@ -1512,6 +1513,7 @@ MonoBehaviour:
       IsTimeFrozen: 1
       IsDialogueFrozen: 1
       PauseAnimations: 1
+      DisableInventoryInteractions: 1
   - First: 2
     Second:
       StatesCanvasGroup: {fileID: 1863688031849735474}
@@ -1519,6 +1521,7 @@ MonoBehaviour:
       IsTimeFrozen: 1
       IsDialogueFrozen: 1
       PauseAnimations: 1
+      DisableInventoryInteractions: 1
   - First: 3
     Second:
       StatesCanvasGroup: {fileID: 6324080442294832003}
@@ -1526,6 +1529,7 @@ MonoBehaviour:
       IsTimeFrozen: 1
       IsDialogueFrozen: 1
       PauseAnimations: 1
+      DisableInventoryInteractions: 1
   settingsPanel: {fileID: 4262080641377275645}
   inventoryBar: {fileID: 3220280963112676566}
   tweenDuration: 0.5
@@ -2475,6 +2479,7 @@ MonoBehaviour:
       IsTimeFrozen: 0
       IsDialogueFrozen: 0
       PauseAnimations: 0
+      DisableInventoryInteractions: 1
   - First: 1
     Second:
       StatesCanvasGroup: {fileID: 2202738483032196653}
@@ -2482,6 +2487,7 @@ MonoBehaviour:
       IsTimeFrozen: 1
       IsDialogueFrozen: 0
       PauseAnimations: 0
+      DisableInventoryInteractions: 0
   - First: 2
     Second:
       StatesCanvasGroup: {fileID: 4932174827866624581}
@@ -2489,6 +2495,7 @@ MonoBehaviour:
       IsTimeFrozen: 1
       IsDialogueFrozen: 0
       PauseAnimations: 0
+      DisableInventoryInteractions: 1
   - First: 3
     Second:
       StatesCanvasGroup: {fileID: 1702156077201228388}
@@ -2496,10 +2503,12 @@ MonoBehaviour:
       IsTimeFrozen: 1
       IsDialogueFrozen: 0
       PauseAnimations: 0
+      DisableInventoryInteractions: 1
   BarteringController: {fileID: 8979640404399221028}
   ChooseItemCanvasController: {fileID: 8585292358288309937}
   DialogueUiManager: {fileID: 2859430303816999790}
   Notification: {fileID: 1503418527881227629}
+  InventoryBar: {fileID: 3220280963112676566}
 --- !u!223 &837961958174819109
 Canvas:
   m_ObjectHideFlags: 0
@@ -8517,12 +8526,12 @@ PrefabInstance:
     - target: {fileID: 9014477862548609965, guid: 511ccb998b35c7c468c63561cc83de28,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GoBack
+      value: MoveToPause
       objectReference: {fileID: 0}
     - target: {fileID: 9014477862548609965, guid: 511ccb998b35c7c468c63561cc83de28,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UiManager`1[[SettingsUi+UiStates, Assembly-CSharp
+      value: SettingsUi, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

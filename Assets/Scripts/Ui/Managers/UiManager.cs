@@ -15,6 +15,7 @@ public struct StateData {
     public bool IsTimeFrozen;
     public bool IsDialogueFrozen;
     public bool PauseAnimations;
+    public bool DisableInventoryInteractions;
 }
 
 /// <summary>
@@ -166,6 +167,14 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
             Time.timeScale = 0;
         } else {
             Time.timeScale = 1;
+        }
+
+        if (newStateData.DisableInventoryInteractions)
+        {
+            GameManager.Instance.SetInventoryBarInteractable(false);
+        } else
+        {
+            GameManager.Instance.SetInventoryBarInteractable(true);
         }
     }
 

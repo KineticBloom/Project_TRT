@@ -1,6 +1,5 @@
 VAR goro_mb_interrogated = false
 VAR SAVE_mailbot_ec_3 = false
-VAR IC_id_card = false
 
 === Start ===
 Oh hello there! #NPC

@@ -27,6 +27,7 @@ I don't know anything! #NPC
     -> NotFree
 
 ===NotFree===
+~goro_fp_interrogated = true
 I can't just tell you! #NPC
 It's real secret stuff. #NPC
 * C'mon get to the point!
@@ -45,7 +46,7 @@ I won't settle for anything else! #NPC
     -> Interrogated
 
 ===Interrogated===
-Did you get an [ID Card] #NPC
+Did you get an [ID Card]? #NPC
 * {IC_id_card} Here ya go
     ~SAVE_fp_ec_3 = true
     ~IC_id_card = false
@@ -55,6 +56,7 @@ Did you get an [ID Card] #NPC
     ->END
 
 === FetchQuestDone ===
+~goro_fp_FQ=true
 What I know is that Eden is in love with F1x. #NPC
 Any item of theirs is priceless! #NPC
 An [Apple Ring] would do the trick! #NPC

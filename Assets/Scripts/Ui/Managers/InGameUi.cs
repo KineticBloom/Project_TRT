@@ -49,6 +49,12 @@ public class InGameUi : UiManager<InGameUi.UiStates> {
         yield return new WaitForEndOfFrame();
         GameManager.Instance.SwapUiManager(this);
         LoadState(_currentState);
+
+        // patch fix, makes Dialogue be selected after pause is closed
+        if (_currentState == UiStates.Dialogue)
+        {
+            DialogueUiManager.SelectFirstChoice();
+        }
     }
 
     public override void GoBack() {return;}

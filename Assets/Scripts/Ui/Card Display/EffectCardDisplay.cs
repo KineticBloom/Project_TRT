@@ -40,6 +40,9 @@ public class EffectCardDisplay : MonoBehaviour
     private BarteringController _barteringController;
     private float _baseScale = 1f;
     private float _baseHeight;
+    private Vector3 _returnPoint;
+    private float AttackSpeed = 0.125f;
+    private Vector3 defaultUp;
 
     /// <summary>
     /// Loads the Effect Card to be displayed
@@ -89,7 +92,7 @@ public class EffectCardDisplay : MonoBehaviour
         FlipBack();
     }
 
-    public void Activate() 
+    public void Activate()
     {
         //transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).SetEase(Ease.InOutSine).SetLoops(2, LoopType.Yoyo);
         if (_shakeTween == null) {
@@ -102,7 +105,29 @@ public class EffectCardDisplay : MonoBehaviour
 
     public void AttackActivate()
     {
-        Debug.Log("Attack Activate!");
+        _returnPoint = transform.position;
+        Vector3 target = _barteringController.targetEffectCard.transform.position;
+        transform.DOMove(target, AttackSpeed, false).OnComplete(AttackReturnCall);
+        transform.DOPunchScale(new Vector3(1.5f, 1.5f, 1.5f), AttackSpeed).SetEase(Ease.OutElastic);
+        defaultUp = transform.up;
+        transform.up = target - transform.position;
+    }
+    public void AttackReturnCall()
+    {
+        StartCoroutine(AttackReturn());
+    }
+
+    IEnumerator AttackReturn()
+    {
+        yield return new WaitForSeconds(0.25f);
+        Vector3 target = _returnPoint;
+        transform.DOMove(_returnPoint, AttackSpeed * 1.5f, false).SetEase(Ease.OutExpo).OnComplete(ResetRotation);
+        transform.up = target - transform.position;
+    }
+
+    private void ResetRotation()
+    {
+        DOTween.To(() => transform.up, x => transform.up = x, defaultUp, 0.2f);
     }
 
     /// <summary>

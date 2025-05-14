@@ -46,6 +46,7 @@ public class BarteringController : MonoBehaviour
     public Button ExitFinalTradeButton;
     public InventoryGridController InventoryGrid;
     public InventoryBar inventoryBar;
+    public GameObject targetEffectCard;
 
     #endregion
 

@@ -455,6 +455,12 @@ public class BarteringController : MonoBehaviour
         float flipDelay = 1f;
         if (SkipFlipDelay) flipDelay = 0f;
 
+        // Reset current values
+        foreach (InventoryCardData x in _offeredItems.Items)
+        {
+            x.ResetCurrentValue();
+        }
+
         yield return new WaitForSeconds(flipDelay);
 
         // Flip each card that we can activate

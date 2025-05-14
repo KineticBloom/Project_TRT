@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using Unity.VisualScripting;
 using System.Xml.Linq;
 using DG.Tweening.Core.Easing;
-using System;
 
 public class ChooseItemCanvasController : MonoBehaviour
 {
@@ -44,18 +43,15 @@ public class ChooseItemCanvasController : MonoBehaviour
             newCard.transform.localScale = Vector3.one * 0.85f;
             index += 1;
         }
-    }
 
-    public void SelectFirstItem()
-    {
         // Select the first item
-        if (_cards.Count > 0)
+        if (index > 0)
         {
             _cards[0].GetComponent<InventoryCardObject>().CurrentActiveButton.Select();
         }
     }
 
-    public void OnSelect(int index) {      
+    public void OnSelect(int index) {       
         GameManager.MasterCanvas.GetComponent<InGameUi>().MoveToBartering(_passedInData, _npcInstance.ItemsAvailable[index], _npcInstance);
         InventoryBar.SetActiveSource(gameObject, false);
     }

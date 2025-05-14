@@ -9,11 +9,11 @@ public class ItemInteractable : Interactable
 
     public override void Highlight() 
     {
-        Debug.Log("Highlighted " + gameObject.name);
+
     }
 
     public override void UnHighlight() 
     {
-        Debug.Log("UnHighlighted " + gameObject.name);
+
     }
 }

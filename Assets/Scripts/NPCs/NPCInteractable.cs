@@ -1,7 +1,6 @@
 using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class NpcInteractable : Interactable
 {
@@ -16,13 +15,17 @@ public class NpcInteractable : Interactable
     public Vector3 DialogueSourceLocalPosition;
 
     public List<InventoryCardData> ItemsAvailable;
+    private SquetchStarter _squetchStarter;
+
     private void Start() {
+        _squetchStarter = GetComponent<SquetchStarter>();
         ItemsAvailable = new List<InventoryCardData>(NpcData.ItemsOnOffer);
     }
 
     public override void Interaction() {
         Vector3 NPCWorldPosition = this.transform.position + DialogueSourceLocalPosition;
         Vector3 PlayerWorldPosition = GameManager.Player.DialogueSource.position;
+        _squetchStarter.Subscribe();
         GameManager.DialogueManager.StartDialogue(npcConversation, TriggerBarter, NPCWorldPosition, PlayerWorldPosition);
 
         dialogueStartSFX.Play(gameObject);

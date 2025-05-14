@@ -16,6 +16,7 @@ public struct StateData {
     public bool IsDialogueFrozen;
     public bool PauseAnimations;
     public bool DisableInventoryInteractions;
+    public bool DisableInventory;
 }
 
 /// <summary>
@@ -171,10 +172,10 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
 
         if (newStateData.DisableInventoryInteractions)
         {
-            GameManager.Instance.SetInventoryBarInteractable(false);
+            GameManager.Instance.SetInventoryBarInteractable(false, !newStateData.DisableInventory);
         } else
         {
-            GameManager.Instance.SetInventoryBarInteractable(true);
+            GameManager.Instance.SetInventoryBarInteractable(true, !newStateData.DisableInventory);
         }
     }
 
@@ -217,11 +218,11 @@ public abstract class UiManager<UiStateEnum> : UiManagerBase where UiStateEnum :
 
         if (stateData.DisableInventoryInteractions)
         {
-            GameManager.Instance.SetInventoryBarInteractable(false);
+            GameManager.Instance.SetInventoryBarInteractable(false, !stateData.DisableInventory);
         }
         else
         {
-            GameManager.Instance.SetInventoryBarInteractable(true);
+            GameManager.Instance.SetInventoryBarInteractable(true, !stateData.DisableInventory);
         }
     }
 

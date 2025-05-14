@@ -22,8 +22,9 @@ public class InGameUi : UiManager<InGameUi.UiStates> {
         BarteringChooseItem
     }
 
-    public void SetInventoryBarInteractable(bool interactable)
+    public void SetInventoryBarInteractable(bool interactable, bool isEnabled)
     {
+        InventoryBar.gameObject.SetActive(isEnabled);
         InventoryBar.SetInteractable(interactable);
     }
 

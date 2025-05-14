@@ -84,21 +84,21 @@ public class GameManager : Singleton<GameManager>
 
     // InventoryBar Shenanigans ==================================================================
 
-    public void SetInventoryBarInteractable(bool interactable)
+    public void SetInventoryBarInteractable(bool interactable, bool isEnabled)
     {
         if (UiManagerInFocus == null) return;
 
         // try to set it if the UI manager is InGameUi
         if (UiManagerInFocus.TryGetComponent<InGameUi>(out var inGame))
         {
-            inGame.SetInventoryBarInteractable(interactable);
+            inGame.SetInventoryBarInteractable(interactable, isEnabled);
             return;
         }
 
         // try to set it if the UI manager is SettingsUi
         if (UiManagerInFocus.TryGetComponent<SettingsUi>(out var settings))
         {
-            settings.SetInventoryBarInteractable(interactable);
+            settings.SetInventoryBarInteractable(interactable, isEnabled);
             return;
         }
     }

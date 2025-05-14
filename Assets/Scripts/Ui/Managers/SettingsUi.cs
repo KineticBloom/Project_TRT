@@ -32,8 +32,9 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
         CheckToTitle
     }
 
-    public void SetInventoryBarInteractable(bool interactable)
+    public void SetInventoryBarInteractable(bool interactable, bool isEnabled)
     {
+        inventoryBar.gameObject.SetActive(isEnabled);
         inventoryBar.SetInteractable(interactable);
     }
 

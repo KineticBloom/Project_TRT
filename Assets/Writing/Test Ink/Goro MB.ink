@@ -1,6 +1,8 @@
 VAR goro_mb_interrogated = false
 VAR SAVE_mailbot_ec_3 = false
 
+-> Start
+
 === Start ===
 Oh hello there! #NPC
 May I help you? #NPC

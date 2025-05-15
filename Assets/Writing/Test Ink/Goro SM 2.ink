@@ -54,7 +54,7 @@ Hand it over. #NPC
     ->END
 
 === FetchQuestDone ===
-~~goro_sm_2_FQ = true
+~goro_sm_2_FQ = true
 I found out that F1x is in love with Eden! #NPC
 Crazy right? #NPC
 They'd never admit it openly, but if they had some sort of confession #NPC

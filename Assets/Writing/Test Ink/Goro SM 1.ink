@@ -1,6 +1,8 @@
 VAR goro_SM_1_interrogated = false
 VAR SAVE_sm_ec_2 = false
 
+-> Start
+
 === Start ===
 Oh hello there! #NPC
 Wanna know something interesting? #NPC

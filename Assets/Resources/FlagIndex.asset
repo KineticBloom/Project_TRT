@@ -12,7 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc0052783a47cb49891075b10ae3d1c, type: 3}
   m_Name: FlagIndex
   m_EditorClassIdentifier: 
-  SavedFlags: []
+  SavedFlags:
+  - ID: SAVE_sm_ec_2
+    Type: 1
+    Card: {fileID: 0}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: SAVE_sm_ec_3
+    Type: 1
+    Card: {fileID: 0}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: SAVE_mailbot_ec_3
+    Type: 1
+    Card: {fileID: 0}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: SAVE_fp_ec_3
+    Type: 1
+    Card: {fileID: 0}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
   flags:
   - ID: fp_bartered
     Type: 1
@@ -77,111 +105,6 @@ MonoBehaviour:
     Value: 0
     DefaultCount: 0
     Count: 0
-  - ID: IC_inf
-    Type: 0
-    Card: {fileID: 11400000, guid: ddc774a1490457443a8d7181c31fc4d9, type: 2}
-    DefaultValue: 0
-    Value: 0
-    DefaultCount: 0
-    Count: 0
-  - ID: IC_date_note
-    Type: 0
-    Card: {fileID: 11400000, guid: b3ce713d5e03399499b7f5df33e92dcc, type: 2}
-    DefaultValue: 0
-    Value: 0
-    DefaultCount: 0
-    Count: 0
-  - ID: IC_facility_usb
-    Type: 0
-    Card: {fileID: 11400000, guid: 5b5349cb0746d7c46b8b4b37dafc297e, type: 2}
-    DefaultValue: 0
-    Value: 0
-    DefaultCount: 0
-    Count: 0
-  - ID: IC_prayer_room_key
-    Type: 0
-    Card: {fileID: 11400000, guid: a942cf1638829df488725379b2d4fab7, type: 2}
-    DefaultValue: 0
-    Value: 0
-    DefaultCount: 0
-    Count: 0
-  - ID: IC_key_card
-    Type: 0
-    Card: {fileID: 11400000, guid: b3f6500aede711c489da950e7409d09b, type: 2}
-    DefaultValue: 0
-    Value: 0
-    DefaultCount: 0
-    Count: 0
-  - ID: IC_letter_of_complaint
-    Type: 0
-    Card: {fileID: 11400000, guid: af210dedcdbaf56429bf9d6f8b6ac2c0, type: 2}
-    DefaultValue: 0
-    Value: 0
-    DefaultCount: 0
-    Count: 0
-  - ID: IC_sacred_fruit
-    Type: 0
-    Card: {fileID: 11400000, guid: 081c2b4ca1f4c724e9f3ae2ecedc03c3, type: 2}
-    DefaultValue: 0
-    Value: 0
-    DefaultCount: 0
-    Count: 0
-  - ID: IC_religious_relic
-    Type: 0
-    Card: {fileID: 11400000, guid: 14ab4e37bc521584583f222dc15a2746, type: 2}
-    DefaultValue: 0
-    Value: 0
-    DefaultCount: 0
-    Count: 0
-  - ID: IC_seeds
-    Type: 0
-    Card: {fileID: 11400000, guid: 3d30e89bb6785644ba3c442728f20753, type: 2}
-    DefaultValue: 0
-    Value: 0
-    DefaultCount: 0
-    Count: 0
-  - ID: IC_shark_tooth
-    Type: 0
-    Card: {fileID: 11400000, guid: af5c89a7096cba04297f11e8dcb9d576, type: 2}
-    DefaultValue: 0
-    Value: 0
-    DefaultCount: 0
-    Count: 0
-  - ID: IC_farming_equipment
-    Type: 0
-    Card: {fileID: 11400000, guid: ad8e6a92f388f7b499a3c6f6cb32d9bf, type: 2}
-    DefaultValue: 0
-    Value: 0
-    DefaultCount: 0
-    Count: 0
-  - ID: IC_item_1
-    Type: 0
-    Card: {fileID: 11400000, guid: 78a41c953ce01b648b8baa76eb804c39, type: 2}
-    DefaultValue: 0
-    Value: 0
-    DefaultCount: 0
-    Count: 0
-  - ID: IC_item_2
-    Type: 0
-    Card: {fileID: 11400000, guid: 33c1b2ec0e89bd64489cbdd9b5794f6d, type: 2}
-    DefaultValue: 0
-    Value: 0
-    DefaultCount: 0
-    Count: 0
-  - ID: IC_item_3
-    Type: 0
-    Card: {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
-    DefaultValue: 0
-    Value: 0
-    DefaultCount: 0
-    Count: 0
-  - ID: IC_item_4
-    Type: 0
-    Card: {fileID: 11400000, guid: 84e57b2c426aad147ab48ebedf5a7792, type: 2}
-    DefaultValue: 0
-    Value: 0
-    DefaultCount: 0
-    Count: 0
   - ID: Sig_for_CI
     Type: 1
     Card: {fileID: 0}
@@ -224,6 +147,237 @@ MonoBehaviour:
     Value: 0
     DefaultCount: 0
     Count: 0
+  - ID: goro_SM_1_interrogated
+    Type: 1
+    Card: {fileID: 0}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: goro_sm_2_interrogated
+    Type: 1
+    Card: {fileID: 0}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: goro_sm_2_FQ
+    Type: 1
+    Card: {fileID: 0}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_wooden_shark_tooth
+    Type: 0
+    Card: {fileID: 11400000, guid: af5c89a7096cba04297f11e8dcb9d576, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: goro_mb_interrogated
+    Type: 1
+    Card: {fileID: 0}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: goro_fp_interrogated
+    Type: 1
+    Card: {fileID: 0}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: goro_fp_FQ
+    Type: 1
+    Card: {fileID: 0}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_id_card
+    Type: 0
+    Card: {fileID: 11400000, guid: b3f6500aede711c489da950e7409d09b, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_inf
+    Type: 0
+    Card: {fileID: 11400000, guid: ddc774a1490457443a8d7181c31fc4d9, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_amulet
+    Type: 0
+    Card: {fileID: 11400000, guid: 02d3ffab8fbed8446ab1c6a5bfdfe276, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_apple_ring
+    Type: 0
+    Card: {fileID: 11400000, guid: b687503ef939a234b8ef64951d075598, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_banana
+    Type: 0
+    Card: {fileID: 11400000, guid: 78a687ddd89ee0a47957568b77fd1248, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_hymns
+    Type: 0
+    Card: {fileID: 11400000, guid: b2bb22bfc7c73f14f9e1d874246aa81e, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_bottle_of_wine
+    Type: 0
+    Card: {fileID: 11400000, guid: 30df77c8871e5bc4fad0ab42bcffcbb8, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_tie
+    Type: 0
+    Card: {fileID: 11400000, guid: da17c6d4dc263374bbf24bc95f23eeb0, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_cabinet_keys
+    Type: 0
+    Card: {fileID: 11400000, guid: db6ccb09ee79b6b419d64cc85e494001, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_complaint_letter
+    Type: 0
+    Card: {fileID: 11400000, guid: af210dedcdbaf56429bf9d6f8b6ac2c0, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_cornucopia
+    Type: 0
+    Card: {fileID: 11400000, guid: 081c2b4ca1f4c724e9f3ae2ecedc03c3, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_date_note
+    Type: 0
+    Card: {fileID: 11400000, guid: b3ce713d5e03399499b7f5df33e92dcc, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_duck
+    Type: 0
+    Card: {fileID: 11400000, guid: 73ac151373da724478c9da133693e8c8, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_external_clock
+    Type: 0
+    Card: {fileID: 11400000, guid: 4748f895a5dda4c4795db29cf789041b, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_facility_usb
+    Type: 0
+    Card: {fileID: 11400000, guid: 5b5349cb0746d7c46b8b4b37dafc297e, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_farming_equipment
+    Type: 0
+    Card: {fileID: 11400000, guid: ad8e6a92f388f7b499a3c6f6cb32d9bf, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_name_tag
+    Type: 0
+    Card: {fileID: 11400000, guid: 67d01c9d97d2e5043947cb11c4f70de5, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_new_robes
+    Type: 0
+    Card: {fileID: 11400000, guid: 4cc5b419605d8ba408892e87dd23b9f0, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_religious_relic
+    Type: 0
+    Card: {fileID: 11400000, guid: 14ab4e37bc521584583f222dc15a2746, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_seeds
+    Type: 0
+    Card: {fileID: 11400000, guid: 3d30e89bb6785644ba3c442728f20753, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_upstairs_keys
+    Type: 0
+    Card: {fileID: 11400000, guid: a942cf1638829df488725379b2d4fab7, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_gitem_1
+    Type: 0
+    Card: {fileID: 11400000, guid: 78a41c953ce01b648b8baa76eb804c39, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_gitem_2
+    Type: 0
+    Card: {fileID: 11400000, guid: 33c1b2ec0e89bd64489cbdd9b5794f6d, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_gitem_3
+    Type: 0
+    Card: {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_gitem_4
+    Type: 0
+    Card: {fileID: 11400000, guid: 84e57b2c426aad147ab48ebedf5a7792, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
+  - ID: IC_gitem_5
+    Type: 0
+    Card: {fileID: 11400000, guid: 6d702881d297b9b4a95b53df05279845, type: 2}
+    DefaultValue: 0
+    Value: 0
+    DefaultCount: 0
+    Count: 0
   inkFiles:
   - {fileID: 4900000, guid: 20b4a506d2849c143a8fdbd0d7ca6def, type: 3}
   - {fileID: 4900000, guid: 5d6c54eba53eb3648a2dadf3a3029ab4, type: 3}
@@ -235,4 +389,8 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 4398779932766d549907433415546a87, type: 3}
   - {fileID: 4900000, guid: d9fc890fc8b7cfb45aa3ec87b854a873, type: 3}
   - {fileID: 4900000, guid: e3b4d748bf0184f48b182923afd312ae, type: 3}
+  - {fileID: 4900000, guid: be25cc7a859d1614081a38bbe4b86d38, type: 3}
+  - {fileID: 4900000, guid: 01347d3fe4c48544287105e71863421a, type: 3}
+  - {fileID: 4900000, guid: b87554fcd3accbe4f8bdefe3e3533bea, type: 3}
+  - {fileID: 4900000, guid: b57bfb26d26b4804c9f622ea0a569528, type: 3}
   inventory: {fileID: 11400000, guid: 58d27677f93c1024cb2b3939c3a987cf, type: 2}

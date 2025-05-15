@@ -86,7 +86,6 @@ public class TimeLoopManager : MonoBehaviour
         // TODO: Port this code over into InGameUi, using a MoveToDefault() call
         GameManager.Player.Movement.SetCanMove(true);
         GameManager.Player.InteractionHandler.SetCanInteract(true);
-        GameManager.PlayerInput.AllowNavbar = true;
         GameManager.FlagTracker.ResetFlags();
         GameManager.Inventory.Clear();
         SaveSystem.Load();
@@ -109,7 +108,6 @@ public class TimeLoopManager : MonoBehaviour
             // TODO: Port this code over into InGameUi, using a MoveTo???() call
             GameManager.Player.Movement.SetCanMove(false);
             GameManager.Player.InteractionHandler.SetCanInteract(false);
-            GameManager.PlayerInput.AllowNavbar = false;
 
             // LoopElapsed is null with 0 subscribers, and non-null otherwise.
             if (LoopElapsed != null) {

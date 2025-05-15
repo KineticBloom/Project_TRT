@@ -54,7 +54,7 @@ public class FadeToBlack : MonoBehaviour
 
         while (time < duration)
         {
-            time += Time.deltaTime;
+            time += Time.unscaledDeltaTime;
             SetOpacity(Mathf.Lerp(startAlpha, 1f, time / duration));
             yield return null;
         }
@@ -69,7 +69,7 @@ public class FadeToBlack : MonoBehaviour
 
         while (time < duration)
         {
-            time += Time.deltaTime;
+            time += Time.unscaledDeltaTime;
             SetOpacity(Mathf.Lerp(startAlpha, 0f, time / duration));
             yield return null;
         }

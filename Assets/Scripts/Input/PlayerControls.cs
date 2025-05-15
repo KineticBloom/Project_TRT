@@ -244,7 +244,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
+                    ""groups"": "";Gamepad;XInputGamepad;DualShockGamepad"",
+                    ""action"": ""MenuButton2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5a7d6907-f40e-4bee-899b-2717b0fe7ca8"",
+                    ""path"": ""<SwitchProControllerHID>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";SwitchGamepad"",
                     ""action"": ""MenuButton2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -266,8 +277,41 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
+                    ""groups"": "";Gamepad;XInputGamepad;DualShockGamepad"",
                     ""action"": ""MenuButton1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c805a1a2-9c8f-4393-b1a1-3777f7419ae8"",
+                    ""path"": ""<SwitchProControllerHID>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";SwitchGamepad"",
+                    ""action"": ""MenuButton1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""41580d06-8c29-4d0e-b8fa-b97b74a4af5b"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyboardMouse"",
+                    ""action"": ""RejectButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5288bfab-20a6-4dcd-a970-c58d4c670b02"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyboardMouse"",
+                    ""action"": ""RejectButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -284,44 +328,22 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f9bf3e83-f5c0-4b23-8173-41661b69c327"",
-                    ""path"": ""<Keyboard>/l"",
+                    ""id"": ""b1495fe9-f9dc-4a26-a1fc-60824df56883"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";KeyboardMouse"",
+                    ""groups"": "";XInputGamepad;DualShockGamepad;Gamepad"",
                     ""action"": ""RejectButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""cbfe4a19-8fa8-47c9-9683-1899fa42d5f5"",
-                    ""path"": ""<SwitchProControllerHID>/buttonSouth"",
+                    ""id"": ""78f282ee-70da-4a0d-b33f-df3d57a477aa"",
+                    ""path"": ""<SwitchProControllerHID>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""RejectButton"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bdaa8e17-09d2-4f28-a55d-7511cf680039"",
-                    ""path"": ""<XInputController>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""RejectButton"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""34c43ec9-1090-4f50-bf39-1eb6273e311f"",
-                    ""path"": ""<DualShockGamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
+                    ""groups"": "";SwitchGamepad"",
                     ""action"": ""RejectButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -343,7 +365,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
+                    ""groups"": "";Gamepad;DualShockGamepad;XInputGamepad"",
                     ""action"": ""StartButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -354,7 +376,29 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/select"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
+                    ""groups"": "";Gamepad;DualShockGamepad;XInputGamepad"",
+                    ""action"": ""StartButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""770980ea-9d26-463b-b4af-1523bb4d1b71"",
+                    ""path"": ""<SwitchProControllerHID>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";SwitchGamepad"",
+                    ""action"": ""StartButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2fd778b9-d3d3-4a9f-a88c-93f8bd103a09"",
+                    ""path"": ""<SwitchProControllerHID>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";SwitchGamepad"",
                     ""action"": ""StartButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -376,7 +420,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
+                    ""groups"": "";Gamepad;DualShockGamepad;XInputGamepad"",
                     ""action"": ""SecondaryTrigger"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -387,7 +431,29 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
+                    ""groups"": "";Gamepad;DualShockGamepad;XInputGamepad"",
+                    ""action"": ""SecondaryTrigger"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""45474b92-967f-43db-90c1-6cee5fd6004e"",
+                    ""path"": ""<SwitchProControllerHID>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";SwitchGamepad"",
+                    ""action"": ""SecondaryTrigger"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b842a6eb-8191-469e-8593-876e920da39b"",
+                    ""path"": ""<SwitchProControllerHID>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";SwitchGamepad"",
                     ""action"": ""SecondaryTrigger"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -405,11 +471,11 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2c3be614-364a-4c56-b4ae-a64651df1e0f"",
+                    ""id"": ""d0f9bd52-1b7b-4fbc-bba9-d52e2f6802a5"",
                     ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
+                    ""groups"": "";Gamepad;XInputGamepad;DualShockGamepad"",
                     ""action"": ""PrimaryTrigger"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -420,14 +486,47 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
+                    ""groups"": "";Gamepad;XInputGamepad;DualShockGamepad"",
                     ""action"": ""PrimaryTrigger"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""425863d7-7466-414d-af12-e01c1b5a02c8"",
+                    ""id"": ""7152470c-a886-4544-a4c2-41583ad21073"",
+                    ""path"": ""<SwitchProControllerHID>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";SwitchGamepad"",
+                    ""action"": ""PrimaryTrigger"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf0965a8-cab1-49ad-a696-a617cadc7817"",
+                    ""path"": ""<SwitchProControllerHID>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";SwitchGamepad"",
+                    ""action"": ""PrimaryTrigger"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""67246d6f-3903-45b9-a86a-977ba878af92"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyboardMouse"",
+                    ""action"": ""AffirmButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7d2d4f53-72e6-46a8-8bdb-4996af0c11a4"",
                     ""path"": ""<Keyboard>/k"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -438,44 +537,22 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""67246d6f-3903-45b9-a86a-977ba878af92"",
-                    ""path"": ""<Keyboard>/f"",
+                    ""id"": ""24808c32-d42a-4a44-acbc-fb015c51a4d6"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";XInputGamepad;DualShockGamepad;Gamepad"",
                     ""action"": ""AffirmButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ce994ed7-97f3-4ab8-89dd-3d9437099aef"",
-                    ""path"": ""<XInputController>/buttonSouth"",
+                    ""id"": ""a9a7105b-de11-43eb-bd72-53b0169d13b6"",
+                    ""path"": ""<SwitchProControllerHID>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""AffirmButton"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d35d4d41-9aa5-4a10-bb28-cf0a78b43213"",
-                    ""path"": ""<SwitchProControllerHID>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AffirmButton"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a927b51d-950e-4e85-80ef-045771485d79"",
-                    ""path"": ""<DualShockGamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";SwitchGamepad"",
                     ""action"": ""AffirmButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -486,7 +563,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
+                    ""groups"": "";Gamepad;XInputGamepad;DualShockGamepad;SwitchGamepad"",
                     ""action"": ""ControlAxis"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -497,7 +574,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/dpad"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
+                    ""groups"": "";Gamepad;DualShockGamepad;XInputGamepad;SwitchGamepad"",
                     ""action"": ""ControlAxis"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -783,6 +860,39 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""devicePath"": ""<Mouse>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""DualShockGamepad"",
+            ""bindingGroup"": ""DualShockGamepad"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<DualShockGamepad>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""SwitchGamepad"",
+            ""bindingGroup"": ""SwitchGamepad"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<SwitchProControllerHID>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""XInputGamepad"",
+            ""bindingGroup"": ""XInputGamepad"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<XInputController>"",
                     ""isOptional"": false,
                     ""isOR"": false
                 }
@@ -1077,6 +1187,33 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         {
             if (m_KeyboardMouseSchemeIndex == -1) m_KeyboardMouseSchemeIndex = asset.FindControlSchemeIndex("KeyboardMouse");
             return asset.controlSchemes[m_KeyboardMouseSchemeIndex];
+        }
+    }
+    private int m_DualShockGamepadSchemeIndex = -1;
+    public InputControlScheme DualShockGamepadScheme
+    {
+        get
+        {
+            if (m_DualShockGamepadSchemeIndex == -1) m_DualShockGamepadSchemeIndex = asset.FindControlSchemeIndex("DualShockGamepad");
+            return asset.controlSchemes[m_DualShockGamepadSchemeIndex];
+        }
+    }
+    private int m_SwitchGamepadSchemeIndex = -1;
+    public InputControlScheme SwitchGamepadScheme
+    {
+        get
+        {
+            if (m_SwitchGamepadSchemeIndex == -1) m_SwitchGamepadSchemeIndex = asset.FindControlSchemeIndex("SwitchGamepad");
+            return asset.controlSchemes[m_SwitchGamepadSchemeIndex];
+        }
+    }
+    private int m_XInputGamepadSchemeIndex = -1;
+    public InputControlScheme XInputGamepadScheme
+    {
+        get
+        {
+            if (m_XInputGamepadSchemeIndex == -1) m_XInputGamepadSchemeIndex = asset.FindControlSchemeIndex("XInputGamepad");
+            return asset.controlSchemes[m_XInputGamepadSchemeIndex];
         }
     }
     private int m_GamepadSchemeIndex = -1;

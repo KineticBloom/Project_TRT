@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using NaughtyAttributes;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 /// <summary>
@@ -10,11 +12,49 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsActions, PlayerControls.IDebugActions
 {
+    [Header("Control Scheme")]
     [ReadOnly] public InputControlScheme LastUsedScheme;
-    public InputControlScheme KeyboardScheme => _controls.KeyboardMouseScheme;
-    public InputControlScheme GamepadScheme => _controls.GamepadScheme;
+    InputControlScheme KeyboardScheme => _controls.KeyboardMouseScheme;
+    InputControlScheme SwitchScheme => _controls.SwitchGamepadScheme;
+    InputControlScheme XInputScheme => _controls.XInputGamepadScheme;
+    InputControlScheme DualShockScheme => _controls.DualShockGamepadScheme;
+    InputControlScheme GamepadScheme => _controls.GamepadScheme;
+    
+    public PlayerControls PlayerControls => _controls;
+    
+    [Header("Input Sprite Assets")]
+    [SerializeField] TMP_SpriteAsset keyboardAsset;
+    [SerializeField] TMP_SpriteAsset switchAsset;
+    [SerializeField] TMP_SpriteAsset xboxAsset;
+    [SerializeField] TMP_SpriteAsset dualshockAsset;
+    
+    [Header("Input Device Sprites")]
+    [SerializeField] Sprite keyboardSprite;
+    [SerializeField] Sprite switchSprite;
+    [SerializeField] Sprite xboxSprite;
+    [SerializeField] Sprite dualshockSprite;
+    
+    public TMP_SpriteAsset CurrentAsset(){
+        if (LastUsedScheme == KeyboardScheme) return keyboardAsset;
+        else if (LastUsedScheme == SwitchScheme) return switchAsset;
+        else if (LastUsedScheme == XInputScheme) return xboxAsset;
+        else if (LastUsedScheme == DualShockScheme) return dualshockAsset;
+        else if (LastUsedScheme == GamepadScheme) return xboxAsset;
+        else return keyboardAsset;
+    }
+    
+    public Sprite CurrentSprite(){
+        if (LastUsedScheme == KeyboardScheme) return keyboardSprite;
+        else if (LastUsedScheme == SwitchScheme) return switchSprite;
+        else if (LastUsedScheme == XInputScheme) return xboxSprite;
+        else if (LastUsedScheme == DualShockScheme) return dualshockSprite;
+        else if (LastUsedScheme == GamepadScheme) return xboxSprite;
+        else return keyboardSprite;
+    }
+    
     public bool MouseLastUsed => _mouseLastUsed;
-    public bool AllowNavbar;
+    
+    [HideInInspector] public UnityEvent OnInputSchemeChanged;
 
     // Misc Internal Variables ====================================================================
 
@@ -40,9 +80,8 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
     private Dictionary<string, bool> _get = new() {};
 
     // Misc
-
     private bool _mouseLastUsed;
-   
+
     // Initializers and Finalizers ================================================================
 
     private void OnEnable() 
@@ -63,7 +102,6 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
 
         _controls.MainControls.Enable();
         _controls.Debug.Enable();
-        AllowNavbar = true;
     }
 
     private void OnDisable() 
@@ -123,7 +161,11 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
 
         foreach (InputControlScheme scheme in _controls.controlSchemes) {
             if (scheme.SupportsDevice(context.control.device)) {
-                LastUsedScheme = scheme;
+                if (LastUsedScheme != scheme) 
+                {
+                    LastUsedScheme = scheme;
+                    OnInputSchemeChanged?.Invoke();
+                }
                 return;
             }
         }

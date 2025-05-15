@@ -1065,6 +1065,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2519607808248846959}
   - component: {fileID: 1732901092250699834}
+  - component: {fileID: 5178820400972366237}
   - component: {fileID: 3106585922322403841}
   m_Layer: 5
   m_Name: Exit
@@ -1100,6 +1101,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5903875599186573543}
   m_CullTransparentMesh: 1
+--- !u!114 &5178820400972366237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5903875599186573543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9cd7ac04981f594b9a33d08f19efc87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3106585922322403841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1120,7 +1133,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press F to Close
+  m_text: Press {AffirmButton} to Close
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38a4173e5d84703438959bb5cca50377, type: 2}
   m_sharedMaterial: {fileID: 484691237190804879, guid: 38a4173e5d84703438959bb5cca50377,

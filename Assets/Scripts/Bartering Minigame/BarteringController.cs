@@ -319,14 +319,7 @@ public class BarteringController : MonoBehaviour
         _offeredItems.Items.Clear();
 
         // Leave Scene
-        InGameUi _inGameUi = GameManager.MasterCanvas.GetComponent<InGameUi>();
-        _inGameUi.MoveToDefault();
-
-        // Change focus
-        inventoryBar.SetActiveSource(gameObject, false);
-
-        // Unpause time
-        if (TimeLoopManager.Instance != null) TimeLoopManager.SetLoopPaused(false);
+        StartCoroutine(LeaveSceneAtFrameEnd());
     }
     private void SetInteractable(bool isInteractable)
     {
@@ -337,6 +330,19 @@ public class BarteringController : MonoBehaviour
 
         OfferTradeButton.interactable = isInteractable;
         InventoryGrid.SetSlotsInteractable(isInteractable);
+    }
+
+    IEnumerator LeaveSceneAtFrameEnd()
+    {
+        yield return new WaitForEndOfFrame();
+        InGameUi _inGameUi = GameManager.MasterCanvas.GetComponent<InGameUi>();
+        _inGameUi.MoveToDefault();
+
+        // Change focus
+        inventoryBar.SetActiveSource(gameObject, false);
+
+        // Unpause time
+        if (TimeLoopManager.Instance != null) TimeLoopManager.SetLoopPaused(false);
     }
 
     #endregion

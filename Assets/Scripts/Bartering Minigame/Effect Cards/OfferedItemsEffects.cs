@@ -42,6 +42,18 @@ public class OfferedItemsEffects : EffectCard
 
     #region ======== [ FUNCTIONS ] ========
 
+    public override bool DoesActivate(InventoryCardData cardInfo, TradeInfo tradeInfo, ActivationTime activationTime)
+    {
+        if (this.activationTime != activationTime && activationTime != ActivationTime.Both) return false;
+
+        TradeInfo tempInfo = new TradeInfo();
+        tempInfo.OfferedItems = new OfferedItems();
+        tempInfo.OfferedItems.AddNoLoss(cardInfo);
+        tempInfo.ReceivedItem = tradeInfo.ReceivedItem;
+
+        return DoesActivate(tempInfo, activationTime);
+    }
+
     /// <summary>
     /// Adds any items matching the conditions to _matchingItems
     /// </summary>
@@ -60,7 +72,8 @@ public class OfferedItemsEffects : EffectCard
         if (RequiresAllConditions)
         {
             _canActivate = conditionResults.All((bool condition) => condition);
-        } else
+        }
+        else
         {
             _canActivate = conditionResults.Any((bool condition) => condition);
         }
@@ -72,16 +85,16 @@ public class OfferedItemsEffects : EffectCard
     /// <summary>
     /// Apply the ItemActions to all items that are relevant to AffectedItems and AffectedTags
     /// </summary>
-    public override int Activate(TradeInfo tradeInfo, bool playAttackAnimation)
+    public override int Activate(TradeInfo tradeInfo, bool playAttackAnimation, bool skipAnimations)
     {
-        base.Activate(tradeInfo, playAttackAnimation);
+        base.Activate(tradeInfo, playAttackAnimation, skipAnimations);
 
         int itemsAffected = 0;
 
         foreach (InventoryCardData offeredItem in tradeInfo.OfferedItems.Items)
         {
             bool affected = false;
-            
+
             foreach (InventoryCardData affectedItem in AffectedItems)
             {
                 if (offeredItem.IsSame(affectedItem)) { affected = true; break; }

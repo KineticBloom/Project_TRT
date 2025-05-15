@@ -475,10 +475,14 @@ public class BarteringController : MonoBehaviour
 
         yield return new WaitForSeconds(flipDelay);
 
+        InventoryCardData lastCardAdded = _offeredItems.Items[_offeredItems.Count - 1];
+
         // Flip each card that we can activate
         foreach (EffectCard effectCard in activeEffectCards)
         {
-            effectCard.Activate(_tradeInfo, SkipFlipDelay == false);
+            bool skipAnimation = effectCard.DoesActivate(lastCardAdded, _tradeInfo, activationTime) == false;
+
+            effectCard.Activate(_tradeInfo, SkipFlipDelay == false, skipAnimation);
 
             VISUAL_DisplayNewOffer();
             VISUAL_FindAndDisplayNewSum();
@@ -541,6 +545,11 @@ public class OfferedItems
         Items.Add(card);
 
         GameManager.Inventory.RemoveCard(card, true);
+    }
+
+    public void AddNoLoss(InventoryCardData card)
+    {
+        Items.Add(card);
     }
 
     public void Remove(InventoryCardData card)

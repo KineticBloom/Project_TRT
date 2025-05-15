@@ -47,17 +47,28 @@ public abstract class EffectCard
     /// <summary>
     /// Checks whether the card can activate or not
     /// </summary>
+    /// <param name="cardInfo">Information for the card</param>
     /// <param name="tradeInfo">Information for the trade</param>
     /// <param name="activationTime">When the activation is being attempted</param>
     /// <returns>Whether a boolean of whether </returns>
-    public abstract bool DoesActivate(TradeInfo tradeInfo, ActivationTime activationTime);
+    public abstract bool DoesActivate(InventoryCardData cardInfo, TradeInfo tradeInfo, ActivationTime activationTime);
 
+    /// <summary>
+    /// Checks whether a card can activate or not
+    /// </summary>
+    /// <param name="cardData">Information of a given card</param>
+    /// <param name="activationTime">When the activation is being attempted</param>
+    /// <returns>Whether a boolean of whether </returns>
+    public abstract bool DoesActivate(TradeInfo cardData, ActivationTime activationTime);
 
     /// <summary>
     /// Activates the effect card
     /// </summary>
     /// <param name="tradeInfo">Information for the card to modify</param>
-    public virtual int Activate(TradeInfo tradeInfo, bool playAttackAnimation) {
+    public virtual int Activate(TradeInfo tradeInfo, bool playAttackAnimation, bool skipAnimations) {
+
+        if (skipAnimations) return 0;
+
         if (playAttackAnimation)
         {
             OnAttackActivate.Invoke();

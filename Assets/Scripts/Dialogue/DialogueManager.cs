@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -74,6 +75,11 @@ public class DialogueManager : MonoBehaviour {
 
     #region ======== [ PUBLIC METHODS ] ========
 
+    void Start()
+    {
+        SceneManager.activeSceneChanged += (_,_) => StopMidDialogue();
+    }
+
     /// <summary>
     /// Function to pause dialogue interactions from player.
     /// </summary>
@@ -118,6 +124,9 @@ public class DialogueManager : MonoBehaviour {
 
         // Start delay
         _onDelay = false;
+        StartFastBounce = null;
+        StartSlowBounce = null;
+        StopBounce = null;
     }
 
     /// <summary>

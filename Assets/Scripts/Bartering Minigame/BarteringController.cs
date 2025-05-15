@@ -207,6 +207,8 @@ public class BarteringController : MonoBehaviour
         OfferTradeButton.gameObject.SetActive(false);
         ExitEarlyButton.gameObject.SetActive(false);
         ExitFinalTradeButton.gameObject.SetActive(true);
+        SetInteractable(true);
+        ExitFinalTradeButton.Select();
 
         yield return new WaitUntil(HasConfirmedExit);
 
@@ -329,6 +331,8 @@ public class BarteringController : MonoBehaviour
         }
 
         OfferTradeButton.interactable = isInteractable;
+        ExitEarlyButton.interactable = isInteractable;
+        ExitFinalTradeButton.interactable = isInteractable;
         InventoryGrid.SetSlotsInteractable(isInteractable);
     }
 

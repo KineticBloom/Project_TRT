@@ -484,9 +484,20 @@ public class BarteringController : MonoBehaviour
         // Flip each card that we can activate
         foreach (EffectCard effectCard in activeEffectCards)
         {
-            bool skipAnimation = effectCard.DoesActivate(lastCardAdded, _tradeInfo, activationTime) == false;
+            bool skipAnimation = false;
+            if (PreActivation)
+            {
+                skipAnimation = effectCard.DoesActivate(lastCardAdded, _tradeInfo, activationTime) == false;
+            }
+
+            bool WillFlip = effectCard.IsRevealed == false;
 
             effectCard.Activate(_tradeInfo, SkipFlipDelay == false, skipAnimation);
+
+            if (skipAnimation == false && WillFlip)
+            {
+                yield return new WaitForSeconds(1f); // Activate should be a IEnumerator that we wait for.
+            }
 
             VISUAL_DisplayNewOffer();
             VISUAL_FindAndDisplayNewSum();

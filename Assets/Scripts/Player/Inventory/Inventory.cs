@@ -268,7 +268,6 @@ public class Inventory : MonoBehaviour
     {
         foreach (InventoryCardData card in Cards)
         {
-            Debug.Log("Reset value of " + card.CardName + ".");
             card.ResetCurrentValue();
         }
     }

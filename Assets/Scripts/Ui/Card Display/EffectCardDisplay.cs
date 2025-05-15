@@ -120,7 +120,6 @@ public class EffectCardDisplay : MonoBehaviour
 
     IEnumerator AttackActivateAnim()
     {
-        Debug.Log("Attack Animation starting?");
 
         if (flipDone == false && flipInProgress == false)
         {

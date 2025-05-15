@@ -137,8 +137,6 @@ public class BarteringController : MonoBehaviour
         // Check if we can retract item
         if (BarterEnding || itemToRetract == null || _offeredItems.Count <= 0) return;
 
-        Debug.Log("Retract item");
-
         // Remove effect card changes from item
         itemToRetract.ResetCurrentValue();
 
@@ -441,11 +439,9 @@ public class BarteringController : MonoBehaviour
     }
     public void EFFECT_AddNewReveal(EffectCard effectCard)
     {
-        Debug.Log("ATTEMPT ADD");
         if (_revealedEffectCards == null) return;
 
         _revealedEffectCards.Add(effectCard);
-        Debug.Log("After Add" + _revealedEffectCards.Count);
     }
     private void EFFECT_CreateEffectCards()
     {

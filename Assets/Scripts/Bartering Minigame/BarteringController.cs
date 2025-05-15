@@ -297,6 +297,11 @@ public class BarteringController : MonoBehaviour
             Destroy(card.gameObject);
         }
 
+        foreach (InventoryCardData x in _offeredItems.Items)
+        {
+            x.ResetCurrentValue();
+        }
+
         // Remove effect card modifiers
         tempTradeData.TargetCard.ResetCurrentValue();
 

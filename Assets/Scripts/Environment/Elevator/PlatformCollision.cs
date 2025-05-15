@@ -9,7 +9,10 @@ public class PlatformCollision : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        if (GameManager.Player == null)
+        {
+            GameManager.Instance.FindPlayer();
+        }
     }
 
     // Update is called once per frame

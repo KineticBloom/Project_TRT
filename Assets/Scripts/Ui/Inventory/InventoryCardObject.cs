@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using static InventoryCardObject;
 
+[System.Serializable]
 public class InventoryCardObject : MonoBehaviour {
 
     #region ======== [ PUBLIC PROPERTIES ] ========
@@ -246,6 +247,13 @@ public class InventoryCardObject : MonoBehaviour {
 
         _currentState = stateToEnter;
 
+        bool HasCurrentSelection = false;
+
+        if (CurrentActiveButton != null)
+        {
+            HasCurrentSelection = CurrentActiveButton.gameObject == EventSystem.current.currentSelectedGameObject;
+        }
+
         if (_currentObject != null) {
             _currentObject.SetActive(false);
         }
@@ -264,6 +272,11 @@ public class InventoryCardObject : MonoBehaviour {
             case CurrentState.FULLDEACTIVE:
                 _currentObject = itemFullUnactiveObject;
                 break;
+        }
+
+        if (HasCurrentSelection)
+        {
+            CurrentActiveButton.Select();
         }
 
         _currentObject.SetActive(true);

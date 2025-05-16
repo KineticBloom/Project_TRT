@@ -266,9 +266,9 @@ public class Inventory : MonoBehaviour
     /// </summary>
     public void ResetAllCardValues()
     {
-        foreach (InventoryCardData card in AllCardDatas.datas)
+        foreach (InventoryCardData card in Cards)
         {
-            card.SetCurrentValue(card.BaseValue);
+            card.ResetCurrentValue();
         }
     }
 

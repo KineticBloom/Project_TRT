@@ -56,6 +56,12 @@ public class ChooseItemCanvasController : MonoBehaviour
     }
 
     public void LeaveChooseItemScene() {
+        StartCoroutine(LeaveSceneOnLastFrame());
+    }
+
+    IEnumerator LeaveSceneOnLastFrame()
+    {
+        yield return new WaitForEndOfFrame();
         InventoryBar.SetActiveSource(gameObject, false);
         Cleanup();
         GameManager.MasterCanvas.GetComponent<InGameUi>().MoveToDefault();

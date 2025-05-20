@@ -149,6 +149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 383475231820915226}
   - component: {fileID: 738630665043669698}
+  - component: {fileID: 2421874803014784090}
   m_Layer: 30
   m_Name: VirtualCamera
   m_TagString: Untagged
@@ -211,6 +212,18 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 9119017896394725895}
+--- !u!114 &2421874803014784090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4258066814768155699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180f0b38f5cae544a86a0525ecc13c49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4387289849093383467
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,6 +351,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  useWhitelist: 0
+  whitelistedControllers: []
   bodyType: 1
   followDampening: 0.5
   transposerPosition: {x: 2.95, y: 4.58, z: 1.4}
@@ -351,6 +366,7 @@ MonoBehaviour:
   aimOffset: {x: 0, y: 0.5, z: 0}
   fixedAimRotation: {x: 26.64, y: -113.13, z: 0}
   autoUpdate: 1
+  manualTargets: 0
 --- !u!65 &4199386571256129098
 BoxCollider:
   m_ObjectHideFlags: 0

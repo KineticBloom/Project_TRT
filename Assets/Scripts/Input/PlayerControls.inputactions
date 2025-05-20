@@ -103,6 +103,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ViewAxis",
+                    "type": "Value",
+                    "id": "db20051f-2a01-42c3-9385-f72bff08e4ae",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -587,6 +596,17 @@
                     "processors": "",
                     "groups": ";KeyboardMouse",
                     "action": "Scroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fb10e464-c9cb-4df2-bdcd-4b608ae0a235",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ViewAxis",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

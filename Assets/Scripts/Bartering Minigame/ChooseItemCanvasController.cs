@@ -37,6 +37,7 @@ public class ChooseItemCanvasController : MonoBehaviour
             _cards.Add(newCard);
             InventoryCardObject currentCardObject = newCard.GetComponent<InventoryCardObject>();
             currentCardObject.SetData(x, false);
+            currentCardObject.dontShowDescription = true;
             int copy = index;
             currentCardObject.CurrentActiveButton.onClick.AddListener(delegate { OnSelect(copy); });
             newCard.transform.localScale = Vector3.one * 0.85f;

@@ -1,5 +1,5 @@
 === Locked ===
-This door is locked. It requires a Prayer Room Key.
+This door is locked. It requires an [Upstairs Key].
 -> END
 
 === Unlock ===

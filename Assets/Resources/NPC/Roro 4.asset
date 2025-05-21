@@ -18,7 +18,7 @@ MonoBehaviour:
   FlagID: roro_4_bartered
   ItemOnOffer: {fileID: 11400000, guid: b3f6500aede711c489da950e7409d09b, type: 2}
   ItemsOnOffer:
-  - {fileID: 11400000, guid: b3f6500aede711c489da950e7409d09b, type: 2}
+  - {fileID: 11400000, guid: b2bb22bfc7c73f14f9e1d874246aa81e, type: 2}
   BarterMessageWin: Here you go!
   BarterMessageLose: That's not enough...
   BarterAttempts: 1
@@ -27,31 +27,32 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 6077773197129285654
-      type: {class: CountSpecificItems, ns: , asm: Assembly-CSharp}
-      data:
-        Items:
-        - {fileID: 11400000, guid: 33c1b2ec0e89bd64489cbdd9b5794f6d, type: 2}
-        - {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
-        NeedAllItems: 1
     - rid: 8151269401547244307
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
-        Icon: {fileID: 21300000, guid: a6449f567767b5b4693ae2fe9612e8b8, type: 3}
-        Description: Blue Chip and Green Chip worth plus 4
-        Text: +4
-        ConditionImage: {fileID: 0}
+        Icon: {fileID: 21300000, guid: cb6d44ea8b17be943ab54198ed15ca62, type: 3}
+        Description: Religious items' +5
+        Hint: What could this do?
+        Text: +5
+        ConditionImage: {fileID: 21300000, guid: cb6d44ea8b17be943ab54198ed15ca62,
+          type: 3}
         _revealed: 0
         RequiresAllConditions: 1
         ItemConditions:
-        - rid: 6077773197129285654
-        AffectedItems:
-        - {fileID: 11400000, guid: 33c1b2ec0e89bd64489cbdd9b5794f6d, type: 2}
-        - {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
-        AffectedTags: []
+        - rid: 8243886729994174562
+        AffectedItems: []
+        AffectedTags:
+        - religious
         ItemActions:
         - rid: 8151269401547244311
     - rid: 8151269401547244311
       type: {class: AddValue, ns: , asm: Assembly-CSharp}
       data:
-        ValueAddend: 4
+        ValueAddend: 5
+    - rid: 8243886729994174562
+      type: {class: CountItemsWithTags, ns: , asm: Assembly-CSharp}
+      data:
+        Tags:
+        - religious
+        MinAmount: 2
+        ExactAmount: 0

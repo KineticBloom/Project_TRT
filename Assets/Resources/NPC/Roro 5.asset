@@ -27,30 +27,31 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 6077773197129285655
-      type: {class: CountItemsWithTags, ns: , asm: Assembly-CSharp}
-      data:
-        Tags:
-        - tool
-        MinAmount: 1
-        ExactAmount: 0
     - rid: 6991182339336044559
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
-        Icon: {fileID: 21300000, guid: 9bd95f8332db3c24887f6107f437e2bc, type: 3}
-        Description: Tool items worth multiplied by 2
-        Text: x2
-        ConditionImage: {fileID: 0}
+        Icon: {fileID: 21300000, guid: a6449f567767b5b4693ae2fe9612e8b8, type: 3}
+        Description: You collected 4 church pamphlets
+        Hint: They seem perturbed
+        Text: 1/4
+        ConditionImage: {fileID: 21300000, guid: a6449f567767b5b4693ae2fe9612e8b8,
+          type: 3}
         _revealed: 0
         RequiresAllConditions: 1
         ItemConditions:
-        - rid: 6077773197129285655
-        AffectedItems: []
-        AffectedTags:
-        - tool
+        - rid: 8243886729994174563
+        AffectedItems:
+        - {fileID: 11400000, guid: 33c1b2ec0e89bd64489cbdd9b5794f6d, type: 2}
+        AffectedTags: []
         ItemActions:
-        - rid: 8151269401547244314
-    - rid: 8151269401547244314
-      type: {class: MultiplyValue, ns: , asm: Assembly-CSharp}
+        - rid: 8243886729994174564
+    - rid: 8243886729994174563
+      type: {class: CountSpecificItems, ns: , asm: Assembly-CSharp}
       data:
-        ValueMultiplier: 2
+        Items:
+        - {fileID: 11400000, guid: 33c1b2ec0e89bd64489cbdd9b5794f6d, type: 2}
+        NeedAllItems: 0
+    - rid: 8243886729994174564
+      type: {class: SetValue, ns: , asm: Assembly-CSharp}
+      data:
+        Value: 25

@@ -14,7 +14,7 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
 {
     [Header("Control Scheme")]
     [ReadOnly] public InputControlScheme LastUsedScheme;
-    InputControlScheme KeyboardScheme => _controls.KeyboardMouseScheme;
+    public InputControlScheme KeyboardScheme => _controls.KeyboardMouseScheme;
     InputControlScheme SwitchScheme => _controls.SwitchGamepadScheme;
     InputControlScheme XInputScheme => _controls.XInputGamepadScheme;
     InputControlScheme DualShockScheme => _controls.DualShockGamepadScheme;
@@ -63,6 +63,9 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
 
     // Input states: set by InputAction callbacks, read by accessors
     private Vector2 _controlAxisVector;
+    private Vector2 _viewAxisVector;
+    private Vector2 _pointerPosition;
+
     private Dictionary<string, bool> _getDown = new() {
         {"_primaryTrigger", false},
         {"_secondaryTrigger", false},
@@ -145,6 +148,26 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
         }
     }
 
+    public void OnViewAxis(InputAction.CallbackContext context)
+    {
+        _viewAxisVector = context.ReadValue<Vector2>();
+
+        if (context.started)
+        {
+            UpdateLastUsedScheme(context);
+        }
+    }
+
+    public void OnPointer(InputAction.CallbackContext context)
+    {
+        _pointerPosition = context.ReadValue<Vector2>();
+
+        if (context.started)
+        {
+            UpdateLastUsedScheme(context);
+        }
+    }
+
     private void SetDown(InputAction.CallbackContext context, string input)
     {
         if (context.started) _getDown[input] = _get[input] = true; 
@@ -183,9 +206,8 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
     public void OnDebug1(InputAction.CallbackContext context) { SetDown(context, "_debug1"); }
     public void OnDebug2(InputAction.CallbackContext context) { SetDown(context, "_debug2"); }
 
-    // OnPointer and OnScroll are used only by the event system. 
+    // OnScroll is used only by the event system.
     // Don't do anything with it manually, at least for now.
-    public void OnPointer(InputAction.CallbackContext context) { return; } 
     public void OnScroll(InputAction.CallbackContext context) { return; }
 
     // Public Accessor Methods ====================================================================
@@ -200,6 +222,28 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
 
         // 'Normalize' move vector but allow for sub-one values.
         return Vector3.ClampMagnitude(move, 1);
+    }
+
+    /// <summary>
+    /// Accessor for the last held values of the lateral view axis inputs.
+    /// </summary>
+    /// <returns>Vector3 - last known move input.</returns>
+    public Vector3 GetViewAxis()
+    {
+        Vector3 move = new(_viewAxisVector.x, 0f, _viewAxisVector.y);
+
+        // 'Normalize' move vector but allow for sub-one values.
+        return Vector3.ClampMagnitude(move, 1);
+    }
+
+
+    /// <summary>
+    /// Accessor for the last value for the mouse position.
+    /// </summary>
+    /// <returns>Vector2 - mouse position on screen</returns>
+    public Vector2 GetPointerPosition()
+    {
+        return _pointerPosition;
     }
 
     public bool GetPrimaryTriggerDown() { return _getDown["_primaryTrigger"]; }

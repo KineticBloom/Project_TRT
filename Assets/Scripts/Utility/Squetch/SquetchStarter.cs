@@ -66,6 +66,13 @@ public class SquetchStarter : MonoBehaviour
         GameManager.DialogueManager.StopBounce += StopSquetch;
     }
 
+    void OnDisable()
+    {
+        GameManager.DialogueManager.StartFastBounce -= StartFast;
+        GameManager.DialogueManager.StartSlowBounce -= StartSlow;
+        GameManager.DialogueManager.StopBounce -= StopSquetch;
+    }
+
     private void StartFast()
     {
         SquashStretchBouncer.bounceCurve = fastBounceCurve;

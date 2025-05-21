@@ -17,4 +17,13 @@ public class InGameUiNavigation : MonoBehaviour {
             }
         }
     }
+
+    #if !UNITY_EDITOR
+    void OnApplicationFocus(bool focus)
+    {
+        if (GameManager.CurrentUIManager != SettingsUi) {
+            SettingsUi.SwapToSettingsUi();
+        }
+    }
+    #endif
 }

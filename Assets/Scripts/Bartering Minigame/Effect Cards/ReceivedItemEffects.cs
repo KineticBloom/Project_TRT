@@ -32,6 +32,18 @@ public class ReceivedItemEffects : EffectCard
 
     #region ======== [ FUNCTIONS ] ========
 
+    public override bool DoesActivate(InventoryCardData cardInfo, TradeInfo tradeInfo, ActivationTime activationTime)
+    {
+        if (this.activationTime != activationTime && activationTime != ActivationTime.Both) return false;
+
+        TradeInfo tempInfo = new TradeInfo();
+        tempInfo.OfferedItems = new OfferedItems();
+        tempInfo.OfferedItems.AddNoLoss(cardInfo);
+        tempInfo.ReceivedItem = tradeInfo.ReceivedItem;
+
+        return DoesActivate(tempInfo, activationTime);
+    }
+
     /// <summary>
     /// returns whether or not the Effect Card can Activate
     /// </summary>
@@ -64,8 +76,10 @@ public class ReceivedItemEffects : EffectCard
     /// <summary>
     /// Apply the ItemActions to items in _matchingItems
     /// </summary>
-    public override int Activate(TradeInfo tradeInfo)
+    public override int Activate(TradeInfo tradeInfo, bool playAttackAnimation, bool skipAnimations)
     {
+        base.Activate(tradeInfo,playAttackAnimation, skipAnimations);
+
         foreach (IItemAction action in ItemActions)
         {
             action.Activate(tradeInfo.ReceivedItem);

@@ -51,7 +51,7 @@ public class InventoryCardObject : MonoBehaviour {
     [SerializeField, BoxGroup("Item Description")] private GameObject itemDescriptionBox;
     [SerializeField, BoxGroup("Item Description")] private TMP_Text itemDescriptionText;
     [SerializeField, BoxGroup("Item Description")] private TMP_Text itemTagsText;
-    [SerializeField, BoxGroup("Item Description")] private bool dontShowDescription;
+    [SerializeField, BoxGroup("Item Description")] public bool dontShowDescription;
 
 
 

@@ -75,7 +75,8 @@ NULL_LINE #Barter
 ->END
 
 ==Post_Barter== // Thanks kinda breaks
-*Thanks.
+omg thank u mistah v8 :3c
+* Sure.
     Whatchya doin here anyway? :3c #NPC
     **I’m investigating a lead for an artifact here. Heard anything?
         Woag… that’s so cool… I’ve heard some people talk about it :O. U should talk with some people here. They might know. #NPC

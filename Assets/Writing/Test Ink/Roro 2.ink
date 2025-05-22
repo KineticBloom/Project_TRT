@@ -6,6 +6,10 @@ VAR roro_2_bartered = false
 Hello there. #NPC
 * I would like to Barter. 
     ->Barter
+* What do you need? 
+    I could use some new tools. #NPC
+    ** How interesting...
+    -> END
 * Nevermind.
     -> END
 

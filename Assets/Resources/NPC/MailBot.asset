@@ -20,13 +20,15 @@ MonoBehaviour:
   FlagID: mailbot_bartered
   ItemOnOffer: {fileID: 11400000, guid: af5c89a7096cba04297f11e8dcb9d576, type: 2}
   ItemsOnOffer:
-  - {fileID: 11400000, guid: af5c89a7096cba04297f11e8dcb9d576, type: 2}
+  - {fileID: 11400000, guid: ad8e6a92f388f7b499a3c6f6cb32d9bf, type: 2}
+  - {fileID: 11400000, guid: 4cc5b419605d8ba408892e87dd23b9f0, type: 2}
+  - {fileID: 11400000, guid: 4748f895a5dda4c4795db29cf789041b, type: 2}
   BarterMessageWin: Pleasure doing business with you!
   BarterMessageLose: Hey now, don't try to scam me!
   BarterAttempts: 1
   EffectCards:
-  - rid: 8151269401547244301
   - rid: 8151269401547244297
+  - rid: 8151269401547244301
   - rid: 8151269401547244294
   references:
     version: 2
@@ -42,41 +44,39 @@ MonoBehaviour:
       type: {class: CountSpecificItems, ns: , asm: Assembly-CSharp}
       data:
         Items:
-        - {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
-        NeedAllItems: 0
-    - rid: 6077773197129285650
-      type: {class: CountSpecificItems, ns: , asm: Assembly-CSharp}
-      data:
-        Items:
-        - {fileID: 11400000, guid: af210dedcdbaf56429bf9d6f8b6ac2c0, type: 2}
+        - {fileID: 11400000, guid: 78a41c953ce01b648b8baa76eb804c39, type: 2}
         NeedAllItems: 0
     - rid: 8151269401547244294
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
-        Icon: {fileID: 21300000, guid: 6196d2e2e5bca3a45bc3d6453751531a, type: 3}
-        Description: Letter of Complaint Value = 20
-        Text: =20
-        ConditionImage: {fileID: 0}
+        Icon: {fileID: 21300000, guid: 3a1562d504756004baf1b296bff02f57, type: 3}
+        Description: They need a new name tag
+        Hint: What could this do?
+        Text: 120!
+        ConditionImage: {fileID: 21300000, guid: 2dbe09167b456954fa42e85e0522d5ed,
+          type: 3}
         _revealed: 0
         RequiresAllConditions: 1
         ItemConditions:
-        - rid: 6077773197129285650
+        - rid: 8243886729994174549
         AffectedItems:
-        - {fileID: 11400000, guid: af210dedcdbaf56429bf9d6f8b6ac2c0, type: 2}
+        - {fileID: 11400000, guid: 67d01c9d97d2e5043947cb11c4f70de5, type: 2}
         AffectedTags: []
         ItemActions:
         - rid: 8151269401547244295
     - rid: 8151269401547244295
       type: {class: SetValue, ns: , asm: Assembly-CSharp}
       data:
-        Value: 20
+        Value: 120
     - rid: 8151269401547244297
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
         Icon: {fileID: 21300000, guid: 9bd95f8332db3c24887f6107f437e2bc, type: 3}
-        Description: Tool items' value x2
-        Text: x2
-        ConditionImage: {fileID: 0}
+        Description: Tool items' value +10
+        Hint: What could this do?
+        Text: +10
+        ConditionImage: {fileID: 21300000, guid: 9bd95f8332db3c24887f6107f437e2bc,
+          type: 3}
         _revealed: 0
         RequiresAllConditions: 1
         ItemConditions:
@@ -85,28 +85,33 @@ MonoBehaviour:
         AffectedTags:
         - tool
         ItemActions:
-        - rid: 8151269401547244300
-    - rid: 8151269401547244300
-      type: {class: MultiplyValue, ns: , asm: Assembly-CSharp}
-      data:
-        ValueMultiplier: 2
+        - rid: 8243886729994174550
     - rid: 8151269401547244301
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
-        Icon: {fileID: 21300000, guid: bc1e10fa5e86c64439deae7f064d8256, type: 3}
-        Description: Green Chip Value +5
-        Text: +5
+        Icon: {fileID: 21300000, guid: 7cf81c8e9972ead47bcd904c765fd87f, type: 3}
+        Description: News Paper's value = 10
+        Hint: What could this do?
+        Text: =10
         ConditionImage: {fileID: 0}
         _revealed: 0
         RequiresAllConditions: 1
         ItemConditions:
         - rid: 6077773197129285649
         AffectedItems:
-        - {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
+        - {fileID: 11400000, guid: 78a41c953ce01b648b8baa76eb804c39, type: 2}
         AffectedTags: []
         ItemActions:
-        - rid: 8151269401547244303
-    - rid: 8151269401547244303
+        - rid: 8243886729994174551
+    - rid: 8243886729994174549
+      type: {class: CheckForFlag, ns: , asm: Assembly-CSharp}
+      data:
+        FlagID: SAVE_mailbot_ec_3
+    - rid: 8243886729994174550
       type: {class: AddValue, ns: , asm: Assembly-CSharp}
       data:
-        ValueAddend: 5
+        ValueAddend: 10
+    - rid: 8243886729994174551
+      type: {class: SetValue, ns: , asm: Assembly-CSharp}
+      data:
+        Value: 10

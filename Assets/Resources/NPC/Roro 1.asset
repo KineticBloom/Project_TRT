@@ -18,9 +18,7 @@ MonoBehaviour:
   FlagID: roro_1_bartered
   ItemOnOffer: {fileID: 11400000, guid: ad8e6a92f388f7b499a3c6f6cb32d9bf, type: 2}
   ItemsOnOffer:
-  - {fileID: 11400000, guid: ad8e6a92f388f7b499a3c6f6cb32d9bf, type: 2}
-  - {fileID: 11400000, guid: 081c2b4ca1f4c724e9f3ae2ecedc03c3, type: 2}
-  - {fileID: 11400000, guid: 7f2e044cec0071f47abbb5e26cd72fd1, type: 2}
+  - {fileID: 11400000, guid: 3d30e89bb6785644ba3c442728f20753, type: 2}
   BarterMessageWin: Here you go!
   BarterMessageLose: That's not enough...
   BarterAttempts: 1
@@ -33,25 +31,28 @@ MonoBehaviour:
       type: {class: CountSpecificItems, ns: , asm: Assembly-CSharp}
       data:
         Items:
-        - {fileID: 11400000, guid: 33c1b2ec0e89bd64489cbdd9b5794f6d, type: 2}
+        - {fileID: 11400000, guid: 78a41c953ce01b648b8baa76eb804c39, type: 2}
         NeedAllItems: 0
     - rid: 6991182339336044559
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
-        Icon: {fileID: 21300000, guid: a6449f567767b5b4693ae2fe9612e8b8, type: 3}
-        Description: Blue Chip is worth 3
-        Text: =3
-        ConditionImage: {fileID: 0}
+        Icon: {fileID: 21300000, guid: 7cf81c8e9972ead47bcd904c765fd87f, type: 3}
+        Description: Newspaper and Church Pamphlet value +2
+        Hint: What could this do?
+        Text: +2
+        ConditionImage: {fileID: 21300000, guid: 7cf81c8e9972ead47bcd904c765fd87f,
+          type: 3}
         _revealed: 1
         RequiresAllConditions: 1
         ItemConditions:
         - rid: 6077773197129285651
         AffectedItems:
+        - {fileID: 11400000, guid: 78a41c953ce01b648b8baa76eb804c39, type: 2}
         - {fileID: 11400000, guid: 33c1b2ec0e89bd64489cbdd9b5794f6d, type: 2}
         AffectedTags: []
         ItemActions:
-        - rid: 6991182339336044562
-    - rid: 6991182339336044562
-      type: {class: SetValue, ns: , asm: Assembly-CSharp}
+        - rid: 8243886729994174552
+    - rid: 8243886729994174552
+      type: {class: AddValue, ns: , asm: Assembly-CSharp}
       data:
-        Value: 3
+        ValueAddend: 2

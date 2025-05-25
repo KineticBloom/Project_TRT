@@ -125,6 +125,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ViewAxis"",
+                    ""type"": ""Value"",
+                    ""id"": ""db20051f-2a01-42c3-9385-f72bff08e4ae"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -351,7 +360,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5085c927-f0f0-406f-8bce-c38decc2c942"",
-                    ""path"": ""<Keyboard>/tab"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";KeyboardMouse"",
@@ -609,6 +618,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";KeyboardMouse"",
                     ""action"": ""Scroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fb10e464-c9cb-4df2-bdcd-4b608ae0a235"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ViewAxis"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -924,6 +944,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_MainControls_Click = m_MainControls.FindAction("Click", throwIfNotFound: true);
         m_MainControls_Pointer = m_MainControls.FindAction("Pointer", throwIfNotFound: true);
         m_MainControls_Scroll = m_MainControls.FindAction("Scroll", throwIfNotFound: true);
+        m_MainControls_ViewAxis = m_MainControls.FindAction("ViewAxis", throwIfNotFound: true);
         // Debug
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_Debug0 = m_Debug.FindAction("Debug0", throwIfNotFound: true);
@@ -1007,6 +1028,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_MainControls_Click;
     private readonly InputAction m_MainControls_Pointer;
     private readonly InputAction m_MainControls_Scroll;
+    private readonly InputAction m_MainControls_ViewAxis;
     public struct MainControlsActions
     {
         private @PlayerControls m_Wrapper;
@@ -1022,6 +1044,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Click => m_Wrapper.m_MainControls_Click;
         public InputAction @Pointer => m_Wrapper.m_MainControls_Pointer;
         public InputAction @Scroll => m_Wrapper.m_MainControls_Scroll;
+        public InputAction @ViewAxis => m_Wrapper.m_MainControls_ViewAxis;
         public InputActionMap Get() { return m_Wrapper.m_MainControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1064,6 +1087,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Scroll.started += instance.OnScroll;
             @Scroll.performed += instance.OnScroll;
             @Scroll.canceled += instance.OnScroll;
+            @ViewAxis.started += instance.OnViewAxis;
+            @ViewAxis.performed += instance.OnViewAxis;
+            @ViewAxis.canceled += instance.OnViewAxis;
         }
 
         private void UnregisterCallbacks(IMainControlsActions instance)
@@ -1101,6 +1127,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Scroll.started -= instance.OnScroll;
             @Scroll.performed -= instance.OnScroll;
             @Scroll.canceled -= instance.OnScroll;
+            @ViewAxis.started -= instance.OnViewAxis;
+            @ViewAxis.performed -= instance.OnViewAxis;
+            @ViewAxis.canceled -= instance.OnViewAxis;
         }
 
         public void RemoveCallbacks(IMainControlsActions instance)
@@ -1238,6 +1267,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnClick(InputAction.CallbackContext context);
         void OnPointer(InputAction.CallbackContext context);
         void OnScroll(InputAction.CallbackContext context);
+        void OnViewAxis(InputAction.CallbackContext context);
     }
     public interface IDebugActions
     {

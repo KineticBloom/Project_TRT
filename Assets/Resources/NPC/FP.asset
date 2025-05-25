@@ -19,7 +19,9 @@ MonoBehaviour:
   FlagID: fp_bartered
   ItemOnOffer: {fileID: 11400000, guid: b3ce713d5e03399499b7f5df33e92dcc, type: 2}
   ItemsOnOffer:
-  - {fileID: 11400000, guid: b3ce713d5e03399499b7f5df33e92dcc, type: 2}
+  - {fileID: 11400000, guid: 081c2b4ca1f4c724e9f3ae2ecedc03c3, type: 2}
+  - {fileID: 11400000, guid: db6ccb09ee79b6b419d64cc85e494001, type: 2}
+  - {fileID: 11400000, guid: 14ab4e37bc521584583f222dc15a2746, type: 2}
   BarterMessageWin: I will settle for that
   BarterMessageLose: I won't settle for that much
   BarterAttempts: 1
@@ -30,82 +32,86 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 6077773197129285634
-      type: {class: CountSpecificItems, ns: , asm: Assembly-CSharp}
-      data:
-        Items:
-        - {fileID: 11400000, guid: 84e57b2c426aad147ab48ebedf5a7792, type: 2}
-        NeedAllItems: 0
     - rid: 6077773197129285635
       type: {class: AddValue, ns: , asm: Assembly-CSharp}
       data:
-        ValueAddend: 5
+        ValueAddend: 15
     - rid: 6077773197129285636
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
-        Icon: {fileID: 21300000, guid: e90b20de36ba5354ca1c6b7da020f61d, type: 3}
-        Description: A certain shark related item is favored...
-        Text: x2
-        ConditionImage: {fileID: 0}
+        Icon: {fileID: 21300000, guid: 9fdff5716e799864c9c9eb16cc0ee9db, type: 3}
+        Description: They like Citrons!
+        Hint: What could this do?
+        Text: x3
+        ConditionImage: {fileID: 21300000, guid: 9fdff5716e799864c9c9eb16cc0ee9db,
+          type: 3}
         _revealed: 0
         RequiresAllConditions: 1
         ItemConditions:
         - rid: 6077773197129285639
         AffectedItems:
-        - {fileID: 11400000, guid: af5c89a7096cba04297f11e8dcb9d576, type: 2}
+        - {fileID: 11400000, guid: 84e57b2c426aad147ab48ebedf5a7792, type: 2}
         AffectedTags: []
         ItemActions:
         - rid: 6077773197129285640
     - rid: 6077773197129285637
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
-        Icon: {fileID: 21300000, guid: 3a667a0517cb55c448c6b5f4a417e864, type: 3}
-        Description: Fruit related items have a big boost!
-        Text: x3
-        ConditionImage: {fileID: 0}
+        Icon: {fileID: 21300000, guid: 98fb95bfc8ec192478432f775408634a, type: 3}
+        Description: They like F1x.
+        Hint: Maybe someone would know?
+        Text: 240!
+        ConditionImage: {fileID: 21300000, guid: f0a327a73441b3f44919bd26d7918fdc,
+          type: 3}
         _revealed: 0
         RequiresAllConditions: 1
         ItemConditions:
-        - rid: 6077773197129285641
-        AffectedItems: []
-        AffectedTags:
-        - fruit
+        - rid: 8243886729994174547
+        AffectedItems:
+        - {fileID: 11400000, guid: b687503ef939a234b8ef64951d075598, type: 2}
+        AffectedTags: []
         ItemActions:
-        - rid: 6077773197129285642
+        - rid: 8243886729994174548
     - rid: 6077773197129285639
       type: {class: CountSpecificItems, ns: , asm: Assembly-CSharp}
       data:
         Items:
-        - {fileID: 11400000, guid: af5c89a7096cba04297f11e8dcb9d576, type: 2}
+        - {fileID: 11400000, guid: 84e57b2c426aad147ab48ebedf5a7792, type: 2}
         NeedAllItems: 0
     - rid: 6077773197129285640
-      type: {class: MultiplyValue, ns: , asm: Assembly-CSharp}
-      data:
-        ValueMultiplier: 2
-    - rid: 6077773197129285641
-      type: {class: CountItemsWithTags, ns: , asm: Assembly-CSharp}
-      data:
-        Tags:
-        - fruit
-        MinAmount: 1
-        ExactAmount: 0
-    - rid: 6077773197129285642
       type: {class: MultiplyValue, ns: , asm: Assembly-CSharp}
       data:
         ValueMultiplier: 3
     - rid: 8151269401547244283
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
-        Icon: {fileID: 21300000, guid: 9fdff5716e799864c9c9eb16cc0ee9db, type: 3}
-        Description: Pink Chip Value +5
-        Text: +5
-        ConditionImage: {fileID: 0}
+        Icon: {fileID: 21300000, guid: bee38f5009ab9e343b8ef0b7a7318467, type: 3}
+        Description: Fruit items' value +15
+        Hint: What could this do?
+        Text: +15
+        ConditionImage: {fileID: 21300000, guid: bee38f5009ab9e343b8ef0b7a7318467,
+          type: 3}
         _revealed: 0
         RequiresAllConditions: 1
         ItemConditions:
-        - rid: 6077773197129285634
-        AffectedItems:
-        - {fileID: 11400000, guid: 84e57b2c426aad147ab48ebedf5a7792, type: 2}
-        AffectedTags: []
+        - rid: 8243886729994174546
+        AffectedItems: []
+        AffectedTags:
+        - fruit
         ItemActions:
         - rid: 6077773197129285635
+    - rid: 8243886729994174546
+      type: {class: CountItemsWithTags, ns: , asm: Assembly-CSharp}
+      data:
+        Tags:
+        - fruit
+        MinAmount: 1
+        ExactAmount: 0
+    - rid: 8243886729994174547
+      type: {class: CheckForFlag, ns: , asm: Assembly-CSharp}
+      data:
+        FlagID: SAVE_fp_ec_3
+    - rid: 8243886729994174548
+      type: {class: SetValue, ns: , asm: Assembly-CSharp}
+      data:
+        Value: 240

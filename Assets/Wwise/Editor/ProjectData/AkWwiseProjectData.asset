@@ -1137,7 +1137,7 @@ MonoBehaviour:
     ParentPath: Events\Music
     guid: 1baa49cfe5a4fe438cbe031c55500853
     GuidInternal: 
-    m_lastTime: -8584549229151558317
+    m_lastTime: -8584533664314358787
     List:
     - name: Key_A
       guid: a348740626e76b4592a95b259a257e46
@@ -1493,6 +1493,26 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: MusicStateCathedral
+      guid: 48a1cbf945aec340ba39e66421e1d524
+      id: 1302030383
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicEvents
+        ObjectType: 4
+        guid: bb98cb8f8639c644980fd12d17cb9504
+      - ElementName: MusicStateCathedral
+        ObjectType: 3
+        guid: 48a1cbf945aec340ba39e66421e1d524
+      Path: Events\Music\MusicEvents\MusicStateCathedral
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: MusicStateMailbotRoom
       guid: 49954da26f7b6549aab9617b3bc2696b
       id: 1881520806
@@ -1530,6 +1550,26 @@ MonoBehaviour:
         ObjectType: 3
         guid: c6fa5b6161d2484ca19683acaebf5061
       Path: Events\Music\MusicEvents\MusicStatePlayerSpawn
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: MusicStateTitleScreen
+      guid: 105f7f8a465f52418b4ff708d00dbf74
+      id: 1104426513
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicEvents
+        ObjectType: 4
+        guid: bb98cb8f8639c644980fd12d17cb9504
+      - ElementName: MusicStateTitleScreen
+        ObjectType: 3
+        guid: 105f7f8a465f52418b4ff708d00dbf74
+      Path: Events\Music\MusicEvents\MusicStateTitleScreen
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -2047,7 +2087,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: e6b79552b8b0634f8a967d61276f57fa
     GuidInternal: 
-    m_lastTime: -8584549229425319014
+    m_lastTime: -8584533664314473743
     List:
     - name: CurrentMusicKey
       guid: 6fc02a74e5f10d408a3c979fa3ccb73b
@@ -2338,6 +2378,22 @@ MonoBehaviour:
         - ElementName: Calm
           ObjectType: 8
           guid: 2c6f914aa7fe72419c63fc5255a5ba9d
+      - name: Cathedral
+        guid: 760e520f757e8d489424f5b0af11d9aa
+        id: 1024696295
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: MusicState
+          ObjectType: 9
+          guid: 5df940ae313415468d9b77fe40be0b6c
+        - ElementName: Cathedral
+          ObjectType: 8
+          guid: 760e520f757e8d489424f5b0af11d9aa
       - name: MailbotBarter
         guid: ba70092273389542b08e35e3d335d7f9
         id: 1029337087
@@ -2402,6 +2458,22 @@ MonoBehaviour:
         - ElementName: PlayerSpawn
           ObjectType: 8
           guid: 840016345a96db46a8f6bfa9644ac295
+      - name: TitleScreen
+        guid: 522198d005d6ba458c28539132ced873
+        id: 152105657
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: MusicState
+          ObjectType: 9
+          guid: 5df940ae313415468d9b77fe40be0b6c
+        - ElementName: TitleScreen
+          ObjectType: 8
+          guid: 522198d005d6ba458c28539132ced873
       ValueGuids: []
       ValueIcons: []
       valuesInternal: []
@@ -2448,7 +2520,7 @@ MonoBehaviour:
         guid: 23c0f7a154fe4f4dbb4cbb0e19d72476
       Path: Triggers\Default Work Unit\Test
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 050000001200000013000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

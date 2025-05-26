@@ -473,11 +473,98 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5837734876330952900, guid: 18d4c015a9fae0947962be4f5d61594f,
+        type: 3}
+      propertyPath: triggerList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110059251031622243, guid: 18d4c015a9fae0947962be4f5d61594f,
+        type: 3}
+      propertyPath: isTitleScreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110059251031622243, guid: 18d4c015a9fae0947962be4f5d61594f,
+        type: 3}
+      propertyPath: startupMusicTrigger
+      value: 
+      objectReference: {fileID: 636426246}
+    - target: {fileID: 9110059251031622243, guid: 18d4c015a9fae0947962be4f5d61594f,
+        type: 3}
+      propertyPath: musicStateEventsList.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110059251031622243, guid: 18d4c015a9fae0947962be4f5d61594f,
+        type: 3}
+      propertyPath: musicStateEventsList.Array.data[4].stateName
+      value: TitleScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110059251031622243, guid: 18d4c015a9fae0947962be4f5d61594f,
+        type: 3}
+      propertyPath: musicStateEventsList.Array.data[5].stateName
+      value: Pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110059251031622243, guid: 18d4c015a9fae0947962be4f5d61594f,
+        type: 3}
+      propertyPath: musicStateEventsList.Array.data[6].stateName
+      value: Resume
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110059251031622243, guid: 18d4c015a9fae0947962be4f5d61594f,
+        type: 3}
+      propertyPath: musicStateEventsList.Array.data[7].stateName
+      value: Start
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110059251031622243, guid: 18d4c015a9fae0947962be4f5d61594f,
+        type: 3}
+      propertyPath: musicStateEventsList.Array.data[8].stateName
+      value: Stop
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110059251031622243, guid: 18d4c015a9fae0947962be4f5d61594f,
+        type: 3}
+      propertyPath: musicStateEventsList.Array.data[4].musicEvent.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 63b280d7fc1f2fc45bc5731f823fa974,
+        type: 2}
+    - target: {fileID: 9110059251031622243, guid: 18d4c015a9fae0947962be4f5d61594f,
+        type: 3}
+      propertyPath: musicStateEventsList.Array.data[5].musicEvent.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: e9a2d8df8b939844da4c84d9a95c8a2f,
+        type: 2}
+    - target: {fileID: 9110059251031622243, guid: 18d4c015a9fae0947962be4f5d61594f,
+        type: 3}
+      propertyPath: musicStateEventsList.Array.data[6].musicEvent.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 1444bc706fde0a148b0498cae8f62c9f,
+        type: 2}
+    - target: {fileID: 9110059251031622243, guid: 18d4c015a9fae0947962be4f5d61594f,
+        type: 3}
+      propertyPath: musicStateEventsList.Array.data[7].musicEvent.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: f0c5872dd07b7634e8cd6ac5b0a7d6c3,
+        type: 2}
+    - target: {fileID: 9110059251031622243, guid: 18d4c015a9fae0947962be4f5d61594f,
+        type: 3}
+      propertyPath: musicStateEventsList.Array.data[8].musicEvent.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: f8b283a7895b78343b5b55ddcc08c4f4,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18d4c015a9fae0947962be4f5d61594f, type: 3}
+--- !u!114 &636426246 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5837734876330952900, guid: 18d4c015a9fae0947962be4f5d61594f,
+    type: 3}
+  m_PrefabInstance: {fileID: 550926551}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbed1ab89036b6f4cab998bd785bbd2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &815886773
 PrefabInstance:
   m_ObjectHideFlags: 0

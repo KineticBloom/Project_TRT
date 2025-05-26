@@ -5,34 +5,6 @@
 			<ChildrenList>
 				<Folder Name="MusicEvents" ID="{8FCB98BB-3986-44C6-980F-D12D17CB9504}" ShortID="178357386">
 					<ChildrenList>
-						<Event Name="MusicStateCalm" ID="{B711D0D4-20AB-4A39-B4E9-82305BA67D38}">
-							<ChildrenList>
-								<Action Name="" ID="{BC695A87-D62D-4A9D-B09D-CB38646EC5C4}" ShortID="443131382">
-									<PropertyList>
-										<Property Name="ActionType" Type="int16" Value="22"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Calm" ID="{4A916F2C-FEA7-4172-9C63-FC5255A5BA9D}" WorkUnitID="{5295B7E6-B0B8-4F63-8A96-7D61276F57FA}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="MusicStateActive" ID="{E855E7B5-D595-4826-AD8A-374F605FCF53}">
-							<ChildrenList>
-								<Action Name="" ID="{E21F0306-3C5B-4160-B644-92886C167003}" ShortID="31338886">
-									<PropertyList>
-										<Property Name="ActionType" Type="int16" Value="22"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Active" ID="{A4AE8BB5-B12D-49FE-8894-16968C8D3D71}" WorkUnitID="{5295B7E6-B0B8-4F63-8A96-7D61276F57FA}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
 						<Event Name="StartMusic" ID="{95DED10A-BAFA-4517-9EB7-3E06DDBA7B76}">
 							<ChildrenList>
 								<Action Name="" ID="{270CD915-047E-4F18-8E92-8D19304417A5}" ShortID="728333106">
@@ -139,6 +111,34 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="MailbotRoom" ID="{1EC052D8-37C9-4D0A-8148-CC10C0A2835E}" WorkUnitID="{5295B7E6-B0B8-4F63-8A96-7D61276F57FA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="MusicStateCathedral" ID="{F9CBA148-AE45-40C3-BA39-E66421E1D524}">
+							<ChildrenList>
+								<Action Name="" ID="{BA51A663-F355-4ACB-923A-D15802575EE2}" ShortID="715847788">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="22"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Cathedral" ID="{0F520E76-7E75-488D-9424-F5B0AF11D9AA}" WorkUnitID="{5295B7E6-B0B8-4F63-8A96-7D61276F57FA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="MusicStateTitleScreen" ID="{8A7F5F10-5F46-4152-8B4F-F708D00DBF74}">
+							<ChildrenList>
+								<Action Name="" ID="{3A7EE7DA-89D0-4F97-950C-3D71A65BDFD9}" ShortID="951013326">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="22"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="TitleScreen" ID="{D0982152-D605-45BA-8C28-539132CED873}" WorkUnitID="{5295B7E6-B0B8-4F63-8A96-7D61276F57FA}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

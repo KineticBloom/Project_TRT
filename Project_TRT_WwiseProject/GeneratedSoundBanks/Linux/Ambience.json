@@ -1,0 +1,199 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Linux",
+  "BasePlatform": "Linux",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "85412153",
+    "Type": "User",
+    "GUID": "{52F8B286-BABD-4F9B-A5A8-00A04824FFE7}",
+    "Language": "SFX",
+    "Hash": "{E84E1BC9-A26C-8564-FC2F-D79645E2BDE4}",
+    "ObjectPath": "\\SoundBanks\\Ambience\\Ambience",
+    "ShortName": "Ambience",
+    "Path": "Ambience.bnk",
+    "Media": [
+     {
+      "Id": "31547046",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Loose",
+      "ShortName": "AMB_Waterfall_Base.wav",
+      "Path": "Media/31547046.wem",
+      "CachePath": "15/{15B32E41-6963-D30A-A153-4C06813C319A}.wem"
+     },
+     {
+      "Id": "360502257",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB_Machine_Hum2.wav",
+      "CachePath": "04/{04CD1EF7-2BE8-DF7E-01A2-3E092601434C}.wem"
+     },
+     {
+      "Id": "417504426",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB_Nature_Birds3.wav",
+      "CachePath": "29/{296FB0B4-1E81-21F2-BB2C-3E07D35CD303}.wem"
+     },
+     {
+      "Id": "429838942",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB_Nature_Birds1.wav",
+      "CachePath": "D8/{D8D8564F-7506-9D17-4465-03F5BA3E287F}.wem"
+     },
+     {
+      "Id": "677398068",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB_Waterfall_CloseSparkle.wav",
+      "CachePath": "24/{245FA8FE-6839-E888-8230-494140CC1925}.wem"
+     },
+     {
+      "Id": "934940429",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB_Machine_Hum1.wav",
+      "CachePath": "49/{49DFCAF6-8D7B-AC0F-38B9-6BDA449CD2A6}.wem"
+     },
+     {
+      "Id": "1041211660",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMB_Nature_Birds2.wav",
+      "CachePath": "1D/{1D62BD7C-BB3A-4B9B-84D7-D65B0435DE7C}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3943065624",
+      "Name": "BirdStart",
+      "ObjectPath": "\\Events\\Ambience\\BirdStart",
+      "GUID": "{AB632C93-8EF0-48A4-9F51-F773BA1E5C74}",
+      "MaxAttenuation": "25",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "417504426"
+       },
+       {
+        "Id": "429838942"
+       },
+       {
+        "Id": "1041211660"
+       }
+      ]
+     },
+     {
+      "Id": "30480848",
+      "Name": "Play_MachineHum1_LoopContainer",
+      "ObjectPath": "\\Events\\Ambience\\Play_MachineHum1_LoopContainer",
+      "GUID": "{46922CFE-2F19-4B76-85F3-F11B509CB105}",
+      "MaxAttenuation": "50",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "934940429"
+       }
+      ]
+     },
+     {
+      "Id": "1929638735",
+      "Name": "Play_MachineHum2_LoopContainer",
+      "ObjectPath": "\\Events\\Ambience\\Play_MachineHum2_LoopContainer",
+      "GUID": "{715485DE-B13B-43E2-9B4D-C1C5781FE1AC}",
+      "MaxAttenuation": "50",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "360502257"
+       }
+      ]
+     },
+     {
+      "Id": "2874767734",
+      "Name": "Play_Waterfall_Base_LoopContainer",
+      "ObjectPath": "\\Events\\Ambience\\Play_Waterfall_Base_LoopContainer",
+      "GUID": "{432EBF60-3B5B-40E6-B688-58830C63E8B1}",
+      "MaxAttenuation": "35",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "31547046"
+       }
+      ]
+     },
+     {
+      "Id": "3296751295",
+      "Name": "Play_Waterfall_CloseSparkle_LoopContainer",
+      "ObjectPath": "\\Events\\Ambience\\Play_Waterfall_CloseSparkle_LoopContainer",
+      "GUID": "{3FAF916E-C621-45D9-868C-CE150C154978}",
+      "MaxAttenuation": "20",
+      "DurationType": "OneShot",
+      "DurationMin": "20",
+      "DurationMax": "20",
+      "MediaRefs": [
+       {
+        "Id": "677398068"
+       }
+      ]
+     },
+     {
+      "Id": "664772623",
+      "Name": "TestAmbienceStart",
+      "ObjectPath": "\\Events\\Ambience\\TestAmbienceStart",
+      "GUID": "{E4076E7D-47F0-4B40-97F8-E4AFB7CF1D45}",
+      "MaxAttenuation": "35",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "31547046"
+       },
+       {
+        "Id": "677398068"
+       }
+      ]
+     }
+    ],
+    "Busses": [
+     {
+      "Id": "2611281843",
+      "Name": "AmbienceMaster",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\AmbienceMaster",
+      "GUID": "{286C8CB9-7D4C-44E7-9139-C8391E920F9C}"
+     },
+     {
+      "Id": "3803692087",
+      "Name": "Master Audio Bus",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus",
+      "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "1204480359",
+      "Name": "AmbienceVolume",
+      "ObjectPath": "\\Game Parameters\\Ambience\\AmbienceVolume",
+      "GUID": "{9D23DD01-A12B-49E1-84AC-00064DD75E62}"
+     },
+     {
+      "Id": "2918011349",
+      "Name": "MasterVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\MasterVolume",
+      "GUID": "{E70BD259-826F-4DC0-9077-F7A3D88C2DFC}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{8D4FDCEB-C509-0D68-A47C-D313C1C11BF9}"
+ }
+}

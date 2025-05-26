@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{52F8B286-BABD-4F9B-A5A8-00A04824FFE7}",
     "Language": "SFX",
-    "Hash": "{FCDCABAD-D201-1FAE-1957-2A6A40E11E30}",
+    "Hash": "{E84E1BC9-A26C-8564-FC2F-D79645E2BDE4}",
     "ObjectPath": "\\SoundBanks\\Ambience\\Ambience",
     "ShortName": "Ambience",
     "Path": "Ambience.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "AMB_Waterfall_Base.wav",
       "Path": "Media/31547046.wem",
-      "CachePath": "0D/{0DFC706F-029F-DA67-858D-63F23E7FCBFE}.wem"
+      "CachePath": "15/{15B32E41-6963-D30A-A153-4C06813C319A}.wem"
      },
      {
       "Id": "360502257",
@@ -124,7 +124,7 @@
       "Name": "Play_Waterfall_Base_LoopContainer",
       "ObjectPath": "\\Events\\Ambience\\Play_Waterfall_Base_LoopContainer",
       "GUID": "{432EBF60-3B5B-40E6-B688-58830C63E8B1}",
-      "MaxAttenuation": "50",
+      "MaxAttenuation": "35",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
@@ -137,8 +137,10 @@
       "Name": "Play_Waterfall_CloseSparkle_LoopContainer",
       "ObjectPath": "\\Events\\Ambience\\Play_Waterfall_CloseSparkle_LoopContainer",
       "GUID": "{3FAF916E-C621-45D9-868C-CE150C154978}",
-      "MaxAttenuation": "35",
-      "DurationType": "Infinite",
+      "MaxAttenuation": "20",
+      "DurationType": "OneShot",
+      "DurationMin": "20",
+      "DurationMax": "20",
       "MediaRefs": [
        {
         "Id": "677398068"
@@ -150,7 +152,7 @@
       "Name": "TestAmbienceStart",
       "ObjectPath": "\\Events\\Ambience\\TestAmbienceStart",
       "GUID": "{E4076E7D-47F0-4B40-97F8-E4AFB7CF1D45}",
-      "MaxAttenuation": "50",
+      "MaxAttenuation": "35",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
@@ -192,6 +194,6 @@
     ]
    }
   ],
-  "FileHash": "{38BDF9C1-8918-4E66-689C-7162EB90B2C7}"
+  "FileHash": "{CBBA2B69-3E03-494D-C7E3-A7210583C538}"
  }
 }

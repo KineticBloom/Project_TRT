@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{52F8B286-BABD-4F9B-A5A8-00A04824FFE7}",
     "Language": "SFX",
-    "Hash": "{E84E1BC9-A26C-8564-FC2F-D79645E2BDE4}",
+    "Hash": "{3BE7EA5A-45A2-008A-864E-48B85C3ABFB5}",
     "ObjectPath": "\\SoundBanks\\Ambience\\Ambience",
     "ShortName": "Ambience",
     "Path": "Ambience.bnk",
@@ -23,6 +23,22 @@
       "ShortName": "AMB_Waterfall_Base.wav",
       "Path": "Media/31547046.wem",
       "CachePath": "15/{15B32E41-6963-D30A-A153-4C06813C319A}.wem"
+     },
+     {
+      "Id": "178110774",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "437337__giddster__wind-chimes-1.wav",
+      "CachePath": "B6/{B6AC031D-0364-5A0D-0EC8-16754D90508A}.wem"
+     },
+     {
+      "Id": "189704031",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "wind-002.wav",
+      "CachePath": "81/{8159598E-9165-86E0-9642-BB95A87A6833}.wem"
      },
      {
       "Id": "360502257",
@@ -47,6 +63,30 @@
       "Location": "Memory",
       "ShortName": "AMB_Nature_Birds1.wav",
       "CachePath": "D8/{D8D8564F-7506-9D17-4465-03F5BA3E287F}.wem"
+     },
+     {
+      "Id": "435064081",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "wind-001.wav",
+      "CachePath": "5E/{5E6FCF6E-E9B3-AFE4-B194-8353B4A99BEB}.wem"
+     },
+     {
+      "Id": "445865875",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "wind-004.wav",
+      "CachePath": "2D/{2DCE1E36-EB60-093B-5E91-D5A0B4E9B091}.wem"
+     },
+     {
+      "Id": "498192142",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "wind-003.wav",
+      "CachePath": "B0/{B0B23E6D-A25D-1150-4DE2-0C05C2C12BBA}.wem"
      },
      {
       "Id": "677398068",
@@ -148,6 +188,39 @@
       ]
      },
      {
+      "Id": "2059652710",
+      "Name": "Play_Wind_LoopContainer",
+      "ObjectPath": "\\Events\\Ambience\\Play_Wind_LoopContainer",
+      "GUID": "{0E2CA3DB-4D7D-47F9-B2AF-DA2156B7851F}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "189704031"
+       },
+       {
+        "Id": "435064081"
+       },
+       {
+        "Id": "445865875"
+       },
+       {
+        "Id": "498192142"
+       }
+      ]
+     },
+     {
+      "Id": "2334582133",
+      "Name": "Play_WindChimes_LoopContainer",
+      "ObjectPath": "\\Events\\Ambience\\Play_WindChimes_LoopContainer",
+      "GUID": "{A483BB85-BCDB-424C-A3EC-6569A86C64AE}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "178110774"
+       }
+      ]
+     },
+     {
       "Id": "664772623",
       "Name": "TestAmbienceStart",
       "ObjectPath": "\\Events\\Ambience\\TestAmbienceStart",
@@ -194,6 +267,6 @@
     ]
    }
   ],
-  "FileHash": "{8D4FDCEB-C509-0D68-A47C-D313C1C11BF9}"
+  "FileHash": "{8800C50D-D356-6E87-5AF3-3D7AA27F735C}"
  }
 }

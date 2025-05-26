@@ -48,6 +48,8 @@ namespace AK
         static const AkUniqueID PLAY_MENU_OPEN = 2236734574U;
         static const AkUniqueID PLAY_WATERFALL_BASE_LOOPCONTAINER = 2874767734U;
         static const AkUniqueID PLAY_WATERFALL_CLOSESPARKLE_LOOPCONTAINER = 3296751295U;
+        static const AkUniqueID PLAY_WIND_LOOPCONTAINER = 2059652710U;
+        static const AkUniqueID PLAY_WINDCHIMES_LOOPCONTAINER = 2334582133U;
         static const AkUniqueID PLAYERFOOTSTEPS = 1681012287U;
         static const AkUniqueID PLAYSTARTUPMUSIC = 4206258635U;
         static const AkUniqueID RESUMEMUSIC = 2170724709U;

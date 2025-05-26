@@ -18,7 +18,7 @@ MonoBehaviour:
   FlagID: roro_3_bartered
   ItemOnOffer: {fileID: 11400000, guid: af210dedcdbaf56429bf9d6f8b6ac2c0, type: 2}
   ItemsOnOffer:
-  - {fileID: 11400000, guid: af210dedcdbaf56429bf9d6f8b6ac2c0, type: 2}
+  - {fileID: 11400000, guid: 67d01c9d97d2e5043947cb11c4f70de5, type: 2}
   BarterMessageWin: Here you go!
   BarterMessageLose: That's not enough...
   BarterAttempts: 1
@@ -31,25 +31,27 @@ MonoBehaviour:
       type: {class: CountSpecificItems, ns: , asm: Assembly-CSharp}
       data:
         Items:
-        - {fileID: 11400000, guid: 84e57b2c426aad147ab48ebedf5a7792, type: 2}
+        - {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
         NeedAllItems: 0
     - rid: 6991182339336044559
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
-        Icon: {fileID: 21300000, guid: 9fdff5716e799864c9c9eb16cc0ee9db, type: 3}
-        Description: Pink chip worth multiplied by 2
-        Text: x2
-        ConditionImage: {fileID: 0}
+        Icon: {fileID: 21300000, guid: bc1e10fa5e86c64439deae7f064d8256, type: 3}
+        Description: Dirt Bag's value +7
+        Hint: What could this do?
+        Text: +7
+        ConditionImage: {fileID: 21300000, guid: bc1e10fa5e86c64439deae7f064d8256,
+          type: 3}
         _revealed: 0
         RequiresAllConditions: 1
         ItemConditions:
         - rid: 6077773197129285653
         AffectedItems:
-        - {fileID: 11400000, guid: 84e57b2c426aad147ab48ebedf5a7792, type: 2}
+        - {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
         AffectedTags: []
         ItemActions:
-        - rid: 8151269401547244306
-    - rid: 8151269401547244306
-      type: {class: MultiplyValue, ns: , asm: Assembly-CSharp}
+        - rid: 8243886729994174554
+    - rid: 8243886729994174554
+      type: {class: AddValue, ns: , asm: Assembly-CSharp}
       data:
-        ValueMultiplier: 2
+        ValueAddend: 7

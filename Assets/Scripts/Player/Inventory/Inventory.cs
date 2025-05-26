@@ -11,7 +11,6 @@ public class Inventory : MonoBehaviour
 
     [Space]
     [Header("Inventory")]
-    public List<InventoryCardData> StartingCards;
     [SerializeField, ReadOnly] private List<InventoryCardData> Cards;
     
     public event Action OnInventoryUpdated;
@@ -51,10 +50,6 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         Cards = new List<InventoryCardData>();
-
-        foreach (InventoryCardData card in StartingCards) {
-            AddCard(card);
-        }
 
         // Cache refs.
         if (GameManager.Instance != null && GameManager.MasterCanvas != null) {
@@ -271,9 +266,9 @@ public class Inventory : MonoBehaviour
     /// </summary>
     public void ResetAllCardValues()
     {
-        foreach (InventoryCardData card in AllCardDatas.datas)
+        foreach (InventoryCardData card in Cards)
         {
-            card.SetCurrentValue(card.BaseValue);
+            card.ResetCurrentValue();
         }
     }
 

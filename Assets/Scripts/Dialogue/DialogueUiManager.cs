@@ -35,6 +35,14 @@ public class DialogueUiManager : MonoBehaviour {
             TextContainer.text = choices[i].text;
         }
 
+        SelectFirstChoice();
+    }
+
+    /// <summary>
+    /// Selects the first choice
+    /// </summary>
+    public void SelectFirstChoice()
+    {
         UiButtons[0].Select();
     }
 

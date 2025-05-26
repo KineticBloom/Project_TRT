@@ -36,10 +36,15 @@ public class EffectCardDisplay : MonoBehaviour
     [HideIf("InPlayMode")]
     public EffectCard EffectCard;
 
-
+    private Tweener _shakeTween = null;
     private BarteringController _barteringController;
     private float _baseScale = 1f;
     private float _baseHeight;
+    private Vector3 _returnPoint;
+    private float AttackSpeed = 0.125f;
+    private Vector3 defaultUp;
+    private bool flipDone = false;
+    private bool flipInProgress = false;
 
     /// <summary>
     /// Loads the Effect Card to be displayed
@@ -70,9 +75,14 @@ public class EffectCardDisplay : MonoBehaviour
             HideDescription();
             _barteringController = barteringController;
             effectCard.OnRevealed += Reveal;
+            effectCard.OnActivate += Activate;
+            effectCard.OnAttackActivate += AttackActivate;
         }
 
         _baseScale = cardFront.transform.localScale.x;
+
+        flipDone = effectCard.IsRevealed;
+        flipInProgress = false;
     }
 
 
@@ -82,11 +92,79 @@ public class EffectCardDisplay : MonoBehaviour
     [Button]
     public void Reveal()
     {
-        _barteringController?.AddNewReveal(EffectCard);
+        if (flipInProgress == true || flipDone == true) return;
 
+        _barteringController?.EFFECT_AddNewReveal(EffectCard);
+        flipInProgress = true;
         FlipBack();
     }
 
+    public void Activate()
+    {
+        //transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).SetEase(Ease.InOutSine).SetLoops(2, LoopType.Yoyo);
+        if (_shakeTween == null)
+        {
+            _shakeTween = transform.DOShakeRotation(0.5f, new Vector3(0, 0, 45f), 15, 90, true, ShakeRandomnessMode.Harmonic);
+            _shakeTween.SetAutoKill(false);
+        }
+        else
+        {
+            _shakeTween.Restart();
+        }
+    }
+
+    public void AttackActivate()
+    {
+        StartCoroutine(AttackActivateAnim());
+    }
+
+    IEnumerator AttackActivateAnim()
+    {
+
+        if (flipDone == false && flipInProgress == false)
+        {
+            Reveal();
+        }
+
+        bool Flipping = flipInProgress;
+
+        yield return new WaitUntil(CheckForFlip);
+
+        if (Flipping)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        _returnPoint = transform.position;
+        Vector3 target = _barteringController.targetEffectCard.transform.position;
+        transform.DOMove(target, AttackSpeed, false).OnComplete(AttackReturnCall);
+        transform.DOPunchScale(new Vector3(1.5f, 1.5f, 1.5f), AttackSpeed).SetEase(Ease.OutElastic);
+        defaultUp = transform.up;
+        transform.up = target - transform.position;
+    }
+
+    private bool CheckForFlip()
+    {
+        return flipDone;
+    }
+
+    public void AttackReturnCall()
+    {
+        StartCoroutine(AttackReturn());
+    }
+
+    IEnumerator AttackReturn()
+    {
+        yield return new WaitForSeconds(0.25f);
+        Vector3 target = _returnPoint;
+        transform.DOMove(_returnPoint, AttackSpeed * 1.5f, false).SetEase(Ease.OutExpo).OnComplete(ResetRotation);
+        transform.up = target - transform.position;
+    }
+
+    private void ResetRotation()
+    {
+        DOTween.To(() => transform.up, x => transform.up = x, defaultUp, 0.2f);
+    }
 
     /// <summary>
     /// First part of the flipping animation
@@ -105,7 +183,7 @@ public class EffectCardDisplay : MonoBehaviour
         cardBack.SetActive(true);
         cardFront.SetActive(false);
 
-        
+
         cardBack.transform.DOLocalMoveY(_baseHeight + flipMoveHeight, flipBackDuration)
             .SetEase(flipBackMoveEase);
         cardBack.transform.DOScaleX(0, flipBackDuration)
@@ -131,7 +209,7 @@ public class EffectCardDisplay : MonoBehaviour
         cardFront.transform.DOLocalMoveY(_baseHeight, flipFrontDuration)
             .SetEase(flipFrontMoveEase);
         cardFront.transform.DOScaleX(_baseScale, flipFrontDuration)
-            .SetEase(flipFrontEase);
+            .SetEase(flipFrontEase).OnComplete(() => { flipDone = true; flipInProgress = false; });
     }
 
 
@@ -157,9 +235,18 @@ public class EffectCardDisplay : MonoBehaviour
 
     private void OnDisable()
     {
+        transform.DOKill();
+
+        if (_shakeTween != null)
+        {
+            _shakeTween.Kill();
+            _shakeTween = null;
+        }
         if (!revealScreen)
         {
             EffectCard.OnRevealed -= Reveal;
+            EffectCard.OnActivate -= Activate;
+            EffectCard.OnAttackActivate -= AttackActivate;
         }
     }
 

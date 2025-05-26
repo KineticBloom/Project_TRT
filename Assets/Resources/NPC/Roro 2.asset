@@ -16,9 +16,9 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: f81434a53d0a2174ca8bc46782bfa24c, type: 3}
   Bio: It's a Roro
   FlagID: roro_2_bartered
-  ItemOnOffer: {fileID: 11400000, guid: 3d30e89bb6785644ba3c442728f20753, type: 2}
+  ItemOnOffer: {fileID: 11400000, guid: da17c6d4dc263374bbf24bc95f23eeb0, type: 2}
   ItemsOnOffer:
-  - {fileID: 11400000, guid: 3d30e89bb6785644ba3c442728f20753, type: 2}
+  - {fileID: 11400000, guid: da17c6d4dc263374bbf24bc95f23eeb0, type: 2}
   BarterMessageWin: Here you go!
   BarterMessageLose: That's not enough...
   BarterAttempts: 1
@@ -31,26 +31,28 @@ MonoBehaviour:
       type: {class: CountItemsWithTags, ns: , asm: Assembly-CSharp}
       data:
         Tags:
-        - chip
+        - tool
         MinAmount: 1
         ExactAmount: 0
     - rid: 6991182339336044559
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
-        Icon: {fileID: 21300000, guid: bc1e10fa5e86c64439deae7f064d8256, type: 3}
-        Description: Chip value plus 3
-        Text: +3
-        ConditionImage: {fileID: 0}
+        Icon: {fileID: 21300000, guid: 9bd95f8332db3c24887f6107f437e2bc, type: 3}
+        Description: Tool items' value +10
+        Hint: What could this do?
+        Text: +10
+        ConditionImage: {fileID: 21300000, guid: 9bd95f8332db3c24887f6107f437e2bc,
+          type: 3}
         _revealed: 0
         RequiresAllConditions: 1
         ItemConditions:
         - rid: 6077773197129285652
         AffectedItems: []
         AffectedTags:
-        - chip
+        - tool
         ItemActions:
-        - rid: 8151269401547244305
-    - rid: 8151269401547244305
+        - rid: 8243886729994174553
+    - rid: 8243886729994174553
       type: {class: AddValue, ns: , asm: Assembly-CSharp}
       data:
-        ValueAddend: 3
+        ValueAddend: 10

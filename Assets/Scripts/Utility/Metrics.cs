@@ -1,6 +1,11 @@
 using System;
 using System.IO;
+using Unity.Services.Analytics;
+using Unity.Services.Core;
+using System.Text;
 using UnityEngine;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 public static class Metrics
 {
@@ -20,18 +25,23 @@ public static class Metrics
 
     private static MetricsData _data;
     private static float _sessionStartTime;
-    private static readonly string SavePath = Application.persistentDataPath + "/metrics.json";
+    private static readonly string SavePath = Application.persistentDataPath + "/MetricsLogs/metrics.json";
+    private static readonly string MetricsFolder = Path.Combine(Application.persistentDataPath, "MetricsLogs");
+
+
 
     #region ========== [ PUBLIC METHODS ] ===========
 
     /// <summary>
     /// Signal to the Metrics that the player has started playing the game. Put in Start()
     /// </summary>
-    public static void StartSession()
+    public static async void StartSession()
     {
         Load();
         _sessionStartTime = Time.time;
         _data.sessionCount++;
+
+        await InitializeServicesAsync();
     }
 
     /// <summary>
@@ -42,6 +52,7 @@ public static class Metrics
         float sessionDuration = Time.time - _sessionStartTime;
         _data.totalPlayTime += sessionDuration;
         Save();
+        SendAnalytics();
     }
 
     /// <summary>
@@ -75,6 +86,25 @@ public static class Metrics
         Save();
     }
 
+    /// <summary>
+    /// Reset saved metrics data and logs it to a CSV file.
+    /// </summary>
+    public static void Reset()
+    {
+        WriteDataToCSV(_data);
+        _data = new MetricsData();
+        Save();
+    }
+
+    /// <summary>
+    /// Reset saved metrics data without logging to CSV.
+    /// </summary>
+    public static void HardReset()
+    {
+        _data = new MetricsData();
+        Save();
+    }
+
     #endregion
 
     #region ========== [ PRIVATE METHODS ] ===========
@@ -100,18 +130,88 @@ public static class Metrics
     /// </summary>
     private static void Save()
     {
+        if (!Directory.Exists(MetricsFolder))
+            Directory.CreateDirectory(MetricsFolder);
+
         string json = JsonUtility.ToJson(_data, true);
         File.WriteAllText(SavePath, json);
     }
 
     /// <summary>
-    /// Reset saved metrics data
+    /// Save _data to a CSV file
     /// </summary>
-    public static void Reset()
+    private static void WriteDataToCSV(MetricsData data)
     {
-        _data = new MetricsData();
-        Save();
+        if (!Directory.Exists(MetricsFolder))
+            Directory.CreateDirectory(MetricsFolder);
+            int index = 1;
+        string filePath;
+
+        // Give it a sequential filename
+        do
+        {
+            filePath = Path.Combine(MetricsFolder, $"metrics{index}.csv");
+            index++;
+        } while (File.Exists(filePath));
+
+        var sb = new StringBuilder();
+
+        sb.AppendLine("Field,Value");
+
+        sb.AppendLine($"PlayTime,{data.totalPlayTime}");
+        sb.AppendLine($"SessionCount,{data.sessionCount}");
+        sb.AppendLine($"TutorialCompleted,{data.tutorialCompleted}");
+        sb.AppendLine($"GameCompleted,{data.gameCompleted}");
+        sb.AppendLine($"AverageFramerate,{data.averageFramerate}");
+        sb.AppendLine($"TotalFrameTime,{data.totalFrameTime}");
+        sb.AppendLine($"TotalFrames,{data.totalFrames}");
+
+
+        File.WriteAllText(filePath, sb.ToString());
+    }
+
+    /// <summary>
+    /// Wait for the AnalyticsService to be initialized before starting data collection
+    /// </summary>
+    /// <returns></returns>
+    private static async Task InitializeServicesAsync()
+    {
+        try
+        {
+            await UnityServices.InitializeAsync();
+
+            AnalyticsService.Instance?.StartDataCollection();
+            SendAnalytics();
+        }
+        catch (ServicesInitializationException e)
+        {
+            Debug.LogError($"Failed to initialize Unity Services: {e}");
+        }
+    }
+
+    private static void SendAnalytics()
+    {
+        SavedAnalyticsEvent eventData = new SavedAnalyticsEvent();
+
+        eventData.TutorialCompleted = _data.tutorialCompleted;
+        eventData.GameCompleted = _data.gameCompleted;
+        eventData.AverageFramerate = _data.averageFramerate;
+
+        AnalyticsService.Instance.RecordEvent(eventData);
     }
 
     #endregion
 }
+
+public class SavedAnalyticsEvent : Unity.Services.Analytics.Event
+{
+    public SavedAnalyticsEvent() : base("savedAnalyticsEvent")
+    {
+    }
+
+    public bool TutorialCompleted { set { SetParameter("tutorialCompleted", value); } }
+    public bool GameCompleted { set { SetParameter("gameCompleted", value); } }
+    public float AverageFramerate { set { SetParameter("averageFramerate", value); } }
+
+}
+

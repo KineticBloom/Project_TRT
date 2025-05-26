@@ -668,7 +668,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 3, y: 103}
-  m_SizeDelta: {x: 532.5521, y: 76.8972}
+  m_SizeDelta: {x: 678.8, y: 76.8972}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6542895328081781685
 CanvasRenderer:
@@ -698,7 +698,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Find the Facility USB
+  m_text: Find the Ancient Amulet
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38a4173e5d84703438959bb5cca50377, type: 2}
   m_sharedMaterial: {fileID: 484691237190804879, guid: 38a4173e5d84703438959bb5cca50377,
@@ -1065,6 +1065,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2519607808248846959}
   - component: {fileID: 1732901092250699834}
+  - component: {fileID: 5178820400972366237}
   - component: {fileID: 3106585922322403841}
   m_Layer: 5
   m_Name: Exit
@@ -1100,6 +1101,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5903875599186573543}
   m_CullTransparentMesh: 1
+--- !u!114 &5178820400972366237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5903875599186573543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9cd7ac04981f594b9a33d08f19efc87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3106585922322403841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1120,7 +1133,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press F to Close
+  m_text: Press {AffirmButton} to Close
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38a4173e5d84703438959bb5cca50377, type: 2}
   m_sharedMaterial: {fileID: 484691237190804879, guid: 38a4173e5d84703438959bb5cca50377,
@@ -1494,8 +1507,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.0031128, y: -216.696}
-  m_SizeDelta: {x: 385.2941, y: 562.4951}
+  m_AnchoredPosition: {x: 3.0031128, y: -147.22}
+  m_SizeDelta: {x: 385.2941, y: 423.55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6494113245644755715
 CanvasRenderer:
@@ -1525,7 +1538,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2deb9f158792e9341a3248e68a0f03b3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f9e98923fb0497d44adfcda8aed50844, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

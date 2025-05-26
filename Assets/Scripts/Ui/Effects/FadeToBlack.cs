@@ -15,12 +15,14 @@ public class FadeToBlack : MonoBehaviour
     public Coroutine StartFadeIn(float duration = -1f)
     {
         StopAllCoroutines();
+        SetOpacity(startingOpacity);
         return StartCoroutine(FadeIn(duration > 0 ? duration : fadeDuration));
     }
 
     public Coroutine StartFadeOut(float duration = -1f)
     {
         StopAllCoroutines();
+        SetOpacity(startingOpacity);
         return StartCoroutine(FadeOut(duration > 0 ? duration : fadeDuration));
     }
 
@@ -29,7 +31,7 @@ public class FadeToBlack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetOpacity(startingOpacity);
+        
     }
 
     // Update is called once per frame
@@ -52,7 +54,7 @@ public class FadeToBlack : MonoBehaviour
 
         while (time < duration)
         {
-            time += Time.deltaTime;
+            time += Time.unscaledDeltaTime;
             SetOpacity(Mathf.Lerp(startAlpha, 1f, time / duration));
             yield return null;
         }
@@ -67,7 +69,7 @@ public class FadeToBlack : MonoBehaviour
 
         while (time < duration)
         {
-            time += Time.deltaTime;
+            time += Time.unscaledDeltaTime;
             SetOpacity(Mathf.Lerp(startAlpha, 0f, time / duration));
             yield return null;
         }

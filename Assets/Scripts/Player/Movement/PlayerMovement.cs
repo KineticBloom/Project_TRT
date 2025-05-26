@@ -84,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		_characterController = GetComponent<CharacterController>();
 		_adjustedSpeed = speed;
+		dustTrail.Stop();
 	}
 
 	void Update()

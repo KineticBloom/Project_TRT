@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 587ca0226052be4e9b8540a22c4f2092
     GuidInternal: 
-    m_lastTime: -8584548436237089661
+    m_lastTime: -8584533105937881256
     List:
     - name: Alleyway
       guid: 11d530b54cff564f892379f07c08b072
@@ -205,6 +205,26 @@ MonoBehaviour:
         ObjectType: 2
         guid: 883656adb723a945b273cd51079ae47a
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\MusicMaster
+    - name: NPCDialogue
+      guid: 2f33a6c83423c54c81c364d5be386971
+      id: 1141413220
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 587ca0226052be4e9b8540a22c4f2092
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: NPCMaster
+        ObjectType: 2
+        guid: 43ffc81682332f42b0d647325d444edf
+      - ElementName: NPCDialogue
+        ObjectType: 2
+        guid: 2f33a6c83423c54c81c364d5be386971
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\NPCMaster\NPCDialogue
     - name: NPCMaster
       guid: 43ffc81682332f42b0d647325d444edf
       id: 2033911932
@@ -442,7 +462,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Music
     guid: 5f5c2e836df59d41833026f7bc293cab
     GuidInternal: 
-    m_lastTime: -8584549256223219745
+    m_lastTime: -8584533111985376727
     List:
     - name: Music
       guid: 277caf2ce418a740871cc075a9250659
@@ -469,7 +489,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\SFX
     guid: f39c92e98d8cf14f9d79f84c53eb00b3
     GuidInternal: 
-    m_lastTime: -8584563963483348755
+    m_lastTime: -8584533138970551613
     List:
     - name: SFX
       guid: cc965433ea452249b9fac65217b7662e
@@ -1137,7 +1157,7 @@ MonoBehaviour:
     ParentPath: Events\Music
     guid: 1baa49cfe5a4fe438cbe031c55500853
     GuidInternal: 
-    m_lastTime: -8584533664314358787
+    m_lastTime: -8584533131945676649
     List:
     - name: Key_A
       guid: a348740626e76b4592a95b259a257e46
@@ -1413,26 +1433,6 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
-    - name: MusicStateActive
-      guid: b5e755e895d52648ad8a374f605fcf53
-      id: 1623677187
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Music
-        ObjectType: 12
-        guid: 1baa49cfe5a4fe438cbe031c55500853
-      - ElementName: MusicEvents
-        ObjectType: 4
-        guid: bb98cb8f8639c644980fd12d17cb9504
-      - ElementName: MusicStateActive
-        ObjectType: 3
-        guid: b5e755e895d52648ad8a374f605fcf53
-      Path: Events\Music\MusicEvents\MusicStateActive
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
     - name: MusicStateBarter
       guid: 90fc9d181ef01244bd9d62d38c8e0814
       id: 4269622689
@@ -1470,26 +1470,6 @@ MonoBehaviour:
         ObjectType: 3
         guid: 60d1ed9d2c9b6049a7a8726aa1c20465
       Path: Events\Music\MusicEvents\MusicStateBartering
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
-    - name: MusicStateCalm
-      guid: d4d011b7ab20394ab4e982305ba67d38
-      id: 821441420
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Music
-        ObjectType: 12
-        guid: 1baa49cfe5a4fe438cbe031c55500853
-      - ElementName: MusicEvents
-        ObjectType: 4
-        guid: bb98cb8f8639c644980fd12d17cb9504
-      - ElementName: MusicStateCalm
-        ObjectType: 3
-        guid: d4d011b7ab20394ab4e982305ba67d38
-      Path: Events\Music\MusicEvents\MusicStateCalm
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -1704,8 +1684,48 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC
     guid: 09137e3649952b468f529ebe6f164b6b
     GuidInternal: 
-    m_lastTime: -8584563113844731220
-    List: []
+    m_lastTime: -8584533095557069631
+    List:
+    - name: NPCDialogueEndSFX
+      guid: bcdcfda55528e745879da7f4e681fec7
+      id: 2346769448
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Environment
+        ObjectType: 12
+        guid: 851bf5aefe549d489c25241343bb6f59
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 09137e3649952b468f529ebe6f164b6b
+      - ElementName: NPCDialogueEndSFX
+        ObjectType: 3
+        guid: bcdcfda55528e745879da7f4e681fec7
+      Path: Events\Environment\NPC\NPCDialogueEndSFX
+      maxAttenuation: 0
+      maxDuration: 0.24690716
+      minDuration: 0.24690716
+    - name: NPCDialogueSFX
+      guid: a3528a8c7ca9d8429f7c1de4af71163f
+      id: 3457263945
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Environment
+        ObjectType: 12
+        guid: 851bf5aefe549d489c25241343bb6f59
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 09137e3649952b468f529ebe6f164b6b
+      - ElementName: NPCDialogueSFX
+        ObjectType: 3
+        guid: a3528a8c7ca9d8429f7c1de4af71163f
+      Path: Events\Environment\NPC\NPCDialogueSFX
+      maxAttenuation: 0
+      maxDuration: 0.07832917
+      minDuration: 0.07832917
   - PhysicalPath: Events\Objects.wwu
     PathAndIcons:
     - ElementName: Events
@@ -2087,7 +2107,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: e6b79552b8b0634f8a967d61276f57fa
     GuidInternal: 
-    m_lastTime: -8584533664314473743
+    m_lastTime: -8584533131945582407
     List:
     - name: CurrentMusicKey
       guid: 6fc02a74e5f10d408a3c979fa3ccb73b
@@ -2330,22 +2350,6 @@ MonoBehaviour:
         guid: 5df940ae313415468d9b77fe40be0b6c
       Path: States\Default Work Unit\MusicState
       values:
-      - name: Active
-        guid: b58baea42db1fe49889416968c8d3d71
-        id: 58138747
-        PathAndIcons:
-        - ElementName: States
-          ObjectType: 5
-          guid: 00000000000000000000000000000000
-        - ElementName: Default Work Unit
-          ObjectType: 12
-          guid: e6b79552b8b0634f8a967d61276f57fa
-        - ElementName: MusicState
-          ObjectType: 9
-          guid: 5df940ae313415468d9b77fe40be0b6c
-        - ElementName: Active
-          ObjectType: 8
-          guid: b58baea42db1fe49889416968c8d3d71
       - name: Barter
         guid: f5e3f74baa3c3145b914d1278d66757c
         id: 644073513
@@ -2362,22 +2366,6 @@ MonoBehaviour:
         - ElementName: Barter
           ObjectType: 8
           guid: f5e3f74baa3c3145b914d1278d66757c
-      - name: Calm
-        guid: 2c6f914aa7fe72419c63fc5255a5ba9d
-        id: 3753286132
-        PathAndIcons:
-        - ElementName: States
-          ObjectType: 5
-          guid: 00000000000000000000000000000000
-        - ElementName: Default Work Unit
-          ObjectType: 12
-          guid: e6b79552b8b0634f8a967d61276f57fa
-        - ElementName: MusicState
-          ObjectType: 9
-          guid: 5df940ae313415468d9b77fe40be0b6c
-        - ElementName: Calm
-          ObjectType: 8
-          guid: 2c6f914aa7fe72419c63fc5255a5ba9d
       - name: Cathedral
         guid: 760e520f757e8d489424f5b0af11d9aa
         id: 1024696295
@@ -2520,7 +2508,7 @@ MonoBehaviour:
         guid: 23c0f7a154fe4f4dbb4cbb0e19d72476
       Path: Triggers\Default Work Unit\Test
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 050000001200000013000000
+  ExpandedWaapiItemIds: 05000000060000000e0000000f0000001100000012000000130000003e000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

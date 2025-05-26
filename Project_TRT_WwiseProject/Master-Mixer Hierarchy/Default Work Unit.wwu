@@ -267,6 +267,21 @@
 								<Bus Name="F1xDialogue" ID="{3D1C1905-C2A3-4135-A174-65A5B6BD9CE0}"/>
 								<Bus Name="B4rn3yDialogue" ID="{F50FAF7D-1E2D-492A-8522-8B5E824C1B89}"/>
 								<Bus Name="EdenDialogue" ID="{57A18A29-F91A-4F48-880E-BB1175B59B8A}"/>
+								<Bus Name="NPCDialogue" ID="{C8A6332F-2334-4CC5-81C3-64D5BE386971}">
+									<PropertyList>
+										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>8</Value>
+											</ValueList>
+										</Property>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+								</Bus>
 							</ChildrenList>
 						</Bus>
 						<Bus Name="UIMaster" ID="{FDBE6303-FCC7-427E-96F8-ED5F452DA1B6}"/>

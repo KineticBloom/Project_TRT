@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{335496CC-45EA-4922-B9FA-C65217B7662E}",
     "Language": "SFX",
-    "Hash": "{5A582A54-61C8-5067-06BA-77BA60403826}",
+    "Hash": "{402EFF00-B4FB-A2DF-428A-1AD3587122B6}",
     "ObjectPath": "\\SoundBanks\\SFX\\SFX",
     "ShortName": "SFX",
     "Path": "SFX.bnk",
@@ -104,6 +104,14 @@
       "CachePath": "B9/{B9FE579A-7759-566B-DDA8-4455F72B72F2}.wem"
      },
      {
+      "Id": "172961244",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "NPC_Dialogue_SFX_End.wav",
+      "CachePath": "12/{1284DFDB-A5B7-62DF-B3C0-C6172BCA5825}.wem"
+     },
+     {
       "Id": "173604301",
       "Language": "SFX",
       "Streaming": "false",
@@ -150,6 +158,14 @@
       "Location": "Memory",
       "ShortName": "BART_card_shuffle\\Card Shuffle Sparkle.wav",
       "CachePath": "35/{35BA2F4F-FE44-7D87-0CB7-EBF391C360A2}.wem"
+     },
+     {
+      "Id": "325042128",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "NPC_Dialogue_SFX\\NPC_Dialogue_SFX_Detune_Up.wav",
+      "CachePath": "6A/{6A0ED2FF-1642-B534-C50C-417B35226D0D}.wem"
      },
      {
       "Id": "350602102",
@@ -302,6 +318,14 @@
       "Location": "Memory",
       "ShortName": "F1x_Dont_Bite\\F1x_Dont_Bite_4.wav",
       "CachePath": "18/{18943A07-9AF6-1FA1-6948-8CC9934A56C8}.wem"
+     },
+     {
+      "Id": "671355451",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "NPC_Dialogue_SFX\\NPC_Dialogue_SFX_Detune_Down.wav",
+      "CachePath": "20/{20DE898B-79FB-9714-463F-6C457FB6FE21}.wem"
      },
      {
       "Id": "692532191",
@@ -462,6 +486,14 @@
       "Location": "Memory",
       "ShortName": "Barter_Menu_Start.wav",
       "CachePath": "9B/{9B73703C-5FA6-D52E-EC57-D9124EA09862}.wem"
+     },
+     {
+      "Id": "1059962178",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "NPC_Dialogue_SFX\\NPC_Dialogue_SFX_Normal.wav",
+      "CachePath": "B3/{B3EC9D50-39DF-EE55-84ED-370DBE156AEE}.wem"
      }
     ],
     "Events": [
@@ -833,6 +865,40 @@
       ]
      },
      {
+      "Id": "2346769448",
+      "Name": "NPCDialogueEndSFX",
+      "ObjectPath": "\\Events\\Environment\\NPC\\NPCDialogueEndSFX",
+      "GUID": "{A5FDDCBC-2855-45E7-879D-A7F4E681FEC7}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.24690716",
+      "DurationMax": "0.24690716",
+      "MediaRefs": [
+       {
+        "Id": "172961244"
+       }
+      ]
+     },
+     {
+      "Id": "3457263945",
+      "Name": "NPCDialogueSFX",
+      "ObjectPath": "\\Events\\Environment\\NPC\\NPCDialogueSFX",
+      "GUID": "{8C8A52A3-A97C-42D8-9F7C-1DE4AF71163F}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.07832917",
+      "DurationMax": "0.07832917",
+      "MediaRefs": [
+       {
+        "Id": "325042128"
+       },
+       {
+        "Id": "671355451"
+       },
+       {
+        "Id": "1059962178"
+       }
+      ]
+     },
+     {
       "Id": "1536324566",
       "Name": "Play_Menu_ButtonDown",
       "ObjectPath": "\\Events\\SettingsUI\\Play_Menu_ButtonDown",
@@ -945,6 +1011,6 @@
     ]
    }
   ],
-  "FileHash": "{9C71CCF8-1294-9A83-4DB7-D852B48A61BB}"
+  "FileHash": "{61527EA1-4B8D-4689-5468-AF9EA8B24C6E}"
  }
 }

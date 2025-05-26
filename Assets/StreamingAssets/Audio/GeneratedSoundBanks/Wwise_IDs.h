@@ -41,6 +41,8 @@ namespace AK
         static const AkUniqueID MUSICSTATEMAILBOTROOM = 1881520806U;
         static const AkUniqueID MUSICSTATEPLAYERSPAWN = 1031159975U;
         static const AkUniqueID MUSICSTATETITLESCREEN = 1104426513U;
+        static const AkUniqueID NPCDIALOGUEENDSFX = 2346769448U;
+        static const AkUniqueID NPCDIALOGUESFX = 3457263945U;
         static const AkUniqueID PAUSEMUSIC = 1127073398U;
         static const AkUniqueID PLAY_MACHINEHUM1_LOOPCONTAINER = 30480848U;
         static const AkUniqueID PLAY_MACHINEHUM2_LOOPCONTAINER = 1929638735U;
@@ -133,6 +135,7 @@ namespace AK
         static const AkUniqueID F1XDIALOGUE = 2763508416U;
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
         static const AkUniqueID MUSICMASTER = 3199789248U;
+        static const AkUniqueID NPCDIALOGUE = 1141413220U;
         static const AkUniqueID NPCMASTER = 2033911932U;
         static const AkUniqueID OBJECTSMASTER = 3123271961U;
         static const AkUniqueID PLAYERFOOTSTEPS = 1681012287U;

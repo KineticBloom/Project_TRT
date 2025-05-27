@@ -25,6 +25,9 @@ public class CameraTiltControl : MonoBehaviour
 
     private Vector2 DetermineInput()
     {
+        if (GameManager.Player == null || !GameManager.Player.Movement.CanMove) return Vector2.zero;
+        if (GameManager.PlayerInput == null) return Vector2.zero;
+
         Vector3 axis = GameManager.PlayerInput.GetViewAxis();
         Vector2 input = new(axis.x, axis.z);
 

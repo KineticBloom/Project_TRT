@@ -483,7 +483,7 @@
 							<ObjectRef Name="MusicConversionSettings" ID="{B2D7E993-8C9F-46C7-9ED1-9AA1EB255C16}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+							<ObjectRef Name="AmbienceMaster" ID="{286C8CB9-7D4C-44E7-9139-C8391E920F9C}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -520,6 +520,11 @@
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="1"/>
 						<Property Name="AttenuationDistanceScaling" Type="Real32" Value="0.5"/>
+						<Property Name="OutputBusVolume" Type="Real64">
+							<ValueList>
+								<Value>-7</Value>
+							</ValueList>
+						</Property>
 						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 						<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 						<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
@@ -552,7 +557,7 @@
 							<ObjectRef Name="MusicConversionSettings" ID="{B2D7E993-8C9F-46C7-9ED1-9AA1EB255C16}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+							<ObjectRef Name="AmbienceMaster" ID="{286C8CB9-7D4C-44E7-9139-C8391E920F9C}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -669,6 +674,11 @@
 				<RandomSequenceContainer Name="General_Field_LoopContainer" ID="{79FEA1AE-5AA8-4BC0-BC4E-152F8A74B2E9}" ShortID="364785273">
 					<PropertyList>
 						<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+						<Property Name="OutputBusVolume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
 						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 						<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 						<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="2"/>
@@ -684,7 +694,7 @@
 							<ObjectRef Name="MusicConversionSettings" ID="{B2D7E993-8C9F-46C7-9ED1-9AA1EB255C16}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+							<ObjectRef Name="AmbienceMaster" ID="{286C8CB9-7D4C-44E7-9139-C8391E920F9C}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -739,6 +749,11 @@
 				</RandomSequenceContainer>
 				<RandomSequenceContainer Name="General_City_LoopContainer" ID="{F89F9B5E-EF61-4EF6-84DD-E1C9CC0A97C8}" ShortID="479817124">
 					<PropertyList>
+						<Property Name="OutputBusVolume" Type="Real64">
+							<ValueList>
+								<Value>-7</Value>
+							</ValueList>
+						</Property>
 						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 						<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 						<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="2"/>
@@ -754,7 +769,7 @@
 							<ObjectRef Name="MusicConversionSettings" ID="{B2D7E993-8C9F-46C7-9ED1-9AA1EB255C16}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+							<ObjectRef Name="AmbienceMaster" ID="{286C8CB9-7D4C-44E7-9139-C8391E920F9C}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -820,7 +835,7 @@
 							<ObjectRef Name="MusicConversionSettings" ID="{B2D7E993-8C9F-46C7-9ED1-9AA1EB255C16}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+							<ObjectRef Name="AmbienceMaster" ID="{286C8CB9-7D4C-44E7-9139-C8391E920F9C}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>

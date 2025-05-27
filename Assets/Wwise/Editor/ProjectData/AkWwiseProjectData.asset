@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 587ca0226052be4e9b8540a22c4f2092
     GuidInternal: 
-    m_lastTime: -8584541444912700575
+    m_lastTime: -8584533030094405067
     List:
     - name: AmbienceMaster
       guid: b98c6c284c7de7449139c8391e920f9c
@@ -382,7 +382,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Ambience
     guid: 0104f6680c27bf408fd7c64816ee8c87
     GuidInternal: 
-    m_lastTime: -8584541444912193972
+    m_lastTime: -8584533036486710331
     List:
     - name: Ambience
       guid: 86b2f852bdba9b4fa5a800a04824ffe7
@@ -477,7 +477,7 @@ MonoBehaviour:
     ParentPath: Events\Ambience
     guid: 78290c8229ac584884ed86c3baba619d
     GuidInternal: 
-    m_lastTime: -8584533043540763777
+    m_lastTime: -8584533023449533158
     List:
     - name: BirdStart
       guid: 932c63abf08ea4489f51f773ba1e5c74
@@ -494,6 +494,57 @@ MonoBehaviour:
         guid: 932c63abf08ea4489f51f773ba1e5c74
       Path: Events\Ambience\BirdStart
       maxAttenuation: 25
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_Emit_Trees_LoopContainer
+      guid: 868f699de9aa624da0c734a097b56a48
+      id: 2918147375
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Ambience
+        ObjectType: 12
+        guid: 78290c8229ac584884ed86c3baba619d
+      - ElementName: Play_Emit_Trees_LoopContainer
+        ObjectType: 3
+        guid: 868f699de9aa624da0c734a097b56a48
+      Path: Events\Ambience\Play_Emit_Trees_LoopContainer
+      maxAttenuation: 35
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_General_City_LoopContainer
+      guid: dcc12bb83267d142a763a1d1a541e5eb
+      id: 3523120038
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Ambience
+        ObjectType: 12
+        guid: 78290c8229ac584884ed86c3baba619d
+      - ElementName: Play_General_City_LoopContainer
+        ObjectType: 3
+        guid: dcc12bb83267d142a763a1d1a541e5eb
+      Path: Events\Ambience\Play_General_City_LoopContainer
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_General_Field_LoopContainer
+      guid: af60dbc2ec218e43a38535651d4260f8
+      id: 1032127473
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Ambience
+        ObjectType: 12
+        guid: 78290c8229ac584884ed86c3baba619d
+      - ElementName: Play_General_Field_LoopContainer
+        ObjectType: 3
+        guid: af60dbc2ec218e43a38535651d4260f8
+      Path: Events\Ambience\Play_General_Field_LoopContainer
+      maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
     - name: Play_MachineHum1_LoopContainer
@@ -578,7 +629,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: dba32c0e7d4df947b2afda2156b7851f
       Path: Events\Ambience\Play_Wind_LoopContainer
-      maxAttenuation: 0
+      maxAttenuation: 50
       maxDuration: 0
       minDuration: 0
     - name: Play_WindChimes_LoopContainer
@@ -595,6 +646,40 @@ MonoBehaviour:
         ObjectType: 3
         guid: 85bb83a4dbbc4c42a3ec6569a86c64ae
       Path: Events\Ambience\Play_WindChimes_LoopContainer
+      maxAttenuation: 25
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_General_City_LoopContainer
+      guid: a01373d44fab31459b13b462256c67f0
+      id: 1529661576
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Ambience
+        ObjectType: 12
+        guid: 78290c8229ac584884ed86c3baba619d
+      - ElementName: Stop_General_City_LoopContainer
+        ObjectType: 3
+        guid: a01373d44fab31459b13b462256c67f0
+      Path: Events\Ambience\Stop_General_City_LoopContainer
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_General_Field_LoopContainer
+      guid: 06f321b117f6d74b805d897e206938ed
+      id: 1321819679
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Ambience
+        ObjectType: 12
+        guid: 78290c8229ac584884ed86c3baba619d
+      - ElementName: Stop_General_Field_LoopContainer
+        ObjectType: 3
+        guid: 06f321b117f6d74b805d897e206938ed
+      Path: Events\Ambience\Stop_General_Field_LoopContainer
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -827,7 +912,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 33316d7890aa87408e2af719ccc92cfd
     GuidInternal: 
-    m_lastTime: -8584533043540543577
+    m_lastTime: -8584533035934978032
     List: []
   - PhysicalPath: Events\DialogueUI.wwu
     PathAndIcons:
@@ -1943,7 +2028,7 @@ MonoBehaviour:
         guid: 23c0f7a154fe4f4dbb4cbb0e19d72476
       Path: Triggers\Default Work Unit\Test
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 050000001b0000001c0000001d0000001f000000
+  ExpandedWaapiItemIds: 05000000060000001b0000001c0000001d0000001f000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

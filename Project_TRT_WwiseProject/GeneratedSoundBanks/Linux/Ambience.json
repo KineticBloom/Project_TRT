@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{52F8B286-BABD-4F9B-A5A8-00A04824FFE7}",
     "Language": "SFX",
-    "Hash": "{3BE7EA5A-45A2-008A-864E-48B85C3ABFB5}",
+    "Hash": "{FC52A2C2-9920-B9D3-9838-260EDFE5CF87}",
     "ObjectPath": "\\SoundBanks\\Ambience\\Ambience",
     "ShortName": "Ambience",
     "Path": "Ambience.bnk",
@@ -47,6 +47,14 @@
       "Location": "Memory",
       "ShortName": "AMB_Machine_Hum2.wav",
       "CachePath": "04/{04CD1EF7-2BE8-DF7E-01A2-3E092601434C}.wem"
+     },
+     {
+      "Id": "371377404",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks & Noises, Montreal, Canada, LOOP.wav",
+      "CachePath": "AE/{AE8B0AB7-A9D6-E6F1-7DFC-F9D2E8736953}.wem"
      },
      {
       "Id": "417504426",
@@ -97,6 +105,22 @@
       "CachePath": "24/{245FA8FE-6839-E888-8230-494140CC1925}.wem"
      },
      {
+      "Id": "738464481",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMBIENCE Desert Soft Day.wav",
+      "CachePath": "47/{4750FBE9-A38D-38E0-1BD6-31D4BC782E1F}.wem"
+     },
+     {
+      "Id": "909551617",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AMBIENCE City Plazza, Rumble, 8AM, Barsha Heights, Dubai, UAE.wav",
+      "CachePath": "5D/{5DDE20B9-A52A-2834-07E3-E48790E7BA94}.wem"
+     },
+     {
       "Id": "934940429",
       "Language": "SFX",
       "Streaming": "false",
@@ -113,6 +137,18 @@
       "CachePath": "1D/{1D62BD7C-BB3A-4B9B-84D7-D65B0435DE7C}.wem"
      }
     ],
+    "Plugins": {
+     "Custom": [
+      {
+       "Id": "111397819",
+       "Name": "Parametric EQ (Custom)",
+       "ObjectPath": "\\Actor-Mixer Hierarchy\\Ambience\\General_Field_LoopContainer\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
+       "GUID": "{79D826E9-DB41-49F1-957A-26758D5CD080}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      }
+     ]
+    },
     "Events": [
      {
       "Id": "3943065624",
@@ -132,6 +168,50 @@
         "Id": "1041211660"
        }
       ]
+     },
+     {
+      "Id": "2918147375",
+      "Name": "Play_Emit_Trees_LoopContainer",
+      "ObjectPath": "\\Events\\Ambience\\Play_Emit_Trees_LoopContainer",
+      "GUID": "{9D698F86-AAE9-4D62-A0C7-34A097B56A48}",
+      "MaxAttenuation": "35",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "371377404"
+       }
+      ]
+     },
+     {
+      "Id": "3523120038",
+      "Name": "Play_General_City_LoopContainer",
+      "ObjectPath": "\\Events\\Ambience\\Play_General_City_LoopContainer",
+      "GUID": "{B82BC1DC-6732-42D1-A763-A1D1A541E5EB}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "909551617"
+       }
+      ]
+     },
+     {
+      "Id": "1032127473",
+      "Name": "Play_General_Field_LoopContainer",
+      "ObjectPath": "\\Events\\Ambience\\Play_General_Field_LoopContainer",
+      "GUID": "{C2DB60AF-21EC-438E-A385-35651D4260F8}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "738464481"
+       }
+      ],
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "111397819"
+        }
+       ]
+      }
      },
      {
       "Id": "30480848",
@@ -192,6 +272,7 @@
       "Name": "Play_Wind_LoopContainer",
       "ObjectPath": "\\Events\\Ambience\\Play_Wind_LoopContainer",
       "GUID": "{0E2CA3DB-4D7D-47F9-B2AF-DA2156B7851F}",
+      "MaxAttenuation": "50",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
@@ -213,12 +294,50 @@
       "Name": "Play_WindChimes_LoopContainer",
       "ObjectPath": "\\Events\\Ambience\\Play_WindChimes_LoopContainer",
       "GUID": "{A483BB85-BCDB-424C-A3EC-6569A86C64AE}",
+      "MaxAttenuation": "25",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
         "Id": "178110774"
        }
       ]
+     },
+     {
+      "Id": "1529661576",
+      "Name": "Stop_General_City_LoopContainer",
+      "ObjectPath": "\\Events\\Ambience\\Stop_General_City_LoopContainer",
+      "GUID": "{D47313A0-AB4F-4531-9B13-B462256C67F0}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "MediaRefs": [
+       {
+        "Id": "909551617"
+       }
+      ]
+     },
+     {
+      "Id": "1321819679",
+      "Name": "Stop_General_Field_LoopContainer",
+      "ObjectPath": "\\Events\\Ambience\\Stop_General_Field_LoopContainer",
+      "GUID": "{B121F306-F617-4BD7-805D-897E206938ED}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "MediaRefs": [
+       {
+        "Id": "738464481"
+       }
+      ],
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "111397819"
+        }
+       ]
+      }
      },
      {
       "Id": "664772623",
@@ -267,6 +386,6 @@
     ]
    }
   ],
-  "FileHash": "{8800C50D-D356-6E87-5AF3-3D7AA27F735C}"
+  "FileHash": "{8E500971-A051-7A64-B1F5-4B59C37EF180}"
  }
 }

@@ -4,6 +4,13 @@
 		<WorkUnit Name="Music" ID="{832E5C5F-F56D-419D-8330-26F7BC293CAB}" PersistMode="Standalone">
 			<ChildrenList>
 				<SoundBank Name="Music" ID="{2CAF7C27-18E4-40A7-871C-C075A9250659}">
+					<PropertyList>
+						<Property Name="Maximum" Type="int32">
+							<ValueList>
+								<Value>60000000</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ObjectInclusionList>
 						<ObjectRef Name="PlayerSpawn" ID="{3FC073F9-6EBD-4285-9702-06E6A2A90930}" WorkUnitID="{3CA207E9-88B7-4086-A56F-225EA88A4DFE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="MusicSwitch" ID="{156DF745-3C84-4423-930E-A66D9CA4354F}" WorkUnitID="{3CA207E9-88B7-4086-A56F-225EA88A4DFE}" Origin="Manual" Filter="7"/>

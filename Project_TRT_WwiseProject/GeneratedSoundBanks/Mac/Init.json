@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{A9915A00-6273-A3DE-DE9A-66A040B1EA2A}",
+    "Hash": "{C558439D-1C32-2D5A-4EBE-6958878D7382}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -66,6 +66,12 @@
       "Name": "EdenDialogue",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\NPCMaster\\EdenDialogue",
       "GUID": "{57A18A29-F91A-4F48-880E-BB1175B59B8A}"
+     },
+     {
+      "Id": "1141413220",
+      "Name": "NPCDialogue",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\NPCMaster\\NPCDialogue",
+      "GUID": "{C8A6332F-2334-4CC5-81C3-64D5BE386971}"
      },
      {
       "Id": "1350496757",
@@ -191,6 +197,19 @@
         }
        ]
       }
+     },
+     {
+      "Id": "3364212889",
+      "Name": "Alleyway",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\Reverbs\\Alleyway",
+      "GUID": "{B530D511-FF4C-4F56-8923-79F07C08B072}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "48620415"
+        }
+       ]
+      }
      }
     ],
     "GameParameters": [
@@ -217,6 +236,12 @@
       "Name": "MasterVolume",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\MasterVolume",
       "GUID": "{E70BD259-826F-4DC0-9077-F7A3D88C2DFC}"
+     },
+     {
+      "Id": "3207605084",
+      "Name": "InAlleyway",
+      "ObjectPath": "\\Game Parameters\\Music\\InAlleyway",
+      "GUID": "{5EA6774B-ADCB-41E5-B66B-577C9E25F9BA}"
      }
     ],
     "StateGroups": [
@@ -227,10 +252,10 @@
       "GUID": "{AE40F95D-3431-4615-8D9B-77FE40BE0B6C}",
       "States": [
        {
-        "Id": "58138747",
-        "Name": "Active",
-        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\Active",
-        "GUID": "{A4AE8BB5-B12D-49FE-8894-16968C8D3D71}"
+        "Id": "152105657",
+        "Name": "TitleScreen",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\TitleScreen",
+        "GUID": "{D0982152-D605-45BA-8C28-539132CED873}"
        },
        {
         "Id": "644073513",
@@ -245,22 +270,28 @@
         "GUID": "{B9EC6211-81DD-4C56-BC1E-E4DA0611B591}"
        },
        {
+        "Id": "1024696295",
+        "Name": "Cathedral",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\Cathedral",
+        "GUID": "{0F520E76-7E75-488D-9424-F5B0AF11D9AA}"
+       },
+       {
         "Id": "1029337087",
         "Name": "MailbotBarter",
         "ObjectPath": "\\States\\Default Work Unit\\MusicState\\MailbotBarter",
         "GUID": "{220970BA-3873-4295-B08E-35E3D335D7F9}"
        },
        {
+        "Id": "1643460142",
+        "Name": "MailbotRoom",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\MailbotRoom",
+        "GUID": "{1EC052D8-37C9-4D0A-8148-CC10C0A2835E}"
+       },
+       {
         "Id": "2064283983",
         "Name": "PlayerSpawn",
         "ObjectPath": "\\States\\Default Work Unit\\MusicState\\PlayerSpawn",
         "GUID": "{34160084-965A-46DB-A8F6-BFA9644AC295}"
-       },
-       {
-        "Id": "3753286132",
-        "Name": "Calm",
-        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\Calm",
-        "GUID": "{4A916F2C-FEA7-4172-9C63-FC5255A5BA9D}"
        }
       ]
      },
@@ -271,16 +302,88 @@
       "GUID": "{742AC06F-F1E5-400D-8A3C-979FA3CCB73B}",
       "States": [
        {
+        "Id": "84696440",
+        "Name": "G",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\G",
+        "GUID": "{E595F590-7420-4FED-B8C0-360D1098D4A8}"
+       },
+       {
+        "Id": "84696441",
+        "Name": "F",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\F",
+        "GUID": "{D9891193-7A4F-444A-95EB-E6A7D85987F9}"
+       },
+       {
+        "Id": "84696442",
+        "Name": "E",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\E",
+        "GUID": "{A196567F-4C7E-40AD-AD07-AEE4A1444F3D}"
+       },
+       {
+        "Id": "84696443",
+        "Name": "D",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\D",
+        "GUID": "{59A9C4E2-4474-466D-89E2-3F527F929EE3}"
+       },
+       {
+        "Id": "84696444",
+        "Name": "C",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\C",
+        "GUID": "{CA968F0E-DC6F-495F-BDF7-E49DA74E43D3}"
+       },
+       {
+        "Id": "84696445",
+        "Name": "B",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\B",
+        "GUID": "{38911AFD-178F-42D4-98D6-E3C43467BC1A}"
+       },
+       {
+        "Id": "84696446",
+        "Name": "A",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\A",
+        "GUID": "{3DFC00DE-DA1F-4B8D-8AE6-78752A00128A}"
+       },
+       {
+        "Id": "164139463",
+        "Name": "A_Sharp",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\A_Sharp",
+        "GUID": "{598F3619-F37C-4EE5-9035-C3808413C50B}"
+       },
+       {
         "Id": "748895195",
         "Name": "None",
         "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\None",
         "GUID": "{65C65A6B-0E0B-4CC0-B107-3381A2D372F4}"
+       },
+       {
+        "Id": "844677726",
+        "Name": "D_Sharp",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\D_Sharp",
+        "GUID": "{70B24C31-3DC5-42BC-8469-3194C8209E3D}"
+       },
+       {
+        "Id": "951594152",
+        "Name": "F_Sharp",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\F_Sharp",
+        "GUID": "{A786F718-86F6-4D0D-93EE-DF36398F7D7E}"
+       },
+       {
+        "Id": "2816864521",
+        "Name": "C_Sharp",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\C_Sharp",
+        "GUID": "{B2B61568-5B0D-444F-9873-7891B147CA16}"
+       },
+       {
+        "Id": "3736223277",
+        "Name": "G_Sharp",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\G_Sharp",
+        "GUID": "{02B11534-91D6-497C-9355-B48818793C71}"
        }
       ]
      }
     ]
    }
   ],
-  "FileHash": "{94DB1FCE-E061-7C4D-B62E-4FC593B7DADE}"
+  "FileHash": "{825DC2A4-A019-4324-7C12-E138815804EB}"
  }
 }

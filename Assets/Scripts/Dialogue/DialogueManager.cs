@@ -17,6 +17,9 @@ public class DialogueManager : MonoBehaviour {
     public GameObject NPCDialogueBubblePrefab;
     public GameObject PlayerDialogueBubblePrefab;
 
+    public AudioEvent NPCDialogueSFX;
+    public AudioEvent NPCDialogueEndSFX;
+
     public System.Action EndCallback;
 
     public float TypeSpeed;
@@ -520,9 +523,12 @@ public class DialogueManager : MonoBehaviour {
 
         yield return new WaitForSeconds(ActualTextSpeed);
 
-        // Play sound every other character or if a punctuation
-        if (NextCharacter == '.' || CharactersPrinted % 2 == 0) {
+        // Play sound every three characters or if a punctuation
+        if (NextCharacter == '.' || CharactersPrinted % 3 == 0) {
             //playTalkSound(currentCharacter);
+            //Debug.Log(NPCDialogueSFX);
+            NPCDialogueSFX.Play(gameObject);
+            //Debug.Log("Bwip");
         }
 
         if (CurrentLineData.CharactersPrinted > CharactersPrinted) {
@@ -539,6 +545,8 @@ public class DialogueManager : MonoBehaviour {
                 DialogueUiManager.ShowButtons(CurrentLineData.Choices);
             }
             LineFinished = true;
+
+            NPCDialogueEndSFX.Play(gameObject);
 
             StartSlowBounce.Invoke();
 

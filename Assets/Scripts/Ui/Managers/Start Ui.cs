@@ -22,17 +22,17 @@ public class StartUi : UiManager<StartUi.UiStates> {
     public void MoveToTitle() => MoveTo(UiStates.Title);
     public void MoveToCredits()
     {
-        SceneManager.LoadScene("0.25_Credits");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void MoveToOptions() => MoveTo(UiStates.Options);
     public void MoveToAccessibilityCheck() => MoveTo(UiStates.AccessibilityCheck);
     public void MoveToNewGame() {
         SaveSystem.ResetSaveData();
         Metrics.Reset();
-        SceneManager.LoadScene("0.5_Tutorial");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
     public void MoveToContinueGame() {
-        SceneManager.LoadScene("0.75_Limbo");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
     }
 
     public void MoveToQuit() {

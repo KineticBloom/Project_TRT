@@ -606,6 +606,8 @@ MonoBehaviour:
       IsTimeFrozen: 0
       IsDialogueFrozen: 0
       PauseAnimations: 0
+      DisableInventoryInteractions: 0
+      DisableInventory: 0
   - First: 1
     Second:
       StatesCanvasGroup: {fileID: 6911838826977111114}
@@ -613,6 +615,8 @@ MonoBehaviour:
       IsTimeFrozen: 0
       IsDialogueFrozen: 0
       PauseAnimations: 0
+      DisableInventoryInteractions: 0
+      DisableInventory: 0
   - First: 2
     Second:
       StatesCanvasGroup: {fileID: 7960375027257350913}
@@ -620,6 +624,8 @@ MonoBehaviour:
       IsTimeFrozen: 0
       IsDialogueFrozen: 0
       PauseAnimations: 0
+      DisableInventoryInteractions: 0
+      DisableInventory: 0
   - First: 4
     Second:
       StatesCanvasGroup: {fileID: 133668682570725073}
@@ -627,6 +633,8 @@ MonoBehaviour:
       IsTimeFrozen: 0
       IsDialogueFrozen: 0
       PauseAnimations: 0
+      DisableInventoryInteractions: 0
+      DisableInventory: 0
   - First: 5
     Second:
       StatesCanvasGroup: {fileID: 5846295629876609048}
@@ -634,6 +642,8 @@ MonoBehaviour:
       IsTimeFrozen: 0
       IsDialogueFrozen: 0
       PauseAnimations: 0
+      DisableInventoryInteractions: 0
+      DisableInventory: 0
   - First: 6
     Second:
       StatesCanvasGroup: {fileID: 54729022619238924}
@@ -641,6 +651,8 @@ MonoBehaviour:
       IsTimeFrozen: 0
       IsDialogueFrozen: 0
       PauseAnimations: 0
+      DisableInventoryInteractions: 0
+      DisableInventory: 0
 --- !u!1001 &249947800686975146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1956,8 +1968,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7077956838690717917, guid: 2976cd3258159dd408cdefc06ef14d89,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2894336810391276362}
   m_SourcePrefab: {fileID: 100100000, guid: 2976cd3258159dd408cdefc06ef14d89, type: 3}
+--- !u!1 &2700205717766432507 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7077956838690717917, guid: 2976cd3258159dd408cdefc06ef14d89,
+    type: 3}
+  m_PrefabInstance: {fileID: 5134379508635756070}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2894336810391276362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2700205717766432507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 576db1b398ae7ab4a939025de4b9bd91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  continueButton: {fileID: 5626726546141814160}
 --- !u!224 &3450871604018140509 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7539887267079041915, guid: 2976cd3258159dd408cdefc06ef14d89,
@@ -1970,7 +2005,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 5134379508635756070}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2700205717766432507}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}

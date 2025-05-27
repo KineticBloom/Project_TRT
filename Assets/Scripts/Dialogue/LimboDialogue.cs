@@ -490,7 +490,7 @@ public class LimboDialogue : MonoBehaviour {
 
     private void LoadMainScene()
     {
-        _loadSceneOperation = SceneManager.LoadSceneAsync("1_MainWorld", LoadSceneMode.Single);
+        _loadSceneOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
         _loadSceneOperation.allowSceneActivation = false;
     }
 

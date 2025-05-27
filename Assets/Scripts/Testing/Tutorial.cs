@@ -22,7 +22,7 @@ public class Tutorial : MonoBehaviour
     
     private void Awake()
     {
-        if (TimeLoopManager.Instance == null) {
+        if (TimeLoopManager.Instance == null && GameManager.Instance != null) {
             GameManager.Instance.FindPlayer();
             GameManager.Instance.FindMasterCanvas();
             GameManager.Inventory.Clear();

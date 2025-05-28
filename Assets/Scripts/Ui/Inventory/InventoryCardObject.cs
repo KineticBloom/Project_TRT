@@ -188,16 +188,19 @@ public class InventoryCardObject : MonoBehaviour {
         }
 
         if(Card.CurrentValue != Card.BaseValue) {
-            UpdateValueChangeVisuals(changedSpriteIcon,unchangedSpriteValue);
+            UpdateValueChangeVisuals(changedSpriteIcon,changedSpriteValue);
+            itemValueText.text = Card.CurrentValue.ToString() + "*";
+            itemFullValueTextA.text = Card.CurrentValue.ToString() + "*";
         } else {
             UpdateValueChangeVisuals(unchangedSpriteIcon, unchangedSpriteValue);
+            itemValueText.text = Card.CurrentValue.ToString();
+            itemFullValueTextA.text = Card.CurrentValue.ToString();
         }
 
         itemSpriteImage.sprite = Card.Sprite;
         itemFullSprite.sprite = Card.Sprite;
         itemFullName.text = Card.CardName;
-        itemValueText.text = "¥" + Card.CurrentValue.ToString();
-        itemFullValueTextA.text = "¥" + Card.CurrentValue.ToString();
+        
         itemDescriptionText.text = Card.Description;
         itemTagsText.text = $"Tags: {string.Join<string>(",", Card.Tags)}";
     }

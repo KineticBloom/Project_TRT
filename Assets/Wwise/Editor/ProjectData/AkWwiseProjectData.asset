@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: d2e647656401fa48b0d64a886d907446
     GuidInternal: 
-    m_lastTime: -8584549282084931518
+    m_lastTime: -8584617669444020918
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,8 +38,28 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 587ca0226052be4e9b8540a22c4f2092
     GuidInternal: 
-    m_lastTime: -8584541444912700575
+    m_lastTime: -8584533105937881256
     List:
+    - name: Alleyway
+      guid: 11d530b54cff564f892379f07c08b072
+      id: 3364212889
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 587ca0226052be4e9b8540a22c4f2092
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Reverbs
+        ObjectType: 2
+        guid: 6190d0604aadd1439b496042a98c2796
+      - ElementName: Alleyway
+        ObjectType: 1
+        guid: 11d530b54cff564f892379f07c08b072
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Alleyway
     - name: AmbienceMaster
       guid: b98c6c284c7de7449139c8391e920f9c
       id: 2611281843
@@ -185,6 +205,26 @@ MonoBehaviour:
         ObjectType: 2
         guid: 883656adb723a945b273cd51079ae47a
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\MusicMaster
+    - name: NPCDialogue
+      guid: 2f33a6c83423c54c81c364d5be386971
+      id: 1141413220
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 587ca0226052be4e9b8540a22c4f2092
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: NPCMaster
+        ObjectType: 2
+        guid: 43ffc81682332f42b0d647325d444edf
+      - ElementName: NPCDialogue
+        ObjectType: 2
+        guid: 2f33a6c83423c54c81c364d5be386971
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\NPCMaster\NPCDialogue
     - name: NPCMaster
       guid: 43ffc81682332f42b0d647325d444edf
       id: 2033911932
@@ -382,7 +422,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Ambience
     guid: 0104f6680c27bf408fd7c64816ee8c87
     GuidInternal: 
-    m_lastTime: -8584541444912193972
+    m_lastTime: -8584557141059687687
     List:
     - name: Ambience
       guid: 86b2f852bdba9b4fa5a800a04824ffe7
@@ -409,7 +449,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 04fe062a3bbc02478aebf9ed87255f35
     GuidInternal: 
-    m_lastTime: -8584549282087113501
+    m_lastTime: -8584617669444040755
     List: []
   - PhysicalPath: SoundBanks\Music.wwu
     PathAndIcons:
@@ -422,7 +462,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Music
     guid: 5f5c2e836df59d41833026f7bc293cab
     GuidInternal: 
-    m_lastTime: -8584541444912184279
+    m_lastTime: -8584533111985376727
     List:
     - name: Music
       guid: 277caf2ce418a740871cc075a9250659
@@ -449,7 +489,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\SFX
     guid: f39c92e98d8cf14f9d79f84c53eb00b3
     GuidInternal: 
-    m_lastTime: -8584547966151370996
+    m_lastTime: -8584533138970551613
     List:
     - name: SFX
       guid: cc965433ea452249b9fac65217b7662e
@@ -477,7 +517,7 @@ MonoBehaviour:
     ParentPath: Events\Ambience
     guid: 78290c8229ac584884ed86c3baba619d
     GuidInternal: 
-    m_lastTime: -8584547966247902384
+    m_lastTime: -8584563963495028893
     List:
     - name: BirdStart
       guid: 932c63abf08ea4489f51f773ba1e5c74
@@ -598,7 +638,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC\B4rn3y
     guid: ba283f9801c3804bbf336ac089576497
     GuidInternal: 
-    m_lastTime: -8584542524497870458
+    m_lastTime: -8584563113261171621
     List:
     - name: ENV_B4rn3y_Hoot
       guid: e19f9296802a3549972f8fca527c927f
@@ -660,7 +700,7 @@ MonoBehaviour:
     ParentPath: Events\UI\BarteringUI
     guid: 40c947321f41084491c4b5b163ca6270
     GuidInternal: 
-    m_lastTime: -8584547966247863294
+    m_lastTime: -8584598674458537558
     List:
     - name: BART_Barter_Lose
       guid: 3855ac20de5b634d9ad1e66c511fb4b5
@@ -793,7 +833,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 33316d7890aa87408e2af719ccc92cfd
     GuidInternal: 
-    m_lastTime: -8584547966247789285
+    m_lastTime: -8584617595952268450
     List: []
   - PhysicalPath: Events\DialogueUI.wwu
     PathAndIcons:
@@ -809,8 +849,28 @@ MonoBehaviour:
     ParentPath: Events\UI\DialogueUI
     guid: 5f47fcfbe9a3aa4593ef3112c673b6da
     GuidInternal: 
-    m_lastTime: -8584541444923640004
+    m_lastTime: -8584549246675396174
     List:
+    - name: BarterEventOpen
+      guid: b6b22459d266e04e83571e8c6fd0eb5c
+      id: 884323815
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: 75f867dc1a9906498df4975d819bec40
+      - ElementName: DialogueUI
+        ObjectType: 12
+        guid: 5f47fcfbe9a3aa4593ef3112c673b6da
+      - ElementName: BarterEventOpen
+        ObjectType: 3
+        guid: b6b22459d266e04e83571e8c6fd0eb5c
+      Path: Events\UI\DialogueUI\BarterEventOpen
+      maxAttenuation: 0
+      maxDuration: 2.4855783
+      minDuration: 2.4855783
     - name: ConversationStart
       guid: 158ea13dea5eae41a8005d9966f3d771
       id: 1163963844
@@ -848,7 +908,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC\Eden
     guid: a25562c68949034d8d2f00c179802c36
     GuidInternal: 
-    m_lastTime: -8584542524497851774
+    m_lastTime: -8584563364711470232
     List:
     - name: ENV_Eden_Expel
       guid: 1ce39ba1bc0ff74d9e88f004eab07b56
@@ -907,7 +967,7 @@ MonoBehaviour:
     ParentPath: Events\Environment
     guid: 851bf5aefe549d489c25241343bb6f59
     GuidInternal: 
-    m_lastTime: -8584542524497851774
+    m_lastTime: -8584563364711638446
     List: []
   - PhysicalPath: Events\EnvironmentUI.wwu
     PathAndIcons:
@@ -923,7 +983,7 @@ MonoBehaviour:
     ParentPath: Events\UI\EnvironmentUI
     guid: 4be82f8af05f9c4bb20ac0e39bad8dae
     GuidInternal: 
-    m_lastTime: -8584547966247681250
+    m_lastTime: -8584599538249826444
     List:
     - name: ENV_Interaction_Arrow_Hide
       guid: e67f97983d2b8d4198fae5033e8d4006
@@ -982,7 +1042,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC\F1x
     guid: ce3cd6713d17334b966516859d0170a9
     GuidInternal: 
-    m_lastTime: -8584542524497851774
+    m_lastTime: -8584563117216567906
     List:
     - name: ENV_F1x_Dont_Bite
       guid: 77759b87c7315a40b6658ecb407d9f00
@@ -1044,7 +1104,7 @@ MonoBehaviour:
     ParentPath: Events\UI\MenuUI
     guid: 3ced4e25bc1aa447a545adce0ca03f95
     GuidInternal: 
-    m_lastTime: -8584547966247661218
+    m_lastTime: -8584599443031670527
     List:
     - name: UI_Menu_Close
       guid: 438c2832b6aa2845ab36655fe26f9b55
@@ -1097,8 +1157,248 @@ MonoBehaviour:
     ParentPath: Events\Music
     guid: 1baa49cfe5a4fe438cbe031c55500853
     GuidInternal: 
-    m_lastTime: -8584541444923630011
+    m_lastTime: -8584533131945676649
     List:
+    - name: Key_A
+      guid: a348740626e76b4592a95b259a257e46
+      id: 3865414042
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_A
+        ObjectType: 3
+        guid: a348740626e76b4592a95b259a257e46
+      Path: Events\Music\MusicKeyStateEvents\Key_A
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Key_A_Sharp
+      guid: 7d960a504840274aa41091b37bec9e4e
+      id: 3472466315
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_A_Sharp
+        ObjectType: 3
+        guid: 7d960a504840274aa41091b37bec9e4e
+      Path: Events\Music\MusicKeyStateEvents\Key_A_Sharp
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Key_B
+      guid: 7ef4067cb2d0b24a83060d089acfde21
+      id: 3865414041
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_B
+        ObjectType: 3
+        guid: 7ef4067cb2d0b24a83060d089acfde21
+      Path: Events\Music\MusicKeyStateEvents\Key_B
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Key_C
+      guid: 59be6d1b06707147bb00fdfbafc1eba1
+      id: 3865414040
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_C
+        ObjectType: 3
+        guid: 59be6d1b06707147bb00fdfbafc1eba1
+      Path: Events\Music\MusicKeyStateEvents\Key_C
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Key_C_Sharp
+      guid: fbf25cce742d1d49827dd3b7d6a68d00
+      id: 3108336397
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_C_Sharp
+        ObjectType: 3
+        guid: fbf25cce742d1d49827dd3b7d6a68d00
+      Path: Events\Music\MusicKeyStateEvents\Key_C_Sharp
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Key_D
+      guid: 8e921287c669bc49a72aeb30570864fb
+      id: 3865414047
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_D
+        ObjectType: 3
+        guid: 8e921287c669bc49a72aeb30570864fb
+      Path: Events\Music\MusicKeyStateEvents\Key_D
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Key_D_Sharp
+      guid: 01d40168c8b7734a985c840b5a855b28
+      id: 3053480186
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_D_Sharp
+        ObjectType: 3
+        guid: 01d40168c8b7734a985c840b5a855b28
+      Path: Events\Music\MusicKeyStateEvents\Key_D_Sharp
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Key_E
+      guid: 538661cb1d010d408230faedd397768d
+      id: 3865414046
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_E
+        ObjectType: 3
+        guid: 538661cb1d010d408230faedd397768d
+      Path: Events\Music\MusicKeyStateEvents\Key_E
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Key_F
+      guid: dd7e94b393f1244997b20a3857a62b40
+      id: 3865414045
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_F
+        ObjectType: 3
+        guid: dd7e94b393f1244997b20a3857a62b40
+      Path: Events\Music\MusicKeyStateEvents\Key_F
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Key_F_Sharp
+      guid: 9aa972dbf7b52d499367ee91195e302b
+      id: 2159057780
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_F_Sharp
+        ObjectType: 3
+        guid: 9aa972dbf7b52d499367ee91195e302b
+      Path: Events\Music\MusicKeyStateEvents\Key_F_Sharp
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Key_G
+      guid: b498217bd4251548a0192b6459622cea
+      id: 3865414044
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_G
+        ObjectType: 3
+        guid: b498217bd4251548a0192b6459622cea
+      Path: Events\Music\MusicKeyStateEvents\Key_G
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Key_G_Sharp
+      guid: 94658a6d5b76b1479941ac4dfa1c780a
+      id: 2931308521
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicKeyStateEvents
+        ObjectType: 4
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      - ElementName: Key_G_Sharp
+        ObjectType: 3
+        guid: 94658a6d5b76b1479941ac4dfa1c780a
+      Path: Events\Music\MusicKeyStateEvents\Key_G_Sharp
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: MusicEvents
       guid: bb98cb8f8639c644980fd12d17cb9504
       id: 2858168685
@@ -1116,9 +1416,9 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
-    - name: MusicStateActive
-      guid: b5e755e895d52648ad8a374f605fcf53
-      id: 1623677187
+    - name: MusicKeyStateEvents
+      guid: a0463b3459bc9e4dbf14605313d8c419
+      id: 3885955093
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -1126,16 +1426,13 @@ MonoBehaviour:
       - ElementName: Music
         ObjectType: 12
         guid: 1baa49cfe5a4fe438cbe031c55500853
-      - ElementName: MusicEvents
+      - ElementName: MusicKeyStateEvents
         ObjectType: 4
-        guid: bb98cb8f8639c644980fd12d17cb9504
-      - ElementName: MusicStateActive
-        ObjectType: 3
-        guid: b5e755e895d52648ad8a374f605fcf53
-      Path: Events\Music\MusicEvents\MusicStateActive
+        guid: a0463b3459bc9e4dbf14605313d8c419
+      Path: Events\Music\MusicKeyStateEvents
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: -1
+      minDuration: -1
     - name: MusicStateBarter
       guid: 90fc9d181ef01244bd9d62d38c8e0814
       id: 4269622689
@@ -1176,9 +1473,9 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
-    - name: MusicStateCalm
-      guid: d4d011b7ab20394ab4e982305ba67d38
-      id: 821441420
+    - name: MusicStateCathedral
+      guid: 48a1cbf945aec340ba39e66421e1d524
+      id: 1302030383
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -1189,10 +1486,30 @@ MonoBehaviour:
       - ElementName: MusicEvents
         ObjectType: 4
         guid: bb98cb8f8639c644980fd12d17cb9504
-      - ElementName: MusicStateCalm
+      - ElementName: MusicStateCathedral
         ObjectType: 3
-        guid: d4d011b7ab20394ab4e982305ba67d38
-      Path: Events\Music\MusicEvents\MusicStateCalm
+        guid: 48a1cbf945aec340ba39e66421e1d524
+      Path: Events\Music\MusicEvents\MusicStateCathedral
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: MusicStateMailbotRoom
+      guid: 49954da26f7b6549aab9617b3bc2696b
+      id: 1881520806
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicEvents
+        ObjectType: 4
+        guid: bb98cb8f8639c644980fd12d17cb9504
+      - ElementName: MusicStateMailbotRoom
+        ObjectType: 3
+        guid: 49954da26f7b6549aab9617b3bc2696b
+      Path: Events\Music\MusicEvents\MusicStateMailbotRoom
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -1213,6 +1530,26 @@ MonoBehaviour:
         ObjectType: 3
         guid: c6fa5b6161d2484ca19683acaebf5061
       Path: Events\Music\MusicEvents\MusicStatePlayerSpawn
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: MusicStateTitleScreen
+      guid: 105f7f8a465f52418b4ff708d00dbf74
+      id: 1104426513
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicEvents
+        ObjectType: 4
+        guid: bb98cb8f8639c644980fd12d17cb9504
+      - ElementName: MusicStateTitleScreen
+        ObjectType: 3
+        guid: 105f7f8a465f52418b4ff708d00dbf74
+      Path: Events\Music\MusicEvents\MusicStateTitleScreen
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -1347,8 +1684,48 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC
     guid: 09137e3649952b468f529ebe6f164b6b
     GuidInternal: 
-    m_lastTime: -8584542524497826492
-    List: []
+    m_lastTime: -8584533095557069631
+    List:
+    - name: NPCDialogueEndSFX
+      guid: bcdcfda55528e745879da7f4e681fec7
+      id: 2346769448
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Environment
+        ObjectType: 12
+        guid: 851bf5aefe549d489c25241343bb6f59
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 09137e3649952b468f529ebe6f164b6b
+      - ElementName: NPCDialogueEndSFX
+        ObjectType: 3
+        guid: bcdcfda55528e745879da7f4e681fec7
+      Path: Events\Environment\NPC\NPCDialogueEndSFX
+      maxAttenuation: 0
+      maxDuration: 0.24690716
+      minDuration: 0.24690716
+    - name: NPCDialogueSFX
+      guid: a3528a8c7ca9d8429f7c1de4af71163f
+      id: 3457263945
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Environment
+        ObjectType: 12
+        guid: 851bf5aefe549d489c25241343bb6f59
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 09137e3649952b468f529ebe6f164b6b
+      - ElementName: NPCDialogueSFX
+        ObjectType: 3
+        guid: a3528a8c7ca9d8429f7c1de4af71163f
+      Path: Events\Environment\NPC\NPCDialogueSFX
+      maxAttenuation: 0
+      maxDuration: 0.07832917
+      minDuration: 0.07832917
   - PhysicalPath: Events\Objects.wwu
     PathAndIcons:
     - ElementName: Events
@@ -1363,7 +1740,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\Objects
     guid: f53d68a94c6e354d9f4eeee3b0dcd364
     GuidInternal: 
-    m_lastTime: -8584541444923630011
+    m_lastTime: -8584558933987835219
     List:
     - name: DoorOpen
       guid: e45a10416290f44da2dd9afd2f2afa3d
@@ -1479,7 +1856,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\Player
     guid: d5f674957249a840bcf4382b6f3925ec
     GuidInternal: 
-    m_lastTime: -8584541444923630011
+    m_lastTime: -8584549279676624890
     List:
     - name: PlayerFootsteps
       guid: 84795c876ed0ab43a382ca7872053bb8
@@ -1512,7 +1889,7 @@ MonoBehaviour:
     ParentPath: Events\SettingsUI
     guid: 1fb0d41104b6e84e81ed9ee770f55b1a
     GuidInternal: 
-    m_lastTime: -8584547966247543137
+    m_lastTime: -8584563963495023934
     List:
     - name: Play_Menu_ButtonDown
       guid: 1bffeceb86b8cc499461cd7752dd9198
@@ -1593,7 +1970,7 @@ MonoBehaviour:
     ParentPath: Events\UI
     guid: 75f867dc1a9906498df4975d819bec40
     GuidInternal: 
-    m_lastTime: -8584541444923620037
+    m_lastTime: -8584558283970906016
     List: []
   RtpcWwu:
   - PhysicalPath: Game Parameters\Ambience.wwu
@@ -1607,7 +1984,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Ambience
     guid: 1364dfa97885f64c975561aade985960
     GuidInternal: 
-    m_lastTime: -8584547966247411989
+    m_lastTime: -8584599538167819512
     List:
     - name: AmbienceVolume
       guid: 01dd239d2ba1e14984ac00064dd75e62
@@ -1634,7 +2011,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: be288e71c0cc3c439b7b4bfb6a1a4c72
     GuidInternal: 
-    m_lastTime: -8584547966247388222
+    m_lastTime: -8584599538167814546
     List:
     - name: MasterVolume
       guid: 59d20be76f82c04d9077f7a3d88c2dfc
@@ -1661,8 +2038,22 @@ MonoBehaviour:
     ParentPath: Game Parameters\Music
     guid: d5202f5c1fdb7e4592a92fb8427c1e09
     GuidInternal: 
-    m_lastTime: -8584547966247367981
+    m_lastTime: -8584548419623615909
     List:
+    - name: InAlleyway
+      guid: 4b77a65ecbade541b66b577c9e25f9ba
+      id: 3207605084
+      PathAndIcons:
+      - ElementName: Game Parameters
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: d5202f5c1fdb7e4592a92fb8427c1e09
+      - ElementName: InAlleyway
+        ObjectType: 13
+        guid: 4b77a65ecbade541b66b577c9e25f9ba
+      Path: Game Parameters\Music\InAlleyway
     - name: MusicVolume
       guid: 4d5e195f502dd74ead8860aef95d5310
       id: 2346531308
@@ -1688,7 +2079,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\SFX
     guid: b76be0652aa2144ca2f1c95ef14073c4
     GuidInternal: 
-    m_lastTime: -8584547966247348101
+    m_lastTime: -8584599538167809592
     List:
     - name: SFXVolume
       guid: 3afe647cb3b54f438d068914ab1c8a1f
@@ -1716,7 +2107,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: e6b79552b8b0634f8a967d61276f57fa
     GuidInternal: 
-    m_lastTime: -8584541444912184279
+    m_lastTime: -8584533131945582407
     List:
     - name: CurrentMusicKey
       guid: 6fc02a74e5f10d408a3c979fa3ccb73b
@@ -1733,6 +2124,198 @@ MonoBehaviour:
         guid: 6fc02a74e5f10d408a3c979fa3ccb73b
       Path: States\Default Work Unit\CurrentMusicKey
       values:
+      - name: A
+        guid: de00fc3d1fda8d4b8ae678752a00128a
+        id: 84696446
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: A
+          ObjectType: 8
+          guid: de00fc3d1fda8d4b8ae678752a00128a
+      - name: A_Sharp
+        guid: 19368f597cf3e54e9035c3808413c50b
+        id: 164139463
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: A_Sharp
+          ObjectType: 8
+          guid: 19368f597cf3e54e9035c3808413c50b
+      - name: B
+        guid: fd1a91388f17d44298d6e3c43467bc1a
+        id: 84696445
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: B
+          ObjectType: 8
+          guid: fd1a91388f17d44298d6e3c43467bc1a
+      - name: C
+        guid: 0e8f96ca6fdc5f49bdf7e49da74e43d3
+        id: 84696444
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: C
+          ObjectType: 8
+          guid: 0e8f96ca6fdc5f49bdf7e49da74e43d3
+      - name: C_Sharp
+        guid: 6815b6b20d5b4f4498737891b147ca16
+        id: 2816864521
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: C_Sharp
+          ObjectType: 8
+          guid: 6815b6b20d5b4f4498737891b147ca16
+      - name: D
+        guid: e2c4a95974446d4689e23f527f929ee3
+        id: 84696443
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: D
+          ObjectType: 8
+          guid: e2c4a95974446d4689e23f527f929ee3
+      - name: D_Sharp
+        guid: 314cb270c53dbc4284693194c8209e3d
+        id: 844677726
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: D_Sharp
+          ObjectType: 8
+          guid: 314cb270c53dbc4284693194c8209e3d
+      - name: E
+        guid: 7f5696a17e4cad40ad07aee4a1444f3d
+        id: 84696442
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: E
+          ObjectType: 8
+          guid: 7f5696a17e4cad40ad07aee4a1444f3d
+      - name: F
+        guid: 931189d94f7a4a4495ebe6a7d85987f9
+        id: 84696441
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: F
+          ObjectType: 8
+          guid: 931189d94f7a4a4495ebe6a7d85987f9
+      - name: F_Sharp
+        guid: 18f786a7f6860d4d93eedf36398f7d7e
+        id: 951594152
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: F_Sharp
+          ObjectType: 8
+          guid: 18f786a7f6860d4d93eedf36398f7d7e
+      - name: G
+        guid: 90f595e52074ed4fb8c0360d1098d4a8
+        id: 84696440
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: G
+          ObjectType: 8
+          guid: 90f595e52074ed4fb8c0360d1098d4a8
+      - name: G_Sharp
+        guid: 3415b102d6917c499355b48818793c71
+        id: 3736223277
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: CurrentMusicKey
+          ObjectType: 9
+          guid: 6fc02a74e5f10d408a3c979fa3ccb73b
+        - ElementName: G_Sharp
+          ObjectType: 8
+          guid: 3415b102d6917c499355b48818793c71
       - name: None
         guid: 6b5ac6650b0ec04cb1073381a2d372f4
         id: 748895195
@@ -1767,22 +2350,6 @@ MonoBehaviour:
         guid: 5df940ae313415468d9b77fe40be0b6c
       Path: States\Default Work Unit\MusicState
       values:
-      - name: Active
-        guid: b58baea42db1fe49889416968c8d3d71
-        id: 58138747
-        PathAndIcons:
-        - ElementName: States
-          ObjectType: 5
-          guid: 00000000000000000000000000000000
-        - ElementName: Default Work Unit
-          ObjectType: 12
-          guid: e6b79552b8b0634f8a967d61276f57fa
-        - ElementName: MusicState
-          ObjectType: 9
-          guid: 5df940ae313415468d9b77fe40be0b6c
-        - ElementName: Active
-          ObjectType: 8
-          guid: b58baea42db1fe49889416968c8d3d71
       - name: Barter
         guid: f5e3f74baa3c3145b914d1278d66757c
         id: 644073513
@@ -1799,9 +2366,9 @@ MonoBehaviour:
         - ElementName: Barter
           ObjectType: 8
           guid: f5e3f74baa3c3145b914d1278d66757c
-      - name: Calm
-        guid: 2c6f914aa7fe72419c63fc5255a5ba9d
-        id: 3753286132
+      - name: Cathedral
+        guid: 760e520f757e8d489424f5b0af11d9aa
+        id: 1024696295
         PathAndIcons:
         - ElementName: States
           ObjectType: 5
@@ -1812,9 +2379,9 @@ MonoBehaviour:
         - ElementName: MusicState
           ObjectType: 9
           guid: 5df940ae313415468d9b77fe40be0b6c
-        - ElementName: Calm
+        - ElementName: Cathedral
           ObjectType: 8
-          guid: 2c6f914aa7fe72419c63fc5255a5ba9d
+          guid: 760e520f757e8d489424f5b0af11d9aa
       - name: MailbotBarter
         guid: ba70092273389542b08e35e3d335d7f9
         id: 1029337087
@@ -1831,6 +2398,22 @@ MonoBehaviour:
         - ElementName: MailbotBarter
           ObjectType: 8
           guid: ba70092273389542b08e35e3d335d7f9
+      - name: MailbotRoom
+        guid: d852c01ec9370a4d8148cc10c0a2835e
+        id: 1643460142
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: MusicState
+          ObjectType: 9
+          guid: 5df940ae313415468d9b77fe40be0b6c
+        - ElementName: MailbotRoom
+          ObjectType: 8
+          guid: d852c01ec9370a4d8148cc10c0a2835e
       - name: None
         guid: 1162ecb9dd81564cbc1ee4da0611b591
         id: 748895195
@@ -1863,6 +2446,22 @@ MonoBehaviour:
         - ElementName: PlayerSpawn
           ObjectType: 8
           guid: 840016345a96db46a8f6bfa9644ac295
+      - name: TitleScreen
+        guid: 522198d005d6ba458c28539132ced873
+        id: 152105657
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: MusicState
+          ObjectType: 9
+          guid: 5df940ae313415468d9b77fe40be0b6c
+        - ElementName: TitleScreen
+          ObjectType: 8
+          guid: 522198d005d6ba458c28539132ced873
       ValueGuids: []
       ValueIcons: []
       valuesInternal: []
@@ -1878,7 +2477,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 4106411ba585644787ebc92dd1cdc4ca
     GuidInternal: 
-    m_lastTime: -8584549282083570267
+    m_lastTime: -8584617669444025876
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -1892,7 +2491,7 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: 9df9aa54af8cab4ea76b42f4ee8eaa58
     GuidInternal: 
-    m_lastTime: -8584549282085191758
+    m_lastTime: -8584617669444020918
     List:
     - name: Test
       guid: 23c0f7a154fe4f4dbb4cbb0e19d72476
@@ -1909,7 +2508,7 @@ MonoBehaviour:
         guid: 23c0f7a154fe4f4dbb4cbb0e19d72476
       Path: Triggers\Default Work Unit\Test
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 050000001b0000001c0000001d0000001f000000
+  ExpandedWaapiItemIds: 05000000060000000e0000000f0000001100000012000000130000003e000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

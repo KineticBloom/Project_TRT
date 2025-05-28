@@ -19,6 +19,7 @@ namespace AK
         static const AkUniqueID BART_CARD_PLACE = 3630843069U;
         static const AkUniqueID BART_CARD_SELECT = 349408092U;
         static const AkUniqueID BART_CARD_SHUFFLE = 362751767U;
+        static const AkUniqueID BARTEREVENTOPEN = 884323815U;
         static const AkUniqueID BIRDSTART = 3943065624U;
         static const AkUniqueID CONVERSATIONSTART = 1163963844U;
         static const AkUniqueID DOOROPEN = 1404805401U;
@@ -34,11 +35,14 @@ namespace AK
         static const AkUniqueID ENV_INTERACTION_ARROW_SHOW = 1995159183U;
         static const AkUniqueID ITEMPICKUP = 1851462748U;
         static const AkUniqueID LIGHTAMBIENCE = 2186217851U;
-        static const AkUniqueID MUSICSTATEACTIVE = 1623677187U;
         static const AkUniqueID MUSICSTATEBARTER = 4269622689U;
         static const AkUniqueID MUSICSTATEBARTERING = 237747687U;
-        static const AkUniqueID MUSICSTATECALM = 821441420U;
+        static const AkUniqueID MUSICSTATECATHEDRAL = 1302030383U;
+        static const AkUniqueID MUSICSTATEMAILBOTROOM = 1881520806U;
         static const AkUniqueID MUSICSTATEPLAYERSPAWN = 1031159975U;
+        static const AkUniqueID MUSICSTATETITLESCREEN = 1104426513U;
+        static const AkUniqueID NPCDIALOGUEENDSFX = 2346769448U;
+        static const AkUniqueID NPCDIALOGUESFX = 3457263945U;
         static const AkUniqueID PAUSEMUSIC = 1127073398U;
         static const AkUniqueID PLAY_MACHINEHUM1_LOOPCONTAINER = 30480848U;
         static const AkUniqueID PLAY_MACHINEHUM2_LOOPCONTAINER = 1929638735U;
@@ -66,6 +70,18 @@ namespace AK
 
             namespace STATE
             {
+                static const AkUniqueID A = 84696446U;
+                static const AkUniqueID A_SHARP = 164139463U;
+                static const AkUniqueID B = 84696445U;
+                static const AkUniqueID C = 84696444U;
+                static const AkUniqueID C_SHARP = 2816864521U;
+                static const AkUniqueID D = 84696443U;
+                static const AkUniqueID D_SHARP = 844677726U;
+                static const AkUniqueID E = 84696442U;
+                static const AkUniqueID F = 84696441U;
+                static const AkUniqueID F_SHARP = 951594152U;
+                static const AkUniqueID G = 84696440U;
+                static const AkUniqueID G_SHARP = 3736223277U;
                 static const AkUniqueID NONE = 748895195U;
             } // namespace STATE
         } // namespace CURRENTMUSICKEY
@@ -76,12 +92,13 @@ namespace AK
 
             namespace STATE
             {
-                static const AkUniqueID ACTIVE = 58138747U;
                 static const AkUniqueID BARTER = 644073513U;
-                static const AkUniqueID CALM = 3753286132U;
+                static const AkUniqueID CATHEDRAL = 1024696295U;
                 static const AkUniqueID MAILBOTBARTER = 1029337087U;
+                static const AkUniqueID MAILBOTROOM = 1643460142U;
                 static const AkUniqueID NONE = 748895195U;
                 static const AkUniqueID PLAYERSPAWN = 2064283983U;
+                static const AkUniqueID TITLESCREEN = 152105657U;
             } // namespace STATE
         } // namespace MUSICSTATE
 
@@ -90,6 +107,7 @@ namespace AK
     namespace GAME_PARAMETERS
     {
         static const AkUniqueID AMBIENCEVOLUME = 1204480359U;
+        static const AkUniqueID INALLEYWAY = 3207605084U;
         static const AkUniqueID MASTERVOLUME = 2918011349U;
         static const AkUniqueID MUSICVOLUME = 2346531308U;
         static const AkUniqueID SFXVOLUME = 988953028U;
@@ -117,6 +135,7 @@ namespace AK
         static const AkUniqueID F1XDIALOGUE = 2763508416U;
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
         static const AkUniqueID MUSICMASTER = 3199789248U;
+        static const AkUniqueID NPCDIALOGUE = 1141413220U;
         static const AkUniqueID NPCMASTER = 2033911932U;
         static const AkUniqueID OBJECTSMASTER = 3123271961U;
         static const AkUniqueID PLAYERFOOTSTEPS = 1681012287U;
@@ -129,6 +148,7 @@ namespace AK
 
     namespace AUX_BUSSES
     {
+        static const AkUniqueID ALLEYWAY = 3364212889U;
         static const AkUniqueID CHURCH = 2568407992U;
         static const AkUniqueID OUTDOORS = 2730119150U;
         static const AkUniqueID SMALLROOM = 2933838247U;

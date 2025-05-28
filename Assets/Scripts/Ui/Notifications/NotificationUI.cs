@@ -115,9 +115,9 @@ public class NotificationUI : MonoBehaviour
         Vector2 fadePosition = mainPosition + fadeOffset;
         
         // Start Showing the Notification
-        text.rectTransform.localPosition = fadePosition;
-        text.DOFade(1, showDuration).SetEase(showEase);
-        text.rectTransform.DOLocalMove(mainPosition, showDuration).SetEase(showEase);
+        notif.GetComponent<RectTransform>().localPosition = fadePosition;
+        notif.GetComponent<CanvasGroup>().DOFade(1, showDuration).SetEase(showEase);
+        notif.GetComponent<RectTransform>().DOLocalMove(mainPosition, showDuration).SetEase(showEase);
     }
 
 
@@ -126,7 +126,7 @@ public class NotificationUI : MonoBehaviour
     /// </summary>
     private void Hide(GameObject notif)
     {
-        _notifToText[notif].DOFade(0, hideDuration).SetEase(hideEase).onComplete = () => {
+        notif.GetComponent<CanvasGroup>().DOFade(0, hideDuration).SetEase(hideEase).onComplete = () => {
             MoveDownAfter(notif);
             _notifPool.Deactivate(notif);
         };

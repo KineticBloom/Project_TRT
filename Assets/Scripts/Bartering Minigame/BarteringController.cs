@@ -22,6 +22,7 @@ public class BarteringController : MonoBehaviour
     [Header("NPC Dependencies")]
     public TMP_Text NPCValueText;
     public Image NPCProfilePicture;
+    public TextMeshProUGUI NPCNameTag;
     public InventoryCardObject NPCOfferSlotOne;
 
     [Header("End State Dependencies")]
@@ -420,6 +421,7 @@ public class BarteringController : MonoBehaviour
 
         // Load Picture of NPC
         NPCProfilePicture.sprite = tempTradeData.NPCData.Icon;
+        NPCNameTag.text = tempTradeData.NPCData.Name;
     }
 
     #endregion

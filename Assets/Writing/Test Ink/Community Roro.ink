@@ -25,11 +25,11 @@ How about it?
     -> END
 
 === Barter ===
-Great! Hand me 4 items and I'll give you something nice.
+Great! Hand me 4 items and I'll give you something nice. #NPC
 NULL_LINE #Barter
 -> END
 
 === NoBarter ===
 Thank you for your service! #NPC
-I don't have anything else today, come back tomorrow!
+I don't have anything else today, come back tomorrow! #NPC
 -> END

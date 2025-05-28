@@ -7,7 +7,7 @@ Hello there. #NPC
 * I would like to Barter. 
     ->Barter
 * What do you like? 
-    I love rolling in dirt! #NPC
+    I love farming! #NPC
     ** How interesting...
     -> END
 * Nevermind.

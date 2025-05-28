@@ -69,6 +69,134 @@
 							</ObjectLists>
 						</Bus>
 						<Bus Name="SFXMaster" ID="{3B4B816F-92FF-4D54-BEA1-C89250720378}">
+							<ChildrenList>
+								<Bus Name="NPCMaster" ID="{16C8FF43-3382-422F-B0D6-47325D444EDF}">
+									<PropertyList>
+										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ChildrenList>
+										<Bus Name="F1xDialogue" ID="{3D1C1905-C2A3-4135-A174-65A5B6BD9CE0}"/>
+										<Bus Name="B4rn3yDialogue" ID="{F50FAF7D-1E2D-492A-8522-8B5E824C1B89}"/>
+										<Bus Name="EdenDialogue" ID="{57A18A29-F91A-4F48-880E-BB1175B59B8A}"/>
+										<Bus Name="NPCDialogue" ID="{C8A6332F-2334-4CC5-81C3-64D5BE386971}">
+											<PropertyList>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>8</Value>
+													</ValueList>
+												</Property>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+										</Bus>
+									</ChildrenList>
+								</Bus>
+								<Bus Name="PlayerMaster" ID="{0990BDE6-CC8E-4218-9FA0-4A2DFE95990B}">
+									<ChildrenList>
+										<Bus Name="PlayerMovement" ID="{7ECD3BCE-139B-4B0F-AF15-E9FA80142059}">
+											<ChildrenList>
+												<Bus Name="PlayerFootsteps" ID="{DE8C0002-B4AF-40C2-BE0F-6FA2ACA4630A}">
+													<PropertyList>
+														<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+													</PropertyList>
+												</Bus>
+											</ChildrenList>
+										</Bus>
+									</ChildrenList>
+								</Bus>
+								<Bus Name="ObjectsMaster" ID="{EEE2086A-7A1F-4A6C-B183-06753A292FEA}"/>
+								<Bus Name="UIMaster" ID="{FDBE6303-FCC7-427E-96F8-ED5F452DA1B6}"/>
+								<Bus Name="EnvironmentMaster" ID="{C894ED6E-D19C-4CC9-BEBE-D81E80AC8A9A}"/>
+								<Bus Name="Reverbs" ID="{60D09061-AD4A-43D1-9B49-6042A98C2796}">
+									<ChildrenList>
+										<AuxBus Name="Outdoors" ID="{67BD6B9F-FC47-4579-A4B5-9FBB558C8815}">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+											</PropertyList>
+											<ObjectLists>
+												<ObjectList Name="Effects">
+													<Reference>
+														<Local>
+															<EffectSlot Name="" ID="{D10135CE-DA62-4519-A83F-9CD9A7B80CB6}" ShortID="207910638">
+																<ReferenceList>
+																	<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																		<ObjectRef Name="Have_U_Ever_Been_Outside" ID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+																	</Reference>
+																</ReferenceList>
+															</EffectSlot>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</AuxBus>
+										<AuxBus Name="Church" ID="{551A30C1-6B8C-4B66-97AB-F2B3572A46C0}">
+											<ObjectLists>
+												<ObjectList Name="Effects">
+													<Reference>
+														<Local>
+															<EffectSlot Name="" ID="{34D0F3B1-641F-4044-B0CD-94EB212D1AF1}" ShortID="34760780">
+																<ReferenceList>
+																	<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																		<ObjectRef Name="Hall_Conversation" ID="{E2C3BD70-E5E4-46A5-BDA6-99A92FAAC1AC}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+																	</Reference>
+																</ReferenceList>
+															</EffectSlot>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</AuxBus>
+										<AuxBus Name="SmallRoom" ID="{3DE47DA9-0CA2-463F-B778-D7A3F583CB6A}">
+											<ObjectLists>
+												<ObjectList Name="Effects">
+													<Reference>
+														<Local>
+															<EffectSlot Name="" ID="{6AA7ABB9-EAFB-45B4-B5ED-C0D32958BC5A}" ShortID="376550411">
+																<ReferenceList>
+																	<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																		<ObjectRef Name="Room_Medium_High_Absorbtion" ID="{E22DBBB6-7656-4B93-A28D-C003FD416889}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+																	</Reference>
+																</ReferenceList>
+															</EffectSlot>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</AuxBus>
+										<AuxBus Name="Alleyway" ID="{B530D511-FF4C-4F56-8923-79F07C08B072}">
+											<ObjectLists>
+												<ObjectList Name="Effects">
+													<Reference>
+														<Local>
+															<EffectSlot Name="" ID="{2C5AC80C-0068-4CF4-B0BE-58B16A7EA8F9}" ShortID="740389481">
+																<ReferenceList>
+																	<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																		<ObjectRef Name="Have_U_Ever_Been_Outside" ID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+																	</Reference>
+																</ReferenceList>
+															</EffectSlot>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</AuxBus>
+									</ChildrenList>
+								</Bus>
+							</ChildrenList>
 							<ObjectLists>
 								<ObjectList Name="RTPC">
 									<Reference>
@@ -116,6 +244,11 @@
 						</Bus>
 						<Bus Name="AmbienceMaster" ID="{286C8CB9-7D4C-44E7-9139-C8391E920F9C}">
 							<PropertyList>
+								<Property Name="BusVolume" Type="Real64">
+									<ValueList>
+										<Value>10</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>2</Value>
@@ -167,125 +300,6 @@
 								</ObjectList>
 							</ObjectLists>
 						</Bus>
-						<Bus Name="Reverbs" ID="{60D09061-AD4A-43D1-9B49-6042A98C2796}">
-							<ChildrenList>
-								<AuxBus Name="Outdoors" ID="{67BD6B9F-FC47-4579-A4B5-9FBB558C8815}">
-									<ObjectLists>
-										<ObjectList Name="Effects">
-											<Reference>
-												<Local>
-													<EffectSlot Name="" ID="{D10135CE-DA62-4519-A83F-9CD9A7B80CB6}" ShortID="207910638">
-														<ReferenceList>
-															<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-																<ObjectRef Name="Have_U_Ever_Been_Outside" ID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-															</Reference>
-														</ReferenceList>
-													</EffectSlot>
-												</Local>
-											</Reference>
-										</ObjectList>
-									</ObjectLists>
-								</AuxBus>
-								<AuxBus Name="Church" ID="{551A30C1-6B8C-4B66-97AB-F2B3572A46C0}">
-									<ObjectLists>
-										<ObjectList Name="Effects">
-											<Reference>
-												<Local>
-													<EffectSlot Name="" ID="{34D0F3B1-641F-4044-B0CD-94EB212D1AF1}" ShortID="34760780">
-														<ReferenceList>
-															<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-																<ObjectRef Name="Hall_Conversation" ID="{E2C3BD70-E5E4-46A5-BDA6-99A92FAAC1AC}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-															</Reference>
-														</ReferenceList>
-													</EffectSlot>
-												</Local>
-											</Reference>
-										</ObjectList>
-									</ObjectLists>
-								</AuxBus>
-								<AuxBus Name="SmallRoom" ID="{3DE47DA9-0CA2-463F-B778-D7A3F583CB6A}">
-									<ObjectLists>
-										<ObjectList Name="Effects">
-											<Reference>
-												<Local>
-													<EffectSlot Name="" ID="{6AA7ABB9-EAFB-45B4-B5ED-C0D32958BC5A}" ShortID="376550411">
-														<ReferenceList>
-															<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-																<ObjectRef Name="Room_Medium_High_Absorbtion" ID="{E22DBBB6-7656-4B93-A28D-C003FD416889}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-															</Reference>
-														</ReferenceList>
-													</EffectSlot>
-												</Local>
-											</Reference>
-										</ObjectList>
-									</ObjectLists>
-								</AuxBus>
-								<AuxBus Name="Alleyway" ID="{B530D511-FF4C-4F56-8923-79F07C08B072}">
-									<ObjectLists>
-										<ObjectList Name="Effects">
-											<Reference>
-												<Local>
-													<EffectSlot Name="" ID="{2C5AC80C-0068-4CF4-B0BE-58B16A7EA8F9}" ShortID="740389481">
-														<ReferenceList>
-															<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-																<ObjectRef Name="Have_U_Ever_Been_Outside" ID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-															</Reference>
-														</ReferenceList>
-													</EffectSlot>
-												</Local>
-											</Reference>
-										</ObjectList>
-									</ObjectLists>
-								</AuxBus>
-							</ChildrenList>
-						</Bus>
-						<Bus Name="EnvironmentMaster" ID="{C894ED6E-D19C-4CC9-BEBE-D81E80AC8A9A}"/>
-						<Bus Name="PlayerMaster" ID="{0990BDE6-CC8E-4218-9FA0-4A2DFE95990B}">
-							<ChildrenList>
-								<Bus Name="PlayerMovement" ID="{7ECD3BCE-139B-4B0F-AF15-E9FA80142059}">
-									<ChildrenList>
-										<Bus Name="PlayerFootsteps" ID="{DE8C0002-B4AF-40C2-BE0F-6FA2ACA4630A}"/>
-									</ChildrenList>
-								</Bus>
-							</ChildrenList>
-						</Bus>
-						<Bus Name="NPCMaster" ID="{16C8FF43-3382-422F-B0D6-47325D444EDF}">
-							<PropertyList>
-								<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
-								<Property Name="MaxSoundPerInstance" Type="int16">
-									<ValueList>
-										<Value>1</Value>
-									</ValueList>
-								</Property>
-								<Property Name="UseMaxSoundPerInstance" Type="bool">
-									<ValueList>
-										<Value>True</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ChildrenList>
-								<Bus Name="F1xDialogue" ID="{3D1C1905-C2A3-4135-A174-65A5B6BD9CE0}"/>
-								<Bus Name="B4rn3yDialogue" ID="{F50FAF7D-1E2D-492A-8522-8B5E824C1B89}"/>
-								<Bus Name="EdenDialogue" ID="{57A18A29-F91A-4F48-880E-BB1175B59B8A}"/>
-								<Bus Name="NPCDialogue" ID="{C8A6332F-2334-4CC5-81C3-64D5BE386971}">
-									<PropertyList>
-										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
-										<Property Name="MaxSoundPerInstance" Type="int16">
-											<ValueList>
-												<Value>8</Value>
-											</ValueList>
-										</Property>
-										<Property Name="UseMaxSoundPerInstance" Type="bool">
-											<ValueList>
-												<Value>True</Value>
-											</ValueList>
-										</Property>
-									</PropertyList>
-								</Bus>
-							</ChildrenList>
-						</Bus>
-						<Bus Name="UIMaster" ID="{FDBE6303-FCC7-427E-96F8-ED5F452DA1B6}"/>
-						<Bus Name="ObjectsMaster" ID="{EEE2086A-7A1F-4A6C-B183-06753A292FEA}"/>
 					</ChildrenList>
 					<ObjectLists>
 						<ObjectList Name="RTPC">

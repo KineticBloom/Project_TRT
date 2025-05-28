@@ -44,6 +44,9 @@ namespace AK
         static const AkUniqueID NPCDIALOGUEENDSFX = 2346769448U;
         static const AkUniqueID NPCDIALOGUESFX = 3457263945U;
         static const AkUniqueID PAUSEMUSIC = 1127073398U;
+        static const AkUniqueID PLAY_EMIT_TREES_LOOPCONTAINER = 2918147375U;
+        static const AkUniqueID PLAY_GENERAL_CITY_LOOPCONTAINER = 3523120038U;
+        static const AkUniqueID PLAY_GENERAL_FIELD_LOOPCONTAINER = 1032127473U;
         static const AkUniqueID PLAY_MACHINEHUM1_LOOPCONTAINER = 30480848U;
         static const AkUniqueID PLAY_MACHINEHUM2_LOOPCONTAINER = 1929638735U;
         static const AkUniqueID PLAY_MENU_BUTTONDOWN = 1536324566U;
@@ -52,10 +55,14 @@ namespace AK
         static const AkUniqueID PLAY_MENU_OPEN = 2236734574U;
         static const AkUniqueID PLAY_WATERFALL_BASE_LOOPCONTAINER = 2874767734U;
         static const AkUniqueID PLAY_WATERFALL_CLOSESPARKLE_LOOPCONTAINER = 3296751295U;
+        static const AkUniqueID PLAY_WIND_LOOPCONTAINER = 2059652710U;
+        static const AkUniqueID PLAY_WINDCHIMES_LOOPCONTAINER = 2334582133U;
         static const AkUniqueID PLAYERFOOTSTEPS = 1681012287U;
         static const AkUniqueID PLAYSTARTUPMUSIC = 4206258635U;
         static const AkUniqueID RESUMEMUSIC = 2170724709U;
         static const AkUniqueID STARTMUSIC = 3827058668U;
+        static const AkUniqueID STOP_GENERAL_CITY_LOOPCONTAINER = 1529661576U;
+        static const AkUniqueID STOP_GENERAL_FIELD_LOOPCONTAINER = 1321819679U;
         static const AkUniqueID STOPMUSIC = 1917263390U;
         static const AkUniqueID TESTAMBIENCESTART = 664772623U;
         static const AkUniqueID UI_MENU_CLOSE = 3226991506U;

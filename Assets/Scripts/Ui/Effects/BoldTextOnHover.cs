@@ -10,17 +10,21 @@ public class BoldTextOnHover : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     private void OnDisable() {
         TextToBold.fontStyle = FontStyles.Normal;
+        TextToBold.text = TextToBold.text.Substring(0, 1).ToUpper() + TextToBold.text.Substring(1).ToLower();
     }
 
     public void OnDeselect(BaseEventData eventData) {
         TextToBold.fontStyle = FontStyles.Normal;
+        TextToBold.text = TextToBold.text.Substring(0, 1).ToUpper() + TextToBold.text.Substring(1).ToLower();
     }
 
     public void OnSelect(BaseEventData eventData) {
-        TextToBold.fontStyle = FontStyles.UpperCase;
+        TextToBold.fontStyle = FontStyles.Bold;
+        TextToBold.text = TextToBold.text.ToUpper();
     }
 
     public void TriggerBold() {
-        TextToBold.fontStyle = FontStyles.UpperCase;
+        TextToBold.fontStyle = FontStyles.Bold;
+        TextToBold.text = TextToBold.text.ToUpper();
     }
 }

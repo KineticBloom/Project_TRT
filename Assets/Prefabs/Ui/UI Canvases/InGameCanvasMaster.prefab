@@ -4082,6 +4082,7 @@ GameObject:
   - component: {fileID: 3087110284172092529}
   - component: {fileID: 3344366993687161415}
   - component: {fileID: 5268372464124775753}
+  - component: {fileID: 3134951183333411471}
   m_Layer: 5
   m_Name: RevealScreen
   m_TagString: Untagged
@@ -4161,6 +4162,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &3134951183333411471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8792660903119719485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcaac3c52e1a701498a629686d61073d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leaveButton: {fileID: 8676827192844133177}
 --- !u!1 &8828757711331380519
 GameObject:
   m_ObjectHideFlags: 0
@@ -5065,6 +5079,11 @@ PrefabInstance:
     - target: {fileID: 5584680545271125517, guid: 06897a07a881b3a44babcfcb01ed3bad,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8547772570695791966, guid: 06897a07a881b3a44babcfcb01ed3bad,
+        type: 3}
+      propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8547772570695791966, guid: 06897a07a881b3a44babcfcb01ed3bad,
@@ -9325,7 +9344,7 @@ PrefabInstance:
     - target: {fileID: 8547772570695791966, guid: 06897a07a881b3a44babcfcb01ed3bad,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ExitBarterConfirm
+      value: LeaveBarter
       objectReference: {fileID: 0}
     - target: {fileID: 8547772570695791966, guid: 06897a07a881b3a44babcfcb01ed3bad,
         type: 3}

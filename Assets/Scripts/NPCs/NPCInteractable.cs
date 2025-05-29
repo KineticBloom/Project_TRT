@@ -6,6 +6,7 @@ public class NpcInteractable : Interactable
 {
     [SerializeField] private TextAsset npcConversation;
     [Expandable] public NPCData NpcData;
+    [SerializeField] private ParticleSystem barterWinParticles;
 
     public AudioEvent dialogueStartSFX;
     public AudioEvent interactionBarkSFX;
@@ -34,6 +35,16 @@ public class NpcInteractable : Interactable
         interactionBarkSFX.Play(gameObject);
     }
 
+    public void Interaction(string knot) {
+        Vector3 NPCWorldPosition = this.transform.position + DialogueSourceLocalPosition;
+        Vector3 PlayerWorldPosition = GameManager.Player.DialogueSource.position;
+        _squetchStarter.Subscribe();
+        GameManager.DialogueManager.StartDialogue(npcConversation, TriggerBarter, NPCWorldPosition, PlayerWorldPosition, knot);
+
+        dialogueStartSFX.Play(gameObject);
+        interactionBarkSFX.Play(gameObject);
+    }
+    
     public void TriggerBarter() {
 
         barterBarkSFX.Play(gameObject);
@@ -57,6 +68,11 @@ public class NpcInteractable : Interactable
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position + DialogueSourceLocalPosition, Vector3.one * 0.25f );
+    }
+
+    public void PlayBarterWinParticles()
+    {
+        barterWinParticles.Play();
     }
 
     /// <summary>

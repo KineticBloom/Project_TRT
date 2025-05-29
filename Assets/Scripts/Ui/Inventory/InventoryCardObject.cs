@@ -193,7 +193,7 @@ public class InventoryCardObject : MonoBehaviour {
         itemValueText.text = "¥" + Card.CurrentValue.ToString();
         itemFullValueTextA.text = "¥" + Card.CurrentValue.ToString();
         itemDescriptionText.text = Card.Description;
-        itemTagsText.text = $"Tags: {string.Join<string>(",", Card.Tags)}";
+        itemTagsText.text = $"Tags: {string.Join<string>(", ", Card.Tags)}";
     }
 
     /// <summary>

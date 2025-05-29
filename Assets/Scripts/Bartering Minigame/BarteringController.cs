@@ -459,6 +459,12 @@ public class BarteringController : MonoBehaviour
     }
     IEnumerator EFFECT_ActivateEffectCards(ActivationTime activationTime, bool SkipFlipDelay = false, bool PreActivation = false)
     {
+
+        if (_offeredItems.Count == 0)
+        {
+            yield break;
+        }
+
         List<EffectCard> effectCards = tempTradeData.NPCData.EffectCards;
         List<EffectCard> activeEffectCards = new List<EffectCard>();
 
@@ -486,6 +492,7 @@ public class BarteringController : MonoBehaviour
         yield return new WaitForSeconds(flipDelay);
 
         InventoryCardData lastCardAdded = _offeredItems.Items[_offeredItems.Count - 1];
+        
 
         // Flip each card that we can activate
         foreach (EffectCard effectCard in activeEffectCards)

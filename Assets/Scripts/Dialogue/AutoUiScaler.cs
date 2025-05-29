@@ -46,6 +46,8 @@ public class AutoUiScaler : MonoBehaviour {
         float textActualWidth = TextForScale.renderedWidth;
         float textHeight = TextForScale.renderedHeight;
 
+        //RectTransform.transform.localPosition += new Vector3(0, textHeight + _info.lineInfo[_info.lineCount - 1].lineHeight, 0);
+
         if (textWidth >= 1) {
             if (PaddingApplyVertically) {
                 RectTransform.sizeDelta = new Vector2(textActualWidth + Padding, textHeight + Padding);

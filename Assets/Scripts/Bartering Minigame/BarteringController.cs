@@ -483,13 +483,19 @@ public class BarteringController : MonoBehaviour
 
         yield return new WaitForSeconds(flipDelay);
 
-        InventoryCardData lastCardAdded = _offeredItems.Items[_offeredItems.Count - 1];
+        InventoryCardData lastCardAdded = null;
+
+        if (_offeredItems.Count != 0)
+        {
+            lastCardAdded = _offeredItems.Items[_offeredItems.Count - 1];
+        }
+
 
         // Flip each card that we can activate
         foreach (EffectCard effectCard in activeEffectCards)
         {
             bool skipAnimation = false;
-            if (PreActivation)
+            if (PreActivation && lastCardAdded != null)
             {
                 skipAnimation = effectCard.DoesActivate(lastCardAdded, _tradeInfo, activationTime) == false;
             }

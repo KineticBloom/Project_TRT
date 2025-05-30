@@ -473,6 +473,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9110059251031622243, guid: 18d4c015a9fae0947962be4f5d61594f,
+        type: 3}
+      propertyPath: playStartupJingle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110059251031622243, guid: 18d4c015a9fae0947962be4f5d61594f,
+        type: 3}
+      propertyPath: startingMusicState
+      value: TitleScreen
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -837,8 +847,44 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7603451394194247580, guid: 78982e87f6d267e43a5cb3917f4c6951,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2620492909398364232}
   m_SourcePrefab: {fileID: 100100000, guid: 78982e87f6d267e43a5cb3917f4c6951, type: 3}
+--- !u!1 &2620492909398364231 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7603451394194247580, guid: 78982e87f6d267e43a5cb3917f4c6951,
+    type: 3}
+  m_PrefabInstance: {fileID: 2620492909398364230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2620492909398364232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2620492909398364231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e699a8c540eee98439418a908e76ecc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: ecb40a8b1f36de74ebe76cf6310a46b1,
+      type: 2}
+  decodeBank: 0
+  overrideLoadSetting: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

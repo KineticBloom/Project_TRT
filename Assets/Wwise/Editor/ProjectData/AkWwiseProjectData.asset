@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 587ca0226052be4e9b8540a22c4f2092
     GuidInternal: 
-    m_lastTime: -8584532714151811933
+    m_lastTime: -8584531164822367032
     List:
     - name: Alleyway
       guid: 11d530b54cff564f892379f07c08b072
@@ -53,13 +53,16 @@ MonoBehaviour:
       - ElementName: Master Audio Bus
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFXMaster
+        ObjectType: 2
+        guid: 6f814b3bff92544dbea1c89250720378
       - ElementName: Reverbs
         ObjectType: 2
         guid: 6190d0604aadd1439b496042a98c2796
       - ElementName: Alleyway
         ObjectType: 1
         guid: 11d530b54cff564f892379f07c08b072
-      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Alleyway
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFXMaster\Reverbs\Alleyway
     - name: AmbienceMaster
       guid: b98c6c284c7de7449139c8391e920f9c
       id: 2611281843
@@ -113,13 +116,16 @@ MonoBehaviour:
       - ElementName: Master Audio Bus
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFXMaster
+        ObjectType: 2
+        guid: 6f814b3bff92544dbea1c89250720378
       - ElementName: Reverbs
         ObjectType: 2
         guid: 6190d0604aadd1439b496042a98c2796
       - ElementName: Church
         ObjectType: 1
         guid: c1301a558c6b664b97abf2b3572a46c0
-      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Church
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFXMaster\Reverbs\Church
     - name: EdenDialogue
       guid: 298aa1571af9484f880ebb1175b59b8a
       id: 225952121
@@ -293,13 +299,16 @@ MonoBehaviour:
       - ElementName: Master Audio Bus
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFXMaster
+        ObjectType: 2
+        guid: 6f814b3bff92544dbea1c89250720378
       - ElementName: Reverbs
         ObjectType: 2
         guid: 6190d0604aadd1439b496042a98c2796
       - ElementName: Outdoors
         ObjectType: 1
         guid: 9f6bbd6747fc7945a4b59fbb558c8815
-      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Outdoors
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFXMaster\Reverbs\Outdoors
     - name: PlayerFootsteps
       guid: 02008cdeafb4c240be0f6fa2aca4630a
       id: 1681012287
@@ -382,10 +391,13 @@ MonoBehaviour:
       - ElementName: Master Audio Bus
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFXMaster
+        ObjectType: 2
+        guid: 6f814b3bff92544dbea1c89250720378
       - ElementName: Reverbs
         ObjectType: 2
         guid: 6190d0604aadd1439b496042a98c2796
-      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFXMaster\Reverbs
     - name: SFXMaster
       guid: 6f814b3bff92544dbea1c89250720378
       id: 1681633080
@@ -416,13 +428,16 @@ MonoBehaviour:
       - ElementName: Master Audio Bus
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFXMaster
+        ObjectType: 2
+        guid: 6f814b3bff92544dbea1c89250720378
       - ElementName: Reverbs
         ObjectType: 2
         guid: 6190d0604aadd1439b496042a98c2796
       - ElementName: SmallRoom
         ObjectType: 1
         guid: a97de43da20c3f46b778d7a3f583cb6a
-      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\SmallRoom
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFXMaster\Reverbs\SmallRoom
     - name: UIMaster
       guid: 0363befdc7fc7e4296f8ed5f452da1b6
       id: 1992125169
@@ -455,7 +470,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Ambience
     guid: 0104f6680c27bf408fd7c64816ee8c87
     GuidInternal: 
-    m_lastTime: -8584533036486710331
+    m_lastTime: -8584531164806238837
     List:
     - name: Ambience
       guid: 86b2f852bdba9b4fa5a800a04824ffe7
@@ -550,7 +565,7 @@ MonoBehaviour:
     ParentPath: Events\Ambience
     guid: 78290c8229ac584884ed86c3baba619d
     GuidInternal: 
-    m_lastTime: -8584532983092354406
+    m_lastTime: -8584531164825808358
     List:
     - name: BirdStart
       guid: 932c63abf08ea4489f51f773ba1e5c74
@@ -1836,7 +1851,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC
     guid: 09137e3649952b468f529ebe6f164b6b
     GuidInternal: 
-    m_lastTime: -8584533014511098357
+    m_lastTime: -8584531103887645476
     List:
     - name: NPCDialogueEndSFX
       guid: bcdcfda55528e745879da7f4e681fec7
@@ -1856,8 +1871,8 @@ MonoBehaviour:
         guid: bcdcfda55528e745879da7f4e681fec7
       Path: Events\Environment\NPC\NPCDialogueEndSFX
       maxAttenuation: 0
-      maxDuration: 0.24690716
-      minDuration: 0.24690716
+      maxDuration: 0.12989248
+      minDuration: 0.11572104
     - name: NPCDialogueSFX
       guid: a3528a8c7ca9d8429f7c1de4af71163f
       id: 3457263945
@@ -1876,8 +1891,8 @@ MonoBehaviour:
         guid: a3528a8c7ca9d8429f7c1de4af71163f
       Path: Events\Environment\NPC\NPCDialogueSFX
       maxAttenuation: 0
-      maxDuration: 0.07832917
-      minDuration: 0.07832917
+      maxDuration: 0.08479093
+      minDuration: 0.07554012
   - PhysicalPath: Events\Objects.wwu
     PathAndIcons:
     - ElementName: Events
@@ -2660,7 +2675,7 @@ MonoBehaviour:
         guid: 23c0f7a154fe4f4dbb4cbb0e19d72476
       Path: Triggers\Default Work Unit\Test
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 020000000300000004000000050000000600000015000000180000001b0000001c0000001d0000001f0000005100000081000000
+  ExpandedWaapiItemIds: 02000000030000000400000005000000060000001500000018000000190000001a0000001b0000001c0000001d0000001f0000002b000000310000005100000081000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

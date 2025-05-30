@@ -524,7 +524,7 @@ public class DialogueManager : MonoBehaviour {
         yield return new WaitForSeconds(ActualTextSpeed);
 
         // Play sound every three characters or if a punctuation
-        if (NextCharacter == '.' || CharactersPrinted % 3 == 0) {
+        if (NextCharacter == '.' || CharactersPrinted % 4 == 0) {
             //playTalkSound(currentCharacter);
             //Debug.Log(NPCDialogueSFX);
             NPCDialogueSFX.Play(gameObject);

@@ -145,6 +145,8 @@ public class BarteringController : MonoBehaviour
 
         VISUAL_DisplayNewOffer();
         VISUAL_FindAndDisplayNewSum();
+
+        StartCoroutine(EFFECT_ActivateEffectCards(ActivationTime.AfterOffer, true, true));
     }
 
     public void LeaveBarter()
@@ -480,6 +482,11 @@ public class BarteringController : MonoBehaviour
 
         // Reset current values
         foreach (InventoryCardData x in _offeredItems.Items)
+        {
+            x.ResetCurrentValue();
+        }
+
+        foreach (InventoryCardData x in GameManager.Inventory.Get())
         {
             x.ResetCurrentValue();
         }

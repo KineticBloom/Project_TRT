@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 587ca0226052be4e9b8540a22c4f2092
     GuidInternal: 
-    m_lastTime: -8584531164822367032
+    m_lastTime: -8584530206675964635
     List:
     - name: Alleyway
       guid: 11d530b54cff564f892379f07c08b072
@@ -223,9 +223,9 @@ MonoBehaviour:
         ObjectType: 2
         guid: 883656adb723a945b273cd51079ae47a
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\MusicMaster
-    - name: NPCDialogue
+    - name: NPCDialogueSFX
       guid: 2f33a6c83423c54c81c364d5be386971
-      id: 1141413220
+      id: 3457263945
       PathAndIcons:
       - ElementName: Master-Mixer Hierarchy
         ObjectType: 5
@@ -242,10 +242,10 @@ MonoBehaviour:
       - ElementName: NPCMaster
         ObjectType: 2
         guid: 43ffc81682332f42b0d647325d444edf
-      - ElementName: NPCDialogue
+      - ElementName: NPCDialogueSFX
         ObjectType: 2
         guid: 2f33a6c83423c54c81c364d5be386971
-      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFXMaster\NPCMaster\NPCDialogue
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFXMaster\NPCMaster\NPCDialogueSFX
     - name: NPCMaster
       guid: 43ffc81682332f42b0d647325d444edf
       id: 2033911932
@@ -1851,7 +1851,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC
     guid: 09137e3649952b468f529ebe6f164b6b
     GuidInternal: 
-    m_lastTime: -8584531103887645476
+    m_lastTime: -8584530216252742685
     List:
     - name: NPCDialogueEndSFX
       guid: bcdcfda55528e745879da7f4e681fec7
@@ -1871,8 +1871,8 @@ MonoBehaviour:
         guid: bcdcfda55528e745879da7f4e681fec7
       Path: Events\Environment\NPC\NPCDialogueEndSFX
       maxAttenuation: 0
-      maxDuration: 0.12989248
-      minDuration: 0.11572104
+      maxDuration: 0.1244803
+      minDuration: 0.11089932
     - name: NPCDialogueSFX
       guid: a3528a8c7ca9d8429f7c1de4af71163f
       id: 3457263945
@@ -1891,8 +1891,8 @@ MonoBehaviour:
         guid: a3528a8c7ca9d8429f7c1de4af71163f
       Path: Events\Environment\NPC\NPCDialogueSFX
       maxAttenuation: 0
-      maxDuration: 0.08479093
-      minDuration: 0.07554012
+      maxDuration: 0.09815143
+      minDuration: 0.09000525
   - PhysicalPath: Events\Objects.wwu
     PathAndIcons:
     - ElementName: Events

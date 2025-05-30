@@ -142,7 +142,7 @@ namespace AK
         static const AkUniqueID F1XDIALOGUE = 2763508416U;
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
         static const AkUniqueID MUSICMASTER = 3199789248U;
-        static const AkUniqueID NPCDIALOGUE = 1141413220U;
+        static const AkUniqueID NPCDIALOGUESFX = 3457263945U;
         static const AkUniqueID NPCMASTER = 2033911932U;
         static const AkUniqueID OBJECTSMASTER = 3123271961U;
         static const AkUniqueID PLAYERFOOTSTEPS = 1681012287U;

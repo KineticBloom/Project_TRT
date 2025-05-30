@@ -224,6 +224,9 @@ public class BarteringController : MonoBehaviour
             }
         }
 
+        // Play item reveal SFX
+        Debug.Log("You Win!");
+
         // Show effect cards revealed -> then exit
         StartCoroutine(EFFECT_ShowEffectCards(LeaveScene));
     }

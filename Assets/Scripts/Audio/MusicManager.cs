@@ -96,10 +96,15 @@ public class MusicManager : MonoBehaviour
 
     private void PlayStartingMusicEvent()
     {
-        if (playStartupJingle && startupMusicTrigger?.data != null) 
+        if (playStartupJingle && startupMusicTrigger?.data != null)
+        {
+            Debug.Log("Starting jingle");
             startupMusicTrigger.data.Post(gameObject);
+        }
         else 
+        {
             PlayMusic();
+        }
     }
 
     private void OnEnable()
@@ -127,7 +132,8 @@ public class MusicManager : MonoBehaviour
     {
         if (_events.startEvent == null)
             return;
-
+        
+        Debug.Log("Playing Music");
         //_eventInstance.setCallback(_eventCallback);
         _events.startEvent.Post(gameObject);
         //isPlaying = true;

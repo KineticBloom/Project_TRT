@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{335496CC-45EA-4922-B9FA-C65217B7662E}",
     "Language": "SFX",
-    "Hash": "{3F2B2F07-A12D-0104-C8DD-AAE55A5D5CAB}",
+    "Hash": "{232973AE-013C-7FF6-3569-CC174011670A}",
     "ObjectPath": "\\SoundBanks\\SFX\\SFX",
     "ShortName": "SFX",
     "Path": "SFX.bnk",
@@ -70,14 +70,6 @@
       "Location": "Memory",
       "ShortName": "elevator hum.wav",
       "CachePath": "41/{41C42176-097A-E88D-E8DE-8BC9AF255817}.wem"
-     },
-     {
-      "Id": "119656223",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "NPC_F1x_Dialogue_SFX_End.wav",
-      "CachePath": "16/{16FC92E6-B7F5-F0E7-7DEC-50CD8E88AF6D}.wem"
      },
      {
       "Id": "133687762",
@@ -158,14 +150,6 @@
       "Location": "Memory",
       "ShortName": "BART_card_shuffle\\Card Shuffle Sparkle.wav",
       "CachePath": "35/{35BA2F4F-FE44-7D87-0CB7-EBF391C360A2}.wem"
-     },
-     {
-      "Id": "346839974",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "NPC_F1x_Dialogue_SFX_Normal.wav",
-      "CachePath": "EA/{EA24D61F-C09C-24BF-4A08-5DC5C217BD34}.wem"
      },
      {
       "Id": "350602102",
@@ -286,6 +270,14 @@
       "Location": "Memory",
       "ShortName": "B4rn3y_Hoot\\B4rn3y_Hoot_2.wav",
       "CachePath": "F9/{F9B3E9A2-921E-236C-FE72-21F56CC49833}.wem"
+     },
+     {
+      "Id": "599765199",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "NPC_B4rn3y_Dialogue_SFX.wav",
+      "CachePath": "E6/{E63455CD-31AA-4B43-D11B-750498677943}.wem"
      },
      {
       "Id": "613268131",
@@ -470,6 +462,14 @@
       "Location": "Memory",
       "ShortName": "ENV_Dummy_Fluorescent_Light.wav",
       "CachePath": "B8/{B83A8757-33A4-6DE5-BFBF-AF067EDFFFB4}.wem"
+     },
+     {
+      "Id": "1019604268",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "NPC_B4rn3y_Dialogue_SFX_End.wav",
+      "CachePath": "1E/{1E223280-4761-8989-5CBC-481594D260A8}.wem"
      },
      {
       "Id": "1032755162",
@@ -854,11 +854,11 @@
       "ObjectPath": "\\Events\\Environment\\NPC\\NPCDialogueEndSFX",
       "GUID": "{A5FDDCBC-2855-45E7-879D-A7F4E681FEC7}",
       "DurationType": "OneShot",
-      "DurationMin": "0.11572104",
-      "DurationMax": "0.12989248",
+      "DurationMin": "0.11089932",
+      "DurationMax": "0.1244803",
       "MediaRefs": [
        {
-        "Id": "119656223"
+        "Id": "1019604268"
        }
       ]
      },
@@ -868,11 +868,11 @@
       "ObjectPath": "\\Events\\Environment\\NPC\\NPCDialogueSFX",
       "GUID": "{8C8A52A3-A97C-42D8-9F7C-1DE4AF71163F}",
       "DurationType": "OneShot",
-      "DurationMin": "0.07554012",
-      "DurationMax": "0.08479093",
+      "DurationMin": "0.09000525",
+      "DurationMax": "0.09815143",
       "MediaRefs": [
        {
-        "Id": "346839974"
+        "Id": "599765199"
        }
       ]
      },
@@ -989,6 +989,6 @@
     ]
    }
   ],
-  "FileHash": "{573D38C6-2A31-25FC-CE45-17A9911F1355}"
+  "FileHash": "{BAAF80EB-281C-C1AD-11E7-CED2BE626533}"
  }
 }

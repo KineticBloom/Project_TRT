@@ -6,10 +6,11 @@ public class RecordAuto : MonoBehaviour
 {
     public CameraCore PlaysOnW;
     public CameraCore PlaysOnR;
+    public CameraCore PlaysOnT;
 
     private enum CurrentPlay
     {
-        W,R,NONE
+        W,T,R,NONE
     }
 
     CurrentPlay playCurrent;
@@ -19,6 +20,7 @@ public class RecordAuto : MonoBehaviour
         playCurrent = CurrentPlay.NONE;
         PlaysOnW.gameObject.SetActive(false);
         PlaysOnR.gameObject.SetActive(false);
+        PlaysOnT.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -53,6 +55,20 @@ public class RecordAuto : MonoBehaviour
                 playCurrent = CurrentPlay.NONE;
             }
         }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (playCurrent != CurrentPlay.T)
+            {
+                playCurrent = CurrentPlay.T;
+                Show(playCurrent);
+                PlaysOnT.Setup();
+            }
+            else
+            {
+                PlaysOnT.TriggerCutscene();
+                playCurrent = CurrentPlay.NONE;
+            }
+        }
     }
 
     private void Show(CurrentPlay mode)
@@ -62,14 +78,22 @@ public class RecordAuto : MonoBehaviour
             case CurrentPlay.W:
                 PlaysOnW.gameObject.SetActive(true);
                 PlaysOnR.gameObject.SetActive(false);
+                PlaysOnT.gameObject.SetActive(false);
                 break;
             case CurrentPlay.R:
                 PlaysOnW.gameObject.SetActive(false);
                 PlaysOnR.gameObject.SetActive(true);
+                PlaysOnT.gameObject.SetActive(false);
+                break;
+            case CurrentPlay.T:
+                PlaysOnW.gameObject.SetActive(false);
+                PlaysOnR.gameObject.SetActive(false);
+                PlaysOnT.gameObject.SetActive(true);
                 break;
             case CurrentPlay.NONE:
                 PlaysOnW.gameObject.SetActive(false);
                 PlaysOnR.gameObject.SetActive(false);
+                PlaysOnT.gameObject.SetActive(false);
                 break;
         }
     }

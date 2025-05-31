@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class RecordAuto : MonoBehaviour
 {
-    public CameraCore PlaysOnW;
+    public CameraCore PlaysOnY;
     public CameraCore PlaysOnR;
     public CameraCore PlaysOnT;
 
     private enum CurrentPlay
     {
-        W,T,R,NONE
+        Y,T,R,NONE
     }
 
     CurrentPlay playCurrent;
@@ -18,7 +18,7 @@ public class RecordAuto : MonoBehaviour
     private void Start()
     {
         playCurrent = CurrentPlay.NONE;
-        PlaysOnW.gameObject.SetActive(false);
+        PlaysOnY.gameObject.SetActive(false);
         PlaysOnR.gameObject.SetActive(false);
         PlaysOnT.gameObject.SetActive(false);
     }
@@ -26,18 +26,18 @@ public class RecordAuto : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-        if (Input.GetKeyDown(KeyCode.W))
+
+        if (Input.GetKeyDown(KeyCode.Y))
         {
-            if (playCurrent != CurrentPlay.W)
+            if (playCurrent != CurrentPlay.Y)
             {
-                playCurrent = CurrentPlay.W;
+                playCurrent = CurrentPlay.Y;
                 Show(playCurrent);
-                PlaysOnW.Setup();
+                PlaysOnY.Setup();
             }
             else
             {
-                PlaysOnW.TriggerCutscene();
+                PlaysOnY.TriggerCutscene();
                 playCurrent = CurrentPlay.NONE;
             }
         }
@@ -69,29 +69,34 @@ public class RecordAuto : MonoBehaviour
                 playCurrent = CurrentPlay.NONE;
             }
         }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            playCurrent = CurrentPlay.NONE;
+            Show(CurrentPlay.NONE);
+        }
     }
 
     private void Show(CurrentPlay mode)
     {
         switch (mode)
         {
-            case CurrentPlay.W:
-                PlaysOnW.gameObject.SetActive(true);
+            case CurrentPlay.Y:
+                PlaysOnY.gameObject.SetActive(true);
                 PlaysOnR.gameObject.SetActive(false);
                 PlaysOnT.gameObject.SetActive(false);
                 break;
             case CurrentPlay.R:
-                PlaysOnW.gameObject.SetActive(false);
+                PlaysOnY.gameObject.SetActive(false);
                 PlaysOnR.gameObject.SetActive(true);
                 PlaysOnT.gameObject.SetActive(false);
                 break;
             case CurrentPlay.T:
-                PlaysOnW.gameObject.SetActive(false);
+                PlaysOnY.gameObject.SetActive(false);
                 PlaysOnR.gameObject.SetActive(false);
                 PlaysOnT.gameObject.SetActive(true);
                 break;
             case CurrentPlay.NONE:
-                PlaysOnW.gameObject.SetActive(false);
+                PlaysOnY.gameObject.SetActive(false);
                 PlaysOnR.gameObject.SetActive(false);
                 PlaysOnT.gameObject.SetActive(false);
                 break;

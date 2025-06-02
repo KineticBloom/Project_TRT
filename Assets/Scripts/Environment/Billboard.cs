@@ -1,3 +1,4 @@
+using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -23,6 +24,7 @@ public class Billboard : MonoBehaviour
         "- Face Target [Recommended]: Billboard will face towards the target.\n" +
         "- Match Rotation: Billboard will match the rotation of the target.")]
     public BillboardMode Mode = BillboardMode.FaceTarget;
+    [SerializeField, Tooltip("Is this a Roro?")] private bool isRoro = false;
     [Tooltip("Flips which way is side the target")] public bool FlipOrientation = false;
     [SerializeField] private float lerpSpeed = 3f;
 
@@ -67,6 +69,16 @@ public class Billboard : MonoBehaviour
     void Update()
     {
         if (Target == null) return;
+
+        if (isRoro) 
+        {
+            Vector2 camera = new Vector2(GameManager.Player.MovePivot.position.x, GameManager.Player.MovePivot.position.z);
+            Vector2 player = new Vector2(GameManager.Player.DialogueSource.position.x, GameManager.Player.DialogueSource.position.z);
+            Vector2 playerDir = camera - player;
+            Vector2 thisDir = camera - new Vector2(transform.position.x, transform.position.z);
+            
+            FlipOrientation = Vector2.SignedAngle(playerDir, thisDir) < 0;
+        }
 
         _targetRotation = Mode switch
         {

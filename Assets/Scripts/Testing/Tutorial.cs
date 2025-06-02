@@ -22,7 +22,7 @@ public class Tutorial : MonoBehaviour
     
     private void Awake()
     {
-        if (TimeLoopManager.Instance == null) {
+        if (TimeLoopManager.Instance == null && GameManager.Instance != null) {
             GameManager.Instance.FindPlayer();
             GameManager.Instance.FindMasterCanvas();
             GameManager.Inventory.Clear();
@@ -84,9 +84,7 @@ public class Tutorial : MonoBehaviour
     void StopPlayer()
     {
         stopCamera.Activate();
-        Vector3 NPCWorldPosition = tutorialNPC.transform.position + tutorialNPC.DialogueSourceLocalPosition;
-        Vector3 PlayerWorldPosition = GameManager.Player.DialogueSource.position;
-        GameManager.DialogueManager.StartDialogue(tutorialText, tutorialNPC.TriggerBarter, NPCWorldPosition, PlayerWorldPosition, "Wait_Up");
+        tutorialNPC.Interaction("Wait_Up");
         GameManager.DialogueManager.EndCallback += EndDialogue;
     }
     

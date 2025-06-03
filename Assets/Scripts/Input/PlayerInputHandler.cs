@@ -1,10 +1,13 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 
 /// <summary>
 /// Class which manages inputs from the new input system, via PlayerControls.
@@ -55,6 +58,10 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
     public bool MouseLastUsed => _mouseLastUsed;
     
     [HideInInspector] public UnityEvent OnInputSchemeChanged;
+    
+    public static void SetHaptics(float lowFrequency, float highFrequency, float duration) => GameManager.PlayerInput?.StartCoroutine(GameManager.PlayerInput.PlayHaptics(lowFrequency, highFrequency, duration));
+    public static void ResumeHaptics() => InputSystem.ResumeHaptics();
+    public static void PauseHaptics() => InputSystem.PauseHaptics();
 
     // Misc Internal Variables ====================================================================
 
@@ -96,6 +103,7 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
             _controls.MainControls.SetCallbacks(this);
             // Likewise for the "Debug" action map.
             _controls.Debug.SetCallbacks(this);
+            StartCoroutine(WaitAFrame());
         }
 
         // Initialize the _get dict from the _getDown dict
@@ -106,10 +114,18 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
         _controls.MainControls.Enable();
         _controls.Debug.Enable();
     }
+    
+    private IEnumerator WaitAFrame()
+    {
+        yield return null;
+        InputSystemUIInputModule baseInput = EventSystem.current.currentInputModule as InputSystemUIInputModule;
+        baseInput.actionsAsset = _controls.asset;
+    }
 
     private void OnDisable() 
     {
         _controls?.MainControls.Disable();
+        InputSystem.onDeviceChange -= OnDeviceChange;
     }
     
     public void ToggleControls(bool forceOn = false)
@@ -118,6 +134,29 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
             if (forceOn || !_controls.MainControls.enabled) _controls.MainControls.Enable();
             else _controls.MainControls.Disable();
         }
+    }
+    
+    public void SetControls(bool enable)
+    {
+        if (enable) _controls.MainControls.Enable();
+        else _controls.MainControls.Disable();
+    }
+    
+    private void SwapSwitchControl()
+    {
+        InputBinding affirmBind = _controls.MainControls.AffirmButton.bindings[0];
+        _controls.MainControls.AffirmButton.ApplyBindingOverride(0, _controls.MainControls.RejectButton.bindings[0].effectivePath);
+        _controls.MainControls.RejectButton.ApplyBindingOverride(0, affirmBind.effectivePath);
+    }
+    
+    private IEnumerator PlayHaptics(float lowFrequency, float highFrequency, float duration)
+    {
+        Debug.Log(Gamepad.current);
+        Gamepad currentGamepad = Gamepad.current;
+        if (currentGamepad == null) yield break;
+        currentGamepad.SetMotorSpeeds(lowFrequency, highFrequency);
+        yield return new WaitForSeconds(duration);
+        currentGamepad.SetMotorSpeeds(0f, 0f);
     }
 
     // InputAction Callbacks and Methods ==========================================================
@@ -186,11 +225,21 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
             if (scheme.SupportsDevice(context.control.device)) {
                 if (LastUsedScheme != scheme) 
                 {
+                    if (LastUsedScheme == SwitchScheme || scheme == SwitchScheme) SwapSwitchControl();
                     LastUsedScheme = scheme;
                     OnInputSchemeChanged?.Invoke();
                 }
                 return;
             }
+        }
+    }
+    
+    private void OnDeviceChange(InputDevice device, InputDeviceChange change)
+    {
+        if (change == InputDeviceChange.Disconnected || change == InputDeviceChange.Removed || change == InputDeviceChange.Disabled)
+        {
+            InputSystem.ResetHaptics();
+            _getDown["_start"] = true;
         }
     }
 

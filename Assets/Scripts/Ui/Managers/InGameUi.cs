@@ -58,5 +58,7 @@ public class InGameUi : UiManager<InGameUi.UiStates> {
     }
 
     public override void GoBack() {return;}
+    
+    public bool InBartering() => _currentState == UiStates.Bartering;
 }
 

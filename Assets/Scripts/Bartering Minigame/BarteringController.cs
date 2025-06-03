@@ -145,6 +145,8 @@ public class BarteringController : MonoBehaviour
 
         VISUAL_DisplayNewOffer();
         VISUAL_FindAndDisplayNewSum();
+
+        StartCoroutine(EFFECT_ActivateEffectCards(ActivationTime.AfterOffer, true, true));
     }
 
     public void LeaveBarter()
@@ -159,11 +161,6 @@ public class BarteringController : MonoBehaviour
 
         // Start process
         StartCoroutine(FinishBarter());
-    }
-
-    public void ExitBarterConfirm()
-    {
-        tempTradeData.ConfirmExit = true;
     }
 
     #endregion
@@ -204,14 +201,27 @@ public class BarteringController : MonoBehaviour
         // Switch buttons
         OfferTradeButton.gameObject.SetActive(false);
         ExitEarlyButton.gameObject.SetActive(false);
-        ExitFinalTradeButton.gameObject.SetActive(true);
         SetInteractable(true);
         ExitFinalTradeButton.Select();
 
-        yield return new WaitUntil(HasConfirmedExit);
+        if (tempTradeData.TradeAttemptsLeft > 1 || tempTradeData.TradeAttemptsLeft == -1)
+        {
+            ExitFinalTradeButton.gameObject.SetActive(false);
+        }
+
+        yield return new WaitForSeconds(1.5f);
+        ExitFinalTradeButton.gameObject.SetActive(true);
 
         if (tempTradeData.WonBarterFlag == false)
         {
+
+            if (tempTradeData.TradeAttemptsLeft == -1)
+            {
+                // Show effect cards revealed -> then restart
+                StartCoroutine(EFFECT_ShowEffectCards(RestartBarter));
+                yield break;
+            }
+
             // Update attempts
             tempTradeData.TradeAttemptsLeft -= 1;
 
@@ -224,12 +234,7 @@ public class BarteringController : MonoBehaviour
             }
         }
 
-        // Show effect cards revealed -> then exit
-        StartCoroutine(EFFECT_ShowEffectCards(LeaveScene));
-    }
-    bool HasConfirmedExit()
-    {
-        return tempTradeData.ConfirmExit;
+        StartCoroutine(EFFECT_ShowEffectCards(null));
     }
 
     private void BarterWin()
@@ -478,15 +483,26 @@ public class BarteringController : MonoBehaviour
             x.ResetCurrentValue();
         }
 
+        foreach (InventoryCardData x in GameManager.Inventory.Get())
+        {
+            x.ResetCurrentValue();
+        }
+
         yield return new WaitForSeconds(flipDelay);
 
-        InventoryCardData lastCardAdded = _offeredItems.Items[_offeredItems.Count - 1];
+        InventoryCardData lastCardAdded = null;
+
+        if (_offeredItems.Count != 0)
+        {
+            lastCardAdded = _offeredItems.Items[_offeredItems.Count - 1];
+        }
+
 
         // Flip each card that we can activate
         foreach (EffectCard effectCard in activeEffectCards)
         {
             bool skipAnimation = false;
-            if (PreActivation)
+            if (PreActivation && lastCardAdded != null)
             {
                 skipAnimation = effectCard.DoesActivate(lastCardAdded, _tradeInfo, activationTime) == false;
             }
@@ -528,7 +544,7 @@ public class BarteringController : MonoBehaviour
             yield return EFFECT_ShowRevealedCards();
         }
 
-        x();
+        x?.Invoke();
     }
 
     #endregion

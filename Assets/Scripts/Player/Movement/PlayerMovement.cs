@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _input = Vector3.zero;
 	public Vector3 Input => _input;
 	[SerializeField, ReadOnly] private bool _canMove = true;
+	public bool CanMove { get { return _canMove; } }
 	private bool _forcedToMove = false;
 	private Vector3 _forcedInput = Vector3.zero;
 

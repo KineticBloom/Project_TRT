@@ -7646,8 +7646,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: [{fileID: 5011823752205342550, guid: b105e740f75216a41b8b285d747c88c0,
-        type: 3}]
+    m_RemovedGameObjects:
+    - {fileID: 5011823752205342550, guid: b105e740f75216a41b8b285d747c88c0, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b105e740f75216a41b8b285d747c88c0, type: 3}
@@ -8906,6 +8906,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2657118438954276819}
     m_Modifications:
+    - target: {fileID: 8547772570695791966, guid: 06897a07a881b3a44babcfcb01ed3bad,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LeaveBarter
+      objectReference: {fileID: 0}
     - target: {fileID: 2053339639796636029, guid: b6401afaba708f042a47571c25cf9feb,
         type: 3}
       propertyPath: m_text
@@ -9049,17 +9054,12 @@ PrefabInstance:
     - target: {fileID: 8547772570695791966, guid: b6401afaba708f042a47571c25cf9feb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ExitBarterConfirm
+      value: LeaveBarter
       objectReference: {fileID: 0}
     - target: {fileID: 8547772570695791966, guid: b6401afaba708f042a47571c25cf9feb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: BarteringController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8547772570695791966, guid: 06897a07a881b3a44babcfcb01ed3bad,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LeaveBarter
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4239972343048980070, guid: b6401afaba708f042a47571c25cf9feb, type: 3}

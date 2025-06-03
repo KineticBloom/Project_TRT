@@ -84,7 +84,7 @@ public class Tutorial : MonoBehaviour
     void StopPlayer()
     {
         stopCamera.Activate();
-        tutorialNPC.Interaction("Wait_Up");
+        tutorialNPC.Interaction("Wait_Up", "Fan");
         GameManager.DialogueManager.EndCallback += EndDialogue;
     }
     

@@ -5,27 +5,25 @@ using UnityEngine.EventSystems;
 
 public class ChoiceSelectionFlair : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
-    public Image leafSelectionHighlight;
     public TMP_Text text;
     public bool isDefaultSelection = false;
 
-    private bool FirstEnable = false;
-
     private void OnEnable() {
-        if (isDefaultSelection && FirstEnable == false) {
-            leafSelectionHighlight.gameObject.SetActive(true);
-            text.color = Color.black;
-            FirstEnable = true;
+        if (isDefaultSelection) {
+            text.color = Color.white;
         }
     }
 
+    private void OnDisable()
+    {
+        text.color = Color.black;
+    }
+
     public void OnDeselect(BaseEventData eventData) {
-        leafSelectionHighlight.gameObject.SetActive(false);
-        text.color = Color.white;
+        text.color = Color.black;
     }
 
     public void OnSelect(BaseEventData eventData) {
-        leafSelectionHighlight.gameObject.SetActive(true);
-        text.color = Color.black;
+        text.color = Color.white;
     }
 }

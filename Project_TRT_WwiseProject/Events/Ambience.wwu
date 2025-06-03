@@ -8,14 +8,14 @@
 						<Action Name="" ID="{983456CD-3FFA-414B-A27B-2B6ECAA88065}" ShortID="836265004">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Waterfall_Base_LoopContainer" ID="{11294004-03E5-4C04-8109-C235D0C57479}" WorkUnitID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}"/>
+									<ObjectRef Name="Emit_Waterfall_Base_LoopContainer" ID="{11294004-03E5-4C04-8109-C235D0C57479}" WorkUnitID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
 						<Action Name="" ID="{E45D4FEC-C764-43B2-9060-0C4BB1B96A97}" ShortID="822254946">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Waterfall_CloseSparkle_LoopContainer" ID="{A3780EEB-D81D-4C45-8455-3CFCA15FEC28}" WorkUnitID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}"/>
+									<ObjectRef Name="Emit_Waterfall_CloseSparkle_LoopContainer" ID="{A3780EEB-D81D-4C45-8455-3CFCA15FEC28}" WorkUnitID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -26,7 +26,7 @@
 						<Action Name="" ID="{E0928625-A054-42B2-9FDC-9F7A9BCC4883}" ShortID="81533663">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="SynthBirds_RandomContainer" ID="{9E473AF7-9486-40AB-9724-AEE6AFDA7116}" WorkUnitID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}"/>
+									<ObjectRef Name="Emit_SynthBirds_RandomContainer" ID="{9E473AF7-9486-40AB-9724-AEE6AFDA7116}" WorkUnitID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -37,7 +37,7 @@
 						<Action Name="" ID="{1F7B1039-9D9A-4593-83C2-939D226F50EA}" ShortID="483725425">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="MachineHum1_LoopContainer" ID="{A1086679-5F65-4305-8E29-581975315AC5}" WorkUnitID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}"/>
+									<ObjectRef Name="Emit_MachineHum1_LoopContainer" ID="{A1086679-5F65-4305-8E29-581975315AC5}" WorkUnitID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -48,7 +48,7 @@
 						<Action Name="" ID="{7F0129E0-B508-4938-8FF3-938C9FA95C43}" ShortID="712565766">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="MachineHum2_LoopContainer" ID="{8A7EC6BD-A2F2-43A2-AED7-331438DE63AF}" WorkUnitID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}"/>
+									<ObjectRef Name="Emit_MachineHum2_LoopContainer" ID="{8A7EC6BD-A2F2-43A2-AED7-331438DE63AF}" WorkUnitID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -59,7 +59,7 @@
 						<Action Name="" ID="{EFFBF1DF-27F2-4D20-9862-0A834E9D199A}" ShortID="22787841">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Waterfall_Base_LoopContainer" ID="{11294004-03E5-4C04-8109-C235D0C57479}" WorkUnitID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}"/>
+									<ObjectRef Name="Emit_Waterfall_Base_LoopContainer" ID="{11294004-03E5-4C04-8109-C235D0C57479}" WorkUnitID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -70,7 +70,94 @@
 						<Action Name="" ID="{435E199A-4673-4BA0-8CE7-8469EA4B9A42}" ShortID="531168494">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Waterfall_CloseSparkle_LoopContainer" ID="{A3780EEB-D81D-4C45-8455-3CFCA15FEC28}" WorkUnitID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}"/>
+									<ObjectRef Name="Emit_Waterfall_CloseSparkle_LoopContainer" ID="{A3780EEB-D81D-4C45-8455-3CFCA15FEC28}" WorkUnitID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_WindChimes_LoopContainer" ID="{A483BB85-BCDB-424C-A3EC-6569A86C64AE}">
+					<ChildrenList>
+						<Action Name="" ID="{F4D7C335-6721-426E-9578-C8929FC774B3}" ShortID="410629578">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Emit_WindChimes_LoopContainer" ID="{C7089D66-8E61-4787-928F-A960C676334A}" WorkUnitID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Wind_LoopContainer" ID="{0E2CA3DB-4D7D-47F9-B2AF-DA2156B7851F}">
+					<ChildrenList>
+						<Action Name="" ID="{C73F9F36-3B1B-4989-B9B4-39FA716C5A10}" ShortID="342641778">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Emit_Wind_LoopContainer" ID="{619E6F37-DDDB-40FA-AF2F-ABF463098AFA}" WorkUnitID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Emit_Trees_LoopContainer" ID="{9D698F86-AAE9-4D62-A0C7-34A097B56A48}">
+					<ChildrenList>
+						<Action Name="" ID="{E6B2A450-E178-4B96-AF95-606635CF015A}" ShortID="954397928">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Emit_Trees_LoopContainer" ID="{CA869AC5-D9C0-475A-9E93-40192A7B769F}" WorkUnitID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_General_City_LoopContainer" ID="{B82BC1DC-6732-42D1-A763-A1D1A541E5EB}">
+					<ChildrenList>
+						<Action Name="" ID="{8053EF06-FF75-406D-BF1F-BBF55FDC819E}" ShortID="637687819">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="General_City_LoopContainer" ID="{F89F9B5E-EF61-4EF6-84DD-E1C9CC0A97C8}" WorkUnitID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_General_Field_LoopContainer" ID="{C2DB60AF-21EC-438E-A385-35651D4260F8}">
+					<ChildrenList>
+						<Action Name="" ID="{D31A01E2-5EA0-403F-A667-954FA8BD53D9}" ShortID="595478534">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="General_Field_LoopContainer" ID="{79FEA1AE-5AA8-4BC0-BC4E-152F8A74B2E9}" WorkUnitID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_General_City_LoopContainer" ID="{D47313A0-AB4F-4531-9B13-B462256C67F0}">
+					<ChildrenList>
+						<Action Name="" ID="{1F7C82BA-037C-4621-8422-49E3A370D6DA}" ShortID="424660432">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="General_City_LoopContainer" ID="{F89F9B5E-EF61-4EF6-84DD-E1C9CC0A97C8}" WorkUnitID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_General_Field_LoopContainer" ID="{B121F306-F617-4BD7-805D-897E206938ED}">
+					<ChildrenList>
+						<Action Name="" ID="{24FA3F93-2EF9-4F34-A2DD-AA3F605220F9}" ShortID="826332602">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="General_Field_LoopContainer" ID="{79FEA1AE-5AA8-4BC0-BC4E-152F8A74B2E9}" WorkUnitID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

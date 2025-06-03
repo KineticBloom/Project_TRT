@@ -90,6 +90,7 @@ public class OfferedItemsEffects : EffectCard
         base.Activate(tradeInfo, playAttackAnimation, skipAnimations);
 
         int itemsAffected = 0;
+        Dictionary<string, int> idsAffected = new();
 
         foreach (InventoryCardData offeredItem in tradeInfo.OfferedItems.Items)
         {
@@ -108,11 +109,18 @@ public class OfferedItemsEffects : EffectCard
 
             if (!affected) continue;
 
+            if (idsAffected.Keys.Contains(offeredItem.ID))
+            {
+                offeredItem.SetCurrentValue(idsAffected[offeredItem.ID]);
+                continue;
+            }
+
             foreach (IItemAction action in ItemActions)
             {
                 action.Activate(offeredItem);
             }
 
+            idsAffected.Add(offeredItem.ID, offeredItem.CurrentValue);
             itemsAffected++;
         }
 

@@ -22,7 +22,7 @@ MonoBehaviour:
   ItemsOnOffer:
   - {fileID: 11400000, guid: ad8e6a92f388f7b499a3c6f6cb32d9bf, type: 2}
   - {fileID: 11400000, guid: 4cc5b419605d8ba408892e87dd23b9f0, type: 2}
-  - {fileID: 11400000, guid: da17c6d4dc263374bbf24bc95f23eeb0, type: 2}
+  - {fileID: 11400000, guid: 4748f895a5dda4c4795db29cf789041b, type: 2}
   BarterMessageWin: Pleasure doing business with you!
   BarterMessageLose: Hey now, don't try to scam me!
   BarterAttempts: 1
@@ -49,13 +49,13 @@ MonoBehaviour:
     - rid: 8151269401547244294
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
-        Icon: {fileID: 21300000, guid: 84d09d0ec2f728648a7fc62ba88c38c6, type: 3}
+        Icon: {fileID: 21300000, guid: 3a1562d504756004baf1b296bff02f57, type: 3}
         Description: They need a new name tag
         Hint: What could this do?
-        Text: x2
+        Text: 120!
         ConditionImage: {fileID: 21300000, guid: 2dbe09167b456954fa42e85e0522d5ed,
           type: 3}
-        _revealed: 1
+        _revealed: 0
         RequiresAllConditions: 1
         ItemConditions:
         - rid: 8243886729994174549
@@ -63,17 +63,21 @@ MonoBehaviour:
         - {fileID: 11400000, guid: 67d01c9d97d2e5043947cb11c4f70de5, type: 2}
         AffectedTags: []
         ItemActions:
-        - rid: 8243887042965799225
+        - rid: 8151269401547244295
+    - rid: 8151269401547244295
+      type: {class: SetValue, ns: , asm: Assembly-CSharp}
+      data:
+        Value: 120
     - rid: 8151269401547244297
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
-        Icon: {fileID: 21300000, guid: 50cf29902bcad3e49a54e7106532a66f, type: 3}
+        Icon: {fileID: 21300000, guid: 9bd95f8332db3c24887f6107f437e2bc, type: 3}
         Description: Tool items' value +10
         Hint: What could this do?
         Text: +10
-        ConditionImage: {fileID: 21300000, guid: 50cf29902bcad3e49a54e7106532a66f,
+        ConditionImage: {fileID: 21300000, guid: 9bd95f8332db3c24887f6107f437e2bc,
           type: 3}
-        _revealed: 1
+        _revealed: 0
         RequiresAllConditions: 1
         ItemConditions:
         - rid: 6077773190711214275
@@ -85,13 +89,12 @@ MonoBehaviour:
     - rid: 8151269401547244301
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
-        Icon: {fileID: 21300000, guid: f50400670d590a54d987f82f4658016d, type: 3}
+        Icon: {fileID: 21300000, guid: 7cf81c8e9972ead47bcd904c765fd87f, type: 3}
         Description: News Paper's value = 10
         Hint: What could this do?
         Text: =10
-        ConditionImage: {fileID: 21300000, guid: f50400670d590a54d987f82f4658016d,
-          type: 3}
-        _revealed: 1
+        ConditionImage: {fileID: 0}
+        _revealed: 0
         RequiresAllConditions: 1
         ItemConditions:
         - rid: 6077773197129285649
@@ -104,6 +107,8 @@ MonoBehaviour:
       type: {class: CheckForFlag, ns: , asm: Assembly-CSharp}
       data:
         FlagID: SAVE_mailbot_ec_3
+        CardsToEffect:
+        - {fileID: 11400000, guid: 67d01c9d97d2e5043947cb11c4f70de5, type: 2}
     - rid: 8243886729994174550
       type: {class: AddValue, ns: , asm: Assembly-CSharp}
       data:
@@ -112,7 +117,3 @@ MonoBehaviour:
       type: {class: SetValue, ns: , asm: Assembly-CSharp}
       data:
         Value: 10
-    - rid: 8243887042965799225
-      type: {class: MultiplyValue, ns: , asm: Assembly-CSharp}
-      data:
-        ValueMultiplier: 2

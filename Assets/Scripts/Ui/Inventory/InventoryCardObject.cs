@@ -16,6 +16,11 @@ public class InventoryCardObject : MonoBehaviour {
     [SerializeField, BoxGroup("Change Effects")] private Color changedValue;
     [SerializeField, BoxGroup("Change Effects")] private Vector3 changedScale;
 
+    [SerializeField, BoxGroup("Change Effects")] private Sprite unchangedSpriteIcon;
+    [SerializeField, BoxGroup("Change Effects")] private Sprite unchangedSpriteValue;
+    [SerializeField, BoxGroup("Change Effects")] private Sprite changedSpriteIcon;
+    [SerializeField, BoxGroup("Change Effects")] private Sprite changedSpriteValue;
+
     [SerializeField, BoxGroup("Tweening")] private float showDuration = 0.25f;
     [SerializeField, BoxGroup("Tweening")] private float hideDuration = 0.25f;
     [SerializeField, BoxGroup("Tweening")] private Ease showEase = Ease.OutBack;
@@ -43,7 +48,8 @@ public class InventoryCardObject : MonoBehaviour {
     [SerializeField, BoxGroup("Item Full")] private Image itemFullSprite;
     [SerializeField, BoxGroup("Item Full")] private TMP_Text itemFullName;
     [SerializeField, BoxGroup("Item Full")] private TMP_Text itemFullValueTextA;
-    [SerializeField, BoxGroup("Item Full")] private Image itemFullCardValueSprite; 
+    [SerializeField, BoxGroup("Item Full")] private Image itemFullCardValueSprite;
+    [SerializeField, BoxGroup("Item Full")] private Image itemFullCardIconBacking;
 
     [SerializeField, BoxGroup("Item Full Unactive")] private GameObject itemFullUnactiveObject;
     [SerializeField, BoxGroup("Item Full Unactive")] private Button itemFullUnactiveButton;
@@ -182,16 +188,19 @@ public class InventoryCardObject : MonoBehaviour {
         }
 
         if(Card.CurrentValue != Card.BaseValue) {
-            UpdateValueChangeVisuals(changedValue,changedScale);
+            UpdateValueChangeVisuals(changedSpriteIcon,changedSpriteValue);
+            itemValueText.text = Card.CurrentValue.ToString() + "*";
+            itemFullValueTextA.text = Card.CurrentValue.ToString() + "*";
         } else {
-            UpdateValueChangeVisuals(unchangedValue,unchangedScale);
+            UpdateValueChangeVisuals(unchangedSpriteIcon, unchangedSpriteValue);
+            itemValueText.text = Card.CurrentValue.ToString();
+            itemFullValueTextA.text = Card.CurrentValue.ToString();
         }
 
         itemSpriteImage.sprite = Card.Sprite;
         itemFullSprite.sprite = Card.Sprite;
         itemFullName.text = Card.CardName;
-        itemValueText.text = "¥" + Card.CurrentValue.ToString();
-        itemFullValueTextA.text = "¥" + Card.CurrentValue.ToString();
+        
         itemDescriptionText.text = Card.Description;
         itemTagsText.text = $"Tags: {string.Join<string>(", ", Card.Tags)}";
     }
@@ -313,11 +322,10 @@ public class InventoryCardObject : MonoBehaviour {
     /// Update the current value background color and backing scale.
     /// </summary>
     /// <param name="color"></param>
-    public void UpdateValueChangeVisuals(Color color, Vector3 scale) {
-        smallCardValueSprite.color = color;
-        itemFullCardValueSprite.color = color;
-        itemFullCardValueSprite.transform.localScale = scale;
-        smallCardValueSprite.transform.localScale = scale;
+    public void UpdateValueChangeVisuals(Sprite SpriteIcon, Sprite SpriteValue) {
+        smallCardValueSprite.sprite = SpriteValue;
+        itemFullCardValueSprite.sprite = SpriteValue;
+        itemFullCardIconBacking.sprite = SpriteIcon;
     }
 
     #endregion

@@ -38,14 +38,14 @@ public class InventoryBar : MonoBehaviour
 
             if (!_isShown)
             {
-                SwitchToSmall();
+                SwitchFromSmall();
             }
             return;
         }
 
         if (_isShown)
         {
-            SwitchToLarge();
+            SwitchFromLarge();
         }
     }
 
@@ -55,10 +55,9 @@ public class InventoryBar : MonoBehaviour
         largeInventoryController.SetSlotsInteractable(interactable);
     }
 
-    private void SwitchToSmall()
+    private void SwitchFromSmall()
     {
         _isShown = true;
-
         DOTween.Kill(smallInventory);
         DOTween.Kill(largeInventory);
         DOTween.Kill(largeInventory.GetComponent<CanvasGroup>());
@@ -68,6 +67,8 @@ public class InventoryBar : MonoBehaviour
 
         smallInventory.DOScale(smallToLargeScale, duration)
             .SetEase(showEase).SetUpdate(true);
+        smallInventory.GetComponent<CanvasGroup>()
+              .DOFade(0, duration).SetEase(showEase).SetUpdate(true);
         largeInventory.DOScale(Vector3.one, duration)
             .SetEase(showEase).SetUpdate(true);
 
@@ -79,7 +80,7 @@ public class InventoryBar : MonoBehaviour
     }
 
 
-    private void SwitchToLarge()
+    private void SwitchFromLarge()
     {
         _isShown = false;
 
@@ -92,6 +93,8 @@ public class InventoryBar : MonoBehaviour
 
         smallInventory.DOScale(Vector3.one, duration)
             .SetEase(hideEase).SetUpdate(true);
+        smallInventory.GetComponent<CanvasGroup>()
+      .DOFade(1, duration).SetEase(showEase).SetUpdate(true);
         largeInventory.DOScale(largeToSmallScale, duration)
             .SetEase(hideEase).SetUpdate(true);
 

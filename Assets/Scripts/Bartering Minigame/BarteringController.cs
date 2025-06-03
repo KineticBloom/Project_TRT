@@ -25,9 +25,11 @@ public class BarteringController : MonoBehaviour
     public InventoryCardObject NPCOfferSlotOne;
 
     [Header("End State Dependencies")]
-    public GameObject FailBarterIcon;
-    public GameObject PassBarterIcon;
-    public GameObject ArrowIcon;
+    public Image BackgroundArt;
+    public TMP_Text TotalValueTextHeader;
+    public Sprite TradeSuccessfulBackground;
+    public Sprite TradeFailBackground;
+    public Sprite TradeIdleBackground;
     public TMP_Text EndMessage;
     public GameObject EndMessageSpeechBubble;
 
@@ -244,8 +246,10 @@ public class BarteringController : MonoBehaviour
         EndMessage.text = tempTradeData.NPCData.BarterMessageWin;
 
         // Update visuals
-        PassBarterIcon.SetActive(true);
-        ArrowIcon.SetActive(false);
+        BackgroundArt.sprite = TradeSuccessfulBackground;
+        PlayerValueText.text = "";
+        NPCValueText.text = "";
+        TotalValueTextHeader.gameObject.SetActive(false);
 
         // Remove Item from NPC
         tempTradeData.NPCInstance.ItemsAvailable.Remove(tempTradeData.TargetCard);
@@ -261,8 +265,10 @@ public class BarteringController : MonoBehaviour
         EndMessage.text = tempTradeData.NPCData.BarterMessageLose;
 
         // Update visuals
-        FailBarterIcon.SetActive(true);
-        ArrowIcon.SetActive(false);
+        BackgroundArt.sprite = TradeFailBackground;
+        PlayerValueText.text = "";
+        NPCValueText.text = "";
+        TotalValueTextHeader.gameObject.SetActive(false);
     }
     private void RestartBarter()
     {
@@ -370,7 +376,7 @@ public class BarteringController : MonoBehaviour
             tempTradeData.PlayerSumValue += item.CurrentValue;
         }
 
-        PlayerValueText.text = "Value: " + tempTradeData.PlayerSumValue + "?";
+        PlayerValueText.text = "" + tempTradeData.PlayerSumValue;
     }
     private void VISUAL_DisplayNewOffer()
     {
@@ -405,8 +411,9 @@ public class BarteringController : MonoBehaviour
         }
 
         //  Hide end popups
-        FailBarterIcon.SetActive(false);
-        PassBarterIcon.SetActive(false);
+        BackgroundArt.sprite = TradeIdleBackground;
+        TotalValueTextHeader.gameObject.SetActive(true);
+
         EndMessageSpeechBubble.SetActive(false);
 
         // Init buttons
@@ -414,11 +421,9 @@ public class BarteringController : MonoBehaviour
         ExitEarlyButton.gameObject.SetActive(true);
         ExitFinalTradeButton.gameObject.SetActive(false);
 
-        ArrowIcon.SetActive(true);
-
         // Reset value texts
-        PlayerValueText.text = "Value: 0";
-        NPCValueText.text = "Value: " + tempTradeData.TargetCard.CurrentValue;
+        PlayerValueText.text = "0";
+        NPCValueText.text = "" + tempTradeData.TargetCard.CurrentValue;
 
         // Load Picture of NPC
         NPCProfilePicture.sprite = tempTradeData.NPCData.Icon;
@@ -459,6 +464,12 @@ public class BarteringController : MonoBehaviour
     }
     IEnumerator EFFECT_ActivateEffectCards(ActivationTime activationTime, bool SkipFlipDelay = false, bool PreActivation = false)
     {
+
+        if (_offeredItems.Count == 0)
+        {
+            yield break;
+        }
+
         List<EffectCard> effectCards = tempTradeData.NPCData.EffectCards;
         List<EffectCard> activeEffectCards = new List<EffectCard>();
 

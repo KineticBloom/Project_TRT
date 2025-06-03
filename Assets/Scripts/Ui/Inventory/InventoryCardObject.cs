@@ -202,7 +202,7 @@ public class InventoryCardObject : MonoBehaviour {
         itemFullName.text = Card.CardName;
         
         itemDescriptionText.text = Card.Description;
-        itemTagsText.text = $"Tags: {string.Join<string>(",", Card.Tags)}";
+        itemTagsText.text = $"Tags: {string.Join<string>(", ", Card.Tags)}";
     }
 
     /// <summary>

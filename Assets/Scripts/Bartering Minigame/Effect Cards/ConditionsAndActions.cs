@@ -216,12 +216,36 @@ public class CheckForFlag : IItemCondition
 {
     [Tooltip("Which FlagID do we check for?")]
     public string FlagID = "";
+    public List<InventoryCardData> CardsToEffect = new();
 
     /// <summary>
     /// See if any of the tags matches this class' tags
     /// </summary>
     public bool IsSatisfied(TradeInfo tradeInfo)
     {
+        if (CardsToEffect.Count == 0)
+        {
+            Debug.LogError("CheckForFlag requires at least 1 card to effect");
+            return false;
+        }
+
+        bool cardFound = false;
+        foreach (InventoryCardData card in CardsToEffect)
+        {
+            foreach (InventoryCardData offeredCard in tradeInfo.OfferedItems.Items)
+            {
+                if (offeredCard.IsSame(card))
+                {
+                    cardFound = true;
+                    break;
+                }
+            }
+
+            if (cardFound) { break; }
+        }
+
+        if (cardFound == false) { return false; }
+
         return GameManager.FlagTracker.GetFlag(FlagID);
     }
 }

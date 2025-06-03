@@ -6,16 +6,32 @@
 				<StateGroup Name="MusicState" ID="{AE40F95D-3431-4615-8D9B-77FE40BE0B6C}">
 					<ChildrenList>
 						<State Name="None" ID="{B9EC6211-81DD-4C56-BC1E-E4DA0611B591}"/>
-						<State Name="Calm" ID="{4A916F2C-FEA7-4172-9C63-FC5255A5BA9D}"/>
-						<State Name="Active" ID="{A4AE8BB5-B12D-49FE-8894-16968C8D3D71}"/>
 						<State Name="PlayerSpawn" ID="{34160084-965A-46DB-A8F6-BFA9644AC295}"/>
 						<State Name="MailbotBarter" ID="{220970BA-3873-4295-B08E-35E3D335D7F9}"/>
 						<State Name="Barter" ID="{4BF7E3F5-3CAA-4531-B914-D1278D66757C}"/>
+						<State Name="MailbotRoom" ID="{1EC052D8-37C9-4D0A-8148-CC10C0A2835E}"/>
+						<State Name="Cathedral" ID="{0F520E76-7E75-488D-9424-F5B0AF11D9AA}"/>
+						<State Name="TitleScreen" ID="{D0982152-D605-45BA-8C28-539132CED873}"/>
 					</ChildrenList>
 				</StateGroup>
 				<StateGroup Name="CurrentMusicKey" ID="{742AC06F-F1E5-400D-8A3C-979FA3CCB73B}">
+					<PropertyList>
+						<Property Name="DefaultTransitionTime" Type="Real64" Value="0"/>
+					</PropertyList>
 					<ChildrenList>
 						<State Name="None" ID="{65C65A6B-0E0B-4CC0-B107-3381A2D372F4}"/>
+						<State Name="A" ID="{3DFC00DE-DA1F-4B8D-8AE6-78752A00128A}"/>
+						<State Name="A_Sharp" ID="{598F3619-F37C-4EE5-9035-C3808413C50B}"/>
+						<State Name="B" ID="{38911AFD-178F-42D4-98D6-E3C43467BC1A}"/>
+						<State Name="C" ID="{CA968F0E-DC6F-495F-BDF7-E49DA74E43D3}"/>
+						<State Name="C_Sharp" ID="{B2B61568-5B0D-444F-9873-7891B147CA16}"/>
+						<State Name="D" ID="{59A9C4E2-4474-466D-89E2-3F527F929EE3}"/>
+						<State Name="D_Sharp" ID="{70B24C31-3DC5-42BC-8469-3194C8209E3D}"/>
+						<State Name="E" ID="{A196567F-4C7E-40AD-AD07-AEE4A1444F3D}"/>
+						<State Name="F" ID="{D9891193-7A4F-444A-95EB-E6A7D85987F9}"/>
+						<State Name="F_Sharp" ID="{A786F718-86F6-4D0D-93EE-DF36398F7D7E}"/>
+						<State Name="G" ID="{E595F590-7420-4FED-B8C0-360D1098D4A8}"/>
+						<State Name="G_Sharp" ID="{02B11534-91D6-497C-9355-B48818793C71}"/>
 					</ChildrenList>
 				</StateGroup>
 			</ChildrenList>

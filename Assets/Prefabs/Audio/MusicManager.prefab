@@ -30,7 +30,8 @@ Transform:
   m_LocalPosition: {x: -3.8532314, y: 1.591012, z: 4.0826015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7735382785505771151}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9110059251031622243
@@ -67,35 +68,29 @@ MonoBehaviour:
       WwiseObjectReference: {fileID: 11400000, guid: f8b283a7895b78343b5b55ddcc08c4f4,
         type: 2}
   musicStateEventsList:
-  - stateName: Barter
-    musicEvent:
-      idInternal: 0
-      valueGuidInternal: 
-      WwiseObjectReference: {fileID: 11400000, guid: 017aab24b11786845ae1fc64b8be7bc9,
-        type: 2}
-  - stateName: Barter_Mail
-    musicEvent:
-      idInternal: 0
-      valueGuidInternal: 
-      WwiseObjectReference: {fileID: 11400000, guid: 5ac7455830fd48749a58b7efcebbb234,
-        type: 2}
-  - stateName: Active
-    musicEvent:
-      idInternal: 0
-      valueGuidInternal: 
-      WwiseObjectReference: {fileID: 11400000, guid: 19ddfb604d2939c48ba9bac278e34261,
-        type: 2}
-  - stateName: Calm
-    musicEvent:
-      idInternal: 0
-      valueGuidInternal: 
-      WwiseObjectReference: {fileID: 11400000, guid: b47a8881f181327429fee8d15b2ebc96,
-        type: 2}
   - stateName: PlayerSpawn
     musicEvent:
       idInternal: 0
       valueGuidInternal: 
       WwiseObjectReference: {fileID: 11400000, guid: 7e8bf312332fb6a45919873cbc424c6f,
+        type: 2}
+  - stateName: MailbotRoom
+    musicEvent:
+      idInternal: 0
+      valueGuidInternal: 
+      WwiseObjectReference: {fileID: 11400000, guid: 78ce46ca0befd9649b590ea58f53ba74,
+        type: 2}
+  - stateName: Cathedral
+    musicEvent:
+      idInternal: 0
+      valueGuidInternal: 
+      WwiseObjectReference: {fileID: 11400000, guid: 342f767e75c91494e9dec100e7a35d80,
+        type: 2}
+  - stateName: Vista
+    musicEvent:
+      idInternal: 0
+      valueGuidInternal: 
+      WwiseObjectReference: {fileID: 11400000, guid: 5ac7455830fd48749a58b7efcebbb234,
         type: 2}
   - stateName: Pause
     musicEvent:
@@ -122,6 +117,8 @@ MonoBehaviour:
       WwiseObjectReference: {fileID: 11400000, guid: f8b283a7895b78343b5b55ddcc08c4f4,
         type: 2}
   startingMusicState: PlayerSpawn
+  isTitleScreen: 0
+  startupMusicTrigger: {fileID: 0}
 --- !u!114 &4006782332480119793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,3 +145,94 @@ MonoBehaviour:
   unloadTriggerList: 958ca0ea
   bankNameInternal: 
   valueGuidInternal: 
+--- !u!1 &4991116298810363886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7735382785505771151}
+  - component: {fileID: 88578427807465376}
+  - component: {fileID: 5837734876330952900}
+  m_Layer: 0
+  m_Name: StartMusicTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7735382785505771151
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4991116298810363886}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4166653825819421984}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &88578427807465376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4991116298810363886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f5b4ec53dc443045aa98c8a24cd86da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 1
+  isStaticObject: 0
+  usePositionOffsetData: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  scalingFactor: 1
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
+--- !u!114 &5837734876330952900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4991116298810363886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbed1ab89036b6f4cab998bd785bbd2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  enableActionOnEvent: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 8ac12a8d3c7a61b488e06ecd8d8d5ba7,
+      type: 2}
+  useCallbacks: 1
+  stopSoundOnDestroy: 1
+  Callbacks:
+  - Flags:
+      value: 1
+    FunctionName: PlayMusic
+    GameObject: {fileID: 2643591595807653029}
+  soundEmitterObject: {fileID: 0}
+  transitionDuration: 0
+  eventIdInternal: 0
+  valueGuidInternal: 
+  m_callbackDataInternal: {fileID: 0}

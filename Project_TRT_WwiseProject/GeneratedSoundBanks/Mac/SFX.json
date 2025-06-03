@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{335496CC-45EA-4922-B9FA-C65217B7662E}",
     "Language": "SFX",
-    "Hash": "{ABA2E0FD-2228-1828-7C29-091C41DAB9E3}",
+    "Hash": "{BCD50B98-D57E-3363-FAA4-6D75B3D0F049}",
     "ObjectPath": "\\SoundBanks\\SFX\\SFX",
     "ShortName": "SFX",
     "Path": "SFX.bnk",
@@ -104,6 +104,14 @@
       "CachePath": "B9/{B9FE579A-7759-566B-DDA8-4455F72B72F2}.wem"
      },
      {
+      "Id": "172961244",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "NPC_Dialogue_SFX_End.wav",
+      "CachePath": "8F/{8F5E39CA-7BA2-8D73-06FE-970516B0ACBE}.wem"
+     },
+     {
       "Id": "173604301",
       "Language": "SFX",
       "Streaming": "false",
@@ -150,6 +158,14 @@
       "Location": "Memory",
       "ShortName": "BART_card_shuffle\\Card Shuffle Sparkle.wav",
       "CachePath": "35/{35BA2F4F-FE44-7D87-0CB7-EBF391C360A2}.wem"
+     },
+     {
+      "Id": "325042128",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "NPC_Dialogue_SFX\\NPC_Dialogue_SFX_Detune_Up.wav",
+      "CachePath": "2D/{2D45B5EC-0260-4102-1467-8244DBA2B059}.wem"
      },
      {
       "Id": "350602102",
@@ -304,6 +320,14 @@
       "CachePath": "18/{18943A07-9AF6-1FA1-6948-8CC9934A56C8}.wem"
      },
      {
+      "Id": "671355451",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "NPC_Dialogue_SFX\\NPC_Dialogue_SFX_Detune_Down.wav",
+      "CachePath": "75/{757A0CCA-B907-D718-E359-B8171BA80C9B}.wem"
+     },
+     {
       "Id": "692532191",
       "Language": "SFX",
       "Streaming": "false",
@@ -374,14 +398,6 @@
       "Location": "Memory",
       "ShortName": "B4rn3y_Identified\\B4rn3y_Identified_2.wav",
       "CachePath": "FB/{FBB2E798-B786-FB0C-9C86-00C9DB6B3592}.wem"
-     },
-     {
-      "Id": "858240399",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Barter_Menu_Start.wav",
-      "CachePath": "9B/{9B73703C-5FA6-D52E-EC57-D9124EA09862}.wem"
      },
      {
       "Id": "867121991",
@@ -462,6 +478,22 @@
       "Location": "Memory",
       "ShortName": "ENV_Dummy_Fluorescent_Light.wav",
       "CachePath": "B8/{B83A8757-33A4-6DE5-BFBF-AF067EDFFFB4}.wem"
+     },
+     {
+      "Id": "1032755162",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Barter_Menu_Start.wav",
+      "CachePath": "9B/{9B73703C-5FA6-D52E-EC57-D9124EA09862}.wem"
+     },
+     {
+      "Id": "1059962178",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "NPC_Dialogue_SFX\\NPC_Dialogue_SFX_Normal.wav",
+      "CachePath": "D4/{D4C3A1D2-26EB-F375-9D9B-AA23B7AA8D13}.wem"
      }
     ],
     "Events": [
@@ -565,13 +597,13 @@
       "Id": "884323815",
       "Name": "BarterEventOpen",
       "ObjectPath": "\\Events\\UI\\DialogueUI\\BarterEventOpen",
-      "GUID": "{A962E239-C48A-41EB-B732-DAA42BFBA675}",
+      "GUID": "{5924B2B6-66D2-4EE0-8357-1E8C6FD0EB5C}",
       "DurationType": "OneShot",
       "DurationMin": "2.4855783",
       "DurationMax": "2.4855783",
       "MediaRefs": [
        {
-        "Id": "858240399"
+        "Id": "1032755162"
        }
       ]
      },
@@ -833,6 +865,40 @@
       ]
      },
      {
+      "Id": "2346769448",
+      "Name": "NPCDialogueEndSFX",
+      "ObjectPath": "\\Events\\Environment\\NPC\\NPCDialogueEndSFX",
+      "GUID": "{A5FDDCBC-2855-45E7-879D-A7F4E681FEC7}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.24690716",
+      "DurationMax": "0.24690716",
+      "MediaRefs": [
+       {
+        "Id": "172961244"
+       }
+      ]
+     },
+     {
+      "Id": "3457263945",
+      "Name": "NPCDialogueSFX",
+      "ObjectPath": "\\Events\\Environment\\NPC\\NPCDialogueSFX",
+      "GUID": "{8C8A52A3-A97C-42D8-9F7C-1DE4AF71163F}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.07832917",
+      "DurationMax": "0.07832917",
+      "MediaRefs": [
+       {
+        "Id": "325042128"
+       },
+       {
+        "Id": "671355451"
+       },
+       {
+        "Id": "1059962178"
+       }
+      ]
+     },
+     {
       "Id": "1536324566",
       "Name": "Play_Menu_ButtonDown",
       "ObjectPath": "\\Events\\SettingsUI\\Play_Menu_ButtonDown",
@@ -945,6 +1011,6 @@
     ]
    }
   ],
-  "FileHash": "{4D948289-16F2-B82B-61FC-7F5268C47525}"
+  "FileHash": "{A2A25AD5-7634-2955-AE18-5398DF888776}"
  }
 }

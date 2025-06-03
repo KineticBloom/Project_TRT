@@ -18,7 +18,8 @@ public class ElevatorController : MonoBehaviour
     [BoxGroup("Setup"), SerializeField] private InventoryCardData requiredCard;
     [BoxGroup("Setup"), SerializeField] private Transform startingWaypoint;
     [BoxGroup("Setup"), SerializeField, Range(0f, 20f)] private float movementDurationSeconds;
-    [BoxGroup("Setup"), SerializeField] private GameObject door;
+    [BoxGroup("Setup"), SerializeField] private Collider door;
+    private Animator _doorAnimator;
 
     [Header("SFX")]
     [SerializeField] private AudioEvent elevatorStartSFX;
@@ -257,18 +258,15 @@ public class ElevatorController : MonoBehaviour
     private void SetMoving(bool value)
     {
         _moving = value;
-        if (_moving) { door.SetActive(true); }
-        else { door.SetActive(false); }
+        door.enabled = _moving;
+        _doorAnimator.SetBool("IsOpen", !_moving);
     }
 
     void Start()
     {
         SetStartingWaypointIndex();
-    }
-
-    void Update()
-    {
-        
+        _doorAnimator = door.GetComponent<Animator>();
+        SetMoving(false);
     }
     #endregion
 }

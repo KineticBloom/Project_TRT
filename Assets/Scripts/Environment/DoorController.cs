@@ -7,9 +7,6 @@ public class DoorController : MonoBehaviour
 {
     #region ========== [ PARAMETERS ] ==========
 
-    [SerializeField, BoxGroup("Doors")] private HingeJoint leftDoor;
-    [SerializeField, BoxGroup("Doors")] private HingeJoint rightDoor;
-
     [ReadOnly] public bool IsOpen = false;
 
     [SerializeField] private AudioEvent doorOpenSFX;
@@ -17,8 +14,7 @@ public class DoorController : MonoBehaviour
 
     #region ========== [ PRIVATE PROPERTIES ] ==========
 
-    private JointMotor _leftMotor;
-    private JointMotor _rightMotor;
+    private Animator _animator;
 
     #endregion
 
@@ -26,8 +22,7 @@ public class DoorController : MonoBehaviour
 
     public void OpenDoor()
     {
-        leftDoor.useMotor = true;
-        rightDoor.useMotor = true;
+        _animator.SetTrigger("Open");
 
         if (!IsOpen)
         {
@@ -51,15 +46,7 @@ public class DoorController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _leftMotor = leftDoor.motor;
-        _rightMotor = rightDoor.motor;
+        _animator = GetComponentInChildren<Animator>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     #endregion
 }

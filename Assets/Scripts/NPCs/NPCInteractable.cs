@@ -34,6 +34,16 @@ public class NpcInteractable : Interactable
         interactionBarkSFX.Play(gameObject);
     }
 
+    public void Interaction(string knot, string name) {
+        Vector3 NPCWorldPosition = this.transform.position + DialogueSourceLocalPosition;
+        Vector3 PlayerWorldPosition = GameManager.Player.DialogueSource.position;
+        _squetchStarter.Subscribe();
+        GameManager.DialogueManager.StartDialogue(npcConversation, TriggerBarter, NPCWorldPosition, PlayerWorldPosition, knot, name);
+
+        dialogueStartSFX.Play(gameObject);
+        interactionBarkSFX.Play(gameObject);
+    }
+
     public void TriggerBarter() {
 
         barterBarkSFX.Play(gameObject);

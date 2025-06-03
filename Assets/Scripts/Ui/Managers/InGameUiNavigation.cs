@@ -8,7 +8,7 @@ public class InGameUiNavigation : MonoBehaviour {
 
     public void Update() {
 
-        if (GameManager.PlayerInput.GetMenu1Down() || GameManager.PlayerInput.GetStartDown()) {
+        if (GameManager.PlayerInput.GetMenu1Down() && !InGameUi.InBartering() || GameManager.PlayerInput.GetStartDown()) {
             // NOTE: REPLACED INVENTORY CODE WITH PAUSE
             if (GameManager.CurrentUIManager == SettingsUi) {
                 InGameUi.SwapToInGameUi();

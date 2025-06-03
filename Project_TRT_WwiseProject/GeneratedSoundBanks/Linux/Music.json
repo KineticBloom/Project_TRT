@@ -1,0 +1,843 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Linux",
+  "BasePlatform": "Linux",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3991942870",
+    "Type": "User",
+    "GUID": "{2CAF7C27-18E4-40A7-871C-C075A9250659}",
+    "Language": "SFX",
+    "Hash": "{E1B0129E-9F14-FCFE-9E7A-A50BB6587CE7}",
+    "ObjectPath": "\\SoundBanks\\Music\\Music",
+    "ShortName": "Music",
+    "Path": "Music.bnk",
+    "Media": [
+     {
+      "Id": "38607711",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MUSC_Mailbot.wav",
+      "CachePath": "D6/{D628E2A1-9A14-CF61-0408-CCC70AE19CE4}.wem"
+     },
+     {
+      "Id": "78175258",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Loose",
+      "ShortName": "MUSC_Cathedral.wav",
+      "Path": "Media/78175258.wem",
+      "CachePath": "35/{3584BAF8-5EA2-CF6F-FC47-8FA723510B2D}.wem"
+     },
+     {
+      "Id": "394168652",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MUSC_Startup_Music.wav",
+      "CachePath": "FD/{FD491101-DACB-D50E-ABF2-61671A4CB957}.wem"
+     },
+     {
+      "Id": "475666812",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Loose",
+      "ShortName": "MUSC_Mailbot_Room.wav",
+      "Path": "Media/475666812.wem",
+      "CachePath": "72/{7213527A-8A08-5B83-D3BC-DDD3FF581D59}.wem"
+     },
+     {
+      "Id": "655550078",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MUSC_Barter_1.wav",
+      "CachePath": "C6/{C6EB2ED4-EE95-C10E-11A1-1769C498E026}.wem"
+     },
+     {
+      "Id": "912353291",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Loose",
+      "ShortName": "MUSC_Title_Screen.wav",
+      "Path": "Media/912353291.wem",
+      "CachePath": "D0/{D087A616-61EB-CCE0-EA3B-9D7CAF10DB8A}.wem"
+     },
+     {
+      "Id": "1001349004",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Loose",
+      "ShortName": "MUSC_Player_Spawn.wav",
+      "Path": "Media/1001349004.wem",
+      "CachePath": "6E/{6E0BB438-EE58-DB49-E27A-7BB4EA9B14B6}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3865414042",
+      "Name": "Key_A",
+      "ObjectPath": "\\Events\\Music\\MusicKeyStateEvents\\Key_A",
+      "GUID": "{067448A3-E726-456B-92A9-5B259A257E46}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "3124027310",
+        "Id": "84696446",
+        "Name": "A",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\A",
+        "GUID": "{3DFC00DE-DA1F-4B8D-8AE6-78752A00128A}"
+       }
+      ]
+     },
+     {
+      "Id": "3865414040",
+      "Name": "Key_C",
+      "ObjectPath": "\\Events\\Music\\MusicKeyStateEvents\\Key_C",
+      "GUID": "{1B6DBE59-7006-4771-BB00-FDFBAFC1EBA1}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "3124027310",
+        "Id": "84696444",
+        "Name": "C",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\C",
+        "GUID": "{CA968F0E-DC6F-495F-BDF7-E49DA74E43D3}"
+       }
+      ]
+     },
+     {
+      "Id": "3108336397",
+      "Name": "Key_C_Sharp",
+      "ObjectPath": "\\Events\\Music\\MusicKeyStateEvents\\Key_C_Sharp",
+      "GUID": "{CE5CF2FB-2D74-491D-827D-D3B7D6A68D00}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "3124027310",
+        "Id": "2816864521",
+        "Name": "C_Sharp",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\C_Sharp",
+        "GUID": "{B2B61568-5B0D-444F-9873-7891B147CA16}"
+       }
+      ]
+     },
+     {
+      "Id": "3865414047",
+      "Name": "Key_D",
+      "ObjectPath": "\\Events\\Music\\MusicKeyStateEvents\\Key_D",
+      "GUID": "{8712928E-69C6-49BC-A72A-EB30570864FB}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "3124027310",
+        "Id": "84696443",
+        "Name": "D",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\D",
+        "GUID": "{59A9C4E2-4474-466D-89E2-3F527F929EE3}"
+       }
+      ]
+     },
+     {
+      "Id": "3865414045",
+      "Name": "Key_F",
+      "ObjectPath": "\\Events\\Music\\MusicKeyStateEvents\\Key_F",
+      "GUID": "{B3947EDD-F193-4924-97B2-0A3857A62B40}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "3124027310",
+        "Id": "84696441",
+        "Name": "F",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\F",
+        "GUID": "{D9891193-7A4F-444A-95EB-E6A7D85987F9}"
+       }
+      ]
+     },
+     {
+      "Id": "4269622689",
+      "Name": "MusicStateBarter",
+      "ObjectPath": "\\Events\\Music\\MusicEvents\\MusicStateBarter",
+      "GUID": "{189DFC90-F01E-4412-BD9D-62D38C8E0814}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "1021618141",
+        "Id": "644073513",
+        "Name": "Barter",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\Barter",
+        "GUID": "{4BF7E3F5-3CAA-4531-B914-D1278D66757C}"
+       }
+      ]
+     },
+     {
+      "Id": "237747687",
+      "Name": "MusicStateBartering",
+      "ObjectPath": "\\Events\\Music\\MusicEvents\\MusicStateBartering",
+      "GUID": "{9DEDD160-9B2C-4960-A7A8-726AA1C20465}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "1021618141",
+        "Id": "1029337087",
+        "Name": "MailbotBarter",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\MailbotBarter",
+        "GUID": "{220970BA-3873-4295-B08E-35E3D335D7F9}"
+       }
+      ]
+     },
+     {
+      "Id": "1302030383",
+      "Name": "MusicStateCathedral",
+      "ObjectPath": "\\Events\\Music\\MusicEvents\\MusicStateCathedral",
+      "GUID": "{F9CBA148-AE45-40C3-BA39-E66421E1D524}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "1021618141",
+        "Id": "1024696295",
+        "Name": "Cathedral",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\Cathedral",
+        "GUID": "{0F520E76-7E75-488D-9424-F5B0AF11D9AA}"
+       }
+      ]
+     },
+     {
+      "Id": "1881520806",
+      "Name": "MusicStateMailbotRoom",
+      "ObjectPath": "\\Events\\Music\\MusicEvents\\MusicStateMailbotRoom",
+      "GUID": "{A24D9549-7B6F-4965-AAB9-617B3BC2696B}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "1021618141",
+        "Id": "1643460142",
+        "Name": "MailbotRoom",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\MailbotRoom",
+        "GUID": "{1EC052D8-37C9-4D0A-8148-CC10C0A2835E}"
+       }
+      ]
+     },
+     {
+      "Id": "1031159975",
+      "Name": "MusicStatePlayerSpawn",
+      "ObjectPath": "\\Events\\Music\\MusicEvents\\MusicStatePlayerSpawn",
+      "GUID": "{615BFAC6-D261-4C48-A196-83ACAEBF5061}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "1021618141",
+        "Id": "2064283983",
+        "Name": "PlayerSpawn",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\PlayerSpawn",
+        "GUID": "{34160084-965A-46DB-A8F6-BFA9644AC295}"
+       }
+      ]
+     },
+     {
+      "Id": "1104426513",
+      "Name": "MusicStateTitleScreen",
+      "ObjectPath": "\\Events\\Music\\MusicEvents\\MusicStateTitleScreen",
+      "GUID": "{8A7F5F10-5F46-4152-8B4F-F708D00DBF74}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "1021618141",
+        "Id": "152105657",
+        "Name": "TitleScreen",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\TitleScreen",
+        "GUID": "{D0982152-D605-45BA-8C28-539132CED873}"
+       }
+      ]
+     },
+     {
+      "Id": "1127073398",
+      "Name": "PauseMusic",
+      "ObjectPath": "\\Events\\Music\\MusicEvents\\PauseMusic",
+      "GUID": "{E86A3296-7F22-496B-BD16-5FCCBC20504E}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "AuxBusRefs": [
+       {
+        "Id": "3364212889",
+        "Name": "Alleyway",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\SFXMaster\\Reverbs\\Alleyway",
+        "GUID": "{B530D511-FF4C-4F56-8923-79F07C08B072}"
+       }
+      ],
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "2064283983",
+         "GUID": "{34160084-965A-46DB-A8F6-BFA9644AC295}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "1001349004"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "1029337087",
+         "GUID": "{220970BA-3873-4295-B08E-35E3D335D7F9}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "38607711"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "1643460142",
+         "GUID": "{1EC052D8-37C9-4D0A-8148-CC10C0A2835E}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "475666812"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "1024696295",
+         "GUID": "{0F520E76-7E75-488D-9424-F5B0AF11D9AA}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "78175258"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "152105657",
+         "GUID": "{D0982152-D605-45BA-8C28-539132CED873}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "912353291"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "644073513",
+         "GUID": "{4BF7E3F5-3CAA-4531-B914-D1278D66757C}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "655550078"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "Id": "4206258635",
+      "Name": "PlayStartupMusic",
+      "ObjectPath": "\\Events\\Music\\StartupMusicEvents\\PlayStartupMusic",
+      "GUID": "{35F96E62-9763-482B-997C-4AC88ABCE921}",
+      "DurationType": "OneShot",
+      "DurationMin": "7.7868977",
+      "DurationMax": "7.7868977",
+      "MediaRefs": [
+       {
+        "Id": "394168652"
+       }
+      ]
+     },
+     {
+      "Id": "2170724709",
+      "Name": "ResumeMusic",
+      "ObjectPath": "\\Events\\Music\\MusicEvents\\ResumeMusic",
+      "GUID": "{417CD789-3F05-4A40-8360-23E0159080AF}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "AuxBusRefs": [
+       {
+        "Id": "3364212889",
+        "Name": "Alleyway",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\SFXMaster\\Reverbs\\Alleyway",
+        "GUID": "{B530D511-FF4C-4F56-8923-79F07C08B072}"
+       }
+      ],
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "2064283983",
+         "GUID": "{34160084-965A-46DB-A8F6-BFA9644AC295}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "1001349004"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "1029337087",
+         "GUID": "{220970BA-3873-4295-B08E-35E3D335D7F9}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "38607711"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "1643460142",
+         "GUID": "{1EC052D8-37C9-4D0A-8148-CC10C0A2835E}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "475666812"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "1024696295",
+         "GUID": "{0F520E76-7E75-488D-9424-F5B0AF11D9AA}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "78175258"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "152105657",
+         "GUID": "{D0982152-D605-45BA-8C28-539132CED873}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "912353291"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "644073513",
+         "GUID": "{4BF7E3F5-3CAA-4531-B914-D1278D66757C}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "655550078"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "Id": "3827058668",
+      "Name": "StartMusic",
+      "ObjectPath": "\\Events\\Music\\MusicEvents\\StartMusic",
+      "GUID": "{95DED10A-BAFA-4517-9EB7-3E06DDBA7B76}",
+      "DurationType": "Infinite",
+      "AuxBusRefs": [
+       {
+        "Id": "3364212889",
+        "Name": "Alleyway",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\SFXMaster\\Reverbs\\Alleyway",
+        "GUID": "{B530D511-FF4C-4F56-8923-79F07C08B072}"
+       }
+      ],
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "2064283983",
+         "GUID": "{34160084-965A-46DB-A8F6-BFA9644AC295}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "1001349004"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "1029337087",
+         "GUID": "{220970BA-3873-4295-B08E-35E3D335D7F9}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "38607711"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "1643460142",
+         "GUID": "{1EC052D8-37C9-4D0A-8148-CC10C0A2835E}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "475666812"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "1024696295",
+         "GUID": "{0F520E76-7E75-488D-9424-F5B0AF11D9AA}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "78175258"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "152105657",
+         "GUID": "{D0982152-D605-45BA-8C28-539132CED873}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "912353291"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "644073513",
+         "GUID": "{4BF7E3F5-3CAA-4531-B914-D1278D66757C}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "655550078"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "Id": "1917263390",
+      "Name": "StopMusic",
+      "ObjectPath": "\\Events\\Music\\MusicEvents\\StopMusic",
+      "GUID": "{EFEE06EC-4A3D-41B2-9883-2E17938F0EF1}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "AuxBusRefs": [
+       {
+        "Id": "3364212889",
+        "Name": "Alleyway",
+        "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\SFXMaster\\Reverbs\\Alleyway",
+        "GUID": "{B530D511-FF4C-4F56-8923-79F07C08B072}"
+       }
+      ],
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "2064283983",
+         "GUID": "{34160084-965A-46DB-A8F6-BFA9644AC295}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "1001349004"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "1029337087",
+         "GUID": "{220970BA-3873-4295-B08E-35E3D335D7F9}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "38607711"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "1643460142",
+         "GUID": "{1EC052D8-37C9-4D0A-8148-CC10C0A2835E}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "475666812"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "1024696295",
+         "GUID": "{0F520E76-7E75-488D-9424-F5B0AF11D9AA}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "78175258"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "152105657",
+         "GUID": "{D0982152-D605-45BA-8C28-539132CED873}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "912353291"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "644073513",
+         "GUID": "{4BF7E3F5-3CAA-4531-B914-D1278D66757C}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "655550078"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "3207605084",
+      "Name": "InAlleyway",
+      "ObjectPath": "\\Game Parameters\\Music\\InAlleyway",
+      "GUID": "{5EA6774B-ADCB-41E5-B66B-577C9E25F9BA}"
+     }
+    ],
+    "StateGroups": [
+     {
+      "Id": "1021618141",
+      "Name": "MusicState",
+      "ObjectPath": "\\States\\Default Work Unit\\MusicState",
+      "GUID": "{AE40F95D-3431-4615-8D9B-77FE40BE0B6C}",
+      "States": [
+       {
+        "Id": "152105657",
+        "Name": "TitleScreen",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\TitleScreen",
+        "GUID": "{D0982152-D605-45BA-8C28-539132CED873}"
+       },
+       {
+        "Id": "644073513",
+        "Name": "Barter",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\Barter",
+        "GUID": "{4BF7E3F5-3CAA-4531-B914-D1278D66757C}"
+       },
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\None",
+        "GUID": "{B9EC6211-81DD-4C56-BC1E-E4DA0611B591}"
+       },
+       {
+        "Id": "1024696295",
+        "Name": "Cathedral",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\Cathedral",
+        "GUID": "{0F520E76-7E75-488D-9424-F5B0AF11D9AA}"
+       },
+       {
+        "Id": "1029337087",
+        "Name": "MailbotBarter",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\MailbotBarter",
+        "GUID": "{220970BA-3873-4295-B08E-35E3D335D7F9}"
+       },
+       {
+        "Id": "1643460142",
+        "Name": "MailbotRoom",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\MailbotRoom",
+        "GUID": "{1EC052D8-37C9-4D0A-8148-CC10C0A2835E}"
+       },
+       {
+        "Id": "2064283983",
+        "Name": "PlayerSpawn",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\PlayerSpawn",
+        "GUID": "{34160084-965A-46DB-A8F6-BFA9644AC295}"
+       }
+      ]
+     },
+     {
+      "Id": "3124027310",
+      "Name": "CurrentMusicKey",
+      "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey",
+      "GUID": "{742AC06F-F1E5-400D-8A3C-979FA3CCB73B}",
+      "States": [
+       {
+        "Id": "84696440",
+        "Name": "G",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\G",
+        "GUID": "{E595F590-7420-4FED-B8C0-360D1098D4A8}"
+       },
+       {
+        "Id": "84696441",
+        "Name": "F",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\F",
+        "GUID": "{D9891193-7A4F-444A-95EB-E6A7D85987F9}"
+       },
+       {
+        "Id": "84696442",
+        "Name": "E",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\E",
+        "GUID": "{A196567F-4C7E-40AD-AD07-AEE4A1444F3D}"
+       },
+       {
+        "Id": "84696443",
+        "Name": "D",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\D",
+        "GUID": "{59A9C4E2-4474-466D-89E2-3F527F929EE3}"
+       },
+       {
+        "Id": "84696444",
+        "Name": "C",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\C",
+        "GUID": "{CA968F0E-DC6F-495F-BDF7-E49DA74E43D3}"
+       },
+       {
+        "Id": "84696445",
+        "Name": "B",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\B",
+        "GUID": "{38911AFD-178F-42D4-98D6-E3C43467BC1A}"
+       },
+       {
+        "Id": "84696446",
+        "Name": "A",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\A",
+        "GUID": "{3DFC00DE-DA1F-4B8D-8AE6-78752A00128A}"
+       },
+       {
+        "Id": "164139463",
+        "Name": "A_Sharp",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\A_Sharp",
+        "GUID": "{598F3619-F37C-4EE5-9035-C3808413C50B}"
+       },
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\None",
+        "GUID": "{65C65A6B-0E0B-4CC0-B107-3381A2D372F4}"
+       },
+       {
+        "Id": "844677726",
+        "Name": "D_Sharp",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\D_Sharp",
+        "GUID": "{70B24C31-3DC5-42BC-8469-3194C8209E3D}"
+       },
+       {
+        "Id": "951594152",
+        "Name": "F_Sharp",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\F_Sharp",
+        "GUID": "{A786F718-86F6-4D0D-93EE-DF36398F7D7E}"
+       },
+       {
+        "Id": "2816864521",
+        "Name": "C_Sharp",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\C_Sharp",
+        "GUID": "{B2B61568-5B0D-444F-9873-7891B147CA16}"
+       },
+       {
+        "Id": "3736223277",
+        "Name": "G_Sharp",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\G_Sharp",
+        "GUID": "{02B11534-91D6-497C-9355-B48818793C71}"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{463014D2-621D-38CB-E34C-DB884A895ABD}"
+ }
+}

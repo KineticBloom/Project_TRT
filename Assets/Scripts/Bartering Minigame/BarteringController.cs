@@ -248,9 +248,6 @@ public class BarteringController : MonoBehaviour
         {
             GameManager.FlagTracker.SetFlag(tempTradeData.NPCData.FlagID);
         }
-
-        // Play the particles!
-        tempTradeData.NPCInstance.PlayBarterWinParticles();
     }
     private void BarterLose()
     {

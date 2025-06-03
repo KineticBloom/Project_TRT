@@ -62,10 +62,15 @@ public class MusicManager : MonoBehaviour
 
     private Dictionary<string, AK.Wwise.Event> musicStateEventsDict = new Dictionary<string, AK.Wwise.Event>();
 
+    // Reference to the starting music trigger
+    [SerializeField] private bool isTitleScreen = false;
+    [SerializeField] private AkEvent startupMusicTrigger;
+
 
     private void Start()
     {
         InitializeAudioEventsDictionary();
+        PlayStartingMusicEvent();
     }
 
     /// <summary>
@@ -86,6 +91,23 @@ public class MusicManager : MonoBehaviour
 
         SetMusicState(startingMusicState);
         //PlayMusic(gameObject);
+    }
+
+    private void PlayStartingMusicEvent()
+    {
+        // BAND AID FIX! EDIT LOGIC ONCE LOGIC BECOMES TOO PRIMATIVE
+        if (!isTitleScreen)
+        {
+            if (startupMusicTrigger)
+            {
+                startupMusicTrigger.data.Post(gameObject);
+            }
+        }
+        else
+        {
+            SetMusicState("TitleScreen");
+            PlayMusic();
+        }
     }
 
     private void OnEnable()
@@ -177,6 +199,8 @@ public class MusicManager : MonoBehaviour
     {
         if (musicStateEventsDict.ContainsKey(stateName))
         {
+            // if (stateName == currentMusicState) return; // REDUNDANT???? :0
+
             // Update music state attributes
             previousMusicState = currentMusicState;
             currentMusicState = stateName;

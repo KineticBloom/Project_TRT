@@ -84,7 +84,9 @@ public class Tutorial : MonoBehaviour
     void StopPlayer()
     {
         stopCamera.Activate();
-        tutorialNPC.Interaction("Wait_Up");
+        Vector3 NPCWorldPosition = tutorialNPC.transform.position + tutorialNPC.DialogueSourceLocalPosition;
+        Vector3 PlayerWorldPosition = GameManager.Player.DialogueSource.position;
+        GameManager.DialogueManager.StartDialogue(tutorialText, tutorialNPC.TriggerBarter, NPCWorldPosition, PlayerWorldPosition, "Wait_Up");
         GameManager.DialogueManager.EndCallback += EndDialogue;
     }
     

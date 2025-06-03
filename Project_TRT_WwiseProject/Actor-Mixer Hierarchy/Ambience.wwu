@@ -3,13 +3,14 @@
 	<AudioObjects>
 		<WorkUnit Name="Ambience" ID="{CE81F9B9-3C10-48A1-BCAC-AD370571CF7D}" PersistMode="Standalone">
 			<ChildrenList>
-				<RandomSequenceContainer Name="Waterfall_Base_LoopContainer" ID="{11294004-03E5-4C04-8109-C235D0C57479}" ShortID="914084268">
+				<RandomSequenceContainer Name="Emit_Waterfall_Base_LoopContainer" ID="{11294004-03E5-4C04-8109-C235D0C57479}" ShortID="914084268">
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="1"/>
-						<Property Name="AttenuationDistanceScaling" Type="Real32" Value="0.5"/>
+						<Property Name="AttenuationDistanceScaling" Type="Real32" Value="0.35"/>
+						<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
 						<Property Name="MaxSoundPerInstance" Type="int16">
 							<ValueList>
-								<Value>1</Value>
+								<Value>2</Value>
 							</ValueList>
 						</Property>
 						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
@@ -25,16 +26,16 @@
 						<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="0"/>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-10</Value>
+								<Value>-20</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Attenuation">
-							<ObjectRef Name="WaterfallAttenuation" ID="{BEF66290-124F-49EA-8525-505F51A0EC97}" WorkUnitID="{A41C15FD-E1E3-457F-ACD8-54CD043C4ADF}"/>
+							<ObjectRef Name="SmoothAttenuation" ID="{BEF66290-124F-49EA-8525-505F51A0EC97}" WorkUnitID="{A41C15FD-E1E3-457F-ACD8-54CD043C4ADF}"/>
 						</Reference>
 						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+							<ObjectRef Name="MusicConversionSettings" ID="{B2D7E993-8C9F-46C7-9ED1-9AA1EB255C16}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
 						</Reference>
 						<Reference Name="OutputBus">
 							<ObjectRef Name="AmbienceMaster" ID="{286C8CB9-7D4C-44E7-9139-C8391E920F9C}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
@@ -50,10 +51,15 @@
 										<Value>True</Value>
 									</ValueList>
 								</Property>
+								<Property Name="Weight" Type="Real64">
+									<ValueList>
+										<Value>100</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Attenuation">
-									<ObjectRef Name="WaterfallAttenuation" ID="{BEF66290-124F-49EA-8525-505F51A0EC97}" WorkUnitID="{A41C15FD-E1E3-457F-ACD8-54CD043C4ADF}"/>
+									<ObjectRef Name="SmoothAttenuation" ID="{BEF66290-124F-49EA-8525-505F51A0EC97}" WorkUnitID="{A41C15FD-E1E3-457F-ACD8-54CD043C4ADF}"/>
 								</Reference>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
@@ -104,7 +110,8 @@
 								</AudioFileSource>
 								<AudioFileSource Name="AMB_Waterfall_Base_02" ID="{ADC2897D-F984-4DCD-A3D8-37466B1A09CB}">
 									<PropertyList>
-										<Property Name="LoopEnd" Type="Real64" Value="16.0792079207921"/>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.0396039603960396"/>
+										<Property Name="LoopEnd" Type="Real64" Value="17.029702970297"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 									</PropertyList>
 									<Language>SFX</Language>
@@ -123,27 +130,37 @@
 						</Sound>
 					</ChildrenList>
 				</RandomSequenceContainer>
-				<RandomSequenceContainer Name="Waterfall_CloseSparkle_LoopContainer" ID="{A3780EEB-D81D-4C45-8455-3CFCA15FEC28}" ShortID="156762919">
+				<RandomSequenceContainer Name="Emit_Waterfall_CloseSparkle_LoopContainer" ID="{A3780EEB-D81D-4C45-8455-3CFCA15FEC28}" ShortID="156762919">
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="1"/>
-						<Property Name="AttenuationDistanceScaling" Type="Real32" Value="0.35"/>
-						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+						<Property Name="AttenuationDistanceScaling" Type="Real32" Value="0.2"/>
+						<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>2</Value>
+							</ValueList>
+						</Property>
 						<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 						<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="2"/>
 						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 						<Property Name="RandomAvoidRepeating" Type="bool" Value="False"/>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-10</Value>
+								<Value>-20</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Attenuation">
-							<ObjectRef Name="WaterfallAttenuation" ID="{BEF66290-124F-49EA-8525-505F51A0EC97}" WorkUnitID="{A41C15FD-E1E3-457F-ACD8-54CD043C4ADF}"/>
+							<ObjectRef Name="SmoothAttenuation" ID="{BEF66290-124F-49EA-8525-505F51A0EC97}" WorkUnitID="{A41C15FD-E1E3-457F-ACD8-54CD043C4ADF}"/>
 						</Reference>
 						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+							<ObjectRef Name="MusicConversionSettings" ID="{B2D7E993-8C9F-46C7-9ED1-9AA1EB255C16}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
 						</Reference>
 						<Reference Name="OutputBus">
 							<ObjectRef Name="AmbienceMaster" ID="{286C8CB9-7D4C-44E7-9139-C8391E920F9C}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
@@ -181,7 +198,7 @@
 						</Sound>
 					</ChildrenList>
 				</RandomSequenceContainer>
-				<RandomSequenceContainer Name="SynthBirds_RandomContainer" ID="{9E473AF7-9486-40AB-9724-AEE6AFDA7116}" ShortID="439131624">
+				<RandomSequenceContainer Name="Emit_SynthBirds_RandomContainer" ID="{9E473AF7-9486-40AB-9724-AEE6AFDA7116}" ShortID="439131624">
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="1"/>
 						<Property Name="AttenuationDistanceScaling" Type="Real32" Value="0.25"/>
@@ -208,10 +225,10 @@
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Attenuation">
-							<ObjectRef Name="WaterfallAttenuation" ID="{BEF66290-124F-49EA-8525-505F51A0EC97}" WorkUnitID="{A41C15FD-E1E3-457F-ACD8-54CD043C4ADF}"/>
+							<ObjectRef Name="SmoothAttenuation" ID="{BEF66290-124F-49EA-8525-505F51A0EC97}" WorkUnitID="{A41C15FD-E1E3-457F-ACD8-54CD043C4ADF}"/>
 						</Reference>
 						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+							<ObjectRef Name="MusicConversionSettings" ID="{B2D7E993-8C9F-46C7-9ED1-9AA1EB255C16}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
 						</Reference>
 						<Reference Name="OutputBus">
 							<ObjectRef Name="AmbienceMaster" ID="{286C8CB9-7D4C-44E7-9139-C8391E920F9C}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
@@ -314,15 +331,64 @@
 								<ActiveSource Name="AMB_Nature_Birds3_01" ID="{3A944DD2-FC93-4D78-9A83-C40B8A2A844C}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<Sound Name="AMB_Nature_Birds4" ID="{83289A10-5547-4E6C-B62A-EE4749B559EF}" ShortID="527145780">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="AMB_Nature_Birds4" ID="{7883CD55-7A4A-4615-8BB3-C18584779BD7}">
+									<Language>SFX</Language>
+									<AudioFile>AMB_Nature_Birds4.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="226793365"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="AMB_Nature_Birds4" ID="{7883CD55-7A4A-4615-8BB3-C18584779BD7}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="AMB_Nature_Birds5" ID="{C71F04BA-8D31-41E2-932B-6875CA7521D6}" ShortID="24146329">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="AMB_Nature_Birds5" ID="{BD83DCA2-E4D5-4FD9-B582-6481048908FD}">
+									<Language>SFX</Language>
+									<AudioFile>AMB_Nature_Birds5.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="405544541"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="AMB_Nature_Birds5" ID="{BD83DCA2-E4D5-4FD9-B582-6481048908FD}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 				</RandomSequenceContainer>
-				<RandomSequenceContainer Name="MachineHum1_LoopContainer" ID="{A1086679-5F65-4305-8E29-581975315AC5}" ShortID="755062127">
+				<RandomSequenceContainer Name="Emit_MachineHum1_LoopContainer" ID="{A1086679-5F65-4305-8E29-581975315AC5}" ShortID="755062127">
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="1"/>
 						<Property Name="AttenuationDistanceScaling" Type="Real32" Value="0.5"/>
 						<Property Name="MaxSoundPerInstance" Type="int16">
 							<ValueList>
 								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="OutputBusVolume" Type="Real64">
+							<ValueList>
+								<Value>-15</Value>
 							</ValueList>
 						</Property>
 						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
@@ -333,10 +399,10 @@
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Attenuation">
-							<ObjectRef Name="WaterfallAttenuation" ID="{BEF66290-124F-49EA-8525-505F51A0EC97}" WorkUnitID="{A41C15FD-E1E3-457F-ACD8-54CD043C4ADF}"/>
+							<ObjectRef Name="SmoothAttenuation" ID="{BEF66290-124F-49EA-8525-505F51A0EC97}" WorkUnitID="{A41C15FD-E1E3-457F-ACD8-54CD043C4ADF}"/>
 						</Reference>
 						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+							<ObjectRef Name="MusicConversionSettings" ID="{B2D7E993-8C9F-46C7-9ED1-9AA1EB255C16}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
 						</Reference>
 						<Reference Name="OutputBus">
 							<ObjectRef Name="AmbienceMaster" ID="{286C8CB9-7D4C-44E7-9139-C8391E920F9C}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
@@ -371,10 +437,15 @@
 						</Sound>
 					</ChildrenList>
 				</RandomSequenceContainer>
-				<RandomSequenceContainer Name="MachineHum2_LoopContainer" ID="{8A7EC6BD-A2F2-43A2-AED7-331438DE63AF}" ShortID="334130441">
+				<RandomSequenceContainer Name="Emit_MachineHum2_LoopContainer" ID="{8A7EC6BD-A2F2-43A2-AED7-331438DE63AF}" ShortID="334130441">
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="1"/>
 						<Property Name="AttenuationDistanceScaling" Type="Real32" Value="0.5"/>
+						<Property Name="OutputBusVolume" Type="Real64">
+							<ValueList>
+								<Value>-20</Value>
+							</ValueList>
+						</Property>
 						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 						<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 						<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="2"/>
@@ -388,10 +459,10 @@
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Attenuation">
-							<ObjectRef Name="WaterfallAttenuation" ID="{BEF66290-124F-49EA-8525-505F51A0EC97}" WorkUnitID="{A41C15FD-E1E3-457F-ACD8-54CD043C4ADF}"/>
+							<ObjectRef Name="SmoothAttenuation" ID="{BEF66290-124F-49EA-8525-505F51A0EC97}" WorkUnitID="{A41C15FD-E1E3-457F-ACD8-54CD043C4ADF}"/>
 						</Reference>
 						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+							<ObjectRef Name="MusicConversionSettings" ID="{B2D7E993-8C9F-46C7-9ED1-9AA1EB255C16}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
 						</Reference>
 						<Reference Name="OutputBus">
 							<ObjectRef Name="AmbienceMaster" ID="{286C8CB9-7D4C-44E7-9139-C8391E920F9C}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
@@ -422,6 +493,528 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="AMB_Machine_Hum2" ID="{7BDC08EB-B21F-4B5A-B89D-52665CA8CAB8}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</RandomSequenceContainer>
+				<RandomSequenceContainer Name="Emit_WindChimes_LoopContainer" ID="{C7089D66-8E61-4787-928F-A960C676334A}" ShortID="373835447">
+					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="1"/>
+						<Property Name="AttenuationDistanceScaling" Type="Real32" Value="0.25"/>
+						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+						<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+						<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
+						<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="3">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{C3AEC2B8-B148-4371-9695-766D0558B088}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="2"/>
+											<Property Name="Min" Type="Real64" Value="-2"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="SmoothAttenuation" ID="{BEF66290-124F-49EA-8525-505F51A0EC97}" WorkUnitID="{A41C15FD-E1E3-457F-ACD8-54CD043C4ADF}"/>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="MusicConversionSettings" ID="{B2D7E993-8C9F-46C7-9ED1-9AA1EB255C16}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="AmbienceMaster" ID="{286C8CB9-7D4C-44E7-9139-C8391E920F9C}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="437337__giddster__wind-chimes-1" ID="{A83FAF78-4531-4E33-AE87-DEFF6B831E4B}" ShortID="500339472">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="437337__giddster__wind-chimes-1" ID="{7C0EAF5D-E64D-4947-9066-6C4852CC5B40}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="5.38281131404461"/>
+										<Property Name="LoopEnd" Type="Real64" Value="76.1535452564748"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>437337__giddster__wind-chimes-1.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="178110774"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="437337__giddster__wind-chimes-1" ID="{7C0EAF5D-E64D-4947-9066-6C4852CC5B40}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</RandomSequenceContainer>
+				<RandomSequenceContainer Name="Emit_Wind_LoopContainer" ID="{619E6F37-DDDB-40FA-AF2F-ABF463098AFA}" ShortID="381506851">
+					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="1"/>
+						<Property Name="AttenuationDistanceScaling" Type="Real32" Value="0.5"/>
+						<Property Name="OutputBusVolume" Type="Real64">
+							<ValueList>
+								<Value>-7</Value>
+							</ValueList>
+						</Property>
+						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+						<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+						<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
+						<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="6">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{C7A10D21-DB20-40CF-B7E5-54F14A9AF87A}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="7"/>
+											<Property Name="Min" Type="Real64" Value="-3"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+						<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="10"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="SmoothAttenuation" ID="{BEF66290-124F-49EA-8525-505F51A0EC97}" WorkUnitID="{A41C15FD-E1E3-457F-ACD8-54CD043C4ADF}"/>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="MusicConversionSettings" ID="{B2D7E993-8C9F-46C7-9ED1-9AA1EB255C16}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="AmbienceMaster" ID="{286C8CB9-7D4C-44E7-9139-C8391E920F9C}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="wind-001" ID="{09F12C51-4CAB-4330-B4FF-D4DB918E03EC}" ShortID="758690506">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="wind-001" ID="{019D60CA-6805-4F1C-84A4-F6B542B92768}">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.152505445952462"/>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>wind-001.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="435064081"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="wind-001" ID="{019D60CA-6805-4F1C-84A4-F6B542B92768}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="wind-002" ID="{42984BF3-146D-4FE2-A1AB-1A5FF3989DD9}" ShortID="805421429">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="wind-002" ID="{8793FE50-6B4F-47B7-A9E7-081431295502}">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.313956693139407"/>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>wind-002.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="189704031"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="wind-002" ID="{8793FE50-6B4F-47B7-A9E7-081431295502}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="wind-003" ID="{4B49FEEE-1587-415C-825F-E65FE3D89F9B}" ShortID="374086746">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="wind-003" ID="{BDD3A7E6-F562-4935-96A4-42487B8D8641}">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.262304898063736"/>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>wind-003.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="498192142"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="wind-003" ID="{BDD3A7E6-F562-4935-96A4-42487B8D8641}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="wind-004" ID="{B5A3CC1C-5E26-4531-8842-1EEC9692FE5D}" ShortID="1007208862">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="wind-004" ID="{7F21A608-111D-4035-AA53-77106201BE6E}">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.098533455688175"/>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>wind-004.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="445865875"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="wind-004" ID="{7F21A608-111D-4035-AA53-77106201BE6E}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</RandomSequenceContainer>
+				<RandomSequenceContainer Name="General_Field_LoopContainer" ID="{79FEA1AE-5AA8-4BC0-BC4E-152F8A74B2E9}" ShortID="364785273">
+					<PropertyList>
+						<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+						<Property Name="OutputBusVolume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
+						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+						<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+						<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="2"/>
+						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>7</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="MusicConversionSettings" ID="{B2D7E993-8C9F-46C7-9ED1-9AA1EB255C16}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="AmbienceMaster" ID="{286C8CB9-7D4C-44E7-9139-C8391E920F9C}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="AMBIENCE Desert Soft Day" ID="{6AEDBED3-3CF6-4EFE-A2FC-F50221D9CC2D}" ShortID="562016839">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="AMBIENCE Desert Soft Day" ID="{27BCD04C-5866-4789-A82E-1F287D413BE6}">
+									<PropertyList>
+										<Property Name="LoopEnd" Type="Real64" Value="55.7227722772277"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>AMBIENCE Desert Soft Day.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="738464481"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="AMBIENCE Desert Soft Day" ID="{27BCD04C-5866-4789-A82E-1F287D413BE6}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="Effects">
+							<Reference>
+								<Local>
+									<EffectSlot Name="" ID="{3CB9037E-5D17-4ECA-A2B5-95591F478340}" ShortID="826881859">
+										<ReferenceList>
+											<Reference Name="Effect">
+												<Custom>
+													<Effect Name="Parametric EQ (Custom)" ID="{79D826E9-DB41-49F1-957A-26758D5CD080}" ShortID="111397819" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+														<PropertyList>
+															<Property Name="GainBand1" Type="Real32" Value="-24"/>
+														</PropertyList>
+													</Effect>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</EffectSlot>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
+				</RandomSequenceContainer>
+				<RandomSequenceContainer Name="General_City_LoopContainer" ID="{F89F9B5E-EF61-4EF6-84DD-E1C9CC0A97C8}" ShortID="479817124">
+					<PropertyList>
+						<Property Name="OutputBusVolume" Type="Real64">
+							<ValueList>
+								<Value>-7</Value>
+							</ValueList>
+						</Property>
+						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+						<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+						<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="2"/>
+						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="MusicConversionSettings" ID="{B2D7E993-8C9F-46C7-9ED1-9AA1EB255C16}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="AmbienceMaster" ID="{286C8CB9-7D4C-44E7-9139-C8391E920F9C}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="AMBIENCE City Plazza, Rumble, 8AM, Barsha Heights, Dubai, UAE" ID="{BCF9387A-2D9F-4F01-B727-436645BF5052}" ShortID="48595368">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="AMBIENCE City Plazza, Rumble, 8AM, Barsha Heights, Dubai, UAE" ID="{93107AC9-6702-40AE-AC83-0FFED2D6008D}">
+									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="7.28121087102607"/>
+										<Property Name="LoopEnd" Type="Real64" Value="139.944871679728"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>AMBIENCE City Plazza, Rumble, 8AM, Barsha Heights, Dubai, UAE.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="909551617"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="AMBIENCE City Plazza, Rumble, 8AM, Barsha Heights, Dubai, UAE" ID="{93107AC9-6702-40AE-AC83-0FFED2D6008D}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</RandomSequenceContainer>
+				<RandomSequenceContainer Name="Emit_Trees_LoopContainer" ID="{CA869AC5-D9C0-475A-9E93-40192A7B769F}" ShortID="402663884">
+					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="1"/>
+						<Property Name="AttenuationDistanceScaling" Type="Real32" Value="0.35"/>
+						<Property Name="InitialDelay" Type="Real64">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{D008B8E6-BC5C-451C-83B9-32DF86E08ED7}">
+										<PropertyList>
+											<Property Name="Max" Type="Real64" Value="10"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+						<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+						<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="2"/>
+						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="SmoothAttenuation" ID="{BEF66290-124F-49EA-8525-505F51A0EC97}" WorkUnitID="{A41C15FD-E1E3-457F-ACD8-54CD043C4ADF}"/>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="MusicConversionSettings" ID="{B2D7E993-8C9F-46C7-9ED1-9AA1EB255C16}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="AmbienceMaster" ID="{286C8CB9-7D4C-44E7-9139-C8391E920F9C}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP" ID="{B390758A-8E45-4B94-9C7C-255E9CEED992}" ShortID="756021441">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP" ID="{E9B5072B-6512-4658-BCA3-B05679DF7BEB}">
+									<PropertyList>
+										<Property Name="LoopEnd" Type="Real64" Value="141.706979856384"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="371377404"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP" ID="{E9B5072B-6512-4658-BCA3-B05679DF7BEB}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP_01" ID="{F12E1A85-0BF6-49F1-8C7E-5CE7D923F89E}" ShortID="908060932">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP" ID="{6D74E272-04AE-459A-B1ED-86D8D20D6FDC}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="55.169568958849"/>
+										<Property Name="LoopEnd" Type="Real64" Value="141.706979856384"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="371377404"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP" ID="{6D74E272-04AE-459A-B1ED-86D8D20D6FDC}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP_02" ID="{C0173B67-4C35-46D4-9E81-1F01468A0F4C}" ShortID="543531526">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP" ID="{627F0638-8839-4EAA-873B-E1D8B02420C8}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="32.944114035427"/>
+										<Property Name="LoopEnd" Type="Real64" Value="141.706979856384"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="371377404"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP" ID="{627F0638-8839-4EAA-873B-E1D8B02420C8}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP_03" ID="{C4C732FA-3078-4243-B2B3-BE0759A55C9C}" ShortID="21455732">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP" ID="{690B1CCA-00C9-4EB0-9785-6C0FB27A852D}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="110.969647277228"/>
+										<Property Name="LoopEnd" Type="Real64" Value="141.706979856384"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="371377404"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP" ID="{690B1CCA-00C9-4EB0-9785-6C0FB27A852D}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP_04" ID="{C4406C07-368F-4B4E-9BAA-68C465DF6CDC}" ShortID="494776448">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP" ID="{A8EAE784-FA49-4927-9C27-CE8B74479A76}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="16.0779886680074"/>
+										<Property Name="LoopEnd" Type="Real64" Value="141.706979856384"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="371377404"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP" ID="{A8EAE784-FA49-4927-9C27-CE8B74479A76}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>

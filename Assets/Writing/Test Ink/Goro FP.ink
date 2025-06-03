@@ -1,7 +1,7 @@
 VAR goro_fp_interrogated = false
 VAR goro_fp_FQ = false
 VAR SAVE_fp_ec_3 = false
-VAR IC_banana = false
+VAR IC_id_card = false
 
 {
     - goro_fp_FQ: -> FetchQuestDone
@@ -37,19 +37,19 @@ It's real secret stuff. #NPC
     -> Want
 
 ===Want===
-If you could get me an [Banana Bunch] then perhaps I can help you. #NPC
+If you could get me an [ID Card] then perhaps I can help you. #NPC
 I won't settle for anything else! #NPC
 * Well, I guess I'll find that
     -> END
-* {IC_banana} Oh, I have one
+* {IC_id_card} Oh, I have one
     Really?! #NPC
     -> Interrogated
 
 ===Interrogated===
-Did you get an [Banana Bunch]? #NPC
-* {IC_banana} Here ya go
+Did you get an [ID Card]? #NPC
+* {IC_id_card} Here ya go
     ~SAVE_fp_ec_3 = true
-    ~IC_banana = false
+    ~IC_id_card = false
     Oh great! #NPC
     -> FetchQuestDone
 * I'll come back

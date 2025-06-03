@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Roro 3
   m_EditorClassIdentifier: 
   Name: Roro
-  Icon: {fileID: 21300000, guid: ed88064bc7fcd2c4a9f223d7b99d3c8a, type: 3}
+  Icon: {fileID: 21300000, guid: f81434a53d0a2174ca8bc46782bfa24c, type: 3}
   Bio: It's a Roro
   FlagID: roro_3_bartered
   ItemOnOffer: {fileID: 11400000, guid: af210dedcdbaf56429bf9d6f8b6ac2c0, type: 2}
@@ -27,32 +27,31 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 6077773197129285653
+      type: {class: CountSpecificItems, ns: , asm: Assembly-CSharp}
+      data:
+        Items:
+        - {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
+        NeedAllItems: 0
     - rid: 6991182339336044559
       type: {class: OfferedItemsEffects, ns: , asm: Assembly-CSharp}
       data:
-        Icon: {fileID: 21300000, guid: f6d87d1d6fc255645aed77e04da1b99c, type: 3}
-        Description: Farming items' value +7
+        Icon: {fileID: 21300000, guid: bc1e10fa5e86c64439deae7f064d8256, type: 3}
+        Description: Dirt Bag's value +7
         Hint: What could this do?
         Text: +7
-        ConditionImage: {fileID: 21300000, guid: f6d87d1d6fc255645aed77e04da1b99c,
+        ConditionImage: {fileID: 21300000, guid: bc1e10fa5e86c64439deae7f064d8256,
           type: 3}
         _revealed: 0
         RequiresAllConditions: 1
         ItemConditions:
-        - rid: 8243887042965799068
-        AffectedItems: []
-        AffectedTags:
-        - farming
+        - rid: 6077773197129285653
+        AffectedItems:
+        - {fileID: 11400000, guid: f6893566c99bc7a408d5dcdb7be760b6, type: 2}
+        AffectedTags: []
         ItemActions:
         - rid: 8243886729994174554
     - rid: 8243886729994174554
       type: {class: AddValue, ns: , asm: Assembly-CSharp}
       data:
         ValueAddend: 7
-    - rid: 8243887042965799068
-      type: {class: CountItemsWithTags, ns: , asm: Assembly-CSharp}
-      data:
-        Tags:
-        - Farming
-        MinAmount: 1
-        ExactAmount: 0

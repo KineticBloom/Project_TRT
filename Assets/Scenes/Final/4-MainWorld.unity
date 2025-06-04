@@ -4686,6 +4686,18 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1042219183 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1964569629555036492, guid: 142379524301d744ca9ed258108220b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1568734014}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1044081648
 Mesh:
   m_ObjectHideFlags: 0
@@ -7814,10 +7826,55 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4383309922030565707, guid: 142379524301d744ca9ed258108220b9,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383309922030565707, guid: 142379524301d744ca9ed258108220b9,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 2137851265}
+    - target: {fileID: 4383309922030565707, guid: 142379524301d744ca9ed258108220b9,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1042219183}
+    - target: {fileID: 4383309922030565707, guid: 142379524301d744ca9ed258108220b9,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnRight
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5761779680460996703, guid: 142379524301d744ca9ed258108220b9,
         type: 3}
       propertyPath: m_Name
       value: InGameCanvasMaster
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724439611680476223, guid: 142379524301d744ca9ed258108220b9,
+        type: 3}
+      propertyPath: flashingToggle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724439611680476223, guid: 142379524301d744ca9ed258108220b9,
+        type: 3}
+      propertyPath: SFXCaptionToggle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724439611680476223, guid: 142379524301d744ca9ed258108220b9,
+        type: 3}
+      propertyPath: OneHandModeToggle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724439611680476223, guid: 142379524301d744ca9ed258108220b9,
+        type: 3}
+      propertyPath: screenshakeSlider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724439611680476223, guid: 142379524301d744ca9ed258108220b9,
+        type: 3}
+      propertyPath: screenshakeReadout
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9106350191481724383, guid: 142379524301d744ca9ed258108220b9,
         type: 3}
@@ -8749,6 +8806,18 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &2137851265 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5209257468394198211, guid: 142379524301d744ca9ed258108220b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1568734014}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

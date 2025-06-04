@@ -13,6 +13,7 @@ public class TimeLoopManager : MonoBehaviour
     private float loopMinutes = 8;
     // Public accessor, for other scripts
     public static float SecondsLeft => Instance._secondsLeft;
+    public static float StartTime => Instance.loopMinutes;
     // Read-only display, for the inspector
     [SerializeField, ReadOnly] 
     private string DEBUG_timeLeft;

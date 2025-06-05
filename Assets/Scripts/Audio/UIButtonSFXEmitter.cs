@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class UIButtonSFXEmitter : MonoBehaviour, ISelectHandler, IDeselectHandler, ISubmitHandler //IPointerClickHandler
+public class UIButtonSFXEmitter : MonoBehaviour, ISelectHandler, IDeselectHandler, ISubmitHandler, IPointerClickHandler
 {
     [SerializeField] private AudioEvent UIButtonHighlightSFX;
     [SerializeField] private AudioEvent UIButtonPressSFX;
@@ -27,6 +27,10 @@ public class UIButtonSFXEmitter : MonoBehaviour, ISelectHandler, IDeselectHandle
         }
     }
 
-    /*public void OnPointerClick(PointerEventData eventData) {
-    }*/
+    public void OnPointerClick(PointerEventData eventData) {
+        if (UIButtonPressSFX != null)
+        {
+            UIButtonPressSFX.Play(gameObject);
+        }
+    }
 }

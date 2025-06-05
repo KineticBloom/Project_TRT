@@ -89,7 +89,6 @@ public class MusicManager : MonoBehaviour
         currentMusicState = startingMusicState;
         previousMusicState = startingMusicState;
 
-        Debug.Log("Attempting to play " + startingMusicState);
         SetMusicState(startingMusicState);
         //PlayMusic(gameObject);
     }
@@ -98,7 +97,6 @@ public class MusicManager : MonoBehaviour
     {
         if (playStartupJingle && startupMusicTrigger?.data != null)
         {
-            Debug.Log("Starting jingle");
             startupMusicTrigger.data.Post(gameObject);
         }
         else 
@@ -133,7 +131,6 @@ public class MusicManager : MonoBehaviour
         if (_events.startEvent == null)
             return;
         
-        Debug.Log("Playing Music");
         //_eventInstance.setCallback(_eventCallback);
         _events.startEvent.Post(gameObject);
         //isPlaying = true;

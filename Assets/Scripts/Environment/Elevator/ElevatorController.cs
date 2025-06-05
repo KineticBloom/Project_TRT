@@ -14,6 +14,7 @@ public class ElevatorController : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Transform objectRoot;
+    [SerializeField] private GameObject elevatorPlatform; // So the sound can properly track the elevator
 
     [BoxGroup("Setup"), SerializeField] private InventoryCardData requiredCard;
     [BoxGroup("Setup"), SerializeField] private Transform startingWaypoint;
@@ -48,8 +49,8 @@ public class ElevatorController : MonoBehaviour
         if (_moving) { return; }
 
         // Start playing elevator sfx upon move
-        elevatorStartSFX.Play(gameObject);
-        elevatorHumSFX.Play(gameObject);
+        elevatorStartSFX.Play(elevatorPlatform);
+        elevatorHumSFX.Play(elevatorPlatform);
 
         SetMoving(true);
 
@@ -77,8 +78,8 @@ public class ElevatorController : MonoBehaviour
         if (_moving) return;
 
         // Start playing elevator sfx upon move
-        elevatorStartSFX.Play(gameObject);
-        elevatorHumSFX.Play(gameObject);
+        elevatorStartSFX.Play(elevatorPlatform);
+        elevatorHumSFX.Play(elevatorPlatform);
 
         int targetIndex = GetWaypointIndex(targetWaypoint);
 

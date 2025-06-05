@@ -1,9 +1,13 @@
 Event	ID	Name			Wwise Object Path	Notes
+	41288598	UI_Menu_Confirm			\UI\MenuUI\UI_Menu_Confirm	
 	123463240	ENV_F1x_Watcha_Got			\Environment\NPC\F1x\ENV_F1x_Watcha_Got	
 	349408092	BART_Card_Select			\UI\BarteringUI\BART_Card_Select	
 	362751767	BART_Card_Shuffle			\UI\BarteringUI\BART_Card_Shuffle	
+	627084462	VoidDialogueSFX			\Environment\NPC\VoidDialogueSFX	
+	709377256	UI_Menu_Cancel			\UI\MenuUI\UI_Menu_Cancel	
 	884323815	BarterEventOpen			\UI\DialogueUI\BarterEventOpen	
 	1033222429	Play_Menu_ButtonUp			\SettingsUI\Play_Menu_ButtonUp	
+	1085736370	UI_Menu_Highlight			\UI\MenuUI\UI_Menu_Highlight	
 	1163963844	ConversationStart			\UI\DialogueUI\ConversationStart	
 	1220165926	ElevatorStartup			\Environment\Objects\ElevatorStartup	
 	1344299683	ElevatorHum			\Environment\Objects\ElevatorHum	
@@ -12,6 +16,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	1536324566	Play_Menu_ButtonDown			\SettingsUI\Play_Menu_ButtonDown	
 	1681012287	PlayerFootsteps			\Environment\Player\PlayerFootsteps	
 	1851462748	ItemPickup			\Environment\Objects\ItemPickup	
+	1890003741	UI_Menu_Highlight_Down			\UI\MenuUI\UI_Menu_Highlight_Down	
 	1995159183	ENV_Interaction_Arrow_Show			\UI\EnvironmentUI\ENV_Interaction_Arrow_Show	
 	2034897212	BART_Card_Highlight			\UI\BarteringUI\BART_Card_Highlight	
 	2186217851	LightAmbience			\Environment\Objects\LightAmbience	
@@ -20,6 +25,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	2346769448	NPCDialogueEndSFX			\Environment\NPC\NPCDialogueEndSFX	
 	2602999364	BART_Barter_Win			\UI\BarteringUI\BART_Barter_Win	
 	3226991506	UI_Menu_Close			\UI\MenuUI\UI_Menu_Close	
+	3231741181	UI_Barter_Menu_Highlight			\UI\BarteringUI\UI_Barter_Menu_Highlight	
 	3283805861	ENV_B4rn3y_Identified			\Environment\NPC\B4rn3y\ENV_B4rn3y_Identified	
 	3302900089	BART_Barter_Lose			\UI\BarteringUI\BART_Barter_Lose	
 	3457263945	NPCDialogueSFX			\Environment\NPC\NPCDialogueSFX	
@@ -49,43 +55,53 @@ State	ID	Name	State Group			Notes
 	3736223277	G_Sharp	CurrentMusicKey			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	22629229	NPC_Dialogue_SFX	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\C1\{C1480379-8F11-ECE3-1BB6-987D9A792755}.wem		\Actor-Mixer Hierarchy\Environment\NPC\DialogueSounds\NPC_Dialogue_SFX		18768
 	30006150	ENV_Temp_Concrete_Footstep_4	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\95\{95152FA5-3B88-1220-87A3-42A87812B507}.wem		\Actor-Mixer Hierarchy\Environment\Player\ENV_Player_Footstep_Concrete\ENV_Temp_Concrete_Footstep_4		196668
 	31251656	UI_Conversation_Start	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\14\{1432DF7D-D262-EA09-6264-09E5B5216E4B}.wem		\Actor-Mixer Hierarchy\UI\DialogueUI\UI_Conversation_Start		304140
 	52698121	ENV_Eden_Expel_1	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\11\{11FAB7D7-4789-6C65-FC7B-A2AE68C56628}.wem		\Actor-Mixer Hierarchy\Environment\NPC\Eden\ENV_Eden_Expel\ENV_Eden_Expel_1		269740
 	58682502	ENV_Eden_Hello_1	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\6F\{6F2636E7-BECD-8A30-9AEC-5DEB5CD99CCD}.wem		\Actor-Mixer Hierarchy\Environment\NPC\Eden\ENV_Eden_Hello\ENV_Eden_Hello_1		178960
 	73219108	ENV_Eden_Hello_4	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\CE\{CEAD5F9A-730C-F501-3CF9-FC2898B2C3BB}.wem		\Actor-Mixer Hierarchy\Environment\NPC\Eden\ENV_Eden_Hello\ENV_Eden_Hello_4		176712
+	99042756	Void_Dialogue_SFX_1	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\39\{3937ED77-625C-1D1D-818E-F0C64F6E4B69}.wem		\Actor-Mixer Hierarchy\Environment\NPC\DialogueSounds\Void_Dialogue_SFX\Void_Dialogue_SFX_1		37992
 	109801595	ENV_Eden_Hello_2	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\4C\{4CF3FB52-6A30-5E96-816E-98D4C56C1F54}.wem		\Actor-Mixer Hierarchy\Environment\NPC\Eden\ENV_Eden_Hello\ENV_Eden_Hello_2		209520
 	112805279	ENV_Elevator_Hum	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\41\{41C42176-097A-E88D-E8DE-8BC9AF255817}.wem		\Actor-Mixer Hierarchy\Environment\Objects\ENV_Elevator_Hum		1469012
 	133687762	UI_Menu_Close	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\1B\{1BE1A56E-C960-43B9-D0B9-36E6C6AF414C}.wem		\Actor-Mixer Hierarchy\UI\MenuUI\UI_Menu_Close		384096
 	145118918	ENV_Door_Open	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\CD\{CD6028BE-E313-3E4E-DA02-4312A97EDA95}.wem		\Actor-Mixer Hierarchy\Environment\Objects\ENV_Door_Open		255908
 	158374870	B4rn3y_Identified_3	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\F8\{F84B9A4B-05F9-06A6-5774-3EFCC237C891}.wem		\Actor-Mixer Hierarchy\Environment\NPC\B4rn3y\B4rn3y_Identified\B4rn3y_Identified_3		766764
 	170357022	B4rn3y_Identified_4	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\B9\{B9FE579A-7759-566B-DDA8-4455F72B72F2}.wem		\Actor-Mixer Hierarchy\Environment\NPC\B4rn3y\B4rn3y_Identified\B4rn3y_Identified_4		776884
+	172961244	NPC_Dialogue_SFX_End	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\35\{35E95743-334D-BF02-46A7-8A441625120A}.wem		\Actor-Mixer Hierarchy\Environment\NPC\DialogueSounds\NPC_Dialogue_SFX_End		24176
 	173604301	Menu_Open	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\66\{66F23618-91D4-F23F-72B6-2708D13AFF49}.wem		\Actor-Mixer Hierarchy\SettingsUI\Menu_Open		384096
 	183794766	ENV_Card_Pickup_Synth	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\A2\{A2CA92EE-D997-A199-743B-29029FAE6952}.wem		\Actor-Mixer Hierarchy\Environment\Objects\ENV_Card_Pickup\ENV_Card_Pickup_Synth		140280
 	189639555	UI_Menu_Open	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\66\{66F23618-91D4-F23F-72B6-2708D13AFF49}.wem		\Actor-Mixer Hierarchy\UI\MenuUI\UI_Menu_Open		384096
 	216238282	ENV_Temp_Concrete_Footstep_1	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\08\{08F61763-ED7F-AB13-2FF7-3E3E88F0ED04}.wem		\Actor-Mixer Hierarchy\Environment\Player\ENV_Player_Footstep_Concrete\ENV_Temp_Concrete_Footstep_1		196668
 	230722640	F1x_Dont_Bite_1	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\D1\{D1307151-6D5D-318B-3589-10BF6D1944B3}.wem		\Actor-Mixer Hierarchy\Environment\NPC\F1x\F1x_Dont_Bite\F1x_Dont_Bite_1		217632
+	246070296	UI_Menu_Highlight_Down	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\33\{3370825C-EA00-3C62-7AF6-9A2B8D8D155D}.wem		\Actor-Mixer Hierarchy\UI\MenuUI\UI_Menu_Highlight_Down		26576
 	275695072	Card Shuffle Sparkle	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\35\{35BA2F4F-FE44-7D87-0CB7-EBF391C360A2}.wem		\Actor-Mixer Hierarchy\UI\BarteringUI\BART_card_shuffle\Card Shuffle Sparkle		184172
 	350602102	ENV_Card_Pickup_Shatter_1	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\63\{63A18067-5B43-72AA-19F9-5AD46B253A4B}.wem		\Actor-Mixer Hierarchy\Environment\Objects\ENV_Card_Pickup\ENV_Card_Pickup_Shatter\ENV_Card_Pickup_Shatter_1		140280
 	376631816	BART_card_place_3	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\EF\{EF0A5AF0-64E2-FD60-CD74-3FC6BEE904E6}.wem		\Actor-Mixer Hierarchy\UI\BarteringUI\BART_card_place\BART_card_place_3		43768
+	378125140	UI_Menu_Confirm	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\67\{6728E5F0-1B61-8159-7024-87841688C4BC}.wem		\Actor-Mixer Hierarchy\UI\MenuUI\UI_Menu_Confirm		93816
+	382903375	UI_Menu_Cancel	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\E6\{E6207976-8F80-F272-BB2E-D297453BBE9B}.wem		\Actor-Mixer Hierarchy\UI\MenuUI\UI_Menu_Cancel		108280
+	388778033	UI_Barter_Menu_Highlight_3	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\99\{99391C90-DB04-661D-C942-B46378DAC7FF}.wem		\Actor-Mixer Hierarchy\UI\MenuUI\UI_Barter_Menu_Highlight\UI_Barter_Menu_Highlight_3		33484
 	397048178	ENV_Card_Pickup_Shatter_3	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\E6\{E650E22A-4C20-E81E-8528-B84D4F4C7A07}.wem		\Actor-Mixer Hierarchy\Environment\Objects\ENV_Card_Pickup\ENV_Card_Pickup_Shatter\ENV_Card_Pickup_Shatter_3		138240
 	446356882	ENV_Interaction_Arrow_Show	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\36\{36BEFF7D-ED81-201A-300F-0E9137661932}.wem		\Actor-Mixer Hierarchy\UI\EnvironmentUI\ENV_Interaction_Arrow_Show		217328
 	451262019	BART_Barter_Lose	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\8C\{8CA3A730-A873-5592-9F29-C64DF341A3B5}.wem		\Actor-Mixer Hierarchy\UI\BarteringUI\BART_Barter_Lose		989688
 	452573080	BART_card_place_2	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\28\{284F5E22-F38D-32C3-30C9-11C6A37C9BB2}.wem		\Actor-Mixer Hierarchy\UI\BarteringUI\BART_card_place\BART_card_place_2		57468
+	453061315	Void_Dialogue_SFX_3	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\0C\{0C52FCAD-E7C3-83C8-2545-2C2425C88545}.wem		\Actor-Mixer Hierarchy\Environment\NPC\DialogueSounds\Void_Dialogue_SFX\Void_Dialogue_SFX_3		39792
 	453375890	ENV_Card_Pickup_Shatter_2	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\EC\{EC275021-1B77-D063-0E4E-932ED97D5128}.wem		\Actor-Mixer Hierarchy\Environment\Objects\ENV_Card_Pickup\ENV_Card_Pickup_Shatter\ENV_Card_Pickup_Shatter_2		140280
 	466029474	B4rn3y_Hoot_1	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\A5\{A5D6CB96-2ED2-2628-724E-9C2AB50F1AE0}.wem		\Actor-Mixer Hierarchy\Environment\NPC\B4rn3y\B4rn3y_Hoot\B4rn3y_Hoot_1		70416
 	468653180	F1x_Watcha_Got_4	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\27\{270D38FD-526B-8EDD-84D7-EBC960908AA7}.wem		\Actor-Mixer Hierarchy\Environment\NPC\F1x\F1x_Watcha_Got\F1x_Watcha_Got_4		255740
 	479918587	F1x_Watcha_Got_2	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\13\{13DF2E64-B951-1123-1AB3-0360E91D7E8E}.wem		\Actor-Mixer Hierarchy\Environment\NPC\F1x\F1x_Watcha_Got\F1x_Watcha_Got_2		211960
 	485879207	F1x_Dont_Bite_2	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\D0\{D012F89F-BD8C-9798-0F12-6D9FD1AA294E}.wem		\Actor-Mixer Hierarchy\Environment\NPC\F1x\F1x_Dont_Bite\F1x_Dont_Bite_2		258460
+	496033503	UI_Barter_Menu_Highlight_2	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\E0\{E006CB88-C6B3-C84F-F155-FF45378D09A7}.wem		\Actor-Mixer Hierarchy\UI\MenuUI\UI_Barter_Menu_Highlight\UI_Barter_Menu_Highlight_2		32284
 	498256396	F1x_Dont_Bite_3	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\D5\{D5A15918-10D8-F38E-C22E-30C4C9AC0AEE}.wem		\Actor-Mixer Hierarchy\Environment\NPC\F1x\F1x_Dont_Bite\F1x_Dont_Bite_3		196308
 	499250577	ENV_Temp_Concrete_Footstep_3	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\6F\{6F32DA82-5448-1F49-2C15-CF11DD997400}.wem		\Actor-Mixer Hierarchy\Environment\Player\ENV_Player_Footstep_Concrete\ENV_Temp_Concrete_Footstep_3		196668
 	540618060	Menu_Close	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\1B\{1BE1A56E-C960-43B9-D0B9-36E6C6AF414C}.wem		\Actor-Mixer Hierarchy\SettingsUI\Menu_Close		384096
 	586843447	B4rn3y_Hoot_2	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\F9\{F9B3E9A2-921E-236C-FE72-21F56CC49833}.wem		\Actor-Mixer Hierarchy\Environment\NPC\B4rn3y\B4rn3y_Hoot\B4rn3y_Hoot_2		70416
-	599765199	NPC_B4rn3y_Dialogue_SFX	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\E6\{E63455CD-31AA-4B43-D11B-750498677943}.wem		\Actor-Mixer Hierarchy\Environment\NPC\DialogueSounds\NPC_B4rn3y_Dialogue_SFX		16964
 	613268131	BART_card_place_4	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\A9\{A92FFD3E-E46E-D16F-0192-671BE9B4E2D8}.wem		\Actor-Mixer Hierarchy\UI\BarteringUI\BART_card_place\BART_card_place_4		44896
 	629005702	F1x_Watcha_Got_1	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\C3\{C3C7D349-3D12-732A-3E8B-60C8B1883543}.wem		\Actor-Mixer Hierarchy\Environment\NPC\F1x\F1x_Watcha_Got\F1x_Watcha_Got_1		240996
 	630183003	Menu_ButtonDown	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\A2\{A2C8F10B-EAD5-C7D8-210E-0DE11B8271FF}.wem		\Actor-Mixer Hierarchy\SettingsUI\Menu_ButtonDown		63968
+	643055565	UI_Barter_Menu_Highlight_1	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\2F\{2FA34758-FB34-CDCE-74E1-CACDBC1CC96F}.wem		\Actor-Mixer Hierarchy\UI\MenuUI\UI_Barter_Menu_Highlight\UI_Barter_Menu_Highlight_1		33184
 	652508007	F1x_Dont_Bite_4	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\18\{18943A07-9AF6-1FA1-6948-8CC9934A56C8}.wem		\Actor-Mixer Hierarchy\Environment\NPC\F1x\F1x_Dont_Bite\F1x_Dont_Bite_4		221260
+	671445668	Void_Dialogue_SFX_2	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\CE\{CEF76393-D59C-2365-CAAA-B169A385EBB3}.wem		\Actor-Mixer Hierarchy\Environment\NPC\DialogueSounds\Void_Dialogue_SFX\Void_Dialogue_SFX_2		36788
 	692532191	ENV_Temp_Concrete_Footstep_2	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\18\{1844D32F-3C6E-25A7-0041-59C84ED67A8B}.wem		\Actor-Mixer Hierarchy\Environment\Player\ENV_Player_Footstep_Concrete\ENV_Temp_Concrete_Footstep_2		196668
 	734873575	BART_Card_Highlight	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\99\{99717639-10BA-5ED9-4484-DD49698199DA}.wem		\Actor-Mixer Hierarchy\UI\BarteringUI\BART_Card_Highlight		243880
 	743462201	Menu_ButtonUp	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\A9\{A9B789F2-4472-1AB8-8383-99964FA48500}.wem		\Actor-Mixer Hierarchy\SettingsUI\Menu_ButtonUp		93624
@@ -100,11 +116,12 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	879942249	Card Shuffle Cards	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\A4\{A4F1AAF7-2921-5D8B-9E81-FD6E6AF9A922}.wem		\Actor-Mixer Hierarchy\UI\BarteringUI\BART_card_shuffle\Card Shuffle Cards		185436
 	881369990	ENV_Card_Pickup_Shatter_4	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\A5\{A5D51094-B0F5-E15F-1A80-E6EA10162B8C}.wem		\Actor-Mixer Hierarchy\Environment\Objects\ENV_Card_Pickup\ENV_Card_Pickup_Shatter\ENV_Card_Pickup_Shatter_4		153664
 	927523262	BART_card_select	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\53\{538CBB89-EBF9-C255-6BB8-76D7E3A2FA59}.wem		\Actor-Mixer Hierarchy\UI\BarteringUI\BART_card_select		19192
+	929848013	UI_Barter_Menu_Highlight_4	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\30\{302FA4C8-DD5B-EF93-CEFA-3E133F549B91}.wem		\Actor-Mixer Hierarchy\UI\MenuUI\UI_Barter_Menu_Highlight\UI_Barter_Menu_Highlight_4		30784
 	946192858	ENV_Temp_Concrete_Footstep_5	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\95\{95463969-9863-D015-9BFF-84DB6D9AA928}.wem		\Actor-Mixer Hierarchy\Environment\Player\ENV_Player_Footstep_Concrete\ENV_Temp_Concrete_Footstep_5		196668
 	948200494	F1x_Watcha_Got_3	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\D0\{D0F1DA0C-996A-2014-4317-377DBE61932A}.wem		\Actor-Mixer Hierarchy\Environment\NPC\F1x\F1x_Watcha_Got\F1x_Watcha_Got_3		223980
+	970415424	UI_Menu_Highlight	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\A3\{A322E901-0B4F-DF60-F181-BD878403AAC1}.wem		\Actor-Mixer Hierarchy\UI\MenuUI\UI_Menu_Highlight		43400
 	985729430	B4rn3y_Hoot_3	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\B4\{B4BB8094-4F67-DBE0-E2E9-E221BE164A4A}.wem		\Actor-Mixer Hierarchy\Environment\NPC\B4rn3y\B4rn3y_Hoot\B4rn3y_Hoot_3		70416
 	1009740941	ENV_Elevator_Startup	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\28\{2800DA7E-817A-A78A-06B3-28147E2986DA}.wem		\Actor-Mixer Hierarchy\Environment\Objects\ENV_Elevator_Startup		155024
 	1017220895	ENV_Dummy_Fluorescent_Light	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\B8\{B83A8757-33A4-6DE5-BFBF-AF067EDFFFB4}.wem		\Actor-Mixer Hierarchy\Environment\Objects\ENV_Dummy_Fluorescent_Light		882144
-	1019604268	NPC_B4rn3y_Dialogue_SFX_End	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\1E\{1E223280-4761-8989-5CBC-481594D260A8}.wem		\Actor-Mixer Hierarchy\Environment\NPC\DialogueSounds\NPC_B4rn3y_Dialogue_SFX_End		20868
 	1032755162	Barter_Menu_Start	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\9B\{9B73703C-5FA6-D52E-EC57-D9124EA09862}.wem		\Actor-Mixer Hierarchy\UI\DialogueUI\Barter_Menu_Start		438600
 

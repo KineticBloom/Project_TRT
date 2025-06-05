@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 8923698312406257452}
   - component: {fileID: 8163162133242592468}
   - component: {fileID: 4444900198087211697}
+  - component: {fileID: 566990987595321878}
   m_Layer: 5
   m_Name: DialogueChoice
   m_TagString: Untagged
@@ -274,6 +275,55 @@ MonoBehaviour:
   leafSelectionHighlight: {fileID: 3781649414337392618}
   text: {fileID: 388080249549579526}
   isDefaultSelection: 0
+  selectionHighlightSFX:
+    name: 
+    playOnInit: 0
+    _events:
+      startEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 11400000, guid: b2dedf52db52583419f3e53b9624f8fd,
+          type: 2}
+      pauseEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      resumeEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      stopEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+    _callbacks:
+      onStart:
+        m_PersistentCalls:
+          m_Calls: []
+      onRestart:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleted:
+        m_PersistentCalls:
+          m_Calls: []
+      onBeat:
+        m_PersistentCalls:
+          m_Calls: []
+      onMarker:
+        m_PersistentCalls:
+          m_Calls: []
+--- !u!114 &566990987595321878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4315059293506173807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4aeb9083773854e9e1e15edd9293e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5685974392414772736
 GameObject:
   m_ObjectHideFlags: 0

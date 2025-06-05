@@ -65,8 +65,14 @@ namespace AK
         static const AkUniqueID STOP_GENERAL_FIELD_LOOPCONTAINER = 1321819679U;
         static const AkUniqueID STOPMUSIC = 1917263390U;
         static const AkUniqueID TESTAMBIENCESTART = 664772623U;
+        static const AkUniqueID UI_BARTER_MENU_HIGHLIGHT = 3231741181U;
+        static const AkUniqueID UI_MENU_CANCEL = 709377256U;
         static const AkUniqueID UI_MENU_CLOSE = 3226991506U;
+        static const AkUniqueID UI_MENU_CONFIRM = 41288598U;
+        static const AkUniqueID UI_MENU_HIGHLIGHT = 1085736370U;
+        static const AkUniqueID UI_MENU_HIGHLIGHT_DOWN = 1890003741U;
         static const AkUniqueID UI_MENU_OPEN = 4083126854U;
+        static const AkUniqueID VOIDDIALOGUESFX = 627084462U;
     } // namespace EVENTS
 
     namespace STATES
@@ -114,6 +120,7 @@ namespace AK
     namespace GAME_PARAMETERS
     {
         static const AkUniqueID AMBIENCEVOLUME = 1204480359U;
+        static const AkUniqueID CANPLAYUIHIGHLIGHTSFX = 3557113764U;
         static const AkUniqueID INALLEYWAY = 3207605084U;
         static const AkUniqueID MASTERVOLUME = 2918011349U;
         static const AkUniqueID MUSICVOLUME = 2346531308U;

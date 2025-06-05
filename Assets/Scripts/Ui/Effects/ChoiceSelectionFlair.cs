@@ -9,6 +9,8 @@ public class ChoiceSelectionFlair : MonoBehaviour, ISelectHandler, IDeselectHand
     public TMP_Text text;
     public bool isDefaultSelection = false;
 
+    public AudioEvent selectionHighlightSFX;
+
     private bool FirstEnable = false;
 
     private void OnEnable() {
@@ -27,5 +29,7 @@ public class ChoiceSelectionFlair : MonoBehaviour, ISelectHandler, IDeselectHand
     public void OnSelect(BaseEventData eventData) {
         leafSelectionHighlight.gameObject.SetActive(true);
         text.color = Color.black;
+
+        selectionHighlightSFX.Play(gameObject);
     }
 }

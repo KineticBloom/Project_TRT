@@ -251,6 +251,43 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 7ce3b24b484f6ed42b9975d04c176dde, type: 3}
   currentInkFile: 3
   FadeInCharacters: 5
+  dialogueSFX:
+    name: 
+    playOnInit: 0
+    _events:
+      startEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 11400000, guid: b6d31c1ba97b79f418e96e16bfe96730,
+          type: 2}
+      pauseEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      resumeEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      stopEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+    _callbacks:
+      onStart:
+        m_PersistentCalls:
+          m_Calls: []
+      onRestart:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleted:
+        m_PersistentCalls:
+          m_Calls: []
+      onBeat:
+        m_PersistentCalls:
+          m_Calls: []
+      onMarker:
+        m_PersistentCalls:
+          m_Calls: []
   DialogueUiManager: {fileID: 864993901}
 --- !u!224 &271504831 stripped
 RectTransform:
@@ -689,6 +726,11 @@ PrefabInstance:
       propertyPath: playStartupJingle
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9110059251031622243, guid: 18d4c015a9fae0947962be4f5d61594f,
+        type: 3}
+      propertyPath: startingMusicState
+      value: Stop
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -861,6 +903,8 @@ GameObject:
   - component: {fileID: 1860164421}
   - component: {fileID: 1860164420}
   - component: {fileID: 1860164419}
+  - component: {fileID: 1860164424}
+  - component: {fileID: 1860164423}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -986,6 +1030,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1860164423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860164418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09c7d8119d4c6bb4099b95068d92d7e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDefaultListener: 1
+  bOverrideScalingFactor: 0
+  scalingFactor: -1
+  listenerId: 0
+--- !u!114 &1860164424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860164418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f5b4ec53dc443045aa98c8a24cd86da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 1
+  isStaticObject: 0
+  usePositionOffsetData: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  scalingFactor: 1
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!114 &1897402017 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7436095798709746551, guid: 142379524301d744ca9ed258108220b9,

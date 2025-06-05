@@ -37,7 +37,6 @@ public class DialogueManager : MonoBehaviour {
         public bool TriggersBarter;
         public bool LineHasChoices;
         public List<Choice> Choices;
-
     }
 
     public UnityAction StartFastBounce;
@@ -69,6 +68,8 @@ public class DialogueManager : MonoBehaviour {
     private Quaternion lastCameraRot;
     private bool CameraMoving;
     private bool CameraSetup = false;
+
+    private string NPCName;
 
     public delegate void CallBackBarterTrigger();
 
@@ -139,7 +140,7 @@ public class DialogueManager : MonoBehaviour {
     /// <param name="NPCWorldPosition"> Position for NPC Dialogue Bubble</param>
     /// <param name="PlayerWorldPosition"> Position for Player Dialogue Bubble </param>
     /// <param name="SkipToINKKnot"> INK Knot to jump too</param>
-    public void StartDialogue(TextAsset DialogueINKFile, CallBackBarterTrigger callBackBarterTrigger, Vector3 NPCWorldPosition, Vector3 PlayerWorldPosition, string SkipToINKKnot = "NONE") {
+    public void StartDialogue(TextAsset DialogueINKFile, CallBackBarterTrigger callBackBarterTrigger, Vector3 NPCWorldPosition, Vector3 PlayerWorldPosition, string SkipToINKKnot = "NONE", string NPCName = "") {
 
         if (InDialogue) return;
         if (_onDelay) return;
@@ -150,6 +151,8 @@ public class DialogueManager : MonoBehaviour {
         if (FoundDependencies == false) return;
 
         this.callBackBarterTrigger = callBackBarterTrigger;
+
+        this.NPCName = NPCName;
 
         // Pause Game
         InGameUi.MoveToDialogue();
@@ -301,11 +304,14 @@ public class DialogueManager : MonoBehaviour {
         Vector2 NPCViewportPosition = WorldPosToViewportPos(NPCWorldPosition, CurrentCanvas, CurrentCamera);
         GameObject NPCBubbleObject = Instantiate(NPCDialogueBubblePrefab, NPCViewportPosition, Quaternion.identity, BubbleParent);
         NPCBubble = NPCBubbleObject.GetComponent<SpeechBubbleCore>();
+        NPCBubbleObject.transform.position += new Vector3(100, 0, 0);
+
 
         // Create Player Dialogue Bubble
         Vector2 PlayerViewportPosition = WorldPosToViewportPos(PlayerWorldPosition, CurrentCanvas, CurrentCamera);
         GameObject PlayerBubbleObject = Instantiate(PlayerDialogueBubblePrefab, PlayerViewportPosition, Quaternion.identity, BubbleParent);
         PlayerBubble = PlayerBubbleObject.GetComponent<SpeechBubbleCore>();
+        //PlayerBubble.transform.position += new Vector3(100, 0, 0);
     }
 
     /// <summary>
@@ -374,6 +380,9 @@ public class DialogueManager : MonoBehaviour {
         // Setup Line
         CurrentBubble.TMPText.text = "";
         CurrentBubble.gameObject.SetActive(true);
+        if (CurrentBubble.Nametag != null) {
+            CurrentBubble.Nametag.text = NPCName;
+        }
         LineFinished = false;
 
         StartCoroutine(PrintNextCharacter());

@@ -7,26 +7,29 @@ public class Fence : MonoBehaviour
     [SerializeField] private ElevatorController elevator;
     [Tooltip("The index of the waypoint this is connected to. This index is found in the Elevator's waypoints list")]
     [SerializeField] private int connectedWaypointIndex = 0;
-    [SerializeField] private BoxCollider boxCollider;
-    [SerializeField] private MeshRenderer meshRenderer;
+    private BoxCollider _boxCollider;
+    private Animator _animator;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        _boxCollider = GetComponent<BoxCollider>();
+        _animator = GetComponent<Animator>();
         elevator.finishedMoving += OnFinished;
+        OnFinished();
     }
 
     private void OnFinished()
     {
-        if ( elevator._currentWaypointIndex == connectedWaypointIndex)
+        if (elevator._currentWaypointIndex == connectedWaypointIndex)
         {
-            boxCollider.enabled = false;
-            meshRenderer.enabled = false;
+            _boxCollider.enabled = false;
+            _animator.SetBool("IsOpen", true);
         } else
         {
-            boxCollider.enabled = true;
-            meshRenderer.enabled = true;
+            _boxCollider.enabled = true;
+            _animator.SetBool("IsOpen", false);
         }
     }
 }

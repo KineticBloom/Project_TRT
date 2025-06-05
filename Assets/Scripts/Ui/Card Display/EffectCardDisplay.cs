@@ -15,9 +15,9 @@ public class EffectCardDisplay : MonoBehaviour
     [SerializeField] private GameObject cardFront;
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI topLeftText;
-    [SerializeField] private TextMeshProUGUI bottomRightText;
-    [SerializeField] private Image conditionImageTop;
-    [SerializeField] private Image conditionImageBottom;
+    [SerializeField] private Image backArt;
+    [SerializeField] private Sprite backActive;
+    [SerializeField] private Sprite backNotActive;
 
     [Header("Description")]
     [SerializeField] private GameObject descriptionContainer;
@@ -56,9 +56,9 @@ public class EffectCardDisplay : MonoBehaviour
 
         icon.sprite = effectCard.Icon;
         topLeftText.text = effectCard.Text;
-        bottomRightText.text = effectCard.Text;
+/*        bottomRightText.text = effectCard.Text;
         conditionImageTop.sprite = effectCard.ConditionImage;
-        conditionImageBottom.sprite = effectCard.ConditionImage;
+        conditionImageBottom.sprite = effectCard.ConditionImage;*/
 
         descriptionText.text = (revealScreen || effectCard.IsRevealed)
             ? effectCard.Description : effectCard.Hint;
@@ -94,6 +94,8 @@ public class EffectCardDisplay : MonoBehaviour
     {
         if (flipInProgress == true || flipDone == true) return;
 
+        backArt.sprite = backNotActive;
+
         _barteringController?.EFFECT_AddNewReveal(EffectCard);
         flipInProgress = true;
         FlipBack();
@@ -104,6 +106,7 @@ public class EffectCardDisplay : MonoBehaviour
         //transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).SetEase(Ease.InOutSine).SetLoops(2, LoopType.Yoyo);
         if (_shakeTween == null)
         {
+            backArt.sprite = backActive;
             _shakeTween = transform.DOShakeRotation(0.5f, new Vector3(0, 0, 45f), 15, 90, true, ShakeRandomnessMode.Harmonic);
             _shakeTween.SetAutoKill(false);
         }
@@ -150,6 +153,7 @@ public class EffectCardDisplay : MonoBehaviour
 
     public void AttackReturnCall()
     {
+        backArt.sprite = backActive;
         StartCoroutine(AttackReturn());
     }
 
@@ -235,6 +239,7 @@ public class EffectCardDisplay : MonoBehaviour
 
     private void OnDisable()
     {
+        backArt.sprite = backNotActive;
         transform.DOKill();
 
         if (_shakeTween != null)

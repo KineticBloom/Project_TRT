@@ -14,6 +14,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Player_Dialogue_SFX" ID="{33B11854-8D9D-432A-9881-60694D4CCB3E}">
+					<ChildrenList>
+						<Action Name="" ID="{9DCAB522-EAFB-4432-BCF0-3BA7AE0BB781}" ShortID="650901051">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_Dialogue_SFX" ID="{163F151F-202A-42A0-8494-69B207441D0D}" WorkUnitID="{5B7407C4-3E16-4B49-90D4-1F6B50658793}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Player_Dialogue_End_SFX" ID="{54B8961E-5040-4C93-BA58-5253255CC066}">
+					<ChildrenList>
+						<Action Name="" ID="{344973C6-CC0D-4F6D-979F-2771AFB637A0}" ShortID="610780806">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_Dialogue_SFX_End" ID="{3E7D82D4-1E32-40BB-9D14-D6FBF29E0BFF}" WorkUnitID="{5B7407C4-3E16-4B49-90D4-1F6B50658793}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

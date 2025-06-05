@@ -24,7 +24,7 @@ public class ChoiceSelectionFlair : MonoBehaviour, ISelectHandler, IDeselectHand
     }
 
     public void OnSelect(BaseEventData eventData) {
-        selectionHighlightSFX.Play(gameObject);
+        //selectionHighlightSFX.Play(gameObject);
         text.color = Color.white;
     }
 }

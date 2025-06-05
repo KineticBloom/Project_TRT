@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{2CAF7C27-18E4-40A7-871C-C075A9250659}",
     "Language": "SFX",
-    "Hash": "{D74DC0A2-894A-FCAE-9E66-16E2EDD95F05}",
+    "Hash": "{C5F8BDA2-B156-BCB3-9F43-94FA32B5CE72}",
     "ObjectPath": "\\SoundBanks\\Music\\Music",
     "ShortName": "Music",
     "Path": "Music.bnk",
@@ -48,6 +48,14 @@
       "ShortName": "MUSC_Mailbot_Room.wav",
       "Path": "Media/475666812.wem",
       "CachePath": "72/{7213527A-8A08-5B83-D3BC-DDD3FF581D59}.wem"
+     },
+     {
+      "Id": "641019573",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MUSC_Vista.wav",
+      "CachePath": "5F/{5F283CA4-1F8B-7597-AAE8-978D4AE5FA9B}.wem"
      },
      {
       "Id": "655550078",
@@ -150,6 +158,25 @@
         "Name": "D",
         "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\D",
         "GUID": "{59A9C4E2-4474-466D-89E2-3F527F929EE3}"
+       }
+      ]
+     },
+     {
+      "Id": "3865414046",
+      "Name": "Key_E",
+      "ObjectPath": "\\Events\\Music\\MusicKeyStateEvents\\Key_E",
+      "GUID": "{CB618653-011D-400D-8230-FAEDD397768D}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "3124027310",
+        "Id": "84696442",
+        "Name": "E",
+        "ObjectPath": "\\States\\Default Work Unit\\CurrentMusicKey\\E",
+        "GUID": "{A196567F-4C7E-40AD-AD07-AEE4A1444F3D}"
        }
       ]
      },
@@ -287,6 +314,25 @@
       ]
      },
      {
+      "Id": "2940515384",
+      "Name": "MusicStateVista",
+      "ObjectPath": "\\Events\\Music\\MusicEvents\\MusicStateVista",
+      "GUID": "{250F9B18-5AF3-4A2C-ADE7-F810F822406F}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "1021618141",
+        "Id": "3539709088",
+        "Name": "Vista",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\Vista",
+        "GUID": "{FC1C8B6F-C5A9-40FC-A154-64E2F5F541C3}"
+       }
+      ]
+     },
+     {
       "Id": "1127073398",
       "Name": "PauseMusic",
       "ObjectPath": "\\Events\\Music\\MusicEvents\\PauseMusic",
@@ -379,6 +425,19 @@
         "MediaRefs": [
          {
           "Id": "655550078"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "3539709088",
+         "GUID": "{FC1C8B6F-C5A9-40FC-A154-64E2F5F541C3}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "641019573"
          }
         ]
        }
@@ -493,6 +552,19 @@
           "Id": "655550078"
          }
         ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "3539709088",
+         "GUID": "{FC1C8B6F-C5A9-40FC-A154-64E2F5F541C3}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "641019573"
+         }
+        ]
        }
       ]
      },
@@ -586,6 +658,19 @@
         "MediaRefs": [
          {
           "Id": "655550078"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "3539709088",
+         "GUID": "{FC1C8B6F-C5A9-40FC-A154-64E2F5F541C3}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "641019573"
          }
         ]
        }
@@ -686,6 +771,19 @@
           "Id": "655550078"
          }
         ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1021618141",
+         "Id": "3539709088",
+         "GUID": "{FC1C8B6F-C5A9-40FC-A154-64E2F5F541C3}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "641019573"
+         }
+        ]
        }
       ]
      }
@@ -746,6 +844,12 @@
         "Name": "PlayerSpawn",
         "ObjectPath": "\\States\\Default Work Unit\\MusicState\\PlayerSpawn",
         "GUID": "{34160084-965A-46DB-A8F6-BFA9644AC295}"
+       },
+       {
+        "Id": "3539709088",
+        "Name": "Vista",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicState\\Vista",
+        "GUID": "{FC1C8B6F-C5A9-40FC-A154-64E2F5F541C3}"
        }
       ]
      },
@@ -838,6 +942,6 @@
     ]
    }
   ],
-  "FileHash": "{621C4A2C-6A60-F526-E471-109815F05032}"
+  "FileHash": "{024AC4BA-FE1F-FFB6-6D53-7D6FF01515B4}"
  }
 }

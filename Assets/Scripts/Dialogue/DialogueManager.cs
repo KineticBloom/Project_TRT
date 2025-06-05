@@ -17,6 +17,18 @@ public class DialogueManager : MonoBehaviour {
     public GameObject NPCDialogueBubblePrefab;
     public GameObject PlayerDialogueBubblePrefab;
 
+    public AudioEvent PlayerDialogueSFX;
+    public AudioEvent PlayerDialogueEndSFX;
+
+    public AudioEvent EdenDialogueSFX;
+    public AudioEvent EdenDialogueEndSFX;
+
+    public AudioEvent B4rn3yDialogueSFX;
+    public AudioEvent B4rn3yDialogueEndSFX;
+
+    public AudioEvent F1xDialogueSFX;
+    public AudioEvent F1xDialogueEndSFX;
+
     public AudioEvent NPCDialogueSFX;
     public AudioEvent NPCDialogueEndSFX;
 
@@ -534,10 +546,11 @@ public class DialogueManager : MonoBehaviour {
 
         // Play sound every three characters or if a punctuation
         if (NextCharacter == '.' || CharactersPrinted % 4 == 0) {
-            //playTalkSound(currentCharacter);
-            //Debug.Log(NPCDialogueSFX);
-            NPCDialogueSFX.Play(gameObject);
-            //Debug.Log("Bwip");
+            if (!CurrentLineData.SaidByNPC) { PlayerDialogueSFX.Play(gameObject); }
+            else if (NPCName == "Eden") { EdenDialogueSFX.Play(gameObject); }
+            else if (NPCName == "B4rn3y") { B4rn3yDialogueSFX.Play(gameObject); }
+            else if (NPCName == "F1X") { F1xDialogueSFX.Play(gameObject); }
+            else { NPCDialogueSFX.Play(gameObject); }
         }
 
         if (CurrentLineData.CharactersPrinted > CharactersPrinted) {
@@ -555,7 +568,11 @@ public class DialogueManager : MonoBehaviour {
             }
             LineFinished = true;
 
-            NPCDialogueEndSFX.Play(gameObject);
+            if (!CurrentLineData.SaidByNPC) { PlayerDialogueEndSFX.Play(gameObject); }
+            else if (NPCName == "Eden") { EdenDialogueEndSFX.Play(gameObject); }
+            else if (NPCName == "B4rn3y") { B4rn3yDialogueEndSFX.Play(gameObject); }
+            else if (NPCName == "F1X") { F1xDialogueEndSFX.Play(gameObject); }
+            else { NPCDialogueEndSFX.Play(gameObject); }
 
             StartSlowBounce.Invoke();
 

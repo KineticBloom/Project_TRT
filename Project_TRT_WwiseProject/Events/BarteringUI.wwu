@@ -52,7 +52,7 @@
 						<Action Name="" ID="{01E5D8B2-9025-428D-9027-737B840C2C16}" ShortID="489437814">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="BART_Barter_Win" ID="{C0171027-9735-4C28-BE2B-41581D0AEEAF}" WorkUnitID="{7C65D6C1-222E-48DF-8415-47416B8AB09F}"/>
+									<ObjectRef Name="BART_Win" ID="{5181296D-63EE-4B8B-AF72-6D08FD34BDCF}" WorkUnitID="{7C65D6C1-222E-48DF-8415-47416B8AB09F}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -63,7 +63,7 @@
 						<Action Name="" ID="{7726DE4D-5420-448E-978F-CD49035BEC1E}" ShortID="514336163">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="BART_Barter_Lose" ID="{33E57C92-BFC7-485A-8D83-488AB609EA86}" WorkUnitID="{7C65D6C1-222E-48DF-8415-47416B8AB09F}"/>
+									<ObjectRef Name="BART_Fail" ID="{438B12DF-58E9-4334-999C-5F0F58E00FBB}" WorkUnitID="{7C65D6C1-222E-48DF-8415-47416B8AB09F}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -75,6 +75,39 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="UI_Barter_Menu_Highlight" ID="{E43D3F03-E7D8-4088-8566-3DA55446A65C}" WorkUnitID="{6B1DDE5B-BB42-443C-87DB-C411C4026485}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="BART_Effect_Card_Attack" ID="{A6B44496-F249-471F-97B9-5BF45E127374}">
+					<ChildrenList>
+						<Action Name="" ID="{6CE72AA4-B4C9-4EE0-9681-3AE9A04B6996}" ShortID="334821991">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BART_Card_Effect_Attack" ID="{59705068-52FE-43E5-8B44-238C22F81D60}" WorkUnitID="{7C65D6C1-222E-48DF-8415-47416B8AB09F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="BART_Effect_Card_Trigger" ID="{EAC28485-3560-4197-9D7F-957F4781B6D1}">
+					<ChildrenList>
+						<Action Name="" ID="{70D8FEE5-156B-46DB-B6D8-6F488E3BA884}" ShortID="492799798">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BART_Card_Effect_Trigger" ID="{240DD744-CF8B-438F-80E6-0A3702E72554}" WorkUnitID="{7C65D6C1-222E-48DF-8415-47416B8AB09F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="BART_Effect_Card_Flip" ID="{58437910-3820-4A04-ACAD-4C6A79B86D0D}">
+					<ChildrenList>
+						<Action Name="" ID="{DBE1EF75-41EE-4D94-BA85-3140F2BE6B8A}" ShortID="238445308">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BART_Card_Effect_Flip" ID="{F3B7EF23-1052-407F-B7B1-1B1C0423B057}" WorkUnitID="{7C65D6C1-222E-48DF-8415-47416B8AB09F}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

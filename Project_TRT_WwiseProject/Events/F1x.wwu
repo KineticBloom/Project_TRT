@@ -25,6 +25,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="F1x_Dialogue_SFX" ID="{304F81BF-DFED-44EF-B811-AF5AD0242C78}">
+					<ChildrenList>
+						<Action Name="" ID="{32D126CC-1E0B-43D3-BC67-D3615537D4C6}" ShortID="555221765">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="NPC_F1x_Dialogue_SFX" ID="{05968795-DD4B-4A48-8061-8C6542C944A7}" WorkUnitID="{5B7407C4-3E16-4B49-90D4-1F6B50658793}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="F1x_Dialogue_End_SFX" ID="{4F014084-7A7B-432C-9E7B-6E04B04E8C62}">
+					<ChildrenList>
+						<Action Name="" ID="{E69F1B1F-0B01-4BA1-B20A-654A63DB0CCA}" ShortID="374669169">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="NPC_F1x_Dialogue_SFX_End" ID="{7FB58DA7-1FCD-4665-8CB3-E4A3E3D0672B}" WorkUnitID="{5B7407C4-3E16-4B49-90D4-1F6B50658793}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

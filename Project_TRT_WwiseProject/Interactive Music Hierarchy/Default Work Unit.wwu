@@ -939,10 +939,10 @@
 																		</Reference>
 																		<Reference>
 																			<Local>
-																				<MusicEventCue Name="" ID="{23891235-F788-4E11-82C6-3BED2232338F}" ShortID="380282282">
+																				<MusicEventCue Name="" ID="{7F2B4814-6C0B-473A-9651-A2E28490D0A3}" ShortID="915608035">
 																					<ReferenceList>
 																						<Reference Name="PostEventTarget">
-																							<ObjectRef Name="Key_D" ID="{8712928E-69C6-49BC-A72A-EB30570864FB}" WorkUnitID="{CF49AA1B-A4E5-43FE-8CBE-031C55500853}"/>
+																							<ObjectRef Name="Key_E" ID="{CB618653-011D-400D-8230-FAEDD397768D}" WorkUnitID="{CF49AA1B-A4E5-43FE-8CBE-031C55500853}"/>
 																						</Reference>
 																					</ReferenceList>
 																				</MusicEventCue>
@@ -1193,6 +1193,152 @@
 								</MusicSegment>
 							</ChildrenList>
 						</MusicPlaylistContainer>
+						<MusicPlaylistContainer Name="Vista" ID="{D397A407-4E40-4907-8E56-EAA9208E809E}" ShortID="956148123">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+								</Reference>
+								<Reference Name="PlaylistRoot">
+									<Custom>
+										<MusicPlaylistItem Name="" ID="{41D96F87-69DB-481E-8E07-839A551D8013}" ShortID="1073046417">
+											<PropertyList>
+												<Property Name="LoopCount" Type="int16" Value="0"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicPlaylistItem Name="" ID="{2E4AEC93-27BB-45D6-BB0A-90F5AA615F85}" ShortID="903050053">
+													<PropertyList>
+														<Property Name="LoopCount" Type="int16" Value="0"/>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Segment">
+															<ObjectRef Name="MUSC_Vista" ID="{030DFA0E-2B94-4D2B-8243-D3C783935D32}" WorkUnitID="{3CA207E9-88B7-4086-A56F-225EA88A4DFE}"/>
+														</Reference>
+													</ReferenceList>
+												</MusicPlaylistItem>
+											</ChildrenList>
+										</MusicPlaylistItem>
+									</Custom>
+								</Reference>
+								<Reference Name="TransitionRoot">
+									<Custom>
+										<MusicTransition Name="Root" ID="{6F8951C6-8B11-4604-9C54-ACB751E940DB}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicTransition Name="Transition" ID="{F84E6029-7D5C-4746-A88C-AB7A07158E00}">
+													<TransitionInfo/>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicSegment Name="MUSC_Vista" ID="{030DFA0E-2B94-4D2B-8243-D3C783935D32}" ShortID="1020936958">
+									<PropertyList>
+										<Property Name="EndPosition" Type="Real64" Value="101500"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicTrack Name="MUSC_Vista" ID="{44F2C8B5-410E-47EF-B874-09CF06DE15F5}" ShortID="747641032">
+											<ReferenceList>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+												</Reference>
+												<Reference Name="TransitionRoot">
+													<Custom>
+														<MusicTransition Name="Root" ID="{16778DC8-EC74-4915-8913-74B5465FF80C}">
+															<PropertyList>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</Custom>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="MUSC_Vista" ID="{75FD712B-1968-442D-8CC3-298840015CB7}">
+													<Language>SFX</Language>
+													<AudioFile>MUSC_Vista.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="641019573"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Sequences">
+													<Reference>
+														<Local>
+															<MusicTrackSequence Name="" ID="{1905427E-BCC2-4887-AA60-2AB6E69E8701}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="MUSC_Vista" ID="{4F61ADD5-4DEC-449E-8A5E-ACE2022A6DDB}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="84210.5442176871"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="MUSC_Vista" ID="{75FD712B-1968-442D-8CC3-298840015CB7}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																		<Reference>
+																			<Local>
+																				<MusicEventCue Name="" ID="{D9F57E8B-5CE8-4BEC-B379-A635F271EF42}" ShortID="441168651">
+																					<ReferenceList>
+																						<Reference Name="PostEventTarget">
+																							<ObjectRef Name="Key_F" ID="{B3947EDD-F193-4924-97B2-0A3857A62B40}" WorkUnitID="{CF49AA1B-A4E5-43FE-8CBE-031C55500853}"/>
+																						</Reference>
+																					</ReferenceList>
+																				</MusicEventCue>
+																			</Local>
+																		</Reference>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicTrack>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Cues">
+											<Reference>
+												<Local>
+													<MusicCue Name="Entry Cue" ID="{DD53C6B3-A560-49FF-A266-A2FED8203585}"/>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<MusicCue Name="Exit Cue" ID="{268A0D89-D974-40E3-80B0-7FF4B2BB8C3D}">
+														<PropertyList>
+															<Property Name="CueType" Type="int16" Value="1"/>
+															<Property Name="TimeMs" Type="Real64" Value="84210.5442176871"/>
+														</PropertyList>
+													</MusicCue>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicSegment>
+							</ChildrenList>
+						</MusicPlaylistContainer>
 					</ChildrenList>
 					<StateInfo>
 						<StateGroupList>
@@ -1201,6 +1347,10 @@
 							</StateGroupInfo>
 						</StateGroupList>
 						<CustomStateList>
+							<CustomState>
+								<StateRef Name="Vista" ID="{FC1C8B6F-C5A9-40FC-A154-64E2F5F541C3}"/>
+								<CustomState Name="" ID="{42C9EFC9-2D64-47D8-A976-6FF45F8D553F}" ShortID="198872136"/>
+							</CustomState>
 							<CustomState>
 								<StateRef Name="MailbotBarter" ID="{220970BA-3873-4295-B08E-35E3D335D7F9}"/>
 								<CustomState Name="" ID="{150234D6-1202-4BCF-8A70-2D8B339344EC}" ShortID="604192592"/>
@@ -1336,6 +1486,24 @@
 											<ObjectList Name="EntryPath">
 												<Reference>
 													<ObjectRef Name="Barter" ID="{4BF7E3F5-3CAA-4531-B914-D1278D66757C}" WorkUnitID="{5295B7E6-B0B8-4F63-8A96-7D61276F57FA}"/>
+												</Reference>
+											</ObjectList>
+										</ObjectLists>
+									</MultiSwitchEntry>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MultiSwitchEntry Name="" ID="{54C6F2EC-297F-4EB4-B946-94C5DA4397B4}">
+										<ReferenceList>
+											<Reference Name="AudioNode">
+												<ObjectRef Name="Vista" ID="{D397A407-4E40-4907-8E56-EAA9208E809E}" WorkUnitID="{3CA207E9-88B7-4086-A56F-225EA88A4DFE}"/>
+											</Reference>
+										</ReferenceList>
+										<ObjectLists>
+											<ObjectList Name="EntryPath">
+												<Reference>
+													<ObjectRef Name="Vista" ID="{FC1C8B6F-C5A9-40FC-A154-64E2F5F541C3}" WorkUnitID="{5295B7E6-B0B8-4F63-8A96-7D61276F57FA}"/>
 												</Reference>
 											</ObjectList>
 										</ObjectLists>

@@ -42,6 +42,10 @@ public class BarteringController : MonoBehaviour
     public Transform CardRevealContainer;
     public GameObject RevealEffectCardPrefab;
 
+    [Header("SFX Dependencies")]
+    public AudioEvent BarterWinSFX;
+    public AudioEvent BarterLoseSFX;
+
     [Header("Other Dependencies")]
     public Button OfferTradeButton;
     public Button ExitEarlyButton;
@@ -253,6 +257,9 @@ public class BarteringController : MonoBehaviour
         NPCValueText.text = "";
         TotalValueTextHeader.gameObject.SetActive(false);
 
+        // Play SFX
+        BarterWinSFX.Play(gameObject);
+
         // Remove Item from NPC
         tempTradeData.NPCInstance.ItemsAvailable.Remove(tempTradeData.TargetCard);
         if (tempTradeData.NPCInstance.ItemsAvailable.Count == 0)
@@ -274,6 +281,9 @@ public class BarteringController : MonoBehaviour
         PlayerValueText.text = "";
         NPCValueText.text = "";
         TotalValueTextHeader.gameObject.SetActive(false);
+
+        // Play SFX
+        BarterLoseSFX.Play(gameObject);
     }
     private void RestartBarter()
     {

@@ -13,16 +13,24 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID B4RN3Y_DIALOGUE_END_SFX = 424895062U;
+        static const AkUniqueID B4RN3Y_DIALOGUE_SFX = 3809055548U;
         static const AkUniqueID BART_BARTER_LOSE = 3302900089U;
         static const AkUniqueID BART_BARTER_WIN = 2602999364U;
         static const AkUniqueID BART_CARD_HIGHLIGHT = 2034897212U;
         static const AkUniqueID BART_CARD_PLACE = 3630843069U;
         static const AkUniqueID BART_CARD_SELECT = 349408092U;
         static const AkUniqueID BART_CARD_SHUFFLE = 362751767U;
+        static const AkUniqueID BART_EFFECT_CARD_ATTACK = 478288748U;
+        static const AkUniqueID BART_EFFECT_CARD_FLIP = 4089696065U;
+        static const AkUniqueID BART_EFFECT_CARD_TRIGGER = 2691229948U;
+        static const AkUniqueID BARTEREVENTCLOSE = 2140684973U;
         static const AkUniqueID BARTEREVENTOPEN = 884323815U;
         static const AkUniqueID BIRDSTART = 3943065624U;
         static const AkUniqueID CONVERSATIONSTART = 1163963844U;
         static const AkUniqueID DOOROPEN = 1404805401U;
+        static const AkUniqueID EDEN_DIALOGUE_END_SFX = 3518274178U;
+        static const AkUniqueID EDEN_DIALOGUE_SFX = 1320354856U;
         static const AkUniqueID ELEVATORHUM = 1344299683U;
         static const AkUniqueID ELEVATORSTARTUP = 1220165926U;
         static const AkUniqueID ENV_B4RN3Y_HOOT = 3764842872U;
@@ -33,6 +41,8 @@ namespace AK
         static const AkUniqueID ENV_F1X_WATCHA_GOT = 123463240U;
         static const AkUniqueID ENV_INTERACTION_ARROW_HIDE = 3804709036U;
         static const AkUniqueID ENV_INTERACTION_ARROW_SHOW = 1995159183U;
+        static const AkUniqueID F1X_DIALOGUE_END_SFX = 992791593U;
+        static const AkUniqueID F1X_DIALOGUE_SFX = 3128847931U;
         static const AkUniqueID ITEMPICKUP = 1851462748U;
         static const AkUniqueID LIGHTAMBIENCE = 2186217851U;
         static const AkUniqueID MUSICSTATEBARTER = 4269622689U;
@@ -41,6 +51,7 @@ namespace AK
         static const AkUniqueID MUSICSTATEMAILBOTROOM = 1881520806U;
         static const AkUniqueID MUSICSTATEPLAYERSPAWN = 1031159975U;
         static const AkUniqueID MUSICSTATETITLESCREEN = 1104426513U;
+        static const AkUniqueID MUSICSTATEVISTA = 2940515384U;
         static const AkUniqueID NPCDIALOGUEENDSFX = 2346769448U;
         static const AkUniqueID NPCDIALOGUESFX = 3457263945U;
         static const AkUniqueID PAUSEMUSIC = 1127073398U;
@@ -57,6 +68,8 @@ namespace AK
         static const AkUniqueID PLAY_WATERFALL_CLOSESPARKLE_LOOPCONTAINER = 3296751295U;
         static const AkUniqueID PLAY_WIND_LOOPCONTAINER = 2059652710U;
         static const AkUniqueID PLAY_WINDCHIMES_LOOPCONTAINER = 2334582133U;
+        static const AkUniqueID PLAYER_DIALOGUE_END_SFX = 322764029U;
+        static const AkUniqueID PLAYER_DIALOGUE_SFX = 1381745615U;
         static const AkUniqueID PLAYERFOOTSTEPS = 1681012287U;
         static const AkUniqueID PLAYSTARTUPMUSIC = 4206258635U;
         static const AkUniqueID RESUMEMUSIC = 2170724709U;
@@ -65,6 +78,7 @@ namespace AK
         static const AkUniqueID STOP_GENERAL_FIELD_LOOPCONTAINER = 1321819679U;
         static const AkUniqueID STOPMUSIC = 1917263390U;
         static const AkUniqueID TESTAMBIENCESTART = 664772623U;
+        static const AkUniqueID UI_BARTER_MENU_CONFIRM = 1665981749U;
         static const AkUniqueID UI_BARTER_MENU_HIGHLIGHT = 3231741181U;
         static const AkUniqueID UI_MENU_CANCEL = 709377256U;
         static const AkUniqueID UI_MENU_CLOSE = 3226991506U;
@@ -112,6 +126,7 @@ namespace AK
                 static const AkUniqueID NONE = 748895195U;
                 static const AkUniqueID PLAYERSPAWN = 2064283983U;
                 static const AkUniqueID TITLESCREEN = 152105657U;
+                static const AkUniqueID VISTA = 3539709088U;
             } // namespace STATE
         } // namespace MUSICSTATE
 
@@ -120,7 +135,6 @@ namespace AK
     namespace GAME_PARAMETERS
     {
         static const AkUniqueID AMBIENCEVOLUME = 1204480359U;
-        static const AkUniqueID CANPLAYUIHIGHLIGHTSFX = 3557113764U;
         static const AkUniqueID INALLEYWAY = 3207605084U;
         static const AkUniqueID MASTERVOLUME = 2918011349U;
         static const AkUniqueID MUSICVOLUME = 2346531308U;

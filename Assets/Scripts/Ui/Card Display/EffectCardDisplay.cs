@@ -10,6 +10,9 @@ public class EffectCardDisplay : MonoBehaviour
 {
     [Header("Object References")]
     [SerializeField] private GameObject cardBack;
+    [SerializeField] private AudioEvent UICardRevealSFX;
+    [SerializeField] private AudioEvent UICardAttackSFX;
+    [SerializeField] private AudioEvent UICardTriggerSFX;
 
     [Header("Card Front")]
     [SerializeField] private GameObject cardFront;
@@ -92,6 +95,7 @@ public class EffectCardDisplay : MonoBehaviour
     [Button]
     public void Reveal()
     {
+        UICardRevealSFX.Play(gameObject);
         if (flipInProgress == true || flipDone == true) return;
 
         backArt.sprite = backNotActive;
@@ -104,6 +108,7 @@ public class EffectCardDisplay : MonoBehaviour
     public void Activate()
     {
         //transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).SetEase(Ease.InOutSine).SetLoops(2, LoopType.Yoyo);
+        UICardTriggerSFX.Play(gameObject);
         if (_shakeTween == null)
         {
             backArt.sprite = backActive;
@@ -137,6 +142,8 @@ public class EffectCardDisplay : MonoBehaviour
         {
             yield return new WaitForSeconds(0.5f);
         }
+
+        UICardAttackSFX.Play(gameObject);
 
         _returnPoint = transform.position;
         Vector3 target = _barteringController.targetEffectCard.transform.position;

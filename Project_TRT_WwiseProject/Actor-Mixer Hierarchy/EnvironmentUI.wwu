@@ -27,6 +27,11 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="ENV_Interaction_Arrow_Show" ID="{30898ECE-409C-4CAF-82F9-9F9C4782E979}">
+							<PropertyList>
+								<Property Name="LoopBegin" Type="Real64" Value="0"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.231113781439621"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>ENV_Interaction_Arrow_Show.wav</AudioFile>
 							<MediaIDList>
@@ -62,6 +67,10 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="ENV_Interaction_Arrow_Hide" ID="{E0468880-6C61-436C-A131-85C01386D41A}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.284360583986343"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>ENV_Interaction_Arrow_Hide.wav</AudioFile>
 							<MediaIDList>

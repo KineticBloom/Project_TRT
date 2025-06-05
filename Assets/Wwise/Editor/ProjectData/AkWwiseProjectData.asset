@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: d2e647656401fa48b0d64a886d907446
     GuidInternal: 
-    m_lastTime: -8584549282084931518
+    m_lastTime: -8584543705170048365
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 587ca0226052be4e9b8540a22c4f2092
     GuidInternal: 
-    m_lastTime: -8584532714151811933
+    m_lastTime: -8584526328588499075
     List:
     - name: Alleyway
       guid: 11d530b54cff564f892379f07c08b072
@@ -53,13 +53,16 @@ MonoBehaviour:
       - ElementName: Master Audio Bus
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFXMaster
+        ObjectType: 2
+        guid: 6f814b3bff92544dbea1c89250720378
       - ElementName: Reverbs
         ObjectType: 2
         guid: 6190d0604aadd1439b496042a98c2796
       - ElementName: Alleyway
         ObjectType: 1
         guid: 11d530b54cff564f892379f07c08b072
-      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Alleyway
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFXMaster\Reverbs\Alleyway
     - name: AmbienceMaster
       guid: b98c6c284c7de7449139c8391e920f9c
       id: 2611281843
@@ -113,13 +116,16 @@ MonoBehaviour:
       - ElementName: Master Audio Bus
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFXMaster
+        ObjectType: 2
+        guid: 6f814b3bff92544dbea1c89250720378
       - ElementName: Reverbs
         ObjectType: 2
         guid: 6190d0604aadd1439b496042a98c2796
       - ElementName: Church
         ObjectType: 1
         guid: c1301a558c6b664b97abf2b3572a46c0
-      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Church
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFXMaster\Reverbs\Church
     - name: EdenDialogue
       guid: 298aa1571af9484f880ebb1175b59b8a
       id: 225952121
@@ -293,13 +299,16 @@ MonoBehaviour:
       - ElementName: Master Audio Bus
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFXMaster
+        ObjectType: 2
+        guid: 6f814b3bff92544dbea1c89250720378
       - ElementName: Reverbs
         ObjectType: 2
         guid: 6190d0604aadd1439b496042a98c2796
       - ElementName: Outdoors
         ObjectType: 1
         guid: 9f6bbd6747fc7945a4b59fbb558c8815
-      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Outdoors
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFXMaster\Reverbs\Outdoors
     - name: PlayerFootsteps
       guid: 02008cdeafb4c240be0f6fa2aca4630a
       id: 1681012287
@@ -382,10 +391,13 @@ MonoBehaviour:
       - ElementName: Master Audio Bus
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFXMaster
+        ObjectType: 2
+        guid: 6f814b3bff92544dbea1c89250720378
       - ElementName: Reverbs
         ObjectType: 2
         guid: 6190d0604aadd1439b496042a98c2796
-      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFXMaster\Reverbs
     - name: SFXMaster
       guid: 6f814b3bff92544dbea1c89250720378
       id: 1681633080
@@ -416,13 +428,16 @@ MonoBehaviour:
       - ElementName: Master Audio Bus
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFXMaster
+        ObjectType: 2
+        guid: 6f814b3bff92544dbea1c89250720378
       - ElementName: Reverbs
         ObjectType: 2
         guid: 6190d0604aadd1439b496042a98c2796
       - ElementName: SmallRoom
         ObjectType: 1
         guid: a97de43da20c3f46b778d7a3f583cb6a
-      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\SmallRoom
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFXMaster\Reverbs\SmallRoom
     - name: UIMaster
       guid: 0363befdc7fc7e4296f8ed5f452da1b6
       id: 1992125169
@@ -455,7 +470,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Ambience
     guid: 0104f6680c27bf408fd7c64816ee8c87
     GuidInternal: 
-    m_lastTime: -8584533036486710331
+    m_lastTime: -8584526328494634082
     List:
     - name: Ambience
       guid: 86b2f852bdba9b4fa5a800a04824ffe7
@@ -482,7 +497,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 04fe062a3bbc02478aebf9ed87255f35
     GuidInternal: 
-    m_lastTime: -8584549282087113501
+    m_lastTime: -8584543705170088349
     List: []
   - PhysicalPath: SoundBanks\Music.wwu
     PathAndIcons:
@@ -495,7 +510,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Music
     guid: 5f5c2e836df59d41833026f7bc293cab
     GuidInternal: 
-    m_lastTime: -8584533014480984410
+    m_lastTime: -8584526328494624085
     List:
     - name: Music
       guid: 277caf2ce418a740871cc075a9250659
@@ -522,7 +537,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\SFX
     guid: f39c92e98d8cf14f9d79f84c53eb00b3
     GuidInternal: 
-    m_lastTime: -8584533014480974398
+    m_lastTime: -8584526328494614066
     List:
     - name: SFX
       guid: cc965433ea452249b9fac65217b7662e
@@ -550,7 +565,7 @@ MonoBehaviour:
     ParentPath: Events\Ambience
     guid: 78290c8229ac584884ed86c3baba619d
     GuidInternal: 
-    m_lastTime: -8584532983092354406
+    m_lastTime: -8584526328618216066
     List:
     - name: BirdStart
       guid: 932c63abf08ea4489f51f773ba1e5c74
@@ -790,7 +805,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC\B4rn3y
     guid: ba283f9801c3804bbf336ac089576497
     GuidInternal: 
-    m_lastTime: -8584542524497870458
+    m_lastTime: -8584526358408778691
     List:
     - name: ENV_B4rn3y_Hoot
       guid: e19f9296802a3549972f8fca527c927f
@@ -852,7 +867,7 @@ MonoBehaviour:
     ParentPath: Events\UI\BarteringUI
     guid: 40c947321f41084491c4b5b163ca6270
     GuidInternal: 
-    m_lastTime: -8584547966247863294
+    m_lastTime: -8584543705207821140
     List:
     - name: BART_Barter_Lose
       guid: 3855ac20de5b634d9ad1e66c511fb4b5
@@ -1001,7 +1016,7 @@ MonoBehaviour:
     ParentPath: Events\UI\DialogueUI
     guid: 5f47fcfbe9a3aa4593ef3112c673b6da
     GuidInternal: 
-    m_lastTime: -8584533014511128391
+    m_lastTime: -8584526328618196072
     List:
     - name: BarterEventOpen
       guid: b6b22459d266e04e83571e8c6fd0eb5c
@@ -1060,7 +1075,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC\Eden
     guid: a25562c68949034d8d2f00c179802c36
     GuidInternal: 
-    m_lastTime: -8584542524497851774
+    m_lastTime: -8584526358408758617
     List:
     - name: ENV_Eden_Expel
       guid: 1ce39ba1bc0ff74d9e88f004eab07b56
@@ -1119,7 +1134,7 @@ MonoBehaviour:
     ParentPath: Events\Environment
     guid: 851bf5aefe549d489c25241343bb6f59
     GuidInternal: 
-    m_lastTime: -8584542524497851774
+    m_lastTime: -8584526358408748688
     List: []
   - PhysicalPath: Events\EnvironmentUI.wwu
     PathAndIcons:
@@ -1135,7 +1150,7 @@ MonoBehaviour:
     ParentPath: Events\UI\EnvironmentUI
     guid: 4be82f8af05f9c4bb20ac0e39bad8dae
     GuidInternal: 
-    m_lastTime: -8584547966247681250
+    m_lastTime: -8584543705207802323
     List:
     - name: ENV_Interaction_Arrow_Hide
       guid: e67f97983d2b8d4198fae5033e8d4006
@@ -1194,7 +1209,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC\F1x
     guid: ce3cd6713d17334b966516859d0170a9
     GuidInternal: 
-    m_lastTime: -8584542524497851774
+    m_lastTime: -8584526358408658675
     List:
     - name: ENV_F1x_Dont_Bite
       guid: 77759b87c7315a40b6658ecb407d9f00
@@ -1256,7 +1271,7 @@ MonoBehaviour:
     ParentPath: Events\UI\MenuUI
     guid: 3ced4e25bc1aa447a545adce0ca03f95
     GuidInternal: 
-    m_lastTime: -8584547966247661218
+    m_lastTime: -8584543705207792302
     List:
     - name: UI_Menu_Close
       guid: 438c2832b6aa2845ab36655fe26f9b55
@@ -1309,7 +1324,7 @@ MonoBehaviour:
     ParentPath: Events\Music
     guid: 1baa49cfe5a4fe438cbe031c55500853
     GuidInternal: 
-    m_lastTime: -8584533014511108361
+    m_lastTime: -8584526328618166096
     List:
     - name: Key_A
       guid: a348740626e76b4592a95b259a257e46
@@ -1836,7 +1851,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC
     guid: 09137e3649952b468f529ebe6f164b6b
     GuidInternal: 
-    m_lastTime: -8584533014511098357
+    m_lastTime: -8584526328618146094
     List:
     - name: NPCDialogueEndSFX
       guid: bcdcfda55528e745879da7f4e681fec7
@@ -1892,7 +1907,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\Objects
     guid: f53d68a94c6e354d9f4eeee3b0dcd364
     GuidInternal: 
-    m_lastTime: -8584541444923630011
+    m_lastTime: -8584526358408607767
     List:
     - name: DoorOpen
       guid: e45a10416290f44da2dd9afd2f2afa3d
@@ -2008,7 +2023,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\Player
     guid: d5f674957249a840bcf4382b6f3925ec
     GuidInternal: 
-    m_lastTime: -8584541444923630011
+    m_lastTime: -8584526358408597774
     List:
     - name: PlayerFootsteps
       guid: 84795c876ed0ab43a382ca7872053bb8
@@ -2041,7 +2056,7 @@ MonoBehaviour:
     ParentPath: Events\SettingsUI
     guid: 1fb0d41104b6e84e81ed9ee770f55b1a
     GuidInternal: 
-    m_lastTime: -8584547966247543137
+    m_lastTime: -8584543705207782320
     List:
     - name: Play_Menu_ButtonDown
       guid: 1bffeceb86b8cc499461cd7752dd9198
@@ -2122,7 +2137,7 @@ MonoBehaviour:
     ParentPath: Events\UI
     guid: 75f867dc1a9906498df4975d819bec40
     GuidInternal: 
-    m_lastTime: -8584541444923620037
+    m_lastTime: -8584526358408577783
     List: []
   RtpcWwu:
   - PhysicalPath: Game Parameters\Ambience.wwu
@@ -2136,7 +2151,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Ambience
     guid: 1364dfa97885f64c975561aade985960
     GuidInternal: 
-    m_lastTime: -8584547966247411989
+    m_lastTime: -8584543705207772324
     List:
     - name: AmbienceVolume
       guid: 01dd239d2ba1e14984ac00064dd75e62
@@ -2163,7 +2178,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: be288e71c0cc3c439b7b4bfb6a1a4c72
     GuidInternal: 
-    m_lastTime: -8584547966247388222
+    m_lastTime: -8584543705207772324
     List:
     - name: MasterVolume
       guid: 59d20be76f82c04d9077f7a3d88c2dfc
@@ -2190,7 +2205,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Music
     guid: d5202f5c1fdb7e4592a92fb8427c1e09
     GuidInternal: 
-    m_lastTime: -8584533014511088355
+    m_lastTime: -8584526328618126060
     List:
     - name: InAlleyway
       guid: 4b77a65ecbade541b66b577c9e25f9ba
@@ -2231,7 +2246,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\SFX
     guid: b76be0652aa2144ca2f1c95ef14073c4
     GuidInternal: 
-    m_lastTime: -8584547966247348101
+    m_lastTime: -8584543705207762325
     List:
     - name: SFXVolume
       guid: 3afe647cb3b54f438d068914ab1c8a1f
@@ -2259,7 +2274,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: e6b79552b8b0634f8a967d61276f57fa
     GuidInternal: 
-    m_lastTime: -8584533014480954386
+    m_lastTime: -8584526328494594086
     List:
     - name: CurrentMusicKey
       guid: 6fc02a74e5f10d408a3c979fa3ccb73b
@@ -2629,7 +2644,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 4106411ba585644787ebc92dd1cdc4ca
     GuidInternal: 
-    m_lastTime: -8584549282083570267
+    m_lastTime: -8584543705170058367
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -2643,7 +2658,7 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: 9df9aa54af8cab4ea76b42f4ee8eaa58
     GuidInternal: 
-    m_lastTime: -8584549282085191758
+    m_lastTime: -8584543705170058367
     List:
     - name: Test
       guid: 23c0f7a154fe4f4dbb4cbb0e19d72476

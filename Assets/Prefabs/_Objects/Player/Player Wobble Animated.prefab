@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -7279131567184190210}
   - component: {fileID: 2933849082744453684}
   - component: {fileID: 845460296504494993}
+  - component: {fileID: 3902062736353002791}
   m_Layer: 0
   m_Name: Player Wobble Animated
   m_TagString: Untagged
@@ -184,6 +185,27 @@ MonoBehaviour:
     m_RotationOrder: 4
   loopPeriod: 2
   animKillTime: 0.025
+--- !u!65 &3902062736353002791
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2616370967543034599}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5508447908906982180
 GameObject:
   m_ObjectHideFlags: 0

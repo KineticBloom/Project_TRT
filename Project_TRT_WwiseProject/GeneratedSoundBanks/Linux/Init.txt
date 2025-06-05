@@ -3,13 +3,26 @@ State Group	ID	Name			Wwise Object Path	Notes
 	3124027310	CurrentMusicKey			\Default Work Unit\CurrentMusicKey	
 
 State	ID	Name	State Group			Notes
-	58138747	Active	MusicState			
+	152105657	TitleScreen	MusicState			
 	644073513	Barter	MusicState			
 	748895195	None	MusicState			
+	1024696295	Cathedral	MusicState			
 	1029337087	MailbotBarter	MusicState			
+	1643460142	MailbotRoom	MusicState			
 	2064283983	PlayerSpawn	MusicState			
-	3753286132	Calm	MusicState			
+	84696440	G	CurrentMusicKey			
+	84696441	F	CurrentMusicKey			
+	84696442	E	CurrentMusicKey			
+	84696443	D	CurrentMusicKey			
+	84696444	C	CurrentMusicKey			
+	84696445	B	CurrentMusicKey			
+	84696446	A	CurrentMusicKey			
+	164139463	A_Sharp	CurrentMusicKey			
 	748895195	None	CurrentMusicKey			
+	844677726	D_Sharp	CurrentMusicKey			
+	951594152	F_Sharp	CurrentMusicKey			
+	2816864521	C_Sharp	CurrentMusicKey			
+	3736223277	G_Sharp	CurrentMusicKey			
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	988953028	SFXVolume			\SFX\SFXVolume	
@@ -18,26 +31,28 @@ Game Parameter	ID	Name			Wwise Object Path	Notes
 	2918011349	MasterVolume			\Default Work Unit\MasterVolume	
 
 Audio Bus	ID	Name			Wwise Object Path	Notes
-	225952121	EdenDialogue			\Default Work Unit\Master Audio Bus\NPCMaster\EdenDialogue	
-	1350496757	PlayerMovement			\Default Work Unit\Master Audio Bus\PlayerMaster\PlayerMovement	
-	1681012287	PlayerFootsteps			\Default Work Unit\Master Audio Bus\PlayerMaster\PlayerMovement\PlayerFootsteps	
+	225952121	EdenDialogue			\Default Work Unit\Master Audio Bus\SFXMaster\NPCMaster\EdenDialogue	
+	1141413220	NPCDialogue			\Default Work Unit\Master Audio Bus\SFXMaster\NPCMaster\NPCDialogue	
+	1350496757	PlayerMovement			\Default Work Unit\Master Audio Bus\SFXMaster\PlayerMaster\PlayerMovement	
+	1681012287	PlayerFootsteps			\Default Work Unit\Master Audio Bus\SFXMaster\PlayerMaster\PlayerMovement\PlayerFootsteps	
 	1681633080	SFXMaster			\Default Work Unit\Master Audio Bus\SFXMaster	
-	1992125169	UIMaster			\Default Work Unit\Master Audio Bus\UIMaster	
-	2033911932	NPCMaster			\Default Work Unit\Master Audio Bus\NPCMaster	
+	1992125169	UIMaster			\Default Work Unit\Master Audio Bus\SFXMaster\UIMaster	
+	2033911932	NPCMaster			\Default Work Unit\Master Audio Bus\SFXMaster\NPCMaster	
 	2611281843	AmbienceMaster			\Default Work Unit\Master Audio Bus\AmbienceMaster	
-	2763508416	F1xDialogue			\Default Work Unit\Master Audio Bus\NPCMaster\F1xDialogue	
-	3123271961	ObjectsMaster			\Default Work Unit\Master Audio Bus\ObjectsMaster	
+	2763508416	F1xDialogue			\Default Work Unit\Master Audio Bus\SFXMaster\NPCMaster\F1xDialogue	
+	3123271961	ObjectsMaster			\Default Work Unit\Master Audio Bus\SFXMaster\ObjectsMaster	
 	3199789248	MusicMaster			\Default Work Unit\Master Audio Bus\MusicMaster	
-	3538689948	PlayerMaster			\Default Work Unit\Master Audio Bus\PlayerMaster	
-	3545700988	Reverbs			\Default Work Unit\Master Audio Bus\Reverbs	
-	3802034858	EnvironmentMaster			\Default Work Unit\Master Audio Bus\EnvironmentMaster	
+	3538689948	PlayerMaster			\Default Work Unit\Master Audio Bus\SFXMaster\PlayerMaster	
+	3545700988	Reverbs			\Default Work Unit\Master Audio Bus\SFXMaster\Reverbs	
+	3802034858	EnvironmentMaster			\Default Work Unit\Master Audio Bus\SFXMaster\EnvironmentMaster	
 	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
-	3922283485	B4rn3yDialogue			\Default Work Unit\Master Audio Bus\NPCMaster\B4rn3yDialogue	
+	3922283485	B4rn3yDialogue			\Default Work Unit\Master Audio Bus\SFXMaster\NPCMaster\B4rn3yDialogue	
 
 Auxiliary Bus	ID	Name			Wwise Object Path	Notes
-	2568407992	Church			\Default Work Unit\Master Audio Bus\Reverbs\Church	
-	2730119150	Outdoors			\Default Work Unit\Master Audio Bus\Reverbs\Outdoors	
-	2933838247	SmallRoom			\Default Work Unit\Master Audio Bus\Reverbs\SmallRoom	
+	2568407992	Church			\Default Work Unit\Master Audio Bus\SFXMaster\Reverbs\Church	
+	2730119150	Outdoors			\Default Work Unit\Master Audio Bus\SFXMaster\Reverbs\Outdoors	
+	2933838247	SmallRoom			\Default Work Unit\Master Audio Bus\SFXMaster\Reverbs\SmallRoom	
+	3364212889	Alleyway			\Default Work Unit\Master Audio Bus\SFXMaster\Reverbs\Alleyway	
 
 Effect plug-ins	ID	Name	Type				Notes
 	48620415	Have_U_Ever_Been_Outside	Wwise RoomVerb			

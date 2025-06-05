@@ -4,6 +4,13 @@
 		<WorkUnit Name="SFX" ID="{E9929CF3-8C8D-4FF1-9D79-F84C53EB00B3}" PersistMode="Standalone">
 			<ChildrenList>
 				<SoundBank Name="SFX" ID="{335496CC-45EA-4922-B9FA-C65217B7662E}">
+					<PropertyList>
+						<Property Name="Maximum" Type="int32">
+							<ValueList>
+								<Value>30000000</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ObjectInclusionList>
 						<ObjectRef Name="ENV_Interaction_Arrow_Show" ID="{2FF39951-651E-4108-8845-9B47F1CC9721}" WorkUnitID="{8A2FE84B-5FF0-4B9C-B20A-C0E39BAD8DAE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="PlayerFootsteps" ID="{875C7984-D06E-43AB-A382-CA7872053BB8}" WorkUnitID="{9574F6D5-4972-40A8-BCF4-382B6F3925EC}" Origin="Manual" Filter="7"/>

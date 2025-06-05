@@ -4,8 +4,9 @@ using UnityEngine;
 public class AutoUiScaler : MonoBehaviour {
     public TMP_Text TextForScale;
     public RectTransform RectTransform;
-    public float Padding = 50;
-    public bool PaddingApplyVertically = true; 
+    public float HorizontalPadding = 50;
+    public float VerticalPadding = 50;
+    public Vector2 MinSize;
     public float LineLength = 700;
 
     private bool _readyToRescale = false;
@@ -20,7 +21,7 @@ public class AutoUiScaler : MonoBehaviour {
     }
 
     private void OnDisable() {
-        RectTransform.sizeDelta = new Vector2(Padding, Padding);
+        RectTransform.sizeDelta = new Vector2(HorizontalPadding, VerticalPadding);
 
         if (StartPos != Vector3.zero) {
             RectTransform.transform.localPosition = StartPos;
@@ -46,12 +47,20 @@ public class AutoUiScaler : MonoBehaviour {
         float textActualWidth = TextForScale.renderedWidth;
         float textHeight = TextForScale.renderedHeight;
 
+        if(textActualWidth < MinSize.x)
+        {
+            textActualWidth = MinSize.x;
+        }
+
+        if (textHeight < MinSize.y)
+        {
+            textHeight = MinSize.y;
+        }
+
+        //RectTransform.transform.localPosition += new Vector3(0, textHeight + _info.lineInfo[_info.lineCount - 1].lineHeight, 0);
+
         if (textWidth >= 1) {
-            if (PaddingApplyVertically) {
-                RectTransform.sizeDelta = new Vector2(textActualWidth + Padding, textHeight + Padding);
-            } else {
-                RectTransform.sizeDelta = new Vector2(textActualWidth + Padding, textHeight);
-            }
+           RectTransform.sizeDelta = new Vector2(textActualWidth + HorizontalPadding, textHeight + VerticalPadding);
         }
     }
 }

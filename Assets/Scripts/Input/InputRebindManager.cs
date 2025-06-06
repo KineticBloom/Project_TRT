@@ -41,6 +41,8 @@ public class InputRebindManager : MonoBehaviour
     #region Private Methods
     private void Rebind(InputAction action, int bindingIndex)
     {
+        if (bindingIndex == 0) bindingIndex = action.GetBindingIndex(_lastScheme.bindingGroup);
+        
         hintScreen.SetActive(true);
         _controls.MainControls.Disable();
         
@@ -77,7 +79,7 @@ public class InputRebindManager : MonoBehaviour
             if (binding.action == currBinding.action) continue;
             else if (binding.effectivePath == currBinding.effectivePath)
             {
-                if (ActionRebindable(binding.action)) action.actionMap[binding.action].ApplyBindingOverride(0, oldBinding.effectivePath);
+                if (ActionRebindable(binding.action)) action.actionMap[binding.action].ApplyBindingOverride(bindingIndex, oldBinding.effectivePath);
                 else action.ApplyBindingOverride(bindingIndex, oldBinding.effectivePath);
             }
         }

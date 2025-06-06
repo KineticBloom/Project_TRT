@@ -4,7 +4,8 @@ VAR roro_4_bartered = false
 
 === Start ===
 Hello there. #NPC
-* I would like to Barter. 
+* I would like to Barter.
+    Great! #NPC
     ->Barter
 * What do you like? 
     Lots of religious items. #NPC
@@ -19,5 +20,5 @@ NULL_LINE #Barter
 -> END
 
 === NoBarter ===
-Sorry, I don't have anything else. #NPC
+I don't need anything else. I am satisfied with our trade. #NPC
 -> END

@@ -4,15 +4,10 @@ using UnityEngine.UI;
 
 public class Debug_LoopWipeUI : MonoBehaviour
 {
-    [SerializeField]
-    private float duration = 0.5f;
-    private Image _image;
+    [SerializeField] private GameObject segfaultCanvas;
 
     private void Start()
     {
-        _image = GetComponent<Image>();
-        _image.fillAmount = 0;
-
         TimeLoopManager.LoopElapsed += AnimateWipe;
     }
 
@@ -33,22 +28,8 @@ public class Debug_LoopWipeUI : MonoBehaviour
 
     private IEnumerator AnimateWipeRoutine(System.Action callback)
     {
-        if (_image == null) {
-            // Callback cannot be null, because of our AnimateWipe() check.
-            callback();
-        }
-
-        float elapsed = 0;
-        _image.fillAmount = 0;
-
-        while (elapsed < duration) {
-            _image.fillAmount = elapsed/duration;
-
-            yield return null;
-            elapsed += Time.deltaTime;
-        }
-
-        _image.fillAmount = 1;
+        segfaultCanvas.SetActive(true);
+        yield return new WaitForSeconds(3f);
         callback();
     }
 }

@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d40a2c92ebc3ae498bac4ca29443d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultButton: {fileID: 5626726546141814160}
+  DefaultButton: {fileID: 729901164599583516}
   TriggerOnClick: 0
   OnlyFirstBoot: 0
 --- !u!225 &2578126606728250543
@@ -640,6 +640,16 @@ PrefabInstance:
       objectReference: {fileID: 6358795010935649104}
     - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
         type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
+        type: 3}
+      propertyPath: m_Navigation.m_WrapAround
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
+        type: 3}
       propertyPath: m_SpriteState.m_PressedSprite
       value: 
       objectReference: {fileID: 21300000, guid: 77c084c6c80c69a42acef485f30e274b,
@@ -656,6 +666,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 77c084c6c80c69a42acef485f30e274b,
         type: 3}
+    - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6021489658652053754}
+    - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveToCheckToNewGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: StartUi, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4133503315346045963, guid: 2976cd3258159dd408cdefc06ef14d89,
         type: 3}
       propertyPath: m_text
@@ -914,6 +939,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5057136547662125629}
   m_SourcePrefab: {fileID: 100100000, guid: 2976cd3258159dd408cdefc06ef14d89, type: 3}
+--- !u!114 &729901164599583516 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
+    type: 3}
+  m_PrefabInstance: {fileID: 249947800686975146}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7011552724334631031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6358795010935649104 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6577793592957217786, guid: 2976cd3258159dd408cdefc06ef14d89,
@@ -1429,6 +1466,21 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1604759585069276037, guid: 511ccb998b35c7c468c63561cc83de28,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6021489658652053754}
+    - target: {fileID: 1604759585069276037, guid: 511ccb998b35c7c468c63561cc83de28,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveToControls
+      objectReference: {fileID: 0}
+    - target: {fileID: 1604759585069276037, guid: 511ccb998b35c7c468c63561cc83de28,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: StartUi, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1772842698965338483, guid: 511ccb998b35c7c468c63561cc83de28,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1866,6 +1918,16 @@ PrefabInstance:
       objectReference: {fileID: 1910596138432021831}
     - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
         type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
+        type: 3}
+      propertyPath: m_Navigation.m_WrapAround
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
+        type: 3}
       propertyPath: m_SpriteState.m_PressedSprite
       value: 
       objectReference: {fileID: 21300000, guid: 77c084c6c80c69a42acef485f30e274b,
@@ -2240,9 +2302,25 @@ PrefabInstance:
       objectReference: {fileID: 2020425844430294492}
     - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
         type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
+        type: 3}
+      propertyPath: m_Navigation.m_WrapAround
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
+        type: 3}
       propertyPath: m_SpriteState.m_PressedSprite
       value: 
       objectReference: {fileID: 21300000, guid: 77c084c6c80c69a42acef485f30e274b,
+        type: 3}
+    - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
+        type: 3}
+      propertyPath: m_SpriteState.m_DisabledSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6ec9787a839e71647b134b5eb76a6be7,
         type: 3}
     - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
         type: 3}
@@ -2955,6 +3033,16 @@ PrefabInstance:
       propertyPath: m_TargetGraphic
       value: 
       objectReference: {fileID: 509707325701545073}
+    - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
+        type: 3}
+      propertyPath: m_Navigation.m_WrapAround
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
         type: 3}
       propertyPath: m_SpriteState.m_PressedSprite
@@ -4276,6 +4364,16 @@ PrefabInstance:
       propertyPath: m_TargetGraphic
       value: 
       objectReference: {fileID: 2680937379027624364}
+    - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
+        type: 3}
+      propertyPath: m_Navigation.m_WrapAround
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
         type: 3}
       propertyPath: m_SpriteState.m_PressedSprite

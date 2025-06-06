@@ -15,6 +15,7 @@ public class ChooseItemCanvasController : MonoBehaviour
     public GameObject CardsHorizontalLayoutGroup;
     public Image NPCSprite;
     public InventoryBar InventoryBar;
+    [SerializeField] private bool IsTutorial = false;
 
     private List<GameObject> _cards = new List<GameObject>();
     private NPCData _passedInData;
@@ -23,7 +24,7 @@ public class ChooseItemCanvasController : MonoBehaviour
     
     private void Update()
     {
-        if(GameManager.PlayerInput.GetRejectDown() && !_stopInput) 
+        if(!IsTutorial && GameManager.PlayerInput.GetRejectDown() && !_stopInput) 
         {
             _stopInput = true;
             LeaveChooseItemScene();

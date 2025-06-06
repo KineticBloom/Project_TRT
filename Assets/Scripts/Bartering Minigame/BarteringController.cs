@@ -177,6 +177,11 @@ public class BarteringController : MonoBehaviour
     void Update()
     {
         if (_stopInput) return;
+        else if (CardRevealScreen.activeSelf == true && GameManager.PlayerInput.GetRejectDown())
+        {
+            _stopInput = true;
+            EFFECT_CloseCardScreen();
+        }
         else if ((ExitEarlyButton.gameObject.activeSelf || ExitFinalTradeButton.gameObject.activeSelf) && GameManager.PlayerInput.GetRejectDown()) 
         {
             _stopInput = true;
@@ -234,7 +239,7 @@ public class BarteringController : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
         _stopInput = false;
-        if (!IsTutorial) ExitFinalTradeButton.gameObject.SetActive(true);
+        ExitFinalTradeButton.gameObject.SetActive(true);
         ExitFinalTradeButton.Select();
 
         if (tempTradeData.WonBarterFlag == false)
@@ -481,6 +486,7 @@ public class BarteringController : MonoBehaviour
         {
             Destroy(card.gameObject);
         }
+        _stopInput = false;
     }
     public void EFFECT_AddNewReveal(EffectCard effectCard)
     {
@@ -589,6 +595,7 @@ public class BarteringController : MonoBehaviour
         {
             yield return EFFECT_ShowRevealedCards();
         }
+        ExitFinalTradeButton.Select();
 
         x?.Invoke();
     }

@@ -50,6 +50,7 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
 
     public void SwapToSettingsUi() 
     {
+        GameManager.Instance.SwapUiManager(this);
         MoveToPause();
         pauseOpen.Post(this.gameObject);
         LoadSettingsUi();
@@ -62,7 +63,6 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
     {
         inventoryBar.SetActiveSource(gameObject, true);
 
-        GameManager.Instance.SwapUiManager(this);
         LoadState(_currentState);
 
         // Animation in

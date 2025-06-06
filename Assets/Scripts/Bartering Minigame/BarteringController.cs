@@ -293,6 +293,7 @@ public class BarteringController : MonoBehaviour
 
         // Play the particles!
         tempTradeData.NPCInstance.PlayBarterWinParticles();
+        PlayerInputHandler.SetHaptics(0f, 1f, 1f);
     }
     private void BarterLose()
     {

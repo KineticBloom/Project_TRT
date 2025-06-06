@@ -3,6 +3,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class DevMenu : Singleton<DevMenu> {
@@ -269,6 +270,26 @@ public class DevMenu : Singleton<DevMenu> {
                 catch (System.Exception)
                 {
                     output.text += "<color=\"red\">Error: Invalid Number of Seconds</color>\n";
+                }
+                break;
+            case "rumble":
+                if (parser.Length != 4)
+                {
+                    output.text += "<color=\"red\">Error: Invalid Number of Arguments</color>\n";
+                    return;
+                }
+                try
+                {
+                    float l = float.Parse(parser[1]);
+                    float h = float.Parse(parser[2]);
+                    float t = float.Parse(parser[3]);
+                    
+                    PlayerInputHandler.SetHaptics(l, h, t);
+                    output.text += "<color=\"green\">Success</color>\n";
+                }
+                catch (System.Exception)
+                {
+                    output.text += "<color=\"red\">Error: Invalid Number</color>\n";
                 }
                 break;
             default:

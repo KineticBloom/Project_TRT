@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class TimerController : MonoBehaviour
 {
+    public GameObject Ring;
     public Image OuterRing;
     public Image InnerRing;
 
@@ -22,6 +23,8 @@ public class TimerController : MonoBehaviour
     public Image Cell3;
     public Image Cell2;
     public Image Cell1;
+    
+    [SerializeField] private bool pauseTimer = false;
 
     bool TriggerPulse = false;
 
@@ -39,15 +42,19 @@ public class TimerController : MonoBehaviour
 
     private void Update()
     {
-        if (TimeLoopManager.LoopPaused && PauseCanvas.activeInHierarchy)
+        if (TimeLoopManager.LoopPaused)
         {
             PauseorPlay.sprite = Pause;
-            GetComponent<RectTransform>().anchoredPosition = PosDuringPause;
+            OuterRing.transform.DOPause();
+            InnerRing.transform.DOPause();
+            if (!pauseTimer && PauseCanvas.activeInHierarchy) Ring.SetActive(false);
         }
         else
         {
             PauseorPlay.sprite = Play;
-            GetComponent<RectTransform>().anchoredPosition = PosDuringPlay;
+            Ring.SetActive(true);
+            OuterRing.transform.DOPlay();
+            InnerRing.transform.DOPlay();
         }
 
         if (TimeLoopManager.Instance != null)
@@ -56,8 +63,6 @@ public class TimerController : MonoBehaviour
             float TotalSeconds = TimeLoopManager.StartTime * 60;
 
             float SecondsElapsed = Mathf.Max(0, TotalSeconds - TimeLoopManager.SecondsLeft);
-
-            Debug.Log("Seconds elapsed: " + SecondsElapsed + " Total Seconds: " + TotalSeconds);
 
             if(SecondsElapsed > TotalSeconds / 5)
             {

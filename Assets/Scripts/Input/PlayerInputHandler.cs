@@ -144,9 +144,9 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
     
     private void SwapSwitchControl()
     {
-        InputBinding affirmBind = _controls.MainControls.AffirmButton.bindings[0];
-        _controls.MainControls.AffirmButton.ApplyBindingOverride(0, _controls.MainControls.RejectButton.bindings[0].effectivePath);
-        _controls.MainControls.RejectButton.ApplyBindingOverride(0, affirmBind.effectivePath);
+        // InputBinding affirmBind = _controls.MainControls.AffirmButton.bindings[0];
+        // _controls.MainControls.AffirmButton.ApplyBindingOverride(0, _controls.MainControls.RejectButton.bindings[0].effectivePath);
+        // _controls.MainControls.RejectButton.ApplyBindingOverride(0, affirmBind.effectivePath);
     }
     
     private IEnumerator PlayHaptics(float lowFrequency, float highFrequency, float duration)

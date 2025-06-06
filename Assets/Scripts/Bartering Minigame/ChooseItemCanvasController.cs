@@ -32,6 +32,7 @@ public class ChooseItemCanvasController : MonoBehaviour
 
     public void InitOffer(NPCData npcData, NpcInteractable npcInstance) {
         InventoryBar.SetActiveSource(gameObject, false);
+        InventoryBar.SetInteractable(false);
 
         _cards.Clear();
 

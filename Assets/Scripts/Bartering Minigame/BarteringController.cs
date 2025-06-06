@@ -53,6 +53,7 @@ public class BarteringController : MonoBehaviour
     public InventoryGridController InventoryGrid;
     public InventoryBar inventoryBar;
     public GameObject targetEffectCard;
+    public bool IsTutorial = false;
 
     #endregion
 
@@ -176,12 +177,12 @@ public class BarteringController : MonoBehaviour
     void Update()
     {
         if (_stopInput) return;
-        else if (GameManager.PlayerInput.GetRejectDown()) 
+        else if ((ExitEarlyButton.gameObject.activeSelf || ExitFinalTradeButton.gameObject.activeSelf) && GameManager.PlayerInput.GetRejectDown()) 
         {
             _stopInput = true;
             LeaveBarter();
         }
-        else if (GameManager.PlayerInput.GetMenu1Down())
+        else if (!BarterEnding && GameManager.PlayerInput.GetMenu1Down())
         {
             _stopInput = true; 
             SubmitOffer();
@@ -233,7 +234,8 @@ public class BarteringController : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
         _stopInput = false;
-        ExitFinalTradeButton.gameObject.SetActive(true);
+        if (!IsTutorial) ExitFinalTradeButton.gameObject.SetActive(true);
+        ExitFinalTradeButton.Select();
 
         if (tempTradeData.WonBarterFlag == false)
         {
@@ -451,7 +453,7 @@ public class BarteringController : MonoBehaviour
 
         // Init buttons
         OfferTradeButton.gameObject.SetActive(true);
-        ExitEarlyButton.gameObject.SetActive(true);
+        if (!IsTutorial) ExitEarlyButton.gameObject.SetActive(true);
         ExitFinalTradeButton.gameObject.SetActive(false);
 
         // Reset value texts

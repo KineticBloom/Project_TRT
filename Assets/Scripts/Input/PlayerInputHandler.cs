@@ -7,9 +7,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Switch;
 using UnityEngine.InputSystem.XInput;
 using UnityEngine.InputSystem.UI;
+
+#if !UNITY_STANDALONE_LINUX
+using UnityEngine.InputSystem.Switch;
+#endif
 
 /// <summary>
 /// Class which manages inputs from the new input system, via PlayerControls.
@@ -247,6 +250,7 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
             InputSystem.ResetHaptics();
             if(Time.timeScale != 0) _getDown["_start"] = true;
         }
+#if !UNITY_STANDALONE_LINUX
         if (device is SwitchProControllerHID)
         {
             foreach (Gamepad item in Gamepad.all)
@@ -257,6 +261,7 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
                 }
             }
         }
+#endif
     }
 
     public void OnPrimaryTrigger(InputAction.CallbackContext context) { SetDown(context, "_primaryTrigger"); }

@@ -25,6 +25,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Eden_Dialogue_SFX" ID="{FA376B81-A929-4C0A-8EF2-5ABE8ED50068}">
+					<ChildrenList>
+						<Action Name="" ID="{93B5A3D9-EC26-405C-B1B9-C457A2D32A70}" ShortID="777525297">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="NPC_Eden_Dialogue_SFX" ID="{C383A8D1-604B-4438-8D11-B3D5FE09FCEA}" WorkUnitID="{5B7407C4-3E16-4B49-90D4-1F6B50658793}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Eden_Dialogue_End_SFX" ID="{9092E4E7-74CE-4987-B3B4-FB2E6766081E}">
+					<ChildrenList>
+						<Action Name="" ID="{DECEFE10-9A5A-4FC5-9F49-9B45AA2C4C9E}" ShortID="123208269">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="NPC_Eden_Dialogue_SFX_End" ID="{4E28CA23-E1C6-4751-9D78-D8268EB1D909}" WorkUnitID="{5B7407C4-3E16-4B49-90D4-1F6B50658793}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

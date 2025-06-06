@@ -103,7 +103,17 @@
 				<RandomSequenceContainer Name="ENV_Player_Footstep_Concrete" ID="{A9D4D301-6CB9-40FE-A570-B8841E92D53A}" ShortID="988314074">
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="1"/>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>3</Value>
+							</ValueList>
+						</Property>
 						<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
 								<Value>-12</Value>
@@ -112,7 +122,7 @@
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+							<ObjectRef Name="SFXConversionSettings" ID="{50A71680-8DC6-4FE0-B2F6-68F12FA6366B}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
 						</Reference>
 						<Reference Name="OutputBus">
 							<ObjectRef Name="PlayerFootsteps" ID="{DE8C0002-B4AF-40C2-BE0F-6FA2ACA4630A}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>

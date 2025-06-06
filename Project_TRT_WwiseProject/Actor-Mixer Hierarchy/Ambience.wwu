@@ -203,6 +203,11 @@
 						<Property Name="3DSpatialization" Type="int16" Value="1"/>
 						<Property Name="AttenuationDistanceScaling" Type="Real32" Value="0.25"/>
 						<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+						<Property Name="OutputBusVolume" Type="Real64">
+							<ValueList>
+								<Value>-7</Value>
+							</ValueList>
+						</Property>
 						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 						<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 						<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
@@ -354,6 +359,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="AMB_Nature_Birds5" ID="{C71F04BA-8D31-41E2-932B-6875CA7521D6}" ShortID="24146329">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-15</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
@@ -501,6 +513,11 @@
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="1"/>
 						<Property Name="AttenuationDistanceScaling" Type="Real32" Value="0.25"/>
+						<Property Name="OutputBusVolume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
 						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 						<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 						<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
@@ -720,7 +737,7 @@
 						<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
 						<Property Name="OutputBusVolume" Type="Real64">
 							<ValueList>
-								<Value>-5</Value>
+								<Value>-10</Value>
 							</ValueList>
 						</Property>
 						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
@@ -861,6 +878,11 @@
 								</ModifierInfo>
 							</ModifierList>
 						</Property>
+						<Property Name="OutputBusVolume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
+						</Property>
 						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 						<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 						<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="2"/>
@@ -895,13 +917,15 @@
 							<ChildrenList>
 								<AudioFileSource Name="WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP" ID="{E9B5072B-6512-4658-BCA3-B05679DF7BEB}">
 									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="29.1610578782488"/>
 										<Property Name="LoopEnd" Type="Real64" Value="141.706979856384"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="371377404"/>
+										<MediaID ID="760937580"/>
+										<MediaID Platform="Linux" ID="551734313"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
@@ -921,6 +945,7 @@
 							<ChildrenList>
 								<AudioFileSource Name="WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP" ID="{6D74E272-04AE-459A-B1ED-86D8D20D6FDC}">
 									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="31.5254679764851"/>
 										<Property Name="LoopBegin" Type="Real64" Value="55.169568958849"/>
 										<Property Name="LoopEnd" Type="Real64" Value="141.706979856384"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
@@ -928,7 +953,8 @@
 									<Language>SFX</Language>
 									<AudioFile>WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="371377404"/>
+										<MediaID ID="734764486"/>
+										<MediaID Platform="Linux" ID="694456631"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
@@ -948,6 +974,7 @@
 							<ChildrenList>
 								<AudioFileSource Name="WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP" ID="{627F0638-8839-4EAA-873B-E1D8B02420C8}">
 									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="18.2847714263614"/>
 										<Property Name="LoopBegin" Type="Real64" Value="32.944114035427"/>
 										<Property Name="LoopEnd" Type="Real64" Value="141.706979856384"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
@@ -955,7 +982,8 @@
 									<Language>SFX</Language>
 									<AudioFile>WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="371377404"/>
+										<MediaID ID="551734313"/>
+										<MediaID Platform="Linux" ID="760937580"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
@@ -975,6 +1003,7 @@
 							<ChildrenList>
 								<AudioFileSource Name="WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP" ID="{690B1CCA-00C9-4EB0-9785-6C0FB27A852D}">
 									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="19.0729081257735"/>
 										<Property Name="LoopBegin" Type="Real64" Value="110.969647277228"/>
 										<Property Name="LoopEnd" Type="Real64" Value="141.706979856384"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
@@ -982,7 +1011,8 @@
 									<Language>SFX</Language>
 									<AudioFile>WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="371377404"/>
+										<MediaID ID="694456631"/>
+										<MediaID Platform="Linux" ID="734764486"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
@@ -1002,6 +1032,7 @@
 							<ChildrenList>
 								<AudioFileSource Name="WEATHER WIND City Street, Wind in Trees, Strong, Foliage Rustle, Gust Wash, Subtle Creaks &amp; Noises, Montreal, Canada, LOOP" ID="{A8EAE784-FA49-4927-9C27-CE8B74479A76}">
 									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="16.0779886680074"/>
 										<Property Name="LoopBegin" Type="Real64" Value="16.0779886680074"/>
 										<Property Name="LoopEnd" Type="Real64" Value="141.706979856384"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>

@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: d2e647656401fa48b0d64a886d907446
     GuidInternal: 
-    m_lastTime: -8584549282084931518
+    m_lastTime: -8584617669444020918
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 587ca0226052be4e9b8540a22c4f2092
     GuidInternal: 
-    m_lastTime: -8584526181663904376
+    m_lastTime: -8584526972771566734
     List:
     - name: Alleyway
       guid: 11d530b54cff564f892379f07c08b072
@@ -223,9 +223,9 @@ MonoBehaviour:
         ObjectType: 2
         guid: 883656adb723a945b273cd51079ae47a
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\MusicMaster
-    - name: NPCDialogue
+    - name: NPCDialogueSFX
       guid: 2f33a6c83423c54c81c364d5be386971
-      id: 1141413220
+      id: 3457263945
       PathAndIcons:
       - ElementName: Master-Mixer Hierarchy
         ObjectType: 5
@@ -242,10 +242,10 @@ MonoBehaviour:
       - ElementName: NPCMaster
         ObjectType: 2
         guid: 43ffc81682332f42b0d647325d444edf
-      - ElementName: NPCDialogue
+      - ElementName: NPCDialogueSFX
         ObjectType: 2
         guid: 2f33a6c83423c54c81c364d5be386971
-      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFXMaster\NPCMaster\NPCDialogue
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFXMaster\NPCMaster\NPCDialogueSFX
     - name: NPCMaster
       guid: 43ffc81682332f42b0d647325d444edf
       id: 2033911932
@@ -470,7 +470,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Ambience
     guid: 0104f6680c27bf408fd7c64816ee8c87
     GuidInternal: 
-    m_lastTime: -8584526181629947467
+    m_lastTime: -8584531164806238837
     List:
     - name: Ambience
       guid: 86b2f852bdba9b4fa5a800a04824ffe7
@@ -497,7 +497,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 04fe062a3bbc02478aebf9ed87255f35
     GuidInternal: 
-    m_lastTime: -8584549282087113501
+    m_lastTime: -8584617669444040755
     List: []
   - PhysicalPath: SoundBanks\Music.wwu
     PathAndIcons:
@@ -510,7 +510,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Music
     guid: 5f5c2e836df59d41833026f7bc293cab
     GuidInternal: 
-    m_lastTime: -8584526181629947467
+    m_lastTime: -8584533111985376727
     List:
     - name: Music
       guid: 277caf2ce418a740871cc075a9250659
@@ -537,7 +537,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\SFX
     guid: f39c92e98d8cf14f9d79f84c53eb00b3
     GuidInternal: 
-    m_lastTime: -8584526181629937487
+    m_lastTime: -8584533138970551613
     List:
     - name: SFX
       guid: cc965433ea452249b9fac65217b7662e
@@ -565,7 +565,7 @@ MonoBehaviour:
     ParentPath: Events\Ambience
     guid: 78290c8229ac584884ed86c3baba619d
     GuidInternal: 
-    m_lastTime: -8584526181669474963
+    m_lastTime: -8584531164825808358
     List:
     - name: BirdStart
       guid: 932c63abf08ea4489f51f773ba1e5c74
@@ -805,8 +805,54 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC\B4rn3y
     guid: ba283f9801c3804bbf336ac089576497
     GuidInternal: 
-    m_lastTime: -8584542524497870458
+    m_lastTime: -8584525148674950665
     List:
+    - name: B4rn3y_Dialogue_End_SFX
+      guid: 8ad7437aab220444b326f24873e735cd
+      id: 424895062
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Environment
+        ObjectType: 12
+        guid: 851bf5aefe549d489c25241343bb6f59
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 09137e3649952b468f529ebe6f164b6b
+      - ElementName: B4rn3y
+        ObjectType: 12
+        guid: ba283f9801c3804bbf336ac089576497
+      - ElementName: B4rn3y_Dialogue_End_SFX
+        ObjectType: 3
+        guid: 8ad7437aab220444b326f24873e735cd
+      Path: Events\Environment\NPC\B4rn3y\B4rn3y_Dialogue_End_SFX
+      maxAttenuation: 0
+      maxDuration: 0.1244803
+      minDuration: 0.11089932
+    - name: B4rn3y_Dialogue_SFX
+      guid: 4e87fb3b1698c141af70158eaa86456b
+      id: 3809055548
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Environment
+        ObjectType: 12
+        guid: 851bf5aefe549d489c25241343bb6f59
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 09137e3649952b468f529ebe6f164b6b
+      - ElementName: B4rn3y
+        ObjectType: 12
+        guid: ba283f9801c3804bbf336ac089576497
+      - ElementName: B4rn3y_Dialogue_SFX
+        ObjectType: 3
+        guid: 4e87fb3b1698c141af70158eaa86456b
+      Path: Events\Environment\NPC\B4rn3y\B4rn3y_Dialogue_SFX
+      maxAttenuation: 0
+      maxDuration: 0.09815143
+      minDuration: 0.09000525
     - name: ENV_B4rn3y_Hoot
       guid: e19f9296802a3549972f8fca527c927f
       id: 3764842872
@@ -867,7 +913,7 @@ MonoBehaviour:
     ParentPath: Events\UI\BarteringUI
     guid: 40c947321f41084491c4b5b163ca6270
     GuidInternal: 
-    m_lastTime: -8584547966247863294
+    m_lastTime: -8584524977069048082
     List:
     - name: BART_Barter_Lose
       guid: 3855ac20de5b634d9ad1e66c511fb4b5
@@ -887,8 +933,8 @@ MonoBehaviour:
         guid: 3855ac20de5b634d9ad1e66c511fb4b5
       Path: Events\UI\BarteringUI\BART_Barter_Lose
       maxAttenuation: 0
-      maxDuration: 5.609932
-      minDuration: 5.609932
+      maxDuration: 1.0123878
+      minDuration: 1.0123878
     - name: BART_Barter_Win
       guid: 8716511196e9d045b235d7d3afb6105f
       id: 2602999364
@@ -907,8 +953,8 @@ MonoBehaviour:
         guid: 8716511196e9d045b235d7d3afb6105f
       Path: Events\UI\BarteringUI\BART_Barter_Win
       maxAttenuation: 0
-      maxDuration: 5.609932
-      minDuration: 5.609932
+      maxDuration: 1.9768459
+      minDuration: 1.9768459
     - name: BART_Card_Highlight
       guid: 1f67dee5ae9fef46af0060bf6c4b6c39
       id: 2034897212
@@ -927,8 +973,8 @@ MonoBehaviour:
         guid: 1f67dee5ae9fef46af0060bf6c4b6c39
       Path: Events\UI\BarteringUI\BART_Card_Highlight
       maxAttenuation: 0
-      maxDuration: 1.4641732
-      minDuration: 1.3044299
+      maxDuration: 0.29633683
+      minDuration: 0.26400608
     - name: BART_Card_Place
       guid: 70703cae49201248868554261706e95e
       id: 3630843069
@@ -989,6 +1035,106 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1.0679057
       minDuration: 1.0506803
+    - name: BART_Effect_Card_Attack
+      guid: 9644b4a649f21f4797b95bf45e127374
+      id: 478288748
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: 75f867dc1a9906498df4975d819bec40
+      - ElementName: BarteringUI
+        ObjectType: 12
+        guid: 40c947321f41084491c4b5b163ca6270
+      - ElementName: BART_Effect_Card_Attack
+        ObjectType: 3
+        guid: 9644b4a649f21f4797b95bf45e127374
+      Path: Events\UI\BarteringUI\BART_Effect_Card_Attack
+      maxAttenuation: 0
+      maxDuration: 1.5512582
+      minDuration: 1.5512582
+    - name: BART_Effect_Card_Flip
+      guid: 107943582038044aacad4c6a79b86d0d
+      id: 4089696065
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: 75f867dc1a9906498df4975d819bec40
+      - ElementName: BarteringUI
+        ObjectType: 12
+        guid: 40c947321f41084491c4b5b163ca6270
+      - ElementName: BART_Effect_Card_Flip
+        ObjectType: 3
+        guid: 107943582038044aacad4c6a79b86d0d
+      Path: Events\UI\BarteringUI\BART_Effect_Card_Flip
+      maxAttenuation: 0
+      maxDuration: 0.9365444
+      minDuration: 0.9365444
+    - name: BART_Effect_Card_Trigger
+      guid: 8584c2ea603597419d7f957f4781b6d1
+      id: 2691229948
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: 75f867dc1a9906498df4975d819bec40
+      - ElementName: BarteringUI
+        ObjectType: 12
+        guid: 40c947321f41084491c4b5b163ca6270
+      - ElementName: BART_Effect_Card_Trigger
+        ObjectType: 3
+        guid: 8584c2ea603597419d7f957f4781b6d1
+      Path: Events\UI\BarteringUI\BART_Effect_Card_Trigger
+      maxAttenuation: 0
+      maxDuration: 0.47678626
+      minDuration: 0.47678626
+    - name: UI_Barter_Menu_Confirm
+      guid: 1c89db74d60cc148a310bc670067eb66
+      id: 1665981749
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: 75f867dc1a9906498df4975d819bec40
+      - ElementName: BarteringUI
+        ObjectType: 12
+        guid: 40c947321f41084491c4b5b163ca6270
+      - ElementName: UI_Barter_Menu_Confirm
+        ObjectType: 3
+        guid: 1c89db74d60cc148a310bc670067eb66
+      Path: Events\UI\BarteringUI\UI_Barter_Menu_Confirm
+      maxAttenuation: 0
+      maxDuration: 0.29633683
+      minDuration: 0.26400608
+    - name: UI_Barter_Menu_Highlight
+      guid: cc733d3493b4034ba438a05b9d1d1b4c
+      id: 3231741181
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: 75f867dc1a9906498df4975d819bec40
+      - ElementName: BarteringUI
+        ObjectType: 12
+        guid: 40c947321f41084491c4b5b163ca6270
+      - ElementName: UI_Barter_Menu_Highlight
+        ObjectType: 3
+        guid: cc733d3493b4034ba438a05b9d1d1b4c
+      Path: Events\UI\BarteringUI\UI_Barter_Menu_Highlight
+      maxAttenuation: 0
+      maxDuration: 0.19455016
+      minDuration: 0.17119631
   - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Events
@@ -1000,7 +1146,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 33316d7890aa87408e2af719ccc92cfd
     GuidInternal: 
-    m_lastTime: -8584533035934978032
+    m_lastTime: -8584617595952268450
     List: []
   - PhysicalPath: Events\DialogueUI.wwu
     PathAndIcons:
@@ -1016,8 +1162,28 @@ MonoBehaviour:
     ParentPath: Events\UI\DialogueUI
     guid: 5f47fcfbe9a3aa4593ef3112c673b6da
     GuidInternal: 
-    m_lastTime: -8584526181669474963
+    m_lastTime: -8584524996432514153
     List:
+    - name: BarterEventClose
+      guid: d5e54bf1379ad84199536b760bfbb279
+      id: 2140684973
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: 75f867dc1a9906498df4975d819bec40
+      - ElementName: DialogueUI
+        ObjectType: 12
+        guid: 5f47fcfbe9a3aa4593ef3112c673b6da
+      - ElementName: BarterEventClose
+        ObjectType: 3
+        guid: d5e54bf1379ad84199536b760bfbb279
+      Path: Events\UI\DialogueUI\BarterEventClose
+      maxAttenuation: 0
+      maxDuration: 1.5961515
+      minDuration: 1.5961515
     - name: BarterEventOpen
       guid: b6b22459d266e04e83571e8c6fd0eb5c
       id: 884323815
@@ -1036,8 +1202,8 @@ MonoBehaviour:
         guid: b6b22459d266e04e83571e8c6fd0eb5c
       Path: Events\UI\DialogueUI\BarterEventOpen
       maxAttenuation: 0
-      maxDuration: 2.4855783
-      minDuration: 2.4855783
+      maxDuration: 1.9047716
+      minDuration: 1.9047716
     - name: ConversationStart
       guid: 158ea13dea5eae41a8005d9966f3d771
       id: 1163963844
@@ -1056,8 +1222,8 @@ MonoBehaviour:
         guid: 158ea13dea5eae41a8005d9966f3d771
       Path: Events\UI\DialogueUI\ConversationStart
       maxAttenuation: 0
-      maxDuration: 1.7236054
-      minDuration: 1.7236054
+      maxDuration: 0.5946201
+      minDuration: 0.5946201
   - PhysicalPath: Events\Eden.wwu
     PathAndIcons:
     - ElementName: Events
@@ -1075,8 +1241,54 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC\Eden
     guid: a25562c68949034d8d2f00c179802c36
     GuidInternal: 
-    m_lastTime: -8584542524497851774
+    m_lastTime: -8584525148674766830
     List:
+    - name: Eden_Dialogue_End_SFX
+      guid: e7e49290ce748749b3b4fb2e6766081e
+      id: 3518274178
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Environment
+        ObjectType: 12
+        guid: 851bf5aefe549d489c25241343bb6f59
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 09137e3649952b468f529ebe6f164b6b
+      - ElementName: Eden
+        ObjectType: 12
+        guid: a25562c68949034d8d2f00c179802c36
+      - ElementName: Eden_Dialogue_End_SFX
+        ObjectType: 3
+        guid: e7e49290ce748749b3b4fb2e6766081e
+      Path: Events\Environment\NPC\Eden\Eden_Dialogue_End_SFX
+      maxAttenuation: 0
+      maxDuration: 0.11392576
+      minDuration: 0.1075316
+    - name: Eden_Dialogue_SFX
+      guid: 816b37fa29a90a4c8ef25abe8ed50068
+      id: 1320354856
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Environment
+        ObjectType: 12
+        guid: 851bf5aefe549d489c25241343bb6f59
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 09137e3649952b468f529ebe6f164b6b
+      - ElementName: Eden
+        ObjectType: 12
+        guid: a25562c68949034d8d2f00c179802c36
+      - ElementName: Eden_Dialogue_SFX
+        ObjectType: 3
+        guid: 816b37fa29a90a4c8ef25abe8ed50068
+      Path: Events\Environment\NPC\Eden\Eden_Dialogue_SFX
+      maxAttenuation: 0
+      maxDuration: 0.10165683
+      minDuration: 0.09457564
     - name: ENV_Eden_Expel
       guid: 1ce39ba1bc0ff74d9e88f004eab07b56
       id: 4203990704
@@ -1123,6 +1335,66 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1.1872109
       minDuration: 1.0012245
+    - name: NPCDialogueEndSFX
+      guid: bcdcfda55528e745879da7f4e681fec7
+      id: 2346769448
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Environment
+        ObjectType: 12
+        guid: 851bf5aefe549d489c25241343bb6f59
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 09137e3649952b468f529ebe6f164b6b
+      - ElementName: NPCDialogueEndSFX
+        ObjectType: 3
+        guid: bcdcfda55528e745879da7f4e681fec7
+      Path: Events\Environment\NPC\NPCDialogueEndSFX
+      maxAttenuation: 0
+      maxDuration: 0.14021634
+      minDuration: 0.12857893
+    - name: NPCDialogueSFX
+      guid: a3528a8c7ca9d8429f7c1de4af71163f
+      id: 3457263945
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Environment
+        ObjectType: 12
+        guid: 851bf5aefe549d489c25241343bb6f59
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 09137e3649952b468f529ebe6f164b6b
+      - ElementName: NPCDialogueSFX
+        ObjectType: 3
+        guid: a3528a8c7ca9d8429f7c1de4af71163f
+      Path: Events\Environment\NPC\NPCDialogueSFX
+      maxAttenuation: 0
+      maxDuration: 0.11024825
+      minDuration: 0.102568604
+    - name: VoidDialogueSFX
+      guid: cbe21b642b3a8a4c87071f17770a5198
+      id: 627084462
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Environment
+        ObjectType: 12
+        guid: 851bf5aefe549d489c25241343bb6f59
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 09137e3649952b468f529ebe6f164b6b
+      - ElementName: VoidDialogueSFX
+        ObjectType: 3
+        guid: cbe21b642b3a8a4c87071f17770a5198
+      Path: Events\Environment\NPC\VoidDialogueSFX
+      maxAttenuation: 0
+      maxDuration: 0.23135695
+      minDuration: 0.20182855
   - PhysicalPath: Events\Environment.wwu
     PathAndIcons:
     - ElementName: Events
@@ -1134,7 +1406,7 @@ MonoBehaviour:
     ParentPath: Events\Environment
     guid: 851bf5aefe549d489c25241343bb6f59
     GuidInternal: 
-    m_lastTime: -8584542524497851774
+    m_lastTime: -8584563364711638446
     List: []
   - PhysicalPath: Events\EnvironmentUI.wwu
     PathAndIcons:
@@ -1150,7 +1422,7 @@ MonoBehaviour:
     ParentPath: Events\UI\EnvironmentUI
     guid: 4be82f8af05f9c4bb20ac0e39bad8dae
     GuidInternal: 
-    m_lastTime: -8584547966247681250
+    m_lastTime: -8584599538249826444
     List:
     - name: ENV_Interaction_Arrow_Hide
       guid: e67f97983d2b8d4198fae5033e8d4006
@@ -1170,8 +1442,8 @@ MonoBehaviour:
         guid: e67f97983d2b8d4198fae5033e8d4006
       Path: Events\UI\EnvironmentUI\ENV_Interaction_Arrow_Hide
       maxAttenuation: 0
-      maxDuration: 1.2314739
-      minDuration: 1.2314739
+      maxDuration: 0.2843606
+      minDuration: 0.2843606
     - name: ENV_Interaction_Arrow_Show
       guid: 5199f32f1e65084188459b47f1cc9721
       id: 1995159183
@@ -1190,8 +1462,8 @@ MonoBehaviour:
         guid: 5199f32f1e65084188459b47f1cc9721
       Path: Events\UI\EnvironmentUI\ENV_Interaction_Arrow_Show
       maxAttenuation: 0
-      maxDuration: 1.2314739
-      minDuration: 1.2314739
+      maxDuration: 0.23111378
+      minDuration: 0.23111378
   - PhysicalPath: Events\F1x.wwu
     PathAndIcons:
     - ElementName: Events
@@ -1209,7 +1481,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC\F1x
     guid: ce3cd6713d17334b966516859d0170a9
     GuidInternal: 
-    m_lastTime: -8584542524497851774
+    m_lastTime: -8584525148675044463
     List:
     - name: ENV_F1x_Dont_Bite
       guid: 77759b87c7315a40b6658ecb407d9f00
@@ -1257,6 +1529,52 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1.449229
       minDuration: 1.2010431
+    - name: F1x_Dialogue_End_SFX
+      guid: 8440014f7b7a2c439e7b6e04b04e8c62
+      id: 992791593
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Environment
+        ObjectType: 12
+        guid: 851bf5aefe549d489c25241343bb6f59
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 09137e3649952b468f529ebe6f164b6b
+      - ElementName: F1x
+        ObjectType: 12
+        guid: ce3cd6713d17334b966516859d0170a9
+      - ElementName: F1x_Dialogue_End_SFX
+        ObjectType: 3
+        guid: 8440014f7b7a2c439e7b6e04b04e8c62
+      Path: Events\Environment\NPC\F1x\F1x_Dialogue_End_SFX
+      maxAttenuation: 0
+      maxDuration: 0.12989248
+      minDuration: 0.11572104
+    - name: F1x_Dialogue_SFX
+      guid: bf814f30eddfef44b811af5ad0242c78
+      id: 3128847931
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Environment
+        ObjectType: 12
+        guid: 851bf5aefe549d489c25241343bb6f59
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 09137e3649952b468f529ebe6f164b6b
+      - ElementName: F1x
+        ObjectType: 12
+        guid: ce3cd6713d17334b966516859d0170a9
+      - ElementName: F1x_Dialogue_SFX
+        ObjectType: 3
+        guid: bf814f30eddfef44b811af5ad0242c78
+      Path: Events\Environment\NPC\F1x\F1x_Dialogue_SFX
+      maxAttenuation: 0
+      maxDuration: 0.08479093
+      minDuration: 0.07554012
   - PhysicalPath: Events\MenuUI.wwu
     PathAndIcons:
     - ElementName: Events
@@ -1271,8 +1589,28 @@ MonoBehaviour:
     ParentPath: Events\UI\MenuUI
     guid: 3ced4e25bc1aa447a545adce0ca03f95
     GuidInternal: 
-    m_lastTime: -8584547966247661218
+    m_lastTime: -8584525305352066223
     List:
+    - name: UI_Menu_Cancel
+      guid: 9608e33a0b46d548861ce78cbef24385
+      id: 709377256
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: 75f867dc1a9906498df4975d819bec40
+      - ElementName: MenuUI
+        ObjectType: 12
+        guid: 3ced4e25bc1aa447a545adce0ca03f95
+      - ElementName: UI_Menu_Cancel
+        ObjectType: 3
+        guid: 9608e33a0b46d548861ce78cbef24385
+      Path: Events\UI\MenuUI\UI_Menu_Cancel
+      maxAttenuation: 0
+      maxDuration: 0.6130147
+      minDuration: 0.6130147
     - name: UI_Menu_Close
       guid: 438c2832b6aa2845ab36655fe26f9b55
       id: 3226991506
@@ -1293,6 +1631,66 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 2
       minDuration: 2
+    - name: UI_Menu_Confirm
+      guid: dd3171c67d1a184ea8763008ff18b680
+      id: 41288598
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: 75f867dc1a9906498df4975d819bec40
+      - ElementName: MenuUI
+        ObjectType: 12
+        guid: 3ced4e25bc1aa447a545adce0ca03f95
+      - ElementName: UI_Menu_Confirm
+        ObjectType: 3
+        guid: dd3171c67d1a184ea8763008ff18b680
+      Path: Events\UI\MenuUI\UI_Menu_Confirm
+      maxAttenuation: 0
+      maxDuration: 0.53102815
+      minDuration: 0.53102815
+    - name: UI_Menu_Highlight
+      guid: 92c995dba20c83498b6c9c62982b188f
+      id: 1085736370
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: 75f867dc1a9906498df4975d819bec40
+      - ElementName: MenuUI
+        ObjectType: 12
+        guid: 3ced4e25bc1aa447a545adce0ca03f95
+      - ElementName: UI_Menu_Highlight
+        ObjectType: 3
+        guid: 92c995dba20c83498b6c9c62982b188f
+      Path: Events\UI\MenuUI\UI_Menu_Highlight
+      maxAttenuation: 0
+      maxDuration: 0.24877094
+      minDuration: 0.24520436
+    - name: UI_Menu_Highlight_Down
+      guid: d35725008ed4354e8b5d003f505e56b0
+      id: 1890003741
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: 75f867dc1a9906498df4975d819bec40
+      - ElementName: MenuUI
+        ObjectType: 12
+        guid: 3ced4e25bc1aa447a545adce0ca03f95
+      - ElementName: UI_Menu_Highlight_Down
+        ObjectType: 3
+        guid: d35725008ed4354e8b5d003f505e56b0
+      Path: Events\UI\MenuUI\UI_Menu_Highlight_Down
+      maxAttenuation: 0
+      maxDuration: 0.15423796
+      minDuration: 0.14769879
     - name: UI_Menu_Open
       guid: 097a1a25ffb66648be79bf0e9a7c9a3c
       id: 4083126854
@@ -1324,7 +1722,7 @@ MonoBehaviour:
     ParentPath: Events\Music
     guid: 1baa49cfe5a4fe438cbe031c55500853
     GuidInternal: 
-    m_lastTime: -8584526181669464980
+    m_lastTime: -8584525063099110312
     List:
     - name: Key_A
       guid: a348740626e76b4592a95b259a257e46
@@ -1484,8 +1882,8 @@ MonoBehaviour:
         guid: 538661cb1d010d408230faedd397768d
       Path: Events\Music\MusicKeyStateEvents\Key_E
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Key_F
       guid: dd7e94b393f1244997b20a3857a62b40
       id: 3865414045
@@ -1720,6 +2118,26 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: MusicStateVista
+      guid: 189b0f25f35a2c4aade7f810f822406f
+      id: 2940515384
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Music
+        ObjectType: 12
+        guid: 1baa49cfe5a4fe438cbe031c55500853
+      - ElementName: MusicEvents
+        ObjectType: 4
+        guid: bb98cb8f8639c644980fd12d17cb9504
+      - ElementName: MusicStateVista
+        ObjectType: 3
+        guid: 189b0f25f35a2c4aade7f810f822406f
+      Path: Events\Music\MusicEvents\MusicStateVista
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: PauseMusic
       guid: 96326ae8227f6b49bd165fccbc20504e
       id: 1127073398
@@ -1851,48 +2269,8 @@ MonoBehaviour:
     ParentPath: Events\Environment\NPC
     guid: 09137e3649952b468f529ebe6f164b6b
     GuidInternal: 
-    m_lastTime: -8584526181669464980
-    List:
-    - name: NPCDialogueEndSFX
-      guid: bcdcfda55528e745879da7f4e681fec7
-      id: 2346769448
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Environment
-        ObjectType: 12
-        guid: 851bf5aefe549d489c25241343bb6f59
-      - ElementName: NPC
-        ObjectType: 12
-        guid: 09137e3649952b468f529ebe6f164b6b
-      - ElementName: NPCDialogueEndSFX
-        ObjectType: 3
-        guid: bcdcfda55528e745879da7f4e681fec7
-      Path: Events\Environment\NPC\NPCDialogueEndSFX
-      maxAttenuation: 0
-      maxDuration: 0.24690716
-      minDuration: 0.24690716
-    - name: NPCDialogueSFX
-      guid: a3528a8c7ca9d8429f7c1de4af71163f
-      id: 3457263945
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Environment
-        ObjectType: 12
-        guid: 851bf5aefe549d489c25241343bb6f59
-      - ElementName: NPC
-        ObjectType: 12
-        guid: 09137e3649952b468f529ebe6f164b6b
-      - ElementName: NPCDialogueSFX
-        ObjectType: 3
-        guid: a3528a8c7ca9d8429f7c1de4af71163f
-      Path: Events\Environment\NPC\NPCDialogueSFX
-      maxAttenuation: 0
-      maxDuration: 0.07832917
-      minDuration: 0.07832917
+    m_lastTime: -8584526778556771503
+    List: []
   - PhysicalPath: Events\Objects.wwu
     PathAndIcons:
     - ElementName: Events
@@ -1907,7 +2285,7 @@ MonoBehaviour:
     ParentPath: Events\Environment\Objects
     guid: f53d68a94c6e354d9f4eeee3b0dcd364
     GuidInternal: 
-    m_lastTime: -8584537194845089010
+    m_lastTime: -8584558933987835219
     List:
     - name: DoorOpen
       guid: e45a10416290f44da2dd9afd2f2afa3d
@@ -2023,8 +2401,48 @@ MonoBehaviour:
     ParentPath: Events\Environment\Player
     guid: d5f674957249a840bcf4382b6f3925ec
     GuidInternal: 
-    m_lastTime: -8584537194845089010
+    m_lastTime: -8584525148674856423
     List:
+    - name: Player_Dialogue_End_SFX
+      guid: 1e96b8544050934cba585253255cc066
+      id: 322764029
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Environment
+        ObjectType: 12
+        guid: 851bf5aefe549d489c25241343bb6f59
+      - ElementName: Player
+        ObjectType: 12
+        guid: d5f674957249a840bcf4382b6f3925ec
+      - ElementName: Player_Dialogue_End_SFX
+        ObjectType: 3
+        guid: 1e96b8544050934cba585253255cc066
+      Path: Events\Environment\Player\Player_Dialogue_End_SFX
+      maxAttenuation: 0
+      maxDuration: 0.12628436
+      minDuration: 0.11580326
+    - name: Player_Dialogue_SFX
+      guid: 5418b1339d8d2a43988160694d4ccb3e
+      id: 1381745615
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Environment
+        ObjectType: 12
+        guid: 851bf5aefe549d489c25241343bb6f59
+      - ElementName: Player
+        ObjectType: 12
+        guid: d5f674957249a840bcf4382b6f3925ec
+      - ElementName: Player_Dialogue_SFX
+        ObjectType: 3
+        guid: 5418b1339d8d2a43988160694d4ccb3e
+      Path: Events\Environment\Player\Player_Dialogue_SFX
+      maxAttenuation: 0
+      maxDuration: 0.09114061
+      minDuration: 0.0835763
     - name: PlayerFootsteps
       guid: 84795c876ed0ab43a382ca7872053bb8
       id: 1681012287
@@ -2056,7 +2474,7 @@ MonoBehaviour:
     ParentPath: Events\SettingsUI
     guid: 1fb0d41104b6e84e81ed9ee770f55b1a
     GuidInternal: 
-    m_lastTime: -8584547966247543137
+    m_lastTime: -8584563963495023934
     List:
     - name: Play_Menu_ButtonDown
       guid: 1bffeceb86b8cc499461cd7752dd9198
@@ -2137,7 +2555,7 @@ MonoBehaviour:
     ParentPath: Events\UI
     guid: 75f867dc1a9906498df4975d819bec40
     GuidInternal: 
-    m_lastTime: -8584537194845079038
+    m_lastTime: -8584558283970906016
     List: []
   RtpcWwu:
   - PhysicalPath: Game Parameters\Ambience.wwu
@@ -2151,7 +2569,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Ambience
     guid: 1364dfa97885f64c975561aade985960
     GuidInternal: 
-    m_lastTime: -8584547966247411989
+    m_lastTime: -8584599538167819512
     List:
     - name: AmbienceVolume
       guid: 01dd239d2ba1e14984ac00064dd75e62
@@ -2178,7 +2596,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: be288e71c0cc3c439b7b4bfb6a1a4c72
     GuidInternal: 
-    m_lastTime: -8584547966247388222
+    m_lastTime: -8584599538167814546
     List:
     - name: MasterVolume
       guid: 59d20be76f82c04d9077f7a3d88c2dfc
@@ -2205,7 +2623,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Music
     guid: d5202f5c1fdb7e4592a92fb8427c1e09
     GuidInternal: 
-    m_lastTime: -8584526181669455011
+    m_lastTime: -8584548419623615909
     List:
     - name: InAlleyway
       guid: 4b77a65ecbade541b66b577c9e25f9ba
@@ -2246,7 +2664,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\SFX
     guid: b76be0652aa2144ca2f1c95ef14073c4
     GuidInternal: 
-    m_lastTime: -8584547966247348101
+    m_lastTime: -8584525149316110418
     List:
     - name: SFXVolume
       guid: 3afe647cb3b54f438d068914ab1c8a1f
@@ -2274,7 +2692,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: e6b79552b8b0634f8a967d61276f57fa
     GuidInternal: 
-    m_lastTime: -8584526181629937487
+    m_lastTime: -8584525063099199589
     List:
     - name: CurrentMusicKey
       guid: 6fc02a74e5f10d408a3c979fa3ccb73b
@@ -2629,6 +3047,22 @@ MonoBehaviour:
         - ElementName: TitleScreen
           ObjectType: 8
           guid: 522198d005d6ba458c28539132ced873
+      - name: Vista
+        guid: 6f8b1cfca9c5fc40a15464e2f5f541c3
+        id: 3539709088
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: e6b79552b8b0634f8a967d61276f57fa
+        - ElementName: MusicState
+          ObjectType: 9
+          guid: 5df940ae313415468d9b77fe40be0b6c
+        - ElementName: Vista
+          ObjectType: 8
+          guid: 6f8b1cfca9c5fc40a15464e2f5f541c3
       ValueGuids: []
       ValueIcons: []
       valuesInternal: []
@@ -2644,7 +3078,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 4106411ba585644787ebc92dd1cdc4ca
     GuidInternal: 
-    m_lastTime: -8584549282083570267
+    m_lastTime: -8584617669444025876
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -2658,7 +3092,7 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: 9df9aa54af8cab4ea76b42f4ee8eaa58
     GuidInternal: 
-    m_lastTime: -8584549282085191758
+    m_lastTime: -8584617669444020918
     List:
     - name: Test
       guid: 23c0f7a154fe4f4dbb4cbb0e19d72476
@@ -2675,7 +3109,7 @@ MonoBehaviour:
         guid: 23c0f7a154fe4f4dbb4cbb0e19d72476
       Path: Triggers\Default Work Unit\Test
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 020000000300000004000000050000000600000015000000180000001b0000001c0000001d0000001f0000005100000081000000
+  ExpandedWaapiItemIds: 050000002200000026000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

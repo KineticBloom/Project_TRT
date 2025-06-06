@@ -144,6 +144,20 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="MusicStateVista" ID="{250F9B18-5AF3-4A2C-ADE7-F810F822406F}">
+							<ChildrenList>
+								<Action Name="" ID="{BB074E42-619E-465D-BA81-0D44A409DDED}" ShortID="901662898">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="22"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Vista" ID="{FC1C8B6F-C5A9-40FC-A154-64E2F5F541C3}" WorkUnitID="{5295B7E6-B0B8-4F63-8A96-7D61276F57FA}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="StartupMusicEvents" ID="{AAFBCDB9-FFC2-4BB7-B66B-BF742D558524}" ShortID="927031611">

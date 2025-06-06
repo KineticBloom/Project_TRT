@@ -7,11 +7,13 @@ Event	ID	Name			Wwise Object Path	Notes
 	1881520806	MusicStateMailbotRoom			\Music\MusicEvents\MusicStateMailbotRoom	
 	1917263390	StopMusic			\Music\MusicEvents\StopMusic	
 	2170724709	ResumeMusic			\Music\MusicEvents\ResumeMusic	
+	2940515384	MusicStateVista			\Music\MusicEvents\MusicStateVista	
 	3108336397	Key_C_Sharp			\Music\MusicKeyStateEvents\Key_C_Sharp	
 	3827058668	StartMusic			\Music\MusicEvents\StartMusic	
 	3865414040	Key_C			\Music\MusicKeyStateEvents\Key_C	
 	3865414042	Key_A			\Music\MusicKeyStateEvents\Key_A	
 	3865414045	Key_F			\Music\MusicKeyStateEvents\Key_F	
+	3865414046	Key_E			\Music\MusicKeyStateEvents\Key_E	
 	3865414047	Key_D			\Music\MusicKeyStateEvents\Key_D	
 	4206258635	PlayStartupMusic			\Music\StartupMusicEvents\PlayStartupMusic	
 	4269622689	MusicStateBarter			\Music\MusicEvents\MusicStateBarter	
@@ -27,18 +29,20 @@ State	ID	Name	State Group			Notes
 	1029337087	MailbotBarter	MusicState			
 	1643460142	MailbotRoom	MusicState			
 	2064283983	PlayerSpawn	MusicState			
+	3539709088	Vista	MusicState			
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	3207605084	InAlleyway			\Music\InAlleyway	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	38607711	MUSC_Mailbot	S:\2_Games\Projects\Unity\Project_TRT\Project_TRT_WwiseProject\.cache\D6\{D628E2A1-9A14-CF61-0408-CCC70AE19CE4}.wem		\Interactive Music Hierarchy\Default Work Unit\MusicSwitch\Bartering\MUSC_Mailbot\MUSC_Mailbot		802943
-	394168652	MUSC_Startup_Jingle_and_Fans	S:\2_Games\Projects\Unity\Project_TRT\Project_TRT_WwiseProject\.cache\FD\{FD491101-DACB-D50E-ABF2-61671A4CB957}.wem		\Interactive Music Hierarchy\Default Work Unit\StartupMusic\MUSC_Startup_Music\MUSC_Startup_Jingle_and_Fans\MUSC_Startup_Jingle_and_Fans		109163
-	655550078	MUSC_Barter_1	S:\2_Games\Projects\Unity\Project_TRT\Project_TRT_WwiseProject\.cache\C6\{C6EB2ED4-EE95-C10E-11A1-1769C498E026}.wem		\Interactive Music Hierarchy\Default Work Unit\MusicSwitch\Barter\Barter\MUSC_Barter_1		1458001
+	38607711	MUSC_Mailbot	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\D6\{D628E2A1-9A14-CF61-0408-CCC70AE19CE4}.wem		\Interactive Music Hierarchy\Default Work Unit\MusicSwitch\Bartering\MUSC_Mailbot\MUSC_Mailbot		802943
+	394168652	MUSC_Startup_Jingle_and_Fans	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\FD\{FD491101-DACB-D50E-ABF2-61671A4CB957}.wem		\Interactive Music Hierarchy\Default Work Unit\StartupMusic\MUSC_Startup_Music\MUSC_Startup_Jingle_and_Fans\MUSC_Startup_Jingle_and_Fans		109163
+	641019573	MUSC_Vista	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\5F\{5F283CA4-1F8B-7597-AAE8-978D4AE5FA9B}.wem		\Interactive Music Hierarchy\Default Work Unit\MusicSwitch\Vista\MUSC_Vista\MUSC_Vista		1450444
+	655550078	MUSC_Barter_1	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\C6\{C6EB2ED4-EE95-C10E-11A1-1769C498E026}.wem		\Interactive Music Hierarchy\Default Work Unit\MusicSwitch\Barter\Barter\MUSC_Barter_1		1458001
 
 Streamed Audio	ID	Name	Audio source file	Generated audio file	Wwise Object Path	Notes
-	78175258	MUSC_Cathedral	S:\2_Games\Projects\Unity\Project_TRT\Project_TRT_WwiseProject\.cache\35\{3584BAF8-5EA2-CF6F-FC47-8FA723510B2D}.wem	78175258.wem	\Interactive Music Hierarchy\Default Work Unit\MusicSwitch\Cathedral\MUSC_Cathedral\MUSC_Cathedral	
-	475666812	MUSC_Mailbot_Room	S:\2_Games\Projects\Unity\Project_TRT\Project_TRT_WwiseProject\.cache\72\{7213527A-8A08-5B83-D3BC-DDD3FF581D59}.wem	475666812.wem	\Interactive Music Hierarchy\Default Work Unit\MusicSwitch\MailbotRoom\MUSC_Mailbot_Room\MUSC_Mailbot_Room	
-	912353291	MUSC_Title_Screen	S:\2_Games\Projects\Unity\Project_TRT\Project_TRT_WwiseProject\.cache\D0\{D087A616-61EB-CCE0-EA3B-9D7CAF10DB8A}.wem	912353291.wem	\Interactive Music Hierarchy\Default Work Unit\MusicSwitch\TitleScreen\MUSC_Title_Screen\MUSC_Title_Screen	
-	1001349004	MUSC_Player_Spawn	S:\2_Games\Projects\Unity\Project_TRT\Project_TRT_WwiseProject\.cache\6E\{6E0BB438-EE58-DB49-E27A-7BB4EA9B14B6}.wem	1001349004.wem	\Interactive Music Hierarchy\Default Work Unit\MusicSwitch\PlayerSpawn\MUSC_Player_Spawn\MUSC_Player_Spawn	
+	78175258	MUSC_Cathedral	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\35\{3584BAF8-5EA2-CF6F-FC47-8FA723510B2D}.wem	78175258.wem	\Interactive Music Hierarchy\Default Work Unit\MusicSwitch\Cathedral\MUSC_Cathedral\MUSC_Cathedral	
+	475666812	MUSC_Mailbot_Room	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\72\{7213527A-8A08-5B83-D3BC-DDD3FF581D59}.wem	475666812.wem	\Interactive Music Hierarchy\Default Work Unit\MusicSwitch\MailbotRoom\MUSC_Mailbot_Room\MUSC_Mailbot_Room	
+	912353291	MUSC_Title_Screen	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\D0\{D087A616-61EB-CCE0-EA3B-9D7CAF10DB8A}.wem	912353291.wem	\Interactive Music Hierarchy\Default Work Unit\MusicSwitch\TitleScreen\MUSC_Title_Screen\MUSC_Title_Screen	
+	1001349004	MUSC_Player_Spawn	C:\Users\micha\Documents\Unity Projects\Project_TRT\Project_TRT_WwiseProject\.cache\6E\{6E0BB438-EE58-DB49-E27A-7BB4EA9B14B6}.wem	1001349004.wem	\Interactive Music Hierarchy\Default Work Unit\MusicSwitch\PlayerSpawn\MUSC_Player_Spawn\MUSC_Player_Spawn	
 

@@ -3,139 +3,50 @@
 	<AudioObjects>
 		<WorkUnit Name="DialogueSounds" ID="{5B7407C4-3E16-4B49-90D4-1F6B50658793}" OwnerID="{68AD8BD0-B008-41E3-8728-381237E11AAF}" PersistMode="Nested">
 			<ChildrenList>
-				<RandomSequenceContainer Name="NPC_Dialogue_SFX" ID="{167AFF5B-B2A3-4497-B90E-B13352DD3FB9}" ShortID="416727592">
+				<Sound Name="NPC_Dialogue_SFX_End" ID="{3653A996-4894-4CC8-A1BD-B3D3E3BC14B9}" ShortID="12496934">
 					<PropertyList>
-						<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
 						<Property Name="MaxSoundPerInstance" Type="int16">
 							<ValueList>
-								<Value>5</Value>
+								<Value>3</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{7AED0508-AE16-4505-AA5B-7A0DA891A676}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="100"/>
+											<Property Name="Min" Type="Real64" Value="-50"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>4</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+							<ObjectRef Name="SFXConversionSettings" ID="{50A71680-8DC6-4FE0-B2F6-68F12FA6366B}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<Sound Name="NPC_Dialogue_SFX_Detune_Down" ID="{A28436EC-297D-48C2-8852-4895F9789C8B}" ShortID="676728799">
-							<PropertyList>
-								<Property Name="Weight" Type="Real64">
-									<ValueList>
-										<Value>15</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="NPC_Dialogue_SFX_Detune_Down" ID="{512DB591-B76C-4B3D-9ED9-2A984EC1CD5A}">
-									<PropertyList>
-										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.0783291659411768"/>
-									</PropertyList>
-									<Language>SFX</Language>
-									<AudioFile>NPC_Dialogue_SFX\NPC_Dialogue_SFX_Detune_Down.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="671355451"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="NPC_Dialogue_SFX_Detune_Down" ID="{512DB591-B76C-4B3D-9ED9-2A984EC1CD5A}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="NPC_Dialogue_SFX_Detune_Up" ID="{0B9254D8-CD57-449B-BC85-D2FE9B906104}" ShortID="733377061">
-							<PropertyList>
-								<Property Name="Weight" Type="Real64">
-									<ValueList>
-										<Value>70</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="NPC_Dialogue_SFX_Detune_Up" ID="{E1F1B342-73AA-48D1-B0AF-ED859397E020}">
-									<PropertyList>
-										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.078329165941177"/>
-									</PropertyList>
-									<Language>SFX</Language>
-									<AudioFile>NPC_Dialogue_SFX\NPC_Dialogue_SFX_Detune_Up.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="325042128"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="NPC_Dialogue_SFX_Detune_Up" ID="{E1F1B342-73AA-48D1-B0AF-ED859397E020}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="NPC_Dialogue_SFX_Normal" ID="{17AF7C0B-50DA-4BFF-A1CA-66D9940C13D4}" ShortID="940981852">
-							<PropertyList>
-								<Property Name="Weight" Type="Real64">
-									<ValueList>
-										<Value>15</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="NPC_Dialogue_SFX_Normal" ID="{1910E609-0618-456C-ACAC-DD0A5364F3AD}">
-									<PropertyList>
-										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.0783291659411771"/>
-									</PropertyList>
-									<Language>SFX</Language>
-									<AudioFile>NPC_Dialogue_SFX\NPC_Dialogue_SFX_Normal.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="1059962178"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="NPC_Dialogue_SFX_Normal" ID="{1910E609-0618-456C-ACAC-DD0A5364F3AD}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-					</ChildrenList>
-				</RandomSequenceContainer>
-				<Sound Name="NPC_Dialogue_SFX_End" ID="{3653A996-4894-4CC8-A1BD-B3D3E3BC14B9}" ShortID="12496934">
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+							<ObjectRef Name="NPCDialogueSFX" ID="{C8A6332F-2334-4CC5-81C3-64D5BE386971}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="NPC_Dialogue_SFX_End" ID="{EE058843-AD58-4D4F-9909-E02FA7A29FD4}">
 							<PropertyList>
 								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-								<Property Name="TrimEnd" Type="Real64" Value="0.246907166216018"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.136224640783042"/>
 							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>NPC_Dialogue_SFX_End.wav</AudioFile>
@@ -148,6 +59,649 @@
 						<ActiveSource Name="NPC_Dialogue_SFX_End" ID="{EE058843-AD58-4D4F-9909-E02FA7A29FD4}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="NPC_Dialogue_SFX" ID="{49613B9B-3B2D-4613-ABCD-835B1E28EEB1}" ShortID="923580701">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{B18A380B-7013-473F-8B28-CD21D785BD73}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="50"/>
+											<Property Name="Min" Type="Real64" Value="-75"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Weight" Type="Real64">
+							<ValueList>
+								<Value>15</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="SFXConversionSettings" ID="{50A71680-8DC6-4FE0-B2F6-68F12FA6366B}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="NPCDialogueSFX" ID="{C8A6332F-2334-4CC5-81C3-64D5BE386971}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="NPC_Dialogue_SFX" ID="{A9FDC1A7-A043-4104-912B-F3BC550575EE}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.105574095278525"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>NPC_Dialogue_SFX.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="22629229"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="NPC_Dialogue_SFX" ID="{A9FDC1A7-A043-4104-912B-F3BC550575EE}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="NPC_F1x_Dialogue_SFX" ID="{05968795-DD4B-4A48-8061-8C6542C944A7}" ShortID="367900140">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{8EA3AF07-1235-4FD8-9241-DD1B4C2B90A2}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="100"/>
+											<Property Name="Min" Type="Real64" Value="-100"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="SFXConversionSettings" ID="{50A71680-8DC6-4FE0-B2F6-68F12FA6366B}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="NPCDialogueSFX" ID="{C8A6332F-2334-4CC5-81C3-64D5BE386971}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="NPC_F1x_Dialogue_SFX_Normal" ID="{0F37D1B0-F682-4DBB-9ECA-F3EF1FF3A0FD}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.0800319740247612"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>NPC_F1x_Dialogue_SFX_Normal.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="346839974"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="NPC_F1x_Dialogue_SFX_Normal" ID="{0F37D1B0-F682-4DBB-9ECA-F3EF1FF3A0FD}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="NPC_F1x_Dialogue_SFX_End" ID="{7FB58DA7-1FCD-4665-8CB3-E4A3E3D0672B}" ShortID="326713972">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>3</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{94CBC445-EC66-47EC-9464-C3956F3C155E}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="100"/>
+											<Property Name="Min" Type="Real64" Value="-100"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="SFXConversionSettings" ID="{50A71680-8DC6-4FE0-B2F6-68F12FA6366B}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="NPCDialogueSFX" ID="{C8A6332F-2334-4CC5-81C3-64D5BE386971}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="NPC_F1x_Dialogue_SFX_End" ID="{259A6208-99A9-41E6-8125-B768DA2DC34C}">
+							<PropertyList>
+								<Property Name="LoopBegin" Type="Real64" Value="0"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.122602176114365"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>NPC_F1x_Dialogue_SFX_End.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="119656223"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="NPC_F1x_Dialogue_SFX_End" ID="{259A6208-99A9-41E6-8125-B768DA2DC34C}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="NPC_Eden_Dialogue_SFX" ID="{C383A8D1-604B-4438-8D11-B3D5FE09FCEA}" ShortID="900095929">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{29D0CFAE-5111-47EB-B61C-2C93236113F8}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="75"/>
+											<Property Name="Min" Type="Real64" Value="-50"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="SFXConversionSettings" ID="{50A71680-8DC6-4FE0-B2F6-68F12FA6366B}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="NPCDialogueSFX" ID="{C8A6332F-2334-4CC5-81C3-64D5BE386971}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="NPC_Eden_Dialogue_SFX" ID="{574F17EA-6B7C-48C5-BC67-8F4674C9E0CE}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.0987628629441868"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>NPC_Eden_Dialogue_SFX.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="344160918"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="NPC_Eden_Dialogue_SFX" ID="{574F17EA-6B7C-48C5-BC67-8F4674C9E0CE}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="NPC_Eden_Dialogue_SFX_End" ID="{4E28CA23-E1C6-4751-9D78-D8268EB1D909}" ShortID="914916000">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>3</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{7886BDE1-5079-43E0-8CCA-4E12160F3C1B}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="50"/>
+											<Property Name="Min" Type="Real64" Value="-50"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="SFXConversionSettings" ID="{50A71680-8DC6-4FE0-B2F6-68F12FA6366B}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="NPCDialogueSFX" ID="{C8A6332F-2334-4CC5-81C3-64D5BE386971}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="NPC_Eden_Dialogue_SFX_End" ID="{AD2588DD-A590-4CFC-9316-D927FCBF026E}">
+							<PropertyList>
+								<Property Name="LoopBegin" Type="Real64" Value="0"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.110682519529278"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>NPC_Eden_Dialogue_SFX_End.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="58276907"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="NPC_Eden_Dialogue_SFX_End" ID="{AD2588DD-A590-4CFC-9316-D927FCBF026E}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Player_Dialogue_SFX" ID="{163F151F-202A-42A0-8494-69B207441D0D}" ShortID="549376285">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{B26D3316-2678-4624-922C-A32825828F99}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="100"/>
+											<Property Name="Min" Type="Real64" Value="-50"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="SFXConversionSettings" ID="{50A71680-8DC6-4FE0-B2F6-68F12FA6366B}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="NPCDialogueSFX" ID="{C8A6332F-2334-4CC5-81C3-64D5BE386971}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Player_Dialogue_SFX" ID="{0E3FAAA7-1B60-41AA-A552-A64CBB55FD23}">
+							<PropertyList>
+								<Property Name="LoopBegin" Type="Real64" Value="0"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.0885460144426829"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Player_Dialogue_SFX.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="392829191"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Player_Dialogue_SFX" ID="{0E3FAAA7-1B60-41AA-A552-A64CBB55FD23}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Player_Dialogue_SFX_End" ID="{3E7D82D4-1E32-40BB-9D14-D6FBF29E0BFF}" ShortID="47622117">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>3</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{2FC09397-98AD-4701-8C8D-C817284ACC89}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="50"/>
+											<Property Name="Min" Type="Real64" Value="-100"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="SFXConversionSettings" ID="{50A71680-8DC6-4FE0-B2F6-68F12FA6366B}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="NPCDialogueSFX" ID="{C8A6332F-2334-4CC5-81C3-64D5BE386971}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Player_Dialogue_SFX_End" ID="{DB223789-91FA-4055-BB33-549DDC98A2AD}">
+							<PropertyList>
+								<Property Name="LoopBegin" Type="Real64" Value="0"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.119196559947199"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Player_Dialogue_SFX_End.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="509077599"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Player_Dialogue_SFX_End" ID="{DB223789-91FA-4055-BB33-549DDC98A2AD}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="NPC_B4rn3y_Dialogue_SFX" ID="{45D7619B-01DF-461E-80DD-B724EB4B9FF6}" ShortID="541639912">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{89F49A19-CE40-4D50-8400-320D46D527ED}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="100"/>
+											<Property Name="Min" Type="Real64" Value="-50"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="SFXConversionSettings" ID="{50A71680-8DC6-4FE0-B2F6-68F12FA6366B}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="NPCDialogueSFX" ID="{C8A6332F-2334-4CC5-81C3-64D5BE386971}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="NPC_B4rn3y_Dialogue_SFX" ID="{D7F154AF-ADFC-4E31-8D27-1988700DD5EA}">
+							<PropertyList>
+								<Property Name="LoopBegin" Type="Real64" Value="0"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.0953572467770197"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>NPC_B4rn3y_Dialogue_SFX.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="599765199"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="NPC_B4rn3y_Dialogue_SFX" ID="{D7F154AF-ADFC-4E31-8D27-1988700DD5EA}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="NPC_B4rn3y_Dialogue_SFX_End" ID="{BFC8EA66-9812-4FEB-BEB1-520901B870D9}" ShortID="999842624">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>3</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{5DB2A50E-515E-41D7-9ACE-405B78037B53}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="100"/>
+											<Property Name="Min" Type="Real64" Value="-100"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="SFXConversionSettings" ID="{50A71680-8DC6-4FE0-B2F6-68F12FA6366B}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="NPCDialogueSFX" ID="{C8A6332F-2334-4CC5-81C3-64D5BE386971}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="NPC_B4rn3y_Dialogue_SFX_End" ID="{678427C9-4D85-4E28-8F70-C030891EC58F}">
+							<PropertyList>
+								<Property Name="LoopBegin" Type="Real64" Value="0"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.117493751863615"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>NPC_B4rn3y_Dialogue_SFX_End.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="1019604268"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="NPC_B4rn3y_Dialogue_SFX_End" ID="{678427C9-4D85-4E28-8F70-C030891EC58F}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<RandomSequenceContainer Name="Void_Dialogue_SFX" ID="{947E7C0A-9137-41B7-ACC5-80E95BC1EC56}" ShortID="75382227">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>3</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{14CF9929-8DDA-4668-8302-5E0AD4EBC1F8}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="50"/>
+											<Property Name="Min" Type="Real64" Value="-50"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>12</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="SFXConversionSettings" ID="{50A71680-8DC6-4FE0-B2F6-68F12FA6366B}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="NPCDialogueSFX" ID="{C8A6332F-2334-4CC5-81C3-64D5BE386971}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Void_Dialogue_SFX_1" ID="{7B6A4320-45B5-417E-8E26-F8C2680C7331}" ShortID="917678924">
+							<PropertyList>
+								<Property Name="Weight" Type="Real64">
+									<ValueList>
+										<Value>65</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Void_Dialogue_SFX_1" ID="{161D9A28-FE49-42F1-889A-498A0238135F}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.214553812627917"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>Void_Dialogue_SFX\Void_Dialogue_SFX_1.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="99042756"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Void_Dialogue_SFX_1" ID="{161D9A28-FE49-42F1-889A-498A0238135F}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Void_Dialogue_SFX_2" ID="{71BACCF3-AD4B-4C5E-9F81-DF2C00ECB7A8}" ShortID="223217264">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Void_Dialogue_SFX_2" ID="{C8EB743E-C635-4CEA-AF5F-E2B21FCDF4CE}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.207742580293581"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>Void_Dialogue_SFX\Void_Dialogue_SFX_2.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="671445668"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Void_Dialogue_SFX_2" ID="{C8EB743E-C635-4CEA-AF5F-E2B21FCDF4CE}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Void_Dialogue_SFX_3" ID="{E7AFE7DC-59EE-49CF-AF7F-2C904D49E14F}" ShortID="930345174">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Void_Dialogue_SFX_3" ID="{B383D11E-66F0-413D-BAD1-E69904C7AB5C}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.224770661129422"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>Void_Dialogue_SFX\Void_Dialogue_SFX_3.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="453061315"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Void_Dialogue_SFX_3" ID="{B383D11E-66F0-413D-BAD1-E69904C7AB5C}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</RandomSequenceContainer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

@@ -88,7 +88,6 @@ public class AudioEvent
         else if (_attenuationPoint)
         {
             //_eventInstance.setCallback(_eventCallback);
-            Debug.Log("Start event is now p[osters]");
             _events.startEvent.Post(_attenuationPoint);
             isPlaying = true;
         }

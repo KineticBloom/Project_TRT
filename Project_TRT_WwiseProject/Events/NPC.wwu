@@ -11,7 +11,7 @@
 						<Action Name="" ID="{610FF0D3-D7F2-49BC-98FB-F9392DA9C368}" ShortID="653329091">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="NPC_Dialogue_SFX" ID="{167AFF5B-B2A3-4497-B90E-B13352DD3FB9}" WorkUnitID="{5B7407C4-3E16-4B49-90D4-1F6B50658793}"/>
+									<ObjectRef Name="NPC_Dialogue_SFX" ID="{49613B9B-3B2D-4613-ABCD-835B1E28EEB1}" WorkUnitID="{5B7407C4-3E16-4B49-90D4-1F6B50658793}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -23,6 +23,17 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="NPC_Dialogue_SFX_End" ID="{3653A996-4894-4CC8-A1BD-B3D3E3BC14B9}" WorkUnitID="{5B7407C4-3E16-4B49-90D4-1F6B50658793}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="VoidDialogueSFX" ID="{641BE2CB-3A2B-4C8A-8707-1F17770A5198}">
+					<ChildrenList>
+						<Action Name="" ID="{3D9F0647-A1D8-4A7A-A2EE-B1D5135D9B3F}" ShortID="409086577">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Void_Dialogue_SFX" ID="{947E7C0A-9137-41B7-ACC5-80E95BC1EC56}" WorkUnitID="{5B7407C4-3E16-4B49-90D4-1F6B50658793}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

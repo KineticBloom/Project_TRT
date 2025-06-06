@@ -63,7 +63,7 @@ public class MusicManager : MonoBehaviour
     private Dictionary<string, AK.Wwise.Event> musicStateEventsDict = new Dictionary<string, AK.Wwise.Event>();
 
     // Reference to the starting music trigger
-    [SerializeField] private bool isTitleScreen = false;
+    [SerializeField] private bool playStartupJingle = true;
     [SerializeField] private AkEvent startupMusicTrigger;
 
 
@@ -85,7 +85,7 @@ public class MusicManager : MonoBehaviour
         }
 
         // I may create a "playOnInit" variable to avoid hardcoding playing music on initialization.
-        startingMusicState = "PlayerSpawn";
+        //startingMusicState = startingMusicTrack;
         currentMusicState = startingMusicState;
         previousMusicState = startingMusicState;
 
@@ -95,17 +95,12 @@ public class MusicManager : MonoBehaviour
 
     private void PlayStartingMusicEvent()
     {
-        // BAND AID FIX! EDIT LOGIC ONCE LOGIC BECOMES TOO PRIMATIVE
-        if (!isTitleScreen)
+        if (playStartupJingle && startupMusicTrigger?.data != null)
         {
-            if (startupMusicTrigger)
-            {
-                startupMusicTrigger.data.Post(gameObject);
-            }
+            startupMusicTrigger.data.Post(gameObject);
         }
-        else
+        else 
         {
-            SetMusicState("TitleScreen");
             PlayMusic();
         }
     }
@@ -135,7 +130,7 @@ public class MusicManager : MonoBehaviour
     {
         if (_events.startEvent == null)
             return;
-
+        
         //_eventInstance.setCallback(_eventCallback);
         _events.startEvent.Post(gameObject);
         //isPlaying = true;

@@ -4094,6 +4094,16 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4332587991547972525, guid: e51664737647ed74bb370cce507136aa,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332587991547972525, guid: e51664737647ed74bb370cce507136aa,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4849121436594759132, guid: e51664737647ed74bb370cce507136aa,
         type: 3}
       propertyPath: m_Value
@@ -4185,6 +4195,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_HorizontalAlignment
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6063763555099207387, guid: e51664737647ed74bb370cce507136aa,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8330998434222699297, guid: e51664737647ed74bb370cce507136aa,
         type: 3}
@@ -4804,6 +4819,11 @@ PrefabInstance:
       propertyPath: m_HorizontalAlignment
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2504330300081227973, guid: 56e963d2c74584348966401f4ae903aa,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3867591189117356994, guid: 56e963d2c74584348966401f4ae903aa,
         type: 3}
       propertyPath: m_Value
@@ -4823,6 +4843,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5388427358030276019, guid: 56e963d2c74584348966401f4ae903aa,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5388427358030276019, guid: 56e963d2c74584348966401f4ae903aa,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8196096452712137768, guid: 56e963d2c74584348966401f4ae903aa,
         type: 3}
@@ -5033,6 +5063,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -0.19999695
       objectReference: {fileID: 0}
+    - target: {fileID: 3841695443579005203, guid: 8dfdd54621b5c8e428c8fe295746803e,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3841695443579005203, guid: 8dfdd54621b5c8e428c8fe295746803e,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5349020943331231586, guid: 8dfdd54621b5c8e428c8fe295746803e,
         type: 3}
       propertyPath: m_Value
@@ -5119,6 +5159,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725792510883497061, guid: 8dfdd54621b5c8e428c8fe295746803e,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8536084771044735418, guid: 8dfdd54621b5c8e428c8fe295746803e,
         type: 3}
@@ -5656,7 +5701,7 @@ PrefabInstance:
     - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SettingsUi, Assembly-CSharp
+      value: StartUi, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
         type: 3}
@@ -5815,10 +5860,12 @@ PrefabInstance:
       value: Rebind Controls
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 7986871378343384411, guid: 2976cd3258159dd408cdefc06ef14d89, type: 3}
+    m_RemovedGameObjects: [{fileID: 7986871378343384411, guid: 2976cd3258159dd408cdefc06ef14d89,
+        type: 3}]
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents: [{targetCorrespondingSourceObject: {fileID: 7077956838690717917,
+          guid: 2976cd3258159dd408cdefc06ef14d89, type: 3}, insertIndex: -1, addedObject: {
+          fileID: 185077406734833232}}]
   m_SourcePrefab: {fileID: 100100000, guid: 2976cd3258159dd408cdefc06ef14d89, type: 3}
 --- !u!114 &255750221930281897 stripped
 MonoBehaviour:
@@ -5850,6 +5897,98 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4250389977987977358 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7077956838690717917, guid: 2976cd3258159dd408cdefc06ef14d89,
+    type: 3}
+  m_PrefabInstance: {fileID: 6396693757679341651}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &185077406734833232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4250389977987977358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4aeb9083773854e9e1e15edd9293e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIButtonHighlightSFX:
+    name: 
+    playOnInit: 0
+    _events:
+      startEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 11400000, guid: ebf73952607f7df4a966daf96d70a325,
+          type: 2}
+      pauseEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      resumeEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      stopEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+    _callbacks:
+      onStart:
+        m_PersistentCalls:
+          m_Calls: []
+      onRestart:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleted:
+        m_PersistentCalls:
+          m_Calls: []
+      onBeat:
+        m_PersistentCalls:
+          m_Calls: []
+      onMarker:
+        m_PersistentCalls:
+          m_Calls: []
+  UIButtonPressSFX:
+    name: 
+    playOnInit: 0
+    _events:
+      startEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 11400000, guid: a595cab740155774cabf328279de8b96,
+          type: 2}
+      pauseEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      resumeEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      stopEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+    _callbacks:
+      onStart:
+        m_PersistentCalls:
+          m_Calls: []
+      onRestart:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleted:
+        m_PersistentCalls:
+          m_Calls: []
+      onBeat:
+        m_PersistentCalls:
+          m_Calls: []
+      onMarker:
+        m_PersistentCalls:
+          m_Calls: []
 --- !u!1001 &7445696070140232150
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6283,6 +6422,11 @@ PrefabInstance:
       propertyPath: m_HorizontalAlignment
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2675016342145188585, guid: 1106c1e19720a324cb20438dd0882c7e,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3635191750093324782, guid: 1106c1e19720a324cb20438dd0882c7e,
         type: 3}
       propertyPath: m_Value
@@ -6307,6 +6451,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5555524602418900895, guid: 1106c1e19720a324cb20438dd0882c7e,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5555524602418900895, guid: 1106c1e19720a324cb20438dd0882c7e,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8530055598950321668, guid: 1106c1e19720a324cb20438dd0882c7e,
         type: 3}
@@ -6412,12 +6566,12 @@ PrefabInstance:
     - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveToPause
+      value: GoBack
       objectReference: {fileID: 0}
     - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SettingsUi, Assembly-CSharp
+      value: UiManager`1[[StartUi+UiStates, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 672970448334257078, guid: 2976cd3258159dd408cdefc06ef14d89,
         type: 3}
@@ -6576,11 +6730,105 @@ PrefabInstance:
       value: Back
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 7986871378343384411, guid: 2976cd3258159dd408cdefc06ef14d89, type: 3}
+    m_RemovedGameObjects: [{fileID: 7986871378343384411, guid: 2976cd3258159dd408cdefc06ef14d89,
+        type: 3}]
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents: [{targetCorrespondingSourceObject: {fileID: 7077956838690717917,
+          guid: 2976cd3258159dd408cdefc06ef14d89, type: 3}, insertIndex: -1, addedObject: {
+          fileID: 5761071370130938904}}]
   m_SourcePrefab: {fileID: 100100000, guid: 2976cd3258159dd408cdefc06ef14d89, type: 3}
+--- !u!1 &1618746007458963654 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7077956838690717917, guid: 2976cd3258159dd408cdefc06ef14d89,
+    type: 3}
+  m_PrefabInstance: {fileID: 8380922741575475227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5761071370130938904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618746007458963654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4aeb9083773854e9e1e15edd9293e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIButtonHighlightSFX:
+    name: 
+    playOnInit: 0
+    _events:
+      startEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 11400000, guid: ebf73952607f7df4a966daf96d70a325,
+          type: 2}
+      pauseEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      resumeEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      stopEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+    _callbacks:
+      onStart:
+        m_PersistentCalls:
+          m_Calls: []
+      onRestart:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleted:
+        m_PersistentCalls:
+          m_Calls: []
+      onBeat:
+        m_PersistentCalls:
+          m_Calls: []
+      onMarker:
+        m_PersistentCalls:
+          m_Calls: []
+  UIButtonPressSFX:
+    name: 
+    playOnInit: 0
+    _events:
+      startEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 11400000, guid: 61ff56a25270ad14387a178d6652f71d,
+          type: 2}
+      pauseEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      resumeEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+      stopEvent:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+    _callbacks:
+      onStart:
+        m_PersistentCalls:
+          m_Calls: []
+      onRestart:
+        m_PersistentCalls:
+          m_Calls: []
+      onCompleted:
+        m_PersistentCalls:
+          m_Calls: []
+      onBeat:
+        m_PersistentCalls:
+          m_Calls: []
+      onMarker:
+        m_PersistentCalls:
+          m_Calls: []
 --- !u!224 &2084053170843407200 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7539887267079041915, guid: 2976cd3258159dd408cdefc06ef14d89,
@@ -6605,7 +6853,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 8380922741575475227}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1618746007458963654}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}

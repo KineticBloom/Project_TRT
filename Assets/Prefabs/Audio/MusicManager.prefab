@@ -68,6 +68,12 @@ MonoBehaviour:
       WwiseObjectReference: {fileID: 11400000, guid: f8b283a7895b78343b5b55ddcc08c4f4,
         type: 2}
   musicStateEventsList:
+  - stateName: TitleScreen
+    musicEvent:
+      idInternal: 0
+      valueGuidInternal: 
+      WwiseObjectReference: {fileID: 11400000, guid: 63b280d7fc1f2fc45bc5731f823fa974,
+        type: 2}
   - stateName: PlayerSpawn
     musicEvent:
       idInternal: 0
@@ -87,6 +93,18 @@ MonoBehaviour:
       WwiseObjectReference: {fileID: 11400000, guid: 342f767e75c91494e9dec100e7a35d80,
         type: 2}
   - stateName: Vista
+    musicEvent:
+      idInternal: 0
+      valueGuidInternal: 
+      WwiseObjectReference: {fileID: 11400000, guid: 7d85a45e39c8b2245b7ae895edac0049,
+        type: 2}
+  - stateName: Credits
+    musicEvent:
+      idInternal: 0
+      valueGuidInternal: 
+      WwiseObjectReference: {fileID: 11400000, guid: 017aab24b11786845ae1fc64b8be7bc9,
+        type: 2}
+  - stateName: Tutorial
     musicEvent:
       idInternal: 0
       valueGuidInternal: 
@@ -117,8 +135,8 @@ MonoBehaviour:
       WwiseObjectReference: {fileID: 11400000, guid: f8b283a7895b78343b5b55ddcc08c4f4,
         type: 2}
   startingMusicState: PlayerSpawn
-  isTitleScreen: 0
-  startupMusicTrigger: {fileID: 0}
+  playStartupJingle: 1
+  startupMusicTrigger: {fileID: 5837734876330952900}
 --- !u!114 &4006782332480119793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbed1ab89036b6f4cab998bd785bbd2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerList: f7e1664c
+  triggerList: 
   useOtherObject: 0
   actionOnEventType: 0
   curveInterpolation: 4

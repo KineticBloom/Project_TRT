@@ -16,10 +16,15 @@
 								<Value>True</Value>
 							</ValueList>
 						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+							<ObjectRef Name="SFXConversionSettings" ID="{50A71680-8DC6-4FE0-B2F6-68F12FA6366B}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
 						</Reference>
 						<Reference Name="OutputBus">
 							<ObjectRef Name="UIMaster" ID="{FDBE6303-FCC7-427E-96F8-ED5F452DA1B6}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
@@ -27,6 +32,11 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="ENV_Interaction_Arrow_Show" ID="{30898ECE-409C-4CAF-82F9-9F9C4782E979}">
+							<PropertyList>
+								<Property Name="LoopBegin" Type="Real64" Value="0"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.231113781439621"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>ENV_Interaction_Arrow_Show.wav</AudioFile>
 							<MediaIDList>
@@ -51,10 +61,15 @@
 								<Value>True</Value>
 							</ValueList>
 						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>3</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
+							<ObjectRef Name="SFXConversionSettings" ID="{50A71680-8DC6-4FE0-B2F6-68F12FA6366B}" WorkUnitID="{6F369F01-20CF-4EF6-8F07-43A3BB7F9B1E}"/>
 						</Reference>
 						<Reference Name="OutputBus">
 							<ObjectRef Name="UIMaster" ID="{FDBE6303-FCC7-427E-96F8-ED5F452DA1B6}" WorkUnitID="{22A07C58-5260-4EBE-9B85-40A22C4F2092}"/>
@@ -62,6 +77,10 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="ENV_Interaction_Arrow_Hide" ID="{E0468880-6C61-436C-A131-85C01386D41A}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.284360583986343"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>ENV_Interaction_Arrow_Hide.wav</AudioFile>
 							<MediaIDList>

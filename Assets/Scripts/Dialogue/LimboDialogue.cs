@@ -26,6 +26,8 @@ public class LimboDialogue : MonoBehaviour {
     [Tooltip("Number of characters it takes to fully fade in the text")]
     public int FadeInCharacters = 5;
 
+    [SerializeField] private AudioEvent dialogueSFX;
+
     [SerializeField] private DialogueUiManager DialogueUiManager;
 
     #endregion
@@ -437,8 +439,8 @@ public class LimboDialogue : MonoBehaviour {
         yield return new WaitForSeconds(ActualTextSpeed);
 
         // Play sound every other character or if a punctuation
-        if (NextCharacter == '.' || CharactersPrinted % 2 == 0) {
-            //playTalkSound(currentCharacter);
+        if (NextCharacter == '.' || CharactersPrinted % 4 == 0) {
+            dialogueSFX.Play(gameObject);
         }
 
         if (CurrentLineData.CharactersPrinted > CharactersPrinted) {

@@ -6,13 +6,15 @@ VAR IC_duct_tape = false
 //Is there any way that we can keep track of if a trade happened? Like if the merchant has or hasn't received a certain item?
 
 // Unique NPC Starting Logic
+-> INTRO
+==INTRO==
+Hoot. Hello and welcome. The dead mail day shop is open. #NPC
 -> Start
 
 === Start ===
-Hoot. Hello and welcome. The dead mail day shop is open. #NPC
 *I would like to Barter. 
     {barney_bartered: -> NoBarter | -> Barter} // Only necessary for Unique NPCs
-*Can I ask you something?
++Can I ask you something?
     What would you like to know? #NPC
     ->Asking
 
@@ -20,17 +22,17 @@ Hoot. Hello and welcome. The dead mail day shop is open. #NPC
     -> END
     
 ==Asking==
-*Dead Mail Day?
++Dead Mail Day?
         Correct! Undelivered mail is sold on Sundays. #NPC
         ->Dead_Mail
-*What is your favorite fruit?
++What is your favorite fruit?
         The fruit in me! It lets me work around the clock. #NPC
     ->Asking
-*What are you looking for?
-    I am looking for a tool to help repair any damaged packages, something to replace my old name tag, and and any information regarding what we can do better! #NPC 
++What are you looking for?
+    I am looking for any tools, something to replace my old name tag, and any news that may be lying around! #NPC 
     //If we can break all of these lines into their own textbox thatd be awesome possum :)
     ->Asking
-* I want to talk about something else.
++I want to talk about something else.
     Assuredly. #NPC
     ->Start
     

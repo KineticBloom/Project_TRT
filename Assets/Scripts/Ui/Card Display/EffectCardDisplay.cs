@@ -119,6 +119,7 @@ public class EffectCardDisplay : MonoBehaviour
         {
             _shakeTween.Restart();
         }
+        PlayerInputHandler.SetHaptics(0.5f, 0, 0.1f);
     }
 
     public void AttackActivate()
@@ -162,6 +163,7 @@ public class EffectCardDisplay : MonoBehaviour
     {
         backArt.sprite = backActive;
         StartCoroutine(AttackReturn());
+        PlayerInputHandler.SetHaptics(1f, 1f, 0.1f);
     }
 
     IEnumerator AttackReturn()
@@ -208,6 +210,7 @@ public class EffectCardDisplay : MonoBehaviour
     /// </summary>
     private void FlipFront()
     {
+        PlayerInputHandler.SetHaptics(0, 0.5f, 0.5f);
         cardFront.transform.localScale = Vector3.up * _baseScale;
         cardFront.transform.localPosition = new Vector3(
             cardFront.transform.localPosition.x,

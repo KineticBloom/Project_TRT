@@ -53,6 +53,8 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
         MoveToPause();
         pauseOpen.Post(this.gameObject);
         LoadSettingsUi();
+        
+        PlayerInputHandler.PauseHaptics();
     }
 
 
@@ -95,6 +97,7 @@ public class SettingsUi : UiManager<SettingsUi.UiStates> {
             .OnComplete(() => AfterLeave());
         settingsPanel.transform.DOScale(smallScale, tweenDuration)
             .SetEase(shrinkEase).SetUpdate(true).SetDelay(shrinkDelay);
+        PlayerInputHandler.ResumeHaptics();
     }
 
 

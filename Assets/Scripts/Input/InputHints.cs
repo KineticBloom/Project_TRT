@@ -14,6 +14,7 @@ public class InputHints : MonoBehaviour
     private string _originalText;
 
     private string InputSprite(string input) => $"<sprite name={_controls.FindAction(input).GetBindingDisplayString(InputBinding.DisplayStringOptions.DontUseShortDisplayNames, _currentControl.bindingGroup).Split("|")[0].Trim()}>";
+    private string MultiInputSprite(string input, int ind) => $"<sprite name={_controls.FindAction(input).GetBindingDisplayString(ind, InputBinding.DisplayStringOptions.DontUseShortDisplayNames)/* .Split("|")[ind].Trim() */}>";
 
     // Start is called before the first frame update
     void Awake()
@@ -45,7 +46,9 @@ public class InputHints : MonoBehaviour
         _display.text = _originalText;
         foreach (Match match in Regex.Matches(_originalText, @"\{(.*?)\}"))
         {
-            _display.text = _display.text.Replace(match.ToString(), InputSprite(match.Groups[1].Value));
+            string[] matches = match.Groups[1].Value.Split("_");
+            string replacement = (matches.Length > 1) ? MultiInputSprite(matches[0], int.Parse(matches[1])) : InputSprite(match.Groups[1].Value);
+            _display.text = _display.text.Replace(match.ToString(), replacement);
         }
     }
 }

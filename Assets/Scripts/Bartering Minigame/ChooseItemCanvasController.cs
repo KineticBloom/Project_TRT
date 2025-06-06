@@ -19,6 +19,16 @@ public class ChooseItemCanvasController : MonoBehaviour
     private List<GameObject> _cards = new List<GameObject>();
     private NPCData _passedInData;
     private NpcInteractable _npcInstance;
+    private bool _stopInput = false;
+    
+    private void Update()
+    {
+        if(GameManager.PlayerInput.GetRejectDown() && !_stopInput) 
+        {
+            _stopInput = true;
+            LeaveChooseItemScene();
+        }
+    }
 
     public void InitOffer(NPCData npcData, NpcInteractable npcInstance) {
         InventoryBar.SetActiveSource(gameObject, false);
@@ -27,6 +37,7 @@ public class ChooseItemCanvasController : MonoBehaviour
 
         _passedInData = npcData;
         _npcInstance = npcInstance;
+        _stopInput = false;
 
         NPCSprite.sprite = _passedInData.Icon;
 

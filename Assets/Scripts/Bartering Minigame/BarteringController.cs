@@ -61,6 +61,7 @@ public class BarteringController : MonoBehaviour
     private TradeInfo _tradeInfo;
     private List<EffectCard> _revealedEffectCards;
     private bool BarterEnding = false;
+    private bool _stopInput = false;
 
     private class TempTradeData
     {
@@ -172,6 +173,21 @@ public class BarteringController : MonoBehaviour
     #endregion
 
     #region ======== [ PRIVATE METHODS ] ========
+    void Update()
+    {
+        if (_stopInput) return;
+        else if (GameManager.PlayerInput.GetRejectDown()) 
+        {
+            _stopInput = true;
+            LeaveBarter();
+        }
+        else if (GameManager.PlayerInput.GetMenu1Down())
+        {
+            _stopInput = true; 
+            SubmitOffer();
+        }
+    }
+
     private void ResetGlobalState()
     {
         _offeredItems = new OfferedItems();
@@ -216,6 +232,7 @@ public class BarteringController : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1.5f);
+        _stopInput = false;
         ExitFinalTradeButton.gameObject.SetActive(true);
 
         if (tempTradeData.WonBarterFlag == false)
@@ -376,6 +393,7 @@ public class BarteringController : MonoBehaviour
 
         // Unpause time
         if (TimeLoopManager.Instance != null) TimeLoopManager.SetLoopPaused(false);
+        _stopInput = false;
     }
 
     #endregion

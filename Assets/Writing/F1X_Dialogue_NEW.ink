@@ -7,23 +7,25 @@ VAR IC_clock = false
 //Is there any way that we can keep track of if a trade happened? Like if the merchant has or hasn't received a certain item?
 
 // Unique NPC Starting Logic
+->INTRO
+==INTRO==
+Welcome to the best decision you'll make all day. #NPC
 ->Start
 
 === Start ===
-Welcome to the best decision you'll make all day. #NPC
 *I would like to Barter. 
     {fix_bartered: -> NoBarter | -> Barter} // Only necessary for Unique NPCs
-*Can I ask you something?
++Can I ask you something?
     Sure, might cost ya extra though. #NPC
     ->Asking
 *Nevermind // Exit dialogue
     -> END
     
 ==Asking==
-*What do you do for work?
++What do you do for work?
     What we're doin' right now. Barterin' with the locals. #NPC
     ->Work
-*What is your favorite fruit?
++What is your favorite fruit?
     Mangos... Always interested in that fruit inside ya' too. #NPC
         **I like mangoes too.
             Good choice. #NPC
@@ -31,12 +33,12 @@ Welcome to the best decision you'll make all day. #NPC
         **What did you say?
             I'm not sure what you're referin' to. #NPC
             ->Asking
-*{fix_distrust == false} What are you looking for?
-    I've been needin' a new tie, and... you ain't gonna tell no one nothing right? #NPC
++{fix_distrust == false} What are you looking for?
+    I've been needin' a new tie, any old relic items, and... you ain't gonna tell no one nothing right? #NPC
     ->fixandeden
     //If we can break all of these lines into their own textbox thatd be awesome possum :)
     ->Asking
-* I want to talk about something else.
++I want to talk about something else.
     Assuredly. #NPC
     ->Start
     
@@ -91,7 +93,7 @@ NULL_LINE #Barter
 {shuffle:
 - I didn't scare you off did I? Hehehe. #NPC
 - Were ya' distracted? I can't say I'd blame you. #NPC
-- Window shoppers... Won't find what I've got anywhere else! #NPC
+- Won't find what I've got anywhere else! #NPC
 }
 -> END
 

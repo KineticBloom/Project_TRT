@@ -4,30 +4,33 @@ VAR IC_cornucopia = false
 VAR IC_religious_relic = false
 
 // Unique NPC Starting Logic
+->INTRO
+==INTRO==
+Greetings, wanderer. How may we of the Order be of assistance to you? #NPC
 -> Start
 
-// There is a max of 4 choices per choice option
-// If you need more feel free to add a "more" option that diverts to more optuins
 === Start ===
-Greetings, wanderer. How may we of the Order be of assistance to you? #NPC
 *I would like to Barter. 
     {eden_bartered: -> NoBarter | -> Barter} // Only necessary for Unique NPCs
-*Can I ask you something?
++Can I ask you something?
     What is peaking your curiosity? #NPC
     ->Asking
 *Nevermind.
     ->END
 
 ==Asking==
-*What do you do?
++What do you do?
     I pray for the safety and longevity of every soul. #NPC
     ->Souls
-*What is your favorite fruit?
++What is your favorite fruit?
     I've always enjoyed kiwis, they are small, fuzzy, and sweet. #NPC
     ->Asking
-*What are you looking for?
-    The Church requires a symbol of abundance, a relic that we had lost, and something to replace these old, dirty robes. #NPC
++What are you looking for?
+    The Church is looking for any lost fruits, especially citrons, and... Please keep this between us, but could you fetch something F1X has been making for me? #NPC
     ->Asking
++I want to talk about something else.
+    So it shall be. #NPC
+    ->Start
 
 ==Souls==
 *Soul?

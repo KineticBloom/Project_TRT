@@ -105,6 +105,11 @@ public class InventoryCardObject : MonoBehaviour {
         SetCardToEmpty(usingPreviewSize);
     }
 
+    void OnDisable()
+    {
+        HideDescription();
+    }
+
     #endregion
 
     #region ======== [ PUBLIC METHODS ] ========
@@ -303,7 +308,7 @@ public class InventoryCardObject : MonoBehaviour {
         itemDescriptionBox.transform.DOKill();
         itemDescriptionBox.SetActive(true);
         itemDescriptionBox.transform.
-            DOScaleY(1, showDuration).SetEase(showEase);
+            DOScaleY(1, showDuration).SetEase(showEase).SetUpdate(true);
     }
 
 
@@ -315,7 +320,7 @@ public class InventoryCardObject : MonoBehaviour {
         itemDescriptionBox.transform.DOKill();
         itemDescriptionBox.transform.
             DOScaleY(0, hideDuration).SetEase(hideEase)
-            .OnComplete(() => itemDescriptionBox.SetActive(false));
+            .OnComplete(() => itemDescriptionBox.SetActive(false)).SetUpdate(true);
     }
 
     /// <summary>

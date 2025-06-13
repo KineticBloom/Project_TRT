@@ -7,7 +7,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XInput;
 using UnityEngine.InputSystem.UI;
+
+#if !UNITY_STANDALONE_LINUX
+using UnityEngine.InputSystem.Switch;
+#endif
 
 /// <summary>
 /// Class which manages inputs from the new input system, via PlayerControls.
@@ -106,6 +111,8 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
             StartCoroutine(WaitAFrame());
         }
 
+        InputSystem.onDeviceChange += OnDeviceChange;
+
         // Initialize the _get dict from the _getDown dict
         foreach (string key in _getDown.Keys) {
             _get[key] = false;
@@ -142,16 +149,18 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
         else _controls.MainControls.Disable();
     }
     
-    private void SwapSwitchControl()
-    {
-        InputBinding affirmBind = _controls.MainControls.AffirmButton.bindings[0];
-        _controls.MainControls.AffirmButton.ApplyBindingOverride(0, _controls.MainControls.RejectButton.bindings[0].effectivePath);
-        _controls.MainControls.RejectButton.ApplyBindingOverride(0, affirmBind.effectivePath);
-    }
+    // private void SwapSwitchControl()
+    // {
+    //     int affInd = _controls.MainControls.AffirmButton.GetBindingIndex(SwitchScheme.bindingGroup);
+    //     int rejInd = _controls.MainControls.RejectButton.GetBindingIndex(SwitchScheme.bindingGroup);
+        
+    //     InputBinding affirmBind = _controls.MainControls.AffirmButton.bindings[affInd];
+    //     _controls.MainControls.AffirmButton.ApplyBindingOverride(affInd, _controls.MainControls.RejectButton.bindings[rejInd].effectivePath);
+    //     _controls.MainControls.RejectButton.ApplyBindingOverride(rejInd, affirmBind.effectivePath);
+    // }
     
     private IEnumerator PlayHaptics(float lowFrequency, float highFrequency, float duration)
     {
-        Debug.Log(Gamepad.current);
         Gamepad currentGamepad = Gamepad.current;
         if (currentGamepad == null) yield break;
         currentGamepad.SetMotorSpeeds(lowFrequency, highFrequency);
@@ -225,7 +234,7 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
             if (scheme.SupportsDevice(context.control.device)) {
                 if (LastUsedScheme != scheme) 
                 {
-                    if (LastUsedScheme == SwitchScheme || scheme == SwitchScheme) SwapSwitchControl();
+                    // if (LastUsedScheme == SwitchScheme || scheme == SwitchScheme) SwapSwitchControl();
                     LastUsedScheme = scheme;
                     OnInputSchemeChanged?.Invoke();
                 }
@@ -236,11 +245,23 @@ public class PlayerInputHandler : MonoBehaviour, PlayerControls.IMainControlsAct
     
     private void OnDeviceChange(InputDevice device, InputDeviceChange change)
     {
-        if (change == InputDeviceChange.Disconnected || change == InputDeviceChange.Removed || change == InputDeviceChange.Disabled)
+        if (change == InputDeviceChange.Disconnected || change == InputDeviceChange.Removed)
         {
             InputSystem.ResetHaptics();
-            _getDown["_start"] = true;
+            if(Time.timeScale != 0) _getDown["_start"] = true;
         }
+#if !UNITY_STANDALONE_LINUX
+        if (device is SwitchProControllerHID)
+        {
+            foreach (Gamepad item in Gamepad.all)
+            {
+                if ((item is XInputController) && (Mathf.Abs((float)item.lastUpdateTime - (float)device.lastUpdateTime) < 0.1))
+                {
+                    InputSystem.DisableDevice(item);
+                }
+            }
+        }
+#endif
     }
 
     public void OnPrimaryTrigger(InputAction.CallbackContext context) { SetDown(context, "_primaryTrigger"); }

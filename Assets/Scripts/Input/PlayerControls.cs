@@ -616,7 +616,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";DualShockGamepad;SwitchGamepad;XInputGamepad;Gamepad"",
                     ""action"": ""ViewAxis"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

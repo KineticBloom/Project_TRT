@@ -12,7 +12,7 @@ public class WinCondition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_wonGame || GameManager.FlagTracker == null || flagID.Length <= 0) return;
+        if (_wonGame || flagID.Length <= 0 || GameManager.FlagTracker == null) return;
         else if (GameManager.FlagTracker.CheckFlag(flagID)) 
         {
             _wonGame = true;
@@ -25,9 +25,8 @@ public class WinCondition : MonoBehaviour
     // This should probably be a function in the game manager.
     public void ResetGame()
     {
-        if (GameManager.Inventory != null) {
-            GameManager.Inventory.Clear();
-        }
-        SceneManager.LoadScene(0);
+        SaveSystem.ResetSaveData();
+        Metrics.Reset();
+        SceneManager.LoadScene(1);
     }
 }

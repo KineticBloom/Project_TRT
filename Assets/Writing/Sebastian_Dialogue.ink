@@ -13,10 +13,10 @@ Greeting and salutations feline! What commodities are in your possesion? Anythin
     -> Info
 * {!goro_mb_interrogated} What interests you?
     -> Quest
-*Can I ask you something?
++Can I ask you something?
     I have the time. #NPC
     ->Questioning
-*Nevermind.
++Nevermind.
     Heh, window shoppers... #NPC
     ->END
     

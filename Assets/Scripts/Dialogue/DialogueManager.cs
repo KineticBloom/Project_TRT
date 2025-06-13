@@ -323,7 +323,7 @@ public class DialogueManager : MonoBehaviour {
         Vector2 PlayerViewportPosition = WorldPosToViewportPos(PlayerWorldPosition, CurrentCanvas, CurrentCamera);
         GameObject PlayerBubbleObject = Instantiate(PlayerDialogueBubblePrefab, PlayerViewportPosition, Quaternion.identity, BubbleParent);
         PlayerBubble = PlayerBubbleObject.GetComponent<SpeechBubbleCore>();
-        //PlayerBubble.transform.position += new Vector3(100, 0, 0);
+        PlayerBubble.transform.position += new Vector3(-100, 0, 0);
     }
 
     /// <summary>
@@ -437,7 +437,7 @@ public class DialogueManager : MonoBehaviour {
         _onDelay = true;
         StartCoroutine(ConversationDelay());
 
-        StopBounce.Invoke();
+        StopBounce?.Invoke();
         StartFastBounce = null;
         StartSlowBounce = null;
         StopBounce = null;
@@ -520,7 +520,7 @@ public class DialogueManager : MonoBehaviour {
             DialogueUiManager.ShowButtons(CurrentLineData.Choices);
         }
 
-        StartSlowBounce.Invoke();
+        StartSlowBounce?.Invoke();
     }
 
     /// <summary>
@@ -574,7 +574,7 @@ public class DialogueManager : MonoBehaviour {
             else if (NPCName == "F1X") { F1xDialogueEndSFX.Play(gameObject); }
             else { NPCDialogueEndSFX.Play(gameObject); }
 
-            StartSlowBounce.Invoke();
+            StartSlowBounce?.Invoke();
 
         } else {
             StartCoroutine(PrintNextCharacter());

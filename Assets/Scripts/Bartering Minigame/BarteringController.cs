@@ -53,6 +53,7 @@ public class BarteringController : MonoBehaviour
     public InventoryGridController InventoryGrid;
     public InventoryBar inventoryBar;
     public GameObject targetEffectCard;
+    public bool IsTutorial = false;
 
     #endregion
 
@@ -176,12 +177,17 @@ public class BarteringController : MonoBehaviour
     void Update()
     {
         if (_stopInput) return;
-        else if (GameManager.PlayerInput.GetRejectDown()) 
+        else if (CardRevealScreen.activeSelf == true && GameManager.PlayerInput.GetRejectDown())
+        {
+            _stopInput = true;
+            EFFECT_CloseCardScreen();
+        }
+        else if ((ExitEarlyButton.gameObject.activeSelf || ExitFinalTradeButton.gameObject.activeSelf) && GameManager.PlayerInput.GetRejectDown()) 
         {
             _stopInput = true;
             LeaveBarter();
         }
-        else if (GameManager.PlayerInput.GetMenu1Down())
+        else if (!BarterEnding && GameManager.PlayerInput.GetMenu1Down())
         {
             _stopInput = true; 
             SubmitOffer();
@@ -234,6 +240,7 @@ public class BarteringController : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         _stopInput = false;
         ExitFinalTradeButton.gameObject.SetActive(true);
+        ExitFinalTradeButton.Select();
 
         if (tempTradeData.WonBarterFlag == false)
         {
@@ -286,6 +293,7 @@ public class BarteringController : MonoBehaviour
 
         // Play the particles!
         tempTradeData.NPCInstance.PlayBarterWinParticles();
+        PlayerInputHandler.SetHaptics(0f, 1f, 1f);
     }
     private void BarterLose()
     {
@@ -451,7 +459,7 @@ public class BarteringController : MonoBehaviour
 
         // Init buttons
         OfferTradeButton.gameObject.SetActive(true);
-        ExitEarlyButton.gameObject.SetActive(true);
+        if (!IsTutorial) ExitEarlyButton.gameObject.SetActive(true);
         ExitFinalTradeButton.gameObject.SetActive(false);
 
         // Reset value texts
@@ -479,6 +487,7 @@ public class BarteringController : MonoBehaviour
         {
             Destroy(card.gameObject);
         }
+        _stopInput = false;
     }
     public void EFFECT_AddNewReveal(EffectCard effectCard)
     {
@@ -587,6 +596,7 @@ public class BarteringController : MonoBehaviour
         {
             yield return EFFECT_ShowRevealedCards();
         }
+        ExitFinalTradeButton.Select();
 
         x?.Invoke();
     }

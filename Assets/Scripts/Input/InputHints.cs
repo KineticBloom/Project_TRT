@@ -14,7 +14,7 @@ public class InputHints : MonoBehaviour
     private string _originalText;
 
     private string InputSprite(string input) => $"<sprite name={_controls.FindAction(input).GetBindingDisplayString(InputBinding.DisplayStringOptions.DontUseShortDisplayNames, _currentControl.bindingGroup).Split("|")[0].Trim()}>";
-    private string MultiInputSprite(string input, int ind) => $"<sprite name={_controls.FindAction(input).GetBindingDisplayString(ind, InputBinding.DisplayStringOptions.DontUseShortDisplayNames)/* .Split("|")[ind].Trim() */}>";
+    private string MultiInputSprite(string input, int ind) => $"<sprite name={_controls.FindAction(input).GetBindingDisplayString(ind, InputBinding.DisplayStringOptions.DontUseShortDisplayNames)}>";
 
     // Start is called before the first frame update
     void Awake()
